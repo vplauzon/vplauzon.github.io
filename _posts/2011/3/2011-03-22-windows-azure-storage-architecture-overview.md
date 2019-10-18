@@ -1,6 +1,6 @@
 ---
 title:  Windows Azure Storage Architecture Overview
-date:  03/23/2011 00:34:00
+date:  2011-03-23 00:34:00 +00:00
 permalink:  "/2011/03/22/windows-azure-storage-architecture-overview/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Nuget WordPress REST API - On Codeplex!
-date:  08/20/2015 23:00:38
+date:  2015-08-20 23:00:38 +00:00
 permalink:  "/2015/08/20/nuget-wordpress-rest-api-on-codeplex/"
 categories:
 - Solution

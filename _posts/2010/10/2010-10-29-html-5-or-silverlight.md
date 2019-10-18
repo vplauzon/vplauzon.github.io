@@ -1,6 +1,6 @@
 ---
 title:  HTML 5 or Silverlight?
-date:  10/29/2010 23:35:00
+date:  2010-10-29 23:35:00 +00:00
 permalink:  "/2010/10/29/html-5-or-silverlight/"
 categories:
 - Solution

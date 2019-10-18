@@ -1,6 +1,6 @@
 ---
 title:  SQL Azure Federation: Automating your database partitioning (sharding)
-date:  02/05/2011 15:20:00
+date:  2011-02-05 15:20:00 +00:00
 permalink:  "/2011/02/05/sql-azure-federation-automating-your-database-partitioning-sharding/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Hadoop ecosystem overview
-date:  09/20/2015 23:00:18
+date:  2015-09-20 23:00:18 +00:00
 permalink:  "/2015/09/20/hadoop-ecosystem-overview/"
 categories:
 - Solution

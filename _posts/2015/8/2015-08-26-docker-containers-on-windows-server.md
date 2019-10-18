@@ -1,6 +1,6 @@
 ---
 title:  Docker Containers on Windows Server
-date:  08/26/2015 23:00:36
+date:  2015-08-26 23:00:36 +00:00
 permalink:  "/2015/08/26/docker-containers-on-windows-server/"
 categories:
 - Solution

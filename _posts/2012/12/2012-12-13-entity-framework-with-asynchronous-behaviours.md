@@ -1,6 +1,6 @@
 ---
 title:  Entity Framework with Asynchronous behaviours
-date:  12/13/2012 23:46:00
+date:  2012-12-13 23:46:00 +00:00
 permalink:  "/2012/12/13/entity-framework-with-asynchronous-behaviours/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Where is the statistics in Machine Learning?
-date:  10/18/2015 23:00:58
+date:  2015-10-18 23:00:58 +00:00
 permalink:  "/2015/10/18/where-is-the-statistics-in-machine-learning/"
 categories:
 - Solution

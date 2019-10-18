@@ -1,6 +1,6 @@
 ---
 title:  Windows 8: 20 Tips and Tricks
-date:  03/08/2012 00:44:00
+date:  2012-03-08 00:44:00 +00:00
 permalink:  "/2012/03/07/windows-8-20-tips-and-tricks/"
 categories:
 - Gadget

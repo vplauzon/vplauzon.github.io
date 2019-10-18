@@ -1,6 +1,6 @@
 ---
 title:  Introduction to TPL Dataflow
-date:  01/04/2011 19:47:00
+date:  2011-01-04 19:47:00 +00:00
 permalink:  "/2011/01/04/introduction-to-tpl-dataflow/"
 categories:
 - Solution

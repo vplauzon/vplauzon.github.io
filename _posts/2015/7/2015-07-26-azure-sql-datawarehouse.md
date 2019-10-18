@@ -1,6 +1,6 @@
 ---
 title:  Azure SQL Datawarehouse
-date:  07/26/2015 23:00:33
+date:  2015-07-26 23:00:33 +00:00
 permalink:  "/2015/07/26/azure-sql-datawarehouse/"
 categories:
 - Solution

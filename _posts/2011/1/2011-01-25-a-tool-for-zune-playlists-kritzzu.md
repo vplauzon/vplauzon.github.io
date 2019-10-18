@@ -1,6 +1,6 @@
 ---
 title:  A tool for Zune Playlists: KritzZu
-date:  01/26/2011 00:29:00
+date:  2011-01-26 00:29:00 +00:00
 permalink:  "/2011/01/25/a-tool-for-zune-playlists-kritzzu/"
 categories:
 - Gadget

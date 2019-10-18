@@ -1,6 +1,6 @@
 ---
 title:  How to improve Azure: Security Models
-date:  04/29/2014 00:20:00
+date:  2014-04-29 00:20:00 +00:00
 permalink:  "/2014/04/28/how-to-improve-azure-security-models/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  API Management exclusive access to Azure Function
-date:  03/28/2019 10:30:58
+date:  2019-03-28 10:30:58 +00:00
 permalink:  "/2019/03/28/api-management-exclusive-access-to-azure-function/"
 categories:
 - Solution

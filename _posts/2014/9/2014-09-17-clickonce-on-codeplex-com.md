@@ -1,6 +1,6 @@
 ---
 title:  ClickOnce on CodePlex.com
-date:  09/17/2014 22:30:49
+date:  2014-09-17 22:30:49 +00:00
 permalink:  "/2014/09/17/clickonce-on-codeplex-com/"
 categories:
 - Solution

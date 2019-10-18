@@ -1,6 +1,6 @@
 ---
 title:  Free ebook:  Azure Machine Learning
-date:  09/02/2015 23:00:53
+date:  2015-09-02 23:00:53 +00:00
 permalink:  "/2015/09/02/free-ebook-azure-machine-learning/"
 categories:
 - Solution

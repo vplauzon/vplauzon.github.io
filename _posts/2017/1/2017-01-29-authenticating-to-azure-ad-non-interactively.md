@@ -1,6 +1,6 @@
 ---
 title:  Authenticating to Azure AD non-interactively
-date:  01/29/2017 22:13:09
+date:  2017-01-29 22:13:09 +00:00
 permalink:  "/2017/01/29/authenticating-to-azure-ad-non-interactively/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Windows Azure Customer Feedback
-date:  08/26/2010 14:35:20
+date:  2010-08-26 14:35:20 +00:00
 permalink:  "/2010/08/26/windows-azure-customer-feedback/"
 categories:
 - Solution

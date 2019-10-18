@@ -1,6 +1,6 @@
 ---
 title:  Departmental Application Migration to Azure – Part 4 – ADFS with Azure web app
-date:  08/25/2010 17:31:30
+date:  2010-08-25 17:31:30 +00:00
 permalink:  "/2010/08/25/departmental-application-migration-to-azure-part-4-adfs-with-azure-web-app/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Testing out the public cloud
-date:  08/31/2011 17:21:04
+date:  2011-08-31 17:21:04 +00:00
 permalink:  "/2011/08/31/testing-out-the-public-cloud/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Office 365 Beta Service Descriptions
-date:  12/21/2010 00:37:00
+date:  2010-12-21 00:37:00 +00:00
 permalink:  "/2010/12/20/office-365-beta-service-descriptions/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  DocumentDB Studio first (beta) release
-date:  10/16/2014 02:37:51
+date:  2014-10-16 02:37:51 +00:00
 permalink:  "/2014/10/15/documentdb-studio/"
 categories:
 - Solution

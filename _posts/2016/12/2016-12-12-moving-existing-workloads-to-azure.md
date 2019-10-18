@@ -1,6 +1,6 @@
 ---
 title:  Moving existing workloads to Azure
-date:  12/12/2016 19:16:55
+date:  2016-12-12 19:16:55 +00:00
 permalink:  "/2016/12/12/moving-existing-workloads-to-azure/"
 categories:
 - Solution

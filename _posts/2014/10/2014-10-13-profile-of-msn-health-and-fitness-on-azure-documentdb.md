@@ -1,6 +1,6 @@
 ---
 title:  Profile of MSN Health and Fitness on Azure DocumentDB
-date:  10/14/2014 03:06:18
+date:  2014-10-14 03:06:18 +00:00
 permalink:  "/2014/10/13/profile-of-msn-health-and-fitness-on-azure-documentdb/"
 categories:
 - Solution

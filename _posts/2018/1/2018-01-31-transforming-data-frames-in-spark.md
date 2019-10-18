@@ -1,6 +1,6 @@
 ---
 title:  Azure Databricks - Transforming Data Frames in Spark
-date:  01/31/2018 23:30:24
+date:  2018-01-31 23:30:24 +00:00
 permalink:  "/2018/01/31/transforming-data-frames-in-spark/"
 categories:
 - Solution

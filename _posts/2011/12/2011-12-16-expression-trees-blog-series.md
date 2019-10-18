@@ -1,6 +1,6 @@
 ---
 title:  Expression Trees Blog Series
-date:  12/17/2011 02:51:33
+date:  2011-12-17 02:51:33 +00:00
 permalink:  "/2011/12/16/expression-trees-blog-series/"
 categories:
 - Solution

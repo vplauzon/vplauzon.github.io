@@ -1,6 +1,6 @@
 ---
 title:  Azure Key Vault & SQL Server Connector Update
-date:  10/07/2015 23:00:23
+date:  2015-10-07 23:00:23 +00:00
 permalink:  "/2015/10/07/azure-key-vault-sql-server-connector-update/"
 categories:
 - Solution

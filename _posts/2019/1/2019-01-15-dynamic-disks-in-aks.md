@@ -1,6 +1,6 @@
 ---
 title:  Dynamic disks in AKS
-date:  01/15/2019 11:30:27
+date:  2019-01-15 11:30:27 +00:00
 permalink:  "/2019/01/15/dynamic-disks-in-aks/"
 categories:
 - Solution

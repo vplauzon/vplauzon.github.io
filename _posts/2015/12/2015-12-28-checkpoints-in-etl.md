@@ -1,6 +1,6 @@
 ---
 title:  Checkpoints in ETL
-date:  12/29/2015 00:00:31
+date:  2015-12-29 00:00:31 +00:00
 permalink:  "/2015/12/28/checkpoints-in-etl/"
 categories:
 - Solution

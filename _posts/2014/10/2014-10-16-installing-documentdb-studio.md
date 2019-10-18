@@ -1,6 +1,6 @@
 ---
 title:  Installing DocumentDB Studio
-date:  10/17/2014 03:30:48
+date:  2014-10-17 03:30:48 +00:00
 permalink:  "/2014/10/16/installing-documentdb-studio/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Azure AD Pod Identity in AKS
-date:  02/19/2019 11:30:22
+date:  2019-02-19 11:30:22 +00:00
 permalink:  "/2019/02/19/azure-ad-pod-identity-in-aks/"
 categories:
 - Solution

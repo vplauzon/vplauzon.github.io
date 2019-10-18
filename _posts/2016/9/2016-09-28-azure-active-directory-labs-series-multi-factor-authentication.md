@@ -1,6 +1,6 @@
 ---
 title:  Azure Active Directory Labs Series – Multi-Factor Authentication
-date:  09/28/2016 23:00:23
+date:  2016-09-28 23:00:23 +00:00
 permalink:  "/2016/09/28/azure-active-directory-labs-series-multi-factor-authentication/"
 categories:
 - Solution

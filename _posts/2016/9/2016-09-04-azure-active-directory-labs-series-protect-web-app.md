@@ -1,6 +1,6 @@
 ---
 title:  Azure Active Directory Labs Series – Protect Web App
-date:  09/04/2016 23:00:08
+date:  2016-09-04 23:00:08 +00:00
 permalink:  "/2016/09/04/azure-active-directory-labs-series-protect-web-app/"
 categories:
 - Solution

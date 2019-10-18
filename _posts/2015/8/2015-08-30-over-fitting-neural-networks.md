@@ -1,6 +1,6 @@
 ---
 title:  Azure ML – Over fitting with Neural Networks
-date:  08/30/2015 23:00:59
+date:  2015-08-30 23:00:59 +00:00
 permalink:  "/2015/08/30/over-fitting-neural-networks/"
 categories:
 - Solution

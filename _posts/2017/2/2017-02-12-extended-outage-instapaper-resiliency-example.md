@@ -1,6 +1,6 @@
 ---
 title:  Extended Outage @ Instapaper - Resiliency example
-date:  02/13/2017 00:00:28
+date:  2017-02-13 00:00:28 +00:00
 permalink:  "/2017/02/12/extended-outage-instapaper-resiliency-example/"
 categories:
 - Solution

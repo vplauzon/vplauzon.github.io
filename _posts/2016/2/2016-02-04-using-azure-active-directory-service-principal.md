@@ -1,6 +1,6 @@
 ---
 title:  Using Azure Active Directory Service Principal
-date:  02/04/2016 21:40:41
+date:  2016-02-04 21:40:41 +00:00
 permalink:  "/2016/02/04/using-azure-active-directory-service-principal/"
 categories:
 - Solution

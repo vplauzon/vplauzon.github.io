@@ -1,6 +1,6 @@
 ---
 title:  Azure Key Vault
-date:  02/04/2015 03:13:54
+date:  2015-02-04 03:13:54 +00:00
 permalink:  "/2015/02/03/azure-key-vault/"
 categories:
 - Solution

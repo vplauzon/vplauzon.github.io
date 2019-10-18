@@ -1,6 +1,6 @@
 ---
 title:  Back to work!
-date:  06/28/2010 16:41:43
+date:  2010-06-28 16:41:43 +00:00
 permalink:  "/2010/06/28/back-to-work/"
 categories:
 - Logistic

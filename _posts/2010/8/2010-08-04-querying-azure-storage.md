@@ -1,6 +1,6 @@
 ---
 title:  Querying Azure Storage
-date:  08/04/2010 16:39:39
+date:  2010-08-04 16:39:39 +00:00
 permalink:  "/2010/08/04/querying-azure-storage/"
 categories:
 - Solution

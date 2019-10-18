@@ -1,6 +1,6 @@
 ---
 title:  VM roles aren’t IaaS
-date:  01/15/2012 17:47:03
+date:  2012-01-15 17:47:03 +00:00
 permalink:  "/2012/01/15/vm-roles-arent-iaas/"
 categories:
 - Solution

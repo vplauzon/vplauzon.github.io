@@ -1,6 +1,6 @@
 ---
 title:  Azure DocumentDB:  first use cases
-date:  09/09/2014 02:55:14
+date:  2014-09-09 02:55:14 +00:00
 permalink:  "/2014/09/08/azure-documentdb-first-use-cases/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  50 Popular Business Books Summarized In One Sentence Each
-date:  01/29/2015 04:24:30
+date:  2015-01-29 04:24:30 +00:00
 permalink:  "/2015/01/28/50-popular-business-books-summarized-in-one-sentence-each/"
 categories:
 - News

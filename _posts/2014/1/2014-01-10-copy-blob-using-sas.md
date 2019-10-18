@@ -1,6 +1,6 @@
 ---
 title:  Copy blob using SAS
-date:  01/11/2014 00:57:00
+date:  2014-01-11 00:57:00 +00:00
 permalink:  "/2014/01/10/copy-blob-using-sas/"
 categories:
 - Solution

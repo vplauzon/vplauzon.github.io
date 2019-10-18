@@ -1,6 +1,6 @@
 ---
 title:  Project Natal: Minority Report tomorrow?
-date:  04/28/2010 16:41:35
+date:  2010-04-28 16:41:35 +00:00
 permalink:  "/2010/04/28/project-natal-minority-report-tomorrow/"
 categories:
 - Gadget

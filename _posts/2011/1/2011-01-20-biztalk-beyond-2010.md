@@ -1,6 +1,6 @@
 ---
 title:  BizTalk beyond 2010
-date:  01/21/2011 01:50:00
+date:  2011-01-21 01:50:00 +00:00
 permalink:  "/2011/01/20/biztalk-beyond-2010/"
 categories:
 - Solution

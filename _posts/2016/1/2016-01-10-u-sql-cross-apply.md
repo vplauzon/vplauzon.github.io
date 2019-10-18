@@ -1,6 +1,6 @@
 ---
 title:  U-SQL Cross Apply
-date:  01/11/2016 00:00:40
+date:  2016-01-11 00:00:40 +00:00
 permalink:  "/2016/01/10/u-sql-cross-apply/"
 categories:
 - Solution

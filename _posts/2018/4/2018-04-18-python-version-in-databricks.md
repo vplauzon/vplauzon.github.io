@@ -1,6 +1,6 @@
 ---
 title:  Python Version in Databricks
-date:  04/18/2018 10:30:11
+date:  2018-04-18 10:30:11 +00:00
 permalink:  "/2018/04/18/python-version-in-databricks/"
 categories:
 - Solution

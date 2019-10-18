@@ -1,6 +1,6 @@
 ---
 title:  Import Notebooks in Databricks
-date:  02/27/2018 11:30:09
+date:  2018-02-27 11:30:09 +00:00
 permalink:  "/2018/02/27/import-notebooks-in-databricks/"
 categories:
 - Solution

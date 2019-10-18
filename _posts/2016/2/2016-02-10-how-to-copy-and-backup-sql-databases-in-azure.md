@@ -1,6 +1,6 @@
 ---
 title:  How to copy and backup SQL Databases in Azure
-date:  02/10/2016 21:34:29
+date:  2016-02-10 21:34:29 +00:00
 permalink:  "/2016/02/10/how-to-copy-and-backup-sql-databases-in-azure/"
 categories:
 - Solution

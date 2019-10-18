@@ -1,6 +1,6 @@
 ---
 title:  How does Azure Data Warehouse scale?
-date:  07/31/2016 23:00:04
+date:  2016-07-31 23:00:04 +00:00
 permalink:  "/2016/07/31/how-does-azure-data-warehouse-scale/"
 categories:
 - Solution

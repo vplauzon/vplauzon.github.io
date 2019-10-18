@@ -1,6 +1,6 @@
 ---
 title:  Entity Framework 4.1: Inheritance (7)
-date:  04/20/2011 00:32:00
+date:  2011-04-20 00:32:00 +00:00
 permalink:  "/2011/04/19/entity-framework-4-1-inheritance-7/"
 categories:
 - Solution

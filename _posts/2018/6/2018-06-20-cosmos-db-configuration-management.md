@@ -1,6 +1,6 @@
 ---
 title:  Cosmos DB Configuration Management
-date:  06/20/2018 10:30:46
+date:  2018-06-20 10:30:46 +00:00
 permalink:  "/2018/06/20/cosmos-db-configuration-management/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Overview of OData on Code Project
-date:  07/05/2010 13:38:35
+date:  2010-07-05 13:38:35 +00:00
 permalink:  "/2010/07/05/overview-of-odata-on-code-project/"
 categories:
 - Solution

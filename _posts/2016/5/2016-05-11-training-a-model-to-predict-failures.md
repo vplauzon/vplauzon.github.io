@@ -1,6 +1,6 @@
 ---
 title:  Training a model to predict failures
-date:  05/12/2016 00:00:03
+date:  2016-05-12 00:00:03 +00:00
 permalink:  "/2016/05/11/training-a-model-to-predict-failures/"
 categories:
 - Solution

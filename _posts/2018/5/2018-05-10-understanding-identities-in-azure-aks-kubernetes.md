@@ -1,6 +1,6 @@
 ---
 title:  Understanding identities in Azure AKS / Kubernetes
-date:  05/10/2018 10:30:27
+date:  2018-05-10 10:30:27 +00:00
 permalink:  "/2018/05/10/understanding-identities-in-azure-aks-kubernetes/"
 categories:
 - Solution

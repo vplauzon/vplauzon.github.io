@@ -1,6 +1,6 @@
 ---
 title:  RBAC and role assignment using ARM Templates
-date:  08/15/2018 10:30:16
+date:  2018-08-15 10:30:16 +00:00
 permalink:  "/2018/08/15/rbac-and-role-assignment-using-arm-templates/"
 categories:
 - Solution

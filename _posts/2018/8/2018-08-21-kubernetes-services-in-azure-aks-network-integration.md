@@ -1,6 +1,6 @@
 ---
 title:  Kubernetes Services in Azure AKS - Network integration
-date:  08/21/2018 10:30:54
+date:  2018-08-21 10:30:54 +00:00
 permalink:  "/2018/08/21/kubernetes-services-in-azure-aks-network-integration/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Solution Skill Quadrants–Part I, the model
-date:  11/23/2011 00:35:00
+date:  2011-11-23 00:35:00 +00:00
 permalink:  "/2011/11/22/solution-skill-quadrantspart-i-the-model/"
 categories:
 - Solution

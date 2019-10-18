@@ -1,6 +1,6 @@
 ---
 title:  Managing Databases and Collections with DocumentDB Studio
-date:  10/18/2014 03:00:20
+date:  2014-10-18 03:00:20 +00:00
 permalink:  "/2014/10/17/managing-databases-and-collections-with-documentdb-studio/"
 categories:
 - Solution

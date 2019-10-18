@@ -1,6 +1,6 @@
 ---
 title:  Dev, Staging & Production in Windows Azure
-date:  08/12/2010 19:23:04
+date:  2010-08-12 19:23:04 +00:00
 permalink:  "/2010/08/12/dev-staging-production-in-windows-azure/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Expended feature set in Access Control Service (AppFabric LABS)
-date:  08/06/2010 15:22:48
+date:  2010-08-06 15:22:48 +00:00
 permalink:  "/2010/08/06/expended-feature-set-in-access-control-service-appfabric-labs/"
 categories:
 - Solution

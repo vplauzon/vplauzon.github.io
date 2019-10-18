@@ -1,6 +1,6 @@
 ---
 title:  Windows 8 Partner Demo
-date:  06/13/2011 17:11:29
+date:  2011-06-13 17:11:29 +00:00
 permalink:  "/2011/06/13/windows-8-partner-demo/"
 categories:
 - Solution

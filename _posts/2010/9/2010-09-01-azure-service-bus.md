@@ -1,6 +1,6 @@
 ---
 title:  Azure Service Bus
-date:  09/01/2010 19:24:38
+date:  2010-09-01 19:24:38 +00:00
 permalink:  "/2010/09/01/azure-service-bus/"
 categories:
 - Solution

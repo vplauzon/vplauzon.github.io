@@ -1,6 +1,6 @@
 ---
 title:  Automating Azure AD
-date:  02/02/2017 22:23:22
+date:  2017-02-02 22:23:22 +00:00
 permalink:  "/2017/02/02/automating-azure-ad/"
 categories:
 - Solution

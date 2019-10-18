@@ -1,6 +1,6 @@
 ---
 title:  Interview with a PM Leaving Microsoft
-date:  05/26/2011 22:09:00
+date:  2011-05-26 22:09:00 +00:00
 permalink:  "/2011/05/26/interview-with-a-pm-leaving-microsoft/"
 categories:
 - News

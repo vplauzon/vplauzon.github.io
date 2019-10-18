@@ -1,6 +1,6 @@
 ---
 title:  The end the Chief Software Architect title @ Microsoft?
-date:  10/19/2010 10:00:00
+date:  2010-10-19 10:00:00 +00:00
 permalink:  "/2010/10/19/the-end-the-chief-software-architect-title-microsoft/"
 categories:
 - News

@@ -1,6 +1,6 @@
 ---
 title:  Entity Framework 4.1 RC:  Including Code-First
-date:  03/30/2011 00:22:00
+date:  2011-03-30 00:22:00 +00:00
 permalink:  "/2011/03/29/entity-framework-4-1-rc-including-code-first/"
 categories:
 - Solution

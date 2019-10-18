@@ -1,6 +1,6 @@
 ---
 title:  Live Mesh is back!
-date:  08/27/2010 19:11:12
+date:  2010-08-27 19:11:12 +00:00
 permalink:  "/2010/08/27/live-mesh-is-back/"
 categories:
 - Gadget

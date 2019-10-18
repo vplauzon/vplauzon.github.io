@@ -1,6 +1,6 @@
 ---
 title:  New Microsoft Services Single Sign-In UX
-date:  02/07/2013 16:03:55
+date:  2013-02-07 16:03:55 +00:00
 permalink:  "/2013/02/07/new-microsoft-services-single-sign-in-ux/"
 categories:
 - Solution

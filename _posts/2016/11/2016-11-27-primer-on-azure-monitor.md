@@ -1,6 +1,6 @@
 ---
 title:  Primer on Azure Monitor
-date:  11/28/2016 00:00:01
+date:  2016-11-28 00:00:01 +00:00
 permalink:  "/2016/11/27/primer-on-azure-monitor/"
 categories:
 - Solution

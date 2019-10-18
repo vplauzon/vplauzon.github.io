@@ -1,6 +1,6 @@
 ---
 title:  Azure Key Vault - Pricing
-date:  06/20/2015 16:00:30
+date:  2015-06-20 16:00:30 +00:00
 permalink:  "/2015/06/20/azure-key-vault-pricing/"
 categories:
 - Solution

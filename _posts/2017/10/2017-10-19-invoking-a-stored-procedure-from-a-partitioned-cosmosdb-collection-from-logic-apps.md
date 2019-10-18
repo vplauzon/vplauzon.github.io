@@ -1,6 +1,6 @@
 ---
 title:  Invoking a Stored Procedure from a partitioned CosmosDB collection from Logic Apps
-date:  10/19/2017 19:45:31
+date:  2017-10-19 19:45:31 +00:00
 permalink:  "/2017/10/19/invoking-a-stored-procedure-from-a-partitioned-cosmosdb-collection-from-logic-apps/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Description of your REST API:  Swagger & RAML
-date:  12/23/2014 13:10:28
+date:  2014-12-23 13:10:28 +00:00
 permalink:  "/2014/12/23/description-of-your-rest-api/"
 categories:
 - Solution

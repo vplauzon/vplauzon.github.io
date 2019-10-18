@@ -1,6 +1,6 @@
 ---
 title:  Azure Active Directory Labs Series – Creating an AD Forest
-date:  09/11/2016 23:00:15
+date:  2016-09-11 23:00:15 +00:00
 permalink:  "/2016/09/11/azure-active-directory-labs-series-creating-an-ad-forest/"
 categories:
 - Solution

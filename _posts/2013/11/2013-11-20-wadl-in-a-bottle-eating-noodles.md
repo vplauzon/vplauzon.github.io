@@ -1,6 +1,6 @@
 ---
 title:  WADL in a bottle eating noodles
-date:  11/21/2013 02:29:37
+date:  2013-11-21 02:29:37 +00:00
 permalink:  "/2013/11/20/wadl-in-a-bottle-eating-noodles/"
 categories:
 - Solution

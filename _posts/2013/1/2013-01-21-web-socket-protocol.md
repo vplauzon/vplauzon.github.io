@@ -1,6 +1,6 @@
 ---
 title:  Web Socket Protocol
-date:  01/22/2013 01:00:00
+date:  2013-01-22 01:00:00 +00:00
 permalink:  "/2013/01/21/web-socket-protocol/"
 categories:
 - Solution

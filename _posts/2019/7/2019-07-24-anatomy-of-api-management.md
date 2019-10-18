@@ -1,6 +1,6 @@
 ---
 title:  Anatomy of API Management
-date:  07/24/2019 10:30:04
+date:  2019-07-24 10:30:04 +00:00
 permalink:  "/2019/07/24/anatomy-of-api-management/"
 categories:
 - Solution

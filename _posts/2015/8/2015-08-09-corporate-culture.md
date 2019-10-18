@@ -1,6 +1,6 @@
 ---
 title:  Corporate Cultures
-date:  08/09/2015 18:15:00
+date:  2015-08-09 18:15:00 +00:00
 permalink:  "/2015/08/09/corporate-culture/"
 categories:
 - Leadership

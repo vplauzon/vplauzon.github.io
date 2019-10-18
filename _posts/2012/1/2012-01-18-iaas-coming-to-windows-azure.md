@@ -1,6 +1,6 @@
 ---
 title:  IaaS coming to Windows Azure
-date:  01/18/2012 23:50:00
+date:  2012-01-18 23:50:00 +00:00
 permalink:  "/2012/01/18/iaas-coming-to-windows-azure/"
 categories:
 - News

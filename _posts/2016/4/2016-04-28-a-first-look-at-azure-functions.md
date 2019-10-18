@@ -1,6 +1,6 @@
 ---
 title:  A first look at Azure Functions
-date:  04/28/2016 16:38:54
+date:  2016-04-28 16:38:54 +00:00
 permalink:  "/2016/04/28/a-first-look-at-azure-functions/"
 categories:
 - Solution

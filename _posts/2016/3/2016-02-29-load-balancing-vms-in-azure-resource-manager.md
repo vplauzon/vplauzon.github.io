@@ -1,6 +1,6 @@
 ---
 title:  Load Balancing VMs in Azure Resource Manager
-date:  03/01/2016 02:40:15
+date:  2016-03-01 02:40:15 +00:00
 permalink:  "/2016/02/29/load-balancing-vms-in-azure-resource-manager/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Azure Functions HTTP – Authorization Levels
-date:  12/04/2017 11:49:54
+date:  2017-12-04 11:49:54 +00:00
 permalink:  "/2017/12/04/azure-functions-http-authorization-levels/"
 categories:
 - Solution

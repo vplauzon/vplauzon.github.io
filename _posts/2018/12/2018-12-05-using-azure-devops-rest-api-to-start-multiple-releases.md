@@ -1,6 +1,6 @@
 ---
 title:  Using Azure DevOps REST API to start multiple releases
-date:  12/05/2018 11:30:04
+date:  2018-12-05 11:30:04 +00:00
 permalink:  "/2018/12/05/using-azure-devops-rest-api-to-start-multiple-releases/"
 categories:
 - Solution

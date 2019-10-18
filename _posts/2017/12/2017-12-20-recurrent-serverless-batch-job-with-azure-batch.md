@@ -1,6 +1,6 @@
 ---
 title:  Recurrent serverless batch job with Azure Batch
-date:  12/20/2017 11:30:40
+date:  2017-12-20 11:30:40 +00:00
 permalink:  "/2017/12/20/recurrent-serverless-batch-job-with-azure-batch/"
 categories:
 - Solution

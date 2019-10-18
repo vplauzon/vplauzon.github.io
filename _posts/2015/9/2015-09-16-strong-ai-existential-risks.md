@@ -1,6 +1,6 @@
 ---
 title:  Strong AI & Existential Risks
-date:  09/16/2015 23:00:36
+date:  2015-09-16 23:00:36 +00:00
 permalink:  "/2015/09/16/strong-ai-existential-risks/"
 categories:
 - Solution

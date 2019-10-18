@@ -1,6 +1,6 @@
 ---
 title:  Requests vs Limits in Kubernetes
-date:  04/02/2019 10:30:14
+date:  2019-04-02 10:30:14 +00:00
 permalink:  "/2019/04/02/requests-vs-limits-in-kubernetes/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Windows 8 Top 10 Hidden Features
-date:  06/02/2011 17:47:00
+date:  2011-06-02 17:47:00 +00:00
 permalink:  "/2011/06/02/windows-8-top-10-hidden-features/"
 categories:
 - News

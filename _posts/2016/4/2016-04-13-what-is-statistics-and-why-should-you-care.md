@@ -1,6 +1,6 @@
 ---
 title:  What is Statistics and why should you care?
-date:  04/13/2016 21:13:12
+date:  2016-04-13 21:13:12 +00:00
 permalink:  "/2016/04/13/what-is-statistics-and-why-should-you-care/"
 categories:
 - Solution

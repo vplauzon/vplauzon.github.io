@@ -1,6 +1,6 @@
 ---
 title:  HDInsight Hadoop Hive - CSV files analysis
-date:  10/04/2015 23:00:16
+date:  2015-10-04 23:00:16 +00:00
 permalink:  "/2015/10/04/hdinsight-hadoop-hive-csv-files-analysis/"
 categories:
 - Solution

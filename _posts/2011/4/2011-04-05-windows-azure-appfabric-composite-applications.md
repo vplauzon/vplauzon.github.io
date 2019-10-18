@@ -1,6 +1,6 @@
 ---
 title:  Windows Azure AppFabric – Composite Applications
-date:  04/06/2011 02:04:00
+date:  2011-04-06 02:04:00 +00:00
 permalink:  "/2011/04/05/windows-azure-appfabric-composite-applications/"
 categories:
 - Solution

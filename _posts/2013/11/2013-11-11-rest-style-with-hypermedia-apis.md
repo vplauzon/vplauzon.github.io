@@ -1,6 +1,6 @@
 ---
 title:  REST style with Hypermedia APIs
-date:  11/12/2013 02:44:01
+date:  2013-11-12 02:44:01 +00:00
 permalink:  "/2013/11/11/rest-style-with-hypermedia-apis/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Azure Publish-Subscribe…  My new CodePlex project
-date:  05/21/2010 16:16:37
+date:  2010-05-21 16:16:37 +00:00
 permalink:  "/2010/05/21/azure-publish-subscribe-my-new-codeplex-project/"
 categories:
 - Solution

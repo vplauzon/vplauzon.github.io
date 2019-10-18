@@ -1,6 +1,6 @@
 ---
 title:  Querying Collections with DocumentDB Studio
-date:  11/01/2014 01:48:47
+date:  2014-11-01 01:48:47 +00:00
 permalink:  "/2014/10/31/querying-collections-with-documentdb-studio/"
 categories:
 - Solution

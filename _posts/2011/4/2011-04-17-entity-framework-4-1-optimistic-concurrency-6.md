@@ -1,6 +1,6 @@
 ---
 title:  Entity Framework 4.1: Optimistic Concurrency (6)
-date:  04/17/2011 16:13:00
+date:  2011-04-17 16:13:00 +00:00
 permalink:  "/2011/04/17/entity-framework-4-1-optimistic-concurrency-6/"
 categories:
 - Solution

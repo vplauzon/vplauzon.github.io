@@ -1,6 +1,6 @@
 ---
 title:  Fujitsu launches a Windows Azure Service
-date:  06/13/2011 17:03:05
+date:  2011-06-13 17:03:05 +00:00
 permalink:  "/2011/06/13/fujitsu-launches-a-windows-azure-service/"
 categories:
 - News

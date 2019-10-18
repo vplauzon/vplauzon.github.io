@@ -1,6 +1,6 @@
 ---
 title:  WCF Express Interop Bindings
-date:  08/03/2011 00:38:00
+date:  2011-08-03 00:38:00 +00:00
 permalink:  "/2011/08/02/wcf-express-interop-bindings/"
 categories:
 - Solution

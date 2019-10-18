@@ -1,6 +1,6 @@
 ---
 title:  Globalization and web services
-date:  01/17/2011 11:44:00
+date:  2011-01-17 11:44:00 +00:00
 permalink:  "/2011/01/17/globalization-and-web-services/"
 categories:
 - Solution

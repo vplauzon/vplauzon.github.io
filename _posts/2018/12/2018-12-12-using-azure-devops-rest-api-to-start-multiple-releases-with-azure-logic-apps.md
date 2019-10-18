@@ -1,6 +1,6 @@
 ---
 title:  Using Azure DevOps REST API to start multiple releases with Azure Logic Apps
-date:  12/12/2018 11:30:30
+date:  2018-12-12 11:30:30 +00:00
 permalink:  "/2018/12/12/using-azure-devops-rest-api-to-start-multiple-releases-with-azure-logic-apps/"
 categories:
 - Solution

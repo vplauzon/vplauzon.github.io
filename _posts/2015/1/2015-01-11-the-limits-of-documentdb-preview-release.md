@@ -1,6 +1,6 @@
 ---
 title:  The limits of DocumentDB Preview Release
-date:  01/11/2015 15:45:00
+date:  2015-01-11 15:45:00 +00:00
 permalink:  "/2015/01/11/the-limits-of-documentdb-preview-release/"
 categories:
 - Solution

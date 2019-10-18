@@ -1,6 +1,6 @@
 ---
 title:  Expression Trees: Part 1 – Basics
-date:  06/08/2011 19:24:00
+date:  2011-06-08 19:24:00 +00:00
 permalink:  "/2011/06/08/expression-trees-part-1-basics/"
 categories:
 - Solution

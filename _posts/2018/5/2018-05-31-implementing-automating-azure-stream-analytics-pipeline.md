@@ -1,6 +1,6 @@
 ---
 title:  Implementing & Automating Azure Stream Analytics Pipeline
-date:  05/31/2018 10:30:32
+date:  2018-05-31 10:30:32 +00:00
 permalink:  "/2018/05/31/implementing-automating-azure-stream-analytics-pipeline/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Microsoft Silverlight Strategy
-date:  11/03/2010 00:29:00
+date:  2010-11-03 00:29:00 +00:00
 permalink:  "/2010/11/02/microsoft-silverlight-strategy/"
 categories:
 - Solution

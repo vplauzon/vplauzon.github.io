@@ -1,6 +1,6 @@
 ---
 title:  Shutting down VMs on schedule in Azure
-date:  02/05/2016 11:28:18
+date:  2016-02-05 11:28:18 +00:00
 permalink:  "/2016/02/05/shutting-down-vms-on-schedule-in-azure/"
 categories:
 - Solution

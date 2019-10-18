@@ -1,6 +1,6 @@
 ---
 title:  Overview of Docker Containers in Azure
-date:  04/04/2018 10:30:24
+date:  2018-04-04 10:30:24 +00:00
 permalink:  "/2018/04/04/overview-of-docker-containers-in-azure/"
 categories:
 - Solution

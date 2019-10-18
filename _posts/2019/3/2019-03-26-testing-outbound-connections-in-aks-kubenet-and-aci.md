@@ -1,6 +1,6 @@
 ---
 title:  Testing outbound connections in AKS-Kubenet and ACI
-date:  03/26/2019 10:30:03
+date:  2019-03-26 10:30:03 +00:00
 permalink:  "/2019/03/26/testing-outbound-connections-in-aks-kubenet-and-aci/"
 categories:
 - Solution

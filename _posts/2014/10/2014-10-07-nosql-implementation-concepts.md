@@ -1,6 +1,6 @@
 ---
 title:  NoSQL implementation concepts
-date:  10/08/2014 02:38:13
+date:  2014-10-08 02:38:13 +00:00
 permalink:  "/2014/10/07/nosql-implementation-concepts/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  HDInsight Hadoop Hive - Setup
-date:  09/27/2015 23:00:13
+date:  2015-09-27 23:00:13 +00:00
 permalink:  "/2015/09/27/hdinsight-hadoop-hive-setup/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Microsoft’s jQuery contributions as official plug-ins
-date:  10/05/2010 01:24:13
+date:  2010-10-05 01:24:13 +00:00
 permalink:  "/2010/10/04/microsofts-jquery-contributions-as-official-plug-ins/"
 categories:
 - Solution

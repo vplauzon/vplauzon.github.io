@@ -1,6 +1,6 @@
 ---
 title:  Gartner on Windows Azure AppFabric: A Strategic Core of Microsoft's Cloud Platform
-date:  12/01/2010 00:16:00
+date:  2010-12-01 00:16:00 +00:00
 permalink:  "/2010/11/30/gartner-on-windows-azure-appfabric-a-strategic-core-of-microsofts-cloud-platform/"
 categories:
 - News

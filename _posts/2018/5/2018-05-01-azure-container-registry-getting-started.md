@@ -1,6 +1,6 @@
 ---
 title:  Azure Container Registry - Getting Started
-date:  05/01/2018 10:30:04
+date:  2018-05-01 10:30:04 +00:00
 permalink:  "/2018/05/01/azure-container-registry-getting-started/"
 categories:
 - Solution

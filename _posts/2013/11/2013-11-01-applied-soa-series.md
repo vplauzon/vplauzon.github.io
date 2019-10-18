@@ -1,6 +1,6 @@
 ---
 title:  Applied SOA Series
-date:  11/02/2013 00:49:00
+date:  2013-11-02 00:49:00 +00:00
 permalink:  "/2013/11/01/applied-soa-series/"
 categories:
 - Solution

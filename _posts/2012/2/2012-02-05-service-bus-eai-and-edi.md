@@ -1,6 +1,6 @@
 ---
 title:  Service Bus EAI and EDI
-date:  02/05/2012 18:03:00
+date:  2012-02-05 18:03:00 +00:00
 permalink:  "/2012/02/05/service-bus-eai-and-edi/"
 categories:
 - News

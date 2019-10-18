@@ -1,6 +1,6 @@
 ---
 title:  Cosmos DB Async Querying & Streaming
-date:  08/31/2017 18:30:06
+date:  2017-08-31 18:30:06 +00:00
 permalink:  "/2017/08/31/cosmos-db-async-querying-streaming/"
 categories:
 - Solution

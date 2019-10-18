@@ -1,6 +1,6 @@
 ---
 title:  AKS with Kubenet vs Azure Networking plug-in
-date:  09/06/2018 10:30:01
+date:  2018-09-06 10:30:01 +00:00
 permalink:  "/2018/09/06/aks-with-kubenet-vs-azure-networking-plug-in/"
 categories:
 - Solution

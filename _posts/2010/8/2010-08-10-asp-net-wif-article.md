@@ -1,6 +1,6 @@
 ---
 title:  ASP.NET + WIF article
-date:  08/10/2010 14:00:02
+date:  2010-08-10 14:00:02 +00:00
 permalink:  "/2010/08/10/asp-net-wif-article/"
 categories:
 - Solution

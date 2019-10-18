@@ -1,6 +1,6 @@
 ---
 title:  Digest:  DocumentDB Resource Model and Concepts
-date:  09/18/2014 11:00:45
+date:  2014-09-18 11:00:45 +00:00
 permalink:  "/2014/09/18/digest-documentdb-resource-model-and-concepts/"
 categories:
 - Solution

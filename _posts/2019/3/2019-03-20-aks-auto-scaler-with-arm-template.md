@@ -1,6 +1,6 @@
 ---
 title:  AKS Auto Scaler with ARM Template
-date:  03/20/2019 10:30:16
+date:  2019-03-20 10:30:16 +00:00
 permalink:  "/2019/03/20/aks-auto-scaler-with-arm-template/"
 categories:
 - Solution

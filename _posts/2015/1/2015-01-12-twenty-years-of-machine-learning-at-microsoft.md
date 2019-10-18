@@ -1,6 +1,6 @@
 ---
 title:  Twenty Years of Machine Learning at Microsoft
-date:  01/12/2015 23:33:22
+date:  2015-01-12 23:33:22 +00:00
 permalink:  "/2015/01/12/twenty-years-of-machine-learning-at-microsoft/"
 categories:
 - Solution

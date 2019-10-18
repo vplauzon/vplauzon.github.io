@@ -1,6 +1,6 @@
 ---
 title:  Integration in the Cloud
-date:  12/17/2011 18:02:00
+date:  2011-12-17 18:02:00 +00:00
 permalink:  "/2011/12/17/integration-in-the-cloud/"
 categories:
 - Solution

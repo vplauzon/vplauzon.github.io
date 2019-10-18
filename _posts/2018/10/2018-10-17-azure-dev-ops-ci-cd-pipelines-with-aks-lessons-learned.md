@@ -1,6 +1,6 @@
 ---
 title:  Azure Dev Ops CI / CD pipelines with AKS - Lessons learned
-date:  10/17/2018 10:30:06
+date:  2018-10-17 10:30:06 +00:00
 permalink:  "/2018/10/17/azure-dev-ops-ci-cd-pipelines-with-aks-lessons-learned/"
 categories:
 - Solution

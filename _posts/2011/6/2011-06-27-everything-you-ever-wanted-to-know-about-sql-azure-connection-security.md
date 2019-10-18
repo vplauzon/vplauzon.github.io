@@ -1,6 +1,6 @@
 ---
 title:  Everything you ever wanted to know about SQL Azure Connection Security
-date:  06/28/2011 00:15:00
+date:  2011-06-28 00:15:00 +00:00
 permalink:  "/2011/06/27/everything-you-ever-wanted-to-know-about-sql-azure-connection-security/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Multi-Tenant SaaS with Azure Active Directory B2B & B2C
-date:  03/11/2016 04:02:09
+date:  2016-03-11 04:02:09 +00:00
 permalink:  "/2016/03/10/multi-tenant-saas-with-azure-active-directory-b2b-b2c/"
 categories:
 - Solution

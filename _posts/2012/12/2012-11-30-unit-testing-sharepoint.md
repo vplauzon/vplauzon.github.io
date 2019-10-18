@@ -1,6 +1,6 @@
 ---
 title:  Unit Testing SharePoint
-date:  12/01/2012 00:26:00
+date:  2012-12-01 00:26:00 +00:00
 permalink:  "/2012/11/30/unit-testing-sharepoint/"
 categories:
 - Solution

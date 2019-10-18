@@ -1,6 +1,6 @@
 ---
 title:  Linux Custom Script - Docker Sandbox
-date:  04/11/2018 10:30:30
+date:  2018-04-11 10:30:30 +00:00
 permalink:  "/2018/04/11/linux-custom-script-docker-sandbox/"
 categories:
 - Solution

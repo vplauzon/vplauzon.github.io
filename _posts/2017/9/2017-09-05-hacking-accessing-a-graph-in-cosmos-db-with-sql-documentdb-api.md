@@ -1,6 +1,6 @@
 ---
 title:  Hacking: accessing a graph in Cosmos DB with SQL / DocumentDB API
-date:  09/05/2017 10:00:25
+date:  2017-09-05 10:00:25 +00:00
 permalink:  "/2017/09/05/hacking-accessing-a-graph-in-cosmos-db-with-sql-documentdb-api/"
 categories:
 - Solution

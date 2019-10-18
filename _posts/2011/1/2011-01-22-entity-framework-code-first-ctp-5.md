@@ -1,6 +1,6 @@
 ---
 title:  Entity Framework Code First CTP 5
-date:  01/22/2011 22:15:00
+date:  2011-01-22 22:15:00 +00:00
 permalink:  "/2011/01/22/entity-framework-code-first-ctp-5/"
 categories:
 - Solution

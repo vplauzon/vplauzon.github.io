@@ -1,6 +1,6 @@
 ---
 title:  Expression Trees: Part 4 – Simple mapping inversion
-date:  06/25/2011 22:39:00
+date:  2011-06-25 22:39:00 +00:00
 permalink:  "/2011/06/25/expression-trees-part-4-simple-mapping-inversion/"
 categories:
 - Solution

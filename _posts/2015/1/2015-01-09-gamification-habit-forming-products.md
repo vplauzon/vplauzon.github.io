@@ -1,6 +1,6 @@
 ---
 title:  Gamification / Habit-Forming Products
-date:  01/10/2015 02:22:50
+date:  2015-01-10 02:22:50 +00:00
 permalink:  "/2015/01/09/gamification-habit-forming-products/"
 categories:
 - Gadget

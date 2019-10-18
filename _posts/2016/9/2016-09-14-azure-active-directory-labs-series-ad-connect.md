@@ -1,6 +1,6 @@
 ---
 title:  Azure Active Directory Labs Series – AD Connect
-date:  09/14/2016 23:00:09
+date:  2016-09-14 23:00:09 +00:00
 permalink:  "/2016/09/14/azure-active-directory-labs-series-ad-connect/"
 categories:
 - Solution

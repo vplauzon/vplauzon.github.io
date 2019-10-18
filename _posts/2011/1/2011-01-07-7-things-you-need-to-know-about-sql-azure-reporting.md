@@ -1,6 +1,6 @@
 ---
 title:  7 Things You Need To Know about SQL Azure Reporting
-date:  01/07/2011 20:23:00
+date:  2011-01-07 20:23:00 +00:00
 permalink:  "/2011/01/07/7-things-you-need-to-know-about-sql-azure-reporting/"
 categories:
 - Solution

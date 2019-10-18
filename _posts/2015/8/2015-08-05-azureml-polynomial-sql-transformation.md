@@ -1,6 +1,6 @@
 ---
 title:  AzureML - Polynomial Regression with SQL Transformation
-date:  08/05/2015 23:00:46
+date:  2015-08-05 23:00:46 +00:00
 permalink:  "/2015/08/05/azureml-polynomial-sql-transformation/"
 categories:
 - Solution

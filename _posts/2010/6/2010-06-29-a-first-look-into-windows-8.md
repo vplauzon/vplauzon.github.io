@@ -1,6 +1,6 @@
 ---
 title:  A first look into Windows 8
-date:  06/29/2010 14:45:54
+date:  2010-06-29 14:45:54 +00:00
 permalink:  "/2010/06/29/a-first-look-into-windows-8/"
 categories:
 - Gadget

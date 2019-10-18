@@ -1,6 +1,6 @@
 ---
 title:  Azure Active Directory Application
-date:  03/10/2016 14:12:24
+date:  2016-03-10 14:12:24 +00:00
 permalink:  "/2016/03/10/azure-active-directory-application/"
 categories:
 - Solution

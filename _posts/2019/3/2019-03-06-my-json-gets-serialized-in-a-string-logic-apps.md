@@ -1,6 +1,6 @@
 ---
 title:  My JSON gets serialized in a string - Logic Apps
-date:  03/06/2019 11:30:58
+date:  2019-03-06 11:30:58 +00:00
 permalink:  "/2019/03/06/my-json-gets-serialized-in-a-string-logic-apps/"
 categories:
 - Solution

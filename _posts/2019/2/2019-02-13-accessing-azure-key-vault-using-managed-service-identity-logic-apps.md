@@ -1,6 +1,6 @@
 ---
 title:  Accessing Azure Key Vault using Managed Service Identity Logic Apps
-date:  02/13/2019 11:30:41
+date:  2019-02-13 11:30:41 +00:00
 permalink:  "/2019/02/13/accessing-azure-key-vault-using-managed-service-identity-logic-apps/"
 categories:
 - Solution

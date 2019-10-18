@@ -1,6 +1,6 @@
 ---
 title:  CLR Stored Procedure inside SQL Server 2008
-date:  05/07/2010 14:40:36
+date:  2010-05-07 14:40:36 +00:00
 permalink:  "/2010/05/07/clr-stored-procedure-inside-sql-server-2008/"
 categories:
 - Solution

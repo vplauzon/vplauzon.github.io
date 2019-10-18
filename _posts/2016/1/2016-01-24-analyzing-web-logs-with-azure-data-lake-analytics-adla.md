@@ -1,6 +1,6 @@
 ---
 title:  Analyzing Web Logs with Azure Data Lake Analytics (ADLA)
-date:  01/25/2016 00:00:41
+date:  2016-01-25 00:00:41 +00:00
 permalink:  "/2016/01/24/analyzing-web-logs-with-azure-data-lake-analytics-adla/"
 categories:
 - Solution

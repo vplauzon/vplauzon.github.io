@@ -1,6 +1,6 @@
 ---
 title:  Machine Learning - An Introduction - Part 2
-date:  07/12/2015 19:00:30
+date:  2015-07-12 19:00:30 +00:00
 permalink:  "/2015/07/12/machine-learning-an-introduction-part-2/"
 categories:
 - Solution

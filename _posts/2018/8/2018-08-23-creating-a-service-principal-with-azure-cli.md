@@ -1,6 +1,6 @@
 ---
 title:  Creating a Service Principal with Azure CLI
-date:  08/23/2018 10:30:26
+date:  2018-08-23 10:30:26 +00:00
 permalink:  "/2018/08/23/creating-a-service-principal-with-azure-cli/"
 categories:
 - Solution

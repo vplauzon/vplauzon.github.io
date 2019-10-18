@@ -1,6 +1,6 @@
 ---
 title:  Quantum Computing - Value Proposition
-date:  03/07/2018 11:30:07
+date:  2018-03-07 11:30:07 +00:00
 permalink:  "/2018/03/07/quantum-computing-value-proposition/"
 categories:
 - Solution

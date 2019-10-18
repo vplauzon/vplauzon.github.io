@@ -1,6 +1,6 @@
 ---
 title:  January 2011 Releases of the Identity Training Kit & the MSDN Online Identity Training Course
-date:  01/25/2011 00:48:00
+date:  2011-01-25 00:48:00 +00:00
 permalink:  "/2011/01/24/january-2011-releases-of-the-identity-training-kit-the-msdn-online-identity-training-course/"
 categories:
 - Solution

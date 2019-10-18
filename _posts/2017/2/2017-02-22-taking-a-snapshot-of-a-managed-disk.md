@@ -1,6 +1,6 @@
 ---
 title:  Taking a snapshot of a Managed Disk
-date:  02/22/2017 16:00:56
+date:  2017-02-22 16:00:56 +00:00
 permalink:  "/2017/02/22/taking-a-snapshot-of-a-managed-disk/"
 categories:
 - Solution

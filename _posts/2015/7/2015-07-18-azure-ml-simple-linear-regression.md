@@ -1,6 +1,6 @@
 ---
 title:  Azure ML - Simple Linear Regression
-date:  07/18/2015 16:00:42
+date:  2015-07-18 16:00:42 +00:00
 permalink:  "/2015/07/18/azure-ml-simple-linear-regression/"
 categories:
 - Solution

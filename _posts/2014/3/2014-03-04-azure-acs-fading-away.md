@@ -1,6 +1,6 @@
 ---
 title:  Azure ACS fading away
-date:  03/05/2014 00:46:00
+date:  2014-03-05 00:46:00 +00:00
 permalink:  "/2014/03/04/azure-acs-fading-away/"
 categories:
 - Solution

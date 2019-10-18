@@ -1,6 +1,6 @@
 ---
 title:  Disruptive technologies & incumbent reactions
-date:  02/06/2014 01:04:00
+date:  2014-02-06 01:04:00 +00:00
 permalink:  "/2014/02/05/disruptive-technologies-incumbent-reactions/"
 categories:
 - Solution

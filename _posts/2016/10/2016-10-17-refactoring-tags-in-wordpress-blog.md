@@ -1,6 +1,6 @@
 ---
 title:  Refactoring Tags in WordPress Blog
-date:  10/17/2016 23:00:00
+date:  2016-10-17 23:00:00 +00:00
 permalink:  "/2016/10/17/refactoring-tags-in-wordpress-blog/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Release of Windows Azure SDK 1.2
-date:  06/07/2010 14:21:55
+date:  2010-06-07 14:21:55 +00:00
 permalink:  "/2010/06/07/release-of-windows-azure-sdk-1-2/"
 categories:
 - Solution

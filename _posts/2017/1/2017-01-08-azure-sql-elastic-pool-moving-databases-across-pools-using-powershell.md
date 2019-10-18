@@ -1,6 +1,6 @@
 ---
 title:  Azure SQL Elastic Pool – Moving databases across pools using PowerShell
-date:  01/09/2017 00:00:17
+date:  2017-01-09 00:00:17 +00:00
 permalink:  "/2017/01/08/azure-sql-elastic-pool-moving-databases-across-pools-using-powershell/"
 categories:
 - Solution

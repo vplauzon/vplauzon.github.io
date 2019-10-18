@@ -1,6 +1,6 @@
 ---
 title:  Internet Explorer 9 Beta-1
-date:  09/24/2010 01:29:33
+date:  2010-09-24 01:29:33 +00:00
 permalink:  "/2010/09/23/internet-explorer-9-beta-1/"
 categories:
 - Gadget

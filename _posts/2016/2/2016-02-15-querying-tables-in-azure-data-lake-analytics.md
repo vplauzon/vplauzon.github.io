@@ -1,6 +1,6 @@
 ---
 title:  Querying tables in Azure Data Lake Analytics
-date:  02/16/2016 00:00:02
+date:  2016-02-16 00:00:02 +00:00
 permalink:  "/2016/02/15/querying-tables-in-azure-data-lake-analytics/"
 categories:
 - Solution

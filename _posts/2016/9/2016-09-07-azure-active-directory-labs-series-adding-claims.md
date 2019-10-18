@@ -1,6 +1,6 @@
 ---
 title:  Azure Active Directory Labs Series – Adding Claims
-date:  09/07/2016 23:00:25
+date:  2016-09-07 23:00:25 +00:00
 permalink:  "/2016/09/07/azure-active-directory-labs-series-adding-claims/"
 categories:
 - Solution

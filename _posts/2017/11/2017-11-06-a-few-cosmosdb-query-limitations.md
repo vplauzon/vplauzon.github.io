@@ -1,6 +1,6 @@
 ---
 title:  A few CosmosDB query limitations
-date:  11/06/2017 11:30:56
+date:  2017-11-06 11:30:56 +00:00
 permalink:  "/2017/11/06/a-few-cosmosdb-query-limitations/"
 categories:
 - Solution

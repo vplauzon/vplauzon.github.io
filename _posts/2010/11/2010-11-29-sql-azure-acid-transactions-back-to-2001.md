@@ -1,6 +1,6 @@
 ---
 title:  SQL Azure & ACID Transactions: back to 2001
-date:  11/30/2010 02:00:00
+date:  2010-11-30 02:00:00 +00:00
 permalink:  "/2010/11/29/sql-azure-acid-transactions-back-to-2001/"
 categories:
 - Solution

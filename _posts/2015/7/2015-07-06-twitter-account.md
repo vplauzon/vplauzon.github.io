@@ -1,6 +1,6 @@
 ---
 title:  Twitter Account
-date:  07/06/2015 23:00:00
+date:  2015-07-06 23:00:00 +00:00
 permalink:  "/2015/07/06/twitter-account/"
 categories:
 - Logistic

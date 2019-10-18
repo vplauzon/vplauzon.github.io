@@ -1,6 +1,6 @@
 ---
 title:  Renaming Virtual Machine Disks
-date:  10/17/2017 11:00:47
+date:  2017-10-17 11:00:47 +00:00
 permalink:  "/2017/10/17/renaming-virtual-machine-disks/"
 categories:
 - Solution

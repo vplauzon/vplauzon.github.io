@@ -1,6 +1,6 @@
 ---
 title:  Hacking: changing Cosmos DB Portal experience from Graph to SQL
-date:  09/10/2017 22:00:27
+date:  2017-09-10 22:00:27 +00:00
 permalink:  "/2017/09/10/hacking-changing-cosmos-db-portal-experience-from-graph-to-sql/"
 categories:
 - Solution

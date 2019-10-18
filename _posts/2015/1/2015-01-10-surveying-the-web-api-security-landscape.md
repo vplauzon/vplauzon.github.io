@@ -1,6 +1,6 @@
 ---
 title:  Surveying the Web API Security Landscape
-date:  01/10/2015 18:14:00
+date:  2015-01-10 18:14:00 +00:00
 permalink:  "/2015/01/10/surveying-the-web-api-security-landscape/"
 categories:
 - Solution

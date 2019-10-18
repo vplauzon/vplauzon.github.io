@@ -1,6 +1,6 @@
 ---
 title:  Applied SOA: Part 9–Service Versioning
-date:  05/08/2012 23:59:00
+date:  2012-05-08 23:59:00 +00:00
 permalink:  "/2012/05/08/applied-soa-part-9service-versioning/"
 categories:
 - Solution

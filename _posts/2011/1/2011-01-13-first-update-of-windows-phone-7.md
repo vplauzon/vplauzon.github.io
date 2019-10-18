@@ -1,6 +1,6 @@
 ---
 title:  First update of Windows Phone 7
-date:  01/14/2011 01:15:00
+date:  2011-01-14 01:15:00 +00:00
 permalink:  "/2011/01/13/first-update-of-windows-phone-7/"
 categories:
 - Gadget

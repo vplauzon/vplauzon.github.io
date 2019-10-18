@@ -1,6 +1,6 @@
 ---
 title:  Shared Access Signature
-date:  08/12/2010 21:13:13
+date:  2010-08-12 21:13:13 +00:00
 permalink:  "/2010/08/12/shared-access-signature/"
 categories:
 - Solution

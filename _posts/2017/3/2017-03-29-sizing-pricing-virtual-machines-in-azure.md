@@ -1,6 +1,6 @@
 ---
 title:  Sizing & Pricing Virtual Machines in Azure
-date:  03/29/2017 16:09:54
+date:  2017-03-29 16:09:54 +00:00
 permalink:  "/2017/03/29/sizing-pricing-virtual-machines-in-azure/"
 categories:
 - Solution

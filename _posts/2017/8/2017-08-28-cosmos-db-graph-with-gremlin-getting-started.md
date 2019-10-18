@@ -1,6 +1,6 @@
 ---
 title:  Cosmos DB & Graph with Gremlin - Getting Started
-date:  08/29/2017 01:20:32
+date:  2017-08-29 01:20:32 +00:00
 permalink:  "/2017/08/28/cosmos-db-graph-with-gremlin-getting-started/"
 categories:
 - Solution

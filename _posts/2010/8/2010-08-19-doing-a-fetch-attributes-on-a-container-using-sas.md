@@ -1,6 +1,6 @@
 ---
 title:  Doing a fetch-attributes on a container using SAS
-date:  08/19/2010 18:06:28
+date:  2010-08-19 18:06:28 +00:00
 permalink:  "/2010/08/19/doing-a-fetch-attributes-on-a-container-using-sas/"
 categories:
 - Solution

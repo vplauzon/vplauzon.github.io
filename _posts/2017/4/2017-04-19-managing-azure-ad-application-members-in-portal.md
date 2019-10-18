@@ -1,6 +1,6 @@
 ---
 title:  Managing Azure AD Application members in Portal
-date:  04/19/2017 13:40:36
+date:  2017-04-19 13:40:36 +00:00
 permalink:  "/2017/04/19/managing-azure-ad-application-members-in-portal/"
 categories:
 - Solution

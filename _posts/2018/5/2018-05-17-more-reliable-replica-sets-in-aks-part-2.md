@@ -1,6 +1,6 @@
 ---
 title:  More reliable Replica Sets in AKS - Part 2
-date:  05/17/2018 10:30:32
+date:  2018-05-17 10:30:32 +00:00
 permalink:  "/2018/05/17/more-reliable-replica-sets-in-aks-part-2/"
 categories:
 - Solution

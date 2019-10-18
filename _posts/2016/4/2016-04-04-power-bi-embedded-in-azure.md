@@ -1,6 +1,6 @@
 ---
 title:  Power BI Embedded in Azure
-date:  04/04/2016 21:24:29
+date:  2016-04-04 21:24:29 +00:00
 permalink:  "/2016/04/04/power-bi-embedded-in-azure/"
 categories:
 - Solution

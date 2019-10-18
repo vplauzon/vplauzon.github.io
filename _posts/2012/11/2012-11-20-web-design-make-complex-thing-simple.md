@@ -1,6 +1,6 @@
 ---
 title:  Web Design:  Make Complex thing Simple
-date:  11/21/2012 00:05:00
+date:  2012-11-21 00:05:00 +00:00
 permalink:  "/2012/11/20/web-design-make-complex-thing-simple/"
 categories:
 - Solution

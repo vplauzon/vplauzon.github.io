@@ -1,6 +1,6 @@
 ---
 title:  Azure App Service Authentication with Azure Front Door
-date:  07/17/2019 10:30:05
+date:  2019-07-17 10:30:05 +00:00
 permalink:  "/2019/07/17/azure-app-service-authentication-with-azure-front-door/"
 categories:
 - Solution

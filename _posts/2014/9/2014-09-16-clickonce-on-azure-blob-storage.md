@@ -1,6 +1,6 @@
 ---
 title:  ClickOnce on Azure Blob Storage
-date:  09/17/2014 01:04:30
+date:  2014-09-17 01:04:30 +00:00
 permalink:  "/2014/09/16/clickonce-on-azure-blob-storage/"
 categories:
 - Solution

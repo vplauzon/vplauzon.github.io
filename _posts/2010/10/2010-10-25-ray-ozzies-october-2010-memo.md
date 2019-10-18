@@ -1,6 +1,6 @@
 ---
 title:  Ray Ozzie’s October 2010 Memo
-date:  10/25/2010 23:20:00
+date:  2010-10-25 23:20:00 +00:00
 permalink:  "/2010/10/25/ray-ozzies-october-2010-memo/"
 categories:
 - News

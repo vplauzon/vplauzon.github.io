@@ -1,6 +1,6 @@
 ---
 title:  The Missing Windows 8 Instructional Video
-date:  01/30/2013 00:37:00
+date:  2013-01-30 00:37:00 +00:00
 permalink:  "/2013/01/29/the-missing-windows-8-instructional-video/"
 categories:
 - Gadget

@@ -1,6 +1,6 @@
 ---
 title:  Azure Container Instance - Getting Started
-date:  04/26/2018 10:30:12
+date:  2018-04-26 10:30:12 +00:00
 permalink:  "/2018/04/26/azure-container-instance-getting-started/"
 categories:
 - Solution

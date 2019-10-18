@@ -1,6 +1,6 @@
 ---
 title:  Entity Framework 4.1 Series
-date:  04/22/2011 01:27:00
+date:  2011-04-22 01:27:00 +00:00
 permalink:  "/2011/04/21/entity-framework-4-1-series/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Cosmos DB Performance with Geospatial Data
-date:  10/25/2017 22:13:46
+date:  2017-10-25 22:13:46 +00:00
 permalink:  "/2017/10/25/cosmos-db-performance-with-geospatial-data/"
 categories:
 - Solution

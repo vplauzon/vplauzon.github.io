@@ -1,6 +1,6 @@
 ---
 title:  Defining PaaS: A flexible solution to meet your needs
-date:  01/14/2012 00:24:00
+date:  2012-01-14 00:24:00 +00:00
 permalink:  "/2012/01/13/defining-paas-a-flexible-solution-to-meet-your-needs/"
 categories:
 - Solution

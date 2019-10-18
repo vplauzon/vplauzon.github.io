@@ -1,6 +1,6 @@
 ---
 title:  Creating a Backup Solution for Cosmos DB using change feed
-date:  03/13/2019 10:30:37
+date:  2019-03-13 10:30:37 +00:00
 permalink:  "/2019/03/13/creating-a-backup-solution-for-cosmos-db-using-change-feed/"
 categories:
 - Solution

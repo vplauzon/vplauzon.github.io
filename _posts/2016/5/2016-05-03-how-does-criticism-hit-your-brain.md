@@ -1,6 +1,6 @@
 ---
 title:  How does criticism hit your brain?
-date:  05/03/2016 21:22:48
+date:  2016-05-03 21:22:48 +00:00
 permalink:  "/2016/05/03/how-does-criticism-hit-your-brain/"
 categories:
 - Leadership

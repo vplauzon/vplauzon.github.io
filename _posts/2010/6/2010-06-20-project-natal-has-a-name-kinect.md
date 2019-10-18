@@ -1,6 +1,6 @@
 ---
 title:  Project Natal has a name: Kinect
-date:  06/20/2010 16:08:52
+date:  2010-06-20 16:08:52 +00:00
 permalink:  "/2010/06/20/project-natal-has-a-name-kinect/"
 categories:
 - Gadget

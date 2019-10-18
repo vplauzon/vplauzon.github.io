@@ -1,6 +1,6 @@
 ---
 title:  Azure Application Insights Role Name in web page
-date:  02/06/2019 11:30:40
+date:  2019-02-06 11:30:40 +00:00
 permalink:  "/2019/02/06/azure-application-insights-role-name-in-web-page/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  DocumentDB protocol support for MongoDB
-date:  06/21/2016 00:23:21
+date:  2016-06-21 00:23:21 +00:00
 permalink:  "/2016/06/20/documentdb-protocol-support-for-mongodb/"
 categories:
 - Solution

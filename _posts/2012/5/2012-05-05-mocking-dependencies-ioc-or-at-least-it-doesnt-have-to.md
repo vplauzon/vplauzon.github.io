@@ -1,6 +1,6 @@
 ---
 title:  Mocking Dependencies != IoC (or at least it doesn’t have to)
-date:  05/06/2012 00:37:00
+date:  2012-05-06 00:37:00 +00:00
 permalink:  "/2012/05/05/mocking-dependencies-ioc-or-at-least-it-doesnt-have-to/"
 categories:
 - Solution

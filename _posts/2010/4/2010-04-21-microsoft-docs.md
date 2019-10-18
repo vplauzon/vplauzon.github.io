@@ -1,6 +1,6 @@
 ---
 title:  Microsoft Docs
-date:  04/21/2010 21:16:33
+date:  2010-04-21 21:16:33 +00:00
 permalink:  "/2010/04/21/microsoft-docs/"
 categories:
 - Solution

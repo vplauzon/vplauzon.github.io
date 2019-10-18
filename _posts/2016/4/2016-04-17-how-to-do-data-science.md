@@ -1,6 +1,6 @@
 ---
 title:  How to do Data Science
-date:  04/17/2016 22:00:50
+date:  2016-04-17 22:00:50 +00:00
 permalink:  "/2016/04/17/how-to-do-data-science/"
 categories:
 - Solution

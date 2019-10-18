@@ -1,6 +1,6 @@
 ---
 title:  Azure DocumentDB Demo
-date:  12/01/2015 23:00:46
+date:  2015-12-01 23:00:46 +00:00
 permalink:  "/2015/12/01/azure-documentdb-demo/"
 categories:
 - Solution

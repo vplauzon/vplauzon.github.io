@@ -1,6 +1,6 @@
 ---
 title:  Microsoft Surface Keynote
-date:  06/20/2012 22:26:00
+date:  2012-06-20 22:26:00 +00:00
 permalink:  "/2012/06/20/microsoft-surface-keynote/"
 categories:
 - Gadget

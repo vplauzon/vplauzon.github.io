@@ -1,6 +1,6 @@
 ---
 title:  Private Cloud:  Cloud just in name
-date:  05/19/2010 16:06:52
+date:  2010-05-19 16:06:52 +00:00
 permalink:  "/2010/05/19/private-cloud-cloud-just-in-name/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  New Full IIS Capabilities: Differences from Hosted Web Core
-date:  01/08/2011 17:12:00
+date:  2011-01-08 17:12:00 +00:00
 permalink:  "/2011/01/08/new-full-iis-capabilities-differences-from-hosted-web-core/"
 categories:
 - Solution

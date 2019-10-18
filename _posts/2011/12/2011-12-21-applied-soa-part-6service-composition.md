@@ -1,6 +1,6 @@
 ---
 title:  Applied SOA:  Part 6–Service Composition
-date:  12/22/2011 00:21:00
+date:  2011-12-22 00:21:00 +00:00
 permalink:  "/2011/12/21/applied-soa-part-6service-composition/"
 categories:
 - Solution

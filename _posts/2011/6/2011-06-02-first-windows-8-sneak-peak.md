@@ -1,6 +1,6 @@
 ---
 title:  First Windows 8 Sneak Peak
-date:  06/02/2011 17:46:00
+date:  2011-06-02 17:46:00 +00:00
 permalink:  "/2011/06/02/first-windows-8-sneak-peak/"
 categories:
 - News

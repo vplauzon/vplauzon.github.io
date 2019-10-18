@@ -1,6 +1,6 @@
 ---
 title:  Departmental Application Migration to Azure - Part 2 – ADFS Installation
-date:  06/02/2010 20:05:22
+date:  2010-06-02 20:05:22 +00:00
 permalink:  "/2010/06/02/departmental-application-migration-to-azure-part-2-adfs-installation/"
 categories:
 - Solution

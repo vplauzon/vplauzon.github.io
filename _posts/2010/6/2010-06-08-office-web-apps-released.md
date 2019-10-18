@@ -1,6 +1,6 @@
 ---
 title:  Office Web Apps Released!
-date:  06/08/2010 20:18:00
+date:  2010-06-08 20:18:00 +00:00
 permalink:  "/2010/06/08/office-web-apps-released/"
 categories:
 - Solution

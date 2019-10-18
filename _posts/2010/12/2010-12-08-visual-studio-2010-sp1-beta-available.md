@@ -1,6 +1,6 @@
 ---
 title:  Visual Studio 2010 SP1 Beta Available
-date:  12/08/2010 17:49:19
+date:  2010-12-08 17:49:19 +00:00
 permalink:  "/2010/12/08/visual-studio-2010-sp1-beta-available/"
 categories:
 - News

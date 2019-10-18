@@ -1,6 +1,6 @@
 ---
 title:  Azure Data Lake - Early look
-date:  09/30/2015 23:00:38
+date:  2015-09-30 23:00:38 +00:00
 permalink:  "/2015/09/30/azure-data-lake-early-look/"
 categories:
 - Solution
