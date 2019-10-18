@@ -1,0 +1,10 @@
+---
+title:  Entity Framework Code First CTP 5
+date:  01/22/2011 22:15:00
+permalink:  "/2011/01/22/entity-framework-code-first-ctp-5/"
+categories:
+- Solution
+tags:
+- .NET
+---
+<p>I wrote a <a href="https://vincentlauzon.wordpress.com/2010/11/12/entity-framework-4-0-poco-or-poco/">blog post</a> a while ago about Entity Framework’s POCO capability.&#160; Basically, the current state is that you don’t have POCO.&#160; You have a T4 template to generate classes without EF attributes or base classes, but it stops short of being a real POCO implementation once you start looking at the collections.</p>  <p>Microsoft is working on a real POCO technology, named Code First.&#160; They just released the 5th CTP.</p>  <p>You can read Scott Gu’s blog about it here:&#160; <a title="http://weblogs.asp.net/scottgu/archive/2010/12/08/announcing-entity-framework-code-first-ctp5-release.aspx" href="http://weblogs.asp.net/scottgu/archive/2010/12/08/announcing-entity-framework-code-first-ctp5-release.aspx">http://weblogs.asp.net/scottgu/archive/2010/12/08/announcing-entity-framework-code-first-ctp5-release.aspx</a>.</p>  <p>The technology is quickly maturing.&#160; The current CTP offers those improvements:</p>  <blockquote>   <ul>     <li>Better support for Existing Databases </li>      <li>Built-in Model-Level Validation and DataAnnotation Support </li>      <li>Fluent API Improvements </li>      <li>Pluggable Conventions Support </li>      <li>New Change Tracking API </li>      <li>Improved Concurrency Conflict Resolution </li>      <li>Raw SQL Query/Command Support </li>   </ul> </blockquote>  <p>The alignment between model-level validation and data-annotation is very nice.&#160; The entire configurability and override of convention is quite well thought as well.</p> This product is another great example of Microsoft embracing the open source ideas and making them available to the masses.

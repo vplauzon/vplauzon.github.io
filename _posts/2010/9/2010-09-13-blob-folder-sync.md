@@ -1,0 +1,9 @@
+---
+title:  Blob Folder Sync
+date:  09/13/2010 16:20:59
+permalink:  "/2010/09/13/blob-folder-sync/"
+categories:
+- Solution
+tags:  []
+---
+<p>I’ve made a Codeplex project public:&#160; <a href="http://blobfoldersync.codeplex.com">http://blobfoldersync.codeplex.com</a>.</p>  <p>There are no release yet though, as I’m still working on the code.</p>  <p>It’s basically a simple sync engine which synchronizes local folders with an Azure Blob Storage.</p>  <p>I’ve started this to get my hands dirty on Azure Storage.&#160; I’ve learned quite a few things along the way, so I think that was useful.</p>  <p>The project of course overlaps with bunch of different sync engine, nonetheless <a href="http://mesh.com/">Windows Live Mesh</a>(yes, it won’t be called Live Sync <a href="http://vincentlauzon.wordpress.com/2010/08/27/live-mesh-is-back/">after all</a>).&#160; The main difference is that Azure Storage has up to 100 Tb of storage.&#160; Of course, you need to pay for it, but it’s only $0,15 / Gb / month.</p>  <p>BlobFolderSync isn’t meant to replace much more versatile solutions such as Windows Live Mesh.&#160; I really meant it as a automatic backup system running a few times a week, not something monitoring very active folders.</p>  <p>There are different switch we’ll be able to configure that can make the solution original.&#160; For instance, we’ll be able to sync a bunch of participant without keeping the data in the cloud.&#160; The cloud would be used only for temporary storage until each participant gets a copy of each file.&#160; Using this setting, we would have a distributed backup where the cloud only facilitates the backup.</p>  <p>I quite like this idea of using different PC to create redundancy.&#160; If you consider the amount of Gb available on all the devices you own, the idea of leveraging that storage becomes quite interesting.</p>
