@@ -115,6 +115,8 @@ navigation_header:
   url: /
 - title: Articles
   url: /articles/
+- title: Tags
+  url: /tags/
 - title: Categories
   url: /categories/
 - title: Search

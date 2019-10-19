@@ -3,10 +3,10 @@ title: Vincent-Philippe Lauzon's
 feature_text: |
   ## Vincent-Philippe Lauzon's
   Azure, Data & Learnings
-feature_image: /assets/about/oka-view-point.png
+feature_image: /assets/about/saguenay-lake.png
 ---
 
-<img style="float:right;padding-left:20px;" title="Vincent-Philippe Lauzon / International man of mystery" src="/asset/home/vp-shot.png" />
+<img style="float:right;padding-left:20px;" title="Me, trying to look intelligent" src="/asset/about/vp-shot.png" />
 
 I am Vincent-Philippe Lauzon.  I am based in Montreal with my lovely familly.  In my free time I do calisthenics & jogging.
 
