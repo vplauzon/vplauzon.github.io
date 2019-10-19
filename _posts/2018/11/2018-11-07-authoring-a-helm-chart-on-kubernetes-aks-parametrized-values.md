@@ -179,7 +179,7 @@ For instance, let's look at <a href="https://github.com/vplauzon/helm/blob/maste
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: {% raw %}{{ .Values.namespace }}{% endraw %}
+  name: {% raw %} {{ .Values.namespace }} {% endraw %}
 ```
 
 We see the value for the namespace name is pulled from the values yaml tree.

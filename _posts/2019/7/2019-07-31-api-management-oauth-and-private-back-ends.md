@@ -145,7 +145,7 @@ It is configured as an HTTP-get taking two query string parameters.  The transfo
 ```xml
 <inbound>
     <base />
-    <set-backend-service base-url="{% raw %}{{public-service-url}}{% endraw %}" />
+    <set-backend-service base-url="{% raw %} {{public-service-url}} {% endraw %}" />
     <set-body>@{
         var body=new
         {
@@ -155,7 +155,7 @@ It is configured as an HTTP-get taking two query string parameters.  The transfo
 
         return JObject.FromObject(body).ToString();
     }</set-body>
-    <rewrite-uri template="{% raw %}{{public-service-query-string}}{% endraw %}" copy-unmatched-params="false" />
+    <rewrite-uri template="{% raw %} {{public-service-query-string}} {% endraw %}" copy-unmatched-params="false" />
     <set-method>POST</set-method>
     <set-header name="Content-Type" exists-action="override">
         <value>application/json</value>
@@ -189,7 +189,7 @@ This operation simply returns the response from the container.  Nothing fancy he
 ```xml
 <inbound>
     <base />
-    <set-backend-service base-url="{% raw %}{{private-service-url}}{% endraw %}" />
+    <set-backend-service base-url="{% raw %} {{private-service-url}} {% endraw %}" />
     <rewrite-uri template="/" copy-unmatched-params="false" />
 </inbound>
 ```
@@ -243,9 +243,9 @@ Now if we look at the products, we see the standard Starter &amp; Unlimited, but
 <inbound>
     <base />
     <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid." output-token-variable-name="jwt">
-        <openid-config url="https://login.microsoftonline.com/{% raw %}{{tenant-name}}{% endraw %}.onmicrosoft.com/.well-known/openid-configuration" />
+        <openid-config url="https://login.microsoftonline.com/{% raw %} {{tenant-name}} {% endraw %}.onmicrosoft.com/.well-known/openid-configuration" />
         <audiences>
-            <audience>{% raw %}{{app-id}}{% endraw %}</audience>
+            <audience>{% raw %} {{app-id}} {% endraw %}</audience>
         </audiences>
     </validate-jwt>
     <set-header name="Authorization" exists-action="delete" />
