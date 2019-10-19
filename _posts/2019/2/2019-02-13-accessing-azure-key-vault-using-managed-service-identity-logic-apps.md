@@ -11,7 +11,7 @@ tags:
 - Security
 - Serverless
 ---
-<img style="float:left;padding-right:20px;" title="From Pexels" src="https://vincentlauzon.files.wordpress.com/2018/12/safe-913452_640-e1544113123159.jpg" />
+<img style="float:left;padding-right:20px;" title="From Pexels" src="/assets/2019/2/accessing-azure-key-vault-using-managed-service-identity-logic-apps/safe-913452_640-e1544113123159.jpg" />
 
 <a href="https://vincentlauzon.com/2015/07/09/azure-key-vault-is-now-generally-available/">Azure Key Vault</a> is a great service to manage secrets, keys &amp; certificates.
 
@@ -39,7 +39,7 @@ We can deploy the demo ARM template with the following button:
 
 This should quickly (seconds) deploy 3 resources:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/12/3-resources.png" alt="3 resources" />
+<img src="/assets/2019/2/accessing-azure-key-vault-using-managed-service-identity-logic-apps/3-resources.png" alt="3 resources" />
 
 <h2>Key vault</h2>
 
@@ -47,7 +47,7 @@ By default we do not have access to the key vault.  This is a little unintuitive
 
 In order to give ourselves access, we need to add an access policies.
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/12/access-policies.png" alt="Access Policies" />
+<img src="/assets/2019/2/accessing-azure-key-vault-using-managed-service-identity-logic-apps/access-policies.png" alt="Access Policies" />
 
 We see there exists one already for the <em>get-secret-app</em> Service Principal.  This is the Manage Service Identity (MSI) of the <em>get-secret-app</em> Logic App.
 
@@ -73,7 +73,7 @@ We can add our own user account by adding a policy and giving it maximum permiss
 
 We should then be able to see the secrets.
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/12/secrets.png" alt="secrets" />
+<img src="/assets/2019/2/accessing-azure-key-vault-using-managed-service-identity-logic-apps/secrets.png" alt="secrets" />
 
 The template created only one secret:
 
@@ -100,11 +100,11 @@ The template created only one secret:
 
 The demo app really is a wrapper on the <em>get-secret-app</em>.  The idea was to make <em>get-secret-app</em> parameterizable by the name of the secret.  This makes it reusable.
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/12/demo-app.png" alt="Demo app" />
+<img src="/assets/2019/2/accessing-azure-key-vault-using-managed-service-identity-logic-apps/demo-app.png" alt="Demo app" />
 
 If we run the app, it should be all green with the response task returning <a href="https://en.wikipedia.org/wiki/42_(number)#The_Hitchhiker's_Guide_to_the_Galaxy">the answer</a>.
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/12/the-answer.png" alt="The Answer" />
+<img src="/assets/2019/2/accessing-azure-key-vault-using-managed-service-identity-logic-apps/the-answer.png" alt="The Answer" />
 
 This is the value of the <em>my-secret</em> secret in the Key Vault.
 
@@ -114,7 +114,7 @@ This Logic App doesn't have a Managed Service Identity (MSI) as it doesn't acces
 
 This Logic App is a little more sophisticated although quite straightforward.
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/12/get-secret-app.png" alt="Get Secret App" />
+<img src="/assets/2019/2/accessing-azure-key-vault-using-managed-service-identity-logic-apps/get-secret-app.png" alt="Get Secret App" />
 
 It uses two REST API.
 
@@ -155,7 +155,7 @@ The trick to use REST API is of course to authenticate with it.  This is done by
 
 This can also be seen in the HTTP tasks by <em>showing advanced options</em>:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/12/authentication.png" alt="Authentication in Portal" />
+<img src="/assets/2019/2/accessing-azure-key-vault-using-managed-service-identity-logic-apps/authentication.png" alt="Authentication in Portal" />
 
 As <a href="https://devkimchi.com/2018/10/24/accessing-key-vault-from-logic-apps-with-managed-identity/">DevKimchi</a> stretches out, the audience needs to be precise.  It needs to be https://vault.azure.net.  It shouldn't contain a trailing slash or capital letters.
 

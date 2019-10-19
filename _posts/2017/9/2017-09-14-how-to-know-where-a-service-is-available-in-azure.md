@@ -8,7 +8,7 @@ tags:
 - Automation
 - PowerShell
 ---
-<a href="assets/2017/9/how-to-know-where-a-service-is-available-in-azure/pexels-photo-2696331.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-269633[1]" src="assets/2017/9/how-to-know-where-a-service-is-available-in-azure/pexels-photo-2696331_thumb.jpg" alt="pexels-photo-269633[1]" width="370" height="245" align="right" border="0" /></a>Azure has a Global Footprint of <a href="https://azure.microsoft.com/en-us/regions/" target="_blank" rel="noopener">40 regions</a> at the time of this writing (mid-September 2017).
+<a href="http://vincentlauzon.files.wordpress.com/2017/09/pexels-photo-2696331.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-269633[1]" src="http://vincentlauzon.files.wordpress.com/2017/09/pexels-photo-2696331_thumb.jpg" alt="pexels-photo-269633[1]" width="370" height="245" align="right" border="0" /></a>Azure has a Global Footprint of <a href="https://azure.microsoft.com/en-us/regions/" target="_blank" rel="noopener">40 regions</a> at the time of this writing (mid-September 2017).
 
 Not all services are available in every regions.  Most aren’t in fact.  Only foundational services (e.g. storage) are available everywhere.
 

@@ -8,7 +8,7 @@ tags:
 - Identity
 - Security
 ---
-<img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" src="https://vincentlauzon.files.wordpress.com/2017/01/pexels-photo-898451.jpeg" width="224" height="240" align="right" border="0" />
+<img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" src="/assets/2017/1/using-microsoft-graph-api-to-interact-with-azure-ad/pexels-photo-898451.jpeg" width="224" height="240" align="right" border="0" />
 
 In my <a href="https://vincentlauzon.com/2017/01/29/authenticating-to-azure-ad-non-interactively/" target="_blank" rel="noopener">last article</a>, I showed how to authenticate on Azure AD using a user name / password without using the native web flow.
 
@@ -36,11 +36,11 @@ We are going to create a new application (here we’re going to use the name “
 
 The important part is to grab its Application-ID &amp; also to give it enough permission to create users.
 
-<a href="assets/2017/1/using-microsoft-graph-api-to-interact-with-azure-ad/image23.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="assets/2017/1/using-microsoft-graph-api-to-interact-with-azure-ad/image_thumb23.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/01/image23.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/01/image_thumb23.png" alt="image" border="0" /></a>
 
 In this scenario, the application is going to authenticate itself (as opposed to a user) so we need to define a secret.
 
-<a href="assets/2017/1/using-microsoft-graph-api-to-interact-with-azure-ad/image24.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="assets/2017/1/using-microsoft-graph-api-to-interact-with-azure-ad/image_thumb24.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/01/image24.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/01/image_thumb24.png" alt="image" border="0" /></a>
 
 We’ll need to add a key, save &amp; copy the key value.
 

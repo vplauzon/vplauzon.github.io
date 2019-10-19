@@ -7,7 +7,7 @@ categories:
 tags:
 - Security
 ---
-<a href="https://pixabay.com/illustrations/security-safety-concept-eyes-1163108/"><img style="float:right;padding-right:5px;" title="From pixabay.com" src="https://vincentlauzon.files.wordpress.com/2019/05/security-1163108_640-e1557521297427.jpg" /></a>
+<a href="https://pixabay.com/illustrations/security-safety-concept-eyes-1163108/"><img style="float:right;padding-right:5px;" title="From pixabay.com" src="/assets/2019/5/authenticating-an-azure-service-principal/security-1163108_640-e1557521297427.jpg" /></a>
 
 When it comes to using Service Principal in Azure, I always advise using <a href="https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview">Managed System Identity</a> (MSI).
 

@@ -10,7 +10,7 @@ tags:
 ---
 <strong>Update (22-03-2019):  This configuration is now <a href="https://docs.microsoft.com/en-us/azure/aks/configure-kubenet">officially documented</a>.</strong>
 
-<img style="float:left;padding-right:20px;" title="From Pexels" src="https://vincentlauzon.files.wordpress.com/2018/08/daylight-forest-glossy-443446-e1535661094739.jpg" />
+<img style="float:left;padding-right:20px;" title="From Pexels" src="/assets/2018/9/aks-with-kubenet-vs-azure-networking-plug-in/daylight-forest-glossy-443446-e1535661094739.jpg" />
 
 I've been diving into Kubernetes / AKS Networking lately.  I thought I would share some of the insights I stumble upon.
 
@@ -53,7 +53,7 @@ As we've seen in a <a href="https://vincentlauzon.com/2018/08/21/kubernetes-serv
 
 We end up with a Network picture as follow:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/08/service1.png" alt="Advanced Networking" />
+<img src="/assets/2018/9/aks-with-kubenet-vs-azure-networking-plug-in/service1.png" alt="Advanced Networking" />
 
 Basically, both pods and services get a private IP.  Services also get a cluster-ip (accessible only from within the cluster).
 
@@ -126,17 +126,17 @@ First, let's look at the resources in the portal.
 
 If we look at the virtual network, we can see the connected devices:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/08/kubenet-devices.png" alt="Network devices" />
+<img src="/assets/2018/9/aks-with-kubenet-vs-azure-networking-plug-in/kubenet-devices.png" alt="Network devices" />
 
 We only see the cluster's VMs.  When we used <em>Azure</em> plugin, the pods got their own private IPs which were secondary IPs on the VMs' NICs.  Here pods aren't exposed in the Virtual Network so there is no such private IPs.  For that reason the Kubelet plugin consumes much less private IPs.
 
 As usual with AKS, we'll have a <em>buddy resource group</em> named <code>MC___</code>.  Let's open it.
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/08/kubenet-resources.png" alt="Kubernet resources" />
+<img src="/assets/2018/9/aks-with-kubenet-vs-azure-networking-plug-in/kubenet-resources.png" alt="Kubernet resources" />
 
 We see the typical underlying resources of an AKS cluster.  One we do not see in an advanced networking cluster is the <em>Route Table</em>.  Let's open it.
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/09/routes.png" alt="Routes" />
+<img src="/assets/2018/9/aks-with-kubenet-vs-azure-networking-plug-in/routes.png" alt="Routes" />
 
 We should see there are three routes.  That configuration routes 3 cluster-IP ranges to the three primary IPs of the three nodes.
 

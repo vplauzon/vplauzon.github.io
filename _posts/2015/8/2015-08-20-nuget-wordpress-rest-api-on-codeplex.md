@@ -11,7 +11,7 @@ I've introduced <a href="https://www.nuget.org/packages/WordpressRestApi/" targe
 
 It's an SDK to access <a href="https://developer.wordpress.com/docs/api/" target="_blank">Wordpress REST API</a>.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/08/nugetlogo1.png"><img class="size-full wp-image-1180 alignleft" src="https://vincentlauzon.files.wordpress.com/2015/08/nugetlogo1.png" alt="nugetlogo[1]" width="228" height="75" /></a>Today, I've open sourced it on <a href="https://www.codeplex.com/" target="_blank">Codeplex</a>.
+<a href="/assets/2015/8/nuget-wordpress-rest-api-on-codeplex/nugetlogo1.png"><img class="size-full wp-image-1180 alignleft" src="/assets/2015/8/nuget-wordpress-rest-api-on-codeplex/nugetlogo1.png" alt="nugetlogo[1]" width="228" height="75" /></a>Today, I've open sourced it on <a href="https://www.codeplex.com/" target="_blank">Codeplex</a>.
 
 You can visit it on <a href="https://wordpressrestapi.codeplex.com/" target="_blank">https://wordpressrestapi.codeplex.com/</a>.
 

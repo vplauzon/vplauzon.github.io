@@ -9,7 +9,7 @@ tags:
 - Networking
 - Web
 ---
-<img style="float:right;padding-right:20px;" title="From leeroy on www.pexels.com" src="https://vincentlauzon.files.wordpress.com/2018/11/ancient-army-e1541419212169.jpg" />
+<img style="float:right;padding-right:20px;" title="From leeroy on www.pexels.com" src="/assets/2018/11/understanding-multiple-ingress-in-aks/ancient-army-e1541419212169.jpg" />
 
 <a href="https://vincentlauzon.com/2018/11/21/understanding-simple-http-ingress-in-aks/">Last time</a>, I covered the ins and outs of Ingress on AKS.
 
@@ -38,7 +38,7 @@ Scripts used in this article <a href="https://github.com/vplauzon/aks/tree/maste
 
 Our understanding of Ingress Controller is the following:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/11/model.png" alt="Conceptual Model" />
+<img src="/assets/2018/11/understanding-multiple-ingress-in-aks/model.png" alt="Conceptual Model" />
 
 The most important part is the top.  An Ingress Controller can have multiple Ingress rules.  But there could be multiple Ingress Controller.
 
@@ -56,7 +56,7 @@ We assume the setup we covered in <a href="https://vincentlauzon.com/2018/11/21/
 
 If we look at the node resource group, we should have:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/11/before.png" alt="Before multiple controllers" />
+<img src="/assets/2018/11/understanding-multiple-ingress-in-aks/before.png" alt="Before multiple controllers" />
 
 Here we have one public IP because we installed NGinx controller with a default configuration.  If we didn't we wouldn't have one.
 
@@ -172,7 +172,7 @@ Before testing our configuration, we need to map the ingress controllers to publ
 
 If we look at the node resource group, we now find 3 new public ips:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/11/after.png" alt="After multiple controllers" />
+<img src="/assets/2018/11/understanding-multiple-ingress-in-aks/after.png" alt="After multiple controllers" />
 
 One for each controller.
 

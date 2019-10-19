@@ -8,7 +8,7 @@ tags:
 - Data
 - Streaming
 ---
-<a href="assets/2018/6/event-hubs-ingestion-performance-and-throughput/metal-pipes-plumbing-372796.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="metal-pipes-plumbing-372796" src="assets/2018/6/event-hubs-ingestion-performance-and-throughput/metal-pipes-plumbing-372796_thumb.jpg" alt="metal-pipes-plumbing-372796" width="320" height="240" align="left" border="0" /></a><a href="https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-what-is-event-hubs">Azure Event Hubs</a> is a data streaming platform as a Service.  It is an ingestion service.
+<a href="http://vincentlauzon.files.wordpress.com/2018/06/metal-pipes-plumbing-372796.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="metal-pipes-plumbing-372796" src="http://vincentlauzon.files.wordpress.com/2018/06/metal-pipes-plumbing-372796_thumb.jpg" alt="metal-pipes-plumbing-372796" width="320" height="240" align="left" border="0" /></a><a href="https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-what-is-event-hubs">Azure Event Hubs</a> is a data streaming platform as a Service.  It is an ingestion service.
 
 We’ve looked at Event Hubs as the ingestion end of <a href="https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-introduction">Azure Stream Analytics</a> in two recent articles (<a href="https://vincentlauzon.com/2018/05/22/taming-the-fire-hose-azure-stream-analytics/">here</a> &amp; <a href="https://vincentlauzon.com/2018/05/31/implementing-automating-azure-stream-analytics-pipeline/">here</a>).
 
@@ -27,7 +27,7 @@ Here are some recommendations in the light of the performance and throughput res
 </ul>
 Let’s now look at the tests we did to come up with those recommendations.
 <h2>How to run tests ourselves</h2>
-<a href="assets/2018/6/event-hubs-ingestion-performance-and-throughput/daylight-gray-hand-994164.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="daylight-gray-hand-994164" src="assets/2018/6/event-hubs-ingestion-performance-and-throughput/daylight-gray-hand-994164_thumb.jpg" alt="daylight-gray-hand-994164" width="320" height="320" align="right" border="0" /></a>We performed tests which are repeatable.
+<a href="http://vincentlauzon.files.wordpress.com/2018/06/daylight-gray-hand-994164.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="daylight-gray-hand-994164" src="http://vincentlauzon.files.wordpress.com/2018/06/daylight-gray-hand-994164_thumb.jpg" alt="daylight-gray-hand-994164" width="320" height="320" align="right" border="0" /></a>We performed tests which are repeatable.
 
 The <a href="https://github.com/vplauzon/streaming/tree/master/ClientPerf">code is in GitHub</a> and can be deployed by the click of the following button:
 
@@ -45,7 +45,7 @@ The container instances all run the same container image.  That image is availa
 
 The code uses environment variable to run different scenarios.  The <a href="https://github.com/vplauzon/streaming/blob/master/ClientPerf/ClientConsole/ScenarioBase.cs">ScenarioBase</a> class represents a scenario and derived classes implement different scenarios.
 <h2>Performance</h2>
-<a href="assets/2018/6/event-hubs-ingestion-performance-and-throughput/automobile-fast-number-248747.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="automobile-fast-number-248747" src="assets/2018/6/event-hubs-ingestion-performance-and-throughput/automobile-fast-number-248747_thumb.jpg" alt="automobile-fast-number-248747" width="320" height="264" align="right" border="0" /></a>Let’s start with the performance scenarios.
+<a href="http://vincentlauzon.files.wordpress.com/2018/06/automobile-fast-number-248747.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="automobile-fast-number-248747" src="http://vincentlauzon.files.wordpress.com/2018/06/automobile-fast-number-248747_thumb.jpg" alt="automobile-fast-number-248747" width="320" height="264" align="right" border="0" /></a>Let’s start with the performance scenarios.
 
 Here we are interested in how fast it takes to send one or many messages.  We are not concerned about throughput but on latency.
 
@@ -96,17 +96,17 @@ The corresponding container instances for those scenarios are:
 </ul>
 To look at the result, we can simply select an Azure Container Instance group:
 
-<a href="assets/2018/6/event-hubs-ingestion-performance-and-throughput/image.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/6/event-hubs-ingestion-performance-and-throughput/image_thumb.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/06/image.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/06/image_thumb.png" alt="image" border="0" /></a>
 
 Then select the containers of that group.
 
-<a href="assets/2018/6/event-hubs-ingestion-performance-and-throughput/image1.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/6/event-hubs-ingestion-performance-and-throughput/image_thumb1.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/06/image1.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/06/image_thumb1.png" alt="image" border="0" /></a>
 
 There is only one for each group.  We can select the <em>logs</em> tab.  This shows us the console output.
 
 At the top of the logs we see the environment variables that were passed to the container.  We can also see those in the <em>properties</em> tab.
 
-<a href="assets/2018/6/event-hubs-ingestion-performance-and-throughput/image3.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/6/event-hubs-ingestion-performance-and-throughput/image_thumb3.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/06/image3.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/06/image_thumb3.png" alt="image" border="0" /></a>
 <h2>Performance Results</h2>
 Here is a summary of the results.
 <table border="3">
@@ -142,7 +142,7 @@ Here is a summary of the results.
 </table>
 We split the first scenario in two.  We can see that the first event a process runs pays an overhead tax.  We didn’t dive in for details.  It is likely Just In Time (JIT) compilation is happening.  Maybe some internal objects are initialized once.  The second row shows the average of time excluding the first event.
 
-<a href="https://vincentlauzon.files.wordpress.com/2018/06/perfchart.png"><img class="alignnone size-full wp-image-5123" src="https://vincentlauzon.files.wordpress.com/2018/06/perfchart.png" alt="" width="480" height="289" /></a>
+<a href="/assets/2018/6/event-hubs-ingestion-performance-and-throughput/perfchart.png"><img class="alignnone size-full wp-image-5123" src="/assets/2018/6/event-hubs-ingestion-performance-and-throughput/perfchart.png" alt="" width="480" height="289" /></a>
 
 A few observations:
 <ul>
@@ -152,7 +152,7 @@ A few observations:
 </ul>
 We’ll look at the recommendations after we look at the throughput tests.
 <h2>Throughput</h2>
-<a href="assets/2018/6/event-hubs-ingestion-performance-and-throughput/black-and-white-busy-cameras-735795.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="black-and-white-busy-cameras-735795" src="assets/2018/6/event-hubs-ingestion-performance-and-throughput/black-and-white-busy-cameras-735795_thumb.jpg" alt="black-and-white-busy-cameras-735795" width="320" height="197" align="left" border="0" /></a>Let’s look at throughput.
+<a href="http://vincentlauzon.files.wordpress.com/2018/06/black-and-white-busy-cameras-735795.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="black-and-white-busy-cameras-735795" src="http://vincentlauzon.files.wordpress.com/2018/06/black-and-white-busy-cameras-735795_thumb.jpg" alt="black-and-white-busy-cameras-735795" width="320" height="197" align="left" border="0" /></a>Let’s look at throughput.
 
 Speed and throughput are sometimes confused.  They are related.  For instance, a very slow service won’t be able to achieve high throughput.
 
@@ -219,7 +219,7 @@ Here is a summary of results.
 </table>
 The isolated scenario in AMQP actually fails with connection timeout.  We didn’t bother exploring why.  It likely is in the same order of magnitude as its HTTP peer, which is the worst in the table.
 
-<a href="https://vincentlauzon.files.wordpress.com/2018/06/throughputchart.png"><img class="alignnone size-full wp-image-5124" src="https://vincentlauzon.files.wordpress.com/2018/06/throughputchart.png" alt="" width="480" height="289" /></a>
+<a href="/assets/2018/6/event-hubs-ingestion-performance-and-throughput/throughputchart.png"><img class="alignnone size-full wp-image-5124" src="/assets/2018/6/event-hubs-ingestion-performance-and-throughput/throughputchart.png" alt="" width="480" height="289" /></a>
 
 AMQP protocol shines in a streaming scenario.  When we reuse connections and keep sending events, i.e. scenario <em>Isolated with pool</em>.  It out performs HTTP / REST by an order of magnitude.
 

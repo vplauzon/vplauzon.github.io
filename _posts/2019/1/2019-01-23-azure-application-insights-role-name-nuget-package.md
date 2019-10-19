@@ -8,7 +8,7 @@ tags:
 - DevOps
 - Web
 ---
-<img style="float:left;padding-right:20px;" title="From Pexels" src="https://vincentlauzon.files.wordpress.com/2018/11/beads-blur-bright-1208091-e1543604741902.jpg" />
+<img style="float:left;padding-right:20px;" title="From Pexels" src="/assets/2019/1/azure-application-insights-role-name-nuget-package/beads-blur-bright-1208091-e1543604741902.jpg" />
 
 I've been using <a href="https://docs.microsoft.com/en-us/azure/application-insights/app-insights-overview">Azure Application Insights</a> to monitor micro-services.
 
@@ -70,7 +70,7 @@ The <em>appsettings.json</em> file should look like this:
 
 The important part is the <em>ApplicationInsights</em> section.  The instrumentation key is found in the overview pane:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/11/instrumentation-key.png" alt="Instrumentation Key" />
+<img src="/assets/2019/1/azure-application-insights-role-name-nuget-package/instrumentation-key.png" alt="Instrumentation Key" />
 
 <h3>Add UseApplicationInsights on the web-host</h3>
 

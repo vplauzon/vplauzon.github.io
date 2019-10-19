@@ -9,7 +9,7 @@ tags:
 - NoSQL
 - Virtual Machines
 ---
-<a href="assets/2017/11/disaster-recovery-with-vm-scale-sets-geo-replicated-dbs/train-wreck-steam-locomotive-locomotive-railway-738211.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="train-wreck-steam-locomotive-locomotive-railway-73821[1]" src="assets/2017/11/disaster-recovery-with-vm-scale-sets-geo-replicated-dbs/train-wreck-steam-locomotive-locomotive-railway-738211_thumb.jpg" alt="train-wreck-steam-locomotive-locomotive-railway-73821[1]" width="320" height="384" align="right" border="0" /></a><a href="https://vincentlauzon.com/2016/07/11/disaster-recovery-with-azure-virtual-machines/">Last year we posted an article</a> about different options available in Azure to implement a disaster recovery strategy.
+<a href="http://vincentlauzon.files.wordpress.com/2017/11/train-wreck-steam-locomotive-locomotive-railway-738211.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="train-wreck-steam-locomotive-locomotive-railway-73821[1]" src="http://vincentlauzon.files.wordpress.com/2017/11/train-wreck-steam-locomotive-locomotive-railway-738211_thumb.jpg" alt="train-wreck-steam-locomotive-locomotive-railway-73821[1]" width="320" height="384" align="right" border="0" /></a><a href="https://vincentlauzon.com/2016/07/11/disaster-recovery-with-azure-virtual-machines/">Last year we posted an article</a> about different options available in Azure to implement a disaster recovery strategy.
 
 We strongly suggest to review that article as it gives good insights about what a disaster recovery strategy is within an already resilient Cloud Environment but also clear out a few misconceptions people have around DR-capability of different services.
 
@@ -46,7 +46,7 @@ That isn’t to say that the permanent resource group contains only resources fr
 
 <h2>State</h2>
 
-<a href="assets/2017/11/disaster-recovery-with-vm-scale-sets-geo-replicated-dbs/pexels-photo-1177291.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="pexels-photo-117729[1]" src="assets/2017/11/disaster-recovery-with-vm-scale-sets-geo-replicated-dbs/pexels-photo-1177291_thumb.jpg" alt="pexels-photo-117729[1]" width="320" height="213" align="left" border="0" /></a>Here it is important to come back to the concept of stateful and stateless compute we introduced in our <a href="https://vincentlauzon.com/2016/07/11/disaster-recovery-with-azure-virtual-machines/" target="_blank" rel="noopener">Disaster Recovery with Azure Virtual Machines</a> article.
+<a href="http://vincentlauzon.files.wordpress.com/2017/11/pexels-photo-1177291.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="pexels-photo-117729[1]" src="http://vincentlauzon.files.wordpress.com/2017/11/pexels-photo-1177291_thumb.jpg" alt="pexels-photo-117729[1]" width="320" height="213" align="left" border="0" /></a>Here it is important to come back to the concept of stateful and stateless compute we introduced in our <a href="https://vincentlauzon.com/2016/07/11/disaster-recovery-with-azure-virtual-machines/" target="_blank" rel="noopener">Disaster Recovery with Azure Virtual Machines</a> article.
 
 Stateless compute doesn’t carry transactional state.  It will have state, e.g. VM disk, but that state won’t change as the workload runs and users interact with it.  It is immutable and hence is quite easy to scale out but also to transport to a different region.  VM Scale Sets sit squarely in that category.
 
@@ -58,7 +58,7 @@ Unfortunately, a lot of workload fall between those two categories.  For exampl
 
 Given those two axis, i.e. regions (Primary &amp; Secondary) and resource groups (Permanent &amp; Failover), we can look at the failover strategy in terms of four quadrants as illustrated in the following diagram:
 
-<a href="assets/2017/11/disaster-recovery-with-vm-scale-sets-geo-replicated-dbs/image.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/11/disaster-recovery-with-vm-scale-sets-geo-replicated-dbs/image_thumb.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/11/image.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/11/image_thumb.png" alt="image" border="0" /></a>
 
 Our axis have two swim lanes each and their intersection form the four (4) quadrants.
 

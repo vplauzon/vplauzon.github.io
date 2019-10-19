@@ -7,7 +7,7 @@ categories:
 tags:
 - Machine Learning
 ---
-<a href="https://vincentlauzon.files.wordpress.com/2015/08/4477-9780735698178_2d00_fb_5f00_732f5a131.png"><img class="wp-image-1141 alignleft" src="https://vincentlauzon.files.wordpress.com/2015/08/4477-9780735698178_2d00_fb_5f00_732f5a131.png?w=245" alt="4477.9780735698178_2D00_FB_5F00_732F5A13[1]" width="337" height="413" /></a>You're into Machine Learning, got into <a href="http://azure.microsoft.com/en-us/services/machine-learning/" target="_blank">Azure ML</a>, looked at my <a href="http://vincentlauzon.com/2015/07/18/azure-ml-simple-linear-regression/">couple of blogs</a> <a href="http://vincentlauzon.com/2015/08/05/azureml-polynomial-sql-transformation/">about it</a> and want to take it to the next level?
+<a href="/assets/2015/9/free-ebook-azure-machine-learning/4477-9780735698178_2d00_fb_5f00_732f5a131.png"><img class="wp-image-1141 alignleft" src="/assets/2015/9/free-ebook-azure-machine-learning/4477-9780735698178_2d00_fb_5f00_732f5a131.png?w=245" alt="4477.9780735698178_2D00_FB_5F00_732F5A13[1]" width="337" height="413" /></a>You're into Machine Learning, got into <a href="http://azure.microsoft.com/en-us/services/machine-learning/" target="_blank">Azure ML</a>, looked at my <a href="http://vincentlauzon.com/2015/07/18/azure-ml-simple-linear-regression/">couple of blogs</a> <a href="http://vincentlauzon.com/2015/08/05/azureml-polynomial-sql-transformation/">about it</a> and want to take it to the next level?
 
 Microsoft released an eBook for that exact purpose:
 

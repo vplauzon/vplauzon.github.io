@@ -8,7 +8,7 @@ tags:
 - Containers
 - DevOps
 ---
-<img style="float:right;padding-right:20px;" title="From http://pixabay.com" src="https://vincentlauzon.files.wordpress.com/2018/10/writer-1421099_640-e1539888033898.jpg" />
+<img style="float:right;padding-right:20px;" title="From http://pixabay.com" src="/assets/2018/10/authoring-a-helm-chart-on-kubernetes-aks-getting-started/writer-1421099_640-e1539888033898.jpg" />
 
 As we discussed in <a href="https://vincentlauzon.com/2018/10/24/5-reasons-to-use-helm-charts-in-kubernetes/">our last article</a>, <a href="https://www.helm.sh/">Helm</a> is a great technology.  I recommend using it not only to manage third party packages but also your own custom-developed solutions.
 
@@ -58,7 +58,7 @@ In short, a <em>Chart</em> is a Helm Package.  A <em>Release</em> is chart deplo
 
 So we have the following relationships:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/10/helmconcepts1.png" alt="Helm Concepts" />
+<img src="/assets/2018/10/authoring-a-helm-chart-on-kubernetes-aks-getting-started/helmconcepts1.png" alt="Helm Concepts" />
 
 <h2>File Structure</h2>
 

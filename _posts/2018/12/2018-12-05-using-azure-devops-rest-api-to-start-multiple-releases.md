@@ -9,7 +9,7 @@ tags:
 - Automation
 - DevOps
 ---
-<img style="float:left;padding-right:20px;" title="From Pexels" src="https://vincentlauzon.files.wordpress.com/2018/11/architecture-building-construction-220885-e1543604573116.jpg" />
+<img style="float:left;padding-right:20px;" title="From Pexels" src="/assets/2018/12/using-azure-devops-rest-api-to-start-multiple-releases/architecture-building-construction-220885-e1543604573116.jpg" />
 
 Azure DevOps CI / CD (i.e. Build / Release) mechanism is very valuable to me.  It makes things reproduceable &amp; robust.  It allows me to change whatever I want since I have this constant safety net underneath.
 
@@ -54,7 +54,7 @@ PAT can be given <em>Full access</em> (useful to start) or <em>custom</em> scope
 
 For our scenario, a token giving access to read / write / execute of releases is enough:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/11/releasescope.png" alt="Release scope" />
+<img src="/assets/2018/12/using-azure-devops-rest-api-to-start-multiple-releases/releasescope.png" alt="Release scope" />
 
 Unfortunately, at the time of this writing (end of November 2018), there isn't a way to limit the scope per project.
 

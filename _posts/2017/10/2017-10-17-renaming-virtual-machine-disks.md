@@ -7,7 +7,7 @@ categories:
 tags:
 - Virtual Machines
 ---
-<a href="assets/2017/10/renaming-virtual-machine-disks/pexels-photo-2086371.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-208637[1]" src="assets/2017/10/renaming-virtual-machine-disks/pexels-photo-2086371_thumb.jpg" alt="pexels-photo-208637[1]" width="320" height="427" align="right" border="0" /></a>Let’s say we would like to rename disks on a Virtual Machine (VM).  Here we mean renaming the Azure Resource Name of the managed disk.  How would we go about that?
+<a href="http://vincentlauzon.files.wordpress.com/2017/10/pexels-photo-2086371.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-208637[1]" src="http://vincentlauzon.files.wordpress.com/2017/10/pexels-photo-2086371_thumb.jpg" alt="pexels-photo-208637[1]" width="320" height="427" align="right" border="0" /></a>Let’s say we would like to rename disks on a Virtual Machine (VM).  Here we mean renaming the Azure Resource Name of the managed disk.  How would we go about that?
 
 Why would we want to?  Primarily to get our internal nomenclature right.  A typical example is when we do migrate from unmanaged to managed disk (see <a href="https://vincentlauzon.com/2017/02/21/migrating-from-unmanaged-to-managed-disks/">article here</a>) using the <a href="https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk" target="_blank" rel="noopener">ConvertTo-AzureRmVMManagedDisk</a> command.  This command converts all disks from page blobs to managed disks ; it gives the managed disks the name of the page blob and prepend the name of the VM.  That might not be your nomenclature &amp; there is no way to override the names.
 
@@ -44,7 +44,7 @@ If we already have it because we proceed with ARM template in general, then done
 
 The best approach usually is to use the <em>Automation Script</em> option on the left hand side menu of either the VM or its resource group.
 
-<a href="assets/2017/10/renaming-virtual-machine-disks/image3.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/10/renaming-virtual-machine-disks/image_thumb3.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/10/image3.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/10/image_thumb3.png" alt="image" border="0" /></a>
 
 From there we can find the node for our VM and then mechanically we can clean up the template.
 

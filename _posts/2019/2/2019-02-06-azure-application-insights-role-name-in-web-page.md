@@ -8,7 +8,7 @@ tags:
 - DevOps
 - Web
 ---
-<img style="float:right;padding-right:20px;" title="From Pixabay" src="https://vincentlauzon.files.wordpress.com/2018/12/archive-1850170_640-e1543861761364.jpg" />
+<img style="float:right;padding-right:20px;" title="From Pixabay" src="/assets/2019/2/azure-application-insights-role-name-in-web-page/archive-1850170_640-e1543861761364.jpg" />
 
 We discussed using <em>Role Name</em> to separate telemetries from different applications in <a href="https://vincentlauzon.com/2019/01/23/azure-application-insights-role-name-nuget-package/">a previous article</a>.
 

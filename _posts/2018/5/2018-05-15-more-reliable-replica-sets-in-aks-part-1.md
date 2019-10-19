@@ -7,7 +7,7 @@ categories:
 tags:
 - Containers
 ---
-<img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="lion-2449282_640" src="assets/2018/5/more-reliable-replica-sets-in-aks-part-1/lion-2449282_640_thumb.jpg" alt="lion-2449282_640" width="320" height="213" align="right" border="0" />Availability is a core architecture attribute often sought after.
+<img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="lion-2449282_640" src="http://vincentlauzon.files.wordpress.com/2018/04/lion-2449282_640_thumb.jpg" alt="lion-2449282_640" width="320" height="213" align="right" border="0" />Availability is a core architecture attribute often sought after.
 
 We’ve taken a look at <a href="https://vincentlauzon.com/2018/05/10/understanding-identities-in-azure-aks-kubernetes/">Azure Managed Kubernetes Cluster (AKS) here</a>.  In this article (part 1), we’re going to experiment and prove that replica set aren’t “highly available” by default.  In part 2 , we’re going to look at how to architect replica sets in Azure AKS in order to make them highly available.
 <h2>High Availability in Azure</h2>
@@ -22,13 +22,13 @@ At the time of this writing (end of April 2018), <a href="https://azure.microsof
 
 Let’s look at an hypothetical AKS Cluster.  The cluster has 4 nodes.  It belongs to an Availability Set with 2 Fault Domains and 3 Update Domains:
 
-<a href="assets/2018/5/more-reliable-replica-sets-in-aks-part-1/image10.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="assets/2018/5/more-reliable-replica-sets-in-aks-part-1/image_thumb10.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/04/image10.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/04/image_thumb10.png" alt="image" border="0" /></a>
 
 We see the availability set spreads the VMs on different domains.  It does it in such a way that if any of the Fault Domains would go down, there would be VMs left to take the load.  Similarly with Update Domains.  This is how Availability Sets enable High Availability at the VM level.
 
 Now let’s look at replica sets deployed on that cluster:
 
-<a href="assets/2018/5/more-reliable-replica-sets-in-aks-part-1/image12.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="assets/2018/5/more-reliable-replica-sets-in-aks-part-1/image_thumb12.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/04/image12.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/04/image_thumb12.png" alt="image" border="0" /></a>
 
 Replica Sets’ places pods on different cluster nodes (VMs).  We see the ‘triangle’ replica set is highly available:  no domain could take it all down by going down.  Similarly, the ‘circle’ replica set is highly available.  The ‘star’ replica set isn’t.  If Update Domain 2 would go down, it would take the 2 pods of the ‘star’ replica set.
 
@@ -55,15 +55,15 @@ Adding to that, a replica set placed on a single update domain doesn’t occur a
 <h2>AKS availability set</h2>
 When we create an AKS cluster, it creates VMs for us.  They are created as part of a single availability set.  We can see those “behind the scene” resources by looking at the paired resource group.  Here we created an AKS service named <em>aks2</em>.  It sits inside a resource group also named <em>aks2</em> in <em>Canada Central</em> Azure region.  The paired resource group is <em>MC_aks2_aks2_canadacentral</em>.
 
-<a href="assets/2018/5/more-reliable-replica-sets-in-aks-part-1/image7.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="assets/2018/5/more-reliable-replica-sets-in-aks-part-1/image_thumb7.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/04/image7.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/04/image_thumb7.png" alt="image" border="0" /></a>
 
 We can open that resource group and look at the resources inside.  If we sort by type, <em>availability set</em> should come up on top.
 
-<a href="assets/2018/5/more-reliable-replica-sets-in-aks-part-1/image8.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="assets/2018/5/more-reliable-replica-sets-in-aks-part-1/image_thumb8.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/04/image8.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/04/image_thumb8.png" alt="image" border="0" /></a>
 
 The overview of the availability set lists the VM members.  It also displays their fault and update domains.
 
-<a href="assets/2018/5/more-reliable-replica-sets-in-aks-part-1/image9.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="assets/2018/5/more-reliable-replica-sets-in-aks-part-1/image_thumb9.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/04/image9.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/04/image_thumb9.png" alt="image" border="0" /></a>
 
 Here we have a 20 nodes cluster (we didn’t display all VMs in the above image).  We can see that VMs are in both 0 and 1 failure domains and 0,1 &amp; 2 update domains.
 <h2>Reproducing our experiment</h2>

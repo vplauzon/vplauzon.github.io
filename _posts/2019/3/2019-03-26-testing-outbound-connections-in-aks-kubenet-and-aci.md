@@ -10,7 +10,7 @@ tags:
 - Security
 - Serverless
 ---
-<img style="float:right;padding-right:20px;" title="From pixabay.com" src="https://vincentlauzon.files.wordpress.com/2019/03/arrow-communication-direction-235975-e1553284557941.jpg" />
+<img style="float:right;padding-right:20px;" title="From pixabay.com" src="/assets/2019/3/testing-outbound-connections-in-aks-kubenet-and-aci/arrow-communication-direction-235975-e1553284557941.jpg" />
 
 What happens if a pod in AKS initiates a connection with a private endpoint?  Which private IP address does the outbound connection uses?
 
@@ -22,7 +22,7 @@ But if we are using <a href="https://vincentlauzon.com/2018/09/06/aks-with-kuben
 
 I thought it would be interesting to simply do an experience to determine the answer.
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/03/experience.png" alt="Experience" />
+<img src="/assets/2019/3/testing-outbound-connections-in-aks-kubenet-and-aci/experience.png" alt="Experience" />
 
 Basically, we will deploy an AKS cluster with Kubenet plugin in a subnet.  In a <a href="https://docs.microsoft.com/en-us/azure/container-instances/container-instances-vnet">separate subnet</a>, we are going to deploy an Azure Container Instance (ACI).  On that latter subnet we are going to deploy a Network Security Group (NSG) to guard incoming connections.
 
@@ -159,7 +159,7 @@ The key part is that connection is established, so AKS can talk to ACI.
 
 Let's go to the Azure Portal and look at the NSG:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/03/nsg.png" alt="NSG Inbound rules" />
+<img src="/assets/2019/3/testing-outbound-connections-in-aks-kubenet-and-aci/nsg.png" alt="NSG Inbound rules" />
 
 The first rule let traffic coming from 172.16.0.0/20.  This correspond to the subnet occupied by AKS nodes.
 
@@ -167,7 +167,7 @@ The second rule let Azure Firewall probe pass (not used here but always good to 
 
 Let's modify the first rule by simply changing its priority from <em>100</em> to <em>400</em>.  We should end up with:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/03/nsg-modified.png" alt="Modified NSG Inbound rules" />
+<img src="/assets/2019/3/testing-outbound-connections-in-aks-kubenet-and-aci/nsg-modified.png" alt="Modified NSG Inbound rules" />
 
 Now if we look at our watch, we should have something like the following:
 

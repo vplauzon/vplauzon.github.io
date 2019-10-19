@@ -28,15 +28,15 @@ I won't go into ARM templates but we'll build this example into a Resource Gr
 
 So let's go in the <a href="https://portal.azure.com/" target="_blank">Preview Portal</a> to create a new Resource Group.  In the home page, select <em>Resource groups</em>.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/10/steps.jpg"><img class="alignnone size-full wp-image-1328" src="https://vincentlauzon.files.wordpress.com/2015/10/steps.jpg" alt="Steps" width="700" height="323" /></a>
+<a href="/assets/2015/11/azure-runbook-a-complete-simple-example/steps.jpg"><img class="alignnone size-full wp-image-1328" src="/assets/2015/11/azure-runbook-a-complete-simple-example/steps.jpg" alt="Steps" width="700" height="323" /></a>
 
 Then select Add.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/10/steps1.jpg"><img class="alignnone size-full wp-image-1329" src="https://vincentlauzon.files.wordpress.com/2015/10/steps1.jpg" alt="Steps" width="700" height="281" /></a>
+<a href="/assets/2015/11/azure-runbook-a-complete-simple-example/steps1.jpg"><img class="alignnone size-full wp-image-1329" src="/assets/2015/11/azure-runbook-a-complete-simple-example/steps1.jpg" alt="Steps" width="700" height="281" /></a>
 
 This should pop up the following blade.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/10/steps2.jpg"><img class="alignnone size-full wp-image-1330" src="https://vincentlauzon.files.wordpress.com/2015/10/steps2.jpg" alt="Steps" width="594" height="664" /></a>
+<a href="/assets/2015/11/azure-runbook-a-complete-simple-example/steps2.jpg"><img class="alignnone size-full wp-image-1330" src="/assets/2015/11/azure-runbook-a-complete-simple-example/steps2.jpg" alt="Steps" width="594" height="664" /></a>
 
 As <em>Resource Group Name</em>, type <em>SampleAutomations</em>.
 
@@ -48,13 +48,13 @@ Then click on the <em>Create</em> button at the bottom of the blade.
 <h2>Creating Automation Account</h2>
 Let's create an Automation Account.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/10/steps6.jpg"><img class="alignnone size-full wp-image-1335" src="https://vincentlauzon.files.wordpress.com/2015/10/steps6.jpg" alt="Steps" width="700" height="477" /></a>
+<a href="/assets/2015/11/azure-runbook-a-complete-simple-example/steps6.jpg"><img class="alignnone size-full wp-image-1335" src="/assets/2015/11/azure-runbook-a-complete-simple-example/steps6.jpg" alt="Steps" width="700" height="477" /></a>
 
 Give it a unique name (I used <em>myfirstautomation</em>), ensure it is in the resource group we created and in a suitable region (not all regions are supported yet) and click the <em>Create</em> button.
 <h2>Exploring Automation Account</h2>
 Let's open the newly created account.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/10/steps7.jpg"><img class="alignnone size-full wp-image-1336" src="https://vincentlauzon.files.wordpress.com/2015/10/steps7.jpg" alt="Steps" width="700" height="324" /></a>
+<a href="/assets/2015/11/azure-runbook-a-complete-simple-example/steps7.jpg"><img class="alignnone size-full wp-image-1336" src="/assets/2015/11/azure-runbook-a-complete-simple-example/steps7.jpg" alt="Steps" width="700" height="324" /></a>
 
 Runbooks are <a href="https://technet.microsoft.com/en-us/library/jj134242.aspx" target="_blank">PowerShell workflows</a>.  In a nutshell those are a mix of PowerShell scripts and Workflow Foundation (WF) worflows.  They allow long running workflows, pauses, restart, etc.  You already have a runbook, it's the tutorial runbook.  You can look at it.
 
@@ -73,11 +73,11 @@ Before we create our run book we need a storage account.
 
 We're going to create a storage account within the Resource Group we've created.  Click the plus button at the top left of the portal.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/10/steps3.jpg"><img class="alignnone size-full wp-image-1331" src="https://vincentlauzon.files.wordpress.com/2015/10/steps3.jpg" alt="Steps" width="536" height="316" /></a>
+<a href="/assets/2015/11/azure-runbook-a-complete-simple-example/steps3.jpg"><img class="alignnone size-full wp-image-1331" src="/assets/2015/11/azure-runbook-a-complete-simple-example/steps3.jpg" alt="Steps" width="536" height="316" /></a>
 
 Select <em>Data + Storage</em> then select <em>Storage Account</em>.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/10/steps4.jpg"><img class="alignnone size-full wp-image-1332" src="https://vincentlauzon.files.wordpress.com/2015/10/steps4.jpg" alt="Steps" width="592" height="208" /></a>
+<a href="/assets/2015/11/azure-runbook-a-complete-simple-example/steps4.jpg"><img class="alignnone size-full wp-image-1332" src="/assets/2015/11/azure-runbook-a-complete-simple-example/steps4.jpg" alt="Steps" width="592" height="208" /></a>
 
 Then at the bottom of the <em>Storage Account</em> pane, select "<em>Resource Manager</em>" and click <em>Create</em>.
 
@@ -85,7 +85,7 @@ Name the account something unique (I used <em>mysample2015</em>).
 
 In <em>Resource Group</em>, make sure to select the resource group you just created.  Make sure the location suits you and click <em>Create</em>.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/10/steps5.jpg"><img class="alignnone size-full wp-image-1334" src="https://vincentlauzon.files.wordpress.com/2015/10/steps5.jpg" alt="Steps" width="526" height="1069" /></a>
+<a href="/assets/2015/11/azure-runbook-a-complete-simple-example/steps5.jpg"><img class="alignnone size-full wp-image-1334" src="/assets/2015/11/azure-runbook-a-complete-simple-example/steps5.jpg" alt="Steps" width="526" height="1069" /></a>
 <h2>Creating Storage Container</h2>
 Using your favorite Azure Storage tool (I used <a href="http://clumsyleaf.com/products/cloudxplorer" target="_blank">CloudXplorer</a>), create a container named <em>my-watched-container</em>.
 
@@ -99,7 +99,7 @@ Go back to the run book, select assets then select variables then add variable.
 
 Give it <em>accountName</em> as a <em>Name</em>, leave the default <em>string type </em>there and for <em>value</em>, input the name of the storage account you created.  Then click create.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/10/steps8.jpg"><img class="alignnone size-full wp-image-1337" src="https://vincentlauzon.files.wordpress.com/2015/10/steps8.jpg" alt="Steps" width="535" height="1067" /></a>
+<a href="/assets/2015/11/azure-runbook-a-complete-simple-example/steps8.jpg"><img class="alignnone size-full wp-image-1337" src="/assets/2015/11/azure-runbook-a-complete-simple-example/steps8.jpg" alt="Steps" width="535" height="1067" /></a>
 
 Do the same for the following:
 <table>
@@ -126,13 +126,13 @@ Do the same for the following:
 </table>
 For the last one, select the encrypted option.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/10/steps9.jpg"><img class="alignnone size-full wp-image-1338" src="https://vincentlauzon.files.wordpress.com/2015/10/steps9.jpg" alt="Steps" width="552" height="382" /></a>
+<a href="/assets/2015/11/azure-runbook-a-complete-simple-example/steps9.jpg"><img class="alignnone size-full wp-image-1338" src="/assets/2015/11/azure-runbook-a-complete-simple-example/steps9.jpg" alt="Steps" width="552" height="382" /></a>
 
 This will make the variable inaccessible to operators in the future.  It’s an added level of security.
 
 You should have the following variables defined.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/10/steps10.jpg"><img class="alignnone size-full wp-image-1339" src="https://vincentlauzon.files.wordpress.com/2015/10/steps10.jpg" alt="Steps" width="700" height="407" /></a>
+<a href="/assets/2015/11/azure-runbook-a-complete-simple-example/steps10.jpg"><img class="alignnone size-full wp-image-1339" src="/assets/2015/11/azure-runbook-a-complete-simple-example/steps10.jpg" alt="Steps" width="700" height="407" /></a>
 <h2>Creating Runbook</h2>
 Let’s create the runbook.  Let’s close the <em>Variables</em> and <em>Assets</em> blade.
 
@@ -170,11 +170,11 @@ We can then test our Run book by hitting the <em>test</em> button on top. First 
 <h2>Scheduling Runbook</h2>
 Let’s schedule the runbook.  First let's publish it.  Close the test pane and click the <em>Publish</em> button.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/10/steps11.jpg"><img class="alignnone size-full wp-image-1341" src="https://vincentlauzon.files.wordpress.com/2015/10/steps11.jpg" alt="Steps" width="700" height="268" /></a>
+<a href="/assets/2015/11/azure-runbook-a-complete-simple-example/steps11.jpg"><img class="alignnone size-full wp-image-1341" src="/assets/2015/11/azure-runbook-a-complete-simple-example/steps11.jpg" alt="Steps" width="700" height="268" /></a>
 
 Then click the <em>Schedule</em> button and <em>Link a schedule to your runbook</em>.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/10/steps12.jpg"><img class="alignnone size-full wp-image-1342" src="https://vincentlauzon.files.wordpress.com/2015/10/steps12.jpg" alt="Steps" width="700" height="416" /></a>
+<a href="/assets/2015/11/azure-runbook-a-complete-simple-example/steps12.jpg"><img class="alignnone size-full wp-image-1342" src="/assets/2015/11/azure-runbook-a-complete-simple-example/steps12.jpg" alt="Steps" width="700" height="416" /></a>
 
 We didn't create any schedule yet, so let's create one in place.  Give it any name, set the recurrence to hourly and hit the create button.
 

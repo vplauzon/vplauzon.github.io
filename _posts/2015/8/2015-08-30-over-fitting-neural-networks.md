@@ -28,7 +28,7 @@ In one hit, I renamed fields and remove another one.
 
 We will then drop a <em>Split</em> module and connect it to the data set.  We will configure the split module as follow:
 
-<a href="assets/2015/8/over-fitting-neural-networks/image35.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2015/8/over-fitting-neural-networks/image_thumb35.png" alt="image" width="186" height="81" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2015/07/image35.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb35.png" alt="image" width="186" height="81" border="0" /></a>
 
 The rest can stay as is.
 
@@ -42,21 +42,21 @@ It might seem aggressive to take only %2.5 of the data for training and it is. 
 
 The experiment should look like this so far
 
-<a href="assets/2015/8/over-fitting-neural-networks/image32.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2015/8/over-fitting-neural-networks/image_thumb32.png" alt="image" width="459" height="333" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2015/07/image32.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb32.png" alt="image" width="459" height="333" border="0" /></a>
 <h3>Learning</h3>
 Let’s drop <em>Neural Network Regression</em>, <em>Train Model</em>, <em>Score Model</em> &amp; <em>Evaluate Model</em> modules on the surface and connect them like this:
 
-<a href="assets/2015/8/over-fitting-neural-networks/image36.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2015/8/over-fitting-neural-networks/image_thumb36.png" alt="image" width="479" height="368" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2015/07/image36.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb36.png" alt="image" width="479" height="368" border="0" /></a>
 
 In the <em>Train Model</em> module we select the weight column.  This is the column we want to predict.
 
 In the <em>Neural Network Regression</em> module, we set the number of hidden nodes to 2.
 
-<a href="assets/2015/8/over-fitting-neural-networks/image34.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2015/8/over-fitting-neural-networks/image_thumb34.png" alt="image" width="187" height="52" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2015/07/image34.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb34.png" alt="image" width="187" height="52" border="0" /></a>
 
 To really drive the point home and increase over fitting, let’s crank the number of learning iteration to 10 000.  This will be useful when we’ll increase the number of parameters.
 
-<a href="assets/2015/8/over-fitting-neural-networks/image37.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2015/8/over-fitting-neural-networks/image_thumb37.png" alt="image" width="183" height="52" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2015/07/image37.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb37.png" alt="image" width="183" height="52" border="0" /></a>
 
 And let’s leave the rest as is.
 
@@ -64,7 +64,7 @@ Let’s run the experiment.  This will train a 2-hidden nodes neural network wi
 
 We can look at the result of <em>Evaluate Model</em> module:
 
-<a href="assets/2015/8/over-fitting-neural-networks/image38.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2015/8/over-fitting-neural-networks/image_thumb38.png" alt="image" width="463" height="182" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2015/07/image38.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb38.png" alt="image" width="463" height="182" border="0" /></a>
 
 The metrics are <a href="https://msdn.microsoft.com/en-US/library/azure/dn906026" target="_blank">defined here</a>.  We are going to look at the <em>Relative Squared Error</em>.
 
@@ -74,13 +74,13 @@ Now how does the model performs on data it didn’t see in its training?
 
 Let’s drop another <em>Score Model</em> &amp; <em>Evaluate Model</em> modules and connect them like this:
 
-<a href="assets/2015/8/over-fitting-neural-networks/image39.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2015/8/over-fitting-neural-networks/image_thumb39.png" alt="image" width="476" height="310" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2015/07/image39.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb39.png" alt="image" width="476" height="310" border="0" /></a>
 
 Basically we will compute the score, or prediction, using the same train model but on different data, on the 195 remaining records not used during testing.
 
 We run the experiment again and we get the following results on the test evaluation:
 
-<a href="assets/2015/8/over-fitting-neural-networks/image40.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2015/8/over-fitting-neural-networks/image_thumb40.png" alt="image" width="468" height="180" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2015/07/image40.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb40.png" alt="image" width="468" height="180" border="0" /></a>
 
 The evaluation is higher than the training data.  It nearly always is.  Let’s see how does evolve when we increase the number of hidden nodes.
 <h3>Comparing with different number of nodes</h3>
@@ -92,7 +92,7 @@ Failing that, we are going to manually change the number of hidden node in the <
 
 In order to make our life easier, let’s make the reporting of the results we are looking for more straightforward than having to open the results of the two <em>Evaluate Model</em> modules.  Let’s drop another <em>Apply SQL Transformation</em> and connect it this way:
 
-<a href="assets/2015/8/over-fitting-neural-networks/image41.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2015/8/over-fitting-neural-networks/image_thumb41.png" alt="image" width="410" height="168" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2015/07/image41.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb41.png" alt="image" width="410" height="168" border="0" /></a>
 
 and type the following SQL expression in:
 
@@ -103,7 +103,7 @@ FROM t1, t2</em>
 
 We are basically taking both outputs of <em>Evaluation Model</em> modules and renaming them which gives us (after another run) the nice result:
 
-<a href="assets/2015/8/over-fitting-neural-networks/image42.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2015/8/over-fitting-neural-networks/image_thumb42.png" alt="image" width="190" height="119" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2015/07/image42.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb42.png" alt="image" width="190" height="119" border="0" /></a>
 
 Neat, hen?
 
@@ -206,7 +206,7 @@ We can see that as we increased the number of parameters, the training error got
 
 A more visual way to look at it is to look at the actual predictions done by the models.
 
-<a href="assets/2015/8/over-fitting-neural-networks/image44.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2015/8/over-fitting-neural-networks/image_thumb44.png" alt="image" width="481" height="425" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2015/07/image44.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb44.png" alt="image" width="481" height="425" border="0" /></a>
 
 The green dots are the 200 points, the 5 yellow dots are the training set while the blue dots are the prediction for a Neural Network with 200 hidden nodes.
 

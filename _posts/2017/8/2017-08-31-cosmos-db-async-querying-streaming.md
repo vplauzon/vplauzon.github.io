@@ -8,7 +8,7 @@ tags:
 - Data
 - NoSQL
 ---
-<img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-223022[1]" src="assets/2017/8/cosmos-db-async-querying-streaming/pexels-photo-2230221.jpg" alt="pexels-photo-223022[1]" width="400" height="267" align="right" border="0" />I wrote <a href="https://vincentlauzon.com/2015/01/06/documentdb-async-querying-streaming/" target="_blank" rel="noopener">an article</a> back in January 2015 about async querying Azure DocumentDB using the .NET SDK.
+<img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-223022[1]" src="http://vincentlauzon.files.wordpress.com/2017/08/pexels-photo-2230221.jpg" alt="pexels-photo-223022[1]" width="400" height="267" align="right" border="0" />I wrote <a href="https://vincentlauzon.com/2015/01/06/documentdb-async-querying-streaming/" target="_blank" rel="noopener">an article</a> back in January 2015 about async querying Azure DocumentDB using the .NET SDK.
 
 The service was still in preview back then.
 

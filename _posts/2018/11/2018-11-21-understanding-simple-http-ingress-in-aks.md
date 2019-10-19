@@ -9,7 +9,7 @@ tags:
 - Networking
 - Web
 ---
-<img style="float:left;padding-right:20px;" title="From leeroy on www.pexels.com" src="https://vincentlauzon.files.wordpress.com/2018/11/door-e1541192827600.jpg" />
+<img style="float:left;padding-right:20px;" title="From leeroy on www.pexels.com" src="/assets/2018/11/understanding-simple-http-ingress-in-aks/door-e1541192827600.jpg" />
 
 We <a href="https://vincentlauzon.com/2018/10/10/about-ingress-in-azure-kubernetes-service-aks/">looked at Kubernetes Ingress conceptually</a>.  We looked at different use cases:  URL based routing and multiple domains.
 
@@ -150,7 +150,7 @@ We get the default back end service since no ingress is configured.
 
 Now let's see one of the patterns we discussed in a previous article:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/10/url-based-routing.png" alt="URL based routing" />
+<img src="/assets/2018/11/understanding-simple-http-ingress-in-aks/url-based-routing.png" alt="URL based routing" />
 
 This is called <a href="https://kubernetes.io/docs/concepts/services-networking/ingress/#simple-fanout">Simple fan out</a> in Kubernetes documentation.
 
@@ -158,7 +158,7 @@ Let's add a domain name on the IP address.  This isn't mandatory, but it will ma
 
 Let's go to the IP address in the node resource group, using the portal.  In the Configuration tab, let's specify the DNS name label as <em>vincentpizza</em>:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/11/dns-label.png" alt="Setting DNS name label" />
+<img src="/assets/2018/11/understanding-simple-http-ingress-in-aks/dns-label.png" alt="Setting DNS name label" />
 
 Let's deploy <a href="https://github.com/vplauzon/aks/blob/master/http-ingress/url-based-routing.yaml">url-based-routing.yaml</a>:
 
@@ -240,7 +240,7 @@ In the rules we route depending on paths.
 
 We can then browse to both path on our public IP and see the ingress in action:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/11/url-routing.png" alt="URL Routing Browsing" />
+<img src="/assets/2018/11/understanding-simple-http-ingress-in-aks/url-routing.png" alt="URL Routing Browsing" />
 
 The ingress is a service reverse proxying other services.  Under the same domain name we have two applications running on different pods (processes).  They appear to be the same application thanks to ingress.
 
@@ -250,7 +250,7 @@ It is interesting to notice that if we browse to http://vincentpizza.eastus2.clo
 
 To properly demonstrate the domain name overload, we need multiple domain names.
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/10/virtualhosting.png" alt="Domain name overload" />
+<img src="/assets/2018/11/understanding-simple-http-ingress-in-aks/virtualhosting.png" alt="Domain name overload" />
 
 This is called <a href="https://kubernetes.io/docs/concepts/services-networking/ingress/#name-based-virtual-hosting">Name based virtual hosting</a> in Kubernetes documentation.
 
@@ -301,7 +301,7 @@ We could use <a href="https://docs.microsoft.com/en-us/azure/dns/dns-overview">A
 
 In our <a href="https://vincentlauzon.com/2018/10/10/about-ingress-in-azure-kubernetes-service-aks/">conceptual article</a>, we establish that ingress communications look a bit like this:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/10/azure.png" alt="Communication" />
+<img src="/assets/2018/11/understanding-simple-http-ingress-in-aks/azure.png" alt="Communication" />
 
 Let's validate this by looking at the Ingress Controller's pods and the pizza-offers pods:
 

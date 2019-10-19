@@ -9,7 +9,7 @@ tags:
 - Containers
 - Virtual Machines
 ---
-<a href="assets/2018/4/linux-custom-script-docker-sandbox/boy-child-childhood-6459.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="boy-child-childhood-6459" src="assets/2018/4/linux-custom-script-docker-sandbox/boy-child-childhood-6459_thumb.jpg" alt="boy-child-childhood-6459" width="320" height="213" align="right" border="0" /></a>I do a lot of proof of concepts (POCs) as part of my job.
+<a href="http://vincentlauzon.files.wordpress.com/2018/04/boy-child-childhood-6459.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="boy-child-childhood-6459" src="http://vincentlauzon.files.wordpress.com/2018/04/boy-child-childhood-6459_thumb.jpg" alt="boy-child-childhood-6459" width="320" height="213" align="right" border="0" /></a>I do a lot of proof of concepts (POCs) as part of my job.
 
 I hate keeping demo environment around.  They tend to become brittle, out-of-date and filled with the last stuff I did.
 

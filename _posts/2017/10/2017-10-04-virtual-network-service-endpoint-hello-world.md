@@ -27,17 +27,17 @@ Let’s create a text file with the proverbial <em>Hello World</em> sentence so 
 
 We should be able to access the file via its public URL.  For instance, given a storage account named <em>vplsto</em> we can find the URL by browsing the blobs.
 
-<a href="assets/2017/10/virtual-network-service-endpoint-hello-world/image9.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/10/virtual-network-service-endpoint-hello-world/image_thumb9.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/09/image9.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/09/image_thumb9.png" alt="image" border="0" /></a>
 
 Then selecting the container we can select the blob.
 
-<a href="assets/2017/10/virtual-network-service-endpoint-hello-world/image10.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/10/virtual-network-service-endpoint-hello-world/image_thumb10.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/09/image10.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/09/image_thumb10.png" alt="image" border="0" /></a>
 
-And there we should have access to the blob URL.<a href="assets/2017/10/virtual-network-service-endpoint-hello-world/image11.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/10/virtual-network-service-endpoint-hello-world/image_thumb11.png" alt="image" border="0" /></a>
+And there we should have access to the blob URL.<a href="http://vincentlauzon.files.wordpress.com/2017/09/image11.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/09/image_thumb11.png" alt="image" border="0" /></a>
 
 We should be able to open it in a browser.
 
-<a href="assets/2017/10/virtual-network-service-endpoint-hello-world/image12.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/10/virtual-network-service-endpoint-hello-world/image_thumb12.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/09/image12.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/09/image_thumb12.png" alt="image" border="0" /></a>
 <h2>Virtual Machine</h2>
 Let’s create a Virtual Machine within the same resource group.
 
@@ -45,15 +45,15 @@ Here we’re going to use a Linux distribution in order to use the CURL command 
 
 Once the deployment is done, let’s select the Virtual Network.
 
-<a href="assets/2017/10/virtual-network-service-endpoint-hello-world/image13.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/10/virtual-network-service-endpoint-hello-world/image_thumb13.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/09/image13.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/09/image_thumb13.png" alt="image" border="0" /></a>
 
 Let’s select the Subnet tab and then the subnet where we deployed the VM (in our case the subnet is names <em>VMs</em>).
 
-<a href="assets/2017/10/virtual-network-service-endpoint-hello-world/image14.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/10/virtual-network-service-endpoint-hello-world/image_thumb14.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/09/image14.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/09/image_thumb14.png" alt="image" border="0" /></a>
 
 At the bottom of the page, let’s select the <em>Services</em> drop down under <em>Service Endpoints</em> section.  Let’s pick <em>Microsoft.Storage</em>.
 
-<a href="assets/2017/10/virtual-network-service-endpoint-hello-world/image15.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/10/virtual-network-service-endpoint-hello-world/image_thumb15.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/09/image15.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/09/image_thumb15.png" alt="image" border="0" /></a>
 
 Let’s hit save.
 <h2></h2>
@@ -66,7 +66,7 @@ The aim of this design is to have potentially two individuals with two different
 <h2>Configuring Storage Account</h2>
 In the Storage Account, main screen, let’s select <em>Firewalls and virtual networks</em>.
 
-<a href="assets/2017/10/virtual-network-service-endpoint-hello-world/image16.png"><img style="margin:0;border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/10/virtual-network-service-endpoint-hello-world/image_thumb16.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/09/image16.png"><img style="margin:0;border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/09/image_thumb16.png" alt="image" border="0" /></a>
 
 From there, let’s select the <em>Selected Networks</em> radio button.
 
@@ -74,13 +74,13 @@ Then let’s click on <em>Add existing virtual network</em> and select the VNET 
 
 Let’s leave the <em>Exceptions</em> without changing it.
 
-<a href="assets/2017/10/virtual-network-service-endpoint-hello-world/image17.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/10/virtual-network-service-endpoint-hello-world/image_thumb17.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/09/image17.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/09/image_thumb17.png" alt="image" border="0" /></a>
 
 Let’s hit save.
 
 If we refresh our web page pointing to the blob we should have an <em>Authorization</em> error page.
 
-<a href="assets/2017/10/virtual-network-service-endpoint-hello-world/image18.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/10/virtual-network-service-endpoint-hello-world/image_thumb18.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/09/image18.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/09/image_thumb18.png" alt="image" border="0" /></a>
 
 This is because our desktop computer isn’t on the VNET we configured.
 

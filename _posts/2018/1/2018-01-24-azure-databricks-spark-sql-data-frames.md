@@ -8,7 +8,7 @@ tags:
 - Big Data
 - Data
 ---
-<img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-411089 (1)" src="assets/2018/1/azure-databricks-spark-sql-data-frames/pexels-photo-411089-1.jpg" alt="pexels-photo-411089 (1)" width="320" height="213" align="right" border="0" /><a href="https://vincentlauzon.com/2017/12/18/azure-databricks-getting-started/">We looked at Azure Databricks</a> a few weeks ago.
+<img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-411089 (1)" src="http://vincentlauzon.files.wordpress.com/2018/01/pexels-photo-411089-1.jpg" alt="pexels-photo-411089 (1)" width="320" height="213" align="right" border="0" /><a href="https://vincentlauzon.com/2017/12/18/azure-databricks-getting-started/">We looked at Azure Databricks</a> a few weeks ago.
 
 Azure Databricks is a managed Apache Spark Cluster service.
 
@@ -18,7 +18,7 @@ In this article, we are going to do the same analysis using Spark SQL &amp; Data
 
 It is important to note that about everything in this article <strong>isn't</strong> specific to Azure Databricks and would work with any distribution of Apache Spark.
 <h2>Spark SQL &amp; Data Frames</h2>
-<img style="border:0 currentcolor;float:left;display:inline;background-image:none;" src="https://vincentlauzon.files.wordpress.com/2017/12/databricks_logo1.png" align="left" border="0" />
+<img style="border:0 currentcolor;float:left;display:inline;background-image:none;" src="/assets/2018/1/azure-databricks-spark-sql-data-frames/databricks_logo1.png" align="left" border="0" />
 
 Spark SQL &amp; Data Frames is well documented on the <a href="https://spark.apache.org/docs/latest/sql-programming-guide.html" target="_blank" rel="noopener">Apache Spark online documentation</a>.  They defined Spark SQL in those words:
 

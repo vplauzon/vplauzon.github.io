@@ -10,7 +10,7 @@ tags:
 - DevOps
 - Serverless
 ---
-<img style="float:right;padding-right:20px;" title="From Pexels" src="https://vincentlauzon.files.wordpress.com/2018/11/symphony-orchestra-183608_640-e1543609127507.jpg" />
+<img style="float:right;padding-right:20px;" title="From Pexels" src="/assets/2018/12/using-azure-devops-rest-api-to-start-multiple-releases-with-azure-logic-apps/symphony-orchestra-183608_640-e1543609127507.jpg" />
 
 In our <a href="https://vincentlauzon.com/2018/12/05/using-azure-devops-rest-api-to-start-multiple-releases/">last article</a>, we looked at how we could leverage the <a href="https://docs.microsoft.com/en-ca/rest/api/azure/devops/?view=azure-devops-rest-5.0">Azure DevOps REST API</a> to trigger multiple releases.
 
@@ -90,7 +90,7 @@ There are six parameters:
 
 This should deploy very quickly and yield three Logic Apps:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/11/logic-apps.png" alt="Logic Apps" />
+<img src="/assets/2018/12/using-azure-devops-rest-api-to-start-multiple-releases-with-azure-logic-apps/logic-apps.png" alt="Logic Apps" />
 
 Let's look at each of them.
 
@@ -98,7 +98,7 @@ Let's look at each of them.
 
 This app orchestrates the workflow:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/11/release-orchestration.png" alt="Release Orchestration" />
+<img src="/assets/2018/12/using-azure-devops-rest-api-to-start-multiple-releases-with-azure-logic-apps/release-orchestration.png" alt="Release Orchestration" />
 
 It doesn't receive any parameter.  The ARM template pushes its parameters to the Logic Apps parameters.
 
@@ -113,7 +113,7 @@ The workflow is straightforward:
 
 The loop is quite straightforward itself
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/11/until-top-release-over.png" alt="Until" />
+<img src="/assets/2018/12/using-azure-devops-rest-api-to-start-multiple-releases-with-azure-logic-apps/until-top-release-over.png" alt="Until" />
 
 <ol>
 <li>Wait for 20 seconds</li>
@@ -129,7 +129,7 @@ We can run this Logic Apps and it should orchestrate the two releases.
 
 This app is a thin wrapper around the <a href="https://docs.microsoft.com/en-ca/rest/api/azure/devops/release/releases/create?view=azure-devops-rest-5.0">Create Release API</a>.
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/11/create-release.png" alt="Create Release" />
+<img src="/assets/2018/12/using-azure-devops-rest-api-to-start-multiple-releases-with-azure-logic-apps/create-release.png" alt="Create Release" />
 
 <ol>
 <li>Converts the PAT to its base-64 representation, prepending a colon (<strong>:</strong>) to it</li>
@@ -143,7 +143,7 @@ This app is a thin wrapper around the <a href="https://docs.microsoft.com/en-ca/
 
 Similarly, this app is a thin wrapper around the <a href="https://docs.microsoft.com/en-ca/rest/api/azure/devops/release/releases/get%20release?view=azure-devops-rest-5.0">Get Release API</a>.
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/11/get-release-status.png" alt="Get Release Status" />
+<img src="/assets/2018/12/using-azure-devops-rest-api-to-start-multiple-releases-with-azure-logic-apps/get-release-status.png" alt="Get Release Status" />
 
 <ol>
 <li>Converts the PAT to its base-64 representation, prepending a colon (<strong>:</strong>) to it</li>

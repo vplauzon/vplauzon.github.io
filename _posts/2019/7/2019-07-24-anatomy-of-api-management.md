@@ -7,7 +7,7 @@ categories:
 tags:
 - API
 ---
-<img style="float:left;padding-right:20px;" title="From pixabay.com" src="https://vincentlauzon.files.wordpress.com/2019/07/brain-3168269_640-e1562960414388.png" />
+<img style="float:left;padding-right:20px;" title="From pixabay.com" src="/assets/2019/7/anatomy-of-api-management/brain-3168269_640-e1562960414388.png" />
 
 When I want to wrap my head around a non-trivial Azure service with a few moving parts, I like to draw a diagram.
 
@@ -19,7 +19,7 @@ The diagram doesn't contain every single <a href="https://docs.microsoft.com/en-
 
 <h2>API Management Anatomy</h2>
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/07/apimanagement.png" alt="API Management Anatomy" />
+<img src="/assets/2019/7/anatomy-of-api-management/apimanagement.png" alt="API Management Anatomy" />
 
 We see the <a href="https://docs.microsoft.com/en-ca/azure/templates/microsoft.apimanagement/2019-01-01/service">API Management Service</a> in the middle, a little darker.  This is the actual API Management instance.  It has a SKU (e.g. consumption, standard, premium), a list of additional locations (to geo distribute it) and a VNET config (to integrate it to an existing VNET).
 

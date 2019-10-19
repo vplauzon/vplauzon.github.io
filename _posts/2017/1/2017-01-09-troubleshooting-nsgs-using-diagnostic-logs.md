@@ -8,7 +8,7 @@ tags:
 - Networking
 - Virtual Machines
 ---
-<img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" src="https://vincentlauzon.files.wordpress.com/2017/01/marketing-man-person-communication2.jpg" width="379" height="253" align="right" border="0" />I’ve wrote about how to use Network Security Group (NSG) <a href="https://vincentlauzon.com/2015/12/21/using-network-security-groups-nsg-to-secure-network-access-to-an-environment/">before</a>.
+<img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" src="/assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/marketing-man-person-communication2.jpg" width="379" height="253" align="right" border="0" />I’ve wrote about how to use Network Security Group (NSG) <a href="https://vincentlauzon.com/2015/12/21/using-network-security-groups-nsg-to-secure-network-access-to-an-environment/">before</a>.
 
 Chances are, once you get a complicated enough set of rules in a NSG, you’ll find yourself with NSGs that do not do what you think they should do.
 
@@ -521,53 +521,53 @@ Rule Counter will give us a count of how many times a given rule was triggered f
 
 We’ll start by the subnet NSG.
 
-<a href="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image_thumb.png" alt="image" width="640" height="417" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/01/image.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/01/image_thumb.png" alt="image" width="640" height="417" border="0" /></a>
 
 Scrolling all the way down on the NSG’s pane left menu, we select <em>Diagnostics Logs</em>.
 
-<a href="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image1.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image_thumb1.png" alt="image" width="338" height="480" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/01/image1.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/01/image_thumb1.png" alt="image" width="338" height="480" border="0" /></a>
 
 The pane should look as follow since no diagnostics are enabled.  Let’s click on <em>Turn on diagnostics</em>.
 
-<a href="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image2.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image_thumb2.png" alt="image" width="640" height="186" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/01/image2.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/01/image_thumb2.png" alt="image" width="640" height="186" border="0" /></a>
 
 We then turn it on.
 
-<a href="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image3.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image_thumb3.png" alt="image" width="640" height="273" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/01/image3.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/01/image_thumb3.png" alt="image" width="640" height="273" border="0" /></a>
 
 For simplicity here, we’re going to use the <em>Archive to a storage account</em>.
 
-<a href="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image4.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image_thumb4.png" alt="image" width="525" height="480" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/01/image4.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/01/image_thumb4.png" alt="image" width="525" height="480" border="0" /></a>
 
 We will configure the storage account to send the logs to.
 
-<a href="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image5.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image_thumb5.png" alt="image" width="640" height="192" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/01/image5.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/01/image_thumb5.png" alt="image" width="640" height="192" border="0" /></a>
 
 For that, we’re selecting the standard account created by the template or whichever storage account you fancy.  Log Diagnostics will go and create a blob container for each category in the selected account.  The names a predefined (you can’t choose).
 
 We select the <em>NetworkSecurityGroupRuleCounter</em> category.
 
-<a href="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image6.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image_thumb6.png" alt="image" width="640" height="146" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/01/image6.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/01/image_thumb6.png" alt="image" width="640" height="146" border="0" /></a>
 
 And finally we hit the save button on the pane.
 
 We’ll do the same thing with the VM NSG.
 
-<a href="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image7.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image_thumb7.png" alt="image" width="640" height="391" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/01/image7.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/01/image_thumb7.png" alt="image" width="640" height="391" border="0" /></a>
 <h2>Creating logs</h2>
 No we are going to try to get through our VM.  We are going to describe how to that with the sample I gave but if you are troubleshooting something, just try the faulty connection.
 
 We’re going to try to RDP to the public IP.  First we need the public IP domain name.  So in the resource group:
 
-<a href="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image8.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image_thumb8.png" alt="image" width="640" height="285" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/01/image8.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/01/image_thumb8.png" alt="image" width="640" height="285" border="0" /></a>
 
 At the top of the pane we’ll find the DNS name that we can copy.
 
-<a href="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image9.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image_thumb9.png" alt="image" width="640" height="170" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/01/image9.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/01/image_thumb9.png" alt="image" width="640" height="170" border="0" /></a>
 
 We can then paste it in an RDP window.
 
-<a href="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image10.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image_thumb10.png" alt="image" width="640" height="405" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/01/image10.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/01/image_thumb10.png" alt="image" width="640" height="405" border="0" /></a>
 
 Trying to connect should fail and it should leave traces in the logs for us to analyse.
 <h2>Analysis</h2>
@@ -577,7 +577,7 @@ Actually, a way to make sure to get clean logs is to delete the blob container a
 
 To get the logs in the storage account we need some tool.  I use <a href="http://storageexplorer.com/" target="_blank">Microsoft Azure Storage Explorer</a>.
 
-<a href="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image11.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2017/1/troubleshooting-nsgs-using-diagnostic-logs/image_thumb11.png" alt="image" width="640" height="235" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/01/image11.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/01/image_thumb11.png" alt="image" width="640" height="235" border="0" /></a>
 
 The blob container is called <em>insights-logs-networksecuritygrouprulecounter</em>.
 

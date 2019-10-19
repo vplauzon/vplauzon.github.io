@@ -9,7 +9,7 @@ tags:
 - Data
 - Operations
 ---
-<img style="float:right;padding-right:5px;" title="From pixabay.com" src="https://vincentlauzon.files.wordpress.com/2019/05/connection-control-center-desk-256219-e1556816181320.jpg" />
+<img style="float:right;padding-right:5px;" title="From pixabay.com" src="/assets/2019/5/monitoring-metrics-in-aks/connection-control-center-desk-256219-e1556816181320.jpg" />
 
 AKS has a <a href="https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-overview">nice integration with Azure monitor</a>.  Out of the box there are a couple of dashboards for common metrics.
 
@@ -205,7 +205,7 @@ On the left-hand side, we can see two categories of "tables":
 
 Although the key for performance metrics is a <em>LogManagement</em> table, let's start by looking at the <em>ContainerInsights</em>:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/05/container-tables.png" alt="Container tables" />
+<img src="/assets/2019/5/monitoring-metrics-in-aks/container-tables.png" alt="Container tables" />
 
 Those are all AKS related.
 
@@ -218,7 +218,7 @@ KubePodInventory
 
 We can then click <em>Run</em> (or type <em>Shift-Enter</em>).  The screen should look as follow once we exploded the <em>KubePodInventory</em> table on the left:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/05/kubepodinventory-exploration.png" alt="KubePodInventory exploration" />
+<img src="/assets/2019/5/monitoring-metrics-in-aks/kubepodinventory-exploration.png" alt="KubePodInventory exploration" />
 
 This is a good first step to explore logs, to get a feel of the data available.
 
@@ -311,7 +311,7 @@ KubePodInventory
 
 We can see the result is close to what we need:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/05/kubepodinventory-trinity.png" alt="KubePodInventory trinity" />
+<img src="/assets/2019/5/monitoring-metrics-in-aks/kubepodinventory-trinity.png" alt="KubePodInventory trinity" />
 
 The first two columns look ok.  The <em>ContainerName</em> is prepended by an ID we do not need.  We can get rid of the prefix easily:
 
@@ -323,7 +323,7 @@ KubePodInventory
 
 This gives us what we need.
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/05/kubepodinventory-fixed.png" alt="Fixed Container Name" />
+<img src="/assets/2019/5/monitoring-metrics-in-aks/kubepodinventory-fixed.png" alt="Fixed Container Name" />
 
 We now have everything to join the two tables:
 
@@ -352,7 +352,7 @@ We declared a few variables at the beginning using the <em>let</em> keyword.  Fi
 
 We might need to perform a few more <code>curl "http://$ip?duration=20&amp;amp;core=2</code> if more than 60 minutes elapsed since we did it.  It takes a few minutes for logs to get ingested and available in the workspace.
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/05/chart.png" alt="Chart" />
+<img src="/assets/2019/5/monitoring-metrics-in-aks/chart.png" alt="Chart" />
 
 We get a chart of exactly what we needed:  the CPU usage of each pod.
 

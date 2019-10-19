@@ -8,7 +8,7 @@ tags:
 - Automation
 - Data
 ---
-<a href="assets/2016/12/azure-sql-elastic-pool-arm-templates/coil-632650_6401.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="coil-632650_640[1]" src="assets/2016/12/azure-sql-elastic-pool-arm-templates/coil-632650_6401_thumb.jpg" alt="coil-632650_640[1]" width="380" height="253" align="right" border="0" /></a>In my <a href="https://vincentlauzon.com/2016/12/18/azure-sql-elastic-pool-overview/">last article</a>, I covered Azure SQL Elastic Pool.  In this one I cover how to provision it using ARM templates.
+<a href="http://vincentlauzon.files.wordpress.com/2016/12/coil-632650_6401.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="coil-632650_640[1]" src="http://vincentlauzon.files.wordpress.com/2016/12/coil-632650_6401_thumb.jpg" alt="coil-632650_640[1]" width="380" height="253" align="right" border="0" /></a>In my <a href="https://vincentlauzon.com/2016/12/18/azure-sql-elastic-pool-overview/">last article</a>, I covered Azure SQL Elastic Pool.  In this one I cover how to provision it using ARM templates.
 
 As of today (December 2016), the documentation about Azure SQL Elastic Pool provisioning via ARM templates is…  <a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-elastic-pool-create-portal" target="_blank">not existing</a>.
 
@@ -222,13 +222,13 @@ Let’s look at the result.  Let’s first go in the resource group where we de
 
 In the resource list we should see the following:
 
-<a href="assets/2016/12/azure-sql-elastic-pool-arm-templates/image13.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="assets/2016/12/azure-sql-elastic-pool-arm-templates/image_thumb13.png" alt="image" width="640" height="379" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/12/image13.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/12/image_thumb13.png" alt="image" width="640" height="379" border="0" /></a>
 
 We first have our server, with default name <em>pooldemoserver</em>, our two pools, <em>Pool-A</em> &amp; <em>Pool-B</em>, and 6 databases.
 
 Let’s select <em>Pool-A</em>.
 
-<a href="assets/2016/12/azure-sql-elastic-pool-arm-templates/image14.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="assets/2016/12/azure-sql-elastic-pool-arm-templates/image_thumb14.png" alt="image" width="640" height="339" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/12/image14.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/12/image_thumb14.png" alt="image" width="640" height="339" border="0" /></a>
 
 We can see the pool is of <em>Standard</em> edition, has 200 eDTUs with a minimum of 10 eDTUs and maximum 50 per databases, which is faithful to its ARM definition (line 10-13).
 
@@ -254,18 +254,18 @@ Similarly, <em>Pool-B</em> has a minimum of 0 and a maximum of 100.  The maximu
 
 Let’s select the databases in <em>Pool-B</em>.  Alternatively, we can select the <em>Configure pool</em> tool bar option.
 
-<a href="assets/2016/12/azure-sql-elastic-pool-arm-templates/image15.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="assets/2016/12/azure-sql-elastic-pool-arm-templates/image_thumb15.png" alt="image" width="640" height="315" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/12/image15.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/12/image_thumb15.png" alt="image" width="640" height="315" border="0" /></a>
 
 The following pane shows us the eDTUs consumed in the last 14 days.  It also allows us to change the assigned eDTUs to the pool.
 
 It is in this pane that we can add / remove databases from the pool.
 
-<a href="assets/2016/12/azure-sql-elastic-pool-arm-templates/image16.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="assets/2016/12/azure-sql-elastic-pool-arm-templates/image_thumb16.png" alt="image" width="640" height="90" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/12/image16.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/12/image_thumb16.png" alt="image" width="640" height="90" border="0" /></a>
 
 In order to remove databases from the pool, they must first be selected in the lower right pane corner.  We will have to chose a standalone pricing tier for each DB and hit save.  As of today (December 2016), there are no way to <em>move</em> databases from one pool to another directly, i.e. they must first be converted as a stand alone.  It is possible to move databases from a pool to another using PowerShell as I’ll demonstrate in a future article though.
 
 If we go back to the resource group and select any of the database, we have a link to its parent pool.
 
-<a href="assets/2016/12/azure-sql-elastic-pool-arm-templates/image17.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="assets/2016/12/azure-sql-elastic-pool-arm-templates/image_thumb17.png" alt="image" width="640" height="306" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/12/image17.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/12/image_thumb17.png" alt="image" width="640" height="306" border="0" /></a>
 <h2>Summary</h2>
 Despite the current lack (as of December 2016) of documentation around it, it is quite possible to create databases within an elastic pool using ARM templates as we’ve demonstrated here.

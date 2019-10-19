@@ -9,7 +9,7 @@ tags:
 ---
 It is said that <a href="https://en.wikipedia.org/wiki/Netflix" target="_blank">Netflix</a> represents the new I.T. corporation well.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/07/netflix-xbox360-hires1.jpg"><img class=" size-medium wp-image-816 aligncenter" src="https://vincentlauzon.files.wordpress.com/2015/07/netflix-xbox360-hires1.jpg?w=294" alt="Netflix-Xbox360-HiRes[1]" width="294" height="300" /></a>
+<a href="/assets/2015/8/corporate-culture/netflix-xbox360-hires1.jpg"><img class=" size-medium wp-image-816 aligncenter" src="/assets/2015/8/corporate-culture/netflix-xbox360-hires1.jpg?w=294" alt="Netflix-Xbox360-HiRes[1]" width="294" height="300" /></a>
 
 If you are interested in seeing what their corporate culture looks like, have a look a the <a href="http://www.slideshare.net/reed2001/culture-1798664" target="_blank">slide deck they show to their job candidates</a>.
 

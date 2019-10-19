@@ -9,7 +9,7 @@ tags:
 - Identity
 - Security
 ---
-<img style="float:left;" src="https://vincentlauzon.files.wordpress.com/2018/08/adult-blank-business-326576-e1534517575221.jpg" title="From Pexels" />
+<img style="float:left;" src="/assets/2018/8/creating-a-service-principal-with-azure-cli/adult-blank-business-326576-e1534517575221.jpg" title="From Pexels" />
 
 Service Principals are a bit of a weird beast.  They are <a href="https://vincentlauzon.com/2016/03/10/azure-active-directory-application/">Azure Active Directory applications</a>with kind of an extra bit.  That bit  says they can actually login by themselves.  Hence the name <em>principal</em>.  But being an <em>application</em> is kind of weird.
 
@@ -82,7 +82,7 @@ Some API will need the <em>Object ID</em>, others the <em>Application ID</em>.
 
 To make matter worse they aren't always refered to with those names.  For instance, if we look at the documentation for <code>az ad sp show -h</code>, we get (at the time of this writing, i.e. mid-August 2018):
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/08/sp.png" alt="Show documentation" />
+<img src="/assets/2018/8/creating-a-service-principal-with-azure-cli/sp.png" alt="Show documentation" />
 
 The tragedy here is that using the service principal display name doesn't work nor does the object id.  We need to use the <em>Application ID</em>.  Hopefully, the documentation will be fixed by the time you read this.
 

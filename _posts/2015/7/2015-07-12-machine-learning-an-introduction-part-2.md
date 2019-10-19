@@ -12,11 +12,11 @@ In a <a href="http://vincentlauzon.com/2015/07/02/machine-learning-an-introducti
 
 Of course, I used an extremely simple example in order to add noise to that main goal.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/07/binary-63530_6401.jpg"><img class=" size-medium wp-image-889 aligncenter" style="height:50%;width:50%;" src="https://vincentlauzon.files.wordpress.com/2015/07/binary-63530_6401.jpg" alt="binary-63530_640[1]" /></a>
+<a href="/assets/2015/7/machine-learning-an-introduction-part-2/binary-63530_6401.jpg"><img class=" size-medium wp-image-889 aligncenter" style="height:50%;width:50%;" src="/assets/2015/7/machine-learning-an-introduction-part-2/binary-63530_6401.jpg" alt="binary-63530_640[1]" /></a>
 
 Machine Learning is about extracting information from a sample data set in order to select the optimal model (best set of parameters) fitting the sample set.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/06/machinelearningoverview.png"><img class="aligncenter wp-image-863 size-full" src="https://vincentlauzon.files.wordpress.com/2015/06/machinelearningoverview.png" alt="MachineLearningOverview" width="469" height="196" /></a>
+<a href="/assets/2015/7/machine-learning-an-introduction-part-2/machinelearningoverview.png"><img class="aligncenter wp-image-863 size-full" src="/assets/2015/7/machine-learning-an-introduction-part-2/machinelearningoverview.png" alt="MachineLearningOverview" width="469" height="196" /></a>
 
 In this blog, I’ll give you a more complete picture by looking at different aspects of more realistic Machine Learning scenarios.
 <h3><a name="learningProblems"></a>Different learning problems</h3>
@@ -48,7 +48,7 @@ f(x) = a_0 + a_1*x + a_2*x^2 + a_3*x^3 + … + a_n*x^n
 
 For a given <strong>degree</strong> <em>n</em>.  The bigger the degree, the more the function can curve to fit the sample set as shown in the following examples:
 
-<a href="assets/2015/7/machine-learning-an-introduction-part-2/image3.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2015/7/machine-learning-an-introduction-part-2/image_thumb3.png" alt="image" width="966" height="852" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2015/06/image3.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/06/image_thumb3.png" alt="image" width="966" height="852" border="0" /></a>
 
 Another popular class of models are the <a href="https://en.wikipedia.org/wiki/Artificial_neural_network" target="_blank" rel="noopener">neural networks</a>.  They too have variable number of parameters and also have varying topology (single layer, multi-layer, deep, with feedback loops, etc.).
 
@@ -60,7 +60,7 @@ Most real life problem are not about mapping one independent variable on one dep
 
 <strong>UPDATE (22-06-2017):  See <a href="https://vincentlauzon.com/2017/06/21/hyperspheres-the-curse-of-dimensionality/">Hyperspheres &amp; the curse of dimensionality</a> article for a detailed discussion.</strong>
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/07/hypersphere_by_enigmista1.jpg"><img class=" wp-image-892 alignleft" src="https://vincentlauzon.files.wordpress.com/2015/07/hypersphere_by_enigmista1.jpg?w=300" alt="hypersphere_by_enigmista[1]" width="400" height="300" /></a>
+<a href="/assets/2015/7/machine-learning-an-introduction-part-2/hypersphere_by_enigmista1.jpg"><img class=" wp-image-892 alignleft" src="/assets/2015/7/machine-learning-an-introduction-part-2/hypersphere_by_enigmista1.jpg?w=300" alt="hypersphere_by_enigmista[1]" width="400" height="300" /></a>
 
 Multiple dimensions bring two complexities to the table:  visualization &amp; curse of dimensionality.
 
@@ -93,7 +93,7 @@ You might then wonder, why not put the maximum number of parameters in there and
 
 As usual, it is easier to explain by showing an example.  Let's take my example from the previous article.  To make the example obvious, I'll exaggerate.  I'll take only two points from the training set (circled in green) and do a linear regression on those.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/07/overfitting-1.png"><img class="alignnone wp-image-904 size-big-brother-logo" src="https://vincentlauzon.files.wordpress.com/2015/07/overfitting-1.png?w=459" alt="Overfitting-1" width="459" height="406" /></a>
+<a href="/assets/2015/7/machine-learning-an-introduction-part-2/overfitting-1.png"><img class="alignnone wp-image-904 size-big-brother-logo" src="/assets/2015/7/machine-learning-an-introduction-part-2/overfitting-1.png?w=459" alt="Overfitting-1" width="459" height="406" /></a>
 
 You see how the top line fits perfectly those two points?  The distance between the points and the line is zero.  The cost function is zero.  Perfect optimization.  But you also see how poorly it predicts the other points compare to the bottom line?  The top line over fits the data.
 
@@ -103,7 +103,7 @@ This is actually one way to fight the over fitting:  to test the learning algor
 
 Again, another example with a polynomial regression of high degree (say n&gt;30) fitting perfectly a few points but having poor generalization capacity.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/07/overfitting-2.png"><img class="alignnone wp-image-905 size-big-brother-logo" src="https://vincentlauzon.files.wordpress.com/2015/07/overfitting-2.png?w=459" alt="Overfitting-2" width="459" height="406" /></a>
+<a href="/assets/2015/7/machine-learning-an-introduction-part-2/overfitting-2.png"><img class="alignnone wp-image-905 size-big-brother-logo" src="/assets/2015/7/machine-learning-an-introduction-part-2/overfitting-2.png?w=459" alt="Overfitting-2" width="459" height="406" /></a>
 
 There are two sides at over fitting:  a large number of parameters and a low number of points in the sample set.  One can therefore either lower the number of parameters or increase the data set size, which is the next topic.
 

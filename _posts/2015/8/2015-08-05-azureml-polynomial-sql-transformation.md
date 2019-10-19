@@ -106,7 +106,7 @@ Let’s build it in Excel.  Very small data set:  20 points.  Two columns:  
 </table>
 If you plot that in Excel:
 
-<a href="assets/2015/8/azureml-polynomial-sql-transformation/image21.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2015/8/azureml-polynomial-sql-transformation/image_thumb21.png" alt="image" width="672" height="408" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2015/07/image21.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb21.png" alt="image" width="672" height="408" border="0" /></a>
 
 As I’ve shown in a <a href="http://vincentlauzon.com/2015/07/18/azure-ml-simple-linear-regression/">previous blog</a>, we can take that data and import it in AzureML as a Data Set.  I’ll skip the details for that here.
 <h3>From polynomial to linear</h3>
@@ -128,13 +128,13 @@ We could augment the data set directly in the data set but that’s a bit clunky
 
 Let’s start a new experiment and drop the data set we just created on it.  Then, let’s drop a <em>Apply SQL Transformation</em> module (you can search for <em>SQL</em>) and link the two together:
 
-<a href="assets/2015/8/azureml-polynomial-sql-transformation/image22.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2015/8/azureml-polynomial-sql-transformation/image_thumb22.png" alt="image" width="357" height="199" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2015/07/image22.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb22.png" alt="image" width="357" height="199" border="0" /></a>
 
 <em>Apply SQL Transformation</em> has three entry points but only one is mandatory.  The entry points are like SQL tables you would feed it.  In our case, we only have one data set.
 
 If you select the module you’ll see it takes an SQL expression in parameter:
 
-<a href="assets/2015/8/azureml-polynomial-sql-transformation/image23.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2015/8/azureml-polynomial-sql-transformation/image_thumb23.png" alt="image" width="275" height="221" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2015/07/image23.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb23.png" alt="image" width="275" height="221" border="0" /></a>
 
 <em>t1</em> in the SQL expression refers to the first entry point of the module.  You could also use <em>t2</em> and <em>t3</em> if you would connect the other entry points.
 
@@ -152,21 +152,21 @@ Basically we do a typical SQL projection using the SQL syntax.  This is quite p
 
 You can run the experiment and then look at the results by right clicking at the bottom of the SQL module.
 
-<a href="assets/2015/8/azureml-polynomial-sql-transformation/image24.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2015/8/azureml-polynomial-sql-transformation/image_thumb24.png" alt="image" width="498" height="257" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2015/07/image24.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb24.png" alt="image" width="498" height="257" border="0" /></a>
 
 You can see that the column we added is there with square value.
 
-<a href="assets/2015/8/azureml-polynomial-sql-transformation/image25.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2015/8/azureml-polynomial-sql-transformation/image_thumb25.png" alt="image" width="388" height="314" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2015/07/image25.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb25.png" alt="image" width="388" height="314" border="0" /></a>
 <h3>Doing the linear regression</h3>
 We can then continue and drop a linear regression, train model &amp; score model on the experiment and connect them like this:
 
-<a href="assets/2015/8/azureml-polynomial-sql-transformation/image26.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2015/8/azureml-polynomial-sql-transformation/image_thumb26.png" alt="image" width="481" height="273" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2015/07/image26.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb26.png" alt="image" width="481" height="273" border="0" /></a>
 
 By selecting the train model module, we can click its “Launch column selector” button and select the <em>Y</em> variable.  That is the variable the linear regression will predict.
 
 We can now run the experiment and then look at the result of the <em>Train Model </em>module (not the score model one).
 
-<a href="assets/2015/8/azureml-polynomial-sql-transformation/image27.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2015/8/azureml-polynomial-sql-transformation/image_thumb27.png" alt="image" width="155" height="157" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2015/07/image27.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb27.png" alt="image" width="155" height="157" border="0" /></a>
 
 This is an interesting result.  AzureML is associating a very weak weight to x^2.  That means it isn’t really using it.  Why?
 
@@ -197,7 +197,7 @@ FROM t1</em>
 
 Let’s run the experiment again and look at the result of the <em>Train Model </em>module.
 
-<a href="assets/2015/8/azureml-polynomial-sql-transformation/image28.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2015/8/azureml-polynomial-sql-transformation/image_thumb28.png" alt="image" width="209" height="394" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2015/07/image28.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb28.png" alt="image" width="209" height="394" border="0" /></a>
 
 Now we see that AzureML used the parameters we made available.  It is normal that the weight value go down since the data goes up (i.e. x^9 &gt;&gt; x for x&gt;1).
 
@@ -207,13 +207,13 @@ The method of visualizing the prediction of an algorithm I found is quite clunky
 
 Basically, you drop a <em>Writer</em> module that you connect to the output of the <em>Score Model</em> module.
 
-<a href="assets/2015/8/azureml-polynomial-sql-transformation/image29.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2015/8/azureml-polynomial-sql-transformation/image_thumb29.png" alt="image" width="240" height="109" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2015/07/image29.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb29.png" alt="image" width="240" height="109" border="0" /></a>
 
 Then you can configure the writer to write in a blob container as CSV.  You then take the CSV and paste the last column (the score column) in excel next to the input data.  As I said…   clunky.
 
 Anyway, if you plot that you’ll get:
 
-<a href="assets/2015/8/azureml-polynomial-sql-transformation/image30.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2015/8/azureml-polynomial-sql-transformation/image_thumb30.png" alt="image" width="672" height="408" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2015/07/image30.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb30.png" alt="image" width="672" height="408" border="0" /></a>
 
 The blue dots are the sample set and the orange dots are the predicted points.  As you see, the learning algorithm is getting closer to the training data.
 

@@ -9,7 +9,7 @@ tags:
 - Security
 - Web
 ---
-<img style="float:right;padding-left:20px;" title="From pixabay.com" src="https://vincentlauzon.files.wordpress.com/2019/07/detour-44162_640-e1563313896969.png" />
+<img style="float:right;padding-left:20px;" title="From pixabay.com" src="/assets/2019/7/azure-app-service-authentication-with-azure-front-door/detour-44162_640-e1563313896969.png" />
 
 Last time, we looked at <a href="https://docs.microsoft.com/en-us/azure/frontdoor/front-door-overview">Azure Front Door</a> being used as a reverse proxy in front of <a href="https://docs.microsoft.com/en-us/azure/app-service/overview">Azure App Service</a>.
 
@@ -94,7 +94,7 @@ Before we deploy the solution, we'll need to configure our DNS since Azure Front
 
 So in our case, we need to create a CNAME entry mapping the sub domain fd-auth to the domain vpl-fd-auth.azurefd.net.  In Azure DNS Zone, it is done as follow:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/07/dns-record-1.png" alt="DNS Record" />
+<img src="/assets/2019/7/azure-app-service-authentication-with-azure-front-door/dns-record-1.png" alt="DNS Record" />
 
 Once we saved that record, we are ready to deploy the template.
 
@@ -108,17 +108,17 @@ Like last time, we have three resources:  an Azure Front Door, an App Service pl
 
 Let's open the Azure Front Door and look at its designer.
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/07/designer.png" alt="Designer" />
+<img src="/assets/2019/7/azure-app-service-authentication-with-azure-front-door/designer.png" alt="Designer" />
 
 We can see we have two frontend hosts.  The <em>default</em> one, i.e. vpl-fd-auth.vplauzon.com.azurefd.net and the custom one, i.e. fd-auth.vplauzon.com.
 
 If we open the backend pool <em>app-service-pool</em>, we should see it has one host name, i.e. the Azure App Service.
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/07/back-end-host-names.png" alt="back end host names" />
+<img src="/assets/2019/7/azure-app-service-authentication-with-azure-front-door/back-end-host-names.png" alt="back end host names" />
 
 If we select that host name, we can see the <em>backend host header</em> is left empty.  As discussed above, this means it will default to the front-end host.
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/07/host-header.png" alt="Host header" />
+<img src="/assets/2019/7/azure-app-service-authentication-with-azure-front-door/host-header.png" alt="Host header" />
 
 There is nothing special about the rest of the deployment.
 
@@ -134,11 +134,11 @@ The first thing we'll do and the one taking the most time (a few minutes) is to 
 
 We'll open the custom domain front-end.  From there, we'll click the <em>Enabled</em> button under <em>Custom Domain HTTPS</em>.  We'll leave <em>Front Door managed</em> as we want Azure Front Door to provision the certificate.  We then click <em>Update</em>.
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/07/certificate.png" alt="Certificate" />
+<img src="/assets/2019/7/azure-app-service-authentication-with-azure-front-door/certificate.png" alt="Certificate" />
 
 We then save at the designer screen.  This will kickstart the process.
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/07/certificate-process.png" alt="Certificate process" />
+<img src="/assets/2019/7/azure-app-service-authentication-with-azure-front-door/certificate-process.png" alt="Certificate process" />
 
 <strong>We need to wait until the four steps are green before continuing</strong>.
 
@@ -152,17 +152,17 @@ Let's open the Azure App Service application.  Under <em>Settings</em>, let's se
 
 Let's click <em>Add custom domain</em> and type our custom domain in.
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/07/custom-domain-1.png" alt="Custom domains" />
+<img src="/assets/2019/7/azure-app-service-authentication-with-azure-front-door/custom-domain-1.png" alt="Custom domains" />
 
 Before we hit <em>Validate</em>, we need to temporarily change the DNS CNAME to point to Azure App Service's domain (e.g. vpl-wa-auth.azurewebsites.net).  This is only necessary during the validation process.  We suggest doing that in a separate tab and simply undo it (CTRL-Z) once we validated the domain.
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/07/add-custom-domain.png" alt="Add custom domain" />
+<img src="/assets/2019/7/azure-app-service-authentication-with-azure-front-door/add-custom-domain.png" alt="Add custom domain" />
 
 We can validate.  We need to ensure the host was validated.  Then we can press <em>Add custom domain</em>.
 
 We'll see there is a certificate binding error:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/07/binding-error.png" alt="Binding error" />
+<img src="/assets/2019/7/azure-app-service-authentication-with-azure-front-door/binding-error.png" alt="Binding error" />
 
 This is because we didn't upload any certificate for that domain.  This would be difficult as the certificate is bound to Azure Front Door and we do not have access to it.  For a production scenario we would recommend using an external certificate and uploading it both in Azure Front Door &amp; Azure App Service.  This will prompt a few <em>Certificate Error</em> in the browser for us, but this is only a demo.
 
@@ -180,11 +180,11 @@ We then change the <em>Action to take when request is not authenticated</em> to 
 
 We then configure <em>Azure Active Directory</em>:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/07/easy-auth.png" alt="Easy auth" />
+<img src="/assets/2019/7/azure-app-service-authentication-with-azure-front-door/easy-auth.png" alt="Easy auth" />
 
 We'll choose the easy was out.  Let's select <em>Express</em> and keep the default options.
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/07/azure-ad-app.png" alt="Azure AD App" />
+<img src="/assets/2019/7/azure-app-service-authentication-with-azure-front-door/azure-ad-app.png" alt="Azure AD App" />
 
 This will create an Azure AD application for us with mostly the right configuration.
 
@@ -192,7 +192,7 @@ We click <em>OK</em>.
 
 At the bottom of the page, we'll enter an <em>Allowed external redirect URL</em>:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/07/external-redirect.png" alt="External Redirect" />
+<img src="/assets/2019/7/azure-app-service-authentication-with-azure-front-door/external-redirect.png" alt="External Redirect" />
 
 The url should be https://CUSTOM_DOMAIN/.auth/login/aad/callback where <em>CUSTOM_DOMAIN</em> is our custom domain.
 
@@ -212,7 +212,7 @@ The REDIRECT_URI place holder should be our <em>external redirect URL</em> (URL 
 
 We should also be prompted with a login screen and a <em>Permissions requested</em> screen.  If we click ok, we should be redirected to our custom domain with the content of an empty Azure App Service:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/07/empty-app.png" alt="Empty app" />
+<img src="/assets/2019/7/azure-app-service-authentication-with-azure-front-door/empty-app.png" alt="Empty app" />
 
 We'll need to hit refresh a few times when we get a certificate error.  Remember, this is because we never uploaded the certificate in the Azure App Service custom domain section.
 

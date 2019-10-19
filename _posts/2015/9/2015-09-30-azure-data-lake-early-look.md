@@ -13,7 +13,7 @@ Ok, this is a <strong>super early</strong> look at the technology.  <a href="ht
 
 But there has been quite a few characteristics unveiled.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/data-lake-diagram.png"><img class="size-full wp-image-1303 aligncenter" src="https://vincentlauzon.files.wordpress.com/2015/09/data-lake-diagram.png" alt="data-lake-diagram" width="700" height="272" /></a>
+<a href="/assets/2015/9/azure-data-lake-early-look/data-lake-diagram.png"><img class="size-full wp-image-1303 aligncenter" src="/assets/2015/9/azure-data-lake-early-look/data-lake-diagram.png" alt="data-lake-diagram" width="700" height="272" /></a>
 <h3>What is a data lake?</h3>
 I first came across the concept of Data lake reading Gartner incoming trends reports.  A data lake is your unprocessed / uncleansed (raw) data.  The idea being that instead of having your data stored neatly in a data warehouse where you've cleansed it and probably removed a lot of information from it by keeping only what's necessary by your foreseen analytics, a data lake is your raw data:  not trivial to work with but it contains all the information.
 <h3>2 Services</h3>
@@ -32,7 +32,7 @@ On top of that we have Visual Studio tools that seems to be mostly facilitating 
 
 The two services are loosely coupled:  the store implements HDFS and can therefore be queried by anything that understand HDFS.  This doesn't even mean Azure HDInsight only but other Hadoop distributions (e.g. Cloudera),  Spark and Azure Machine Learning.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/928pic21.png"><img class="size-full wp-image-1301 aligncenter" src="https://vincentlauzon.files.wordpress.com/2015/09/928pic21.png" alt="928Pic2[1]" width="640" height="360" /></a>Similarly, Azure Data Lake Analytics can query other stores, such as Hadoop, SQL, Azure SQL Data Warehouse, etc.  .
+<a href="/assets/2015/9/azure-data-lake-early-look/928pic21.png"><img class="size-full wp-image-1301 aligncenter" src="/assets/2015/9/azure-data-lake-early-look/928pic21.png" alt="928Pic2[1]" width="640" height="360" /></a>Similarly, Azure Data Lake Analytics can query other stores, such as Hadoop, SQL, Azure SQL Data Warehouse, etc.  .
 <h3>U SQL</h3>
 U SQL is the <a href="http://blogs.msdn.com/b/visualstudio/archive/2015/09/28/introducing-u-sql.aspx" target="_blank">query language</a> of Azure Data Lake Analytics.  In a nutshell it merges the declarative power of TSQL with the imperative power of C#.
 

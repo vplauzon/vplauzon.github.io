@@ -25,11 +25,11 @@ Please see <a href="https://vincentlauzon.com/2015/11/01/azure-runbook-a-complet
 <h2>Credentials</h2>
 Once created, we should create a credential with a Service Principal.  Please read through <a href="https://vincentlauzon.com/2016/02/04/using-azure-active-directory-service-principal/">Using Azure Active Directory Service Principal</a> in order to create a Service Principal.
 
-<a href="assets/2016/2/shutting-down-vms-on-schedule-in-azure/image1.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/2/shutting-down-vms-on-schedule-in-azure/image_thumb1.png" alt="image" width="334" height="334" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/02/image1.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/02/image_thumb1.png" alt="image" width="334" height="334" border="0" /></a>
 
 Click <em>Add a credential</em>.
 
-<a href="assets/2016/2/shutting-down-vms-on-schedule-in-azure/image2.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/2/shutting-down-vms-on-schedule-in-azure/image_thumb2.png" alt="image" width="527" height="1070" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/02/image2.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/02/image_thumb2.png" alt="image" width="527" height="1070" border="0" /></a>
 
 And fill the fields the following way:
 <ul>
@@ -42,7 +42,7 @@ Then we’re going to give some access to this principal so it can see VMs and s
 
 The easiest way is to go in a Resource Group containing a VM and adding access.
 
-<a href="assets/2016/2/shutting-down-vms-on-schedule-in-azure/image3.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/2/shutting-down-vms-on-schedule-in-azure/image_thumb3.png" alt="image" width="306" height="82" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/02/image3.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/02/image_thumb3.png" alt="image" width="306" height="82" border="0" /></a>
 
 Add a user, give it the <em>Virtual Machine Contributor</em> role and type the name of the AAD application for user name.
 <h2>Shutdown Runbook</h2>

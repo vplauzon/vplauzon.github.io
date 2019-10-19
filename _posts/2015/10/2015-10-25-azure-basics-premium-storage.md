@@ -18,7 +18,7 @@ You might have heard the numbers?
 </ul>
 Now, like everything related to high performance, there are a few variables to consider to get the most pert out of the service.  This is what I'm going to talk about here.
 <h3>Premium storage vs D Series</h3>
-<a href="https://vincentlauzon.files.wordpress.com/2015/10/ssd-drive-icon1.png"><img class=" wp-image-1316 alignleft" src="https://vincentlauzon.files.wordpress.com/2015/10/ssd-drive-icon1.png" alt="SSD-Drive-icon[1]" width="265" height="265" /></a>First thing to clear out, Premium storage isn't directly related to D Series and vis versa.
+<a href="/assets/2015/10/azure-basics-premium-storage/ssd-drive-icon1.png"><img class=" wp-image-1316 alignleft" src="/assets/2015/10/azure-basics-premium-storage/ssd-drive-icon1.png" alt="SSD-Drive-icon[1]" width="265" height="265" /></a>First thing to clear out, Premium storage isn't directly related to D Series and vis versa.
 
 The <a href="https://azure.microsoft.com/en-us/blog/new-d-series-virtual-machine-sizes/" target="_blank">D Series VMs</a> are big ass VMs optimized for heavy CPU load.  They have huge amount of memory and to complement that, they have local SSD storage for <em>scratch space</em>.
 

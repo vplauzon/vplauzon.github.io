@@ -8,7 +8,7 @@ tags:
 - Serverless
 - Virtual Machines
 ---
-<a href="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/pexels-photo-2962301.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="Dig garden" src="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/pexels-photo-296230_thumb1.jpg" alt="Dig garden" width="320" height="212" align="left" border="0" /></a>Most solutions have recurrent batch jobs, e.g. nightly / end-of-month batch jobs.
+<a href="http://vincentlauzon.files.wordpress.com/2017/12/pexels-photo-2962301.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="Dig garden" src="http://vincentlauzon.files.wordpress.com/2017/12/pexels-photo-296230_thumb1.jpg" alt="Dig garden" width="320" height="212" align="left" border="0" /></a>Most solutions have recurrent batch jobs, e.g. nightly / end-of-month batch jobs.
 
 There are many services we can leverage in Azure to run those.  In this article, we are going to explore a service that has “Batch” in its name:  Azure Batch.
 
@@ -74,11 +74,11 @@ The template will provision:
 </ul>
 We can look at the batch account in the Portal once it is provisioned.  More specifically, we can look at the provisioned pool, aptly named <em>mainPool</em>.  We see it has no dedicated nor low-priority nodes.
 
-<a href="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/image4.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/image_thumb4.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/12/image4.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/12/image_thumb4.png" alt="image" border="0" /></a>
 
 If we select the pool, we can then go to its <em>Scale</em> configuration.
 
-<a href="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/image12.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/image_thumb12.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/12/image12.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/12/image_thumb12.png" alt="image" border="0" /></a>
 
 We see the template configured it to be auto-scalling.  The formula is evaluated every 5 minutes.  It basically evaluates if there has been any pending task in the last 180 seconds.  If so, it mandates to have a low priority node, otherwise the target is zero nodes.
 <p align="left"><a href="https://docs.microsoft.com/en-us/azure/batch/batch-automatic-scaling" target="_blank" rel="noopener">Auto scaling formula in Azure Batch is explained in the online documentation</a>.</p>
@@ -107,7 +107,7 @@ Applications are the way to package content we want to run in a Batch job.
 
 Now we have two applications, which we can see in the application tab of the batch account.
 
-<a href="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/image6.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/image_thumb6.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/12/image6.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/12/image_thumb6.png" alt="image" border="0" /></a>
 
 <em>PythonScript</em> is an application we will schedule to run.  It is a trivial “Hello world” Python application.  <em>PythonSetup</em> is an application we’ll use to setup the nodes where <em>PythonScript</em> are going to run.  It runs an install command on the node (a <em>pip</em> command which installs a Python package).
 <h2>Deploying Applications</h2>
@@ -117,7 +117,7 @@ As we’ll see later, we won’t use “normal” tasks.  Those tasks, at the t
 
 Let’s select <em>mainPool</em> again and in the pool pane then select the <em>Application packages</em> tab.
 
-<a href="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/image13.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/image_thumb13.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/12/image13.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/12/image_thumb13.png" alt="image" border="0" /></a>
 
 From there, let’s select <em>PythonSetup</em> application and version 1.0 then click save.
 
@@ -133,7 +133,7 @@ Within the pool, let’s select <em>Start task</em>.  Let’s also select <em>T
 
 <em>/bin/sh -c "$AZ_BATCH_APP_PACKAGE_pythonsetup/setup-python.sh"</em>
 
-<a href="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/image8.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/image_thumb8.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/12/image8.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/12/image_thumb8.png" alt="image" border="0" /></a>
 
 As it is stated in the <a href="https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables" target="_blank" rel="noopener">online documentation</a>, in order to have access to environment variable, we need to run a shell, hence the <em>/bin/sh</em>.
 
@@ -145,17 +145,17 @@ We can now save the start task configuration.
 <h2>Scheduling job</h2>
 The next step is to schedule jobs.  We’re going to do this by selecting <em>Job schedules</em> tab of the batch account.  We then select the <em>Add</em> button.
 
-<a href="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/image9.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/image_thumb9.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/12/image9.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/12/image_thumb9.png" alt="image" border="0" /></a>
 
 In <em>Job schedule ID</em>, let’s give it a name, e.g. <em>ScheduledScript</em>.
 
-In <em>Schedule</em>, let’s leave defaults, i.e. not start nor end time but let’s select 30 minutes as the <em>Recurrence interval</em>.<a href="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/image10.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/image_thumb10.png" alt="image" border="0" /></a>
+In <em>Schedule</em>, let’s leave defaults, i.e. not start nor end time but let’s select 30 minutes as the <em>Recurrence interval</em>.<a href="http://vincentlauzon.files.wordpress.com/2017/12/image10.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/12/image_thumb10.png" alt="image" border="0" /></a>
 
 For <em>Pool</em>, let’s select the main pool.
 
 Under <em>Job manager, preparation and release tasks</em>, we select <em>Custom</em> and we’ll configure the <em>Job manager task</em>.  This task is run once the job is created.  Typically we would create more tasks within that task or manually outside of the job using the Batch SDK.  Here we’ll simplify the job and simply run what we need to run within that task.
 
-<a href="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/image11.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/image_thumb11.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/12/image11.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/12/image_thumb11.png" alt="image" border="0" /></a>
 
 In task ID we’ll type <em>only-task</em>.  In the command line we’ll type:
 
@@ -169,15 +169,15 @@ Each job will schedule a <em>Job Manager</em> task which will eventually kick th
 
 While the executing node is still up we can look at the task execution.  We can look at the job schedule’s jobs and select the latest job.  From there we can look at its tasks:
 
-<a href="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/image14.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/image_thumb14.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/12/image14.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/12/image_thumb14.png" alt="image" border="0" /></a>
 
 Within the task, we can look at the <em>Files on node</em>, more specifically <em>stdout.txt</em>.
 
-<a href="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/image15.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/image_thumb15.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/12/image15.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/12/image_thumb15.png" alt="image" border="0" /></a>
 
 This shows what the task running, in our case the Python script, outputted in the console.
 
-<a href="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/image16.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/12/recurrent-serverless-batch-job-with-azure-batch/image_thumb16.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/12/image16.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/12/image_thumb16.png" alt="image" border="0" /></a>
 <h2>Summary</h2>
 In this article we showed how we can us Azure Batch to run recurrent batch jobs.
 

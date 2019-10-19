@@ -8,7 +8,7 @@ tags:
 - Data
 - Security
 ---
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/enhance-data-protection1.png"><img class="size-full wp-image-1272 alignleft" src="https://vincentlauzon.files.wordpress.com/2015/09/enhance-data-protection1.png" alt="enhance-data-protection[1]" width="230" height="160" /></a><a href="http://azure.microsoft.com/en-us/services/key-vault/" target="_blank">Azure Key Vault</a> is alive and well!
+<a href="/assets/2015/10/azure-key-vault-sql-server-connector-update/enhance-data-protection1.png"><img class="size-full wp-image-1272 alignleft" src="/assets/2015/10/azure-key-vault-sql-server-connector-update/enhance-data-protection1.png" alt="enhance-data-protection[1]" width="230" height="160" /></a><a href="http://azure.microsoft.com/en-us/services/key-vault/" target="_blank">Azure Key Vault</a> is alive and well!
 
 The Azure service allowing you to <a href="http://vincentlauzon.com/2015/02/03/azure-key-vault/">store keys and secrets</a> in a secured container has <a href="http://vincentlauzon.com/2015/07/09/azure-key-vault-is-now-generally-available/">been released at the end of summer</a> and it continues to improve.
 

@@ -8,7 +8,7 @@ tags:
 - Integration
 - Serverless
 ---
-<img style="float:left;padding-right:20px;" title="From Pexels" src="https://vincentlauzon.files.wordpress.com/2018/09/russian-1090697_640-e1538056165145.jpg" />
+<img style="float:left;padding-right:20px;" title="From Pexels" src="/assets/2018/9/handling-recursivity-in-logic-apps/russian-1090697_640-e1538056165145.jpg" />
 
 <a href="https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview">Azure Logic Apps</a> is a powerful integration platform.
 
@@ -31,7 +31,7 @@ The first approach consists in working around the direct recursion.
 
 Instead of having a Logic App calling itself, we have it (the <em>parent</em>) call another Logic App (the <em>child</em>) that call it back.
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/09/recursion.png" alt="Recursion" />
+<img src="/assets/2018/9/handling-recursivity-in-logic-apps/recursion.png" alt="Recursion" />
 
 Let's look at an example:
 
@@ -49,13 +49,13 @@ We can't deploy the same resource twice in the same ARM template.  We accomplish
 
 We have two logic apps:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/09/parent-app.png" alt="parent-app" />
+<img src="/assets/2018/9/handling-recursivity-in-logic-apps/parent-app.png" alt="parent-app" />
 
 <ol>
 <li>Let's select the <em>parent-app</em> and go to its designer view</li>
 <li>Let's open the trigger <em>When a HTTP request is received</em></li>
 <li>We can copy its <em>HTTP POST URL</em>
-<img src="https://vincentlauzon.files.wordpress.com/2018/09/copy-url.png" alt="Url" /></li>
+<img src="/assets/2018/9/handling-recursivity-in-logic-apps/copy-url.png" alt="Url" /></li>
 </ol>
 
 The URL is obviously unique to the Logic App.
@@ -72,7 +72,7 @@ The HTTP body must conform to a <a href="https://github.com/vplauzon/logic-apps/
 
 We should obtain the following:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/09/post-parent-child.png" alt="HTTP Post" />
+<img src="/assets/2018/9/handling-recursivity-in-logic-apps/post-parent-child.png" alt="HTTP Post" />
 
 The response is <code>3, 2, 1, Done!</code>.  This is computed using recursion to illustrate our point.
 
@@ -98,7 +98,7 @@ The child app is trivial:  it calls the parent logic app, passing the input payl
 
 We can easily monitor.  Let's look at the <em>parent-app</em>:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/09/parent-child-history.png" alt="History" />
+<img src="/assets/2018/9/handling-recursivity-in-logic-apps/parent-child-history.png" alt="History" />
 
 The was 4 runs.  The first received 3, then 2, then 1, then 0.
 
@@ -142,7 +142,7 @@ As for the first example, we'll grab the URL.
 
 We can then test the URL with a <a href="https://github.com/vplauzon/logic-apps/blob/master/recursion/flat/input.json">non-trivial</a>:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/09/post-flat.png" alt="Post flat" />
+<img src="/assets/2018/9/handling-recursivity-in-logic-apps/post-flat.png" alt="Post flat" />
 
 We can see the output is a simple JSON where the <em>processed</em> property contains all the nodes of the input payload in a <em>breadth first</em> order.
 
@@ -176,7 +176,7 @@ Notice that we added "debug" actions where we capture the value of a variable fo
 
 Now if we look at the monitoring, we obviously have only one run per invocation:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/09/flat-history.png" alt="Flat History" />
+<img src="/assets/2018/9/handling-recursivity-in-logic-apps/flat-history.png" alt="Flat History" />
 
 <h3>Variation</h3>
 

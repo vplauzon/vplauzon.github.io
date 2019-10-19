@@ -13,7 +13,7 @@ A typical problem with those new services is the lack of documentation.  Well, 
 
 The guide's backbone is the vault's lifecycle:
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/06/8875-keyvaultlifecycle31.png"><img class="aligncenter wp-image-788 size-full" src="https://vincentlauzon.files.wordpress.com/2015/06/8875-keyvaultlifecycle31.png" alt="8875.KeyVaultLifecycle3[1]" width="756" height="563" /></a>Now this basically allows you to go to town with the vault.  It's a very clean workflow that enables many scenarios.
+<a href="/assets/2015/6/azure-key-vault-step-by-step/8875-keyvaultlifecycle31.png"><img class="aligncenter wp-image-788 size-full" src="/assets/2015/6/azure-key-vault-step-by-step/8875-keyvaultlifecycle31.png" alt="8875.KeyVaultLifecycle3[1]" width="756" height="563" /></a>Now this basically allows you to go to town with the vault.  It's a very clean workflow that enables many scenarios.
 
 The typical ones I would see are:
 <ul>

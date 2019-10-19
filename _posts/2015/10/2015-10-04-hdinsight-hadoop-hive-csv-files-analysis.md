@@ -8,7 +8,7 @@ tags:
 - Big Data
 - Data
 ---
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/hive_logo_medium1.jpg"><img class="size-full wp-image-1225 alignright" src="https://vincentlauzon.files.wordpress.com/2015/09/hive_logo_medium1.jpg" alt="hive_logo_medium[1]" width="114" height="105" /></a>Ok, <a href="http://vincentlauzon.com/2015/09/27/hdinsight-hadoop-hive-setup/">on a past blog</a> we've been setuping Azure HDInsight for some Hive fun.
+<a href="/assets/2015/10/hdinsight-hadoop-hive-csv-files-analysis/hive_logo_medium1.jpg"><img class="size-full wp-image-1225 alignright" src="/assets/2015/10/hdinsight-hadoop-hive-csv-files-analysis/hive_logo_medium1.jpg" alt="hive_logo_medium[1]" width="114" height="105" /></a>Ok, <a href="http://vincentlauzon.com/2015/09/27/hdinsight-hadoop-hive-setup/">on a past blog</a> we've been setuping Azure HDInsight for some Hive fun.
 
 So let's!
 
@@ -39,7 +39,7 @@ So, yes, we are generating random dummy data.  Can't wait to see the insight we
 
 Now, let's <a href="http://www.excelfunctions.net/Excel-Autofill.html" target="_blank">auto-fill</a> 100 rows using the first data row (i.e. the second row I made you type).  You should end up with something like that (but with totally different values, thanks to randomness):
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/sample.png"><img class="alignnone size-full wp-image-1254" src="https://vincentlauzon.files.wordpress.com/2015/09/sample.png" alt="Sample" width="478" height="167" /></a>
+<a href="/assets/2015/10/hdinsight-hadoop-hive-csv-files-analysis/sample.png"><img class="alignnone size-full wp-image-1254" src="/assets/2015/10/hdinsight-hadoop-hive-csv-files-analysis/sample.png" alt="Sample" width="478" height="167" /></a>
 
 (I've added the first row styling)
 
@@ -51,15 +51,15 @@ We'll use Hive with HDInsight Hive editor.  This is a web console.
 
 Let's open the HDInsight cluster we've created in the portal.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/cluster.png"><img class="alignnone size-full wp-image-1238" src="https://vincentlauzon.files.wordpress.com/2015/09/cluster.png" alt="Cluster" width="497" height="519" /></a>
+<a href="/assets/2015/10/hdinsight-hadoop-hive-csv-files-analysis/cluster.png"><img class="alignnone size-full wp-image-1238" src="/assets/2015/10/hdinsight-hadoop-hive-csv-files-analysis/cluster.png" alt="Cluster" width="497" height="519" /></a>
 
 In the Quick Links we find the <em>Cluster Dashboard</em>.  When we click that we're are prompted for some credentials.  This is where we have to give the cluster <em>admin</em> credentials we've entered during the setup.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/hiveedit.png"><img class="alignnone wp-image-1239" src="https://vincentlauzon.files.wordpress.com/2015/09/hiveedit.png" alt="HiveEdit" width="970" height="237" /></a>
+<a href="/assets/2015/10/hdinsight-hadoop-hive-csv-files-analysis/hiveedit.png"><img class="alignnone wp-image-1239" src="/assets/2015/10/hdinsight-hadoop-hive-csv-files-analysis/hiveedit.png" alt="HiveEdit" width="970" height="237" /></a>
 
 In the top menu of the dashboard, you'll find the <em>Hive Editor</em>.  Click that and you should land on a page looking like this:
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/hiveeditdefault.png"><img class="alignnone wp-image-1240" src="https://vincentlauzon.files.wordpress.com/2015/09/hiveeditdefault.png" alt="HiveEditDefault" width="968" height="249" /></a>
+<a href="/assets/2015/10/hdinsight-hadoop-hive-csv-files-analysis/hiveeditdefault.png"><img class="alignnone wp-image-1240" src="/assets/2015/10/hdinsight-hadoop-hive-csv-files-analysis/hiveeditdefault.png" alt="HiveEditDefault" width="968" height="249" /></a>
 <h3>Creating External Table</h3>
 We're going to create an external table.  An external table in Hive is a table where only the table definition is stored in Hive ; the data is stored in its original format outside of Hive itself (in the same blob storage container though).
 
@@ -115,7 +115,7 @@ ORDER BY Price
 
 Your millage will vary given the randomness, but you should have something in the line of:
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/analysisoutput.png"><img class="alignnone size-full wp-image-1257" src="https://vincentlauzon.files.wordpress.com/2015/09/analysisoutput.png" alt="AnalysisOutput" width="555" height="158" /></a>
+<a href="/assets/2015/10/hdinsight-hadoop-hive-csv-files-analysis/analysisoutput.png"><img class="alignnone size-full wp-image-1257" src="/assets/2015/10/hdinsight-hadoop-hive-csv-files-analysis/analysisoutput.png" alt="AnalysisOutput" width="555" height="158" /></a>
 <h3>Optimization with Tez</h3>
 The last query took 85 seconds to run in my cluster.  Remember, I did configure my cluster to have only one data node of the cheapest VM available.
 

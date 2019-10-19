@@ -8,7 +8,7 @@ tags:
 - API
 - Serverless
 ---
-<img style="float:right;padding-right:20px;" title="From pixabay.com" src="https://vincentlauzon.files.wordpress.com/2019/03/armor-army-ax-226746-e1553699579439.jpg" />
+<img style="float:right;padding-right:20px;" title="From pixabay.com" src="/assets/2019/3/api-management-exclusive-access-to-azure-function/armor-army-ax-226746-e1553699579439.jpg" />
 
 [<strong>Update 05-04-2019</strong>:  Erratum on the original article.  Logic Apps is actually able to perform public IP filering.]
 

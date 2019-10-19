@@ -8,7 +8,7 @@ tags:
 - Automation
 - Data
 ---
-<a href="https://vincentlauzon.files.wordpress.com/2017/01/pexels-photo-2257691.jpg"><img class="alignnone  wp-image-2940" style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" src="https://vincentlauzon.files.wordpress.com/2017/01/pexels-photo-2257691.jpg" alt="Planets" width="322" height="149" /></a>I mentioned in a <a href="https://vincentlauzon.com/2016/12/18/azure-sql-elastic-pool-overview/">past article</a>, regarding database sizes within an elastic pool:
+<a href="/assets/2017/1/azure-sql-elastic-pool-database-size/pexels-photo-2257691.jpg"><img class="alignnone  wp-image-2940" style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" src="/assets/2017/1/azure-sql-elastic-pool-database-size/pexels-photo-2257691.jpg" alt="Planets" width="322" height="149" /></a>I mentioned in a <a href="https://vincentlauzon.com/2016/12/18/azure-sql-elastic-pool-overview/">past article</a>, regarding database sizes within an elastic pool:
 
 “No policies limit an individual database to take more storage although a database maximum size can be set on a per-database basis.”
 
@@ -152,7 +152,7 @@ Get-AzureRmSqlDatabase -ServerName pooldemoserver -ResourceGroupName DBs -Databa
 
 [/code]
 
-<a href="assets/2017/1/azure-sql-elastic-pool-database-size/image18.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="assets/2017/1/azure-sql-elastic-pool-database-size/image_thumb18.png" alt="image" width="640" height="272" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/12/image18.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/12/image_thumb18.png" alt="image" width="640" height="272" border="0" /></a>
 
 We can see the size is the one that was specified in the ARM template (ARM parameter <em>DB Max Size</em> default value), i.e. 10 GB.  We can bump it to 50 GB, i.e. 53687091200 bytes:
 
@@ -164,7 +164,7 @@ Set-AzureRmSqlDatabase -ServerName pooldemoserver -ResourceGroupName DBs -Databa
 
 We can confirm the change in the portal by looking at the <strong>properties</strong>.
 
-<a href="assets/2017/1/azure-sql-elastic-pool-database-size/image19.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="assets/2017/1/azure-sql-elastic-pool-database-size/image_thumb19.png" alt="image" width="449" height="480" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/12/image19.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/12/image_thumb19.png" alt="image" width="449" height="480" border="0" /></a>
 <h2>Default Behaviour</h2>
 If the <em>MaxSizeByte</em> property is omitted, either in an ARM Template or a <em>new-AzureRmSqlDatabase</em> PowerShell cmdlet, the default behaviour is for the database to have the maximum capacity (e.g. for Standard, 250 GB).
 

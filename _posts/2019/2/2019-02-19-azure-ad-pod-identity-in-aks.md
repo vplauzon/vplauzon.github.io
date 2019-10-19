@@ -9,7 +9,7 @@ tags:
 - Identity
 - Security
 ---
-<img style="float:right;padding-right:20px;" title="From pixabay.com" src="https://vincentlauzon.files.wordpress.com/2019/02/woman-565127_640-e1549908051349.jpg" />
+<img style="float:right;padding-right:20px;" title="From pixabay.com" src="/assets/2019/2/azure-ad-pod-identity-in-aks/woman-565127_640-e1549908051349.jpg" />
 
 I wanted to start looking at a few modules helping integrate AKS with the rest of Azure.
 
@@ -36,7 +36,7 @@ As usual, the <a href="https://github.com/vplauzon/aks/tree/master/aad-pod-ident
 
 <h2>Traditional Approach</h2>
 
-<img style="float:left;padding-right:20px;" title="From pixabay.com" src="https://vincentlauzon.files.wordpress.com/2019/02/black-and-white-fabric-factory-355135-1-e1549912524285.jpg" />
+<img style="float:left;padding-right:20px;" title="From pixabay.com" src="/assets/2019/2/azure-ad-pod-identity-in-aks/black-and-white-fabric-factory-355135-1-e1549912524285.jpg" />
 
 To do one of the scenarios enumerated above traditionally, we would need to get a hold to a Service Principal's client-id and secret / certificate.  We can then call Azure AD authentication API and receive an access token.  We can then use that access token with different API calls (see <a href="https://vincentlauzon.com/2016/03/11/securing-rest-api-using-azure-active-directory/">this article for an example</a>).
 
@@ -107,7 +107,7 @@ That's it.
 
 The resource relationships are as follow:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/02/binding-1.png" alt="Bindings" />
+<img src="/assets/2019/2/azure-ad-pod-identity-in-aks/binding-1.png" alt="Bindings" />
 
 As usual in Kubernetes, we do not point to pods directly, as they are ephemeral.  We point to labels characterising the pods.  In this case, we look for a well-known label with the name <em>aadpodidbinding</em>.
 
@@ -121,7 +121,7 @@ When we create an <em>AzureIdentityBinding</em>, the Managed Identity Controller
 
 There is a <a href="https://github.com/Azure/aad-pod-identity/blob/master/docs/design/concept.png">great summary diagram</a> on the GitHub site showing those interactions:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/02/concept.png" alt="Concepts" />
+<img src="/assets/2019/2/azure-ad-pod-identity-in-aks/concept.png" alt="Concepts" />
 
 <h2>Security</h2>
 

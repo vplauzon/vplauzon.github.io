@@ -8,7 +8,7 @@ tags:
 - Containers
 - Integration
 ---
-<img style="float:left;padding-right:20px;" title="From leeroy on www.pexels.com" src="https://vincentlauzon.files.wordpress.com/2018/11/designing-distributed-systems-cover-e1541587756618.png" />
+<img style="float:left;padding-right:20px;" title="From leeroy on www.pexels.com" src="/assets/2019/1/designing-distributed-systems-by-brendan-burns/designing-distributed-systems-cover-e1541587756618.png" />
 
 In this article I wanted to talk about a book I just finished reading.
 

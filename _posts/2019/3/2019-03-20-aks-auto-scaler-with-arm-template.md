@@ -7,7 +7,7 @@ categories:
 tags:
 - Containers
 ---
-<img style="float:left;padding-right:20px;" title="From pixabay.com" src="https://vincentlauzon.files.wordpress.com/2019/03/scaling.png" />
+<img style="float:left;padding-right:20px;" title="From pixabay.com" src="/assets/2019/3/aks-auto-scaler-with-arm-template/scaling.png" />
 
 <a href="https://vincentlauzon.com/?s=aks">Azure Kubernetes Service</a> (AKS) Auto Scaler is finally out there in public preview!
 
@@ -149,11 +149,11 @@ A scale set allows VM to be managed as a "set".  The number of VMs is simply a p
 
 If we look at the corresponding managed resource group (named <code>MC___</code>), we can see a VM Scale Set present:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/03/scaleset-1.png" alt="Resources in managed resource group" />
+<img src="/assets/2019/3/aks-auto-scaler-with-arm-template/scaleset-1.png" alt="Resources in managed resource group" />
 
 If we "open" the VM Scale Set, we can see it currently has 3 instances.
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/03/scaleset-overview.png" alt="VM Scale Set overview" />
+<img src="/assets/2019/3/aks-auto-scaler-with-arm-template/scaleset-overview.png" alt="VM Scale Set overview" />
 
 We could also go to the <em>Scaling</em> pane and see the scaling history.  This is where we go to change the number of instances of a scale set but in our case, we let AKS handle it.
 
@@ -240,7 +240,7 @@ We see that a few pods got scheduled on different nodes while many others are in
 
 We can then refresh our VM Scale Set view in the Portal and see it is now scaling from 3 to 5 instances:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/03/scaleset-scaling.png" alt="VM Scale Set scaling out" />
+<img src="/assets/2019/3/aks-auto-scaler-with-arm-template/scaleset-scaling.png" alt="VM Scale Set scaling out" />
 
 Once the scaling operation is completed, we can look again at the pods' status:
 

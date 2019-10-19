@@ -8,7 +8,7 @@ tags:
 - Data
 - NoSQL
 ---
-<a href="assets/2017/9/hacking-accessing-a-graph-in-cosmos-db-with-sql-documentdb-api/pexels-photo-2646351.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="pexels-photo-264635[1]" src="assets/2017/9/hacking-accessing-a-graph-in-cosmos-db-with-sql-documentdb-api/pexels-photo-2646351_thumb.jpg" alt="pexels-photo-264635[1]" width="400" height="267" align="left" border="0" /></a>Azure Cosmos DB is Microsoft’s globally distributed multi-model database service.
+<a href="http://vincentlauzon.files.wordpress.com/2017/08/pexels-photo-2646351.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="pexels-photo-264635[1]" src="http://vincentlauzon.files.wordpress.com/2017/08/pexels-photo-2646351_thumb.jpg" alt="pexels-photo-264635[1]" width="400" height="267" align="left" border="0" /></a>Azure Cosmos DB is Microsoft’s globally distributed multi-model database service.
 
 At this point in time (August 2017) there are four supported models:  DocumentDB (also named SQL because the query language is similar to T-SQL), MongoDB, Tabular &amp; Gremlin.
 
@@ -44,7 +44,7 @@ The first line is there to connect to the remote server we configured in <em>rem
 
 We now have a toy graph with two vertices connected with one edge.  Nothing too fancy but that will be enough for our purpose.
 
-<a href="assets/2017/9/hacking-accessing-a-graph-in-cosmos-db-with-sql-documentdb-api/image.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/9/hacking-accessing-a-graph-in-cosmos-db-with-sql-documentdb-api/image_thumb.png" alt="image" width="211" height="97" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/08/image.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/08/image_thumb.png" alt="image" width="211" height="97" border="0" /></a>
 
 We can note the following:
 <ul>

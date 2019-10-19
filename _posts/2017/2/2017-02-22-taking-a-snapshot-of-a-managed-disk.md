@@ -420,7 +420,7 @@ $snapshot = New-AzureRmSnapshot -Snapshot $config -SnapshotName ($disk.Name+'-sn
 <ol>
  	<li>In the portal, go to the resource group</li>
  	<li>Select the snapshot resource
-<a href="assets/2017/2/taking-a-snapshot-of-a-managed-disk/clip_image0021.jpg"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="clip_image002" src="assets/2017/2/taking-a-snapshot-of-a-managed-disk/clip_image002_thumb1.jpg" alt="clip_image002" border="0" /></a></li>
+<a href="http://vincentlauzon.files.wordpress.com/2017/02/clip_image0021.jpg"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="clip_image002" src="http://vincentlauzon.files.wordpress.com/2017/02/clip_image002_thumb1.jpg" alt="clip_image002" border="0" /></a></li>
  	<li>Notice the storage type is standard LRS</li>
 </ol>
 <h3>Change the existing VM</h3>

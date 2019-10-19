@@ -15,7 +15,7 @@ I want to explain how it works and all the moving pieces (and there are a few).�
 
 Here’s a diagram of the final state:
 
-<a href="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image13.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image_thumb13.png" alt="image" width="616" height="825" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/02/image13.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/02/image_thumb13.png" alt="image" width="616" height="825" border="0" /></a>
 
 Basically, we’ll have 2 VMs (which of course you could extend to n VMs) in a Virtual Network with their VHD in a blob storage, those 2 VMs will have HTTP requests load balanced to them from a public IP address and will have RDP NAT to individual VMs (i.e. port 3389 will go to VM-0, port 3390 will go to VM-1).
 
@@ -33,7 +33,7 @@ Give the resource group the name you want and create it in the region you prefer
 <h2>Public IP Address</h2>
 The first piece of the puzzle, the Public IP address.  Type “Public IP Address” in the marketplace and choose the one published by Microsoft.
 
-<a href="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image15.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image_thumb15.png" alt="image" width="340" height="480" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/02/image15.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/02/image_thumb15.png" alt="image" width="340" height="480" border="0" /></a>
 
 For the name, call it <em>Public-IP</em>  but it really doesn’t matter:  this is the resource name and nobody else than you will see that.
 
@@ -90,7 +90,7 @@ This is one of the major differences with ARM (vs Cloud Services):  VMs always 
 
 So in the Azure Marketplace, type “Virtual Network”, take the one published by Microsoft.  Make sure you choose the Resource Manager before hitting <em>Create</em>
 
-<a href="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image16.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image_thumb16.png" alt="image" width="669" height="217" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/02/image16.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/02/image_thumb16.png" alt="image" width="669" height="217" border="0" /></a>
 
 You can name the vnet…  “vnet”.  Make sure you put it in the right resource group and then hit create.
 
@@ -112,7 +112,7 @@ Here we’ll create 2 virtual machines.  I’m going to create Windows Server 2
 
 In Azure Marketplace, search for “windows 2012” and select “Windows Server 2012 R2 Datacenter” published by Microsoft.
 
-<a href="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image19.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image_thumb19.png" alt="image" width="1586" height="151" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/02/image19.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/02/image_thumb19.png" alt="image" width="1586" height="151" border="0" /></a>
 
 VMs require a fair bit of configuration, so let’s go with it.
 
@@ -130,13 +130,13 @@ In the Azure Marketplace, type “Load Balancer” and select the one published 
 
 Let’s call it “LB”, keep the scheme to “public”, choose the public IP as the one we’ve created, i.e. “Public-IP”.  As usual, let’s put it in the same region &amp; resource group.
 
-<a href="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image22.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image_thumb22.png" alt="image" width="216" height="240" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/02/image22.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/02/image_thumb22.png" alt="image" width="216" height="240" border="0" /></a>
 
 Let’s create it.
 
 Then let’s configure the backend pools.
 
-<a href="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image23.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image_thumb23.png" alt="image" width="240" height="134" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/02/image23.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/02/image_thumb23.png" alt="image" width="240" height="134" border="0" /></a>
 
 We’ll add one, then name it “Web” and “Add a virtual Machine”.
 
@@ -146,17 +146,17 @@ This defines the targets for the load balancer.
 
 Now, let’s define a probe.
 
-<a href="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image24.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image_thumb24.png" alt="image" width="240" height="215" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/02/image24.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/02/image_thumb24.png" alt="image" width="240" height="215" border="0" /></a>
 
 Let’s add one, call it “TCP-Probe”, give it the protocol TCP and leave the port to 80, interval to 5 seconds and unhealthy threshold to 2.
 
-<a href="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image25.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image_thumb25.png" alt="image" width="210" height="240" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/02/image25.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/02/image_thumb25.png" alt="image" width="210" height="240" border="0" /></a>
 
 That probe is basically going to define when a VM is healthy or not.  When the VM can’t let the probe connect, it’s going to be removed from the load balancer roaster.
 <h3>Load Balancing Rules</h3>
 Now for the load balancing rules.
 
-<a href="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image26.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image_thumb26.png" alt="image" width="240" height="219" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/02/image26.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/02/image_thumb26.png" alt="image" width="240" height="219" border="0" /></a>
 
 Let’s create one, call it “Http”, with protocol TCP, port 80, backend port 80, the back-end pool “Web” (that we just created), Probe “TCP-Probe” (that we also just created), Session Persistence “None”, Idle timeout 4 mins, Floating IP “Disabled”.
 
@@ -164,11 +164,11 @@ Basically, we say that TCP requests coming on the public IP will be forwarded to
 <h3>NAT Rules</h3>
 Let’s setup a NAT Rule to forward RDP requests as follow.
 
-<a href="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image27.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image_thumb27.png" alt="image" width="565" height="514" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/02/image27.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/02/image_thumb27.png" alt="image" width="565" height="514" border="0" /></a>
 
 So, we’ll create 2 NAT rules.
 
-<a href="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image28.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image_thumb28.png" alt="image" width="240" height="224" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/02/image28.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/02/image_thumb28.png" alt="image" width="240" height="224" border="0" /></a>
 
 For the first one, let’s call it “RDP-to-VM-0”, let’s select the RDP Service, protocol TCP, Port 3389, target “VM-0”, port mapping “default”.
 
@@ -178,7 +178,7 @@ That’s all the configuration we need.
 
 From here, you can connect to your VMs.
 
-<a href="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image29.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2016/2/load-balancing-vms-in-azure-resource-manager/image_thumb29.png" alt="image" width="240" height="74" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/02/image29.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/02/image_thumb29.png" alt="image" width="240" height="74" border="0" /></a>
 
 What we’ll want to do for testing is to configure a simple web site on each VM giving a different page each.  Let’s say that VM-0 prints out “VM-0 Site” and VM-1 prints out “VM-1 Site”.
 

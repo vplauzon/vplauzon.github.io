@@ -11,7 +11,7 @@ tags:
 - Security
 - Serverless
 ---
-<img style="float:right;padding-right:20px;" title="From Pexels" src="https://vincentlauzon.files.wordpress.com/2018/09/architectural-design-architecture-buildings-698174-e1537823468344.jpg" />
+<img style="float:right;padding-right:20px;" title="From Pexels" src="/assets/2018/9/service-principal-for-logic-app-connector/architectural-design-architecture-buildings-698174-e1537823468344.jpg" />
 
 <a href="https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview">Azure Logic Apps</a> is a powerful integration platform.
 
@@ -76,13 +76,13 @@ The region we select needs to support Data Factory which isn't supported everywh
 
 This should deploy the following resources:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/09/deployment.png" alt="Deployment" />
+<img src="/assets/2018/9/service-principal-for-logic-app-connector/deployment.png" alt="Deployment" />
 
 <h2>Connection with current user</h2>
 
 Let's first look at <em>df-connection-current-user</em>.  This connector is configured, as its name suggests, to use the current user.
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/09/currentuser.png" alt="Current user" />
+<img src="/assets/2018/9/service-principal-for-logic-app-connector/currentuser.png" alt="Current user" />
 
 We see a warning telling us the connection isn't authenticated.
 
@@ -106,7 +106,7 @@ We've seen how to create Logic Apps Connector in a <a href="https://vincentlauzo
 
 If we click on the warning, we are taken to the following form:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/09/authorization.png" alt="Authorization" />
+<img src="/assets/2018/9/service-principal-for-logic-app-connector/authorization.png" alt="Authorization" />
 
 If we click the authorize button, we are going to authenticate as ourselves.
 
@@ -161,7 +161,7 @@ Now if we finally go to the Data Factory.
 
 If we look at the activity logs, we should see something like the following:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/09/logs.png" alt="Logs" />
+<img src="/assets/2018/9/service-principal-for-logic-app-connector/logs.png" alt="Logs" />
 
 In our case we see the last operation, a <em>Create Pipeline Run</em> was done by <em>Vpl-Principal</em>, which is the name of our Service Principal.
 

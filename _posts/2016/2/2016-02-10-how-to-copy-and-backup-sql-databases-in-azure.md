@@ -20,7 +20,7 @@ This option is quite straightforward.  We will copy the current state of the da
 
 In the portal, go to your database blade and press the copy button on top.
 
-<a href="assets/2016/2/how-to-copy-and-backup-sql-databases-in-azure/image5.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/2/how-to-copy-and-backup-sql-databases-in-azure/image_thumb5.png" alt="image" width="829" height="222" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/02/image5.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/02/image_thumb5.png" alt="image" width="829" height="222" border="0" /></a>
 
 In the <em>Copy</em> blade, type the name of the new database &amp; choose which logical server it should be attached to.  Press OK.
 
@@ -36,7 +36,7 @@ Depending on <a href="https://azure.microsoft.com/en-us/documentation/articles/s
 
 So again, go to your Database blade.  Click the restore button.
 
-<a href="assets/2016/2/how-to-copy-and-backup-sql-databases-in-azure/image6.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/2/how-to-copy-and-backup-sql-databases-in-azure/image_thumb6.png" alt="image" width="835" height="206" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/02/image6.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/02/image_thumb6.png" alt="image" width="835" height="206" border="0" /></a>
 
 Type a database name for the target (copy) and choose a point in time.  Click Ok.
 
@@ -46,7 +46,7 @@ This option can be interesting if you want to keep a copy of the backup for mult
 
 In your database blade, click Export.
 
-<a href="assets/2016/2/how-to-copy-and-backup-sql-databases-in-azure/image7.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/2/how-to-copy-and-backup-sql-databases-in-azure/image_thumb7.png" alt="image" width="842" height="190" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/02/image7.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/02/image_thumb7.png" alt="image" width="842" height="190" border="0" /></a>
 
 The target will be a file in blob storage.  You’ll need to specify the name of the file, the location (storage account and container) and the login information of an admin account on the logical SQL Server.  Click ok.
 
@@ -54,7 +54,7 @@ Once the DB is exported you can use it to restore it somewhere.
 
 In order to do that, open your SQL Server blade and click <em>Import Database</em>.
 
-<a href="assets/2016/2/how-to-copy-and-backup-sql-databases-in-azure/image8.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/2/how-to-copy-and-backup-sql-databases-in-azure/image_thumb8.png" alt="image" width="561" height="172" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/02/image8.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/02/image_thumb8.png" alt="image" width="561" height="172" border="0" /></a>
 
 From there you’ll specify where to source the backup file, on which logical SQL Server to create the database, with which collation and the name of the DB.
 <h2>Conclusion</h2>

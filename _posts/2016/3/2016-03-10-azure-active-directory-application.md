@@ -14,7 +14,7 @@ If you come from the on premise world and are used to Active Directory on Window
 
 Think about how authentication works in the cloud and how it would be without the concept of application.
 
-<a href="assets/2016/3/azure-active-directory-application/image3.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="assets/2016/3/azure-active-directory-application/image_thumb3.png" alt="image" width="590" height="407" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/03/image3.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/03/image_thumb3.png" alt="image" width="590" height="407" border="0" /></a>
 
 The flow would be that (1) the user authenticates against the identity provider (AAD) and receives an authentication token related only to the user, not the application and (2) the user presents the token to the app.
 
@@ -32,7 +32,7 @@ An AAD application fulfills the concept of Relying Party in the claims based mod
 
 With this concept, the authentication flow is augmented as follow.
 
-<a href="assets/2016/3/azure-active-directory-application/image4.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="assets/2016/3/azure-active-directory-application/image_thumb4.png" alt="image" width="588" height="407" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/03/image4.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/03/image_thumb4.png" alt="image" width="588" height="407" border="0" /></a>
 
 Now the user authenticates (1) in the context of a specific application (App X).  It presents the token (2) to App X.  If App X tries to use the token on App Y (3), it gets an unauthorized access since the token isn’t signed for App Y.
 

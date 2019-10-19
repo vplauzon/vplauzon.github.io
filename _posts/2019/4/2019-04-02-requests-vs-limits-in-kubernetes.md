@@ -7,7 +7,7 @@ categories:
 tags:
 - Containers
 ---
-<img style="float:left;padding-right:20px;" title="From pixabay.com" src="https://vincentlauzon.files.wordpress.com/2019/03/bark-chopped-circle-207296.jpg" />
+<img style="float:left;padding-right:20px;" title="From pixabay.com" src="/assets/2019/4/requests-vs-limits-in-kubernetes/bark-chopped-circle-207296.jpg" />
 
 Kubernetes doesn't know what resources (i.e. CPU &amp; memory) your container needs.  That is why you must give it some hints.
 
@@ -263,11 +263,11 @@ By default, the API will allocate 10 Mb of RAM, use one core to do some work and
 
 Let's see if we can find that usage.  Let's open the AKS cluster in the portal and let's look at the Metrics, under Monitoring:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/03/insights.png" alt="Metrics" />
+<img src="/assets/2019/4/requests-vs-limits-in-kubernetes/insights.png" alt="Metrics" />
 
 Now we are going to maximize the view (little chevrons on both sides), select the <em>containers</em> tab, search for <em>myapp</em> and display <em>CPU</em> with <em>Max</em>:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/03/empty-insights.png" alt="Empty insights" />
+<img src="/assets/2019/4/requests-vs-limits-in-kubernetes/empty-insights.png" alt="Empty insights" />
 
 We do not see a blip on the radar.  So, let's run that for a little longer.  We can do that with specific query strings:
 
@@ -281,7 +281,7 @@ This will take 90 seconds to run.
 
 We'll need to wait a little for Log Analytics to catch up on the metrics.  But then:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/03/90s.png" alt="90 seconds" />
+<img src="/assets/2019/4/requests-vs-limits-in-kubernetes/90s.png" alt="90 seconds" />
 
 We switched to "The last 30 minutes" in <em>Time range</em>.
 
@@ -299,7 +299,7 @@ $ curl "http://$ip/?duration=90&core=2"
 
 we can see here:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/03/90s-2cores.png" alt="90 seconds &amp; 2 cores" />
+<img src="/assets/2019/4/requests-vs-limits-in-kubernetes/90s-2cores.png" alt="90 seconds &amp; 2 cores" />
 
 The usage went close to 2 cores and is highlighted in red, since it's close to its limits.
 
@@ -317,7 +317,7 @@ curl "http://$ip/?duration=90&core=2" &
 
 Here we can see that each container takes less than one core:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/03/multiple-2cores.png" alt="Multiple 2 cores" />
+<img src="/assets/2019/4/requests-vs-limits-in-kubernetes/multiple-2cores.png" alt="Multiple 2 cores" />
 
 Basically, they all pull on the blanket but none of the containers can fully used two cores.
 
@@ -333,7 +333,7 @@ curl "http://$ip/?duration=5&ram=20"
 
 Here we request to use 20Mb within the request.  That adds up to the rest of the memory used by the container:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/03/20mb.png" alt="20 Mb" />
+<img src="/assets/2019/4/requests-vs-limits-in-kubernetes/20mb.png" alt="20 Mb" />
 
 We then get close to our 128 Mb limit.  Let exceed it:
 
@@ -345,7 +345,7 @@ curl: (52) Empty reply from server
 
 We see an error occurs.  That's because the container got killed when its memory demand occurred and the total memory exceeded the container's limit specification.
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/03/deleted-container-1.png" alt="Deleted Container" />
+<img src="/assets/2019/4/requests-vs-limits-in-kubernetes/deleted-container-1.png" alt="Deleted Container" />
 
 We can see from the logs the container was restarted since the memory went down.  The pod didn't get replaced, only the container.
 

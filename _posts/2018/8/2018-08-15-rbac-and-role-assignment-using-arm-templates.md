@@ -9,7 +9,7 @@ tags:
 - Identity
 - Security
 ---
-<a href="assets/2018/8/rbac-and-role-assignment-using-arm-templates/adult-army-competition-73869.jpg"><img style="float:right;" title="adult-army-competition-73869" src="assets/2018/8/rbac-and-role-assignment-using-arm-templates/adult-army-competition-73869_thumb.jpg" alt="Roles" width="320" height="231" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/08/adult-army-competition-73869.jpg"><img style="float:right;" title="adult-army-competition-73869" src="http://vincentlauzon.files.wordpress.com/2018/08/adult-army-competition-73869_thumb.jpg" alt="Roles" width="320" height="231" /></a>
 Azure supports <a href="https://docs.microsoft.com/en-us/azure/role-based-access-control/overview">Role Based Access Control</a> (RBAC) as an access control paradigm.
 
 It allows to map a user (or a group of users) to a role within a given scope (resource, resource group, <a href="https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption-guide/subscription-governance">subscription</a> or <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/management-groups-overview">management group</a>).
@@ -124,11 +124,11 @@ We now have the two parameters we needed to feed the ARM template we proposed at
 
 If we run the template, we should have a resource group looking like this:
 
-<a href="https://vincentlauzon.files.wordpress.com/2018/08/rg.png"><img src="https://vincentlauzon.files.wordpress.com/2018/08/rg.png" alt="Deployed Resource Group" /></a>
+<a href="/assets/2018/8/rbac-and-role-assignment-using-arm-templates/rg.png"><img src="/assets/2018/8/rbac-and-role-assignment-using-arm-templates/rg.png" alt="Deployed Resource Group" /></a>
 
 We can select the <em>EmptyLogicApp</em> resource.  We can then select the <em>Access control (IAM)</em> menu on the left-hand side menu:
 
-<a href="https://vincentlauzon.files.wordpress.com/2018/08/iam.png"><img src="https://vincentlauzon.files.wordpress.com/2018/08/iam.png" alt="Role assignments" /></a>
+<a href="/assets/2018/8/rbac-and-role-assignment-using-arm-templates/iam.png"><img src="/assets/2018/8/rbac-and-role-assignment-using-arm-templates/iam.png" alt="Role assignments" /></a>
 
 Let's focus on <em>Logic App Contributor</em> section.  This is the role we choose.
 

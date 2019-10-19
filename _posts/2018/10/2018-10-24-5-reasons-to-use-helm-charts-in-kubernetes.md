@@ -8,7 +8,7 @@ tags:
 - Containers
 - DevOps
 ---
-<img style="float:left;padding-right:20px;" title="From leeroy on www.lifeofpix.com" src="https://vincentlauzon.files.wordpress.com/2018/10/life-of-pix-free-stock-boat-bar-wood-leeroy-e1539804294819.jpg" />
+<img style="float:left;padding-right:20px;" title="From leeroy on www.lifeofpix.com" src="/assets/2018/10/5-reasons-to-use-helm-charts-in-kubernetes/life-of-pix-free-stock-boat-bar-wood-leeroy-e1539804294819.jpg" />
 
 Kubernetes is a big platform to absorb.  It has a rich resource &amp; networking  model.  In many ways it is a miniature version of a fully fledge cloud provider, abstracting the underlying cloud provider.
 
@@ -20,7 +20,7 @@ Without further ado, let's look at five (5) reasons why you want to use Helm cha
 
 <h2>Easy way to install third party solutions</h2>
 
-<img style="float:right;padding-right:20px;" title="From www.pexels.com" src="https://vincentlauzon.files.wordpress.com/2018/10/box-celebration-gift-260184-e1539804683206.jpg" />
+<img style="float:right;padding-right:20px;" title="From www.pexels.com" src="/assets/2018/10/5-reasons-to-use-helm-charts-in-kubernetes/box-celebration-gift-260184-e1539804683206.jpg" />
 
 Helm is Kubernetes equivalent to Linux Apt-Get / Yum:  a packaging tool.
 
@@ -46,7 +46,7 @@ Helm also allows to manage the lifetime of those components as a whole.  Trackin
 
 <h2>Managing multiple resources</h2>
 
-<img style="float:left;padding-right:20px;" title="From www.pexels.com" src="https://vincentlauzon.files.wordpress.com/2018/10/art-arts-and-crafts-assorted-1331705-e1539805005525.jpg" />
+<img style="float:left;padding-right:20px;" title="From www.pexels.com" src="/assets/2018/10/5-reasons-to-use-helm-charts-in-kubernetes/art-arts-and-crafts-assorted-1331705-e1539805005525.jpg" />
 
 Software engineering really consist of an handful of patterns.  For instance, "Add a level of indirection" is responsible for a myriad of different solutions such as programming language, network protocols, etc.  .
 
@@ -60,7 +60,7 @@ This gives us a macro view of a cluster.  That is a level between the cluster it
 
 <h2>Atomically installing / upgrading / deleting multiple resources</h2>
 
-<img style="float:right;padding-right:20px;" title="From www.pexels.com" src="https://vincentlauzon.files.wordpress.com/2018/10/atom-1013638_640-e1539805411548.jpg" />
+<img style="float:right;padding-right:20px;" title="From www.pexels.com" src="/assets/2018/10/5-reasons-to-use-helm-charts-in-kubernetes/atom-1013638_640-e1539805411548.jpg" />
 
 Installing a complex solution would require us to deploy multiple resources.
 
@@ -82,7 +82,7 @@ It is easy to see what versions of a charts are running on a cluster.
 
 <h2>Parametrized deployments</h2>
 
-<img style="float:left;padding-right:20px;" title="From www.pexels.com" src="https://vincentlauzon.files.wordpress.com/2018/10/equalizer-2935455_640-e1539805750708.png" />
+<img style="float:left;padding-right:20px;" title="From www.pexels.com" src="/assets/2018/10/5-reasons-to-use-helm-charts-in-kubernetes/equalizer-2935455_640-e1539805750708.png" />
 
 Here is what we consider a killer feature for Dev Ops.
 

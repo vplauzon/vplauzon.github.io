@@ -9,13 +9,13 @@ tags:
 ---
 I'm going to document this once and for all.
 <h2>The Problem</h2>
-<a href="https://vincentlauzon.files.wordpress.com/2015/12/ethernet-cable-icon1.png" rel="attachment wp-att-1392"><img class="size-full wp-image-1392 alignright" src="https://vincentlauzon.files.wordpress.com/2015/12/ethernet-cable-icon1.png" alt="Ethernet-Cable-icon[1]" width="128" height="128" /></a>You want to an endpoint multiple times in parallel. Or maybe you want to call multiple endpoints under the same domain name. For instance, you might want to drill an API with multiple requests because the API doesn't support batch mode.
+<a href="/assets/2015/12/beyond-2-concurrent-connections-in-net/ethernet-cable-icon1.png" rel="attachment wp-att-1392"><img class="size-full wp-image-1392 alignright" src="/assets/2015/12/beyond-2-concurrent-connections-in-net/ethernet-cable-icon1.png" alt="Ethernet-Cable-icon[1]" width="128" height="128" /></a>You want to an endpoint multiple times in parallel. Or maybe you want to call multiple endpoints under the same domain name. For instance, you might want to drill an API with multiple requests because the API doesn't support batch mode.
 
 The problem is that .NET, by default, supports only 2 TCP connections to the same IP address in parallel. If you async a bunch of web-calls, it's going to simply queue them and run them 2-by-2. So you won't scale much.
 
 Sure this limit of two isn't hardcoded in .NET and you can change it, can't you!?
 <h2>The Solution</h2>
-<a href="https://vincentlauzon.files.wordpress.com/2015/12/business-parallel-tasks-icon1.png" rel="attachment wp-att-1394"><img class="size-full wp-image-1394 alignleft" src="https://vincentlauzon.files.wordpress.com/2015/12/business-parallel-tasks-icon1.png" alt="Business-Parallel-Tasks-icon[1]" width="128" height="128" /></a>Yes we can override that number.  It is driven by what is called the <em><a href="https://msdn.microsoft.com/en-us/library/system.net.servicepointmanager.aspx" target="_blank">Service Point Manager</a> </em>in <em>System.Net</em>.
+<a href="/assets/2015/12/beyond-2-concurrent-connections-in-net/business-parallel-tasks-icon1.png" rel="attachment wp-att-1394"><img class="size-full wp-image-1394 alignleft" src="/assets/2015/12/beyond-2-concurrent-connections-in-net/business-parallel-tasks-icon1.png" alt="Business-Parallel-Tasks-icon[1]" width="128" height="128" /></a>Yes we can override that number.  It is driven by what is called the <em><a href="https://msdn.microsoft.com/en-us/library/system.net.servicepointmanager.aspx" target="_blank">Service Point Manager</a> </em>in <em>System.Net</em>.
 
 There are two ways to override it:  by configuration or by code.  I would suggest to use the configuration route if your needs are static and by code if you need to change it given an input.
 <h3>Configuration</h3>
@@ -103,6 +103,6 @@ I've done it with <a href="http://imdb.com" target="_blank">IMDB</a> last week.�
 
 So be mindful about that and wield the connection limit sword carefully ;)
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/12/0d9bf61e081.jpg" rel="attachment wp-att-1402"><img class="alignnone size-full wp-image-1402" src="https://vincentlauzon.files.wordpress.com/2015/12/0d9bf61e081.jpg" alt="0D9BF61E08[1]" width="700" height="467" /></a>
+<a href="/assets/2015/12/beyond-2-concurrent-connections-in-net/0d9bf61e081.jpg" rel="attachment wp-att-1402"><img class="alignnone size-full wp-image-1402" src="/assets/2015/12/beyond-2-concurrent-connections-in-net/0d9bf61e081.jpg" alt="0D9BF61E08[1]" width="700" height="467" /></a>
 
 &nbsp;

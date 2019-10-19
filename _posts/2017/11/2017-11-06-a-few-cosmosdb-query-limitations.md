@@ -7,7 +7,7 @@ categories:
 tags:
 - NoSQL
 ---
-<a href="assets/2017/11/a-few-cosmosdb-query-limitations/pexels-photo-1645241.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-164524[1]" src="assets/2017/11/a-few-cosmosdb-query-limitations/pexels-photo-1645241_thumb.jpg" alt="pexels-photo-164524[1]" width="320" height="212" align="right" border="0" /></a>I’ve been working quite a bit with Cosmos DB since it was release in Private Preview (see <a href="https://vincentlauzon.com/2014/09/08/azure-documentdb-first-use-cases/">my first article about it back in September 2014</a> as a battle scar).
+<a href="http://vincentlauzon.files.wordpress.com/2017/10/pexels-photo-1645241.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-164524[1]" src="http://vincentlauzon.files.wordpress.com/2017/10/pexels-photo-1645241_thumb.jpg" alt="pexels-photo-164524[1]" width="320" height="212" align="right" border="0" /></a>I’ve been working quite a bit with Cosmos DB since it was release in Private Preview (see <a href="https://vincentlauzon.com/2014/09/08/azure-documentdb-first-use-cases/">my first article about it back in September 2014</a> as a battle scar).
 
 It has come a long way.
 

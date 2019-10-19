@@ -11,7 +11,7 @@ tags:
 
 <strong>UPDATE 31-05-2017</strong>:  <em>This article was written in 07-2016.  Today <a href="https://azure.microsoft.com/en-ca/blog/announcing-disaster-recovery-for-azure-iaas-vms-using-asr/">Microsoft announced Azure Site Recovery (ASR) support for Azure-to-Azure</a> (in public preview).  Options presented in this article are still valid but the assumption that ASR can't help no is longer true.  ASR can now replicate VMs to a secondary region and is the recommended option to replicate IaaS stateful VMs.</em>
 
-<a href="assets/2016/7/disaster-recovery-with-azure-virtual-machines/kermit-1365914_640.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="kermit-1365914_640" src="assets/2016/7/disaster-recovery-with-azure-virtual-machines/kermit-1365914_640_thumb.jpg" alt="kermit-1365914_640" width="320" height="480" align="right" border="0" /></a>I have had a few conversations lately about Disaster Recovery in Azure where Virtual Machines are involved.  I thought I would write this article to summarize the options I recommend.
+<a href="http://vincentlauzon.files.wordpress.com/2016/07/kermit-1365914_640.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="kermit-1365914_640" src="http://vincentlauzon.files.wordpress.com/2016/07/kermit-1365914_640_thumb.jpg" alt="kermit-1365914_640" width="320" height="480" align="right" border="0" /></a>I have had a few conversations lately about Disaster Recovery in Azure where Virtual Machines are involved.  I thought I would write this article to summarize the options I recommend.
 
 We should really call the topic <em>Business Continuity</em> or <em>Resiliency to Azure Region Service Disruption</em> but traditionally, people call this Disaster Recovery and you find this wording in many deployment requirements, so I guess I have to continue the tradition here.
 
@@ -95,7 +95,7 @@ For solutions that haven’t reached the automation maturity required to leverag
 
 The obvious solution attached to this practice is to copy the VM Hard Drive blob files to the secondary regions.
 
-<a href="assets/2016/7/disaster-recovery-with-azure-virtual-machines/image.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2016/7/disaster-recovery-with-azure-virtual-machines/image_thumb.png" alt="image" width="988" height="479" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/07/image.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/07/image_thumb.png" alt="image" width="988" height="479" border="0" /></a>
 
 This solution usually sits well with the operational models handling custom images (as opposed to automated ones):  maintenance are performed on VMs in orderly manner (e.g. patches) and once this is done, the VHDs can be copied over to the secondary storage account.
 
@@ -155,7 +155,7 @@ The main disadvantage is that you go with backups and therefore limits the RPO y
 <h3>Stateful 3 – Application-based Replication (e.g. DB replication)</h3>
 Instead of using the application to backup itself, use the replication mechanism (assuming there is one) to replicate the state to the secondary Azure region.
 
-<a href="assets/2016/7/disaster-recovery-with-azure-virtual-machines/image1.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2016/7/disaster-recovery-with-azure-virtual-machines/image_thumb1.png" alt="image" width="921" height="201" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/07/image1.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/07/image_thumb1.png" alt="image" width="921" height="201" border="0" /></a>
 
 Typically that would be asynchronous replication not to impact the performance of your system.
 

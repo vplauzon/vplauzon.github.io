@@ -25,7 +25,7 @@ The obvious way to have more control on Network access is to start by attaching 
 
 Let’s first create a Virtual Network.  One of the critical step is to choose the “Classic” Model as opposed to “Resource Manager” Model.
 
-<a href="assets/2016/1/network-access-control-on-an-hdinsight-cluster/image17.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/1/network-access-control-on-an-hdinsight-cluster/image_thumb17.png" alt="image" width="513" height="168" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/01/image17.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb17.png" alt="image" width="513" height="168" border="0" /></a>
 
 Give you v-net a name.  You can leave the address space as the default, i.e. 10.0.0.0/16.  Put it in the same resource group as your HDInsight cluster (for convenience) and in the same region (that’s mandatory).  Then create it.
 
@@ -35,25 +35,25 @@ Now this is required to <strong>be done at the cluster’s creation time</strong
 
 So when you create your cluster in the Azure portal, go in the <em>Optional Configuration</em> at the bottom.
 
-<a href="assets/2016/1/network-access-control-on-an-hdinsight-cluster/image15.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/1/network-access-control-on-an-hdinsight-cluster/image_thumb15.png" alt="image" width="495" height="119" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/01/image15.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb15.png" alt="image" width="495" height="119" border="0" /></a>
 
 Then select the Virtual Network box
 
-<a href="assets/2016/1/network-access-control-on-an-hdinsight-cluster/image16.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/1/network-access-control-on-an-hdinsight-cluster/image_thumb16.png" alt="image" width="530" height="665" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/01/image16.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb16.png" alt="image" width="530" height="665" border="0" /></a>
 
 Choose the Virtual Network you just created.  For the subnet, choose the default subnet.
 
 When you’ll create your cluster, it will behave identically to a cluster without a Virtual Network.  The only way to know there is a Virtual Network attached to it is to look at your cluster’s settings
 
-<a href="assets/2016/1/network-access-control-on-an-hdinsight-cluster/image18.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/1/network-access-control-on-an-hdinsight-cluster/image_thumb18.png" alt="image" width="655" height="227" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/01/image18.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb18.png" alt="image" width="655" height="227" border="0" /></a>
 
 and then look at its properties
 
-<a href="assets/2016/1/network-access-control-on-an-hdinsight-cluster/image19.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/1/network-access-control-on-an-hdinsight-cluster/image_thumb19.png" alt="image" width="526" height="509" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/01/image19.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb19.png" alt="image" width="526" height="509" border="0" /></a>
 
 At the bottom of the blade you should see the Virtual Network <em>GUID</em>.
 
-<a href="assets/2016/1/network-access-control-on-an-hdinsight-cluster/image20.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/1/network-access-control-on-an-hdinsight-cluster/image_thumb20.png" alt="image" width="511" height="365" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/01/image20.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb20.png" alt="image" width="511" height="365" border="0" /></a>
 
 A GUID, salt of the Earth!
 <h2>VPN Gateway</h2>
@@ -67,11 +67,11 @@ Now the Cluster is in a Virtual Network, we can control access via a Network Sec
 
 First, we’ll create a Network Security Group (NSG).
 
-<a href="assets/2016/1/network-access-control-on-an-hdinsight-cluster/image21.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/1/network-access-control-on-an-hdinsight-cluster/image_thumb21.png" alt="image" width="964" height="270" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/01/image21.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb21.png" alt="image" width="964" height="270" border="0" /></a>
 
 which should lead you to
 
-<a href="assets/2016/1/network-access-control-on-an-hdinsight-cluster/image22.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/1/network-access-control-on-an-hdinsight-cluster/image_thumb22.png" alt="image" width="620" height="561" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/01/image22.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb22.png" alt="image" width="620" height="561" border="0" /></a>
 
 Again, make sure you select “Classic” deployment model.
 
@@ -81,7 +81,7 @@ Next we’ll attach the newly created NSG to the default subnet of the Virtual N
 
 Let’s open the virtual network and then open its settings.  From there, open its subnets and select the default one (or whichever you put your cluster in).
 
-<a href="assets/2016/1/network-access-control-on-an-hdinsight-cluster/image23.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/1/network-access-control-on-an-hdinsight-cluster/image_thumb23.png" alt="image" width="524" height="653" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/01/image23.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb23.png" alt="image" width="524" height="653" border="0" /></a>
 
 From there, select <em>Network security group</em> and then select the NSG you just created.
 
@@ -89,7 +89,7 @@ This binds the subnet to the NSG.
 <h2>Configuring NSG rules</h2>
 At this point your cluster shouldn’t be accessible.  This is because by default, NSGs disable most routes.  To see that, open your NSG and then, in the settings, open the <em>Inbound security rules</em>.
 
-<a href="assets/2016/1/network-access-control-on-an-hdinsight-cluster/image24.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/1/network-access-control-on-an-hdinsight-cluster/image_thumb24.png" alt="image" width="1540" height="456" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/01/image24.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb24.png" alt="image" width="1540" height="456" border="0" /></a>
 
 You should have no rules in there.  Click the <em>Default Rules</em> at the top and that should display the default rules.  Basically, the NSG allows connections from within the virtual network, connections from the Azure Load Balancer (this is required so that VMs can be monitored internally) and denies every other routes.
 
@@ -97,7 +97,7 @@ This means, among other things, that the RDP route (or SSH for a Linux cluster) 
 
 Similarly, if you look at the outbound rules:
 
-<a href="assets/2016/1/network-access-control-on-an-hdinsight-cluster/image25.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/1/network-access-control-on-an-hdinsight-cluster/image_thumb25.png" alt="image" width="1537" height="465" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/01/image25.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb25.png" alt="image" width="1537" height="465" border="0" /></a>
 
 Here, routes toward the virtual network &amp; the internet are allowed but nothing else.
 

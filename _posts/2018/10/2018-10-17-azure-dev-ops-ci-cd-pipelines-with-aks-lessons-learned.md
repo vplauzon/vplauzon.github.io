@@ -9,7 +9,7 @@ tags:
 - Containers
 - DevOps
 ---
-<img style="float:right;padding-right:20px;" title="From Pexels" src="https://vincentlauzon.files.wordpress.com/2018/10/business-close-up-energy-191648-e1539692591199.jpg" />
+<img style="float:right;padding-right:20px;" title="From Pexels" src="/assets/2018/10/azure-dev-ops-ci-cd-pipelines-with-aks-lessons-learned/business-close-up-energy-191648-e1539692591199.jpg" />
 
 I have this personal project where I have a swag of micro services collaborating to serve different web applications.
 
@@ -33,7 +33,7 @@ Here we discuss only the CI / CD capabilities of Azure DevOps.  We use GitHub fo
 
 <h2>Environments</h2>
 
-<img style="float:left;padding-right:20px;" title="From Pexels" src="https://vincentlauzon.files.wordpress.com/2018/10/art-ball-ball-shaped-235615-e1539706329190.jpg" />
+<img style="float:left;padding-right:20px;" title="From Pexels" src="/assets/2018/10/azure-dev-ops-ci-cd-pipelines-with-aks-lessons-learned/art-ball-ball-shaped-235615-e1539706329190.jpg" />
 
 We have two environments:  Dev &amp; Prod.
 
@@ -47,7 +47,7 @@ This gives us great confidence that when something works in Dev, it should work 
 
 Our release pipeline looks like this:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/10/release-pipeline.png" alt="Release Pipeline" />
+<img src="/assets/2018/10/azure-dev-ops-ci-cd-pipelines-with-aks-lessons-learned/release-pipeline.png" alt="Release Pipeline" />
 
 We have three jobs:
 
@@ -158,7 +158,7 @@ We have some work items planned to address this as well.
 
 Everywhere we have something that varies by environment, we use Azure Dev Ops <em>variables</em>.  They are easy to vary per <em>stage</em> (i.e. environments) and easy to manage.
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/10/release-variables.png" alt="Release Variables" />
+<img src="/assets/2018/10/azure-dev-ops-ci-cd-pipelines-with-aks-lessons-learned/release-variables.png" alt="Release Variables" />
 
 <h2>Summary</h2>
 

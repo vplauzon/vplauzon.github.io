@@ -28,7 +28,7 @@ We discussed the integration Kubernetes &amp; Azure Networking within AKS in a <
 
 We used the following diagram to describe the anatomy of a service:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/08/containers4.png" alt="Anatomy of a Service" />
+<img src="/assets/2018/10/about-ingress-in-azure-kubernetes-service-aks/containers4.png" alt="Anatomy of a Service" />
 
 We described a service as offering a stable IP, load balancing a group of pods  and typically realized through a replica set.
 
@@ -40,7 +40,7 @@ An ingress also is a reverse proxy:  it generates a new HTTP requests to the und
 
 Ingress acts as a front door to services.  We can then upgrade our anatomy knowledge as follow:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/10/ingressanatomy.png" alt="Ingress Anatomy" />
+<img src="/assets/2018/10/about-ingress-in-azure-kubernetes-service-aks/ingressanatomy.png" alt="Ingress Anatomy" />
 
 <h2>Different use cases</h2>
 
@@ -48,11 +48,11 @@ Let's look at a few scenarios.
 
 The first one is what in <a href="https://vincentlauzon.com/2017/05/08/url-routing-with-azure-application-gateway/">Application Gateway parlance</a> we would call <em>URL Based routing</em>.  For instance, an ingress takes requests for http://vincentpizza.com and forwards requests under http://vincentpizza.com/offers/ to the <em>pizza-offers</em> service and requests under http://vincentpizza.com/menu/ to the <em>pizza-menu</em> service.
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/10/url-based-routing.png" alt="URL Based routing" />
+<img src="/assets/2018/10/about-ingress-in-azure-kubernetes-service-aks/url-based-routing.png" alt="URL Based routing" />
 
 Another one is hosting multiple domain names on the same ingress (e.g. public IP) using host name for routing.
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/10/virtualhosting.png" alt="Virtual Hosting" />
+<img src="/assets/2018/10/about-ingress-in-azure-kubernetes-service-aks/virtualhosting.png" alt="Virtual Hosting" />
 
 Of course, we could combine both previous approaches.
 
@@ -62,7 +62,7 @@ As the diagram suggests, an ingress has a many-to-many relationship with service
 
 Conceptually, the communication pattern goes a bit like this:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/10/conceptual1.png" alt="Conceptual Communication" />
+<img src="/assets/2018/10/about-ingress-in-azure-kubernetes-service-aks/conceptual1.png" alt="Conceptual Communication" />
 
 The ingress routes traffic to a service which then route it to a pod.
 
@@ -80,7 +80,7 @@ Let's assume we have 3 nodes (3 VMs) in our AKS cluster.
 
 As mentioned, an Ingress Controller is a service of type <em>load balancer</em>.  In Azure, the service is exposed through an Azure Load Balancer.
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/10/azure.png" alt="Azure Communication" />
+<img src="/assets/2018/10/about-ingress-in-azure-kubernetes-service-aks/azure.png" alt="Azure Communication" />
 
 Let's assume the request gets load balanced on a pod running on node 3.  The Ingress Controller applies ingress rules and determine the backend service to forward the request to.
 

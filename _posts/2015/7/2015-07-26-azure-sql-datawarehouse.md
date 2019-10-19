@@ -13,7 +13,7 @@ The <a href="http://azure.microsoft.com/en-us/documentation/services/sql-data-wa
 
 Here is what I gathered.
 
-<a href="assets/2015/7/azure-sql-datawarehouse/db1.png"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="db[1]" src="assets/2015/7/azure-sql-datawarehouse/db1_thumb.png" alt="db[1]" width="215" height="240" align="left" border="0" /></a>One of the great characteristic of the offering is the <strong>separate Storage &amp; Compute billing</strong>.
+<a href="http://vincentlauzon.files.wordpress.com/2015/07/db1.png"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="db[1]" src="http://vincentlauzon.files.wordpress.com/2015/07/db1_thumb.png" alt="db[1]" width="215" height="240" align="left" border="0" /></a>One of the great characteristic of the offering is the <strong>separate Storage &amp; Compute billing</strong>.
 
 You can indeed have data crunches on periodic basis (e.g. end-of-months) and pay only for those, while keeping your data up-there at the competitive price of Azure Storage.
 

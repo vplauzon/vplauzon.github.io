@@ -8,7 +8,7 @@ tags:
 - Containers
 - DevOps
 ---
-<img style="float:left;padding-right:20px;" title="From http://pixabay.com" src="https://vincentlauzon.files.wordpress.com/2018/10/typewriter-2095754_640-e1540306145341.jpg" />
+<img style="float:left;padding-right:20px;" title="From http://pixabay.com" src="/assets/2018/11/authoring-a-helm-chart-on-kubernetes-aks-parametrized-values/typewriter-2095754_640-e1540306145341.jpg" />
 
 In the <a href="https://vincentlauzon.com/2018/10/31/authoring-a-helm-chart-on-kubernetes-aks-getting-started/">last article</a>, we authored a very simple chart.
 

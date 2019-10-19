@@ -67,7 +67,7 @@ tags:
 <span style="font-family:Times New Roman;font-size:12pt;">Basically, the current situation is:
 </span>
 
-<img src="assets/2014/3/how-to-improve-azure-can-you-keep-a-secret/030714_0258_howtoimprov1.png" alt="" /><span style="font-family:Times New Roman;font-size:12pt;">
+<img src="http://vincentlauzon.files.wordpress.com/2014/03/030714_0258_howtoimprov1.png" alt="" /><span style="font-family:Times New Roman;font-size:12pt;">
 </span>
 
 <span style="font-family:Times New Roman;font-size:12pt;">That is, the app gets credentials from an unsecure secret store (typically <em>web.config</em>) then request an access token from an identity / token provider. It then uses that token to access resource. The credentials aren't used anymore.
@@ -76,7 +76,7 @@ tags:
 <span style="font-family:Times New Roman;font-size:12pt;">So a nice target solution would be:
 </span>
 
-<img src="assets/2014/3/how-to-improve-azure-can-you-keep-a-secret/030714_0258_howtoimprov2.png" alt="" /><span style="font-family:Times New Roman;font-size:12pt;">
+<img src="http://vincentlauzon.files.wordpress.com/2014/03/030714_0258_howtoimprov2.png" alt="" /><span style="font-family:Times New Roman;font-size:12pt;">
 </span>
 
 <span style="font-family:Times New Roman;font-size:12pt;">Here the application requests the token from Windows Azure (we'll discuss how) and Azure reads the secrets and fetch the token on behalf of the application. Here the application never knows about the secrets. If the application is compromised, it might still be able to get tokens, but not the credentials. This is a situation comparable to the Windows Server scenario we talked above.

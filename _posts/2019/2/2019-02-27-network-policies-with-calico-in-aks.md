@@ -9,7 +9,7 @@ tags:
 - Identity
 - Networking
 ---
-<img style="float:right;padding-right:20px;" title="From pexels.com" src="https://vincentlauzon.files.wordpress.com/2019/02/barrier-blur-chain-link-fence-1674819-e1550525929813.jpg" />
+<img style="float:right;padding-right:20px;" title="From pexels.com" src="/assets/2019/2/network-policies-with-calico-in-aks/barrier-blur-chain-link-fence-1674819-e1550525929813.jpg" />
 
 Calico network plugin is finally supported within Azure Kubernetes Services (AKS).
 

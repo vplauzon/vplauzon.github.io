@@ -8,7 +8,7 @@ tags:
 - API
 - Data
 ---
-<a href="https://www.pexels.com/photo/photo-of-boat-under-cloudy-sky-2123573/"><img style="float:left;padding-right:5px;" title="From pexels.com" src="https://vincentlauzon.files.wordpress.com/2019/05/boat-canoe-clouds-2123573.jpg" /></a>
+<a href="https://www.pexels.com/photo/photo-of-boat-under-cloudy-sky-2123573/"><img style="float:left;padding-right:5px;" title="From pexels.com" src="/assets/2019/5/how-to-use-azure-data-lake-storage-rest-api/boat-canoe-clouds-2123573.jpg" /></a>
 
 <a href="https://docs.microsoft.com/en-ca/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage (ADLS) Generation 2</a> has been around for a few months now.
 
@@ -36,7 +36,7 @@ There is one parameter:  the storage account name.  This must be unique as stora
 
 There should be three deployed resources:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/05/resources.png" alt="Resources" />
+<img src="/assets/2019/5/how-to-use-azure-data-lake-storage-rest-api/resources.png" alt="Resources" />
 
 The storage account is what the two logic apps are going to target.
 
@@ -52,7 +52,7 @@ Let's open the logic app in edit mode.  We have two http calls:  create-blue and
 
 Let's look at one of them:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/05/create-blue.png" alt="create-blue" />
+<img src="/assets/2019/5/how-to-use-azure-data-lake-storage-rest-api/create-blue.png" alt="create-blue" />
 
 Here we are using the <a href="https://docs.microsoft.com/en-ca/rest/api/storageservices/datalakestoragegen2/filesystem/create">File System / Create</a> API.
 
@@ -68,7 +68,7 @@ We can validate in Azure Storage Explorer that two file systems were created.
 
 Now if we turn to the <em>list-adls-api-app</em> Logic App, we can see two HTTP tasks again:  list-blue &amp; list-red:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/05/list.png" alt="List" />
+<img src="/assets/2019/5/how-to-use-azure-data-lake-storage-rest-api/list.png" alt="List" />
 
 Those are using the <a href="https://docs.microsoft.com/en-ca/rest/api/storageservices/datalakestoragegen2/path/list">Path / List</a> API.
 
@@ -97,13 +97,13 @@ For that we'll turn to Azure Storage Explorer.  We'll right-click on the blue fi
 
 First, we'll need the Object ID of our managed identity.  We could get it from the output of the ARM template deployment but an easy way to get it is to go to the <em>Identity</em> pane of the Logic App and pick the Object ID right there.
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/05/object-id.png" alt="object-id" />
+<img src="/assets/2019/5/how-to-use-azure-data-lake-storage-rest-api/object-id.png" alt="object-id" />
 
 We are going to input this ID in the "Add user or group" text box of Azure Storage Explorer and press <em>Add</em>.
 
 We are then going to add the following permissions:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/05/permissions.png" alt="permissions" />
+<img src="/assets/2019/5/how-to-use-azure-data-lake-storage-rest-api/permissions.png" alt="permissions" />
 
 We need the MSI to be able to read a folder and traverse it (execute).
 
@@ -111,7 +111,7 @@ We need to save those permissions in Azure Storage Explorer.
 
 We can then run Logic App again and see the blue file system is now accessible while red remains inaccessible.
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/05/partial-success.png" alt="partial success" />
+<img src="/assets/2019/5/how-to-use-azure-data-lake-storage-rest-api/partial-success.png" alt="partial success" />
 
 This is inline with our configuration:  we gave access to the blue file system but not the red.
 

@@ -15,13 +15,13 @@ The <em>Portal Experience </em>refers to the way the portal lets us interact wit
 
 Here we have the Cosmos DB <em>Graph</em> experience:
 
-<a href="assets/2017/9/hacking-changing-cosmos-db-portal-experience-from-graph-to-sql/image.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/9/hacking-changing-cosmos-db-portal-experience-from-graph-to-sql/image_thumb.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/09/image.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/09/image_thumb.png" alt="image" border="0" /></a>
 
 The Data Explorer lets us access the Graph using Gremlin and displays results in a Graph UI experience (i.e. showing vertices &amp; edges).
 
 Let’s compare this to the Cosmos DB <em>SQL</em> (aka <em>DocumentDB</em>) experience:
 
-<a href="assets/2017/9/hacking-changing-cosmos-db-portal-experience-from-graph-to-sql/image2.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/9/hacking-changing-cosmos-db-portal-experience-from-graph-to-sql/image_thumb2.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/09/image2.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/09/image_thumb2.png" alt="image" border="0" /></a>
 
 Here we query collections using SQL queries and results are shown as JSON documents.
 <h2>CosmosDB in ARM</h2>
@@ -94,7 +94,7 @@ With all that said, we can easily change the default experience from one ARM Dep
 
 Also, since the experience is a simple tag, it can be changed using <em>PowerShell</em> or even the Portal.
 
-<a href="assets/2017/9/hacking-changing-cosmos-db-portal-experience-from-graph-to-sql/image3.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2017/9/hacking-changing-cosmos-db-portal-experience-from-graph-to-sql/image_thumb3.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/09/image3.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/09/image_thumb3.png" alt="image" border="0" /></a>
 <h2>Summary</h2>
 Although the fundamental database engine is set at the creation of the account, the portal experience can be changed.
 

@@ -8,7 +8,7 @@ tags:
 - Containers
 - Security
 ---
-<img style="float:left;padding-right:20px;" title="From pixabay.com" src="https://vincentlauzon.files.wordpress.com/2019/02/key-2114046_640-1-e1550086294745.jpg" />
+<img style="float:left;padding-right:20px;" title="From pixabay.com" src="/assets/2019/2/flex-volume-in-aks/key-2114046_640-1-e1550086294745.jpg" />
 
 I wanted to start looking at a few modules helping integrate AKS with the rest of Azure.
 

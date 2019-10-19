@@ -8,7 +8,7 @@ tags:
 - Data
 - NoSQL
 ---
-<a href="https://vincentlauzon.files.wordpress.com/2015/08/ic7912891.png"><img class="size-medium wp-image-1172 alignleft" src="https://vincentlauzon.files.wordpress.com/2015/08/ic7912891.png?w=300" alt="IC791289[1]" width="300" height="204" /></a><a href="http://azure.microsoft.com/en-us/services/documentdb/">Azure DocumentDB</a> is Microsoft Document-centric NoSQL offering in the cloud.
+<a href="/assets/2015/9/analysing-application-logs-with-documentdb/ic7912891.png"><img class="size-medium wp-image-1172 alignleft" src="/assets/2015/9/analysing-application-logs-with-documentdb/ic7912891.png?w=300" alt="IC791289[1]" width="300" height="204" /></a><a href="http://azure.microsoft.com/en-us/services/documentdb/">Azure DocumentDB</a> is Microsoft Document-centric NoSQL offering in the cloud.
 
 I've been working with it since <a href="http://vincentlauzon.com/2014/09/08/azure-documentdb-first-use-cases/">Septembre 2014</a> and I wanted to share a use case I found it really good at:  log analysis.
 
@@ -41,7 +41,7 @@ More robust logging solutions do implement those two aspects.  For instance, <a
 
 Now the constrain I had was to use the basic .NET tracing and to log in the blob storage.
 
-<a href="http://json.org/"><img class="alignright wp-image-1176 size-full" src="https://vincentlauzon.files.wordpress.com/2015/08/json1601.gif" alt="JSON" width="160" height="160" /></a>
+<a href="http://json.org/"><img class="alignright wp-image-1176 size-full" src="/assets/2015/9/analysing-application-logs-with-documentdb/json1601.gif" alt="JSON" width="160" height="160" /></a>
 
 What I did is that I separated the problem of logging and the problem of analysing the logs:  I did log strong typed JSON events serialized as a string into the .NET trace.
 

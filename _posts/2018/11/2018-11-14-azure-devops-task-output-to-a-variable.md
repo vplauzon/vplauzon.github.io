@@ -7,7 +7,7 @@ categories:
 tags:
 - DevOps
 ---
-<img style="float:right;padding-right:20px;" title="From http://pixabay.com" src="https://vincentlauzon.files.wordpress.com/2018/10/architecture-3357847_640-e1540928514340.jpg" />
+<img style="float:right;padding-right:20px;" title="From http://pixabay.com" src="/assets/2018/11/azure-devops-task-output-to-a-variable/architecture-3357847_640-e1540928514340.jpg" />
 
 I've been building a couple of Continuous Integration / Continuous Delivery (CI / CD) pipelines on <a href="https://docs.microsoft.com/en-us/azure/devops/user-guide/what-is-azure-devops-services?view=vsts">Azure DevOps</a> lately.
 
@@ -33,7 +33,7 @@ We also wanted the full version (i.e. MAJOR.MINOR.PATCH) to be injected in the c
 
 This is a schematized version of our build pipeline:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/11/version1.png" alt="Version management" />
+<img src="/assets/2018/11/azure-devops-task-output-to-a-variable/version1.png" alt="Version management" />
 
 <table>
 <thead>

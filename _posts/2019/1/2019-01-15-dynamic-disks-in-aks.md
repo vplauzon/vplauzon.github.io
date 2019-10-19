@@ -7,7 +7,7 @@ categories:
 tags:
 - Containers
 ---
-<img style="float:right;padding-right:20px;" title="From www.pexels.com" src="https://vincentlauzon.files.wordpress.com/2019/01/data-disk-floppy-41290-e1547476772722.jpg" />
+<img style="float:right;padding-right:20px;" title="From www.pexels.com" src="/assets/2019/1/dynamic-disks-in-aks/data-disk-floppy-41290-e1547476772722.jpg" />
 
 Some workloads running on <a href="https://vincentlauzon.com/?s=aks">Azure Kubernetes Service</a> (AKS) requires persisting state on disk.
 
@@ -95,17 +95,17 @@ kubectl apply -f https://raw.githubusercontent.com/vplauzon/aks/master/dynamic-d
 
 If we look, in the managed resource group, we can see this create a new disk:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/01/1-disk.png" alt="One more disk" />
+<img src="/assets/2019/1/dynamic-disks-in-aks/1-disk.png" alt="One more disk" />
 
 Our cluster has 3 nodes.  One more was added.  Let's open the disk:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/01/first-disk.png" alt="Disk summary" />
+<img src="/assets/2019/1/dynamic-disks-in-aks/first-disk.png" alt="Disk summary" />
 
 We can see the disk is attached to an agent pool VM.  Basically, the disk got attached to the VM running the pod.
 
 We can also look at the tags:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/01/1-tags.png" alt="Tags" />
+<img src="/assets/2019/1/dynamic-disks-in-aks/1-tags.png" alt="Tags" />
 
 We see they correspond to Persistent Volume Claim we defined.  As for the persistent volume (PV) created from that claim, we can query for it:
 

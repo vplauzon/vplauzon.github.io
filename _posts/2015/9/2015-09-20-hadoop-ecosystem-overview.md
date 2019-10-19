@@ -8,7 +8,7 @@ tags:
 - Big Data
 - Data
 ---
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/hadoop.png"><img class="size-full wp-image-1263 alignright" src="https://vincentlauzon.files.wordpress.com/2015/09/hadoop.png" alt="Hadoop" width="241" height="178" /></a>Have taken a look at Hadoop lately?
+<a href="/assets/2015/9/hadoop-ecosystem-overview/hadoop.png"><img class="size-full wp-image-1263 alignright" src="/assets/2015/9/hadoop-ecosystem-overview/hadoop.png" alt="Hadoop" width="241" height="178" /></a>Have taken a look at Hadoop lately?
 
 People who do not know Hadoop think it's a big data technology the same way SQL Server is a technology.
 
@@ -22,7 +22,7 @@ In order to use Hadoop, you need to download quite a few of those projects, mak
 
 This is what Hadoop distributions do.  The two leading distributions are <a href="https://en.wikipedia.org/wiki/Cloudera" target="_blank">Cloudera</a> and <a href="https://en.wikipedia.org/wiki/Hortonworks" target="_blank">Hortonworks</a>.  Both distributions are fully supported on Azure Virtual Machines.
 <h3>HDInsight</h3>
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/hdinsight.png"><img class="wp-image-1262 alignnone" src="https://vincentlauzon.files.wordpress.com/2015/09/hdinsight.png" alt="HDInsight" width="161" height="140" /></a><a href="https://technet.microsoft.com/en-us/library/dn247618.aspx?f=255&amp;MSPPError=-2147217396" target="_blank">HDInsight</a> is a Windows based Hadoop distribution developed by Hortonworks &amp; Microsoft.
+<a href="/assets/2015/9/hadoop-ecosystem-overview/hdinsight.png"><img class="wp-image-1262 alignnone" src="/assets/2015/9/hadoop-ecosystem-overview/hdinsight.png" alt="HDInsight" width="161" height="140" /></a><a href="https://technet.microsoft.com/en-us/library/dn247618.aspx?f=255&amp;MSPPError=-2147217396" target="_blank">HDInsight</a> is a Windows based Hadoop distribution developed by Hortonworks &amp; Microsoft.
 <h3>Azure HDInsight</h3>
 <a href="http://azure.microsoft.com/en-us/services/hdinsight/" target="_blank">Azure HDInsight</a> is a managed Service on Azure.  It allows you to create a fully managed Hadoop cluster in Azure.  It is using HDInsight for the Windows implementation but it also supports a Linux implementation.
 
@@ -50,33 +50,33 @@ Most of Hadoop projects are higher level abstraction leveraging Map Reduce witho
 
 The original Job Tracker had scalability issues on top of single point of failure.
 <h3>Tez</h3>
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/apachetezlogo_lowres1.jpg"><img class="size-medium wp-image-1280 alignright" src="https://vincentlauzon.files.wordpress.com/2015/09/apachetezlogo_lowres1.jpg?w=300" alt="ApacheTezLogo_lowres[1]" width="300" height="154" /></a><a href="https://tez.apache.org/" target="_blank">Apache Tez</a> is an application framework allowing complex directed-acyclic-graph of tasks to processing data.  It is built on top of YARN and is a substitute to Map Reduce in some scenarios.
+<a href="/assets/2015/9/hadoop-ecosystem-overview/apachetezlogo_lowres1.jpg"><img class="size-medium wp-image-1280 alignright" src="/assets/2015/9/hadoop-ecosystem-overview/apachetezlogo_lowres1.jpg?w=300" alt="ApacheTezLogo_lowres[1]" width="300" height="154" /></a><a href="https://tez.apache.org/" target="_blank">Apache Tez</a> is an application framework allowing complex directed-acyclic-graph of tasks to processing data.  It is built on top of YARN and is a substitute to Map Reduce in some scenarios.
 
 It tends to generate less jobs than Map Reduce and is hence more efficient.
 <h3>Hive</h3>
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/hive_logo_medium1.jpg"><img class="size-full wp-image-1225 alignleft" src="https://vincentlauzon.files.wordpress.com/2015/09/hive_logo_medium1.jpg" alt="hive_logo_medium[1]" width="114" height="105" /></a><a href="https://hive.apache.org/" target="_blank">Apache Hive</a> is a data warehouse enabling queries and management over large datasets.
+<a href="/assets/2015/9/hadoop-ecosystem-overview/hive_logo_medium1.jpg"><img class="size-full wp-image-1225 alignleft" src="/assets/2015/9/hadoop-ecosystem-overview/hive_logo_medium1.jpg" alt="hive_logo_medium[1]" width="114" height="105" /></a><a href="https://hive.apache.org/" target="_blank">Apache Hive</a> is a data warehouse enabling queries and management over large datasets.
 
 As mentioned earlier, it is an abstraction on top of Hadoop lower level components (HDFS, Map Reduce &amp; Tez).
 <h3>HBase</h3>
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/jumping-orca_rotated_25percent1.png"><img class="size-full wp-image-1282 alignright" src="https://vincentlauzon.files.wordpress.com/2015/09/jumping-orca_rotated_25percent1.png" alt="jumping-orca_rotated_25percent[1]" width="200" height="150" /></a><a href="http://hbase.apache.org/" target="_blank">Apache HBase</a> is column-oriented Big Data NoSql database based on <a href="https://en.wikipedia.org/wiki/BigTable" target="_blank">Google Big Table</a> leveraging HDFS.
+<a href="/assets/2015/9/hadoop-ecosystem-overview/jumping-orca_rotated_25percent1.png"><img class="size-full wp-image-1282 alignright" src="/assets/2015/9/hadoop-ecosystem-overview/jumping-orca_rotated_25percent1.png" alt="jumping-orca_rotated_25percent[1]" width="200" height="150" /></a><a href="http://hbase.apache.org/" target="_blank">Apache HBase</a> is column-oriented Big Data NoSql database based on <a href="https://en.wikipedia.org/wiki/BigTable" target="_blank">Google Big Table</a> leveraging HDFS.
 
 In some scenarios HBase performs blazing fast on queries through massive data sets.
 <h3>Mahout</h3>
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/mahout-logo-brudman1.png"><img class="alignnone size-medium wp-image-1284" src="https://vincentlauzon.files.wordpress.com/2015/09/mahout-logo-brudman1.png?w=300" alt="mahout-logo-brudman[1]" width="300" height="63" /></a><a href="http://mahout.apache.org/" target="_blank">Apache Mahout</a> is a platform to run scalable Machine Learning algorithms leveraging Hadoop distributed computing.
+<a href="/assets/2015/9/hadoop-ecosystem-overview/mahout-logo-brudman1.png"><img class="alignnone size-medium wp-image-1284" src="/assets/2015/9/hadoop-ecosystem-overview/mahout-logo-brudman1.png?w=300" alt="mahout-logo-brudman[1]" width="300" height="63" /></a><a href="http://mahout.apache.org/" target="_blank">Apache Mahout</a> is a platform to run scalable Machine Learning algorithms leveraging Hadoop distributed computing.
 
 It has quite an overlap with <a href="http://azure.microsoft.com/en-us/services/machine-learning/" target="_blank">Azure ML</a>.
 <h3>Pig</h3>
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/pig1.gif"><img class="wp-image-1285 alignright" src="https://vincentlauzon.files.wordpress.com/2015/09/pig1.gif?w=200" alt="pig[1]" width="115" height="173" /></a>An high-level scripting language (Pig Latin) and a run-time environment, <a href="http://pig.apache.org/" target="_blank">Apache Pig</a> is another abstraction on top of map reduce.
+<a href="/assets/2015/9/hadoop-ecosystem-overview/pig1.gif"><img class="wp-image-1285 alignright" src="/assets/2015/9/hadoop-ecosystem-overview/pig1.gif?w=200" alt="pig[1]" width="115" height="173" /></a>An high-level scripting language (Pig Latin) and a run-time environment, <a href="http://pig.apache.org/" target="_blank">Apache Pig</a> is another abstraction on top of map reduce.
 
 Where Hive took a declarative approach with HiveQL, Pig takes a procedural approach.  A Pig Latin program is actually quite similar to a <a href="https://msdn.microsoft.com/en-us/library/ms141026.aspx" target="_blank">SQL Server Integration Services (SSIS)</a> package, defining different steps for manipulating data.
 
 Hive &amp; Pig overlap.  You would choose Pig in scenarios where you are importing and transforming data and you would like to be able to see the intermediate steps (much like an SSIS package).
 <h3>Sqoop</h3>
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/sqoop-logo1.png"><img class="size-full wp-image-1286 alignleft" src="https://vincentlauzon.files.wordpress.com/2015/09/sqoop-logo1.png" alt="sqoop-logo[1]" width="151" height="46" /></a><a href="http://sqoop.apache.org/" target="_blank">Apache Sqoop</a> is Hadoop data movement involving booth relational and non-relational data sources.
+<a href="/assets/2015/9/hadoop-ecosystem-overview/sqoop-logo1.png"><img class="size-full wp-image-1286 alignleft" src="/assets/2015/9/hadoop-ecosystem-overview/sqoop-logo1.png" alt="sqoop-logo[1]" width="151" height="46" /></a><a href="http://sqoop.apache.org/" target="_blank">Apache Sqoop</a> is Hadoop data movement involving booth relational and non-relational data sources.
 
 It has functionalities very similar to <a href="http://azure.microsoft.com/en-us/services/data-factory/" target="_blank">Azure Data Factory</a>.
 <h3>Spark</h3>
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/spark-logo1.png"><img class="size-full wp-image-1287 alignright" src="https://vincentlauzon.files.wordpress.com/2015/09/spark-logo1.png" alt="spark-logo[1]" width="258" height="137" /></a><a href="https://spark.apache.org/" target="_blank">Apache Spark</a> is actually complementary to Hadoop.  In Azure it is packaged as an HDInsight variant.
+<a href="/assets/2015/9/hadoop-ecosystem-overview/spark-logo1.png"><img class="size-full wp-image-1287 alignright" src="/assets/2015/9/hadoop-ecosystem-overview/spark-logo1.png" alt="spark-logo[1]" width="258" height="137" /></a><a href="https://spark.apache.org/" target="_blank">Apache Spark</a> is actually complementary to Hadoop.  In Azure it is packaged as an HDInsight variant.
 
 In many ways Spark is a modern take on Hadoop and typically is faster, up to 100 times faster on some bench marks.
 

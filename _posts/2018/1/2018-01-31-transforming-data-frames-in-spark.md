@@ -8,7 +8,7 @@ tags:
 - Big Data
 - Data
 ---
-<a href="assets/2018/1/transforming-data-frames-in-spark/pexels-photo-354939.jpg"><img style="margin:0;border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-354939" src="assets/2018/1/transforming-data-frames-in-spark/pexels-photo-354939_thumb.jpg" alt="pexels-photo-354939" width="240" height="160" align="right" border="0" /></a><a href="https://vincentlauzon.com/2017/12/18/azure-databricks-getting-started/" target="_blank" rel="noopener">In previous weeks, we’ve looked at Azure Databricks</a>, Azure’s managed Spark cluster service.
+<a href="http://vincentlauzon.files.wordpress.com/2018/01/pexels-photo-354939.jpg"><img style="margin:0;border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-354939" src="http://vincentlauzon.files.wordpress.com/2018/01/pexels-photo-354939_thumb.jpg" alt="pexels-photo-354939" width="240" height="160" align="right" border="0" /></a><a href="https://vincentlauzon.com/2017/12/18/azure-databricks-getting-started/" target="_blank" rel="noopener">In previous weeks, we’ve looked at Azure Databricks</a>, Azure’s managed Spark cluster service.
 
 We then looked at <a href="https://vincentlauzon.com/2018/01/17/azure-databricks-rdd-resilient-distributed-dataset/">Resilient Distributed Datasets</a> (RDDs) &amp; <a href="https://vincentlauzon.com/2018/01/24/azure-databricks-spark-sql-data-frames/">Spark SQL / Data Frames</a>.
 
@@ -28,7 +28,7 @@ Kaggle offers data versioning so we didn’t feel we needed to copy the dataset 
 
 The data set is contained in a single CSV file of 0.5GB.  It has few columns but a large number of rows (3 million):
 
-<a href="assets/2018/1/transforming-data-frames-in-spark/image.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/1/transforming-data-frames-in-spark/image_thumb.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/01/image.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/01/image_thumb.png" alt="image" border="0" /></a>
 <h2>The Challenges</h2>
 We can notice a couple of cosmetic aspects that warrant some light wrangling:
 <ul>
@@ -139,7 +139,7 @@ ORDER BY petitions DESC
 
 The result is our first insight:
 
-<a href="assets/2018/1/transforming-data-frames-in-spark/image1.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/1/transforming-data-frames-in-spark/image_thumb1.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/01/image1.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/01/image_thumb1.png" alt="image" border="0" /></a>
 
 California being on top isn’t surprising.  Texas being second is a little more interesting, although since it is followed by New York &amp; New Jersey, it is questionable if those two aren’t both related to New York City’s attraction power, so together they would be 2nd.
 
@@ -155,7 +155,7 @@ ORDER BY petitions DESC
 
 [/code]
 
-<a href="assets/2018/1/transforming-data-frames-in-spark/image2.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/1/transforming-data-frames-in-spark/image_thumb2.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/01/image2.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/01/image_thumb2.png" alt="image" border="0" /></a>
 
 Indeed, New York takes the lion share and Houston comes 2nd.  Atlanta comes 4th while the state of Georgia was 9th.
 
@@ -173,7 +173,7 @@ ORDER BY petitions DESC
 
 [/code]
 
-<a href="assets/2018/1/transforming-data-frames-in-spark/image3.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/1/transforming-data-frames-in-spark/image_thumb3.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/01/image3.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/01/image_thumb3.png" alt="image" border="0" /></a>
 
 A surprisingly low level of rejection.
 
@@ -192,7 +192,7 @@ LIMIT 20
 
 We see that the top of employers is dominated by the IT industry.
 
-<a href="assets/2018/1/transforming-data-frames-in-spark/image4.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/1/transforming-data-frames-in-spark/image_thumb4.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/01/image4.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/01/image_thumb4.png" alt="image" border="0" /></a>
 
 Looking at the job title of applicants corroborates the dominance of the IT industry:
 
@@ -207,7 +207,7 @@ LIMIT 20
 
 [/code]
 
-<a href="assets/2018/1/transforming-data-frames-in-spark/image5.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/1/transforming-data-frames-in-spark/image_thumb5.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/01/image5.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/01/image_thumb5.png" alt="image" border="0" /></a>
 
 We could query further to understand how the IT industry structure this data set.
 

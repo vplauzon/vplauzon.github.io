@@ -42,7 +42,7 @@ Some people, e.g. <a href="https://en.wikipedia.org/wiki/Noam_Chomsky" target="_
 
 Nevertheless, why is there statistics in Machine Learning?
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/06/image3.png"><img class="wp-image-875 alignleft" src="https://vincentlauzon.files.wordpress.com/2015/06/image3.png" alt="image.png" width="393" height="347" /></a>When I wrote <a href="http://vincentlauzon.com/2015/07/12/machine-learning-an-introduction-part-2/">posts about Machine Learning to explain the basics</a>, I gave an example of linear regression on a 2D data sets.
+<a href="/assets/2015/10/where-is-the-statistics-in-machine-learning/image3.png"><img class="wp-image-875 alignleft" src="/assets/2015/10/where-is-the-statistics-in-machine-learning/image3.png" alt="image.png" width="393" height="347" /></a>When I wrote <a href="http://vincentlauzon.com/2015/07/12/machine-learning-an-introduction-part-2/">posts about Machine Learning to explain the basics</a>, I gave an example of linear regression on a 2D data sets.
 
 I glossed over the fact that the data, although vaguely linear, wasn't a perfect line, far from it.  Nevertheless, the model we used was a line.
 

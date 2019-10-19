@@ -7,7 +7,7 @@ categories:
 tags:
 - Serverless
 ---
-<img style="float:right;padding-right:20px;" title="From Pexels" src="https://vincentlauzon.files.wordpress.com/2018/11/board-game-business-challenge-277052-e1543612435778.jpg" />
+<img style="float:right;padding-right:20px;" title="From Pexels" src="/assets/2019/3/my-json-gets-serialized-in-a-string-logic-apps/board-game-business-challenge-277052-e1543612435778.jpg" />
 
 Azure Logic Apps is a powerful tool.
 
@@ -37,7 +37,7 @@ It should deploy one Logic Apps named <em>serialization-sample</em>.
 
 Let's simply run the sample app.  We can look at the result:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/11/result.png" alt="Result" />
+<img src="/assets/2019/3/my-json-gets-serialized-in-a-string-logic-apps/result.png" alt="Result" />
 
 We can see that the resulting JSON payload has two properties:
 
@@ -54,7 +54,7 @@ Because this sample focus on that problem, it might look obvious, but in the mid
 
 If we look at the <em>use-json</em> task definition, we'll have a hint:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/11/use-json-designer.png" alt="Use json" />
+<img src="/assets/2019/3/my-json-gets-serialized-in-a-string-logic-apps/use-json-designer.png" alt="Use json" />
 
 We see that the serialized value is within quote while the native one isn't.
 

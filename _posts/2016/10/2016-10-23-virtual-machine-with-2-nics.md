@@ -16,7 +16,7 @@ Let’s take a step back and look at how the different Azure <em>Lego </em>block
 <h2>Related Resources</h2>
 Here’s a diagram that can help:
 
-<a href="assets/2016/10/virtual-machine-with-2-nics/image1.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/10/virtual-machine-with-2-nics/image_thumb1.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/10/image1.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/10/image_thumb1.png" alt="image" border="0" /></a>
 
 Let’s look at the different components:
 <ul>
@@ -44,7 +44,7 @@ For instance, let’s say you have a SQL VM with its port 1443 open to another V
 
 So the way around that is to have 2 NICs.  One NIC will be used for port 1443 (SQL) and the other for RDP (maintenance).  Then you can put each NIC in different subnet.  The SQL-NIC will be in a subnet with NSG allowing the web server to access it while the RDP-NIC will be in a subnet accessible only from the VPN Gateway, by maintenance people.
 <h2>Example</h2>
-You will <a href="https://vincentlauzon.files.wordpress.com/2016/10/2nicsarmtemplate.docx">find here an ARM template</a> (embedded in a <em>Word document</em> due to limitation of the Blog platform I'm using) deploying 2 VMs, each having 2 NICs, a Web NIC &amp; a maintenance NIC.  The Web NICs are in the <em>web subnet</em> and are publically load balanced through a public IP while the maintenance NICs are in a <em>maintenance subnet </em>and accessible only via private IPs.  The maintenance subnet let RDP get in, via its NSG.
+You will <a href="/assets/2016/10/virtual-machine-with-2-nics/2nicsarmtemplate.docx">find here an ARM template</a> (embedded in a <em>Word document</em> due to limitation of the Blog platform I'm using) deploying 2 VMs, each having 2 NICs, a Web NIC &amp; a maintenance NIC.  The Web NICs are in the <em>web subnet</em> and are publically load balanced through a public IP while the maintenance NICs are in a <em>maintenance subnet </em>and accessible only via private IPs.  The maintenance subnet let RDP get in, via its NSG.
 
 The template will take a little while to deploy, thanks to the fact it contains a VM.  You can see most of the resources deployed quite fast though.
 

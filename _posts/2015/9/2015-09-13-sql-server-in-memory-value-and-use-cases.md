@@ -7,7 +7,7 @@ categories:
 tags:
 - Data
 ---
-<a href="https://vincentlauzon.files.wordpress.com/2015/08/eprom021.png"><img class="size-medium wp-image-1201 alignright" src="https://vincentlauzon.files.wordpress.com/2015/08/eprom021.png?w=300" alt="EPROM02[1]" width="300" height="234" /></a>
+<a href="/assets/2015/9/sql-server-in-memory-value-and-use-cases/eprom021.png"><img class="size-medium wp-image-1201 alignright" src="/assets/2015/9/sql-server-in-memory-value-and-use-cases/eprom021.png?w=300" alt="EPROM02[1]" width="300" height="234" /></a>
 
 Microsoft SQL Server 2014 has made it in the leader category of Forrester's recent <a href="https://www.forrester.com/The+Forrester+Wave+InMemory+Database+Platforms+Q3+2015/fulltext/-/E-res120222" target="_blank">In-Memory Database Platforms, Q3 2015</a> report.
 
@@ -34,7 +34,7 @@ SQL query engine does cache hot data.  Basically, when you query data, it loads
 
 But traditional table are still optimized for disk access, a slow medium.  As such, it has a variety of bottlenecks.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/08/padlock-520x3471.jpg"><img class="size-full wp-image-1206 alignleft" src="https://vincentlauzon.files.wordpress.com/2015/08/padlock-520x3471.jpg" alt="padlock-520x347[1]" width="520" height="347" /></a>A big issue is the contention on the different locking mechanisms.
+<a href="/assets/2015/9/sql-server-in-memory-value-and-use-cases/padlock-520x3471.jpg"><img class="size-full wp-image-1206 alignleft" src="/assets/2015/9/sql-server-in-memory-value-and-use-cases/padlock-520x3471.jpg" alt="padlock-520x347[1]" width="520" height="347" /></a>A big issue is the contention on the different locking mechanisms.
 
 Each time a transaction reads data, it acquires a <em>read-lock</em> on that data.  When another transaction wants to write on the same data, it must acquire a <em>write-lock</em> and therefore wait for the first transaction to complete since you can't write while data is being read.
 
@@ -62,7 +62,7 @@ Natively compiled stored procedures can also increase CPU utilization (i.e. the 
 
 With this in mind, we can see that in-memory tables aren't just 'cached normal tables'.  They are qualitatively different beasts.  They are optimized for memory and the same algorithms wouldn't work for disk-based tables (e.g. you would need to persist the indexes).
 <h3>Non-durable tables</h3>
-<a href="https://vincentlauzon.files.wordpress.com/2015/08/phoeonix-clip-art-67701.jpg"><img class=" wp-image-1208 alignright" src="https://vincentlauzon.files.wordpress.com/2015/08/phoeonix-clip-art-67701.jpg" alt="phoeonix-clip-art-6770[1]" width="240" height="239" /></a>I mentioned non-durable tables.  Yes, with the far extreme, you can tell SQL not to bother persisting your table to disk with <a href="https://msdn.microsoft.com/en-us/library/dn553122.aspx" target="_blank">DURABILITY = SCHEMA_ONLY</a>.
+<a href="/assets/2015/9/sql-server-in-memory-value-and-use-cases/phoeonix-clip-art-67701.jpg"><img class=" wp-image-1208 alignright" src="/assets/2015/9/sql-server-in-memory-value-and-use-cases/phoeonix-clip-art-67701.jpg" alt="phoeonix-clip-art-6770[1]" width="240" height="239" /></a>I mentioned non-durable tables.  Yes, with the far extreme, you can tell SQL not to bother persisting your table to disk with <a href="https://msdn.microsoft.com/en-us/library/dn553122.aspx" target="_blank">DURABILITY = SCHEMA_ONLY</a>.
 
 Of course, I wouldn't recommend that with your transactional data.  Some other in-memory database engines are ok with that because they implement replication of data across different nodes (for a very different example, see <a href="http://redis.io/" target="_blank">Redis</a>).  But some scenarios can live with non durable data if they can recreate it in case of failure.
 

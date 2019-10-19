@@ -41,7 +41,7 @@ I released a second Beta of <a href="https://studiodocumentdb.codeplex.com/">Doc
 <span style="font-family:Times New Roman;font-size:12pt;">In the toolbar, click the <em>Disconnect</em> button:
 </span>
 
-<img src="assets/2014/10/managing-documents-with-documentdb-studio/102314_0317_managingdoc1.png" alt="" /><span style="font-family:Times New Roman;font-size:12pt;">
+<img src="http://vincentlauzon.files.wordpress.com/2014/10/102314_0317_managingdoc1.png" alt="" /><span style="font-family:Times New Roman;font-size:12pt;">
 </span>
 
 <span style="font-family:Times New Roman;font-size:12pt;">and confirm you really want to disconnect in the dialog box.
@@ -53,7 +53,7 @@ I released a second Beta of <a href="https://studiodocumentdb.codeplex.com/">Doc
 <span style="font-family:Times New Roman;font-size:12pt;">Select a database collection in the tree view and click the <em>Create Document</em> button.
 </span>
 
-<img src="assets/2014/10/managing-documents-with-documentdb-studio/102314_0317_managingdoc2.png" alt="" /><span style="font-family:Times New Roman;font-size:12pt;"><strong>
+<img src="http://vincentlauzon.files.wordpress.com/2014/10/102314_0317_managingdoc2.png" alt="" /><span style="font-family:Times New Roman;font-size:12pt;"><strong>
 </strong></span>
 
 <a href="http://vincentlauzon.wordpress.com/2014/09/18/digest-documentdb-resource-model-and-concepts/"><span style="font-family:Times New Roman;font-size:12pt;">Azure DocumentDB</span></a><span style="font-family:Times New Roman;font-size:12pt;"> manages <a href="http://json.org/">Json document</a>. Let's type a simple document:
@@ -68,13 +68,13 @@ isActive : true
 </span></p>
 <p style="margin-left:36pt;"><span style="font-family:Times New Roman;font-size:12pt;">Then click OK to save the document to <em>Azure DocumentDB</em>.
 </span></p>
-<p style="margin-left:36pt;"><img src="assets/2014/10/managing-documents-with-documentdb-studio/102314_0317_managingdoc3.png" alt="" /><span style="font-family:Times New Roman;font-size:12pt;">
+<p style="margin-left:36pt;"><img src="http://vincentlauzon.files.wordpress.com/2014/10/102314_0317_managingdoc3.png" alt="" /><span style="font-family:Times New Roman;font-size:12pt;">
 </span></p>
 
 <h2>List documents under collection</h2>
 <p style="margin-left:36pt;"><span style="font-family:Times New Roman;font-size:12pt;">You should see the document appear under your collection as a <em>guid</em>.
 </span></p>
-<p style="margin-left:36pt;"><img src="assets/2014/10/managing-documents-with-documentdb-studio/102314_0317_managingdoc4.png" alt="" /><span style="font-family:Times New Roman;font-size:12pt;">
+<p style="margin-left:36pt;"><img src="http://vincentlauzon.files.wordpress.com/2014/10/102314_0317_managingdoc4.png" alt="" /><span style="font-family:Times New Roman;font-size:12pt;">
 </span></p>
 <span style="font-family:Times New Roman;font-size:12pt;">Let's add a few other documents. <em>DocumentDB Studio</em> remembers the last JSON document you enter in that collection, which is a nice starting point.
 </span>
@@ -83,7 +83,7 @@ isActive : true
 <span style="font-family:Times New Roman;font-size:12pt;">select one of those document:
 </span>
 
-<img src="assets/2014/10/managing-documents-with-documentdb-studio/102314_0317_managingdoc5.png" alt="" /><span style="font-family:Times New Roman;font-size:12pt;">
+<img src="http://vincentlauzon.files.wordpress.com/2014/10/102314_0317_managingdoc5.png" alt="" /><span style="font-family:Times New Roman;font-size:12pt;">
 </span>
 
 <span style="font-family:Times New Roman;font-size:12pt;">This gives us a read-only view of the document.
@@ -94,7 +94,7 @@ isActive : true
 <span style="font-family:Times New Roman;font-size:12pt;">If you want to get rid of a document, simply click the <em>Remove Document</em> button and confirm you really want to delete it.
 </span>
 
-<img src="assets/2014/10/managing-documents-with-documentdb-studio/102314_0317_managingdoc6.png" alt="" /><span style="font-family:Times New Roman;font-size:12pt;">
+<img src="http://vincentlauzon.files.wordpress.com/2014/10/102314_0317_managingdoc6.png" alt="" /><span style="font-family:Times New Roman;font-size:12pt;">
 </span>
 <h2>Conclusion</h2>
 <span style="font-family:Times New Roman;font-size:12pt;">This release a few key feature allowing you to explore Azure DocumentDB.

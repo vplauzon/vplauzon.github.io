@@ -9,7 +9,7 @@ tags:
 - NoSQL
 - Operations
 ---
-<img style="float:left;padding-right:20px;" title="From Pexels" src="https://vincentlauzon.files.wordpress.com/2018/12/analog-audio-backup-170290-e1545319364100.jpg" />
+<img style="float:left;padding-right:20px;" title="From Pexels" src="/assets/2019/3/creating-a-backup-solution-for-cosmos-db-using-change-feed/analog-audio-backup-170290-e1545319364100.jpg" />
 
 <a href="https://vincentlauzon.com/?s=cosmos+db">Cosmos DB</a> is Azure native NoSQL database.  It has awesome capabilities such as <a href="https://docs.microsoft.com/en-ca/azure/cosmos-db/distribute-data-globally">global-distribution</a>, exceptionally <a href="https://docs.microsoft.com/en-ca/azure/cosmos-db/high-availability">high availability</a>, <a href="https://docs.microsoft.com/en-ca/azure/cosmos-db/scaling-throughput">throughput scalability</a>, and <a href="https://docs.microsoft.com/en-ca/azure/cosmos-db/introduction">much, much more</a>.
 
@@ -101,7 +101,7 @@ Let's look at the following example.  Here we consider only one document.  On th
 
 We establish "now" as the time at the beginning of the backup.  This way, even if there is a lot of activity during the backup, we will eventually catch up with the beginning of the backup and stop.
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/12/Backup-Fails.png" alt="Backup Fails" />
+<img src="/assets/2019/3/creating-a-backup-solution-for-cosmos-db-using-change-feed/Backup-Fails.png" alt="Backup Fails" />
 
 We see that during the first backup, the <em>Update C</em> occurs.  Now this leads to a racing condition for what is captured in the backup:
 
@@ -126,7 +126,7 @@ For those reasons, Change Feed might look like a very bad backup solution founda
 
 <h2>When would a backup be consistent?</h2>
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/12/Backup-works-1.png" alt="Backup Works" />
+<img src="/assets/2019/3/creating-a-backup-solution-for-cosmos-db-using-change-feed/Backup-works-1.png" alt="Backup Works" />
 
 Here <em>Backup 1</em> captures <em>Update A</em> which is the state of the collection at the beginning of <em>Backup 1</em>.  Similarly, <em>Backup 2</em> captures nothing on the same document since <em>Update B</em> occurs after the backup started.  Again, this is consistent with the state of the collection at the beginning of <em>Backup 2</em>.
 

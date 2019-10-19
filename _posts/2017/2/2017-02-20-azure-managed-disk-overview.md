@@ -7,7 +7,7 @@ categories:
 tags:
 - Virtual Machines
 ---
-<a href="assets/2017/2/azure-managed-disk-overview/pexels-photo-1965201.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="pexels-photo-196520[1]" src="assets/2017/2/azure-managed-disk-overview/pexels-photo-1965201_thumb.jpg" alt="pexels-photo-196520[1]" width="400" height="266" align="right" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/02/pexels-photo-1965201.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="pexels-photo-196520[1]" src="http://vincentlauzon.files.wordpress.com/2017/02/pexels-photo-1965201_thumb.jpg" alt="pexels-photo-196520[1]" width="400" height="266" align="right" border="0" /></a>
 
 Microsoft released Azure Managed disk 2 weeks ago.  Let’s look at it!
 

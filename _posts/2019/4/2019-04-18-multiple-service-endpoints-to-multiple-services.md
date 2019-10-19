@@ -8,7 +8,7 @@ tags:
 - Networking
 - Security
 ---
-<img style="float:left;padding-right:20px;" title="From pixabay.com" src="https://vincentlauzon.files.wordpress.com/2019/04/beautiful-cute-face-1524105-e1555511392815.jpg" />
+<img style="float:left;padding-right:20px;" title="From pixabay.com" src="/assets/2019/4/multiple-service-endpoints-to-multiple-services/beautiful-cute-face-1524105-e1555511392815.jpg" />
 
 Use case:  I have a central thingy that needs to talk to a service protected by a <a href="https://vincentlauzon.com/2017/10/02/vnet-service-endpoints-for-azure-sql-storage/">service endpoints</a> (e.g. storage account, Azure SQL DB, Azure Maria DB, etc.).  That service is also accessible to another compute in other Virtual Networks.
 
@@ -26,7 +26,7 @@ The reason the scenario above might seem hard or impossible is a misconception o
 
 We often have the following model for a service endpoint:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/04/mentalmodel.png" alt="Mental Model (wrong)" />
+<img src="/assets/2019/4/multiple-service-endpoints-to-multiple-services/mentalmodel.png" alt="Mental Model (wrong)" />
 (Typical mental model:  <strong>Wrong!</strong>)
 
 We think a Service Endpoint puts an Azure PaaS service <strong>inside</strong> a VNET.  <strong>It doesn't</strong>.
@@ -39,7 +39,7 @@ So, it's not about injecting the PaaS inside a subnet.  It's about allowing only
 
 Let's demonstrate the scenario above with a simplified solution:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/04/demo-solution.png" alt="demo solution" />
+<img src="/assets/2019/4/multiple-service-endpoints-to-multiple-services/demo-solution.png" alt="demo solution" />
 
 Here we have three (3) storage accounts accessed by three (3) applications in three (3) separate VNETs.  We also have an <a href="https://docs.microsoft.com/en-ca/azure/container-instances/container-instances-overview">Azure Container Instance</a> (ACI), representing our CI/CD, sitting in another VNET.  That ACI is granted access to two (2) of the storage account but not the third one.
 
@@ -61,7 +61,7 @@ The only parameter is <strong>storage-prefix</strong>.  This is used to prefix t
 
 Let's look at the deployment.  We should have the following resources corresponding to the diagram:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/04/resources.png" alt="Resources" />
+<img src="/assets/2019/4/multiple-service-endpoints-to-multiple-services/resources.png" alt="Resources" />
 
 The three VNETs <em>app-a</em>, <em>app-b</em> &amp; <em>app-c</em> do represent the "normal workloads" (although they not have actual compute in them) while <em>central-vnet</em> represents our CI/CD or whatever secondary workload.  <em>central-aci</em> is deployed within <em>central-vnet</em>, hence will be able to give us the perspective of a workload running in that VNET.
 
@@ -69,15 +69,15 @@ There are three storage accounts.
 
 Now if we look at all the subnet, we'll find they have enabled service endpoints for <em>Microsoft.Storage</em>:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/04/ms-storage.png" alt="ms-storage" />
+<img src="/assets/2019/4/multiple-service-endpoints-to-multiple-services/ms-storage.png" alt="ms-storage" />
 
 If we look at the storage accounts now, we see the subnets they allow to pass.  For instance, for the 'a' storage account:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/04/app-a.png" alt="Storage Account service endpoint" />
+<img src="/assets/2019/4/multiple-service-endpoints-to-multiple-services/app-a.png" alt="Storage Account service endpoint" />
 
 We have a similar picture for the 'b' storage account.  For the 'c' account though, only the <em>app-c</em> VNET has an allowed subnet:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/04/app-c.png" alt="app-c" />
+<img src="/assets/2019/4/multiple-service-endpoints-to-multiple-services/app-c.png" alt="app-c" />
 
 This means that the <em>central-vnet</em>'s subnet should have access to 'a' &amp; 'b' but not 'c'.
 
@@ -89,11 +89,11 @@ Actually, this is exactly what we did by deploying three containers in ACI curli
 
 We can look at the logs of the containers and see that <em>witness-a</em> received an empty list of blobs (we are listing the blobs in a blob container):
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/04/curl-a.png" alt="Curl storage A" />
+<img src="/assets/2019/4/multiple-service-endpoints-to-multiple-services/curl-a.png" alt="Curl storage A" />
 
 <em>witness-b</em> is similar while <em>witness-c</em> receives an authorization error:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/04/curl-c.png" alt="Curl storage C" />
+<img src="/assets/2019/4/multiple-service-endpoints-to-multiple-services/curl-c.png" alt="Curl storage C" />
 
 So we proved that we can access a multi-tenant PaaS resource (e.g. Storage account, Azure SQL DB, etc., <a href="https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoints-overview">here for an up-to-date list</a>) from different VNETs using different service endpoints.
 

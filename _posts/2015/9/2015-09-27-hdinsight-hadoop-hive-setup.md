@@ -8,7 +8,7 @@ tags:
 - Big Data
 - Data
 ---
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/hive_logo_medium1.jpg"><img class="size-full wp-image-1225 alignleft" src="https://vincentlauzon.files.wordpress.com/2015/09/hive_logo_medium1.jpg" alt="hive_logo_medium[1]" width="114" height="105" /></a>Let's explore <a href="http://hive.apache.org/" target="_blank">Hadoop Hive</a>, shall we?
+<a href="/assets/2015/9/hdinsight-hadoop-hive-setup/hive_logo_medium1.jpg"><img class="size-full wp-image-1225 alignleft" src="/assets/2015/9/hdinsight-hadoop-hive-setup/hive_logo_medium1.jpg" alt="hive_logo_medium[1]" width="114" height="105" /></a>Let's explore <a href="http://hive.apache.org/" target="_blank">Hadoop Hive</a>, shall we?
 
 Hive is a <a href="https://en.wikipedia.org/wiki/Apache_Hive" target="_blank">data warehouse infrastructure built on top of Hadoop for providing data summarization, query, and analysis</a>.
 
@@ -51,7 +51,7 @@ The alternative is to host it on an Azure SQL Database, outside the cluster.
 
 So let's create a DB.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/sql.png"><img class="alignnone size-full wp-image-1233" src="https://vincentlauzon.files.wordpress.com/2015/09/sql.png" alt="SQL" width="700" height="420" /></a>
+<a href="/assets/2015/9/hdinsight-hadoop-hive-setup/sql.png"><img class="alignnone size-full wp-image-1233" src="/assets/2015/9/hdinsight-hadoop-hive-setup/sql.png" alt="SQL" width="700" height="420" /></a>
 
 Top left corner, (+ NEW), Data + Storage, SQL Database:  this opens up the New SQL Database blade.
 
@@ -64,7 +64,7 @@ Go for it.  Just be careful of a few things, namely:
 <h3>HDInsight</h3>
 Now the HDInsight cluster!
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/newhdinsight.png"><img class="alignnone size-full wp-image-1228" src="https://vincentlauzon.files.wordpress.com/2015/09/newhdinsight.png" alt="NewHdInsight" width="700" height="216" /></a>
+<a href="/assets/2015/9/hdinsight-hadoop-hive-setup/newhdinsight.png"><img class="alignnone size-full wp-image-1228" src="/assets/2015/9/hdinsight-hadoop-hive-setup/newhdinsight.png" alt="NewHdInsight" width="700" height="216" /></a>
 
 Top left corner, (+ NEW), Data + Analytics, HDInsight:  this opens up the New HDInsight Cluster blade.
 
@@ -78,7 +78,7 @@ Make sure it's in the right subscription and the right resource group.
 
 Click Credentials, that's going to pull the credentials blade.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/credentials.png"><img class="alignnone size-full wp-image-1230" src="https://vincentlauzon.files.wordpress.com/2015/09/credentials.png" alt="Credentials" width="264" height="375" /></a>
+<a href="/assets/2015/9/hdinsight-hadoop-hive-setup/credentials.png"><img class="alignnone size-full wp-image-1230" src="/assets/2015/9/hdinsight-hadoop-hive-setup/credentials.png" alt="Credentials" width="264" height="375" /></a>
 
 Those are the credentials to authenticate to the cluster.  We're just toying around, so don't go overboard.  You do not need to enable the remote desktop for this.
 <h3>Data Source</h3>
@@ -98,13 +98,13 @@ The last point is key.  It means you can tear your cluster down and you keep yo
 
 So...  I suggest you create a storage account just for your Hive discovery.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/data-source.png"><img class="alignnone size-full wp-image-1232" src="https://vincentlauzon.files.wordpress.com/2015/09/data-source.png" alt="Data Source" width="257" height="382" /></a>
+<a href="/assets/2015/9/hdinsight-hadoop-hive-setup/data-source.png"><img class="alignnone size-full wp-image-1232" src="/assets/2015/9/hdinsight-hadoop-hive-setup/data-source.png" alt="Data Source" width="257" height="382" /></a>
 
 Again, give it a unique name.  You can choose your default container which will itself default to the name of your cluster.
 <h3>Node Pricing Tier</h3>
 Again, we're in discovery.  Let's go easy on it:  one worker node and you can drop the type of VMs for the worker &amp; header nodes to A3 (the cheapest).
 <h3>Optional Configuration</h3>
-<a href="https://vincentlauzon.files.wordpress.com/2015/09/optionalconfig.png"><img class="alignnone size-full wp-image-1234" src="https://vincentlauzon.files.wordpress.com/2015/09/optionalconfig.png" alt="OptionalConfig" width="256" height="394" /></a>
+<a href="/assets/2015/9/hdinsight-hadoop-hive-setup/optionalconfig.png"><img class="alignnone size-full wp-image-1234" src="/assets/2015/9/hdinsight-hadoop-hive-setup/optionalconfig.png" alt="OptionalConfig" width="256" height="394" /></a>
 
 In optional configuration, let's select external metastores and select the SQL Database we created earlier.
 

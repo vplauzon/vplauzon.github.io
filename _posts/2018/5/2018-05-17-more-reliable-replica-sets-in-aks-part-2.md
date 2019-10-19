@@ -7,7 +7,7 @@ categories:
 tags:
 - Containers
 ---
-<a href="assets/2018/5/more-reliable-replica-sets-in-aks-part-2/sheep-2784671_640.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="sheep-2784671_640" src="assets/2018/5/more-reliable-replica-sets-in-aks-part-2/sheep-2784671_640_thumb.jpg" alt="sheep-2784671_640" width="320" height="240" align="right" border="0" /></a>In <a href="https://vincentlauzon.com/2018/05/15/more-reliable-replica-sets-in-aks-part-1/">Part 1</a>, we discussed how, by default, replica sets in AKS aren’t highly available.  In this article, we conclude the discussion.  We propose an approach to deploy highly available replica sets.
+<a href="http://vincentlauzon.files.wordpress.com/2018/04/sheep-2784671_640.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="sheep-2784671_640" src="http://vincentlauzon.files.wordpress.com/2018/04/sheep-2784671_640_thumb.jpg" alt="sheep-2784671_640" width="320" height="240" align="right" border="0" /></a>In <a href="https://vincentlauzon.com/2018/05/15/more-reliable-replica-sets-in-aks-part-1/">Part 1</a>, we discussed how, by default, replica sets in AKS aren’t highly available.  In this article, we conclude the discussion.  We propose an approach to deploy highly available replica sets.
 
 The objective of this article isn’t to propose a novel way to deploy replica sets in AKS.  We see it as an opportunity to dive into some core concepts.  In this article, for instance, we’ll look at Kubernetes inter-pod affinity / anti-affinity.
 

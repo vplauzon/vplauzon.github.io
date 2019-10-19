@@ -8,7 +8,7 @@ tags:
 - Containers
 - Networking
 ---
-<img style="float:right;" src="https://vincentlauzon.files.wordpress.com/2018/08/sailboat-1741006_640-21-e1534512423281.jpg" title="Pulleys from Pixabay" />
+<img style="float:right;" src="/assets/2018/8/kubernetes-services-in-azure-aks-network-integration/sailboat-1741006_640-21-e1534512423281.jpg" title="Pulleys from Pixabay" />
 
 <a href="https://vincentlauzon.com/?s=aks">Azure Kubernetes Services</a> (AKS) is a managed Kubernetes service in Azure.  Not only does it provides a managed cluster, it also integrates with Azure services.
 
@@ -20,7 +20,7 @@ In this article we'll explain the integration between Kubernetes' services and A
 
 Let's dive right in.  I like to think about a Kubernetes service in the following way:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/08/containers4.png" alt="Anatomy" />
+<img src="/assets/2018/8/kubernetes-services-in-azure-aks-network-integration/containers4.png" alt="Anatomy" />
 
 From the ground up:
 
@@ -101,7 +101,7 @@ Let's see how this scenario lands in AKS.
 
 First, we have our Virtual Network before we deploy AKS in it.
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/08/virtual-network.png" alt="Virtual Network" />
+<img src="/assets/2018/8/kubernetes-services-in-azure-aks-network-integration/virtual-network.png" alt="Virtual Network" />
 
 We configure it with two subnets:
 
@@ -114,7 +114,7 @@ We configure it with two subnets:
 
 Now we deploy AKS in <em>Advanced Networking</em> mode.  We specify the <em>AKS</em> subnet.
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/08/vms.png" alt="VMs" />
+<img src="/assets/2018/8/kubernetes-services-in-azure-aks-network-integration/vms.png" alt="VMs" />
 
 Under the hood, AKS deploys 3 VMs with a <em>NIC</em> each.  Each VM has a private IP.  In Kubernetes, those are the <em>Nodes</em> IPs.
 
@@ -124,7 +124,7 @@ Now let's deploy our replica set.  This deploys 3 pods on our cluster.
 
 Each pod is given a private IP within the same subnet as the VM.  The pod expose port 85.  It remaps the container port 80 to port 85.
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/08/pods1.png" alt="Pods" />
+<img src="/assets/2018/8/kubernetes-services-in-azure-aks-network-integration/pods1.png" alt="Pods" />
 
 Under the hood, those IPs belong to the VMs and are assigned at creation.  They are mapped to pods as pods are created.
 
@@ -136,7 +136,7 @@ The Azure Load Balancer has a private IP and forwards traffic to pods.  It expos
 
 In Kubernetes lingo this is called the <em>External IP</em>.
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/08/service1.png" alt="Service" />
+<img src="/assets/2018/8/kubernetes-services-in-azure-aks-network-integration/service1.png" alt="Service" />
 
 The service also has an <em>Internal IP</em>.  That internal IP doesn't belong to the Virtual Network.  It is a virtual address routable only from within the cluster.  That IP simply routes to the load balance private IP.
 

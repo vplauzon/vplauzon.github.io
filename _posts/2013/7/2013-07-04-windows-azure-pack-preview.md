@@ -12,7 +12,7 @@ tags:  []
 </p><ul><li><em>Customer</em>, the consumer of cloud services in this <em>People Centric IT</em> vision
 </li><li><em>Windows Azure</em>, Microsoft Public Cloud offering
 </li><li><em>Service Provider</em>¸ third parties providing services in the cloud
-</li></ul><p><img src="assets/2013/7/windows-azure-pack-preview/070513_0417_windowsazur1.png" alt="" />
+</li></ul><p><img src="http://vincentlauzon.files.wordpress.com/2013/07/070513_0417_windowsazur1.png" alt="" />
 	</p><p>Windows Azure Pack sits squarely between the last two:  it brings Windows Azure to Service Providers.
 </p><p>WAP is part of Windows Server 2012 R2 System Center.  It <strong>doesn't involve additional cost</strong> and leverages <a href="http://technet.microsoft.com/en-us/library/gg610610.aspx">System Center Virtual Machine Manager</a> (VMM).  It is an on premise, private cloud system.
 </p><p>
@@ -22,10 +22,10 @@ tags:  []
 </p><p>In that WAP is a game changer.  It's your full Private Cloud solution on a CD.  Microsoft published a <a href="http://download.microsoft.com/download/0/1/C/01C728DF-B1DD-4A9E-AC5A-2C565AA37730/Windows_Azure_Pack_White_Paper.pdf">White Paper on WAP</a>.
 </p><p>Here are the main parts of Windows Azure Pack:
 </p><p><strong>Management portal for Tenants</strong>:  this is the on premise equivalent to the Windows Azure Developer portal.  The resemblance is quite striking:
-</p><p><img src="assets/2013/7/windows-azure-pack-preview/070513_0417_windowsazur2.jpg" alt="" />
+</p><p><img src="http://vincentlauzon.files.wordpress.com/2013/07/070513_0417_windowsazur2.jpg" alt="" />
 	</p><p>It allows customer to self-provision different workload (more on workload in a moment).  Once workloads are provisioned, customer can then manage and monitor it from that same portal.
 </p><p><strong>Management Portal for Administrators</strong>:  this portal allows administrator to manage the entire Data Center with its different tenants.
-</p><p><img src="assets/2013/7/windows-azure-pack-preview/070513_0417_windowsazur3.png" alt="" />
+</p><p><img src="http://vincentlauzon.files.wordpress.com/2013/07/070513_0417_windowsazur3.png" alt="" />
 	</p><p><strong>Service Management API</strong>:  a set of REST Services giving programmatic access to the two portals.  For instance, a customer could provision a Virtual Machine using a Service API, bypassing the portal.  This allows for some original automation scenarios.
 </p><p>
  </p><p>I've talked about workloads.  Here they are.  WAP sports a subset of the services available on Windows Azure, namely:
@@ -43,7 +43,7 @@ tags:  []
 </p><p>Basically, WAP Admins creates plans.  A plan contains available services and quotas.  For instance, a <em>basic </em>plan could contain virtual machines with up to 5 VMs per tenant with a total of 500Gb of storage.
 </p><p>Customers then subscribes to plans and provisions services within those plans.
 </p><p>This is summarized in the following picture:
-</p><p><img src="assets/2013/7/windows-azure-pack-preview/070513_0417_windowsazur4.png" alt="" />
+</p><p><img src="http://vincentlauzon.files.wordpress.com/2013/07/070513_0417_windowsazur4.png" alt="" />
 	</p><p>This is a neat model since a Private cloud typically doesn't have infinite capacity.  The notion of quotas allows administrator to give sand boxes to customers where they can scale within manageable limits.  Plans could be adjusted on demand but via a manual process.
 </p><p>
  </p><p><a href="http://www.hyper-v.nu/archives/author/marcve/">Marc van Eijk</a> posted a comprehensive guide on <a href="http://www.hyper-v.nu/archives/marcve/2013/02/installing-and-configuring-windows-azure-for-windows-server-part-1/">how to install WAP</a>.  It is interesting to note that WAP can be installed on a single server (for evaluation / POC purposes obviously).

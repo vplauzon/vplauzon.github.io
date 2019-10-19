@@ -8,7 +8,7 @@ tags:
 - Big Data
 - Data
 ---
-<a href="assets/2018/2/parsing-escaping-csv-files-in-spark/pexels-photo-257928.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-257928" src="assets/2018/2/parsing-escaping-csv-files-in-spark/pexels-photo-257928_thumb.jpg" alt="pexels-photo-257928" width="320" height="240" align="right" border="0" /></a><a href="https://vincentlauzon.com/2017/12/18/azure-databricks-getting-started/">In previous weeks, we’ve looked at Azure Databricks</a>, Azure’s managed Spark cluster service.
+<a href="http://vincentlauzon.files.wordpress.com/2018/01/pexels-photo-257928.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-257928" src="http://vincentlauzon.files.wordpress.com/2018/01/pexels-photo-257928_thumb.jpg" alt="pexels-photo-257928" width="320" height="240" align="right" border="0" /></a><a href="https://vincentlauzon.com/2017/12/18/azure-databricks-getting-started/">In previous weeks, we’ve looked at Azure Databricks</a>, Azure’s managed Spark cluster service.
 
 We then looked at <a href="https://vincentlauzon.com/2018/01/17/azure-databricks-rdd-resilient-distributed-dataset/">Resilient Distributed Datasets</a> (RDDs) &amp; <a href="https://vincentlauzon.com/2018/01/24/azure-databricks-spark-sql-data-frames/">Spark SQL / Data Frames</a>.  We also looked at <a href="https://vincentlauzon.com/2018/01/31/transforming-data-frames-in-spark/">an example of more tedious transformation prior to querying</a> using the <a href="https://www.kaggle.com/nsharan/h-1b-visa">H-1B Visa Petitions 2011-2016</a> (from <a href="https://www.kaggle.com/">Kaggle</a>) data set.
 
@@ -28,11 +28,11 @@ We will only work with the ted_main.csv file, which is 7Mb with 2550 rows and 17
 
 Here are the first 12 columns:
 
-<a href="assets/2018/2/parsing-escaping-csv-files-in-spark/image6.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/2/parsing-escaping-csv-files-in-spark/image_thumb6.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/01/image6.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/01/image_thumb6.png" alt="image" border="0" /></a>
 
 and the last 5:
 
-<a href="assets/2018/2/parsing-escaping-csv-files-in-spark/image7.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/2/parsing-escaping-csv-files-in-spark/image_thumb7.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/01/image7.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/01/image_thumb7.png" alt="image" border="0" /></a>
 <h2>The Challenge</h2>
 A first few observations:
 <ul>
@@ -209,7 +209,7 @@ FROM tags
 
 This gives use the following cardinalities:
 
-<a href="assets/2018/2/parsing-escaping-csv-files-in-spark/image8.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/2/parsing-escaping-csv-files-in-spark/image_thumb8.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/01/image8.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/01/image_thumb8.png" alt="image" border="0" /></a>
 
 So despite the small number of Ted Talks covered, the file does contain a good chunk of data.
 
@@ -226,7 +226,7 @@ LIMIT 10
 
 [/code]
 
-<a href="assets/2018/2/parsing-escaping-csv-files-in-spark/image9.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/2/parsing-escaping-csv-files-in-spark/image_thumb9.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/01/image9.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/01/image_thumb9.png" alt="image" border="0" /></a>
 
 In general, it seems that well viewed talks generate a lot of comments.
 
@@ -244,7 +244,7 @@ ORDER BY avgViews DESC
 
 [/code]
 
-<a href="assets/2018/2/parsing-escaping-csv-files-in-spark/image10.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/2/parsing-escaping-csv-files-in-spark/image_thumb10.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/01/image10.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/01/image_thumb10.png" alt="image" border="0" /></a>
 
 Apparently <em>body language</em> is the way to go to be popular at <em>TED</em>.
 
@@ -263,7 +263,7 @@ ORDER BY ratingCount DESC
 
 [/code]
 
-<a href="assets/2018/2/parsing-escaping-csv-files-in-spark/image11.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/2/parsing-escaping-csv-files-in-spark/image_thumb11.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/01/image11.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/01/image_thumb11.png" alt="image" border="0" /></a>
 
 So inspiring speech are rated often.  This is consistent with our experience of TED speeches.
 
@@ -280,7 +280,7 @@ ORDER BY r.count DESC
 
 [/code]
 
-<a href="assets/2018/2/parsing-escaping-csv-files-in-spark/image12.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/2/parsing-escaping-csv-files-in-spark/image_thumb12.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/01/image12.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/01/image_thumb12.png" alt="image" border="0" /></a>
 
 We see that in general, the <em>Inspiring</em> rating is a good predictor of a talk’s popularity but that it doesn’t reproduce the entire top 10 in the right order (e.g. the fourth talk here was second in terms of views).
 <h2>Summary</h2>

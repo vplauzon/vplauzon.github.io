@@ -8,7 +8,7 @@ tags:
 - Big Data
 - Data
 ---
-<a href="assets/2018/2/import-notebooks-in-databricks/pexels-photo-70418.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-70418" src="assets/2018/2/import-notebooks-in-databricks/pexels-photo-70418_thumb.jpg" alt="pexels-photo-70418" width="320" height="213" align="right" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/02/pexels-photo-70418.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-70418" src="http://vincentlauzon.files.wordpress.com/2018/02/pexels-photo-70418_thumb.jpg" alt="pexels-photo-70418" width="320" height="213" align="right" border="0" /></a>
 
 We’ve recently looked Azure Databricks:
 <ul>
@@ -28,27 +28,27 @@ Let’s go into the <em>ted</em> folder of our GitHub repo:  <a title="https://
 
 From there we can click on <a href="https://github.com/vplauzon/databricks/blob/master/ted/ted.ipynb">ted.ipynb</a>.  GitHub actually renders Jupyter notebooks, which is nice.  But let’s take the raw version of the file by clicking the raw button:
 
-<a href="assets/2018/2/import-notebooks-in-databricks/image.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/2/import-notebooks-in-databricks/image_thumb.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/02/image.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/02/image_thumb.png" alt="image" border="0" /></a>
 
 This will lead to the raw content of the file (which happens to be JSON based).  Let’s copy the URL (<a title="https://raw.githubusercontent.com/vplauzon/databricks/master/ted/ted.ipynb" href="https://raw.githubusercontent.com/vplauzon/databricks/master/ted/ted.ipynb">https://raw.githubusercontent.com/vplauzon/databricks/master/ted/ted.ipynb</a>).
 <h2>Import in Databricks workspace</h2>
 In Databricks’ portal, let’s first select the workspace menu.
 
-<a href="assets/2018/2/import-notebooks-in-databricks/image1.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/2/import-notebooks-in-databricks/image_thumb1.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/02/image1.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/02/image_thumb1.png" alt="image" border="0" /></a>
 
 Let’s pull down the Workspace menu and select <em>Import</em>.
 
-<a href="assets/2018/2/import-notebooks-in-databricks/image2.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/2/import-notebooks-in-databricks/image_thumb2.png" alt="image" width="617" height="378" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/02/image2.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/02/image_thumb2.png" alt="image" width="617" height="378" border="0" /></a>
 
 We get an <em>Import Notebooks</em> pop-up.  Default configuration imports from File, i.e. local file.  This is where we could import a Jupyter notebook from our local file system.
 
 We want to import from GitHub, so let’s select the <em>URL</em> option.
 
-<a href="assets/2018/2/import-notebooks-in-databricks/image3.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/2/import-notebooks-in-databricks/image_thumb3.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/02/image3.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/02/image_thumb3.png" alt="image" border="0" /></a>
 
 From there we can paste the notebook raw URL from GitHub and click <em>Import</em>.
 
-<a href="assets/2018/2/import-notebooks-in-databricks/image4.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/2/import-notebooks-in-databricks/image_thumb4.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/02/image4.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/02/image_thumb4.png" alt="image" border="0" /></a>
 
 This imports the notebook file and creates a notebook in our workspace.
 <h2>Summary</h2>

@@ -8,7 +8,7 @@ tags:
 - NoSQL
 ---
 <p>While familiarizing ourselves with Microsoft <a href="http://vincentlauzon.wordpress.com/2014/09/18/digest-documentdb-resource-model-and-concepts/">new DocumentDB</a>, a solid foundation on NoSQL doesn't hurt.
-</p><p><img align="left" src="assets/2014/10/nosql-implementation-concepts/100814_0257_nosqlimplem1.png" alt="" />A few years ago, I saw a couple of great presentations on <a href="http://channel9.msdn.com/">Channel9</a> (from a TechED if I am not mistaken) about Azure Storage.  The presenters went into how partitioning works, how requests are routed, how consistency is ensure, how resiliency (in case of node failure) is insured, etc.  .  Those were quite specific to Azure Blob &amp; Table storage.
+</p><p><img align="left" src="http://vincentlauzon.files.wordpress.com/2014/10/100814_0257_nosqlimplem1.png" alt="" />A few years ago, I saw a couple of great presentations on <a href="http://channel9.msdn.com/">Channel9</a> (from a TechED if I am not mistaken) about Azure Storage.  The presenters went into how partitioning works, how requests are routed, how consistency is ensure, how resiliency (in case of node failure) is insured, etc.  .  Those were quite specific to Azure Blob &amp; Table storage.
 </p><p>Recently, I came across <a href="http://cloud.dzone.com/users/riho">Ricky Ho</a>'s excellent NoSQL primer:  <a href="http://cloud.dzone.com/news/nosql-patterns">NOSQL Patterns</a>.  This article has two main advantages:
 </p><ul><li>It is relatively generic (it isn't tied to a specific implementation of NoSQL product)
 </li><li>It is relatively short (compare to a one hour Channel9 presentation)
@@ -19,4 +19,4 @@ tags:
 </li><li>Dynamic Membership:  how is data mapped to different partitions as nodes join and leave the topology
 </li><li>Consistency:  how is the database exposing a consistent view to a consumer while data is replicated and moving around on many distributed nodes
 </li><li>Replication algorithms
-</li></ul><p><img align="right" src="assets/2014/10/nosql-implementation-concepts/100814_0257_nosqlimplem2.png" alt="" /> It is especially interesting while working with Azure DocumentDB since that product offers a lot of configurable tradeoffs (e.g. in terms of consistency policy, index building, etc.).</p>
+</li></ul><p><img align="right" src="http://vincentlauzon.files.wordpress.com/2014/10/100814_0257_nosqlimplem2.png" alt="" /> It is especially interesting while working with Azure DocumentDB since that product offers a lot of configurable tradeoffs (e.g. in terms of consistency policy, index building, etc.).</p>

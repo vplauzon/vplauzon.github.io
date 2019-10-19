@@ -17,7 +17,7 @@ In my <a href="http://vincentlauzon.com/2016/01/13/azure-data-lake-analytics-loa
 <h2>Data Model</h2>
 The data model in the ADLA tables is the following:
 
-<a href="assets/2016/2/querying-tables-in-azure-data-lake-analytics/image7.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2016/2/querying-tables-in-azure-data-lake-analytics/image_thumb7.png" alt="image" width="1042" height="482" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/01/image7.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb7.png" alt="image" width="1042" height="482" border="0" /></a>
 <h2>Popular Character</h2>
 Obvious question:  which character is the most popular, i.e. which character has been published the most?
 

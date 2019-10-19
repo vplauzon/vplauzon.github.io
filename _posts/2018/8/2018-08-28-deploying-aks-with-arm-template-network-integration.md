@@ -9,7 +9,7 @@ tags:
 - Containers
 - Networking
 ---
-<img style="float:right;" src="https://vincentlauzon.files.wordpress.com/2018/08/aerial-view-architecture-bridges-681335-e1534512788662.jpg" title="From Pexels" />
+<img style="float:right;" src="/assets/2018/8/deploying-aks-with-arm-template-network-integration/aerial-view-architecture-bridges-681335-e1534512788662.jpg" title="From Pexels" />
 
 In a <a href="https://vincentlauzon.com/2018/08/21/kubernetes-services-in-azure-aks-network-integration/">past article</a>, we looked at how <a href="https://vincentlauzon.com/?s=aks">Azure Kubernetes Services</a> (AKS) integrated with Azure Networking.
 
@@ -28,7 +28,7 @@ In AKS, <em>Advance Networking</em> means the cluster gets deployed in an existi
 
 In the end, we should be able to experience the following:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/08/service1.png" alt="Service" />
+<img src="/assets/2018/8/deploying-aks-with-arm-template-network-integration/service1.png" alt="Service" />
 
 We will only ommit the port mapping and run everything on port 80.
 
@@ -83,7 +83,7 @@ The total cores match the B2 VM size (times 3 nodes).
 
 The Virtual Network is segregated in two subnets as planned:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/08/subnets1.png" alt="Subnets" />
+<img src="/assets/2018/8/deploying-aks-with-arm-template-network-integration/subnets1.png" alt="Subnets" />
 
 Both subnets are /20 hence accomodating 4096 IPs each (see <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks">CIDR notation</a>).  Of those, <a href="https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets">5 are used by Azure as stated in the FAQ</a>:
 
@@ -101,7 +101,7 @@ The VNET IP address needs to be compatible with <a href="https://en.wikipedia.or
 
 Let's look at the access control on the virtual network.
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/08/iam1.png" alt="Access Control (IAM)" />
+<img src="/assets/2018/8/deploying-aks-with-arm-template-network-integration/iam1.png" alt="Access Control (IAM)" />
 
 We notice the Service Principal we provided in input is <em>Network Contributor</em>.  This is a <a href="https://docs.microsoft.com/en-us/azure/aks/networking-overview#advanced-networking-prerequisites">requirement for AKS in Advanced Networking mode</a>.
 
@@ -130,13 +130,13 @@ The AKS cluster appears as one resource in our resource group.  The underlying r
 
 They are in a resource group named <code>MC___</code>.
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/08/buddy.png" alt="Buddy group" />
+<img src="/assets/2018/8/deploying-aks-with-arm-template-network-integration/buddy.png" alt="Buddy group" />
 
 We can see all resources we would expect from a cluster.
 
 If look at one of the <em>NIC</em> and its IP configuration we can see the following:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/08/nic.png" alt="" />
+<img src="/assets/2018/8/deploying-aks-with-arm-template-network-integration/nic.png" alt="" />
 
 The NIC has multiple IPs.  The primary one is the node's IP while the secondary ones are a pool of IPs attributed to pods.
 
@@ -222,7 +222,7 @@ Let's look at how that impact our Azure resources.
 
 Let's go back to our buddy resource group:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/08/buddy-with-lb.png" alt="Buddy group containing a load balancer" />
+<img src="/assets/2018/8/deploying-aks-with-arm-template-network-integration/buddy-with-lb.png" alt="Buddy group containing a load balancer" />
 
 We see a load balancer that wasn't there before.
 
@@ -230,7 +230,7 @@ We see a load balancer that wasn't there before.
 
 If we go back to our Virtual Network and scroll down we should find the load balancer:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/08/lb-ip.png" alt="Load balancer IP" />
+<img src="/assets/2018/8/deploying-aks-with-arm-template-network-integration/lb-ip.png" alt="Load balancer IP" />
 
 We can see it belongs to the <em>services</em> subnet and has an IP in that subnet range.
 
@@ -379,7 +379,7 @@ The <em>Service Cidr</em> is where those cluster-ip for services are taken from.
 
 We've basically dived into the view we formed in our <a href="https://vincentlauzon.com/2018/08/21/kubernetes-services-in-azure-aks-network-integration/">past article</a>:
 
-<img src="https://vincentlauzon.files.wordpress.com/2018/08/service1.png" alt="Service" />
+<img src="/assets/2018/8/deploying-aks-with-arm-template-network-integration/service1.png" alt="Service" />
 
 The <strong>important things to remember</strong> are:
 

@@ -9,7 +9,7 @@ tags:
 - Automation
 - Security
 ---
-<img style="float:left;padding-right:20px;" title="From pexels.com" src="https://vincentlauzon.files.wordpress.com/2019/07/access-close-up-door-792034-e1562792597181.jpg" />
+<img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/2019/7/api-management-oauth-and-private-back-ends/access-close-up-door-792034-e1562792597181.jpg" />
 
 <a href="https://docs.microsoft.com/en-us/azure/api-management/api-management-key-concepts">Azure API Management</a> is a fully managed <a href="https://www.quora.com/What-is-an-API-gateway">API Gateway</a> service.
 
@@ -34,7 +34,7 @@ As usual, the code is in <a href="https://github.com/vplauzon/api-management/tre
 
 Here is the solution we are going to build:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/07/sample-1.png" alt="Sample Solution" />
+<img src="/assets/2019/7/api-management-oauth-and-private-back-ends/sample-1.png" alt="Sample Solution" />
 
 We have an API Management service in the middle.  It is integrated to a VNET in external mode.  Since it is part of a VNET, it can communicate with other VNET-bound service.  The diagram shows a private IP ; it isn't a service private VIP as it is deployed in external mode.  Rather this represents the private IP of whatever VM happened to communicate with a private service.
 
@@ -92,13 +92,13 @@ Once we've deployed the ARM Template, we can take a quick look at the resources 
 
 We can see we have 2 subnets.  One for the API Management VMs and one for the private service.  The latter is delegated to the Azure Container Instance (ACI)service.  This is required to deploy an <a href="https://docs.microsoft.com/en-us/azure/container-instances/container-instances-vnet">ACI inside a subnet</a>.
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/07/vnet.png" alt="subnets" />
+<img src="/assets/2019/7/api-management-oauth-and-private-back-ends/vnet.png" alt="subnets" />
 
 <h3>Azure Container Instance</h3>
 
 Nothing much to say about the private service.  We can see the container image is from Docker Hub:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/07/container-1.png" alt="Container image" />
+<img src="/assets/2019/7/api-management-oauth-and-private-back-ends/container-1.png" alt="Container image" />
 
 We are basically using the same image we've built in the <a href="https://vincentlauzon.com/2018/04/24/getting-started-with-docker-in-azure/">Docker Getting Started</a> which is basically a Python Flask <em>Hello World</em>.
 
@@ -120,7 +120,7 @@ This is the public service.  It's a simple HTTP-post service expecting a JSON bo
 
 If we try to test the app, it would fail.  The reason is that we locked down the app to accept request only from our instance of API Management:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/07/access-control.png" alt="Access Control" />
+<img src="/assets/2019/7/api-management-oauth-and-private-back-ends/access-control.png" alt="Access Control" />
 
 (A /32 means a single IP)
 
@@ -130,7 +130,7 @@ We can do that because the outbound public IP of an API Management Service is st
 
 Let's look at the APIs in API Management:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/07/apis.png" alt="APIs" />
+<img src="/assets/2019/7/api-management-oauth-and-private-back-ends/apis.png" alt="APIs" />
 
 The <em>Echo API</em> comes as a sample with each API Management service and can be safely deleted.
 
@@ -235,7 +235,7 @@ Here we can see how we can easily transform APIs again.
 
 Now if we look at the products, we see the standard Starter &amp; Unlimited, but we also see two custom ones:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/07/products.png" alt="products" />
+<img src="/assets/2019/7/api-management-oauth-and-private-back-ends/products.png" alt="products" />
 
 <em>Subscription based</em> product is pretty vanilla.  The <em>Token based</em> one is interesting.  If we look at its policies:
 
@@ -260,7 +260,7 @@ Now the <em>one-api</em> API belongs to the two products:  one requiring a JWT, 
 
 If we go back to test the public operation but we explicitly choose the product as <em>Token based</em>:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/07/test-api-without-token.png" alt="Testing API without token" />
+<img src="/assets/2019/7/api-management-oauth-and-private-back-ends/test-api-without-token.png" alt="Testing API without token" />
 
 we will hit a failure:
 

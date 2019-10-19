@@ -9,7 +9,7 @@ tags:
 - Security
 - Web
 ---
-<img style="float:right;padding-left:20px;" title="From pexels.com" src="https://vincentlauzon.files.wordpress.com/2019/06/ancient-antique-architecture-277630-e1559945053466.jpg" />
+<img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/2019/6/azure-front-door-with-app-service/ancient-antique-architecture-277630-e1559945053466.jpg" />
 
 <a href="https://docs.microsoft.com/en-us/azure/frontdoor/front-door-overview">Azure Front Door service</a> was recently released.
 
@@ -35,7 +35,7 @@ As usual, <a href="https://github.com/vplauzon/app-service/tree/master/front-doo
 
 Here is the solution we are going to ground the conversation around:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/06/appservice.png" alt="Deployment" />
+<img src="/assets/2019/6/azure-front-door-with-app-service/appservice.png" alt="Deployment" />
 
 This is a typical reverse proxy use case.
 
@@ -104,7 +104,7 @@ Let's test the deployment.
 
 We can see there are three resources deployed by the ARM template:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/06/resourcegroup.png" alt="Resource Group" />
+<img src="/assets/2019/6/azure-front-door-with-app-service/resourcegroup.png" alt="Resource Group" />
 
 (Yes, we are in the UK today)
 
@@ -114,11 +114,11 @@ We can see the Front Door service isn't in a specific region but is a global ser
 
 Let's open the Front Door resource.
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/06/frontdoor-1.png" alt="Front Door" />
+<img src="/assets/2019/6/azure-front-door-with-app-service/frontdoor-1.png" alt="Front Door" />
 
 In the top-right corner we find a URL to the main front-end.  If we browse on that URL we get the following page:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/06/frontdoor-page.png" alt="Front Door page" />
+<img src="/assets/2019/6/azure-front-door-with-app-service/frontdoor-page.png" alt="Front Door page" />
 
 This is the App Service default page, since we didn't deploy any code for the Web App.
 
@@ -126,11 +126,11 @@ It might take a few seconds for the service to be up and running.
 
 Let's now open the App Service resource.
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/06/appservice-1.png" alt="App Service" />
+<img src="/assets/2019/6/azure-front-door-with-app-service/appservice-1.png" alt="App Service" />
 
 We also have the URL of the web app in the top right corner.  If we browse to that page though, we are denied access:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/06/appservice-page.png" alt="App Service page" />
+<img src="/assets/2019/6/azure-front-door-with-app-service/appservice-page.png" alt="App Service page" />
 
 This is because, as mentioned in the previous section, we blocked requests not coming from Azure Front Door.
 

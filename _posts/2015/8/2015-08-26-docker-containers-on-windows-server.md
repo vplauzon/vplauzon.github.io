@@ -12,7 +12,7 @@ If you had any doubts about the increased pace in IT innovation, look at <a href
 
 That's 1.5 years from toe in the water to major influence.  Impressive!
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/08/logo4.png"><img class="size-full wp-image-1190 alignleft" src="https://vincentlauzon.files.wordpress.com/2015/08/logo4.png" alt="logo[4]" width="291" height="70" /></a>
+<a href="/assets/2015/8/docker-containers-on-windows-server/logo4.png"><img class="size-full wp-image-1190 alignleft" src="/assets/2015/8/docker-containers-on-windows-server/logo4.png" alt="logo[4]" width="291" height="70" /></a>
 
 The first Windows Server Container Preview has been <a href="http://weblogs.asp.net/scottgu/announcing-windows-server-2016-containers-preview" target="_blank">announced in August 2015</a> as part of the Technical Preview 3 of Windows Server.  The preview also comes with Visual Studio integration, in the form of <a href="http://aka.ms/vslovesdocker" target="_blank">Visual Studio tools for Docker</a>.
 
@@ -24,7 +24,7 @@ In Windows, hosts will come in two flavours:  Windows Server host &amp; Hyper-V
 
 At first the Hyper-V container sounds like it defies the purpose of having Docker Containers in the first place since they basically implement the container as an entire VM.  But if you think about it, on the long run it makes perfect sense.  The first version of Docker Container on Windows will likely have security holes in them.  Therefore if you have scenario with 'hostile multi-tenants', you'll probably want to stick to Hyper-V.  But in time, the security of Docker on Windows will tighten and you'll be able to move to normal containers as a configuration-change.
 
-<a href="https://vincentlauzon.files.wordpress.com/2015/08/service-fabric.png"><img class="size-medium wp-image-1194 alignright" src="https://vincentlauzon.files.wordpress.com/2015/08/service-fabric.png?w=300" alt="Service Fabric" width="300" height="155" /></a>
+<a href="/assets/2015/8/docker-containers-on-windows-server/service-fabric.png"><img class="size-medium wp-image-1194 alignright" src="/assets/2015/8/docker-containers-on-windows-server/service-fabric.png?w=300" alt="Service Fabric" width="300" height="155" /></a>
 
 We can imagine that once Windows Server 2016 roll out, we'll see Docker Container appearing in Azure.  I wouldn't be surprise to see them fuse with the <a href="https://azure.microsoft.com/en-us/services/app-service/?b=15.28" target="_blank">App Services</a> shortly after that.
 

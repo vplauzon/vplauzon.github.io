@@ -8,7 +8,7 @@ tags:
 - Containers
 - Operations
 ---
-<img style="float:right;padding-right:20px;" title="From www.pexels.com" src="https://vincentlauzon.files.wordpress.com/2019/01/traceinsnow-e1548692422686.jpg" />
+<img style="float:right;padding-right:20px;" title="From www.pexels.com" src="/assets/2019/1/custom-logs-on-aks-azure-monitor/traceinsnow-e1548692422686.jpg" />
 
 Let's look at a concrete problem:
 
@@ -110,7 +110,7 @@ $ kubectl logs standard-output-pod
 
 If we give a few minutes for Azure Monitor to gather the logs, we can use the following query:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/01/stdout-log.png" alt="Log query" />
+<img src="/assets/2019/1/custom-logs-on-aks-azure-monitor/stdout-log.png" alt="Log query" />
 
 Hence this solution fits nicely with Azure monitor for Containers.
 

@@ -49,7 +49,7 @@ Keep in mind that this is based on the public preview and that I write those lin
 <h2>Code behind</h2>
 The easiest way to do complex code is to use the code-behind a script.
 
-<a href="assets/2016/1/registering-assemblies-in-azure-data-lake-analytics/image1.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/1/registering-assemblies-in-azure-data-lake-analytics/image_thumb1.png" alt="image" width="367" height="70" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/01/image1.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb1.png" alt="image" width="367" height="70" border="0" /></a>
 
 This should look familiar to you if you’ve done any Visual Studio with ASP.NET, WPF, Win Forms and other stacks.
 
@@ -89,7 +89,7 @@ namespace MyNamespace
 
 Now if you submit that script as a job and look at the generated script, by clicking at the bottom left “Script link” in the job tab:
 
-<a href="assets/2016/1/registering-assemblies-in-azure-data-lake-analytics/image2.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/1/registering-assemblies-in-azure-data-lake-analytics/image_thumb2.png" alt="image" width="327" height="480" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/01/image2.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb2.png" alt="image" width="327" height="480" border="0" /></a>
 
 You’ll see the script submitted to the ADLA engine:
 
@@ -132,15 +132,15 @@ So if this solution works for your requirements:  use it.  It is by far the si
 <h2>Visual Studio Register Assembly menu option</h2>
 Create a library project, i.e. a <em>Class Library (For U-SQL Application)</em> template.
 
-<a href="assets/2016/1/registering-assemblies-in-azure-data-lake-analytics/image3.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/1/registering-assemblies-in-azure-data-lake-analytics/image_thumb3.png" alt="image" width="1209" height="490" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/01/image3.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb3.png" alt="image" width="1209" height="490" border="0" /></a>
 
 This allows you to create code independant of scripts.  Right click on the project and select the last option on the menu.
 
-<a href="assets/2016/1/registering-assemblies-in-azure-data-lake-analytics/image4.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/1/registering-assemblies-in-azure-data-lake-analytics/image_thumb4.png" alt="image" width="519" height="332" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/01/image4.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb4.png" alt="image" width="519" height="332" border="0" /></a>
 
 This will pop up a dialog with a few options.
 
-<a href="assets/2016/1/registering-assemblies-in-azure-data-lake-analytics/image5.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="assets/2016/1/registering-assemblies-in-azure-data-lake-analytics/image_thumb5.png" alt="image" width="1054" height="947" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2016/01/image5.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb5.png" alt="image" width="1054" height="947" border="0" /></a>
 
 Now be careful and always click the “Replace assembly if it already exists” option, otherwise you can only create it once.
 

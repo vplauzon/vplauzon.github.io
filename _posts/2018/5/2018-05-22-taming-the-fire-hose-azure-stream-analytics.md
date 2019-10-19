@@ -10,7 +10,7 @@ tags:
 - Serverless
 - Streaming
 ---
-<a href="assets/2018/5/taming-the-fire-hose-azure-stream-analytics/accident-action-adult-2800761.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="accident-action-adult-280076" src="assets/2018/5/taming-the-fire-hose-azure-stream-analytics/accident-action-adult-280076_thumb1.jpg" alt="accident-action-adult-280076" width="320" height="167" align="left" border="0" /></a>We came upon an interesting challenge recently.
+<a href="http://vincentlauzon.files.wordpress.com/2018/05/accident-action-adult-2800761.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="accident-action-adult-280076" src="http://vincentlauzon.files.wordpress.com/2018/05/accident-action-adult-280076_thumb1.jpg" alt="accident-action-adult-280076" width="320" height="167" align="left" border="0" /></a>We came upon an interesting challenge recently.
 
 Let’s have a stream of events pouring in.  The source is unimportant.  Hundreds, peeking at thousands, of events per second.
 
@@ -36,7 +36,7 @@ ASA is a service getting too little press cover given its capacities.  It’s a
 <h2>Whiteboarding</h2>
 Let’s start with a naïve architecture and iterate around it.
 <h3>Naïve approach</h3>
-<a href="assets/2018/5/taming-the-fire-hose-azure-stream-analytics/image.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/5/taming-the-fire-hose-azure-stream-analytics/image_thumb.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/05/image.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb.png" alt="image" border="0" /></a>
 
 Let’s have an API ingesting events and updating the summary table in SQL database.  This is going to be our baseline solution.
 
@@ -58,7 +58,7 @@ Finally, if Azure SQL DB goes down for a while, the API is stuck accumulating th
 <h3>Introducing Event Hubs and Stream Analytics</h3>
 We need to add resiliency to our solution.  Queuing is an obvious avenue.
 
-<a href="assets/2018/5/taming-the-fire-hose-azure-stream-analytics/image1.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/5/taming-the-fire-hose-azure-stream-analytics/image_thumb1.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/05/image1.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb1.png" alt="image" border="0" /></a>
 
 Here we introduced a couple of components.  Telemetry is now sent to an <a href="https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-what-is-event-hubs">Event Hub</a>.  Event Hub is an ingestion service.  It can ingest millions of events per second.  Those events are reliably stored so it doesn’t drop events.
 
@@ -66,7 +66,7 @@ Event Hubs can keep events around for up to seven days.  It isn’t a permanent
 
 Next we get <a href="https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-introduction">Azure Stream Analytics</a> (ASA).  ASA is a stream processing engine.  It takes a stream of events and transform it into…  another stream of events.  It can implement <a href="https://en.wikipedia.org/wiki/Complex_event_processing">Complex Event Processing</a>.  Here we use it for a much more mundane tasks.  It aggregates events and emits summary events (aggregates).
 
-<a href="assets/2018/5/taming-the-fire-hose-azure-stream-analytics/image2.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/5/taming-the-fire-hose-azure-stream-analytics/image_thumb2.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/05/image2.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb2.png" alt="image" border="0" /></a>
 
 The key is that ASA absorbs the fire hose of events.  It takes hundreds of events a second and output a few events per minute.  That makes it tractable problem in terms of events / seconds.  It allows us to scale.
 
@@ -125,7 +125,7 @@ That puts a lot of complexity inside a black box.  There are better and easier 
 <h3>Introducing Logic Apps</h3>
 In this iteration we replace the Azure Function with a <a href="https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview">Logic App</a>.
 
-<a href="assets/2018/5/taming-the-fire-hose-azure-stream-analytics/image3.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/5/taming-the-fire-hose-azure-stream-analytics/image_thumb3.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/05/image3.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb3.png" alt="image" border="0" /></a>
 
 We <a href="https://vincentlauzon.com/2017/10/19/invoking-a-stored-procedure-from-a-partitioned-cosmosdb-collection-from-logic-apps/">discussed Logic Apps before</a>.  Logic Apps is a workflow-based integration service.  It orchestrates tasks between different services.  It has resilient retry policies built in.  It is also quite trivial to call a SQL Stored Procedure from a Logic App.
 
@@ -139,7 +139,7 @@ Are we done yet?
 
 We’ve looked at a few failure scenarios.  Let’s look at the SLAs:
 
-<a href="assets/2018/5/taming-the-fire-hose-azure-stream-analytics/image4.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/5/taming-the-fire-hose-azure-stream-analytics/image_thumb4.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/05/image4.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb4.png" alt="image" border="0" /></a>
 
 In Cloud Architecture, every component can, and eventually will, fail.  We need to take that into account.
 
@@ -153,7 +153,7 @@ If that drop happens during peak periods, at say 1000 events / s, it would mean 
 
 If that lost isn’t acceptable, we should consider boosting the availability of our front door event hub.
 
-<a href="assets/2018/5/taming-the-fire-hose-azure-stream-analytics/image5.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="assets/2018/5/taming-the-fire-hose-azure-stream-analytics/image_thumb5.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2018/05/image5.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb5.png" alt="image" border="0" /></a>
 
 The classical technique is to have a secondary event hub in a secondary region.  Each region is operated independently.  They therefore fail independently.  We need the cooperation of the source for that.  We need to source of events to send the events to the primary hub.  In case of failure, and only in case of failure, we need it to fall back to the secondary hub.
 

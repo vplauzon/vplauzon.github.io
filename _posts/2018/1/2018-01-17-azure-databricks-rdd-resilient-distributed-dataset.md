@@ -8,7 +8,7 @@ tags:
 - Big Data
 - Data
 ---
-<a href="assets/2018/1/azure-databricks-rdd-resilient-distributed-dataset/pexels-photo-7569011.jpg"><img style="float:right;display:inline;background-image:none;" title="pexels-photo-756901[1]" src="assets/2018/1/azure-databricks-rdd-resilient-distributed-dataset/pexels-photo-7569011_thumb.jpg" alt="pexels-photo-756901[1]" width="324" height="212" align="right" border="0" /></a><a href="https://vincentlauzon.com/2017/12/18/azure-databricks-getting-started/" target="_blank" rel="noopener">We looked at Azure Databricks</a> a few weeks ago.  Azure Databricks is a managed Apache Spark Cluster service.
+<a href="http://vincentlauzon.files.wordpress.com/2018/01/pexels-photo-7569011.jpg"><img style="float:right;display:inline;background-image:none;" title="pexels-photo-756901[1]" src="http://vincentlauzon.files.wordpress.com/2018/01/pexels-photo-7569011_thumb.jpg" alt="pexels-photo-756901[1]" width="324" height="212" align="right" border="0" /></a><a href="https://vincentlauzon.com/2017/12/18/azure-databricks-getting-started/" target="_blank" rel="noopener">We looked at Azure Databricks</a> a few weeks ago.  Azure Databricks is a managed Apache Spark Cluster service.
 
 In this article, we are going to look at &amp; use a fundamental building block of Apache Spark:  Resilient Distributed Dataset or RDD.  We are going to use the Python SDK.
 
@@ -16,7 +16,7 @@ It is important to note that about everything in this article <strong>isn't</st
 
 We are going to replicate <a href="https://vincentlauzon.com/2016/01/13/azure-data-lake-analytics-loading-files-with-custom-c-code/" target="_blank" rel="noopener">some experiments we did 2 years ago with Azure Data Lake</a>.  We are going to use the <a href="http://bioinfo.uib.es/~joemiro/marvel.html" target="_blank" rel="noopener">Social characteristics of the Marvel Universe</a> public dataset.
 <h2>Create an Azure Databricks' workspace</h2>
-<img style="float:left;display:inline;" src="https://vincentlauzon.files.wordpress.com/2017/12/databricks_logo1.png" align="left" />Let’s start by creating an Azure Databricks workspace.  This is well covered in the <a href="https://docs.microsoft.com/en-us/azure/azure-databricks/quickstart-create-databricks-workspace-portal" target="_blank" rel="noopener">quickstart article of the online documentation</a>, so we won’t repeat that here.
+<img style="float:left;display:inline;" src="/assets/2018/1/azure-databricks-rdd-resilient-distributed-dataset/databricks_logo1.png" align="left" />Let’s start by creating an Azure Databricks workspace.  This is well covered in the <a href="https://docs.microsoft.com/en-us/azure/azure-databricks/quickstart-create-databricks-workspace-portal" target="_blank" rel="noopener">quickstart article of the online documentation</a>, so we won’t repeat that here.
 
 From there we will go in the workspace and create a cluster, which is also covered in the same online documentation’s article.
 

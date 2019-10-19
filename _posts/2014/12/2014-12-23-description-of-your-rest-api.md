@@ -19,17 +19,17 @@ Entered WADL. Actually, exit WADL: <a href="http://en.wikipedia.org/wiki/Web_App
 
 Let me tell you about two contenders then: <a href="http://swagger.io/">Swagger</a> &amp; <a href="http://raml.org/">RAML</a>.
 
-<a title="Swagger" href="http://swagger.io/"><img src="assets/2014/12/description-of-your-rest-api/122314_0331_description1.png" alt="" border="0" /></a>
+<a title="Swagger" href="http://swagger.io/"><img src="http://vincentlauzon.files.wordpress.com/2014/12/122314_0331_description1.png" alt="" border="0" /></a>
 
 I heard about <a href="http://swagger.io/">Swagger</a> on <a href="http://channel9.msdn.com/Shows/Web+Camps+TV/Introducing-WebJobs-Tooling-for-Visual-Studio-with-Brady-Gaster">Channel9</a>, so I guess you could say that parts of Microsoft are looking into it.
 
 Swagger has a very good head start in tooling with a lot of support in many target languages / platforms. It also produces a <a href="http://petstore.swagger.wordnik.com/">simple yet compelling UI</a>.
 
-<img src="assets/2014/12/description-of-your-rest-api/122314_0331_description2.png" alt="" />
+<img src="http://vincentlauzon.files.wordpress.com/2014/12/122314_0331_description2.png" alt="" />
 
 You can look at the <a href="https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md">full specifications here</a>, but basically it's a JSON document describing your API. As a side-effect, Swagger enables the description of JSON document and therefore act as a sort of JSON Schema.
 
-<a title="RAML" href="http://raml.org/"><img src="assets/2014/12/description-of-your-rest-api/122314_0331_description3.png" alt="" border="0" /></a>
+<a title="RAML" href="http://raml.org/"><img src="http://vincentlauzon.files.wordpress.com/2014/12/122314_0331_description3.png" alt="" border="0" /></a>
 
 RAML is relatively similar to Swagger. Its format is <a href="http://en.wikipedia.org/wiki/YAML">YAML</a> which is arguably more human-readable than JSON.
 

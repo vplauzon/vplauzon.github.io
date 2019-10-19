@@ -10,7 +10,7 @@ tags:
 ---
 <a href="http://azure.microsoft.com/en-us/services/data-factory/" target="_blank">Azure Data Factory</a> is still in preview but obviously has a committed team behind it.
 
-<img class="  wp-image-820 aligncenter" src="https://vincentlauzon.files.wordpress.com/2015/06/networking1.jpg?w=300" alt="networking[1]" width="427" height="320" />
+<img class="  wp-image-820 aligncenter" src="/assets/2015/6/azure-data-factory-editor-adf-editor/networking1.jpg?w=300" alt="networking[1]" width="427" height="320" />
 
 When I looked at the Service when the preview was made available in last Novembre, the first thing that stroke me was the lack of editor, of designing surface.  Instead, you had to configure your factory entirely in JSON.  You could visualize the resulting factory in a graphical format, but the entry mode was JSON.
 

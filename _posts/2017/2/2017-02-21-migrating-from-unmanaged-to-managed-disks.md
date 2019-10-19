@@ -409,15 +409,15 @@ Update your Microsoft Azure PowerShell to the latest bits in order to include Ma
 <ol>
  	<li>Select one of the VMs (e.g. <i>Demo-VM-0</i>)</li>
  	<li>Select the disk tab
-<a href="assets/2017/2/migrating-from-unmanaged-to-managed-disks/clip_image002.jpg"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="clip_image002" src="assets/2017/2/migrating-from-unmanaged-to-managed-disks/clip_image002_thumb.jpg" /></a></li>
+<a href="http://vincentlauzon.files.wordpress.com/2017/02/clip_image002.jpg"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="clip_image002" src="http://vincentlauzon.files.wordpress.com/2017/02/clip_image002_thumb.jpg" /></a></li>
  	<li>Notice there is one disk (the OS disk) ; also notice the size isn’t specified
-<a href="assets/2017/2/migrating-from-unmanaged-to-managed-disks/clip_image004.jpg"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="clip_image004" src="assets/2017/2/migrating-from-unmanaged-to-managed-disks/clip_image004_thumb.jpg" alt="clip_image004" border="0" /></a></li>
+<a href="http://vincentlauzon.files.wordpress.com/2017/02/clip_image004.jpg"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="clip_image004" src="http://vincentlauzon.files.wordpress.com/2017/02/clip_image004_thumb.jpg" alt="clip_image004" border="0" /></a></li>
  	<li>Select the disk
-<a href="assets/2017/2/migrating-from-unmanaged-to-managed-disks/clip_image006.jpg"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="clip_image006" src="assets/2017/2/migrating-from-unmanaged-to-managed-disks/clip_image006_thumb.jpg" alt="clip_image006" border="0" /></a></li>
+<a href="http://vincentlauzon.files.wordpress.com/2017/02/clip_image006.jpg"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="clip_image006" src="http://vincentlauzon.files.wordpress.com/2017/02/clip_image006_thumb.jpg" alt="clip_image006" border="0" /></a></li>
  	<li>Notice the VHD URI and also, a few details (e.g. IOPs limit) aren’t specified</li>
  	<li>Go back to the resource group and select the availability set, i.e. <i>frontAvailSet</i></li>
  	<li>Notice under <i>Managed</i> is <i>No</i>
-<a href="assets/2017/2/migrating-from-unmanaged-to-managed-disks/clip_image008.jpg"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="clip_image008" src="assets/2017/2/migrating-from-unmanaged-to-managed-disks/clip_image008_thumb.jpg" alt="clip_image008" border="0" /></a></li>
+<a href="http://vincentlauzon.files.wordpress.com/2017/02/clip_image008.jpg"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="clip_image008" src="http://vincentlauzon.files.wordpress.com/2017/02/clip_image008_thumb.jpg" alt="clip_image008" border="0" /></a></li>
  	<li>Notice the 3 VMs are under the availability set</li>
 </ol>
 <h3>Login into ISE</h3>
@@ -454,7 +454,7 @@ ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgName -VMName $vm.Name
  	<li>This operation takes a while to execute</li>
  	<li>In the portal, go back to the availability set</li>
  	<li>Notice it is now managed
-<a href="assets/2017/2/migrating-from-unmanaged-to-managed-disks/clip_image010.jpg"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="clip_image010" src="assets/2017/2/migrating-from-unmanaged-to-managed-disks/clip_image010_thumb.jpg" alt="clip_image010" border="0" /></a></li>
+<a href="http://vincentlauzon.files.wordpress.com/2017/02/clip_image010.jpg"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="clip_image010" src="http://vincentlauzon.files.wordpress.com/2017/02/clip_image010_thumb.jpg" alt="clip_image010" border="0" /></a></li>
  	<li>A managed availability set has the following characteristics:</li>
 </ol>
 <ol>
@@ -466,7 +466,7 @@ ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgName -VMName $vm.Name
  	<li>Once at least one VM has been converted, notice it restarts</li>
  	<li>In the portal, go back to the resource group</li>
  	<li>Notice the disk resources
-<a href="assets/2017/2/migrating-from-unmanaged-to-managed-disks/clip_image012.jpg"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="clip_image012" src="assets/2017/2/migrating-from-unmanaged-to-managed-disks/clip_image012_thumb.jpg" alt="clip_image012" border="0" /></a></li>
+<a href="http://vincentlauzon.files.wordpress.com/2017/02/clip_image012.jpg"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="clip_image012" src="http://vincentlauzon.files.wordpress.com/2017/02/clip_image012_thumb.jpg" alt="clip_image012" border="0" /></a></li>
  	<li>Select one of the disk</li>
  	<li>Notice the size of the disk is specified, i.e. 128GB</li>
  	<li>This is one of the predefined standard disk size, in this case S10</li>

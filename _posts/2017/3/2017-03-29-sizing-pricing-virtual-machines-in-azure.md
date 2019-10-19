@@ -7,7 +7,7 @@ categories:
 tags:
 - Virtual Machines
 ---
-<a href="assets/2017/3/sizing-pricing-virtual-machines-in-azure/dog-1966394_6402.jpg"><img style="background-image:none;float:left;padding-top:0;padding-left:0;margin:0 30px 0 0;display:inline;padding-right:0;border-width:0;" title="Blue great dane puppy" src="assets/2017/3/sizing-pricing-virtual-machines-in-azure/dog-1966394_640_thumb2.jpg" alt="https://pixabay.com/en/dog-dog-breed-large-puppy-1966394/" width="315" height="315" align="left" border="0" /></a>I’m recurrently asked by customers similar questions around sizing &amp; pricing of Virtual Machines (VMs), storage, etc. .  So I thought I would do a reusable asset in the form of this article.
+<a href="http://vincentlauzon.files.wordpress.com/2017/03/dog-1966394_6402.jpg"><img style="background-image:none;float:left;padding-top:0;padding-left:0;margin:0 30px 0 0;display:inline;padding-right:0;border-width:0;" title="Blue great dane puppy" src="http://vincentlauzon.files.wordpress.com/2017/03/dog-1966394_640_thumb2.jpg" alt="https://pixabay.com/en/dog-dog-breed-large-puppy-1966394/" width="315" height="315" align="left" border="0" /></a>I’m recurrently asked by customers similar questions around sizing &amp; pricing of Virtual Machines (VMs), storage, etc. .  So I thought I would do a reusable asset in the form of this article.
 
 This is especially important if you are trying to size / price VMs “in advance”.  For instance if you are quoting some work in a “fixed bid” context, i.e. you need to provide the Azure cost before you wrote a single line of code of your application.
 
@@ -70,7 +70,7 @@ Windows by itself comes with the same license fee regardless of Windows version 
 
 Windows software (e.g. BizTalk) will come with software license (e.g. BizTalk) + OS license.  This is reflected in the pricing columns.  For instance, for BizTalk Enterprise (<a title="https://azure.microsoft.com/en-us/pricing/details/virtual-machines/biztalk-enterprise/" href="https://azure.microsoft.com/en-us/pricing/details/virtual-machines/biztalk-enterprise/">https://azure.microsoft.com/en-us/pricing/details/virtual-machines/biztalk-enterprise/</a>), here in Canadian dollars in Canada East region for the F Series:
 
-<a href="assets/2017/3/sizing-pricing-virtual-machines-in-azure/image.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2017/3/sizing-pricing-virtual-machines-in-azure/image_thumb.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/03/image.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/03/image_thumb.png" alt="image" border="0" /></a>
 
 In the OS column is the price of the compute + the Windows license while in the “Software” column is the price of the BizTalk Enterprise license.  The total is what we pay per hour for the VM.
 
@@ -84,9 +84,9 @@ So one of the first decision to do in pricing is:  do we want to go with integr
 
 Typically if we run the VM sporadically, i.e. few hours per day, it is cheaper to go with the integrated pricing.  Also, I see a lot of customer starting with integrated pricing for POCs, run it for a while and optimize pricing later.
 <h2>Temporary Disk</h2>
-<a href="assets/2017/3/sizing-pricing-virtual-machines-in-azure/footprint-93482_640.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="footprint-93482_640" src="assets/2017/3/sizing-pricing-virtual-machines-in-azure/footprint-93482_640_thumb.jpg" alt="footprint-93482_640" align="right" border="0" /></a>Ok, here, let’s debunk what probably takes 2 hours from me every single week:  the “disk size” column in the pricing sheets.
+<a href="http://vincentlauzon.files.wordpress.com/2017/03/footprint-93482_640.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="footprint-93482_640" src="http://vincentlauzon.files.wordpress.com/2017/03/footprint-93482_640_thumb.jpg" alt="footprint-93482_640" align="right" border="0" /></a>Ok, here, let’s debunk what probably takes 2 hours from me every single week:  the “disk size” column in the pricing sheets.
 
-<a href="assets/2017/3/sizing-pricing-virtual-machines-in-azure/image1.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2017/3/sizing-pricing-virtual-machines-in-azure/image_thumb1.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/03/image1.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/03/image_thumb1.png" alt="image" border="0" /></a>
 
 This is <strong>local storage</strong>.  By local, we mean it’s local to the host itself, it isn’t an attached disk.  For that reason it has lower latency than attached disks.  It has also another very important characteristic:  <strong>it is ephemeral</strong>.  <strong>It isn’t persistent</strong>.  <strong>Its content does not survive a reboot of the VM</strong>.  <strong>The disk is empty after reboot</strong>.
 
@@ -102,7 +102,7 @@ What we typically put on that disk is:
 </ul>
 Some VM series have quite large temporary disk.  Take for instance the L series:
 
-<a href="assets/2017/3/sizing-pricing-virtual-machines-in-azure/image2.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2017/3/sizing-pricing-virtual-machines-in-azure/image_thumb2.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/03/image2.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/03/image_thumb2.png" alt="image" border="0" /></a>
 
 That VM series was specifically designed to work with Big Data workload where data is replicated within a cluster (e.g. Hadoop, Cassandra, etc.).  Disk latency is key but not durability since the data is replicated around.
 
@@ -122,7 +122,7 @@ For instance, a D1v2 (see <a title="https://docs.microsoft.com/en-us/azure/virtu
 
 So what if the D1v2 really is enough for our need in terms of # of cores and RAM but we need 4 TB of storage space?  Well, we’ll need to bump up to another VM SKU, a D2v2 for instance, which supports 4 data disks.
 <h2>Attached Disks</h2>
-<a href="assets/2017/3/sizing-pricing-virtual-machines-in-azure/night-computer-hdd-hard-drive.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="night-computer-hdd-hard-drive" src="assets/2017/3/sizing-pricing-virtual-machines-in-azure/night-computer-hdd-hard-drive_thumb.jpg" alt="night-computer-hdd-hard-drive" width="240" height="159" align="right" border="0" /></a>Beside the temporary disk all VM disks have attached disks.
+<a href="http://vincentlauzon.files.wordpress.com/2017/03/night-computer-hdd-hard-drive.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="night-computer-hdd-hard-drive" src="http://vincentlauzon.files.wordpress.com/2017/03/night-computer-hdd-hard-drive_thumb.jpg" alt="night-computer-hdd-hard-drive" width="240" height="159" align="right" border="0" /></a>Beside the temporary disk all VM disks have attached disks.
 
 Attached means they aren’t local to the VM’s host.  They are attached to the VM and backed by Azure storage.
 
@@ -147,7 +147,7 @@ In general:  IO intensive workloads (e.g. databases) should always be on premiu
 
 For the pricing of disks, see <a title="https://azure.microsoft.com/en-us/pricing/details/managed-disks/" href="https://azure.microsoft.com/en-us/pricing/details/managed-disks/">https://azure.microsoft.com/en-us/pricing/details/managed-disks/</a>.  Disks come in predefined sizes.
 <h2>IOPs</h2>
-<a href="assets/2017/3/sizing-pricing-virtual-machines-in-azure/speed-1249610_640.jpg"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="speed-1249610_640" src="assets/2017/3/sizing-pricing-virtual-machines-in-azure/speed-1249610_640_thumb.jpg" alt="speed-1249610_640" align="left" border="0" /></a>We have our VM, the OS on it, we have the storage space but are the disks going to perform?
+<a href="http://vincentlauzon.files.wordpress.com/2017/03/speed-1249610_640.jpg"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="speed-1249610_640" src="http://vincentlauzon.files.wordpress.com/2017/03/speed-1249610_640_thumb.jpg" alt="speed-1249610_640" align="left" border="0" /></a>We have our VM, the OS on it, we have the storage space but are the disks going to perform?
 
 This is where the Input / Ouput per seconds (IOPs) come into the picture.
 
@@ -159,7 +159,7 @@ In order to get the total number of IOPs we need, we’ll simply select a set of
 
 Is that all?  Well, no.  Now that we have the IOPs we need, we have to make sure the VM can use those IOPs.  Let’s take the DSv2 series as an example (see <a title="https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-sizes-general#dsv2-series" href="https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-sizes-general#dsv2-series">https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-sizes-general#dsv2-series</a>).  A DS2v2 can have 4 data disks and can therefore accommodate our 4 x P3 disks, but it can only pull 8000 IOPs.  In order to get the full 20000 IOPs, we would need to oversize to a DS4v2.
 
-<a href="assets/2017/3/sizing-pricing-virtual-machines-in-azure/image3.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="assets/2017/3/sizing-pricing-virtual-machines-in-azure/image_thumb3.png" alt="image" border="0" /></a>
+<a href="http://vincentlauzon.files.wordpress.com/2017/03/image3.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/03/image_thumb3.png" alt="image" border="0" /></a>
 
 One last thing about IOPs:  what is it with those two columns cached / uncached disks?
 

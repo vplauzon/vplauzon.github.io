@@ -8,7 +8,7 @@ tags:
 - Automation
 - DevOps
 ---
-<img style="float:right;padding-right:20px;" title="From pexels.com" src="https://vincentlauzon.files.wordpress.com/2019/04/chalk-company-conceptual-533189-e1555953696631.jpg" />
+<img style="float:right;padding-right:20px;" title="From pexels.com" src="/assets/2019/4/deploying-an-arm-template-hierarchy/chalk-company-conceptual-533189-e1555953696631.jpg" />
 
 <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates">ARM templates</a> are a powerful way to deploy Azure resources.
 
@@ -60,7 +60,7 @@ SAS token can be limited in time which limits the risks related of them being le
 
 So here are the quick steps for our solution:
 
-<img src="https://vincentlauzon.files.wordpress.com/2019/04/multi-arms-1.png" alt="Solution" />
+<img src="/assets/2019/4/deploying-an-arm-template-hierarchy/multi-arms-1.png" alt="Solution" />
 
 <ol>
 <li>Create a storage account
