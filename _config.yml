@@ -84,7 +84,7 @@ encoding: utf-8 # Make sure the encoding is right
 lang: en-GB # Set the site language
 title: "Vincent-Philippe Lauzon's" # Site name or title, also used in jekyll-seo-tag
 logo: "/assets/logos/logo.svg" # Site logo, also used in jekyll-seo-tag
-description: "Alembic is a starting point for Jekyll projects. Rather than starting from scratch, this boilerplate is designed to get the ball rolling immediately" # Site description and default description, also used in jekyll-seo-tag
+description: "Vincent-Philippe Lauzon's articles" # Site description and default description, also used in jekyll-seo-tag
 url: "https://vincentlauzon.com/" # Site url, also used in jekyll-seo-tag
 baseurl: ""
 repo: "https://github.com/vplauzon/vplauzon.github.io"
@@ -94,6 +94,8 @@ email: "???"
 # google_analytics_anonymize_ip: ''
 # service_worker: false # Will turn off the service worker if set to false
 css_inline: true # Will insert all styles into a single <style> block in the <head> element and remove the style <link> reference
+feed: # Used by https://github.com/jekyll/jekyll-feed
+  path:  /feed/
 
 # 8. Site favicons & manifest icons
 favicons: # Favicons are also used in the manifest file. Syntax is 'size: path'
