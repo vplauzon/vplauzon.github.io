@@ -3,7 +3,7 @@ title: About Vincent-Philippe Lauzon's
 feature_text: |
   ## Vincent-Philippe Lauzon's
   Azure, Data & Learnings
-feature_image: "https://picsum.photos/1300/400?image=989"
+feature_image: /assets/clouds-from-pexels.jpg
 ---
 
 Lorem Ipsum
