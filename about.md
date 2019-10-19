@@ -6,7 +6,7 @@ feature_text: |
 feature_image: /assets/about/saguenay-lake.png
 ---
 
-<img style="float:right;padding-left:20px;" title="Me, trying to look intelligent" src="/asset/about/vp-shot.png" />
+<img style="float:right;padding-left:20px;" title="Me, trying to look intelligent" src="/assets/about/vp-shot.png" />
 
 I am Vincent-Philippe Lauzon.  I am based in Montreal with my lovely familly.  In my free time I do calisthenics & jogging.
 
