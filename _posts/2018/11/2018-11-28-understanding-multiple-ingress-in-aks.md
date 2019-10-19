@@ -1,7 +1,7 @@
 ---
-title:  Understanding multiple Ingress in AKS
-date:  2018-11-28 06:30:48 -05:00
-permalink:  "/2018/11/28/understanding-multiple-ingress-in-aks/"
+title: Understanding multiple Ingress in AKS
+date: 2018-11-28 06:30:48 -05:00
+permalink: /2018/11/28/understanding-multiple-ingress-in-aks/
 categories:
 - Solution
 tags:

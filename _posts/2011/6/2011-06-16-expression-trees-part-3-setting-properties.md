@@ -1,7 +1,7 @@
 ---
-title:  Expression Trees: Part 3 – Setting Properties
-date:  2011-06-16 20:09:00 -04:00
-permalink:  "/2011/06/16/expression-trees-part-3-setting-properties/"
+title: 'Expression Trees: Part 3 – Setting Properties'
+date: 2011-06-16 20:09:00 -04:00
+permalink: /2011/06/16/expression-trees-part-3-setting-properties/
 categories:
 - Solution
 tags:

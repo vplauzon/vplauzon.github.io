@@ -1,7 +1,7 @@
 ---
-title:  Expression Trees: Part 1 – Basics
-date:  2011-06-08 15:24:00 -04:00
-permalink:  "/2011/06/08/expression-trees-part-1-basics/"
+title: 'Expression Trees: Part 1 – Basics'
+date: 2011-06-08 15:24:00 -04:00
+permalink: /2011/06/08/expression-trees-part-1-basics/
 categories:
 - Solution
 tags:

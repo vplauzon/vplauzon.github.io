@@ -1,7 +1,7 @@
 ---
-title:  Using Network Security Groups (NSG) to secure network access to an environment
-date:  2015-12-21 13:00:07 -05:00
-permalink:  "/2015/12/21/using-network-security-groups-nsg-to-secure-network-access-to-an-environment/"
+title: Using Network Security Groups (NSG) to secure network access to an environment
+date: 2015-12-21 13:00:07 -05:00
+permalink: /2015/12/21/using-network-security-groups-nsg-to-secure-network-access-to-an-environment/
 categories:
 - Solution
 tags:
@@ -23,7 +23,7 @@ In this post, I’ll show you how to create a virtual network with 3 subnets:  
 </ol>
 This is a typical firewall configuration for a 3 tier application:
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/12/image.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/12/image_thumb.png" alt="image" width="461" height="846" border="0" /></a>
+<a href="/assets/2015/12/using-network-security-groups-nsg-to-secure-network-access-to-an-environment/image.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="/assets/2015/12/using-network-security-groups-nsg-to-secure-network-access-to-an-environment/image_thumb.png" alt="image" width="461" height="846" border="0" /></a>
 
 We’ll create it in the portal to get the feel of each feature.  At the end, I give you the Azure Resource Manager (ARM) template to generate it at the end.
 
@@ -51,7 +51,7 @@ Select <em>Virtual Network </em>(Microsoft as Publisher).
 
 At the bottom of the blade, select “Resource Manager” as the deployment model, then hit create.
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/12/image1.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/12/image_thumb1.png" alt="image" width="597" height="181" border="0" /></a>
+<a href="/assets/2015/12/using-network-security-groups-nsg-to-secure-network-access-to-an-environment/image1.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="/assets/2015/12/using-network-security-groups-nsg-to-secure-network-access-to-an-environment/image_thumb1.png" alt="image" width="597" height="181" border="0" /></a>
 
 For the name, type “Poc-Net”.
 
@@ -69,7 +69,7 @@ Create the virtual net (vnet) takes a little more time than a resource group.
 
 Once it’s created, open it.  Go to the subnets settings.
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/12/image2.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/12/image_thumb2.png" alt="image" width="1683" height="632" border="0" /></a>
+<a href="/assets/2015/12/using-network-security-groups-nsg-to-secure-network-access-to-an-environment/image2.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="/assets/2015/12/using-network-security-groups-nsg-to-secure-network-access-to-an-environment/image_thumb2.png" alt="image" width="1683" height="632" border="0" /></a>
 
 As mention, first thing first:  delete the default subnet.  Select it then delete it.
 

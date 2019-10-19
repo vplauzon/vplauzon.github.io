@@ -1,7 +1,7 @@
 ---
-title:  A Hitchhiker's Guide to StreamInsight 2.1 Queries
-date:  2012-08-06 20:33:00 -04:00
-permalink:  "/2012/08/06/a-hitchhikers-guide-to-streaminsight-2-1-queries/"
+title: A Hitchhiker's Guide to StreamInsight 2.1 Queries
+date: 2012-08-06 20:33:00 -04:00
+permalink: /2012/08/06/a-hitchhikers-guide-to-streaminsight-2-1-queries/
 categories:
 - Solution
 tags:

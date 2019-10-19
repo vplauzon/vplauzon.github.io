@@ -1,7 +1,7 @@
 ---
-title:  Full Outer Join with LINQ to objects
-date:  2014-01-28 15:46:55 -05:00
-permalink:  "/2014/01/28/full-outer-join-with-linq-to-objects/"
+title: Full Outer Join with LINQ to objects
+date: 2014-01-28 15:46:55 -05:00
+permalink: /2014/01/28/full-outer-join-with-linq-to-objects/
 categories:
 - Solution
 tags:

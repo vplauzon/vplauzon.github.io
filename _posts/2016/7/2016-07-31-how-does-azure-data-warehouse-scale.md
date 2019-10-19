@@ -1,7 +1,7 @@
 ---
-title:  How does Azure Data Warehouse scale?
-date:  2016-07-31 19:00:04 -04:00
-permalink:  "/2016/07/31/how-does-azure-data-warehouse-scale/"
+title: How does Azure Data Warehouse scale?
+date: 2016-07-31 19:00:04 -04:00
+permalink: /2016/07/31/how-does-azure-data-warehouse-scale/
 categories:
 - Solution
 tags:
@@ -29,7 +29,7 @@ You can tune the number of compute nodes indirectly by requesting more Data Ware
 
 Cool?  Now let’s dive into how the data and compute are actually split out between the nodes.
 <h2>As in Babylon, they were 60 databases</h2>
-<a href="https://pixabay.com/en/leo-mosaic-art-museum-berlin-510159/"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="leo-510159_640" src="http://vincentlauzon.files.wordpress.com/2016/07/leo-510159_640.jpg" alt="leo-510159_640" width="640" height="429" align="left" border="0" /></a>Apparently Babylonians had quite a kick at the number 60 and some of its multiples, such as 360.  This is why we owe them the <a href="https://en.wikipedia.org/wiki/Second#Early_civilizations" target="_blank">subdivision of the hours</a> in 60 minutes and those in 60 seconds.  Also, the 360 degrees of arc to complete a circle <a href="https://en.wikipedia.org/wiki/Degree_(angle)#History" target="_blank">might have come from them too</a> (or is it because of the 365 days in a year?  we might never know).
+<a href="https://pixabay.com/en/leo-mosaic-art-museum-berlin-510159/"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="leo-510159_640" src="/assets/2016/7/how-does-azure-data-warehouse-scale/leo-510159_640.jpg" alt="leo-510159_640" width="640" height="429" align="left" border="0" /></a>Apparently Babylonians had quite a kick at the number 60 and some of its multiples, such as 360.  This is why we owe them the <a href="https://en.wikipedia.org/wiki/Second#Early_civilizations" target="_blank">subdivision of the hours</a> in 60 minutes and those in 60 seconds.  Also, the 360 degrees of arc to complete a circle <a href="https://en.wikipedia.org/wiki/Degree_(angle)#History" target="_blank">might have come from them too</a> (or is it because of the 365 days in a year?  we might never know).
 
 Nevertheless, ADW splits the data between 60 databases.  All the time, regardless of what you do.  It’s a constant.  It’s like $latex \Pi$.
 
@@ -111,7 +111,7 @@ That’s my theory anyway…  <strong>I do not have insider information in the 
 
 Here’s an example of an ADW instance with 1500 DWU (i.e. 15 compute nodes with 4 DBs each)
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/07/image2.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/07/image_thumb2.png" alt="image" width="903" height="543" border="0" /></a>
+<a href="/assets/2016/7/how-does-azure-data-warehouse-scale/image2.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2016/7/how-does-azure-data-warehouse-scale/image_thumb2.png" alt="image" width="903" height="543" border="0" /></a>
 <h2>Distribution</h2>
 So the data you load in ADW is stored in 60 databases behind the scene.
 
@@ -231,7 +231,7 @@ It is important to understand that the 60 databases will have the same partition
 
 To visualize that, imagine my example with 5 partitions (4 boundaries means 5 partitions in total):
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/07/image3.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/07/image_thumb3.png" alt="image" width="903" height="540" border="0" /></a>
+<a href="/assets/2016/7/how-does-azure-data-warehouse-scale/image3.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2016/7/how-does-azure-data-warehouse-scale/image_thumb3.png" alt="image" width="903" height="540" border="0" /></a>
 
 We end up with $latex 60 \times 5 = 300$ partitions.  Is that a good thing?  It depends on the problem, i.e. the way I plan to manage my partitions and the queries being done against it.
 <h2>Summary</h2>

@@ -1,13 +1,13 @@
 ---
-title:  Refactoring Tags in WordPress Blog
-date:  2016-10-17 19:00:00 -04:00
-permalink:  "/2016/10/17/refactoring-tags-in-wordpress-blog/"
+title: Refactoring Tags in WordPress Blog
+date: 2016-10-17 19:00:00 -04:00
+permalink: /2016/10/17/refactoring-tags-in-wordpress-blog/
 categories:
 - Solution
 tags:
 - API
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2016/10/image.png"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/10/image_thumb.png" alt="image" width="213" height="240" align="left" border="0" /></a>I did refactor the tags of my blog this week end!
+<a href="/assets/2016/10/refactoring-tags-in-wordpress-blog/image.png"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="/assets/2016/10/refactoring-tags-in-wordpress-blog/image_thumb.png" alt="image" width="213" height="240" align="left" border="0" /></a>I did refactor the tags of my blog this week end!
 
 I display the tags (as a word cloud) on the right-hand side of my pages.  The tags grew organically since I started blogging in 2010.
 
@@ -15,7 +15,7 @@ As with many things that grow organically, it got out of hand with time.  First
 
 With hundreds of blogs and 60 tags, the WordPress portal (I use WordPress.com for my blog) wasn’t ideal to start doing changes.
 
-So I got my <a href="https://vincentlauzon.com/2015/08/20/nuget-wordpress-rest-api-on-codeplex/">WordPress API .NET SDK</a> out of the mothball <img class="wlEmoticon wlEmoticon-winkingsmile" style="border-style:none;" src="http://vincentlauzon.files.wordpress.com/2016/10/wlemoticon-winkingsmile.png" alt="Winking smile" />  I also updated my “<a href="https://wordpress-client.azurewebsites.net/" target="_blank">portal</a>” (deployed on Azure App Services) to that SDK.  This is probably one of the worst example of an ASP.NET MVC application but surely the ugliest site available out there.  It’s functional, that’s what I can say <img class="wlEmoticon wlEmoticon-winkingsmile" style="border-style:none;" src="http://vincentlauzon.files.wordpress.com/2016/10/wlemoticon-winkingsmile.png" alt="Winking smile" />
+So I got my <a href="https://vincentlauzon.com/2015/08/20/nuget-wordpress-rest-api-on-codeplex/">WordPress API .NET SDK</a> out of the mothball <img class="wlEmoticon wlEmoticon-winkingsmile" style="border-style:none;" src="/assets/2016/10/refactoring-tags-in-wordpress-blog/wlemoticon-winkingsmile.png" alt="Winking smile" />  I also updated my “<a href="https://wordpress-client.azurewebsites.net/" target="_blank">portal</a>” (deployed on Azure App Services) to that SDK.  This is probably one of the worst example of an ASP.NET MVC application but surely the ugliest site available out there.  It’s functional, that’s what I can say <img class="wlEmoticon wlEmoticon-winkingsmile" style="border-style:none;" src="/assets/2016/10/refactoring-tags-in-wordpress-blog/wlemoticon-winkingsmile.png" alt="Winking smile" />
 
 In case you want to do something similar on your blog, here is how I did it.
 <h2>Approach</h2>

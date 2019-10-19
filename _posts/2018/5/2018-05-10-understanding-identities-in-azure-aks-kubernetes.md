@@ -1,7 +1,7 @@
 ---
-title:  Understanding identities in Azure AKS / Kubernetes
-date:  2018-05-10 06:30:27 -04:00
-permalink:  "/2018/05/10/understanding-identities-in-azure-aks-kubernetes/"
+title: Understanding identities in Azure AKS / Kubernetes
+date: 2018-05-10 06:30:27 -04:00
+permalink: /2018/05/10/understanding-identities-in-azure-aks-kubernetes/
 categories:
 - Solution
 tags:
@@ -9,7 +9,7 @@ tags:
 - Identity
 - Security
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2018/04/face-3189811_640.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="From Pixabay" src="http://vincentlauzon.files.wordpress.com/2018/04/face-3189811_640_thumb.jpg" alt="https://pixabay.com/en/face-faces-dialogue-talk-psyche-3189811/" width="320" height="213" align="left" border="0" /></a><a href="https://vincentlauzon.com/2018/05/08/get-started-with-kubernetes-aks-in-azure/">We’ve recently looked at Azure AKS</a> (Kubernetes Cluster Managed Services).  We’ve looked at how to create a Kubernetes Cluster with 3 lines of Azure CLI.
+<a href="http://vincentlauzon.files.wordpress.com/2018/04/face-3189811_640.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="From Pixabay" src="/assets/2018/5/understanding-identities-in-azure-aks-kubernetes/face-3189811_640_thumb.jpg" alt="https://pixabay.com/en/face-faces-dialogue-talk-psyche-3189811/" width="320" height="213" align="left" border="0" /></a><a href="https://vincentlauzon.com/2018/05/08/get-started-with-kubernetes-aks-in-azure/">We’ve recently looked at Azure AKS</a> (Kubernetes Cluster Managed Services).  We’ve looked at how to create a Kubernetes Cluster with 3 lines of Azure CLI.
 
 With this we are able to interact with the cluster &amp; deploy containers.
 
@@ -57,7 +57,7 @@ Step #4 deals with the cluster only.  Step #5 creates objects on the cluster. 
 
 So let’s look at the entire workflow focussing on the identity.
 <h3>Step 1 – az aks create</h3>
-<a href="http://vincentlauzon.files.wordpress.com/2018/04/step1.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="Step1" src="http://vincentlauzon.files.wordpress.com/2018/04/step1_thumb.png" alt="Step1" border="0" /></a>
+<a href="/assets/2018/5/understanding-identities-in-azure-aks-kubernetes/step1.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="Step1" src="/assets/2018/5/understanding-identities-in-azure-aks-kubernetes/step1_thumb.png" alt="Step1" border="0" /></a>
 
 Let’s walk through the sub steps, focussing on how identities are handled:
 <ol style="list-style-type:lower-alpha;">
@@ -80,7 +80,7 @@ An important point here.  The Azure AD user must have the right to create servi
 <h3>Step 2 – az aks install-cli</h3>
 To our knowledge, nothing happens at the identity level with that command.  It installs a version of kubectl CLI compatible with Azure.
 <h3>Step 3 - az aks get-credentials</h3>
-<a href="http://vincentlauzon.files.wordpress.com/2018/04/step3.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="Step3" src="http://vincentlauzon.files.wordpress.com/2018/04/step3_thumb.png" alt="Step3" border="0" /></a>
+<a href="/assets/2018/5/understanding-identities-in-azure-aks-kubernetes/step3.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="Step3" src="/assets/2018/5/understanding-identities-in-azure-aks-kubernetes/step3_thumb.png" alt="Step3" border="0" /></a>
 
 Here are the sub steps:
 <ol style="list-style-type:lower-alpha;"><!--StartFragment-->
@@ -93,11 +93,11 @@ locally (e.g. on end user laptop).  Path is ~/.kube/config.</li>
 </ol>
 Subsequent command will then be able to simply lookup the ~/.kube/config file to authenticate against the cluster.  That YAML file accumulates information about different clusters and keeps track of the “current” one.  Here is an example with 2 clusters:
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/04/image4.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/04/image_thumb4.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/understanding-identities-in-azure-aks-kubernetes/image4.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/understanding-identities-in-azure-aks-kubernetes/image_thumb4.png" alt="image" border="0" /></a>
 <h3>Step 4 – Create replicate set</h3>
 Let’s assume we deploy some containers on a replica set without creating Azure resources.  This step illustrate the typical interaction with Kubernetes cluster.  It could be a simple read operations (e.g. <em>kubectl get pods</em>).
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/04/image5.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/04/image_thumb5.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/understanding-identities-in-azure-aks-kubernetes/image5.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/understanding-identities-in-azure-aks-kubernetes/image_thumb5.png" alt="image" border="0" /></a>
 
 Sub steps:
 <ol style="list-style-type:lower-alpha;">
@@ -111,7 +111,7 @@ Let’s assume we do another deployment with <em>kubectl create</em>.  This tim
 
 This shows how Kubernetes integrates back to Azure.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/04/image6.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/04/image_thumb6.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/understanding-identities-in-azure-aks-kubernetes/image6.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/understanding-identities-in-azure-aks-kubernetes/image_thumb6.png" alt="image" border="0" /></a>
 
 Sub steps:
 <ol style="list-style-type:lower-alpha;">

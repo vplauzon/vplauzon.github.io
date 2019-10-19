@@ -1,7 +1,7 @@
 ---
-title:  Authoring a Helm Chart on Kubernetes / AKS - Getting started
-date:  2018-10-31 06:30:23 -04:00
-permalink:  "/2018/10/31/authoring-a-helm-chart-on-kubernetes-aks-getting-started/"
+title: Authoring a Helm Chart on Kubernetes / AKS - Getting started
+date: 2018-10-31 06:30:23 -04:00
+permalink: /2018/10/31/authoring-a-helm-chart-on-kubernetes-aks-getting-started/
 categories:
 - Solution
 tags:

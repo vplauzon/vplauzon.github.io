@@ -1,7 +1,7 @@
 ---
-title:  Expression Trees: Part 2 – Fetching Properties
-date:  2011-06-13 21:09:00 -04:00
-permalink:  "/2011/06/13/expression-trees-part-2-fetching-properties/"
+title: 'Expression Trees: Part 2 – Fetching Properties'
+date: 2011-06-13 21:09:00 -04:00
+permalink: /2011/06/13/expression-trees-part-2-fetching-properties/
 categories:
 - Solution
 tags:

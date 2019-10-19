@@ -1,7 +1,7 @@
 ---
-title:  Applied SOA:  Part 6–Service Composition
-date:  2011-12-21 19:21:00 -05:00
-permalink:  "/2011/12/21/applied-soa-part-6service-composition/"
+title: 'Applied SOA:  Part 6–Service Composition'
+date: 2011-12-21 19:21:00 -05:00
+permalink: /2011/12/21/applied-soa-part-6service-composition/
 categories:
 - Solution
 tags:

@@ -1,7 +1,7 @@
 ---
-title:  Azure DevOps - Task output to a variable
-date:  2018-11-14 06:30:01 -05:00
-permalink:  "/2018/11/14/azure-devops-task-output-to-a-variable/"
+title: Azure DevOps - Task output to a variable
+date: 2018-11-14 06:30:01 -05:00
+permalink: /2018/11/14/azure-devops-task-output-to-a-variable/
 categories:
 - Solution
 tags:

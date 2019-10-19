@@ -1,7 +1,7 @@
 ---
-title:  Get Started with Kubernetes (AKS) in Azure
-date:  2018-05-08 06:30:25 -04:00
-permalink:  "/2018/05/08/get-started-with-kubernetes-aks-in-azure/"
+title: Get Started with Kubernetes (AKS) in Azure
+date: 2018-05-08 06:30:25 -04:00
+permalink: /2018/05/08/get-started-with-kubernetes-aks-in-azure/
 categories:
 - Solution
 tags:

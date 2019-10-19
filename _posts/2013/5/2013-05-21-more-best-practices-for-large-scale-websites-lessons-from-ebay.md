@@ -1,10 +1,10 @@
 ---
-title:  More Best Practices for Large-Scale Websites: Lessons from eBay
-date:  2013-05-21 20:00:15 -04:00
-permalink:  "/2013/05/21/more-best-practices-for-large-scale-websites-lessons-from-ebay/"
+title: 'More Best Practices for Large-Scale Websites: Lessons from eBay'
+date: 2013-05-21 20:00:15 -04:00
+permalink: /2013/05/21/more-best-practices-for-large-scale-websites-lessons-from-ebay/
 categories:
 - Solution
-tags:  []
+tags: []
 ---
 Watch <a href="http://www.infoq.com/presentations/Best-Practices-eBay">this presentation</a> from Randy Shoup, distinguished engineer at eBay.
 

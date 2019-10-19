@@ -1,7 +1,7 @@
 ---
-title:  Major upgrade to Azure DocumentDB LINQ provider
-date:  2015-09-23 19:00:35 -04:00
-permalink:  "/2015/09/23/major-upgrade-to-azure-documentdb-linq-provider/"
+title: Major upgrade to Azure DocumentDB LINQ provider
+date: 2015-09-23 19:00:35 -04:00
+permalink: /2015/09/23/major-upgrade-to-azure-documentdb-linq-provider/
 categories:
 - Solution
 tags:

@@ -1,7 +1,7 @@
 ---
-title:  Expression Trees Blog Series
-date:  2011-12-16 21:51:33 -05:00
-permalink:  "/2011/12/16/expression-trees-blog-series/"
+title: Expression Trees Blog Series
+date: 2011-12-16 21:51:33 -05:00
+permalink: /2011/12/16/expression-trees-blog-series/
 categories:
 - Solution
 tags:

@@ -1,7 +1,7 @@
 ---
-title:  Microsoft Silverlight Strategy
-date:  2010-11-02 20:29:00 -04:00
-permalink:  "/2010/11/02/microsoft-silverlight-strategy/"
+title: Microsoft Silverlight Strategy
+date: 2010-11-02 20:29:00 -04:00
+permalink: /2010/11/02/microsoft-silverlight-strategy/
 categories:
 - Solution
 tags:

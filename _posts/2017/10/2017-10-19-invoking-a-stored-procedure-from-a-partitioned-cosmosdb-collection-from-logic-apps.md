@@ -1,7 +1,7 @@
 ---
-title:  Invoking a Stored Procedure from a partitioned CosmosDB collection from Logic Apps
-date:  2017-10-19 15:45:31 -04:00
-permalink:  "/2017/10/19/invoking-a-stored-procedure-from-a-partitioned-cosmosdb-collection-from-logic-apps/"
+title: Invoking a Stored Procedure from a partitioned CosmosDB collection from Logic Apps
+date: 2017-10-19 15:45:31 -04:00
+permalink: /2017/10/19/invoking-a-stored-procedure-from-a-partitioned-cosmosdb-collection-from-logic-apps/
 categories:
 - Solution
 tags:
@@ -63,7 +63,7 @@ The documents we create are trivial:  no random data.
 
 On the canvas, let’s type <em>Cosmos </em>in the search box for actions.
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/10/image4.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/10/image_thumb4.png" alt="image" border="0" /></a>
+<a href="/assets/2017/10/invoking-a-stored-procedure-from-a-partitioned-cosmosdb-collection-from-logic-apps/image4.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2017/10/invoking-a-stored-procedure-from-a-partitioned-cosmosdb-collection-from-logic-apps/image_thumb4.png" alt="image" border="0" /></a>
 
 Let’s choose <em>Execute stored procedure</em>.
 
@@ -76,7 +76,7 @@ We are prompted to create a new Cosmos DB connection.  We need to:
 
 We can then pick the database ID, the collection ID &amp; the stored procedure ID.
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/10/image5.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/10/image_thumb5.png" alt="image" border="0" /></a>
+<a href="/assets/2017/10/invoking-a-stored-procedure-from-a-partitioned-cosmosdb-collection-from-logic-apps/image5.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2017/10/invoking-a-stored-procedure-from-a-partitioned-cosmosdb-collection-from-logic-apps/image_thumb5.png" alt="image" border="0" /></a>
 
 Stored Procedure parameters are expressed as a JSON array.  For instance here, we want to pass 1000 as the <em>recordCount</em> parameter, so we type <em>[1000]</em>:  no parameter name and always square brackets.
 
@@ -84,7 +84,7 @@ If we would run the app now we would get an error stating the operation requires
 
 In order to set the partition key, we need to <em>Show advanced options</em>.
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/10/image6.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/10/image_thumb6.png" alt="image" border="0" /></a>
+<a href="/assets/2017/10/invoking-a-stored-procedure-from-a-partitioned-cosmosdb-collection-from-logic-apps/image6.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2017/10/invoking-a-stored-procedure-from-a-partitioned-cosmosdb-collection-from-logic-apps/image_thumb6.png" alt="image" border="0" /></a>
 
 In order to specify the partition key value, we simply type its value:  no square bracket, no quotes.
 

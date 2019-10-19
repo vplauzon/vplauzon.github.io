@@ -1,14 +1,14 @@
 ---
-title:  Azure Databricks - Spark SQL - Data Frames
-date:  2018-01-24 06:30:51 -05:00
-permalink:  "/2018/01/24/azure-databricks-spark-sql-data-frames/"
+title: Azure Databricks - Spark SQL - Data Frames
+date: 2018-01-24 06:30:51 -05:00
+permalink: /2018/01/24/azure-databricks-spark-sql-data-frames/
 categories:
 - Solution
 tags:
 - Big Data
 - Data
 ---
-<img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-411089 (1)" src="http://vincentlauzon.files.wordpress.com/2018/01/pexels-photo-411089-1.jpg" alt="pexels-photo-411089 (1)" width="320" height="213" align="right" border="0" /><a href="https://vincentlauzon.com/2017/12/18/azure-databricks-getting-started/">We looked at Azure Databricks</a> a few weeks ago.
+<img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-411089 (1)" src="/assets/2018/1/azure-databricks-spark-sql-data-frames/pexels-photo-411089-1.jpg" alt="pexels-photo-411089 (1)" width="320" height="213" align="right" border="0" /><a href="https://vincentlauzon.com/2017/12/18/azure-databricks-getting-started/">We looked at Azure Databricks</a> a few weeks ago.
 
 Azure Databricks is a managed Apache Spark Cluster service.
 

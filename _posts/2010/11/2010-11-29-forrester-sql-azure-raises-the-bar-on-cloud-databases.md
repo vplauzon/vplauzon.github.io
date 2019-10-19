@@ -1,13 +1,13 @@
 ---
-title:  Forrester: SQL Azure Raises The Bar On Cloud Databases
-date:  2010-11-29 19:28:00 -05:00
-permalink:  "/2010/11/29/forrester-sql-azure-raises-the-bar-on-cloud-databases/"
+title: 'Forrester: SQL Azure Raises The Bar On Cloud Databases'
+date: 2010-11-29 19:28:00 -05:00
+permalink: /2010/11/29/forrester-sql-azure-raises-the-bar-on-cloud-databases/
 categories:
 - Solution
 tags:
 - Data
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2010/11/image2.png"><img style="display:inline;margin-left:0;margin-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2010/11/image_thumb2.png" border="0" alt="image" width="244" height="87" align="right" /></a> November 2nd 2010, <a href="http://www.forrester.com/">Forester Research</a> published a report around <a href="http://www.microsoft.com/en-us/sqlazure">Microsoft SQL Azure</a>.  The report can be found on Microsoft web site:
+<a href="/assets/2010/11/forrester-sql-azure-raises-the-bar-on-cloud-databases/image2.png"><img style="display:inline;margin-left:0;margin-right:0;border:0;" title="image" src="/assets/2010/11/forrester-sql-azure-raises-the-bar-on-cloud-databases/image_thumb2.png" border="0" alt="image" width="244" height="87" align="right" /></a> November 2nd 2010, <a href="http://www.forrester.com/">Forester Research</a> published a report around <a href="http://www.microsoft.com/en-us/sqlazure">Microsoft SQL Azure</a>.  The report can be found on Microsoft web site:
 
 <a title="http://www.microsoft.com/presspass/itanalyst/docs/11-02-10SQLAzure.PDF" href="http://www.microsoft.com/presspass/itanalyst/docs/11-02-10SQLAzure.PDF">http://www.microsoft.com/presspass/itanalyst/docs/11-02-10SQLAzure.PDF</a>
 

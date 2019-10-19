@@ -1,7 +1,7 @@
 ---
-title:  SQL Azure & ACID Transactions: not so much in back to 2001
-date:  2011-04-01 12:20:55 -04:00
-permalink:  "/2011/04/01/sql-azure-acid-transactions-not-so-much-in-back-to-2001/"
+title: 'SQL Azure & ACID Transactions: not so much in back to 2001'
+date: 2011-04-01 12:20:55 -04:00
+permalink: /2011/04/01/sql-azure-acid-transactions-not-so-much-in-back-to-2001/
 categories:
 - Solution
 tags:

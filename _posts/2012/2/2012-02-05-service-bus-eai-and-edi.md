@@ -1,7 +1,7 @@
 ---
-title:  Service Bus EAI and EDI
-date:  2012-02-05 13:03:00 -05:00
-permalink:  "/2012/02/05/service-bus-eai-and-edi/"
+title: Service Bus EAI and EDI
+date: 2012-02-05 13:03:00 -05:00
+permalink: /2012/02/05/service-bus-eai-and-edi/
 categories:
 - News
 tags:

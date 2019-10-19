@@ -1,7 +1,7 @@
 ---
-title:  Digital Transformation - Investing in the Core
-date:  2018-05-03 06:30:04 -04:00
-permalink:  "/2018/05/03/digital-transformation-investing-in-the-core/"
+title: Digital Transformation - Investing in the Core
+date: 2018-05-03 06:30:04 -04:00
+permalink: /2018/05/03/digital-transformation-investing-in-the-core/
 categories:
 - Solution
 tags:

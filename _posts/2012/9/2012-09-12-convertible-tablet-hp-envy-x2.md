@@ -1,7 +1,7 @@
 ---
-title:  Convertible Tablet: HP Envy x2
-date:  2012-09-12 20:00:00 -04:00
-permalink:  "/2012/09/12/convertible-tablet-hp-envy-x2/"
+title: 'Convertible Tablet: HP Envy x2'
+date: 2012-09-12 20:00:00 -04:00
+permalink: /2012/09/12/convertible-tablet-hp-envy-x2/
 categories:
 - Gadget
 tags:

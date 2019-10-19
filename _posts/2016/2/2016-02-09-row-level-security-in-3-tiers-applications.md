@@ -1,7 +1,7 @@
 ---
-title:  Row Level Security in 3-tiers applications
-date:  2016-02-09 14:40:07 -05:00
-permalink:  "/2016/02/09/row-level-security-in-3-tiers-applications/"
+title: Row Level Security in 3-tiers applications
+date: 2016-02-09 14:40:07 -05:00
+permalink: /2016/02/09/row-level-security-in-3-tiers-applications/
 categories:
 - Solution
 tags:

@@ -1,7 +1,7 @@
 ---
-title:  Finding ARM template ApiVersion
-date:  2016-02-19 07:00:23 -05:00
-permalink:  "/2016/02/19/finding-arm-template-apiversion/"
+title: Finding ARM template ApiVersion
+date: 2016-02-19 07:00:23 -05:00
+permalink: /2016/02/19/finding-arm-template-apiversion/
 categories:
 - Solution
 tags:
@@ -21,7 +21,7 @@ First you need to find the provider for the resource you want to create.
 
 For that, use <em>Get-AzureRmResourceProvider</em>.  This will return the list of all available providers.
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/02/image9.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/02/image_thumb9.png" alt="image" width="1509" height="143" border="0" /></a>
+<a href="/assets/2016/2/finding-arm-template-apiversion/image9.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2016/2/finding-arm-template-apiversion/image_thumb9.png" alt="image" width="1509" height="143" border="0" /></a>
 
 For me, since I’m looking for the backup vault, the <em>Microsoft.Backup</em> provider seems promissing.
 
@@ -33,7 +33,7 @@ The following will give you all the resource types under the provider (in this c
 
 [/code]
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/02/image10.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/02/image_thumb10.png" alt="image" width="1151" height="73" border="0" /></a>
+<a href="/assets/2016/2/finding-arm-template-apiversion/image10.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2016/2/finding-arm-template-apiversion/image_thumb10.png" alt="image" width="1151" height="73" border="0" /></a>
 
 You see already that we get very valuable information here.  We get the API versions I was looking for but also the Azure regions where the resources are available.
 <h2>ARM Template</h2>

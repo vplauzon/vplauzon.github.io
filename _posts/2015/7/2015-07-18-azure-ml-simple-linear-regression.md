@@ -1,7 +1,7 @@
 ---
-title:  Azure ML - Simple Linear Regression
-date:  2015-07-18 12:00:42 -04:00
-permalink:  "/2015/07/18/azure-ml-simple-linear-regression/"
+title: Azure ML - Simple Linear Regression
+date: 2015-07-18 12:00:42 -04:00
+permalink: /2015/07/18/azure-ml-simple-linear-regression/
 categories:
 - Solution
 tags:
@@ -32,55 +32,55 @@ Yes, believe it or not, Azure ML cannot load native Excel files!  So you need t
 
 We will create an Azure ML Data set from it.  In <a href="https://studio.azureml.net/Home/" target="_blank">Azure ML workbench</a>, select the big plus button at the bottom left of the screen, then select Data Set, then select <em>From Local File</em>
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb.png" alt="image" width="356" height="224" border="0" /></a>
+<a href="/assets/2015/7/azure-ml-simple-linear-regression/image.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/7/azure-ml-simple-linear-regression/image_thumb.png" alt="image" width="356" height="224" border="0" /></a>
 
 Select the file you just saved in Excel, and OK that.
 <h3>The experiment</h3>
 Click the big plus button again (at the bottom left of the screen), then select Experiment:
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image1.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb1.png" alt="image" width="192" height="215" border="0" /></a>
+<a href="/assets/2015/7/azure-ml-simple-linear-regression/image1.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/7/azure-ml-simple-linear-regression/image_thumb1.png" alt="image" width="192" height="215" border="0" /></a>
 
 and select Blank Experiment:
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image2.png"><img style="background-image:none;padding-top:0;padding-left:0;margin:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb2.png" alt="image" width="199" height="244" border="0" /></a>
+<a href="/assets/2015/7/azure-ml-simple-linear-regression/image2.png"><img style="background-image:none;padding-top:0;padding-left:0;margin:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/7/azure-ml-simple-linear-regression/image_thumb2.png" alt="image" width="199" height="244" border="0" /></a>
 
 The Workbench will present you with a sort of experiment template.  Don’t get too emotionally attached:  it will disappear once you drop the first shape in (which will be in 30 seconds).
 
 Right off the bat, you can change the name of the experiment in order to make it easier to find.  Let’s call it <em>Height-Weight</em>.  Simply type that in the canvas:
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image3.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb3.png" alt="image" width="561" height="293" border="0" /></a>
+<a href="/assets/2015/7/azure-ml-simple-linear-regression/image3.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/7/azure-ml-simple-linear-regression/image_thumb3.png" alt="image" width="561" height="293" border="0" /></a>
 
 You should see your data set under “My Data Set” on the left pane:
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image4.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb4.png" alt="image" width="342" height="241" border="0" /></a>
+<a href="/assets/2015/7/azure-ml-simple-linear-regression/image4.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/7/azure-ml-simple-linear-regression/image_thumb4.png" alt="image" width="342" height="241" border="0" /></a>
 
 Your data set will have the same name you gave it, or by default the CSV file name you uploaded.
 
 Let’s drag the data set onto the canvas.
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image5.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb5.png" alt="image" width="512" height="194" border="0" /></a>
+<a href="/assets/2015/7/azure-ml-simple-linear-regression/image5.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/7/azure-ml-simple-linear-regression/image_thumb5.png" alt="image" width="512" height="194" border="0" /></a>
 
 In the “search experiment items”, let’s type ‘project’
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image6.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb6.png" alt="image" width="245" height="95" border="0" /></a>
+<a href="/assets/2015/7/azure-ml-simple-linear-regression/image6.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/7/azure-ml-simple-linear-regression/image_thumb6.png" alt="image" width="245" height="95" border="0" /></a>
 
 Then we can select <em>Project Columns</em> and drop it on the canvas
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image7.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb7.png" alt="image" width="239" height="312" border="0" /></a>
+<a href="/assets/2015/7/azure-ml-simple-linear-regression/image7.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/7/azure-ml-simple-linear-regression/image_thumb7.png" alt="image" width="239" height="312" border="0" /></a>
 
 We then have to link the two shapes.  In a rather counter-intuitive way, you have to start from the <em>Project Columns</em> shape towards the data set shape.
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image8.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb8.png" alt="image" width="497" height="283" border="0" /></a>
+<a href="/assets/2015/7/azure-ml-simple-linear-regression/image8.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/7/azure-ml-simple-linear-regression/image_thumb8.png" alt="image" width="497" height="283" border="0" /></a>
 
 Why do I want to project column?  Because I do not want to include the index column in.  Actually I did that while preparing this blog entry and the index column was used by the regression and gave bizarre results.
 
 Let’s select the <em>Project Columns</em> shape (or module).  In the properties pane, on the right, you should be able to see a <em>Launch column selector</em>.  Well, let’s select the selector.
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image9.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb9.png" alt="image" width="241" height="207" border="0" /></a>
+<a href="/assets/2015/7/azure-ml-simple-linear-regression/image9.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/7/azure-ml-simple-linear-regression/image_thumb9.png" alt="image" width="241" height="207" border="0" /></a>
 
 We then simply select the two columns that has meaning:  height and weight.
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image10.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb10.png" alt="image" width="579" height="193" border="0" /></a>
+<a href="/assets/2015/7/azure-ml-simple-linear-regression/image10.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/7/azure-ml-simple-linear-regression/image_thumb10.png" alt="image" width="579" height="193" border="0" /></a>
 <h3>Model</h3>
 We are now going to train a model so let’s drop a <em>Train Model</em> module in there.  If you followed so far, yes, type “train model” in the module search box, select train model and drop it under Project Columns.
 
@@ -88,7 +88,7 @@ Our model will be a linear regression so let’s find that module too.  There a
 
 Let’s link the module this way:
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image11.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb11.png" alt="image" width="516" height="332" border="0" /></a>
+<a href="/assets/2015/7/azure-ml-simple-linear-regression/image11.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/7/azure-ml-simple-linear-regression/image_thumb11.png" alt="image" width="516" height="332" border="0" /></a>
 
 We need to tell the model what variable (column) we want to predict.  Let’s select the train model module which should allow us to launch the column selector (from the properties pane).
 
@@ -106,11 +106,11 @@ Let’s plot its prediction against the data in Excel.  First, let’s find the
 
 Let’s right click on the bottom dot of the train model module and select <em>View Results</em>.
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image12.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb12.png" alt="image" width="359" height="270" border="0" /></a>
+<a href="/assets/2015/7/azure-ml-simple-linear-regression/image12.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/7/azure-ml-simple-linear-regression/image_thumb12.png" alt="image" width="359" height="270" border="0" /></a>
 
 At the bottom of the screen you should have those values:
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image13.png"><img style="background-image:none;padding-top:0;padding-left:0;margin:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb13.png" alt="image" width="244" height="156" border="0" /></a>
+<a href="/assets/2015/7/azure-ml-simple-linear-regression/image13.png"><img style="background-image:none;padding-top:0;padding-left:0;margin:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/7/azure-ml-simple-linear-regression/image_thumb13.png" alt="image" width="244" height="156" border="0" /></a>
 
 Remember the formula <em>f(x) = m*x + b</em>?  Well, the bias is <em>b</em> while the other one (oddly name I should add) is the slope <em>m</em>.
 
@@ -118,11 +118,11 @@ In Excel, we can punch the following formula:  <em>=-105.377+3.42311*B2</em> an
 
 You spreadsheet should look like:
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image14.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb14.png" alt="image" width="384" height="262" border="0" /></a>
+<a href="/assets/2015/7/azure-ml-simple-linear-regression/image14.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/7/azure-ml-simple-linear-regression/image_thumb14.png" alt="image" width="384" height="262" border="0" /></a>
 
 You can see that the computed value isn’t quite the value of the weight but is in the same range.  If you plot all of that you should get something like:
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image15.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb15.png" alt="image" width="485" height="293" border="0" /></a>
+<a href="/assets/2015/7/azure-ml-simple-linear-regression/image15.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/7/azure-ml-simple-linear-regression/image_thumb15.png" alt="image" width="485" height="293" border="0" /></a>
 
 The blue dots is the data while the orange ones are the prediction.
 
@@ -132,17 +132,17 @@ Maybe you found the way I extracted the model parameter to then enter an equatio
 
 For that, let’s drop a <em>Score Model</em> module on the canvas and link it this way:
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image16.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb16.png" alt="image" width="526" height="388" border="0" /></a>
+<a href="/assets/2015/7/azure-ml-simple-linear-regression/image16.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/7/azure-ml-simple-linear-regression/image_thumb16.png" alt="image" width="526" height="388" border="0" /></a>
 
 Basically we are using the model on the same data that was used to train it (output from the <em>Project Columns </em>module).
 
 Let’s run the experiment one more time (run button at the bottom of the screen).  We can then right click on the bottom dot of the <em>Score Model </em>module and select <em>View Results</em>.
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image17.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb17.png" alt="image" width="348" height="253" border="0" /></a>
+<a href="/assets/2015/7/azure-ml-simple-linear-regression/image17.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/7/azure-ml-simple-linear-regression/image_thumb17.png" alt="image" width="348" height="253" border="0" /></a>
 
 You can then compare the values in the <em>Scored Labels</em> column to the one in the computed columns in Excel and see they are the same.
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image18.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb18.png" alt="image" width="360" height="407" border="0" /></a>
+<a href="/assets/2015/7/azure-ml-simple-linear-regression/image18.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/7/azure-ml-simple-linear-regression/image_thumb18.png" alt="image" width="360" height="407" border="0" /></a>
 
 We could have exported the results using a writer module, but it does require quite a few configuration to do.
 <h3>Summary</h3>
@@ -157,7 +157,7 @@ My main goal was to show you concrete representation of the concepts <a href="ht
 </ul>
 The cost function was implicit here as an option in the Linear Regression module.  You can see that by clicking on the module.
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image19.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb19.png" alt="image" width="235" height="91" border="0" /></a>
+<a href="/assets/2015/7/azure-ml-simple-linear-regression/image19.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/7/azure-ml-simple-linear-regression/image_thumb19.png" alt="image" width="235" height="91" border="0" /></a>
 
 Another good introduction to AzureML is the <a href="http://www.microsoftvirtualacademy.com/training-courses/getting-started-with-microsoft-azure-machine-learning" target="_blank">Microsoft Virtual Academy training course on Machine Learning</a>.
 

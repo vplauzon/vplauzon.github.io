@@ -1,7 +1,7 @@
 ---
-title:  Primer on Azure Monitor
-date:  2016-11-27 19:00:01 -05:00
-permalink:  "/2016/11/27/primer-on-azure-monitor/"
+title: Primer on Azure Monitor
+date: 2016-11-27 19:00:01 -05:00
+permalink: /2016/11/27/primer-on-azure-monitor/
 categories:
 - Solution
 tags:
@@ -10,7 +10,7 @@ tags:
 - Security
 - Virtual Machines
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2016/11/pexels-photo-423841.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="pexels-photo-42384[1]" src="http://vincentlauzon.files.wordpress.com/2016/11/pexels-photo-423841_thumb.jpg" alt="pexels-photo-42384[1]" width="640" height="427" align="right" border="0" /></a>
+<a href="/assets/2016/11/primer-on-azure-monitor/pexels-photo-423841.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="pexels-photo-42384[1]" src="/assets/2016/11/primer-on-azure-monitor/pexels-photo-423841_thumb.jpg" alt="pexels-photo-42384[1]" width="640" height="427" align="right" border="0" /></a>
 
 <a href="https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview" target="_blank">Azure Monitor</a> is the latest evolution of a set of technologies allowing Azure resources monitoring.
 
@@ -64,13 +64,13 @@ We’ll discuss the export mechanisms &amp; alerts below, but for now, here’s 
 <h3>Activity Log example</h3>
 We can see the activity log of our favorite subscription by opening the monitor blade, which should be on the left hand side, in the <a href="https://portal.azure.com">https://portal.azure.com</a>.
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/11/image.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/11/image_thumb.png" alt="image" width="176" height="480" border="0" /></a>
+<a href="/assets/2016/11/primer-on-azure-monitor/image.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="/assets/2016/11/primer-on-azure-monitor/image_thumb.png" alt="image" width="176" height="480" border="0" /></a>
 
 If you do not find it there, hit the <em>More Services</em> and search for <em>Monitor</em>.
 
 Selecting the <em>Activity Logs, </em>we should have a search form and some results.
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/11/image1.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/11/image_thumb1.png" alt="image" width="640" height="261" border="0" /></a>
+<a href="/assets/2016/11/primer-on-azure-monitor/image1.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="/assets/2016/11/primer-on-azure-monitor/image_thumb1.png" alt="image" width="640" height="261" border="0" /></a>
 
 <em>ListKeys</em> is a popular one.  Despite being conceptually a read operation, the List Key action, on a storage account, is done through a POST in the Azure REST API, specifically to trigger an audit trail.
 
@@ -116,11 +116,11 @@ Metrics can be accessed from the “global” Monitor blade or from any Azure re
 
 Here I look at the CPU usage of an Azure Data Warehouse resource (which hasn’t run for months, hence flat lining).
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/11/image2.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/11/image_thumb2.png" alt="image" width="640" height="292" border="0" /></a>
+<a href="/assets/2016/11/primer-on-azure-monitor/image2.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="/assets/2016/11/primer-on-azure-monitor/image_thumb2.png" alt="image" width="640" height="292" border="0" /></a>
 <h3>Diagnostic Logs example</h3>
 For diagnostics, let’s create a storage account and activate diagnostics on it.  For this, under the <em>Monitoring </em>section, let’s select <em>Diagnostics</em>, make sure the status is <em>On</em> and then select <em>Blob logs</em>.
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/11/image3.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/11/image_thumb3.png" alt="image" width="422" height="480" border="0" /></a>
+<a href="/assets/2016/11/primer-on-azure-monitor/image3.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="/assets/2016/11/primer-on-azure-monitor/image_thumb3.png" alt="image" width="422" height="480" border="0" /></a>
 
 We’ll notice that all metrics were already selected.  We also noticed that the retention is controlled there, in this case 7 days.
 

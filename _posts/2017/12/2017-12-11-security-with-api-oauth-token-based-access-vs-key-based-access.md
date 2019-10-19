@@ -1,7 +1,7 @@
 ---
-title:  Security with API: OAuth, token-based access vs key-based access
-date:  2017-12-11 06:30:39 -05:00
-permalink:  "/2017/12/11/security-with-api-oauth-token-based-access-vs-key-based-access/"
+title: 'Security with API: OAuth, token-based access vs key-based access'
+date: 2017-12-11 06:30:39 -05:00
+permalink: /2017/12/11/security-with-api-oauth-token-based-access-vs-key-based-access/
 categories:
 - Solution
 tags:
@@ -10,7 +10,7 @@ tags:
 - Security
 - Web
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2017/12/pexels-photo-3265691.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-326569[1]" src="http://vincentlauzon.files.wordpress.com/2017/12/pexels-photo-3265691_thumb.jpg" alt="pexels-photo-326569[1]" width="320" height="213" align="right" border="0" /></a>Let’s consider security with APIs, i.e how to securely identify the caller.
+<a href="/assets/2017/12/security-with-api-oauth-token-based-access-vs-key-based-access/pexels-photo-3265691.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-326569[1]" src="/assets/2017/12/security-with-api-oauth-token-based-access-vs-key-based-access/pexels-photo-3265691_thumb.jpg" alt="pexels-photo-326569[1]" width="320" height="213" align="right" border="0" /></a>Let’s consider security with APIs, i.e how to securely identify the caller.
 
 There are two authentication methods quite popular in the cloud to secure APIs:
 <ol>
@@ -33,7 +33,7 @@ Example of key-based authentication in Azure (non exhaustive list):
 <h2>OAuth / Token-based access</h2>
 By OAuth we mean <a href="https://en.wikipedia.org/wiki/OAuth" target="_blank" rel="noopener">OAuth</a>.  In general for token-based we mean an authentication mechanism where credentials / secrets are passed to an identity / token-provider which returns a token then pass to relying party / APIs:
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/12/image3.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/12/image_thumb3.png" alt="image" border="0" /></a>
+<a href="/assets/2017/12/security-with-api-oauth-token-based-access-vs-key-based-access/image3.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="/assets/2017/12/security-with-api-oauth-token-based-access-vs-key-based-access/image_thumb3.png" alt="image" border="0" /></a>
 
 Example of OAuth-based authentication in Azure (non exhaustive list):
 <ul>

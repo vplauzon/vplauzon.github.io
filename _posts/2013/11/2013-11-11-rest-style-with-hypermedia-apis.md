@@ -1,7 +1,7 @@
 ---
-title:  REST style with Hypermedia APIs
-date:  2013-11-11 21:44:01 -05:00
-permalink:  "/2013/11/11/rest-style-with-hypermedia-apis/"
+title: REST style with Hypermedia APIs
+date: 2013-11-11 21:44:01 -05:00
+permalink: /2013/11/11/rest-style-with-hypermedia-apis/
 categories:
 - Solution
 tags:

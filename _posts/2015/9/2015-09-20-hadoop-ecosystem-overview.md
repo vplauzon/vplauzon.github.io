@@ -1,7 +1,7 @@
 ---
-title:  Hadoop ecosystem overview
-date:  2015-09-20 19:00:18 -04:00
-permalink:  "/2015/09/20/hadoop-ecosystem-overview/"
+title: Hadoop ecosystem overview
+date: 2015-09-20 19:00:18 -04:00
+permalink: /2015/09/20/hadoop-ecosystem-overview/
 categories:
 - Solution
 tags:

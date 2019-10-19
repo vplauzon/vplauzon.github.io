@@ -1,7 +1,7 @@
 ---
-title:  How to improve Azure: Granularity of access
-date:  2014-05-03 19:15:00 -04:00
-permalink:  "/2014/05/03/how-to-improve-azure-granularity-of-access/"
+title: 'How to improve Azure: Granularity of access'
+date: 2014-05-03 19:15:00 -04:00
+permalink: /2014/05/03/how-to-improve-azure-granularity-of-access/
 categories:
 - Solution
 tags:

@@ -1,7 +1,7 @@
 ---
-title:  Hypersphere Volume
-date:  2017-07-08 17:46:50 -04:00
-permalink:  "/2017/07/08/hypersphere-volume/"
+title: Hypersphere Volume
+date: 2017-07-08 17:46:50 -04:00
+permalink: /2017/07/08/hypersphere-volume/
 categories:
 - Solution
 tags:
@@ -9,7 +9,7 @@ tags:
 ---
 <p><img width="320" height="213" align="right" style="border:0 currentcolor;border-image:none;float:right;display:inline;background-image:none;" alt="abendstimmung, ball-shaped, clouds" src="https://images.pexels.com/photos/220429/pexels-photo-220429.jpeg?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb" border="0" />In <a href="https://vincentlauzon.com/2017/06/21/hyperspheres-the-curse-of-dimensionality/">our last article</a> we looked at how the dimension of data space impacts Machine Learning algorithms.&nbsp; This is often referred to as the <em>curse of dimensionality</em>.</p><p>At the heart of the article we discussed the fact that an hypersphere hyper-volume trends to zero as dimension increases.</p><p>Here I want to demonstrate how to find the hyper-volume of an hypersphere of dimension N.</p><p>The <a href="http://mathreference.com/ca-int,hsp.html" target="_blank" rel="noopener">Math Reference Project</a> gives a short &amp; sweet demonstration.&nbsp; I personally found it hard to follow.&nbsp; <a href="http://www.cs.cornell.edu/jeh/book11April2014.pdf">Foundations of Data Science by John Hopcroft &amp; Ravindran Kannan</a> (chapter 2) starts a demonstration but does cut short.</p><p>
 I wanted to contribute a complete demonstration because I just love that type of mathematical problem.&nbsp; It’s one of my many flaws.</p><h2>Approach</h2><p><img width="320" height="149" align="left" style="margin:0 10px 0 0;border:0 currentcolor;border-image:none;float:left;display:inline;background-image:none;" alt="countryside, grass, grassland" src="https://images.pexels.com/photos/24580/pexels-photo-24580.jpg?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb" border="0" />We’ll use the Cartesian coordinates and the fact that the volume of an hypersphere of dimension <em>N</em> can be found by integrating the volume of an hypersphere of dimension <em>N-1</em> with an infinitesimal thickness:</p><p align="center">$latex V_N(R) = \displaystyle\int_{-R}^R V_{N-1}(\sqrt{R^2-x^2}) dx$</p>
-<p><a href="http://vincentlauzon.files.wordpress.com/2017/06/image2.png"><img width="320" height="307" title="image" align="right" style="border:0 currentcolor;border-image:none;margin-right:0;margin-left:0;float:right;display:inline;background-image:none;" alt="image" src="http://vincentlauzon.files.wordpress.com/2017/06/image_thumb2.png" border="0" /></a>We’ll find the volume for a few dimensions then we’ll generalize the result.</p>
+<p><a href="/assets/2017/7/hypersphere-volume/image2.png"><img width="320" height="307" title="image" align="right" style="border:0 currentcolor;border-image:none;margin-right:0;margin-left:0;float:right;display:inline;background-image:none;" alt="image" src="/assets/2017/7/hypersphere-volume/image_thumb2.png" border="0" /></a>We’ll find the volume for a few dimensions then we’ll generalize the result.</p>
 <h3>N=1</h3>
 <p>Well, $latex V_1(R) = 2 R$:&nbsp; it’s a line.</p>
 <h3>N=2</h3>

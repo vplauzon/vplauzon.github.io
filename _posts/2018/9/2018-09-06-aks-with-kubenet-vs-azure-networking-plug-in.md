@@ -1,7 +1,7 @@
 ---
-title:  AKS with Kubenet vs Azure Networking plug-in
-date:  2018-09-06 06:30:01 -04:00
-permalink:  "/2018/09/06/aks-with-kubenet-vs-azure-networking-plug-in/"
+title: AKS with Kubenet vs Azure Networking plug-in
+date: 2018-09-06 06:30:01 -04:00
+permalink: /2018/09/06/aks-with-kubenet-vs-azure-networking-plug-in/
 categories:
 - Solution
 tags:

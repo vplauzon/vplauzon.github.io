@@ -1,7 +1,7 @@
 ---
-title:  Entity Framework Patterns: Select Multiple Entities
-date:  2010-12-16 19:38:00 -05:00
-permalink:  "/2010/12/16/entity-framework-patterns-select-multiple-entities/"
+title: 'Entity Framework Patterns: Select Multiple Entities'
+date: 2010-12-16 19:38:00 -05:00
+permalink: /2010/12/16/entity-framework-patterns-select-multiple-entities/
 categories:
 - Solution
 tags:

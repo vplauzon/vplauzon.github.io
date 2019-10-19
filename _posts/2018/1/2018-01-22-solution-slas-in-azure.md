@@ -1,13 +1,13 @@
 ---
-title:  Solution SLAs in Azure
-date:  2018-01-22 06:30:44 -05:00
-permalink:  "/2018/01/22/solution-slas-in-azure/"
+title: Solution SLAs in Azure
+date: 2018-01-22 06:30:44 -05:00
+permalink: /2018/01/22/solution-slas-in-azure/
 categories:
 - Solution
 tags:
 - Mathematics
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2018/01/pexels-photo-327533.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-327533" src="http://vincentlauzon.files.wordpress.com/2018/01/pexels-photo-327533_thumb.jpg" alt="pexels-photo-327533" width="320" height="200" align="right" border="0" /></a>Let’s talk about Service Level Agreement (SLA) of your solution in Azure.
+<a href="/assets/2018/1/solution-slas-in-azure/pexels-photo-327533.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-327533" src="/assets/2018/1/solution-slas-in-azure/pexels-photo-327533_thumb.jpg" alt="pexels-photo-327533" width="320" height="200" align="right" border="0" /></a>Let’s talk about Service Level Agreement (SLA) of your solution in Azure.
 
 Hal Berenson wrote a <a href="https://hal2020.com/2017/12/13/service-level-agreements-sla/">great article about SLA lately</a>.  It is a great conceptual background for the present today.
 
@@ -21,13 +21,13 @@ Here we will discuss an approach to establish a theoretical SLA baseline based o
 
 We’ll talk of <em>availability</em> SLA.  The same logic would apply on other characteristics, e.g. performance, durability, etc.  .
 <h2>SLA for Service Consumer</h2>
-<a href="http://vincentlauzon.files.wordpress.com/2018/01/image19.png"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/01/image_thumb19.png" alt="image" width="225" height="240" align="left" border="0" /></a>For a service consumer, the SLA is part of the specs of the service and sets the expectations.  It is something we design against.
+<a href="/assets/2018/1/solution-slas-in-azure/image19.png"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="image" src="/assets/2018/1/solution-slas-in-azure/image_thumb19.png" alt="image" width="225" height="240" align="left" border="0" /></a>For a service consumer, the SLA is part of the specs of the service and sets the expectations.  It is something we design against.
 
 It is also something <em>guaranteed</em>, i.e. it is backed financially.  That part is important and it isn’t.  It shows the service provider puts its money where its mouth is:  it will refund us when it fails the SLA.  But it doesn’t back our business.  We might get a refund of $15 because a service was down for an extra 30 minutes a month.  But how much is 30 minutes worth of business during peak hours?
 
 Beside the contractual SLA, what is interesting is the actual average uptime of a service.
 <h2>SLA for Service Provider</h2>
-<a href="http://vincentlauzon.files.wordpress.com/2018/01/image20.png"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/01/image_thumb20.png" alt="image" width="320" height="228" align="right" border="0" /></a>For a Service Provider, the SLA is a compromise.  It’s compromise for engineering who would like it to be as low as possible so they can ensure they can hit it (e.g. 20 hours a week).  It’s a compromise for sales too.  Sales likes SLA as high as possible so they can attract customers with an aura of reliability (e.g. %99.9999).
+<a href="/assets/2018/1/solution-slas-in-azure/image20.png"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="image" src="/assets/2018/1/solution-slas-in-azure/image_thumb20.png" alt="image" width="320" height="228" align="right" border="0" /></a>For a Service Provider, the SLA is a compromise.  It’s compromise for engineering who would like it to be as low as possible so they can ensure they can hit it (e.g. 20 hours a week).  It’s a compromise for sales too.  Sales likes SLA as high as possible so they can attract customers with an aura of reliability (e.g. %99.9999).
 
 Missing an SLA means financial penalty but also reputation penalty.  If you miss it too often, consumer can’t rely on it and usage will likely drop.
 
@@ -55,7 +55,7 @@ Can we simply compute a theoretical SLA for a solution using 2 or more Azure ser
 
 Let’s start with a simple example:  a Web App (<a href="https://azure.microsoft.com/en-us/support/legal/sla/app-service/v1_4/">SLA of %99.95</a>) with a SQL DB (<a href="https://azure.microsoft.com/en-us/support/legal/sla/sql-database/v1_1/">SLA of %99.99</a>).  What is the SLA of that solution?
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/01/image22.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/01/image_thumb22.png" alt="image" border="0" /></a>
+<a href="/assets/2018/1/solution-slas-in-azure/image22.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="/assets/2018/1/solution-slas-in-azure/image_thumb22.png" alt="image" border="0" /></a>
 
 To answer that question, we’ll need a probability 101.  It will be light, it will be fast, but we need it.
 
@@ -70,7 +70,7 @@ Let’s consider the multiplication law of probability.  That is, if A &amp; B 
 <p align="left">In our case:</p>
 <p align="center">$latex \begin{array}{lcl} P(\text{Web App and SQL DB are up}) &amp;=&amp; P(\text{Web App is up}) \cdot P(\text{SQL DB is up})\\ &amp;=&amp; \%99.95 \cdot \%99.99\\ &amp;=&amp; \%99.94 \end{array}$</p>
 <p align="left">This is often is a surprising result for customers we speak to.</p>
-<p align="center"><a href="http://vincentlauzon.files.wordpress.com/2018/01/image23.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/01/image_thumb23.png" alt="image" border="0" /></a></p>
+<p align="center"><a href="/assets/2018/1/solution-slas-in-azure/image23.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/1/solution-slas-in-azure/image_thumb23.png" alt="image" border="0" /></a></p>
 <p align="left">But if we think about it, the fact the compound SLA is lower than each individual SLA does make sense.  Each component can fail independently.  So the more components, the more failures can occur.</p>
 
 <h2 align="left">Independent SLAs</h2>
@@ -87,7 +87,7 @@ Let’s consider a simple scenario first:  storage RA-GRS.  Local Redundant St
 
 We have the following solution:
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/01/image24.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/01/image_thumb24.png" alt="image" border="0" /></a>
+<a href="/assets/2018/1/solution-slas-in-azure/image24.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="/assets/2018/1/solution-slas-in-azure/image_thumb24.png" alt="image" border="0" /></a>
 
 and we want to know what is the SLA of that solution.  Here the problem is different.  Both services don’t depend on each other:  they complement each other.
 
@@ -101,19 +101,19 @@ Now let’s consider RA-GRS:
 <p align="center">$latex \begin{array}{lcl}P(\text{Primary or Secondary is up}) &amp;=&amp; 1 - (1 - P(\text{Primary is up})) \cdot (1 - P(\text{Secondary is up}))\\&amp;=&amp; 1 - (1 - \%99.9) \cdot (1 - \%99.9)\\&amp;=&amp; 1 - \%0.1 \cdot \%0.1\\&amp;=&amp; 1 - \%0.0001\\&amp;=&amp;\%99.9999\end{array}$</p>
 Boom.  We can imagine that this is the computation behind the SLA of RA-GRS.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/01/image25.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/01/image_thumb25.png" alt="image" border="0" /></a>
+<a href="/assets/2018/1/solution-slas-in-azure/image25.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/1/solution-slas-in-azure/image_thumb25.png" alt="image" border="0" /></a>
 
 Let’s notice a caveat though.  This is the SLA that at least one region’s storage is up.  There is no load balancing / failing over at the service level.  This means the service’s client must try one then try the other if the primary fails.  We will take that into account in the next few examples.
 
 Let’s consider our solution with a Web App and a SQL DB.  For simplification, let’s assume the SQL DB is either static or read only on the secondary site.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/01/image26.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/01/image_thumb26.png" alt="image" border="0" /></a>
+<a href="/assets/2018/1/solution-slas-in-azure/image26.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="/assets/2018/1/solution-slas-in-azure/image_thumb26.png" alt="image" border="0" /></a>
 <p align="center">$latex \begin{array}{lcl}P(\text{Primary or Secondary is up}) &amp;=&amp; 1 - (1 - P(\text{Primary is up})) \cdot (1 - P(\text{Secondary is up}))\\&amp;=&amp; 1 - (1 - \%99.94) \cdot (1 - \%99.94)\\&amp;=&amp; 1 - \%0.06 \cdot \%0.06\\&amp;=&amp; 1 - \%0.000036\\&amp;=&amp;\%99.9964\end{array}$</p>
-<a href="http://vincentlauzon.files.wordpress.com/2018/01/image27.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/01/image_thumb27.png" alt="image" border="0" /></a>
+<a href="/assets/2018/1/solution-slas-in-azure/image27.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/1/solution-slas-in-azure/image_thumb27.png" alt="image" border="0" /></a>
 
 This is a nice SLA.  But as we noticed in the RA-GRS example, the client needs to be the one implementing the failover.  This isn’t acceptable in a web scenario.  Let’s implement the failover on the service side by using Azure Traffic Manager (<a href="https://azure.microsoft.com/en-us/support/legal/sla/traffic-manager/v1_0/">SLA %99.99</a>).
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/01/image28.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/01/image_thumb28.png" alt="image" border="0" /></a>
+<a href="/assets/2018/1/solution-slas-in-azure/image28.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/1/solution-slas-in-azure/image_thumb28.png" alt="image" border="0" /></a>
 
 How do we compute the SLA of that solution?
 
@@ -136,7 +136,7 @@ Let’s consider a more realistic solution with 4 tiers:
  	<li>Another VM Scale Set as application layer</li>
  	<li>Azure SQL as DB</li>
 </ul>
-<a href="http://vincentlauzon.files.wordpress.com/2018/01/image30.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/01/image_thumb30.png" alt="image" border="0" /></a>
+<a href="/assets/2018/1/solution-slas-in-azure/image30.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="/assets/2018/1/solution-slas-in-azure/image_thumb30.png" alt="image" border="0" /></a>
 
 The compound SLA is the product of probability, hence %99.84.
 

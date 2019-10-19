@@ -1,7 +1,7 @@
 ---
-title:  Virtual Machine with 2 NICs
-date:  2016-10-23 19:00:25 -04:00
-permalink:  "/2016/10/23/virtual-machine-with-2-nics/"
+title: Virtual Machine with 2 NICs
+date: 2016-10-23 19:00:25 -04:00
+permalink: /2016/10/23/virtual-machine-with-2-nics/
 categories:
 - Solution
 tags:
@@ -16,7 +16,7 @@ Let’s take a step back and look at how the different Azure <em>Lego </em>block
 <h2>Related Resources</h2>
 Here’s a diagram that can help:
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/10/image1.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/10/image_thumb1.png" alt="image" border="0" /></a>
+<a href="/assets/2016/10/virtual-machine-with-2-nics/image1.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2016/10/virtual-machine-with-2-nics/image_thumb1.png" alt="image" border="0" /></a>
 
 Let’s look at the different components:
 <ul>

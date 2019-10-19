@@ -1,14 +1,14 @@
 ---
-title:  Azure Databricks - Getting Started
-date:  2017-12-18 06:30:30 -05:00
-permalink:  "/2017/12/18/azure-databricks-getting-started/"
+title: Azure Databricks - Getting Started
+date: 2017-12-18 06:30:30 -05:00
+permalink: /2017/12/18/azure-databricks-getting-started/
 categories:
 - Solution
 tags:
 - Big Data
 - Data
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2017/12/databricks_logo1.png"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="Databricks_logo[1]" src="http://vincentlauzon.files.wordpress.com/2017/12/databricks_logo1_thumb.png" alt="Databricks_logo[1]" width="140" height="140" align="right" border="0" /></a><a href="https://en.wikipedia.org/wiki/Apache_Spark" target="_blank" rel="noopener">Apache Spark</a> is rising in popularity as a Big Data platform.  It exists on this accelerated timeline for such an impactful technology.
+<a href="/assets/2017/12/azure-databricks-getting-started/databricks_logo1.png"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="Databricks_logo[1]" src="/assets/2017/12/azure-databricks-getting-started/databricks_logo1_thumb.png" alt="Databricks_logo[1]" width="140" height="140" align="right" border="0" /></a><a href="https://en.wikipedia.org/wiki/Apache_Spark" target="_blank" rel="noopener">Apache Spark</a> is rising in popularity as a Big Data platform.  It exists on this accelerated timeline for such an impactful technology.
 
 Think about it:
 <ul>

@@ -1,7 +1,7 @@
 ---
-title:  Azure Data Lake Analytics - Loading files with custom C# code
-date:  2016-01-13 19:00:56 -05:00
-permalink:  "/2016/01/13/azure-data-lake-analytics-loading-files-with-custom-c-code/"
+title: Azure Data Lake Analytics - Loading files with custom C# code
+date: 2016-01-13 19:00:56 -05:00
+permalink: /2016/01/13/azure-data-lake-analytics-loading-files-with-custom-c-code/
 categories:
 - Solution
 tags:
@@ -23,7 +23,7 @@ I won’t lie to you:  the product has a few rough edges in its first version o
 <h2>Visual Studio Projects</h2>
 In order to do this post, I’ve created a solution in Visual Studio with a <em>U-SQL Project</em> &amp; a <em>Class Library (For U-SQL Application)</em> project.  Here are the final file structure of the solution:
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/01/image6.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb6.png" alt="image" width="505" height="505" border="0" /></a>
+<a href="/assets/2016/1/azure-data-lake-analytics-loading-files-with-custom-c-code/image6.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="/assets/2016/1/azure-data-lake-analytics-loading-files-with-custom-c-code/image_thumb6.png" alt="image" width="505" height="505" border="0" /></a>
 
 We’ll go through it in this post.
 
@@ -43,11 +43,11 @@ It has three parts:
 </ul>
 <img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" src="http://icons.iconarchive.com/icons/ampeross/qetto-2/64/danger-icon.png" alt="" align="left" border="0" />Those files have some <a href="https://en.wikipedia.org/wiki/Byte_order_mark">Byte Order Mark</a> (BOM) at the beginning to make things interesting.  Unfortunately at this point, this blows up in the USQL parsing.  The easiest way to remove the BOMs is to download the files locally, open them in Visual Studio, “Save As…”, then hit the arrow next to the save in the dialog box:
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/12/image3.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/12/image_thumb3.png" alt="image" width="147" height="61" border="0" /></a>
+<a href="/assets/2016/1/azure-data-lake-analytics-loading-files-with-custom-c-code/image3.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="/assets/2016/1/azure-data-lake-analytics-loading-files-with-custom-c-code/image_thumb3.png" alt="image" width="147" height="61" border="0" /></a>
 
 choose “Save with Encoding…”, choose UTF-8 without signature and save them.
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/12/image4.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/12/image_thumb4.png" alt="image" width="612" height="337" border="0" /></a>
+<a href="/assets/2016/1/azure-data-lake-analytics-loading-files-with-custom-c-code/image4.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="/assets/2016/1/azure-data-lake-analytics-loading-files-with-custom-c-code/image_thumb4.png" alt="image" width="612" height="337" border="0" /></a>
 
 While we are at it, for the last file, i.e. <em>porgat.txt</em>, we’ll need to remove the first part of the file.  Search for “*Edgeslist” and delete everything before it.  The file should now start with “1 6487”.
 

@@ -1,7 +1,7 @@
 ---
-title:  Unit Testing SharePoint
-date:  2012-11-30 19:26:00 -05:00
-permalink:  "/2012/11/30/unit-testing-sharepoint/"
+title: Unit Testing SharePoint
+date: 2012-11-30 19:26:00 -05:00
+permalink: /2012/11/30/unit-testing-sharepoint/
 categories:
 - Solution
 tags:

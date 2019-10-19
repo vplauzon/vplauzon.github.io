@@ -1,7 +1,7 @@
 ---
-title:  How to use Azure Data Lake Storage REST API
-date:  2019-05-15 06:30:31 -04:00
-permalink:  "/2019/05/15/how-to-use-azure-data-lake-storage-rest-api/"
+title: How to use Azure Data Lake Storage REST API
+date: 2019-05-15 06:30:31 -04:00
+permalink: /2019/05/15/how-to-use-azure-data-lake-storage-rest-api/
 categories:
 - Solution
 tags:

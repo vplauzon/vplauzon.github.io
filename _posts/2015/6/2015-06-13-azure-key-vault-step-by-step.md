@@ -1,7 +1,7 @@
 ---
-title:  Azure Key Vault – Step by Step
-date:  2015-06-13 16:45:53 -04:00
-permalink:  "/2015/06/13/azure-key-vault-step-by-step/"
+title: Azure Key Vault – Step by Step
+date: 2015-06-13 16:45:53 -04:00
+permalink: /2015/06/13/azure-key-vault-step-by-step/
 categories:
 - Solution
 tags:

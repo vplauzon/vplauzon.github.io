@@ -1,7 +1,7 @@
 ---
-title:  Scott Gu:  Silverlight is strategic for Microsoft
-date:  2010-11-05 20:31:00 -04:00
-permalink:  "/2010/11/05/scott-gu-silverlight-is-strategic-for-microsoft/"
+title: 'Scott Gu:  Silverlight is strategic for Microsoft'
+date: 2010-11-05 20:31:00 -04:00
+permalink: /2010/11/05/scott-gu-silverlight-is-strategic-for-microsoft/
 categories:
 - Solution
 tags:

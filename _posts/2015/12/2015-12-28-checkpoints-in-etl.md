@@ -1,7 +1,7 @@
 ---
-title:  Checkpoints in ETL
-date:  2015-12-28 19:00:31 -05:00
-permalink:  "/2015/12/28/checkpoints-in-etl/"
+title: Checkpoints in ETL
+date: 2015-12-28 19:00:31 -05:00
+permalink: /2015/12/28/checkpoints-in-etl/
 categories:
 - Solution
 tags:

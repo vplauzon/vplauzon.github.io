@@ -1,7 +1,7 @@
 ---
-title:  Designing Distributed Systems by Brendan Burns
-date:  2019-01-09 06:30:31 -05:00
-permalink:  "/2019/01/09/designing-distributed-systems-by-brendan-burns/"
+title: Designing Distributed Systems by Brendan Burns
+date: 2019-01-09 06:30:31 -05:00
+permalink: /2019/01/09/designing-distributed-systems-by-brendan-burns/
 categories:
 - Solution
 tags:

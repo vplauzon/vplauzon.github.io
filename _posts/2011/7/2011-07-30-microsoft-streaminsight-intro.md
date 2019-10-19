@@ -1,7 +1,7 @@
 ---
-title:  Microsoft StreamInsight Intro
-date:  2011-07-30 20:29:00 -04:00
-permalink:  "/2011/07/30/microsoft-streaminsight-intro/"
+title: Microsoft StreamInsight Intro
+date: 2011-07-30 20:29:00 -04:00
+permalink: /2011/07/30/microsoft-streaminsight-intro/
 categories:
 - Solution
 tags:

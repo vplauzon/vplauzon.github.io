@@ -1,7 +1,7 @@
 ---
-title:  Hyperspheres & the curse of dimensionality
-date:  2017-06-21 21:23:18 -04:00
-permalink:  "/2017/06/21/hyperspheres-the-curse-of-dimensionality/"
+title: Hyperspheres & the curse of dimensionality
+date: 2017-06-21 21:23:18 -04:00
+permalink: /2017/06/21/hyperspheres-the-curse-of-dimensionality/
 categories:
 - Solution
 tags:
@@ -9,7 +9,7 @@ tags:
 - Machine Learning
 - Mathematics
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2017/06/fractal-1118515_6402.jpg"><img style="border-width:0;margin:0 10px 0 0;padding-top:0;padding-right:0;padding-left:0;float:left;display:inline;background-image:none;" title="fractal-1118515_640" src="http://vincentlauzon.files.wordpress.com/2017/06/fractal-1118515_640_thumb2.jpg" alt="fractal-1118515_640" width="320" height="240" align="left" border="0" /></a>I <a href="https://vincentlauzon.com/2015/07/02/machine-learning-an-introduction-part-1/">previously talked about the curse of dimensionality</a> (more than 2 years ago) related to Machine Learning.
+<a href="/assets/2017/6/hyperspheres-the-curse-of-dimensionality/fractal-1118515_6402.jpg"><img style="border-width:0;margin:0 10px 0 0;padding-top:0;padding-right:0;padding-left:0;float:left;display:inline;background-image:none;" title="fractal-1118515_640" src="/assets/2017/6/hyperspheres-the-curse-of-dimensionality/fractal-1118515_640_thumb2.jpg" alt="fractal-1118515_640" width="320" height="240" align="left" border="0" /></a>I <a href="https://vincentlauzon.com/2015/07/02/machine-learning-an-introduction-part-1/">previously talked about the curse of dimensionality</a> (more than 2 years ago) related to Machine Learning.
 
 Here I wanted to discuss it in more depth and dive into the mathematics of it.
 
@@ -184,7 +184,7 @@ This is fairly unintuitive, so let me give real numerical values:
 </table>
 If we plot those values:
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/06/image.png"><img style="border-width:0;padding-top:0;padding-right:0;padding-left:0;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/06/image_thumb.png" alt="image" width="640" height="479" border="0" /></a>
+<a href="/assets/2017/6/hyperspheres-the-curse-of-dimensionality/image.png"><img style="border-width:0;padding-top:0;padding-right:0;padding-left:0;display:inline;background-image:none;" title="image" src="/assets/2017/6/hyperspheres-the-curse-of-dimensionality/image_thumb.png" alt="image" width="640" height="479" border="0" /></a>
 
 We see the hyper volume increases in the first couple of dimensions.  A circle of radius 1 has an area of pi (3.1416) while a sphere of radius 1 has a volume of 4.19.  It peaks at dimension 5 and then shrinks.
 

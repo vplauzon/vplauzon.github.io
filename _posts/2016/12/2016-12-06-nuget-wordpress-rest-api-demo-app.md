@@ -1,7 +1,7 @@
 ---
-title:  Nuget WordPress REST API – Demo App
-date:  2016-12-06 17:40:23 -05:00
-permalink:  "/2016/12/06/nuget-wordpress-rest-api-demo-app/"
+title: Nuget WordPress REST API – Demo App
+date: 2016-12-06 17:40:23 -05:00
+permalink: /2016/12/06/nuget-wordpress-rest-api-demo-app/
 categories:
 - Solution
 tags:
@@ -27,11 +27,11 @@ You need to go to <a href="https://developer.wordpress.com/apps/">https://develo
 
 Once you created the app, at the bottom of the screen you should have access to the two elements of information you’ll need to run the demo.
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/12/image2.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/12/image_thumb2.png" alt="image" width="1863" height="675" border="0" /></a>
+<a href="/assets/2016/12/nuget-wordpress-rest-api-demo-app/image2.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2016/12/nuget-wordpress-rest-api-demo-app/image_thumb2.png" alt="image" width="1863" height="675" border="0" /></a>
 
 On the demo web site you should be prompted to enter the client ID.
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/12/image3.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/12/image_thumb3.png" alt="image" width="714" height="790" border="0" /></a>
+<a href="/assets/2016/12/nuget-wordpress-rest-api-demo-app/image3.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2016/12/nuget-wordpress-rest-api-demo-app/image_thumb3.png" alt="image" width="714" height="790" border="0" /></a>
 
 Usually we would have the Client ID and other app’s information in the web.config.  But to simplify the demo setup, I have the user keypunch them.
 
@@ -43,7 +43,7 @@ Your browser will have you navigate to <a title="https://public-api.wordpress.co
 
 From there you should be brought back to the redirect URL you configured.
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/12/image4.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/12/image_thumb4.png" alt="image" width="717" height="823" border="0" /></a>
+<a href="/assets/2016/12/nuget-wordpress-rest-api-demo-app/image4.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2016/12/nuget-wordpress-rest-api-demo-app/image_thumb4.png" alt="image" width="717" height="823" border="0" /></a>
 
 You need to again enter the client ID.  You also need to enter the client secret.
 

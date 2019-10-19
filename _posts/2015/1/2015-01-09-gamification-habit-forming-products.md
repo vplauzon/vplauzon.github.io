@@ -1,10 +1,10 @@
 ---
-title:  Gamification / Habit-Forming Products
-date:  2015-01-09 21:22:50 -05:00
-permalink:  "/2015/01/09/gamification-habit-forming-products/"
+title: Gamification / Habit-Forming Products
+date: 2015-01-09 21:22:50 -05:00
+permalink: /2015/01/09/gamification-habit-forming-products/
 categories:
 - Gadget
-tags:  []
+tags: []
 ---
 <p>I found this very informative <a href="http://www.wired.com/2014/12/how-to-build-habit-forming-products/">introduction article</a> on how addiction works in products such as Facebook or Candycrush on <a href="http://www.wired.com/">Wired</a>.
 </p><p>I've been exposed to the concepts in the recent years thanks to a friend of mine who became an expert on <a href="http://en.wikipedia.org/wiki/Gamification">gamification</a>.  It turns out that the mechanics used to get you hooks on different video games were extracted and are now used to get you hooked on different products.

@@ -1,7 +1,7 @@
 ---
-title:  In Azure DocumentDB, DocumentClient.CreateDocumentQuery doesn’t exists!
-date:  2014-10-19 21:30:24 -04:00
-permalink:  "/2014/10/19/in-azure-documentdb-documentclient-createdocumentquery-doesnt-exists/"
+title: In Azure DocumentDB, DocumentClient.CreateDocumentQuery doesn’t exists!
+date: 2014-10-19 21:30:24 -04:00
+permalink: /2014/10/19/in-azure-documentdb-documentclient-createdocumentquery-doesnt-exists/
 categories:
 - Solution
 tags:

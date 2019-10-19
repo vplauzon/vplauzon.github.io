@@ -1,7 +1,7 @@
 ---
-title:  EF Power Tools CTP1 Released
-date:  2011-07-28 20:18:00 -04:00
-permalink:  "/2011/07/28/ef-power-tools-ctp1-released/"
+title: EF Power Tools CTP1 Released
+date: 2011-07-28 20:18:00 -04:00
+permalink: /2011/07/28/ef-power-tools-ctp1-released/
 categories:
 - Solution
 tags:

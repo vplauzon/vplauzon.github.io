@@ -1,7 +1,7 @@
 ---
-title:  What is Statistics and why should you care?
-date:  2016-04-13 17:13:12 -04:00
-permalink:  "/2016/04/13/what-is-statistics-and-why-should-you-care/"
+title: What is Statistics and why should you care?
+date: 2016-04-13 17:13:12 -04:00
+permalink: /2016/04/13/what-is-statistics-and-why-should-you-care/
 categories:
 - Solution
 tags:
@@ -30,7 +30,7 @@ This won’t be a deep dive in the science of statistics.  I want to explain wh
 <h2>Layer Cake</h2>
 I see statistics as a layer cake.  At the foundation we have combinatorics, then probability and finally at the top, we have statistics.
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/04/image1.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/04/image_thumb1.png" alt="image" width="240" height="185" border="0" /></a>
+<a href="/assets/2016/4/what-is-statistics-and-why-should-you-care/image1.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="/assets/2016/4/what-is-statistics-and-why-should-you-care/image_thumb1.png" alt="image" width="240" height="185" border="0" /></a>
 
 There lies one of the mistake, in my own opinion, of most statistics course:  they try to get statistics into your head without explaining the two colossus of science it is based on.
 

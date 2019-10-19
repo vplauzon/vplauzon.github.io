@@ -1,7 +1,7 @@
 ---
-title:  Entity Framework 4.1 Release to Web (RTW)
-date:  2011-04-12 12:29:00 -04:00
-permalink:  "/2011/04/12/entity-framework-4-1-release-to-web-rtw/"
+title: Entity Framework 4.1 Release to Web (RTW)
+date: 2011-04-12 12:29:00 -04:00
+permalink: /2011/04/12/entity-framework-4-1-release-to-web-rtw/
 categories:
 - Solution
 tags:

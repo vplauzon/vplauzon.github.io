@@ -1,7 +1,7 @@
 ---
-title:  Using Azure Active Directory Service Principal
-date:  2016-02-04 16:40:41 -05:00
-permalink:  "/2016/02/04/using-azure-active-directory-service-principal/"
+title: Using Azure Active Directory Service Principal
+date: 2016-02-04 16:40:41 -05:00
+permalink: /2016/02/04/using-azure-active-directory-service-principal/
 categories:
 - Solution
 tags:
@@ -27,7 +27,7 @@ You give rights to the service principal the same way you would for a normal use
 
 That is, from any resource or resource group in the portal, click the “Access” icon.
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/02/image.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/02/image_thumb.png" alt="image" width="278" height="82" border="0" /></a>
+<a href="/assets/2016/2/using-azure-active-directory-service-principal/image.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2016/2/using-azure-active-directory-service-principal/image_thumb.png" alt="image" width="278" height="82" border="0" /></a>
 
 From there, click the <em>Add</em>  button.
 

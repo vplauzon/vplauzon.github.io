@@ -1,7 +1,7 @@
 ---
-title:  ASP.NET + WIF article
-date:  2010-08-10 10:00:02 -04:00
-permalink:  "/2010/08/10/asp-net-wif-article/"
+title: ASP.NET + WIF article
+date: 2010-08-10 10:00:02 -04:00
+permalink: /2010/08/10/asp-net-wif-article/
 categories:
 - Solution
 tags:

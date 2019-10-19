@@ -1,7 +1,7 @@
 ---
-title:  Applied SOA: Part 8–Security
-date:  2012-02-09 20:13:00 -05:00
-permalink:  "/2012/02/09/applied-soa-part-8security/"
+title: 'Applied SOA: Part 8–Security'
+date: 2012-02-09 20:13:00 -05:00
+permalink: /2012/02/09/applied-soa-part-8security/
 categories:
 - Solution
 tags:

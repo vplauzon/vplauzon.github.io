@@ -1,14 +1,14 @@
 ---
-title:  Authenticating to Azure AD non-interactively
-date:  2017-01-29 17:13:09 -05:00
-permalink:  "/2017/01/29/authenticating-to-azure-ad-non-interactively/"
+title: Authenticating to Azure AD non-interactively
+date: 2017-01-29 17:13:09 -05:00
+permalink: /2017/01/29/authenticating-to-azure-ad-non-interactively/
 categories:
 - Solution
 tags:
 - Identity
 - Security
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2017/01/fingerprint-1382652_640.jpg"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="fingerprint-1382652_640" src="http://vincentlauzon.files.wordpress.com/2017/01/fingerprint-1382652_640_thumb.jpg" alt="fingerprint-1382652_640" width="192" height="239" align="left" border="0" /></a>I want to use Azure AD as a user directory but I do not want to use its <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code" target="_blank" rel="noopener">native web authentication mechanism</a> which requires users to go via an Active Directory page to login (which can be branded and customized to look like my own).
+<a href="/assets/2017/1/authenticating-to-azure-ad-non-interactively/fingerprint-1382652_640.jpg"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="fingerprint-1382652_640" src="/assets/2017/1/authenticating-to-azure-ad-non-interactively/fingerprint-1382652_640_thumb.jpg" alt="fingerprint-1382652_640" width="192" height="239" align="left" border="0" /></a>I want to use Azure AD as a user directory but I do not want to use its <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code" target="_blank" rel="noopener">native web authentication mechanism</a> which requires users to go via an Active Directory page to login (which can be branded and customized to look like my own).
 
 I just want to give a user name &amp; password to an authentication API.
 
@@ -28,7 +28,7 @@ I’m going to give a sample in C# using <a href="https://msdn.microsoft.com/en-
 <h2>Conceptually</h2>
 We basically want our users to interact with our application only, punch in their credentials and have the application check with Azure AD if the credentials are good.
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/01/image15.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/01/image_thumb15.png" alt="image" width="420" height="143" border="0" /></a>
+<a href="/assets/2017/1/authenticating-to-azure-ad-non-interactively/image15.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="/assets/2017/1/authenticating-to-azure-ad-non-interactively/image_thumb15.png" alt="image" width="420" height="143" border="0" /></a>
 
 Here the application is represented as a Web app here but it could also be a native application.
 
@@ -39,7 +39,7 @@ In order to do this in the world of Azure AD is to use two Azure AD apps:
 </ol>
 I know it looks weird, it makes your brain hurts and is in great part the reason I’m writing this article, because it isn’t straightforward.
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/01/image16.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/01/image_thumb16.png" alt="image" border="0" /></a>
+<a href="/assets/2017/1/authenticating-to-azure-ad-non-interactively/image16.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="/assets/2017/1/authenticating-to-azure-ad-non-interactively/image_thumb16.png" alt="image" border="0" /></a>
 
 In the authentication parlance, the client App is the client (so far so good) while the service app is the resource, i.e. the thing the user is trying to access:  the client is accessing the resource on the user’s behalf.
 <h2>Setting up Azure AD</h2>
@@ -49,7 +49,7 @@ First we need a tenant.  We can use the tenant used by our subscription but typ
 
 We then need a user to test.  We can create a user like this:
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/01/image17.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/01/image_thumb17.png" alt="image" border="0" /></a>
+<a href="/assets/2017/1/authenticating-to-azure-ad-non-interactively/image17.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="/assets/2017/1/authenticating-to-azure-ad-non-interactively/image_thumb17.png" alt="image" border="0" /></a>
 
 where, of course, <em>ldapvpldemo</em> is my Azure AD tenant.
 
@@ -57,21 +57,21 @@ We’ll also need to give that user a “permanent” password, so let’s show 
 
 Let’s create the client app.  In <em>App Registrations</em>, let’s add an app with:
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/01/image18.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/01/image_thumb18.png" alt="image" border="0" /></a>
+<a href="/assets/2017/1/authenticating-to-azure-ad-non-interactively/image18.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="/assets/2017/1/authenticating-to-azure-ad-non-interactively/image_thumb18.png" alt="image" border="0" /></a>
 
 It would probably work as a Web app / API but a Native App seems more fitting.
 
 We’ll need the Application ID of that application which we can find by looking at the properties of the application.
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/01/image19.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/01/image_thumb19.png" alt="image" border="0" /></a>
+<a href="/assets/2017/1/authenticating-to-azure-ad-non-interactively/image19.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="/assets/2017/1/authenticating-to-azure-ad-non-interactively/image_thumb19.png" alt="image" border="0" /></a>
 
 We then need to create the service app:
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/01/image20.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/01/image_thumb20.png" alt="image" border="0" /></a>
+<a href="/assets/2017/1/authenticating-to-azure-ad-non-interactively/image20.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="/assets/2017/1/authenticating-to-azure-ad-non-interactively/image_thumb20.png" alt="image" border="0" /></a>
 
 We’ll need the App ID URI of the service:
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/01/image21.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/01/image_thumb21.png" alt="image" border="0" /></a>
+<a href="/assets/2017/1/authenticating-to-azure-ad-non-interactively/image21.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="/assets/2017/1/authenticating-to-azure-ad-non-interactively/image_thumb21.png" alt="image" border="0" /></a>
 
 That URI can be changed, either way we need the final value.
 
@@ -79,7 +79,7 @@ We will need to give permission to the client app to access the service app.  F
 
 Finally, we need to grant the permissions to users.
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/01/image22.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/01/image_thumb22.png" alt="image" border="0" /></a>
+<a href="/assets/2017/1/authenticating-to-azure-ad-non-interactively/image22.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="/assets/2017/1/authenticating-to-azure-ad-non-interactively/image_thumb22.png" alt="image" border="0" /></a>
 
 With all that, we’re ready to authenticate.
 <h2>ADAL</h2>

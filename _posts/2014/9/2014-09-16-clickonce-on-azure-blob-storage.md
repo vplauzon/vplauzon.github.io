@@ -1,10 +1,10 @@
 ---
-title:  ClickOnce on Azure Blob Storage
-date:  2014-09-16 21:04:30 -04:00
-permalink:  "/2014/09/16/clickonce-on-azure-blob-storage/"
+title: ClickOnce on Azure Blob Storage
+date: 2014-09-16 21:04:30 -04:00
+permalink: /2014/09/16/clickonce-on-azure-blob-storage/
 categories:
 - Solution
-tags:  []
+tags: []
 ---
 <p>You want to deploy a ClickOnce solution on the web.  You are an Azure person and hesitate on how to deploy that using Azure Web Site…
 </p><p>Don't.  Use Blob Storage instead:  cheaper, easier and faster.

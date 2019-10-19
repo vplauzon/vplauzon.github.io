@@ -1,7 +1,7 @@
 ---
-title:  Deploying an ARM template hierarchy
-date:  2019-04-24 06:30:07 -04:00
-permalink:  "/2019/04/24/deploying-an-arm-template-hierarchy/"
+title: Deploying an ARM template hierarchy
+date: 2019-04-24 06:30:07 -04:00
+permalink: /2019/04/24/deploying-an-arm-template-hierarchy/
 categories:
 - Solution
 tags:

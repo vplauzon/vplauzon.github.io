@@ -1,7 +1,7 @@
 ---
-title:  Moving from Standard to Premium disks and back
-date:  2017-09-27 17:14:05 -04:00
-permalink:  "/2017/09/27/moving-from-standard-to-premium-disks-and-back/"
+title: Moving from Standard to Premium disks and back
+date: 2017-09-27 17:14:05 -04:00
+permalink: /2017/09/27/moving-from-standard-to-premium-disks-and-back/
 categories:
 - Solution
 tags:
@@ -26,7 +26,7 @@ Let’s start with the portal experience.
 
 First, let’s open a Resource Group where I know I do have some VMs.
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/09/image4.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/09/image_thumb4.png" alt="image" border="0" /></a>
+<a href="/assets/2017/9/moving-from-standard-to-premium-disks-and-back/image4.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="/assets/2017/9/moving-from-standard-to-premium-disks-and-back/image_thumb4.png" alt="image" border="0" /></a>
 
 There are two resources that should interest us in there.
 
@@ -34,7 +34,7 @@ The first one is a Virtual Machine.  We’ll need to make sure Virtual Machines
 
 The second resource is a disk.  Let’s click on that one.
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/09/image5.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/09/image_thumb5.png" alt="image" border="0" /></a>
+<a href="/assets/2017/9/moving-from-standard-to-premium-disks-and-back/image5.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="/assets/2017/9/moving-from-standard-to-premium-disks-and-back/image_thumb5.png" alt="image" border="0" /></a>
 
 Changing the account type is right on the overview tab of the disk resource.  We can simply change it, hit save, and within seconds the disk is marked as changed.
 

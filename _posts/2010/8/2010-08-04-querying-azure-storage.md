@@ -1,7 +1,7 @@
 ---
-title:  Querying Azure Storage
-date:  2010-08-04 12:39:39 -04:00
-permalink:  "/2010/08/04/querying-azure-storage/"
+title: Querying Azure Storage
+date: 2010-08-04 12:39:39 -04:00
+permalink: /2010/08/04/querying-azure-storage/
 categories:
 - Solution
 tags:

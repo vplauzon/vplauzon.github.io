@@ -1,7 +1,7 @@
 ---
-title:  HDInsight Hadoop Hive - Setup
-date:  2015-09-27 19:00:13 -04:00
-permalink:  "/2015/09/27/hdinsight-hadoop-hive-setup/"
+title: HDInsight Hadoop Hive - Setup
+date: 2015-09-27 19:00:13 -04:00
+permalink: /2015/09/27/hdinsight-hadoop-hive-setup/
 categories:
 - Solution
 tags:

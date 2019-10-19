@@ -1,7 +1,7 @@
 ---
-title:  URL Routing with Azure Application Gateway
-date:  2017-05-08 17:58:40 -04:00
-permalink:  "/2017/05/08/url-routing-with-azure-application-gateway/"
+title: URL Routing with Azure Application Gateway
+date: 2017-05-08 17:58:40 -04:00
+permalink: /2017/05/08/url-routing-with-azure-application-gateway/
 categories:
 - Solution
 tags:
@@ -34,7 +34,7 @@ On top of those, we should probably add <strong>probes</strong> that are associa
 <h2>Proof of Concept</h2>
 As a proof of concept, we’re going to implement the following:
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/05/image.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/05/image_thumb.png" alt="image" border="0" /></a>
+<a href="/assets/2017/5/url-routing-with-azure-application-gateway/image.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="/assets/2017/5/url-routing-with-azure-application-gateway/image_thumb.png" alt="image" border="0" /></a>
 
 We use Windows Virtual Machine Scale Sets (VMSS) for back-end servers.
 
@@ -46,7 +46,7 @@ We’ve published the ARM template <a href="https://github.com/vplauzon/app-gate
 
 First, let’s look at the <a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fvplauzon%2Fapp-gateway%2Fmaster%2Fvmss-path-routing-windows%2Fazuredeploy.json" target="_blank" rel="noopener">visualization</a>.
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/05/image1.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/05/image_thumb1.png" alt="image" border="0" /></a>
+<a href="/assets/2017/5/url-routing-with-azure-application-gateway/image1.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="/assets/2017/5/url-routing-with-azure-application-gateway/image_thumb1.png" alt="image" border="0" /></a>
 
 The template is split within 4 files:
 <ul>

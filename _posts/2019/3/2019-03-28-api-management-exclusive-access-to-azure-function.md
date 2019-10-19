@@ -1,7 +1,7 @@
 ---
-title:  API Management exclusive access to Azure Function
-date:  2019-03-28 06:30:58 -04:00
-permalink:  "/2019/03/28/api-management-exclusive-access-to-azure-function/"
+title: API Management exclusive access to Azure Function
+date: 2019-03-28 06:30:58 -04:00
+permalink: /2019/03/28/api-management-exclusive-access-to-azure-function/
 categories:
 - Solution
 tags:

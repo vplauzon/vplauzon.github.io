@@ -1,13 +1,13 @@
 ---
-title:  Integration with Azure Service Bus
-date:  2015-08-23 19:00:25 -04:00
-permalink:  "/2015/08/23/integration-with-azure-service-bus/"
+title: Integration with Azure Service Bus
+date: 2015-08-23 19:00:25 -04:00
+permalink: /2015/08/23/integration-with-azure-service-bus/
 categories:
 - Solution
 tags:
 - Integration
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/message1.png"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="message[1]" src="http://vincentlauzon.files.wordpress.com/2015/07/message1_thumb.png" alt="message[1]" width="200" height="125" align="left" border="0" /></a>
+<a href="/assets/2015/8/integration-with-azure-service-bus/message1.png"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="message[1]" src="/assets/2015/8/integration-with-azure-service-bus/message1_thumb.png" alt="message[1]" width="200" height="125" align="left" border="0" /></a>
 
 I've been consulting 1.5 years for a customer embarking a journey leveraging Microsoft Azure as an Enterprise platform, helping them rethink their application park.
 
@@ -32,7 +32,7 @@ This ended up being a really good decision.  It costs nearly nothing:  configu
 
 A big plus.
 <h3>Meta Data</h3>
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image48.png"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb48.png" alt="image" width="264" height="264" align="right" border="0" /></a>In order to implement a meaningful publish / subscribe mechanism, you need a way to filter messages.  In Azure Service Bus, subscription filter topic messages on meta data, for instance:
+<a href="/assets/2015/8/integration-with-azure-service-bus/image48.png"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/8/integration-with-azure-service-bus/image_thumb48.png" alt="image" width="264" height="264" align="right" border="0" /></a>In order to implement a meaningful publish / subscribe mechanism, you need a way to filter messages.  In Azure Service Bus, subscription filter topic messages on meta data, for instance:
 <ul>
 	<li>Content Type</li>
 	<li>Label</li>
@@ -51,7 +51,7 @@ We used labels to identity the system publishing a message.  This was often use
 
 Custom Properties were more business specific and the hardest to guess in advance.  It should probably contain the main attributes contained in the message itself.  For an order message, the product ID, product category ID, etc.  should probably be in it.
 <h3>Filtering subscription</h3>
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/filter1.png"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="filter[1]" src="http://vincentlauzon.files.wordpress.com/2015/07/filter1_thumb.png" alt="filter[1]" width="92" height="79" align="left" border="0" /></a>Always filter subscription!  This is the only way to ensure future compatibility.  Make sure you specify what you want to consume.
+<a href="/assets/2015/8/integration-with-azure-service-bus/filter1.png"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="filter[1]" src="/assets/2015/8/integration-with-azure-service-bus/filter1_thumb.png" alt="filter[1]" width="92" height="79" align="left" border="0" /></a>Always filter subscription!  This is the only way to ensure future compatibility.  Make sure you specify what you want to consume.
 
 Also, and I noticed only too late while going into production:  filtering gives you a massive efficiency boost under load.
 
@@ -83,7 +83,7 @@ If order is important for some messages, regroup them under a same topic.
 
 We ended up segmenting topics along enterprise data domains and it worked fine.  It really depends what type of data transits on your bus.
 <h3>Multiplexing on Sessions</h3>
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image49.png"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb49.png" alt="image" width="281" height="103" align="right" border="0" /></a>A problem we faced early on was due to caring a bit too much about order actually.
+<a href="/assets/2015/8/integration-with-azure-service-bus/image49.png"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/8/integration-with-azure-service-bus/image_thumb49.png" alt="image" width="281" height="103" align="right" border="0" /></a>A problem we faced early on was due to caring a bit too much about order actually.
 
 We did consume one message at the time.  That could have performance issues but the volume wasn’t big, so that didn't hit us.
 

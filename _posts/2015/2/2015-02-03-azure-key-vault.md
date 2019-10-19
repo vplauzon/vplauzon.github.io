@@ -1,7 +1,7 @@
 ---
-title:  Azure Key Vault
-date:  2015-02-03 22:13:54 -05:00
-permalink:  "/2015/02/03/azure-key-vault/"
+title: Azure Key Vault
+date: 2015-02-03 22:13:54 -05:00
+permalink: /2015/02/03/azure-key-vault/
 categories:
 - Solution
 tags:
@@ -15,7 +15,7 @@ Indeed, one of the weakness of the current Azure Paas solution I pointed out las
 
 I was suggesting, as a solution, to create a Secret Gateway between your application and a secret vault.
 
-<a href="http://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/"><img src="http://vincentlauzon.files.wordpress.com/2015/02/020415_0333_azurekeyvau1.jpg" alt="" align="left" border="0" /></a>Essentially, <a href="http://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/">Azure Key Vault</a> fulfils the <em>secret vault</em> part and a part of the <em>Secret Gateway</em> too.
+<a href="http://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/"><img src="/assets/2015/2/azure-key-vault/020415_0333_azurekeyvau1.jpg" alt="" align="left" border="0" /></a>Essentially, <a href="http://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/">Azure Key Vault</a> fulfils the <em>secret vault</em> part and a part of the <em>Secret Gateway</em> too.
 
 Azure Key Vault, a new Azure Service currently (as of early February 2015) in Preview mode, allows you to store keys and other secret in a vault.
 
@@ -23,7 +23,7 @@ One of the interesting feature of Azure Key Vault is that, as a consumer, you au
 
 The vault also allows you to perform some cryptographic operation on your behalf, e.g. encrypting data using a key stored in the vault. This enables scenarios where the consuming application never knows about the encrypting keys. This is why I say that Azure Key Vault performs some functions I described for the <em>Secret Gateway</em>.
 
-<img src="http://vincentlauzon.files.wordpress.com/2015/02/020415_0333_azurekeyvau2.jpg" alt="" align="right" />I see many advantages of using Azure Key Vault. Here are the ones that come on the top of my head:
+<img src="/assets/2015/2/azure-key-vault/020415_0333_azurekeyvau2.jpg" alt="" align="right" />I see many advantages of using Azure Key Vault. Here are the ones that come on the top of my head:
 <ul>
 	<li>Limit the amount of secrets stored in your application configuration file</li>
 	<li>Centralize the management of secrets: a key is compromised and you want to change it, no more need to chase the config files storing it, simply change it in one place in the vault.</li>

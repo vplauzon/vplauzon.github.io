@@ -1,7 +1,7 @@
 ---
-title:  Automating Azure AD
-date:  2017-02-02 17:23:22 -05:00
-permalink:  "/2017/02/02/automating-azure-ad/"
+title: Automating Azure AD
+date: 2017-02-02 17:23:22 -05:00
+permalink: /2017/02/02/automating-azure-ad/
 categories:
 - Solution
 tags:
@@ -9,7 +9,7 @@ tags:
 - Identity
 - Security
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2017/02/machine-1651014_1920.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="Automation" src="http://vincentlauzon.files.wordpress.com/2017/02/machine-1651014_1920_thumb.jpg" alt="https://pixabay.com/en/machine-factory-automation-1651014/" width="400" height="268" align="right" border="0" /></a>
+<a href="/assets/2017/2/automating-azure-ad/machine-1651014_1920.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="Automation" src="/assets/2017/2/automating-azure-ad/machine-1651014_1920_thumb.jpg" alt="https://pixabay.com/en/machine-factory-automation-1651014/" width="400" height="268" align="right" border="0" /></a>
 
 In the <a href="https://vincentlauzon.com/2017/01/31/using-microsoft-graph-api-to-interact-with-azure-ad/" target="_blank">previous article</a>, we explored how to interact (read / write) to an Azure AD tenant using Microsoft Graph API.
 
@@ -59,7 +59,7 @@ You can see the documentation on the <a href="https://docs.microsoft.com/en-us/p
 
 Where do we take our tenant ID?
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/02/image.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/02/image_thumb.png" alt="image" border="0" /></a>
+<a href="/assets/2017/2/automating-azure-ad/image.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="/assets/2017/2/automating-azure-ad/image_thumb.png" alt="image" border="0" /></a>
 
 Now we can go and create applications.
 <h2>Service-Client</h2>
@@ -140,7 +140,7 @@ On an empty tenant, there should be nothing returned.  Unfortunately, there are
 
 So the manual step is, in the portal, to go in the MyLegacyClient App, select <em>Required Permissions</em> then click the <em>Grant Permissions</em> button.
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/02/image1.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/02/image_thumb1.png" alt="image" border="0" /></a>
+<a href="/assets/2017/2/automating-azure-ad/image1.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="/assets/2017/2/automating-azure-ad/image_thumb1.png" alt="image" border="0" /></a>
 
 Once we’ve done this we can run the same PowerShell command, i.e.
 
@@ -150,7 +150,7 @@ Get-AzureADOAuth2PermissionGrant
 
 and have two entries now.
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/02/image2.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/02/image_thumb2.png" alt="image" border="0" /></a>
+<a href="/assets/2017/2/automating-azure-ad/image2.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="/assets/2017/2/automating-azure-ad/image_thumb2.png" alt="image" border="0" /></a>
 
 We see the two permissions we attached to <em>MyLegacyClient</em>.
 

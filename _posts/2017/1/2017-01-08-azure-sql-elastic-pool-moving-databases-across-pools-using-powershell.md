@@ -1,7 +1,7 @@
 ---
-title:  Azure SQL Elastic Pool – Moving databases across pools using PowerShell
-date:  2017-01-08 19:00:17 -05:00
-permalink:  "/2017/01/08/azure-sql-elastic-pool-moving-databases-across-pools-using-powershell/"
+title: Azure SQL Elastic Pool – Moving databases across pools using PowerShell
+date: 2017-01-08 19:00:17 -05:00
+permalink: /2017/01/08/azure-sql-elastic-pool-moving-databases-across-pools-using-powershell/
 categories:
 - Solution
 tags:
@@ -9,7 +9,7 @@ tags:
 - Data
 - PowerShell
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2016/12/hand-truck-564242_6401.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="hand-truck-564242_640[1]" src="http://vincentlauzon.files.wordpress.com/2016/12/hand-truck-564242_6401_thumb.jpg" alt="hand-truck-564242_640[1]" width="240" height="240" align="right" border="0" /></a>
+<a href="/assets/2017/1/azure-sql-elastic-pool-moving-databases-across-pools-using-powershell/hand-truck-564242_6401.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="hand-truck-564242_640[1]" src="/assets/2017/1/azure-sql-elastic-pool-moving-databases-across-pools-using-powershell/hand-truck-564242_6401_thumb.jpg" alt="hand-truck-564242_640[1]" width="240" height="240" align="right" border="0" /></a>
 
 I’ve written a bit about Azure SQL Elastic Pool lately:  an <a href="http://vincentlauzon.com/2016/12/18/azure-sql-elastic-pool-overview/">overview</a>, about <a href="http://vincentlauzon.com/2016/12/21/azure-sql-elastic-pool-arm-templates/">ARM template</a> and about <a href="http://vincentlauzon.com/2017/01/04/azure-sql-elastic-pool-database-size/">database size</a>.
 
@@ -37,7 +37,7 @@ $old
 
 We can see the pool current edition is <em>Standard</em> while its Data Transaction Unit (DTU) count is 200.
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/12/image20.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/12/image_thumb20.png" alt="image" width="640" height="359" border="0" /></a>
+<a href="/assets/2017/1/azure-sql-elastic-pool-moving-databases-across-pools-using-powershell/image20.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="/assets/2017/1/azure-sql-elastic-pool-moving-databases-across-pools-using-powershell/image_thumb20.png" alt="image" width="640" height="359" border="0" /></a>
 <h2>Create a temporary pool</h2>
 We’ll create a temporary pool, aptly named <em>temporary</em>, attached to the same server:
 

@@ -1,7 +1,7 @@
 ---
-title:  Using WCF for exposing and consuming OData
-date:  2010-12-10 18:28:00 -05:00
-permalink:  "/2010/12/10/using-wcf-for-exposing-and-consuming-odata/"
+title: Using WCF for exposing and consuming OData
+date: 2010-12-10 18:28:00 -05:00
+permalink: /2010/12/10/using-wcf-for-exposing-and-consuming-odata/
 categories:
 - Solution
 tags:

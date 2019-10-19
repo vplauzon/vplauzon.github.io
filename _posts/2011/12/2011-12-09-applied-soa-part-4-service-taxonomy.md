@@ -1,7 +1,7 @@
 ---
-title:  Applied SOA: Part 4 – Service Taxonomy
-date:  2011-12-09 20:27:00 -05:00
-permalink:  "/2011/12/09/applied-soa-part-4-service-taxonomy/"
+title: 'Applied SOA: Part 4 – Service Taxonomy'
+date: 2011-12-09 20:27:00 -05:00
+permalink: /2011/12/09/applied-soa-part-4-service-taxonomy/
 categories:
 - Solution
 tags:

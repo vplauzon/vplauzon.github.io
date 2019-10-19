@@ -1,7 +1,7 @@
 ---
-title:  Stategic Data, Infonomics & Big Data
-date:  2016-01-17 19:00:09 -05:00
-permalink:  "/2016/01/17/stategic-data-infonomics-big-data/"
+title: Stategic Data, Infonomics & Big Data
+date: 2016-01-17 19:00:09 -05:00
+permalink: /2016/01/17/stategic-data-infonomics-big-data/
 categories:
 - Solution
 - Strategy
@@ -11,7 +11,7 @@ tags:
 ---
 <b><i>UPDATE (19-01-2016):  Have a look at <a href="http://vincentlauzon.com/about/azure-data-lake/">Azure Data Lake series </a>for more posts on Azure Data Lake.</i></b>
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/01/big-data-analytics1.jpg"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="From http://www.realwire.com/" src="http://vincentlauzon.files.wordpress.com/2016/01/big-data-analytics1_thumb.jpg" alt="From http://www.realwire.com/" width="240" height="166" align="left" border="0" /></a>I wanted to talk a bit about your Strategic Data &amp; the concept of <a href="https://en.wikipedia.org/wiki/Data_lake" target="_blank">Data Lake</a> (regardless of its implementation).
+<a href="/assets/2016/1/stategic-data-infonomics-big-data/big-data-analytics1.jpg"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="From http://www.realwire.com/" src="/assets/2016/1/stategic-data-infonomics-big-data/big-data-analytics1_thumb.jpg" alt="From http://www.realwire.com/" width="240" height="166" align="left" border="0" /></a>I wanted to talk a bit about your Strategic Data &amp; the concept of <a href="https://en.wikipedia.org/wiki/Data_lake" target="_blank">Data Lake</a> (regardless of its implementation).
 
 Nowaday, data is seen less and less as a commodity, as a byproduct of running systems.  More &amp; more it is seen as an asset.  For some tech giant, data is their lifeblood, their treasure chest.
 
@@ -29,7 +29,7 @@ Now Infonomics is an emerging discipline and appears is stark contrast with toda
 <h2>Today’s data strategy</h2>
 Today, Enterprise data is centered around systems managing them (e.g. ERP, CRM, payroll, corporate CMS, etc.) and is therefore silo-ed within those systems.  The data is captured, stored &amp; analyzed within those systems.
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/01/image11.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb11.png" alt="image" width="1008" height="710" border="0" /></a>
+<a href="/assets/2016/1/stategic-data-infonomics-big-data/image11.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="/assets/2016/1/stategic-data-infonomics-big-data/image_thumb11.png" alt="image" width="1008" height="710" border="0" /></a>
 
 This model leverages the strength of each Enterprise system in managing the data it produces, with the intimate knowledge of that data.  Of course the major weakness of that model is that data exist in silos which produces various problems ranging from irritants to strategic problems.  To name just a few:
 <ul>
@@ -41,11 +41,11 @@ Different strategies can be put in place to mitigate those issues.
 
 A common one is to integrate different systems together, i.e. passing data from one system to another via some interfaces, either real-time, near real-time or in offline batches.  This approach helps each system have their own view of the world and keep the illusion that they are the center of your world.
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/01/image12.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb12.png" alt="image" width="640" height="451" border="0" /></a>
+<a href="/assets/2016/1/stategic-data-infonomics-big-data/image12.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="/assets/2016/1/stategic-data-infonomics-big-data/image_thumb12.png" alt="image" width="640" height="451" border="0" /></a>
 
 Another strategy is to integrate data outside those systems, either in a Data warehouse or in a Master Data Management (MDM) system.  This approach recognizes that no system has a complete view of your strategic data and creates this view outside those systems.  It has the main advantage of freeing you from some of the constraints of each system to get a general view of the data.
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/01/image13.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb13.png" alt="image" width="524" height="480" border="0" /></a>
+<a href="/assets/2016/1/stategic-data-infonomics-big-data/image13.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="/assets/2016/1/stategic-data-infonomics-big-data/image_thumb13.png" alt="image" width="524" height="480" border="0" /></a>
 
 Now what those data integration avenue have in common is:
 <ul>
@@ -68,7 +68,7 @@ Because it is raw data, it doesn’t have all the project cost related to data w
 
 The idea is that you migrate all your strategic data into a Data Lake, that is you copy it over.  Once there you can later run analytics on it, in discovery mode (small teams, data science) first and later once you found value, in a more structure approach.
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/01/image14.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb14.png" alt="image" width="443" height="480" border="0" /></a>
+<a href="/assets/2016/1/stategic-data-infonomics-big-data/image14.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="/assets/2016/1/stategic-data-infonomics-big-data/image_thumb14.png" alt="image" width="443" height="480" border="0" /></a>
 
 The majors advantages of a Data Lake are:
 <ul>

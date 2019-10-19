@@ -1,7 +1,7 @@
 ---
-title:  ADFS 2.0 Step by Step and How To guides
-date:  2010-11-23 07:57:00 -05:00
-permalink:  "/2010/11/23/adfs-2-0-step-by-step-and-how-to-guides/"
+title: ADFS 2.0 Step by Step and How To guides
+date: 2010-11-23 07:57:00 -05:00
+permalink: /2010/11/23/adfs-2-0-step-by-step-and-how-to-guides/
 categories:
 - Solution
 tags:

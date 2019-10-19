@@ -1,7 +1,7 @@
 ---
-title:  My JSON gets serialized in a string - Logic Apps
-date:  2019-03-06 06:30:58 -05:00
-permalink:  "/2019/03/06/my-json-gets-serialized-in-a-string-logic-apps/"
+title: My JSON gets serialized in a string - Logic Apps
+date: 2019-03-06 06:30:58 -05:00
+permalink: /2019/03/06/my-json-gets-serialized-in-a-string-logic-apps/
 categories:
 - Solution
 tags:

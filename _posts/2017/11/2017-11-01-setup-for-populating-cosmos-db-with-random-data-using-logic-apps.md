@@ -1,7 +1,7 @@
 ---
-title:  Setup for populating Cosmos DB with random data using Logic Apps
-date:  2017-11-01 12:00:22 -04:00
-permalink:  "/2017/11/01/setup-for-populating-cosmos-db-with-random-data-using-logic-apps/"
+title: Setup for populating Cosmos DB with random data using Logic Apps
+date: 2017-11-01 12:00:22 -04:00
+permalink: /2017/11/01/setup-for-populating-cosmos-db-with-random-data-using-logic-apps/
 categories:
 - Solution
 tags:
@@ -11,7 +11,7 @@ tags:
 - NoSQL
 - Serverless
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2017/10/pexels-photo-2679681.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="pexels-photo-267968[1]" src="http://vincentlauzon.files.wordpress.com/2017/10/pexels-photo-2679681_thumb.jpg" alt="pexels-photo-267968[1]" width="320" height="180" align="left" border="0" /></a>We recently published an article about <a href="https://vincentlauzon.com/2017/10/25/cosmos-db-performance-with-geospatial-data/">Cosmos DB Performance with Geospatial Data</a>.
+<a href="/assets/2017/11/setup-for-populating-cosmos-db-with-random-data-using-logic-apps/pexels-photo-2679681.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="pexels-photo-267968[1]" src="/assets/2017/11/setup-for-populating-cosmos-db-with-random-data-using-logic-apps/pexels-photo-2679681_thumb.jpg" alt="pexels-photo-267968[1]" width="320" height="180" align="left" border="0" /></a>We recently published an article about <a href="https://vincentlauzon.com/2017/10/25/cosmos-db-performance-with-geospatial-data/">Cosmos DB Performance with Geospatial Data</a>.
 
 In this article, we’re going to explain how to setup the environment in order to run those performance test.
 
@@ -64,11 +64,11 @@ Let’s open the Cosmos DB Account resource created by the ARM template.
 
 Let’s go to the Data Explorer tab.
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/10/image8.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/10/image_thumb8.png" alt="image" border="0" /></a>
+<a href="/assets/2017/11/setup-for-populating-cosmos-db-with-random-data-using-logic-apps/image8.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2017/11/setup-for-populating-cosmos-db-with-random-data-using-logic-apps/image_thumb8.png" alt="image" border="0" /></a>
 
 Let’s then select <em>New Collection</em> and fill the form this way:
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/10/image9.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/10/image_thumb9.png" alt="image" border="0" /></a>
+<a href="/assets/2017/11/setup-for-populating-cosmos-db-with-random-data-using-logic-apps/image9.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2017/11/setup-for-populating-cosmos-db-with-random-data-using-logic-apps/image_thumb9.png" alt="image" border="0" /></a>
 
 There are a few important fields in there:
 
@@ -83,11 +83,11 @@ There are a few important fields in there:
 
 While still being in the <em>Data Explorer</em>, let’s select the <em>Scale &amp; Settings</em> of our collection:
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/10/image10.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/10/image_thumb10.png" alt="image" border="0" /></a>
+<a href="/assets/2017/11/setup-for-populating-cosmos-db-with-random-data-using-logic-apps/image10.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2017/11/setup-for-populating-cosmos-db-with-random-data-using-logic-apps/image_thumb10.png" alt="image" border="0" /></a>
 
 At the bottom of the pane, let’s edit the Indexing Policy:
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/10/image11.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/10/image_thumb11.png" alt="image" border="0" /></a>
+<a href="/assets/2017/11/setup-for-populating-cosmos-db-with-random-data-using-logic-apps/image11.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2017/11/setup-for-populating-cosmos-db-with-random-data-using-logic-apps/image_thumb11.png" alt="image" border="0" /></a>
 
 Geospatial data isn’t indexed by default.  We therefore need to add at least the “Point” data type for indexing.
 
@@ -99,7 +99,7 @@ It is important to do this before loading the data so the data is indexed on loa
 
 While still being in the <em>Data Explorer</em>, let’s select <em>New Stored Procedure</em>:
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/10/image12.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/10/image_thumb12.png" alt="image" border="0" /></a>
+<a href="/assets/2017/11/setup-for-populating-cosmos-db-with-random-data-using-logic-apps/image12.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2017/11/setup-for-populating-cosmos-db-with-random-data-using-logic-apps/image_thumb12.png" alt="image" border="0" /></a>
 
 Let’s enter <em>createRecords</em> as <em>Stored Procedure Id</em>.
 
@@ -111,7 +111,7 @@ Click <em>Save</em>.
 
 Before going into the Logic App, let’s beef up the Request Units (RUs) of our collection.
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/10/image14.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/10/image_thumb14.png" alt="image" border="0" /></a>
+<a href="/assets/2017/11/setup-for-populating-cosmos-db-with-random-data-using-logic-apps/image14.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2017/11/setup-for-populating-cosmos-db-with-random-data-using-logic-apps/image_thumb14.png" alt="image" border="0" /></a>
 
 We suggest boosting it to the maximum, i.e. 100 000.
 
@@ -121,13 +121,13 @@ Then click <em>Save</em>.
 
 Let’s open the Logic App in the same Azure Resource Group.
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/10/image13.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/10/image_thumb13.png" alt="image" border="0" /></a>
+<a href="/assets/2017/11/setup-for-populating-cosmos-db-with-random-data-using-logic-apps/image13.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2017/11/setup-for-populating-cosmos-db-with-random-data-using-logic-apps/image_thumb13.png" alt="image" border="0" /></a>
 
 The whole point for using Logic Apps here is to have a component that will invoke Cosmos DB stored procedures in parallel in a reliable fashion.
 
 Let’s click on <em>Run Trigger</em> and then <em>manual</em> (in the sub menu).
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/10/image16.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/10/image_thumb16.png" alt="image" border="0" /></a>
+<a href="/assets/2017/11/setup-for-populating-cosmos-db-with-random-data-using-logic-apps/image16.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2017/11/setup-for-populating-cosmos-db-with-random-data-using-logic-apps/image_thumb16.png" alt="image" border="0" /></a>
 
 A run calls the stored procedures 4000 times and take about 5-6 minutes to do so.
 

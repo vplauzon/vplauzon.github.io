@@ -1,9 +1,9 @@
 ---
-title:  Microsoft Support for Windows Azure:  A+
-date:  2010-09-02 13:25:01 -04:00
-permalink:  "/2010/09/02/microsoft-support-for-windows-azure-a/"
+title: 'Microsoft Support for Windows Azure:  A+'
+date: 2010-09-02 13:25:01 -04:00
+permalink: /2010/09/02/microsoft-support-for-windows-azure-a/
 categories:
 - Logistic
-tags:  []
+tags: []
 ---
 <p>The other day I found myself having an issue while finalizing a <a href="http://vincentlauzon.wordpress.com/2010/08/25/departmental-application-migration-to-azure-part-4-adfs-with-azure-web-app/">proof of concept</a> on Windows Azure.</p>  <p>I was unable to deploy my solution.&#160; It was staying in initialization / stop / pending cycle forever.</p>  <p>After a while (a few days), having tried different combination of staging / production, manual / Visual Studio deployment, etc., I went to look for help online then support.</p>  <p>I filed a request for support and give all the details I thought were pertinent.&#160; I mentioned it wasn’t urgent, ie there was no business process impacted (proof of concepts are pretty low in business processes).</p>  <p>I let it sleep.&#160; I thought I might get an email in 1-2 weeks.</p>  <p>The next day in the morning, I got a call from their support!&#160; The guy opened a ticket and asked me permission to look at my account.&#160; In the discussion I discovered the origin of this <a href="http://www.netlingo.com/word/code-18.php">code 18</a>:&#160; I forgot to copy locally the WIF assemblies, so they were not deployed to the cloud and hence, the application was unable to start (the <em>web.config</em> was unable to load I suppose, since one of the section is defined in those assemblies).</p>  <p>But my point is that the bloke didn’t drop the ball at any time.&#160; He suggested a resolution, was ready to open my account and look into the problem himself, followed-up by email, etc.&#160; .&#160; Just excellent service!</p>  <p>I don’t know if it will continue like that with time, but so far, that just boosted my confidence in the platform.&#160; To know that there is such an enterprise-class support as a safety net is quite reassuring!&#160; I dealt with third party hosting facilities and I never came across anything like that.</p>  <p>So I gave A+ to Windows Azure support.&#160; Well done!</p>

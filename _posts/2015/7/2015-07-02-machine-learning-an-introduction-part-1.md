@@ -1,7 +1,7 @@
 ---
-title:  Machine Learning - An introduction - Part 1
-date:  2015-07-02 06:30:27 -04:00
-permalink:  "/2015/07/02/machine-learning-an-introduction-part-1/"
+title: Machine Learning - An introduction - Part 1
+date: 2015-07-02 06:30:27 -04:00
+permalink: /2015/07/02/machine-learning-an-introduction-part-1/
 categories:
 - Solution
 tags:
@@ -40,11 +40,11 @@ Now of course, this is a very simplified model, a very naïve one.  There are m
 
 Let's look at some <a href="http://wiki.stat.ucla.edu/socr/index.php/SOCR_Data_Dinov_020108_HeightsWeights" target="_blank">sample data </a>I found on the web.  I've entered the data in my #1 analysis tool, Excel, and plotted it:
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/06/image71.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image[7]" src="http://vincentlauzon.files.wordpress.com/2015/06/image7_thumb1.png" alt="image[7]" width="485" height="428" border="0" /></a>
+<a href="/assets/2015/7/machine-learning-an-introduction-part-1/image71.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image[7]" src="/assets/2015/7/machine-learning-an-introduction-part-1/image7_thumb1.png" alt="image[7]" width="485" height="428" border="0" /></a>
 
 We can see a nice cloud of data and we could guess there is sort of a linear relationship between the height and the weight.  That is, there is a line sort of carrying this cloud.  Now the question I'll ask you is:  where would you put the line?
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/06/image111.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image[11]" src="http://vincentlauzon.files.wordpress.com/2015/06/image11_thumb1.png" alt="image[11]" width="875" height="772" border="0" /></a>
+<a href="/assets/2015/7/machine-learning-an-introduction-part-1/image111.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image[11]" src="/assets/2015/7/machine-learning-an-introduction-part-1/image11_thumb1.png" alt="image[11]" width="875" height="772" border="0" /></a>
 
 I've hand drawn 4 lines.  The two bottom ones aren't very convincing, but what about the two top ones?  Which one would you choose and why?  What criteria do you use?
 <h3>The mathematical problem</h3>
@@ -70,7 +70,7 @@ A cost function of a given model on a data set is the sum of the cost function a
 
 In our example, an intuitive cost function would be the distance of a sample point to the line.  After all, we want the line to be "in the thick" of the cloud, ideally (impossible here) the points should all lie on the line.  The distances is represented by the green lines on the follow graph (I’ve just plotted the first 3 data points for clarity).
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/06/image2.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/06/image_thumb2.png" alt="image" width="484" height="293" border="0" /></a>
+<a href="/assets/2015/7/machine-learning-an-introduction-part-1/image2.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="/assets/2015/7/machine-learning-an-introduction-part-1/image_thumb2.png" alt="image" width="484" height="293" border="0" /></a>
 
 To make a story short, a more tractable cost function is the square of the distance measured on the y-axis:
 

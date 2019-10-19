@@ -1,14 +1,14 @@
 ---
-title:  Quantum Computing - How does it scale?
-date:  2018-03-21 06:30:14 -04:00
-permalink:  "/2018/03/21/quantum-computing-how-does-it-scale/"
+title: Quantum Computing - How does it scale?
+date: 2018-03-21 06:30:14 -04:00
+permalink: /2018/03/21/quantum-computing-how-does-it-scale/
 categories:
 - Solution
 tags:
 - Mathematics
 - Quantum
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2018/03/fractal-1240809_640.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="fractal-1240809_640" src="http://vincentlauzon.files.wordpress.com/2018/03/fractal-1240809_640_thumb.jpg" alt="fractal-1240809_640" width="320" height="180" align="right" border="0" /></a>We recently looked at <a href="https://vincentlauzon.com/2018/03/07/quantum-computing-value-proposition/">Quantum Computing value proposition</a>.  We then looked at <a href="https://vincentlauzon.com/2018/03/14/quantum-computing-scenarios/">scenarios where Quantum Computing would have a big impact</a>.
+<a href="/assets/2018/3/quantum-computing-how-does-it-scale/fractal-1240809_640.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="fractal-1240809_640" src="/assets/2018/3/quantum-computing-how-does-it-scale/fractal-1240809_640_thumb.jpg" alt="fractal-1240809_640" width="320" height="180" align="right" border="0" /></a>We recently looked at <a href="https://vincentlauzon.com/2018/03/07/quantum-computing-value-proposition/">Quantum Computing value proposition</a>.  We then looked at <a href="https://vincentlauzon.com/2018/03/14/quantum-computing-scenarios/">scenarios where Quantum Computing would have a big impact</a>.
 
 Quantum Computer can solve some problems by several order of magnitude. This brings today’s intractable problems to be easy to solve tomorrow.
 

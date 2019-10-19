@@ -1,7 +1,7 @@
 ---
-title:  Web Design:  Make Complex thing Simple
-date:  2012-11-20 19:05:00 -05:00
-permalink:  "/2012/11/20/web-design-make-complex-thing-simple/"
+title: 'Web Design:  Make Complex thing Simple'
+date: 2012-11-20 19:05:00 -05:00
+permalink: /2012/11/20/web-design-make-complex-thing-simple/
 categories:
 - Solution
 tags:

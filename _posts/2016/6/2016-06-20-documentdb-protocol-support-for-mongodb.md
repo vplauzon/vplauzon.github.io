@@ -1,14 +1,14 @@
 ---
-title:  DocumentDB protocol support for MongoDB
-date:  2016-06-20 20:23:21 -04:00
-permalink:  "/2016/06/20/documentdb-protocol-support-for-mongodb/"
+title: DocumentDB protocol support for MongoDB
+date: 2016-06-20 20:23:21 -04:00
+permalink: /2016/06/20/documentdb-protocol-support-for-mongodb/
 categories:
 - Solution
 tags:
 - Data
 - NoSQL
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2016/06/pexels-photo-91413.jpg"><img style="background-image:none;float:left;padding-top:0;padding-left:0;margin:0 10px 0 0;display:inline;padding-right:0;border:0;" title="pexels-photo-91413" src="http://vincentlauzon.files.wordpress.com/2016/06/pexels-photo-91413_thumb.jpg" alt="pexels-photo-91413" width="640" height="427" align="left" border="0" /></a>Microsoft announced, in the wake of many DocumentDB announcement, that <a href="https://azure.microsoft.com/en-us/documentation/articles/documentdb-protocol-mongodb/" target="_blank">DocumentDB would support MongoDB protocol</a>.
+<a href="/assets/2016/6/documentdb-protocol-support-for-mongodb/pexels-photo-91413.jpg"><img style="background-image:none;float:left;padding-top:0;padding-left:0;margin:0 10px 0 0;display:inline;padding-right:0;border:0;" title="pexels-photo-91413" src="/assets/2016/6/documentdb-protocol-support-for-mongodb/pexels-photo-91413_thumb.jpg" alt="pexels-photo-91413" width="640" height="427" align="left" border="0" /></a>Microsoft announced, in the wake of many DocumentDB announcement, that <a href="https://azure.microsoft.com/en-us/documentation/articles/documentdb-protocol-mongodb/" target="_blank">DocumentDB would support MongoDB protocol</a>.
 
 What does that mean?
 

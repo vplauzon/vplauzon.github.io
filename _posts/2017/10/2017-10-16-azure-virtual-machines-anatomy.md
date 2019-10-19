@@ -1,14 +1,14 @@
 ---
-title:  Azure Virtual Machines Anatomy
-date:  2017-10-16 06:00:38 -04:00
-permalink:  "/2017/10/16/azure-virtual-machines-anatomy/"
+title: Azure Virtual Machines Anatomy
+date: 2017-10-16 06:00:38 -04:00
+permalink: /2017/10/16/azure-virtual-machines-anatomy/
 categories:
 - Solution
 tags:
 - Networking
 - Virtual Machines
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2017/10/hand-2194170_640.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="hand-2194170_640" src="http://vincentlauzon.files.wordpress.com/2017/10/hand-2194170_640_thumb.jpg" alt="hand-2194170_640" width="320" height="213" align="right" border="0" /></a>Virtual Machines can be pretty complex little beast.  They can have multiple disks, multiple NICs in different subnets, can be exposed on the public internet either directly or through a load balancer, etc.  .
+<a href="/assets/2017/10/azure-virtual-machines-anatomy/hand-2194170_640.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="hand-2194170_640" src="/assets/2017/10/azure-virtual-machines-anatomy/hand-2194170_640_thumb.jpg" alt="hand-2194170_640" width="320" height="213" align="right" border="0" /></a>Virtual Machines can be pretty complex little beast.  They can have multiple disks, multiple NICs in different subnets, can be exposed on the public internet either directly or through a load balancer, etc.  .
 
 In this article, we’ll look at the anatomy of a Virtual Machine (VM):  what are the components it relates to.
 
@@ -16,7 +16,7 @@ We look at the Azure Resource Model (ARM) version of Virtual Machine, as opposed
 <h2>Internal Resource Model</h2>
 Here is component diagram.  It shows the different components, their relationship and the cardinality of the relationships.
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/10/image2.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/10/image_thumb2.png" alt="image" border="0" /></a>
+<a href="/assets/2017/10/azure-virtual-machines-anatomy/image2.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2017/10/azure-virtual-machines-anatomy/image_thumb2.png" alt="image" border="0" /></a>
 <h3>Virtual Machine</h3>
 Of course, the Virtual Machine is at the center of this diagram.  We look at the other resources in relationship to a Virtual Machine.
 <h3>Availability Set</h3>
@@ -54,7 +54,7 @@ A private load balancer forwards traffic to multiple NICs like a public load bal
 
 A private load balancer isn’t associated to a public IP though.  It has a private IP address instead and is therefore part of a subnet.
 <h2>Cast in stone</h2>
-<a href="http://vincentlauzon.files.wordpress.com/2017/10/pexels-photo-961271.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="pexels-photo-96127[1]" src="http://vincentlauzon.files.wordpress.com/2017/10/pexels-photo-961271_thumb.jpg" alt="pexels-photo-96127[1]" width="320" height="213" align="left" border="0" /></a>We looked at VM components.  That gives us a static view of what a VM is.
+<a href="/assets/2017/10/azure-virtual-machines-anatomy/pexels-photo-961271.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="pexels-photo-96127[1]" src="/assets/2017/10/azure-virtual-machines-anatomy/pexels-photo-961271_thumb.jpg" alt="pexels-photo-96127[1]" width="320" height="213" align="left" border="0" /></a>We looked at VM components.  That gives us a static view of what a VM is.
 
 Another interesting aspect is the dynamic nature of a VM.  What can change and what cannot?
 

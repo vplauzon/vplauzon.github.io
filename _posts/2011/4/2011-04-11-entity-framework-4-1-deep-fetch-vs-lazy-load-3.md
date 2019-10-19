@@ -1,7 +1,7 @@
 ---
-title:  Entity Framework 4.1: Deep Fetch vs Lazy Load (3)
-date:  2011-04-11 20:47:00 -04:00
-permalink:  "/2011/04/11/entity-framework-4-1-deep-fetch-vs-lazy-load-3/"
+title: 'Entity Framework 4.1: Deep Fetch vs Lazy Load (3)'
+date: 2011-04-11 20:47:00 -04:00
+permalink: /2011/04/11/entity-framework-4-1-deep-fetch-vs-lazy-load-3/
 categories:
 - Solution
 tags:

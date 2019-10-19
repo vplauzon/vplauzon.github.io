@@ -1,7 +1,7 @@
 ---
-title:  New Microsoft Services Single Sign-In UX
-date:  2013-02-07 11:03:55 -05:00
-permalink:  "/2013/02/07/new-microsoft-services-single-sign-in-ux/"
+title: New Microsoft Services Single Sign-In UX
+date: 2013-02-07 11:03:55 -05:00
+permalink: /2013/02/07/new-microsoft-services-single-sign-in-ux/
 categories:
 - Solution
 tags:

@@ -1,7 +1,7 @@
 ---
-title:  Authenticating an Azure service principal
-date:  2019-05-22 06:30:57 -04:00
-permalink:  "/2019/05/22/authenticating-an-azure-service-principal/"
+title: Authenticating an Azure service principal
+date: 2019-05-22 06:30:57 -04:00
+permalink: /2019/05/22/authenticating-an-azure-service-principal/
 categories:
 - Solution
 tags:

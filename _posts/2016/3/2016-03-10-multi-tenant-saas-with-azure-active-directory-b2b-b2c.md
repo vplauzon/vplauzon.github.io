@@ -1,7 +1,7 @@
 ---
-title:  Multi-Tenant SaaS with Azure Active Directory B2B & B2C
-date:  2016-03-10 23:02:09 -05:00
-permalink:  "/2016/03/10/multi-tenant-saas-with-azure-active-directory-b2b-b2c/"
+title: Multi-Tenant SaaS with Azure Active Directory B2B & B2C
+date: 2016-03-10 23:02:09 -05:00
+permalink: /2016/03/10/multi-tenant-saas-with-azure-active-directory-b2b-b2c/
 categories:
 - Solution
 tags:
@@ -29,7 +29,7 @@ AAD B2C allows AAD to integrate with social networks:
 </ul>
 This means your AAD won’t be authenticating the users, those social networks will.  But, AAD will still be logging in the users.  This means your application integrates with only one identity provider, which in turns integrates with many.  It therefore federates identities from different sources.
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/03/image5.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/03/image_thumb5.png" alt="image" width="640" height="309" border="0" /></a>
+<a href="/assets/2016/3/multi-tenant-saas-with-azure-active-directory-b2b-b2c/image5.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="/assets/2016/3/multi-tenant-saas-with-azure-active-directory-b2b-b2c/image_thumb5.png" alt="image" width="640" height="309" border="0" /></a>
 
 You <a href="https://azure.microsoft.com/en-us/documentation/articles/active-directory-b2c-reference-ui-customization/" target="_blank">stay in control</a> of the entire onboarding, login &amp; other User Experience (UX) integration with social network by customizing those UX.
 
@@ -43,7 +43,7 @@ You can see an <a href="https://azure.microsoft.com/en-us/documentation/videos/a
 
 AAD B2C is actually a special type of AAD.  You have to decide at creation if you want an AAD B2C or not.
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/03/image6.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/03/image_thumb6.png" alt="image" width="640" height="477" border="0" /></a>
+<a href="/assets/2016/3/multi-tenant-saas-with-azure-active-directory-b2b-b2c/image6.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="/assets/2016/3/multi-tenant-saas-with-azure-active-directory-b2b-b2c/image_thumb6.png" alt="image" width="640" height="477" border="0" /></a>
 <h2>Business 2 Business</h2>
 AAD B2B allows you to bring identities from other AADs into your tenant and give them access to your applications.
 
@@ -51,7 +51,7 @@ This feature is free.
 
 Currently (mid March 2016), the only to import user accounts is by using CSV files.  This is done via the “Add User” window:  simply select <em>Users in partner companies</em> in the as the type of user.
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/03/image7.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/03/image_thumb7.png" alt="image" width="640" height="325" border="0" /></a>
+<a href="/assets/2016/3/multi-tenant-saas-with-azure-active-directory-b2b-b2c/image7.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="/assets/2016/3/multi-tenant-saas-with-azure-active-directory-b2b-b2c/image_thumb7.png" alt="image" width="640" height="325" border="0" /></a>
 
 You need to supply a <a href="https://azure.microsoft.com/en-us/documentation/articles/active-directory-b2b-references-csv-file-format/" target="_blank">CSV file with a given format</a>, i.e. with the following column names:
 <ul>
@@ -69,7 +69,7 @@ Only non-Microsoft accounts are accepted in those.
 
 Optionally you can specify the “InviteAppID” column.  This will add the user in the given App within your tenant.
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/03/image8.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/03/image_thumb8.png" alt="image" width="640" height="373" border="0" /></a>
+<a href="/assets/2016/3/multi-tenant-saas-with-azure-active-directory-b2b-b2c/image8.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="/assets/2016/3/multi-tenant-saas-with-azure-active-directory-b2b-b2c/image_thumb8.png" alt="image" width="640" height="373" border="0" /></a>
 
 One of the advantage of importing the user account within your tenant is that you can assign it to groups within your tenant.
 
@@ -83,7 +83,7 @@ Having separate AAD segregates your SaaS tenants more strongly.  For instance, 
 
 Here is how it could look like.
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/03/image9.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/03/image_thumb9.png" alt="image" width="640" height="269" border="0" /></a>
+<a href="/assets/2016/3/multi-tenant-saas-with-azure-active-directory-b2b-b2c/image9.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border:0;" title="image" src="/assets/2016/3/multi-tenant-saas-with-azure-active-directory-b2b-b2c/image_thumb9.png" alt="image" width="640" height="269" border="0" /></a>
 
 <strong>Cust-X &amp; Cust-Y</strong> are the same scenario:  the customers do not have a corporate AAD, hence you rely on AAD B2C to store and federate identities.  You can then use AAD groups within the AAD B2C to control user membership and implement some application roles.
 

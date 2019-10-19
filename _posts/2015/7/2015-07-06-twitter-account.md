@@ -1,10 +1,10 @@
 ---
-title:  Twitter Account
-date:  2015-07-06 19:00:00 -04:00
-permalink:  "/2015/07/06/twitter-account/"
+title: Twitter Account
+date: 2015-07-06 19:00:00 -04:00
+permalink: /2015/07/06/twitter-account/
 categories:
 - Logistic
-tags:  []
+tags: []
 ---
 I finally gave in and I created <a href="https://twitter.com/vplauzon">my own Twitter account</a>.
 

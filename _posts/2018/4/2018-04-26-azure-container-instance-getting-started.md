@@ -1,7 +1,7 @@
 ---
-title:  Azure Container Instance - Getting Started
-date:  2018-04-26 06:30:12 -04:00
-permalink:  "/2018/04/26/azure-container-instance-getting-started/"
+title: Azure Container Instance - Getting Started
+date: 2018-04-26 06:30:12 -04:00
+permalink: /2018/04/26/azure-container-instance-getting-started/
 categories:
 - Solution
 tags:

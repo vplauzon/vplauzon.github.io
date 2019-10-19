@@ -1,7 +1,7 @@
 ---
-title:  Python Version in Databricks
-date:  2018-04-18 06:30:11 -04:00
-permalink:  "/2018/04/18/python-version-in-databricks/"
+title: Python Version in Databricks
+date: 2018-04-18 06:30:11 -04:00
+permalink: /2018/04/18/python-version-in-databricks/
 categories:
 - Solution
 tags:
@@ -34,7 +34,7 @@ In general, we would want to use version 3+.  We would fall back on version 2 i
 <h2>Python Version in Azure Databricks</h2>
 The Python version running in a cluster is a property of the cluster:
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/03/image6.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/03/image_thumb6.png" alt="image" border="0" /></a>
+<a href="/assets/2018/4/python-version-in-databricks/image6.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/4/python-version-in-databricks/image_thumb6.png" alt="image" border="0" /></a>
 
 As the time of this writing, i.e. end-of-March 2018, the default is version 2.
 

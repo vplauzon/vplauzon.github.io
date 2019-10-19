@@ -1,7 +1,7 @@
 ---
-title:  Azure Data Lake - Early look
-date:  2015-09-30 19:00:38 -04:00
-permalink:  "/2015/09/30/azure-data-lake-early-look/"
+title: Azure Data Lake - Early look
+date: 2015-09-30 19:00:38 -04:00
+permalink: /2015/09/30/azure-data-lake-early-look/
 categories:
 - Solution
 tags:

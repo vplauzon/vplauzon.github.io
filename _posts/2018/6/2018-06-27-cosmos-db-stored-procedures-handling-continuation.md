@@ -1,14 +1,14 @@
 ---
-title:  Cosmos DB Stored Procedures - handling continuation
-date:  2018-06-27 06:30:45 -04:00
-permalink:  "/2018/06/27/cosmos-db-stored-procedures-handling-continuation/"
+title: Cosmos DB Stored Procedures - handling continuation
+date: 2018-06-27 06:30:45 -04:00
+permalink: /2018/06/27/cosmos-db-stored-procedures-handling-continuation/
 categories:
 - Solution
 tags:
 - Data
 - NoSQL
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/astronomy-black-wallpaper-constellation-2150.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="astronomy-black-wallpaper-constellation-2150" src="http://vincentlauzon.files.wordpress.com/2018/06/astronomy-black-wallpaper-constellation-2150_thumb.jpg" alt="astronomy-black-wallpaper-constellation-2150" width="320" height="230" align="right" border="0" /></a>I’ve recently did some work involving Stored Procedures in Cosmos DB.
+<a href="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/astronomy-black-wallpaper-constellation-2150.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="astronomy-black-wallpaper-constellation-2150" src="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/astronomy-black-wallpaper-constellation-2150_thumb.jpg" alt="astronomy-black-wallpaper-constellation-2150" width="320" height="230" align="right" border="0" /></a>I’ve recently did some work involving Stored Procedures in Cosmos DB.
 
 There are a few techniques to learn when our stored procedures handle large data sets.  It is all about continuation.
 
@@ -38,13 +38,13 @@ We can deploy the Azure component by clicking the following button:
 
 This will deploy an Azure Cosmos DB account, a database and a collection.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/image15.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/06/image_thumb15.png" alt="image" border="0" /></a>
+<a href="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/image15.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/image_thumb15.png" alt="image" border="0" /></a>
 
 We took the minimum throughput, 1000 RUs, for a partitioned collection.  The partition key is <em>part</em>.
 
 The deployment also created 4 stored procedures.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/image16.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/06/image_thumb16.png" alt="image" border="0" /></a>
+<a href="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/image16.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/image_thumb16.png" alt="image" border="0" /></a>
 <h2>Fill a partition</h2>
 We need to run the <em>fillPartition</em> stored procedure to fill a partition with data.
 
@@ -52,19 +52,19 @@ We could use the Portal to invoke the Stored Procedure.  It’s only able to in
 
 We will need to recover the endpoint and primary key:
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/image17.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/06/image_thumb17.png" alt="image" border="0" /></a>
+<a href="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/image17.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/image_thumb17.png" alt="image" border="0" /></a>
 
 and insert it in the constants at the beginning of the code:
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/image18.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/06/image_thumb18.png" alt="image" border="0" /></a>
+<a href="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/image18.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/image_thumb18.png" alt="image" border="0" /></a>
 
 We then need to make sure we uncomment the following line of code.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/image19.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/06/image_thumb19.png" alt="image" border="0" /></a>
+<a href="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/image19.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/image_thumb19.png" alt="image" border="0" /></a>
 
 We can now run the code.  It will call the stored procedure several times.  It does so until it has inserted 25000 records in the partition <em>ABC</em>.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/image20.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/06/image_thumb20.png" alt="image" border="0" /></a>
+<a href="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/image20.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/image_thumb20.png" alt="image" border="0" /></a>
 
 We can validate the result by running the following query:
 
@@ -76,7 +76,7 @@ WHERE c.part='ABC'
 
 and we should get 25000 as a result.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/image21.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/06/image_thumb21.png" alt="image" border="0" /></a>
+<a href="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/image21.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/image_thumb21.png" alt="image" border="0" /></a>
 <h2>Partitioning</h2>
 In a <a href="https://docs.microsoft.com/en-ca/azure/cosmos-db/partition-data">partitioned collection</a> a stored procedure executes within the context of one logical partition.
 
@@ -84,7 +84,7 @@ When we do call the stored procedure, we actually need to pass the partition key
 
 For that reason, we do not need to filter / WHERE on the partition key.  A <em>SELECT *</em> would only return elements from the partition.
 <h2>Simple Implementation:  a-query-flat.js</h2>
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/bike-boy-child-1058501.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="bike-boy-child-1058501" src="http://vincentlauzon.files.wordpress.com/2018/06/bike-boy-child-1058501_thumb.jpg" alt="bike-boy-child-1058501" width="320" height="213" align="left" border="0" /></a>Let’s start with a simple implementation.
+<a href="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/bike-boy-child-1058501.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="bike-boy-child-1058501" src="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/bike-boy-child-1058501_thumb.jpg" alt="bike-boy-child-1058501" width="320" height="213" align="left" border="0" /></a>Let’s start with a simple implementation.
 
 This is a naïve implementation.  It will act as our baseline.
 
@@ -148,7 +148,7 @@ function countOnes() {
 }
 [/code]
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/image23.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/06/image_thumb23.png" alt="image" border="0" /></a>
+<a href="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/image23.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/image_thumb23.png" alt="image" border="0" /></a>
 
 So what happened here?  Why do we get 33 instead of 8333?
 
@@ -160,7 +160,7 @@ So effectively, what we have done is to query the first page of results.
 
 Let’s query the other pages.
 <h2>Continuation token on the server-side:  b-query-continuation.js</h2>
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/action-adult-athletes-310983.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="action-adult-athletes-310983" src="http://vincentlauzon.files.wordpress.com/2018/06/action-adult-athletes-310983_thumb.jpg" alt="action-adult-athletes-310983" width="320" height="212" align="right" border="0" /></a>Here we are going to call the <em>queryDocuments</em> method multiple times.
+<a href="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/action-adult-athletes-310983.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="action-adult-athletes-310983" src="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/action-adult-athletes-310983_thumb.jpg" alt="action-adult-athletes-310983" width="320" height="212" align="right" border="0" /></a>Here we are going to call the <em>queryDocuments</em> method multiple times.
 
 Now it isn’t going to be a straight for-loop.  The thing is that Cosmos DB uses continuation pattern.  We do query documents and pass a function to receive those documents once they arrived.  This is the JavaScript equivalent of an async pattern in C# and other languages.
 
@@ -231,7 +231,7 @@ That should do the trick, right?
 
 If we try that in the portal we should get the following result:
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/image24.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/06/image_thumb24.png" alt="image" border="0" /></a>
+<a href="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/image24.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/image_thumb24.png" alt="image" border="0" /></a>
 
 We can recognize the text from the exception we throw on the last line of the stored procedure code.
 
@@ -245,7 +245,7 @@ For that reason, at some point, the engine blocked the stored procedure.  We th
 
 What we would need is to call the stored procedure again to continue processing the results.
 <h2>Continuation on the client-side:  c-query-continuation-both-sides.js</h2>
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/bicycle-bike-cycling-38296.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="bicycle-bike-cycling-38296" src="http://vincentlauzon.files.wordpress.com/2018/06/bicycle-bike-cycling-38296_thumb.jpg" alt="bicycle-bike-cycling-38296" width="320" height="229" align="left" border="0" /></a>Here we have the Stored Procedure implementation continuation itself.
+<a href="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/bicycle-bike-cycling-38296.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="bicycle-bike-cycling-38296" src="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/bicycle-bike-cycling-38296_thumb.jpg" alt="bicycle-bike-cycling-38296" width="320" height="229" align="left" border="0" /></a>Here we have the Stored Procedure implementation continuation itself.
 
 This mechanism isn’t supported natively.  We <strong>implement it as a pattern</strong>.
 
@@ -333,11 +333,11 @@ function countOnes(sprocContinuationToken) {
 
 It is easier to use the C# code to run that stored procedure multiple times.  Let’s make sure we comment back the <em>FillPartitionAsync</em> and uncomment <em>QueryAsync</em>:
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/image25.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/06/image_thumb25.png" alt="image" border="0" /></a>
+<a href="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/image25.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/image_thumb25.png" alt="image" border="0" /></a>
 
 The console output should show us the evolution of calls:
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/image26.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/06/image_thumb26.png" alt="image" border="0" /></a>
+<a href="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/image26.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/6/cosmos-db-stored-procedures-handling-continuation/image_thumb26.png" alt="image" border="0" /></a>
 
 We finally obtain the expected result:  8333.  This took 4 runs of the stored procedure.
 <h2>Summary</h2>

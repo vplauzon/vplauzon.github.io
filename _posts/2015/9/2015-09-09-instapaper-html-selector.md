@@ -1,10 +1,10 @@
 ---
-title:  Instapaper - HTML Selector
-date:  2015-09-09 19:00:37 -04:00
-permalink:  "/2015/09/09/instapaper-html-selector/"
+title: Instapaper - HTML Selector
+date: 2015-09-09 19:00:37 -04:00
+permalink: /2015/09/09/instapaper-html-selector/
 categories:
 - Solution
-tags:  []
+tags: []
 ---
 <a href="/assets/2015/9/instapaper-html-selector/ip4-icon-big-e13188718225092.png"><img class=" wp-image-1059 alignright" src="/assets/2015/9/instapaper-html-selector/ip4-icon-big-e13188718225092.png?w=300" alt="ip4-icon-big-e1318871822509[2]" width="151" height="151" /></a>I use <a href="https://www.instapaper.com" target="_blank">Instapaper</a> a lot.  I discovered it thanks to <a href="http://www.hanselman.com/blog/TwoMustHaveToolsForAMoreReadableWeb.aspx" target="_blank">Hanselman’s blog</a>.
 
@@ -26,11 +26,11 @@ Bottom line, I can’t read some of my articles and it’s driving me mad!
 <h3>The Solution</h3>
 I’ve developed a very simple web solution that allows you to specify a URL of a page and an x-path expression to find an HTML element within the page.
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image45.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb45.png" alt="image" width="787" height="208" border="0" /></a>
+<a href="/assets/2015/9/instapaper-html-selector/image45.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/9/instapaper-html-selector/image_thumb45.png" alt="image" width="787" height="208" border="0" /></a>
 
 For instance, the URL I gave in example and if you dig the HTML of the LinkedIn articles, you’ll find the content is within <em>//div[@class='stream-content']</em> (that means the first div, regardless of its position that has the class <em>stream-content</em>).
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image46.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb46.png" alt="image" width="802" height="246" border="0" /></a>
+<a href="/assets/2015/9/instapaper-html-selector/image46.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2015/9/instapaper-html-selector/image_thumb46.png" alt="image" width="802" height="246" border="0" /></a>
 
 You press select and the system spits out the new URL:  <a title="http://htmlselector.azurewebsites.net/Selecting?url=https%3a%2f%2fwww.linkedin.com%2fpulse%2fevolving-role-chief-data-officer-ofir-shalev&amp;xpath=%2f%2fdiv%5b%40class%3d%27stream-content%27%5d" href="http://htmlselector.azurewebsites.net/Selecting?url=https%3a%2f%2fwww.linkedin.com%2fpulse%2fevolving-role-chief-data-officer-ofir-shalev&amp;xpath=%2f%2fdiv%5b%40class%3d%27stream-content%27%5d">http://htmlselector.azurewebsites.net/Selecting?url=https%3a%2f%2fwww.linkedin.com%2fpulse%2fevolving-role-chief-data-officer-ofir-shalev&amp;xpath=%2f%2fdiv%5b%40class%3d%27stream-content%27%5d</a>.
 

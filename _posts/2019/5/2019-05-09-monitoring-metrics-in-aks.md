@@ -1,7 +1,7 @@
 ---
-title:  Monitoring metrics in AKS
-date:  2019-05-09 06:30:16 -04:00
-permalink:  "/2019/05/09/monitoring-metrics-in-aks/"
+title: Monitoring metrics in AKS
+date: 2019-05-09 06:30:16 -04:00
+permalink: /2019/05/09/monitoring-metrics-in-aks/
 categories:
 - Solution
 tags:

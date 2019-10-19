@@ -1,7 +1,7 @@
 ---
-title:  Handling recursivity in Logic Apps
-date:  2018-09-28 06:30:21 -04:00
-permalink:  "/2018/09/28/handling-recursivity-in-logic-apps/"
+title: Handling recursivity in Logic Apps
+date: 2018-09-28 06:30:21 -04:00
+permalink: /2018/09/28/handling-recursivity-in-logic-apps/
 categories:
 - Solution
 tags:

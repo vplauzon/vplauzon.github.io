@@ -1,7 +1,7 @@
 ---
-title:  RBAC and role assignment using ARM Templates
-date:  2018-08-15 06:30:16 -04:00
-permalink:  "/2018/08/15/rbac-and-role-assignment-using-arm-templates/"
+title: RBAC and role assignment using ARM Templates
+date: 2018-08-15 06:30:16 -04:00
+permalink: /2018/08/15/rbac-and-role-assignment-using-arm-templates/
 categories:
 - Solution
 tags:
@@ -9,7 +9,7 @@ tags:
 - Identity
 - Security
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2018/08/adult-army-competition-73869.jpg"><img style="float:right;" title="adult-army-competition-73869" src="http://vincentlauzon.files.wordpress.com/2018/08/adult-army-competition-73869_thumb.jpg" alt="Roles" width="320" height="231" /></a>
+<a href="/assets/2018/8/rbac-and-role-assignment-using-arm-templates/adult-army-competition-73869.jpg"><img style="float:right;" title="adult-army-competition-73869" src="/assets/2018/8/rbac-and-role-assignment-using-arm-templates/adult-army-competition-73869_thumb.jpg" alt="Roles" width="320" height="231" /></a>
 Azure supports <a href="https://docs.microsoft.com/en-us/azure/role-based-access-control/overview">Role Based Access Control</a> (RBAC) as an access control paradigm.
 
 It allows to map a user (or a group of users) to a role within a given scope (resource, resource group, <a href="https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption-guide/subscription-governance">subscription</a> or <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/management-groups-overview">management group</a>).

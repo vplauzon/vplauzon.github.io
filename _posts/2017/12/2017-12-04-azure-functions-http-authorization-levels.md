@@ -1,7 +1,7 @@
 ---
-title:  Azure Functions HTTP – Authorization Levels
-date:  2017-12-04 06:49:54 -05:00
-permalink:  "/2017/12/04/azure-functions-http-authorization-levels/"
+title: Azure Functions HTTP – Authorization Levels
+date: 2017-12-04 06:49:54 -05:00
+permalink: /2017/12/04/azure-functions-http-authorization-levels/
 categories:
 - Solution
 tags:
@@ -11,7 +11,7 @@ tags:
 - Serverless
 - Web
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2017/12/pexels-photo-2775931.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="pexels-photo-277593[1]" src="http://vincentlauzon.files.wordpress.com/2017/12/pexels-photo-2775931_thumb.jpg" alt="pexels-photo-277593[1]" width="320" height="171" align="left" border="0" /></a>In <a href="https://vincentlauzon.com/2017/11/27/serverless-compute-with-azure-functions-getting-started/">a past article</a>, we looked at Serverless compute in Azure in general and Azure Functions specifically.
+<a href="/assets/2017/12/azure-functions-http-authorization-levels/pexels-photo-2775931.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="pexels-photo-277593[1]" src="/assets/2017/12/azure-functions-http-authorization-levels/pexels-photo-2775931_thumb.jpg" alt="pexels-photo-277593[1]" width="320" height="171" align="left" border="0" /></a>In <a href="https://vincentlauzon.com/2017/11/27/serverless-compute-with-azure-functions-getting-started/">a past article</a>, we looked at Serverless compute in Azure in general and Azure Functions specifically.
 
 In this article we wanted to focus on Azure Function triggered by HTTP requests and the different options we have to authenticate:
 
@@ -25,11 +25,11 @@ In this article we wanted to focus on Azure Function triggered by HTTP requests 
 
 Those are called <em>Authorization Levels</em>.  For each function in a function app they are specified in the <em>function.json</em> spec file under the <em>authLevel</em> property:
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/12/image.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/12/image_thumb.png" alt="image" border="0" /></a>
+<a href="/assets/2017/12/azure-functions-http-authorization-levels/image.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2017/12/azure-functions-http-authorization-levels/image_thumb.png" alt="image" border="0" /></a>
 
 When <em>function.json</em> spec file is generated from code, e.g. in <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-your-first-function-visual-studio">Visual Studio for C#</a> or <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-java-maven">Maven for Java</a>, the authorization level is set in code.  For instance, in C#, it is specified in the <em>HttpTrigger</em> attribute:
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/12/image1.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/12/image_thumb1.png" alt="image" border="0" /></a>
+<a href="/assets/2017/12/azure-functions-http-authorization-levels/image1.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2017/12/azure-functions-http-authorization-levels/image_thumb1.png" alt="image" border="0" /></a>
 
 Let’s look at each of those authorization level.
 
@@ -49,7 +49,7 @@ There is a special host key called the <strong>master</strong> key (aptly named 
 
 Keys can be managed in the portal using the <em>Manage</em> sub menu.  Although the context is function specific, we can edit the host keys there too.
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/12/image2.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/12/image_thumb2.png" alt="image" border="0" /></a>
+<a href="/assets/2017/12/azure-functions-http-authorization-levels/image2.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2017/12/azure-functions-http-authorization-levels/image_thumb2.png" alt="image" border="0" /></a>
 
 A key can be passed to an Azure Function HTTP request in the URL as the <em>code</em> query string.  Alternatively, it can be included in the <em>x-functions-key</em> HTTP header.  Only the key value, not its name, is passed.
 

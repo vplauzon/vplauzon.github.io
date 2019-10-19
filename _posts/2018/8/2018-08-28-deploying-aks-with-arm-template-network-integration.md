@@ -1,7 +1,7 @@
 ---
-title:  Deploying AKS with ARM Template – Network integration
-date:  2018-08-28 06:30:21 -04:00
-permalink:  "/2018/08/28/deploying-aks-with-arm-template-network-integration/"
+title: Deploying AKS with ARM Template – Network integration
+date: 2018-08-28 06:30:21 -04:00
+permalink: /2018/08/28/deploying-aks-with-arm-template-network-integration/
 categories:
 - Solution
 tags:

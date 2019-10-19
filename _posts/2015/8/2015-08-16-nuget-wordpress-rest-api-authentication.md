@@ -1,13 +1,13 @@
 ---
-title:  Nuget Wordpress REST API – Authentication
-date:  2015-08-16 19:00:11 -04:00
-permalink:  "/2015/08/16/nuget-wordpress-rest-api-authentication/"
+title: Nuget Wordpress REST API – Authentication
+date: 2015-08-16 19:00:11 -04:00
+permalink: /2015/08/16/nuget-wordpress-rest-api-authentication/
 categories:
 - Solution
 tags:
 - API
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/wordpress_logo1.jpg"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="wordpress_logo[1]" src="http://vincentlauzon.files.wordpress.com/2015/07/wordpress_logo1_thumb.jpg" alt="wordpress_logo[1]" width="240" height="80" align="left" border="0" /></a>I use <a href="http://wordpress.com/" target="_blank">Wordpress.com</a> as my blog platform.  It hosts the <a href="https://wordpress.org/" target="_blank">Wordpress</a> CMS software and adds a few goodies.
+<a href="/assets/2015/8/nuget-wordpress-rest-api-authentication/wordpress_logo1.jpg"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="wordpress_logo[1]" src="/assets/2015/8/nuget-wordpress-rest-api-authentication/wordpress_logo1_thumb.jpg" alt="wordpress_logo[1]" width="240" height="80" align="left" border="0" /></a>I use <a href="http://wordpress.com/" target="_blank">Wordpress.com</a> as my blog platform.  It hosts the <a href="https://wordpress.org/" target="_blank">Wordpress</a> CMS software and adds a few goodies.
 
 I was curious about their API after noticing that my Blog App (<a href="https://en.wikipedia.org/wiki/Windows_Live_Writer" target="_blank">Windows Live Writer</a>) tended to create duplicate of pictures, leaving lots of unused assets in my Media library.  This really is a personal pet peeve since I’m still at less than %5 of my asset quota after 5 years.
 
@@ -23,7 +23,7 @@ For the search-post, I took the not-so-easy-path of implementing a <a href="http
 
 I will release the source code soon, but for the moment you can definitely access the <a href="https://www.nuget.org/packages/WordpressRestApi/" target="_blank">Nuget package</a>.
 
-You can trial the client on a site I’m assembling on <a title="https://wordpress-client.azurewebsites.net/" href="https://wordpress-client.azurewebsites.net/">https://wordpress-client.azurewebsites.net/</a>.  <strong><u>Warni</u>ng</strong>:  I do not do web-UI so the look-and-feel is non-existing <img class="wlEmoticon wlEmoticon-winkingsmile" src="http://vincentlauzon.files.wordpress.com/2015/07/wlemoticon-winkingsmile.png" alt="Winking smile" />
+You can trial the client on a site I’m assembling on <a title="https://wordpress-client.azurewebsites.net/" href="https://wordpress-client.azurewebsites.net/">https://wordpress-client.azurewebsites.net/</a>.  <strong><u>Warni</u>ng</strong>:  I do not do web-UI so the look-and-feel is non-existing <img class="wlEmoticon wlEmoticon-winkingsmile" src="/assets/2015/8/nuget-wordpress-rest-api-authentication/wlemoticon-winkingsmile.png" alt="Winking smile" />
 
 Here I’ll give a quick how-to using the client.
 <h3>Authentication</h3>
@@ -37,7 +37,7 @@ You setup application in <a title="https://developer.wordpress.com/apps/" href="
 </ol>
 Here is the authorization flow:
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/07/image47.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/07/image_thumb47.png" alt="image" width="569" height="284" border="0" /></a>
+<a href="/assets/2015/8/nuget-wordpress-rest-api-authentication/image47.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="/assets/2015/8/nuget-wordpress-rest-api-authentication/image_thumb47.png" alt="image" width="569" height="284" border="0" /></a>
 <table style="border-collapse:collapse;border:green 1px solid;">
 <thead>
 <tr style="color:darkgreen;padding-left:10px;padding-right:10px;background-color:lightgreen;">

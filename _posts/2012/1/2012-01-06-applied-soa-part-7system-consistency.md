@@ -1,7 +1,7 @@
 ---
-title:  Applied SOA:  Part 7–System Consistency
-date:  2012-01-06 20:49:00 -05:00
-permalink:  "/2012/01/06/applied-soa-part-7system-consistency/"
+title: 'Applied SOA:  Part 7–System Consistency'
+date: 2012-01-06 20:49:00 -05:00
+permalink: /2012/01/06/applied-soa-part-7system-consistency/
 categories:
 - Solution
 tags:

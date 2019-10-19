@@ -1,7 +1,7 @@
 ---
-title:  Analyzing Web Logs with Azure Data Lake Analytics (ADLA)
-date:  2016-01-24 19:00:41 -05:00
-permalink:  "/2016/01/24/analyzing-web-logs-with-azure-data-lake-analytics-adla/"
+title: Analyzing Web Logs with Azure Data Lake Analytics (ADLA)
+date: 2016-01-24 19:00:41 -05:00
+permalink: /2016/01/24/analyzing-web-logs-with-azure-data-lake-analytics-adla/
 categories:
 - Solution
 tags:
@@ -21,11 +21,11 @@ First thing to do, we’ll add a new data source to our ADLA account.  This wil
 
 In the main pane of ADLA, click “Add Data Source”.
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/01/image8.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb8.png" alt="image" width="1106" height="312" border="0" /></a>
+<a href="/assets/2016/1/analyzing-web-logs-with-azure-data-lake-analytics-adla/image8.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2016/1/analyzing-web-logs-with-azure-data-lake-analytics-adla/image_thumb8.png" alt="image" width="1106" height="312" border="0" /></a>
 
 In the “Add Data Source” pane, under “Storage Type”, select “Azure Storage”.
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/01/image9.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/01/image_thumb9.png" alt="image" width="592" height="615" border="0" /></a>
+<a href="/assets/2016/1/analyzing-web-logs-with-azure-data-lake-analytics-adla/image9.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2016/1/analyzing-web-logs-with-azure-data-lake-analytics-adla/image_thumb9.png" alt="image" width="592" height="615" border="0" /></a>
 
 Enter the storage account information of the storage account you are using in your web site to store your web server logs.
 

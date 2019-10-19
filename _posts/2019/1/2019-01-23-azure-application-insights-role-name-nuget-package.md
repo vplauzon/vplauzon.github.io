@@ -1,7 +1,7 @@
 ---
-title:  Azure Application Insights Role Name Nuget Package
-date:  2019-01-23 06:30:06 -05:00
-permalink:  "/2019/01/23/azure-application-insights-role-name-nuget-package/"
+title: Azure Application Insights Role Name Nuget Package
+date: 2019-01-23 06:30:06 -05:00
+permalink: /2019/01/23/azure-application-insights-role-name-nuget-package/
 categories:
 - Solution
 tags:

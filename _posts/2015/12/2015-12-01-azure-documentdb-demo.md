@@ -1,7 +1,7 @@
 ---
-title:  Azure DocumentDB Demo
-date:  2015-12-01 18:00:46 -05:00
-permalink:  "/2015/12/01/azure-documentdb-demo/"
+title: Azure DocumentDB Demo
+date: 2015-12-01 18:00:46 -05:00
+permalink: /2015/12/01/azure-documentdb-demo/
 categories:
 - Solution
 tags:

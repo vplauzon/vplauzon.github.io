@@ -1,13 +1,13 @@
 ---
-title:  Serverless compute with Azure Functions - Getting Started
-date:  2017-11-27 06:30:39 -05:00
-permalink:  "/2017/11/27/serverless-compute-with-azure-functions-getting-started/"
+title: Serverless compute with Azure Functions - Getting Started
+date: 2017-11-27 06:30:39 -05:00
+permalink: /2017/11/27/serverless-compute-with-azure-functions-getting-started/
 categories:
 - Solution
 tags:
 - Serverless
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2017/11/halloween-2742991_640.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="halloween-2742991_640" src="http://vincentlauzon.files.wordpress.com/2017/11/halloween-2742991_640_thumb.jpg" alt="halloween-2742991_640" width="320" height="240" align="right" border="0" /></a>I meant to write about Azure Functions &amp; serverless computing for quite a while now.  So here we go.
+<a href="/assets/2017/11/serverless-compute-with-azure-functions-getting-started/halloween-2742991_640.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="halloween-2742991_640" src="/assets/2017/11/serverless-compute-with-azure-functions-getting-started/halloween-2742991_640_thumb.jpg" alt="halloween-2742991_640" width="320" height="240" align="right" border="0" /></a>I meant to write about Azure Functions &amp; serverless computing for quite a while now.  So here we go.
 
 This entry is meant as a “getting started” entry with pointers to documentation and general discussion.  We’ll dive deeper in future articles.
 <h2>Serverless</h2>

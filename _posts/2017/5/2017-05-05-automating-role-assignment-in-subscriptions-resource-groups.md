@@ -1,13 +1,13 @@
 ---
-title:  Automating Role Assignment in Subscriptions & Resource Groups
-date:  2017-05-05 09:49:42 -04:00
-permalink:  "/2017/05/05/automating-role-assignment-in-subscriptions-resource-groups/"
+title: Automating Role Assignment in Subscriptions & Resource Groups
+date: 2017-05-05 09:49:42 -04:00
+permalink: /2017/05/05/automating-role-assignment-in-subscriptions-resource-groups/
 categories:
 - Solution
 tags:
 - Security
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2017/05/keys-unlock13.jpg"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="keys-unlock[1]" src="http://vincentlauzon.files.wordpress.com/2017/05/keys-unlock1_thumb3.jpg" alt="keys-unlock[1]" width="300" height="200" align="left" border="0" /></a>Azure supports a Role Based Access Control (RBAC) system.  This system links identity (users &amp; groups) to roles.
+<a href="/assets/2017/5/automating-role-assignment-in-subscriptions-resource-groups/keys-unlock13.jpg"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="keys-unlock[1]" src="/assets/2017/5/automating-role-assignment-in-subscriptions-resource-groups/keys-unlock1_thumb3.jpg" alt="keys-unlock[1]" width="300" height="200" align="left" border="0" /></a>Azure supports a Role Based Access Control (RBAC) system.  This system links identity (users &amp; groups) to roles.
 
 RBAC is enforced at the REST API access level, which is the fundamental access in Azure:  it can’t be bypassed.
 
@@ -173,7 +173,7 @@ We notice that all actions (*) are allowed but that some actions are explicitly 
 </ul>
 We could create custom roles aggregating arbitrary groups of actions together but we won’t cover that here.
 <h2>Users &amp; Groups</h2>
-<a href="http://vincentlauzon.files.wordpress.com/2017/05/groups-meeting-dark-icon1.png"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="Groups-Meeting-Dark-icon[1]" src="http://vincentlauzon.files.wordpress.com/2017/05/groups-meeting-dark-icon1_thumb.png" alt="Groups-Meeting-Dark-icon[1]" width="128" height="128" align="right" border="0" /></a>
+<a href="/assets/2017/5/automating-role-assignment-in-subscriptions-resource-groups/groups-meeting-dark-icon1.png"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="Groups-Meeting-Dark-icon[1]" src="/assets/2017/5/automating-role-assignment-in-subscriptions-resource-groups/groups-meeting-dark-icon1_thumb.png" alt="Groups-Meeting-Dark-icon[1]" width="128" height="128" align="right" border="0" /></a>
 
 Now that we know about role, let’s look at users &amp; groups.
 
@@ -206,7 +206,7 @@ $groupID = (Get-AzureRmADGroup -SearchString &quot;Azure Team&quot;).Id
 [/code]
 
 <h2>Scope</h2>
-<a href="http://vincentlauzon.files.wordpress.com/2017/05/apps-brackets-b-icon1.png"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="Apps-Brackets-B-icon[1]" src="http://vincentlauzon.files.wordpress.com/2017/05/apps-brackets-b-icon1_thumb.png" alt="Apps-Brackets-B-icon[1]" width="128" height="128" align="left" border="0" /></a>Next thing to determine is the scope where we want to apply a role.
+<a href="/assets/2017/5/automating-role-assignment-in-subscriptions-resource-groups/apps-brackets-b-icon1.png"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="Apps-Brackets-B-icon[1]" src="/assets/2017/5/automating-role-assignment-in-subscriptions-resource-groups/apps-brackets-b-icon1_thumb.png" alt="Apps-Brackets-B-icon[1]" width="128" height="128" align="left" border="0" /></a>Next thing to determine is the scope where we want to apply a role.
 
 The scope can be either a subscription, a resource group or a resource.
 

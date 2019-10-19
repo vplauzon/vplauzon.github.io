@@ -1,7 +1,7 @@
 ---
-title:  Implementing & Automating Azure Stream Analytics Pipeline
-date:  2018-05-31 06:30:32 -04:00
-permalink:  "/2018/05/31/implementing-automating-azure-stream-analytics-pipeline/"
+title: Implementing & Automating Azure Stream Analytics Pipeline
+date: 2018-05-31 06:30:32 -04:00
+permalink: /2018/05/31/implementing-automating-azure-stream-analytics-pipeline/
 categories:
 - Solution
 tags:
@@ -11,7 +11,7 @@ tags:
 - Serverless
 - Streaming
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/clouds-dawn-dusk-210186.jpg"><img style="float:right;display:inline;background-image:none;" title="clouds-dawn-dusk-210186" src="http://vincentlauzon.files.wordpress.com/2018/05/clouds-dawn-dusk-210186_thumb.jpg" alt="clouds-dawn-dusk-210186" width="320" height="194" align="right" border="0" /></a>In <a href="https://vincentlauzon.com/2018/05/22/taming-the-fire-hose-azure-stream-analytics/">our last article</a>, we set out to build a resilient architecture around streaming events.
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/clouds-dawn-dusk-210186.jpg"><img style="float:right;display:inline;background-image:none;" title="clouds-dawn-dusk-210186" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/clouds-dawn-dusk-210186_thumb.jpg" alt="clouds-dawn-dusk-210186" width="320" height="194" align="right" border="0" /></a>In <a href="https://vincentlauzon.com/2018/05/22/taming-the-fire-hose-azure-stream-analytics/">our last article</a>, we set out to build a resilient architecture around streaming events.
 
 In this article, we are going to build the solution.  We are going to use an <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-create-first-template">ARM template</a> which automates deployment.  We will also go through the configuration of different services.
 
@@ -31,7 +31,7 @@ to be simply aggregated at constant intervals (say once a minute).  We wanted t
 
 We ended up with the following architecture:
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image6.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb6.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image6.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb6.png" alt="image" border="0" /></a>
 
 We have two <a href="https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-what-is-event-hubs">Azure Event Hubs</a> as ingestion mechanism.  One in the primary region of the workload, one in a secondary region.  The fallback mechanism is assumed by the source, i.e. the agent pushing the events to event hubs.
 
@@ -107,13 +107,13 @@ The first thing we notice is that there are 13 resources deployed.
 
 This might seem a lot for something that is clearly only a part of a solution.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image7.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb7.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image7.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb7.png" alt="image" border="0" /></a>
 
 4 of those resources (those framed in red) are only there for demo purposes.  Those resources wouldn’t be deployed in a production environment.  Also, SQL server and DB (in orange) presumably would be pre-exist the streaming solution.
 
 This means the streaming solution really contain eight (8) services.  We would recommend framing those services as a separate resource group.  We would consider the streaming solution as a Micro Service:
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image8.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb8.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image8.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb8.png" alt="image" border="0" /></a>
 
 The micro service boundaries would have 2 inputs:  the telemetry event hub connection.  It would also have an output:  the summary event hub connection.
 
@@ -129,25 +129,25 @@ There are three hubs:
 </ul>
 The first two are part of the same namespace.  Let’s start with that one.  This is the namespace suffixed by “-primary”:
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image9.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb9.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image9.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb9.png" alt="image" border="0" /></a>
 
 Let’s first look at the <em>Shared access policies</em> of the namespace.  Only the default root admin one is available.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image10.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb10.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image10.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb10.png" alt="image" border="0" /></a>
 
 We define access at the hub level as opposed to namespace level.  We do not share the root admin key.  Access is granular, i.e. send or listen, at the event hub level.  This follows the <a href="https://en.wikipedia.org/wiki/Principle_of_least_privilege">principle of least privilege</a>.
 
 Now, let’s look at the event hubs
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image11.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb11.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image11.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb11.png" alt="image" border="0" /></a>
 
 Lets look at the telemetry hub.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image12.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb12.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image12.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb12.png" alt="image" border="0" /></a>
 
 We can see the capture has been configured.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image13.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb13.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image13.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb13.png" alt="image" border="0" /></a>
 
 We see that we defined a different policy for send and listen action.  This way if a key is compromised, the damage that can be done is limited.
 
@@ -187,21 +187,21 @@ The secondary namespace is deployed in the same region as the primary namespace.
 <h2>Stream Analytics</h2>
 Let’s look at the stream analytics job:
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image14.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb14.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image14.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb14.png" alt="image" border="0" /></a>
 
-The meat of the configuration is in the middle of the overview pane:<a href="http://vincentlauzon.files.wordpress.com/2018/05/image15.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb15.png" alt="image" border="0" /></a>
+The meat of the configuration is in the middle of the overview pane:<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image15.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb15.png" alt="image" border="0" /></a>
 
 We see that we have 2 inputs and 1 output.  The query on the right transforms the 2 inputs and feeds the output.
 
 Let’s look at the <em>primary-telemetry</em> configuration:
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image16.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb16.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image16.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb16.png" alt="image" border="0" /></a>
 
 The input is bound to the primary namespace / telemetry event hub.
 
 The other input and the output is similarly configured.  Something specific about the output is that we specify the format:
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image17.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb17.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image17.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb17.png" alt="image" border="0" /></a>
 
 Here we choose <em>array</em>, as opposed to <em>line separated</em>.  Basically array formats the output as a normal JSON array.  Line separated simply output events as JSON document with a line separator.  We found it easier to process a legal JSON array.
 
@@ -235,23 +235,23 @@ Specific the stream analytics is <a href="https://msdn.microsoft.com/en-ca/azure
 <h2>Update Summary Logic App</h2>
 Let’s look at the logic app that consumes summary events and update the database.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image18.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb18.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image18.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb18.png" alt="image" border="0" /></a>
 
 The Logic App is quite straightforward.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image19.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb19.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image19.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb19.png" alt="image" border="0" /></a>
 
 The app triggers on event hub having events.  It then calls a stored procedure.
 
 The trigger full configuration can be seen here:
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image20.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb20.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image20.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb20.png" alt="image" border="0" /></a>
 
 We take maximum 50 events in.  This is done not to overload the database while still batching.
 
 We probe every 2 seconds.  This is actually configured by the <em>Update Summary Probe in Seconds </em>variable.  We recommend setting it up at half the <em>Tumbling Window Length in Seconds</em> variable.  Basically, we want to probe often enough to catch summary events early.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image21.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb21.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image21.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb21.png" alt="image" border="0" /></a>
 
 The stored procedure action is configured to call <em>[dbo].[updateSummaries].</em>  It passes the content retrieved in the trigger in the <em>jsonPayload</em> parameter.
 
@@ -342,13 +342,13 @@ SELECT SUM(widgetCount) FROM [dbo].WidgetSummary
 
 We should have the following output:
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image22.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb22.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image22.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb22.png" alt="image" border="0" /></a>
 
 Since the database is initially empty.
 <h2>Simulate a source</h2>
 The ARM template we deploy contains a second logic app.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image23.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb23.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image23.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb23.png" alt="image" border="0" /></a>
 
 That app bombards both the primary and secondary telemetry with telemetry events.  It sends 10000 events by default.  That number is controlled by the <em>Simulation Burst Count</em> variable.
 
@@ -356,15 +356,15 @@ Events contain randomized widget id.  The range of ids vary from 1 to 500.  Th
 
 We can start the logic app by clicking <em>Run Trigger</em> then <em>manual</em>.  “Manual” is the name of the trigger inside this Logic App.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image24.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb24.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image24.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb24.png" alt="image" border="0" /></a>
 
 Let's run the SQL queries we defined in the previous section.  We should start seeing the events coming in quickly.  We’ll notice that at about every 5 seconds a batch of events is processed.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image25.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb25.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image25.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb25.png" alt="image" border="0" /></a>
 
 The 10000 events should take about 5 minutes to complete.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image26.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb26.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image26.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb26.png" alt="image" border="0" /></a>
 
 If there are no failure in the pipeline we should end up with exactly 10000 events in the count query.
 <h2>Simulate a Stream Analytics failure</h2>
@@ -372,7 +372,7 @@ Let’s run the simulation logic app again.  Let’s have some events coming in
 
 Let’s stop the Stream Analytics job.  This will simulate a failure.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image27.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb27.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image27.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb27.png" alt="image" border="0" /></a>
 
 It takes a little while for the job to stop.
 
@@ -380,17 +380,17 @@ After a short while we should see no movement in the database.
 
 Let’s restart the job.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image28.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb28.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image28.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb28.png" alt="image" border="0" /></a>
 
 Let’s specify we want to start back when we last stopped:
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image29.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb29.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image29.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb29.png" alt="image" border="0" /></a>
 
 It takes a little while to restart.  We should then see database movement again.
 
 We would expect to land at 20000.  Typically we land a little further.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/05/image30.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/05/image_thumb30.png" alt="image" border="0" /></a>
+<a href="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image30.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/5/implementing-automating-azure-stream-analytics-pipeline/image_thumb30.png" alt="image" border="0" /></a>
 
 This is due to the job reprocessing some events.  Avoiding this isn’t trivial and we won’t cover it in this article.
 <h2>Summary</h2>

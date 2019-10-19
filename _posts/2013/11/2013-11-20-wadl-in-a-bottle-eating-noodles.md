@@ -1,7 +1,7 @@
 ---
-title:  WADL in a bottle eating noodles
-date:  2013-11-20 21:29:37 -05:00
-permalink:  "/2013/11/20/wadl-in-a-bottle-eating-noodles/"
+title: WADL in a bottle eating noodles
+date: 2013-11-20 21:29:37 -05:00
+permalink: /2013/11/20/wadl-in-a-bottle-eating-noodles/
 categories:
 - Solution
 tags:

@@ -1,7 +1,7 @@
 ---
-title:  Cosmos DB Configuration Management
-date:  2018-06-20 06:30:46 -04:00
-permalink:  "/2018/06/20/cosmos-db-configuration-management/"
+title: Cosmos DB Configuration Management
+date: 2018-06-20 06:30:46 -04:00
+permalink: /2018/06/20/cosmos-db-configuration-management/
 categories:
 - Solution
 tags:
@@ -9,7 +9,7 @@ tags:
 - Containers
 - NoSQL
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/black-board-bright-695266.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="black-board-bright-695266" src="http://vincentlauzon.files.wordpress.com/2018/06/black-board-bright-695266_thumb.jpg" alt="black-board-bright-695266" width="320" height="213" align="right" border="0" /></a>I often found the need to automate Cosmos DB deployments.
+<a href="/assets/2018/6/cosmos-db-configuration-management/black-board-bright-695266.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="black-board-bright-695266" src="/assets/2018/6/cosmos-db-configuration-management/black-board-bright-695266_thumb.jpg" alt="black-board-bright-695266" width="320" height="213" align="right" border="0" /></a>I often found the need to automate Cosmos DB deployments.
 
 I like to have users run an ARM template and be ready to go.  Automation is key component to repeatability.  It enables automated testing and increase agility in many other ways.
 
@@ -86,23 +86,23 @@ Let’s start with the first one:  <em>Single Unpartitioned Collection</em>.
 
 Deployment usually takes less than 5 minutes.  Once it’s completed, we should have the following resources in the resource group:
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/image5.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/06/image_thumb5.png" alt="image" border="0" /></a>
+<a href="/assets/2018/6/cosmos-db-configuration-management/image5.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/6/cosmos-db-configuration-management/image_thumb5.png" alt="image" border="0" /></a>
 
 Let’s first look at the <em>Azure Cosmos DB account</em>.  The name of the resource is appended a unique string so it doesn’t clash with other accounts in Azure.
 
 In the overview page of the account we can see the account isn’t empty but has a database with one collection.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/image6.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/06/image_thumb6.png" alt="image" border="0" /></a>
+<a href="/assets/2018/6/cosmos-db-configuration-management/image6.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/6/cosmos-db-configuration-management/image_thumb6.png" alt="image" border="0" /></a>
 
 In <em>Data Explorer</em>, we can see the collection has a stored procedure:
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/image7.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/06/image_thumb7.png" alt="image" border="0" /></a>
+<a href="/assets/2018/6/cosmos-db-configuration-management/image7.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/6/cosmos-db-configuration-management/image_thumb7.png" alt="image" border="0" /></a>
 
 With only one ARM template we got everything deployed in Cosmos DB!
 <h2>The magic:  Container Instance</h2>
 Let’s look at how that happened.  Going back to the resource group, let’s pick the container group.  We’ll likely need to hit <em>Refresh</em> to see the logs.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/image8.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/06/image_thumb8.png" alt="image" border="0" /></a>
+<a href="/assets/2018/6/cosmos-db-configuration-management/image8.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/6/cosmos-db-configuration-management/image_thumb8.png" alt="image" border="0" /></a>
 
 The container first outputs the environment variables passed by the ARM Template.  The first two are credentials while the third is the target URL of the configuration file.
 
@@ -110,13 +110,13 @@ That target configuration content itself is then output.
 
 If we scroll down, we can see the operations it did on the Cosmos DB account:
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/image9.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/06/image_thumb9.png" alt="image" border="0" /></a>
+<a href="/assets/2018/6/cosmos-db-configuration-management/image9.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/6/cosmos-db-configuration-management/image_thumb9.png" alt="image" border="0" /></a>
 <h2>Update</h2>
 Let’s now update a Cosmos DB account.
 
 First, we’ll need to delete the container group.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/image10.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/06/image_thumb10.png" alt="image" border="0" /></a>
+<a href="/assets/2018/6/cosmos-db-configuration-management/image10.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/6/cosmos-db-configuration-management/image_thumb10.png" alt="image" border="0" /></a>
 
 We do this so that the ARM template can recreate a container group and run the new target configuration.  <u>This step is necessary</u> given how Container Instance work.
 
@@ -128,15 +128,15 @@ Let’s specify the same resource group so that we will update the same Cosmos D
 
 Let’s select <em>Single Partitioned Collection</em>.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/image11.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/06/image_thumb11.png" alt="image" border="0" /></a>
+<a href="/assets/2018/6/cosmos-db-configuration-management/image11.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/6/cosmos-db-configuration-management/image_thumb11.png" alt="image" border="0" /></a>
 
 After the deployment, we can see the previous database and its collection are gone.  They are replaced by another database and collection.
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/image12.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/06/image_thumb12.png" alt="image" border="0" /></a>
+<a href="/assets/2018/6/cosmos-db-configuration-management/image12.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/6/cosmos-db-configuration-management/image_thumb12.png" alt="image" border="0" /></a>
 
 If we look at the logs of the container, we can see what occurred:
 
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/image14.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2018/06/image_thumb14.png" alt="image" border="0" /></a>
+<a href="/assets/2018/6/cosmos-db-configuration-management/image14.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2018/6/cosmos-db-configuration-management/image_thumb14.png" alt="image" border="0" /></a>
 
 We can see that Cosmos DB Target Config behaves like an ARM Template.  It takes a Cosmos DB account from any state and brings it to the state described in configuration.
 

@@ -1,10 +1,10 @@
 ---
-title:  How to improve Azure
-date:  2014-03-06 19:02:55 -05:00
-permalink:  "/2014/03/06/how-to-improve-azure/"
+title: How to improve Azure
+date: 2014-03-06 19:02:55 -05:00
+permalink: /2014/03/06/how-to-improve-azure/
 categories:
 - Solution
-tags:  []
+tags: []
 ---
 <p>I'm very passionate about Windows Azure.  I've been using and promoting the platform for more than four (4) years now.
 </p><p>So I've been working with the technology for a while but in the recent month I've been involved on an intensive architecture project where we pushed the envelope of the platform.  As a consequence we did hit quite a few limitation of the platform.

@@ -1,7 +1,7 @@
 ---
-title:  Entity Framework 4.1 Series
-date:  2011-04-21 21:27:00 -04:00
-permalink:  "/2011/04/21/entity-framework-4-1-series/"
+title: Entity Framework 4.1 Series
+date: 2011-04-21 21:27:00 -04:00
+permalink: /2011/04/21/entity-framework-4-1-series/
 categories:
 - Solution
 tags:

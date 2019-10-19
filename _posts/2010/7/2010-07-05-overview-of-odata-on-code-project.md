@@ -1,7 +1,7 @@
 ---
-title:  Overview of OData on Code Project
-date:  2010-07-05 09:38:35 -04:00
-permalink:  "/2010/07/05/overview-of-odata-on-code-project/"
+title: Overview of OData on Code Project
+date: 2010-07-05 09:38:35 -04:00
+permalink: /2010/07/05/overview-of-odata-on-code-project/
 categories:
 - Solution
 tags:

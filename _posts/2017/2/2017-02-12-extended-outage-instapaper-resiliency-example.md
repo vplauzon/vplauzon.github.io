@@ -1,13 +1,13 @@
 ---
-title:  Extended Outage @ Instapaper - Resiliency example
-date:  2017-02-12 19:00:28 -05:00
-permalink:  "/2017/02/12/extended-outage-instapaper-resiliency-example/"
+title: Extended Outage @ Instapaper - Resiliency example
+date: 2017-02-12 19:00:28 -05:00
+permalink: /2017/02/12/extended-outage-instapaper-resiliency-example/
 categories:
 - Solution
 tags:
 - Data
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2017/02/art-broken-explosion-glass1.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="art-broken-explosion-glass[1]" src="http://vincentlauzon.files.wordpress.com/2017/02/art-broken-explosion-glass1_thumb.jpg" alt="art-broken-explosion-glass[1]" width="300" height="192" align="right" border="0" /></a>I use <a href="http://instapaper.com" target="_blank">Instapaper</a> extensively to store the continuous flow of internet articles I want to read.  I created a bunch of tools integrating with it (e.g. monitoring atom feeds and sending new articles to Instapaper)
+<a href="/assets/2017/2/extended-outage-instapaper-resiliency-example/art-broken-explosion-glass1.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="art-broken-explosion-glass[1]" src="/assets/2017/2/extended-outage-instapaper-resiliency-example/art-broken-explosion-glass1_thumb.jpg" alt="art-broken-explosion-glass[1]" width="300" height="192" align="right" border="0" /></a>I use <a href="http://instapaper.com" target="_blank">Instapaper</a> extensively to store the continuous flow of internet articles I want to read.  I created a bunch of tools integrating with it (e.g. monitoring atom feeds and sending new articles to Instapaper)
 
 Last week my tools didn’t work for a while so I finally logged in directly to the site.  The site was down, citing an <em>extended outage</em>, with a reference to a <a href="http://blog.instapaper.com/post/157027537441" target="_blank">blog article</a> to explain the outage.
 

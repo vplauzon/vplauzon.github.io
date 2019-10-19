@@ -1,7 +1,7 @@
 ---
-title:  Azure Front Door with App Service
-date:  2019-06-11 06:30:40 -04:00
-permalink:  "/2019/06/11/azure-front-door-with-app-service/"
+title: Azure Front Door with App Service
+date: 2019-06-11 06:30:40 -04:00
+permalink: /2019/06/11/azure-front-door-with-app-service/
 categories:
 - Solution
 tags:

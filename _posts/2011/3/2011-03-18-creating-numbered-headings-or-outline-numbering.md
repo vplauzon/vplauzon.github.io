@@ -1,7 +1,7 @@
 ---
-title:  Creating numbered headings or outline numbering
-date:  2011-03-18 12:33:22 -04:00
-permalink:  "/2011/03/18/creating-numbered-headings-or-outline-numbering/"
+title: Creating numbered headings or outline numbering
+date: 2011-03-18 12:33:22 -04:00
+permalink: /2011/03/18/creating-numbered-headings-or-outline-numbering/
 categories:
 - Gadget
 tags:

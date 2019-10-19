@@ -1,7 +1,7 @@
 ---
-title:  Flex Volume in AKS
-date:  2019-02-21 06:30:26 -05:00
-permalink:  "/2019/02/21/flex-volume-in-aks/"
+title: Flex Volume in AKS
+date: 2019-02-21 06:30:26 -05:00
+permalink: /2019/02/21/flex-volume-in-aks/
 categories:
 - Solution
 tags:

@@ -1,7 +1,7 @@
 ---
-title:  Querying Collections with DocumentDB Studio
-date:  2014-10-31 21:48:47 -04:00
-permalink:  "/2014/10/31/querying-collections-with-documentdb-studio/"
+title: Querying Collections with DocumentDB Studio
+date: 2014-10-31 21:48:47 -04:00
+permalink: /2014/10/31/querying-collections-with-documentdb-studio/
 categories:
 - Solution
 tags:
@@ -33,11 +33,11 @@ The key feature of this release: querying!
 
 In order to query a collection of documents, simply click on a collection folder:
 
-<img src="http://vincentlauzon.files.wordpress.com/2014/10/110114_0226_queryingcol1.png" alt="" />
+<img src="/assets/2014/10/querying-collections-with-documentdb-studio/110114_0226_queryingcol1.png" alt="" />
 
 You can then write any queries. Once you wrote your query, you can either click the red exclamation mark on top of the query text box or press <em>F5</em>.
 
-<img src="http://vincentlauzon.files.wordpress.com/2014/10/110114_0226_queryingcol2.png" alt="" />
+<img src="/assets/2014/10/querying-collections-with-documentdb-studio/110114_0226_queryingcol2.png" alt="" />
 
 For details on how to query DocumentDB see <a href="http://azure.microsoft.com/en-us/documentation/articles/documentdb-sql-query/">this documentation</a>.
 <h1>Telemetry</h1>

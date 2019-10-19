@@ -1,7 +1,7 @@
 ---
-title:  Single Sign-On from Active Directory to a Windows Azure Application Whitepaper
-date:  2011-01-12 19:00:00 -05:00
-permalink:  "/2011/01/12/single-sign-on-from-active-directory-to-a-windows-azure-application-whitepaper/"
+title: Single Sign-On from Active Directory to a Windows Azure Application Whitepaper
+date: 2011-01-12 19:00:00 -05:00
+permalink: /2011/01/12/single-sign-on-from-active-directory-to-a-windows-azure-application-whitepaper/
 categories:
 - Solution
 tags:

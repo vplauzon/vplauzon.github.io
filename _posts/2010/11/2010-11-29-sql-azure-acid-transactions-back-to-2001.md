@@ -1,7 +1,7 @@
 ---
-title:  SQL Azure & ACID Transactions: back to 2001
-date:  2010-11-29 21:00:00 -05:00
-permalink:  "/2010/11/29/sql-azure-acid-transactions-back-to-2001/"
+title: 'SQL Azure & ACID Transactions: back to 2001'
+date: 2010-11-29 21:00:00 -05:00
+permalink: /2010/11/29/sql-azure-acid-transactions-back-to-2001/
 categories:
 - Solution
 tags:
@@ -9,7 +9,7 @@ tags:
 ---
 I meant to write about this since I read about it a little <a href="http://blogs.msdn.com/b/sqlazure/archive/2010/07/19/10039859.aspx">back in July</a>, today is the day.
 
-<a href="http://vincentlauzon.files.wordpress.com/2010/11/image3.png"><img style="display:inline;margin-left:0;margin-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2010/11/image_thumb3.png" border="0" alt="image" width="244" height="71" align="right" /></a> You know I love <a href="http://www.microsoft.com/en-us/sqlazure/default.aspx">Microsoft SQL Azure</a>.
+<a href="/assets/2010/11/sql-azure-acid-transactions-back-to-2001/image3.png"><img style="display:inline;margin-left:0;margin-right:0;border:0;" title="image" src="/assets/2010/11/sql-azure-acid-transactions-back-to-2001/image_thumb3.png" border="0" alt="image" width="244" height="71" align="right" /></a> You know I love <a href="http://www.microsoft.com/en-us/sqlazure/default.aspx">Microsoft SQL Azure</a>.
 
 The technology impressed me when it was released.  Until then Azure contained only <a href="http://www.microsoft.com/windowsazure/windowsazure/">Azure storage</a>.  Azure Storage is a great technology if you plan to be the next e-Bay on the block and shove billions of transactions a day to your back-end.  If you’re interested into migrating your enterprise application or host your mom &amp; pop transactional web site in the cloud, it’s both an overkill in terms of scalability and a complete paradigm shift.  The latter frustrated a lot of early adopter.  A few months later, Microsoft replied by releasing SQL Azure.  I was impressed.
 

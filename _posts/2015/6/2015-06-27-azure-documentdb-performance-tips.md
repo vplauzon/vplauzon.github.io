@@ -1,7 +1,7 @@
 ---
-title:  Azure DocumentDB - Performance Tips
-date:  2015-06-27 15:49:44 -04:00
-permalink:  "/2015/06/27/azure-documentdb-performance-tips/"
+title: Azure DocumentDB - Performance Tips
+date: 2015-06-27 15:49:44 -04:00
+permalink: /2015/06/27/azure-documentdb-performance-tips/
 categories:
 - Solution
 tags:

@@ -1,10 +1,10 @@
 ---
-title:  To GIT or not To GIT
-date:  2015-01-08 07:00:56 -05:00
-permalink:  "/2015/01/08/to-git-or-not-to-git/"
+title: To GIT or not To GIT
+date: 2015-01-08 07:00:56 -05:00
+permalink: /2015/01/08/to-git-or-not-to-git/
 categories:
 - Solution
-tags:  []
+tags: []
 ---
 <p>GIT, the one that vanquish them all.  Gee…  I can't get my head around that product!
 </p><p>I spent an entire 5 months project using it and I still don't get it.  True, I used it with the proverbial 10 feet pole, with the minimal subset of features and with no integration into Visual Studio (thanks to a weird Network setup of the project).

@@ -1,13 +1,13 @@
 ---
-title:  Docker multi-stage build
-date:  2018-07-11 06:30:47 -04:00
-permalink:  "/2018/07/11/docker-multi-stage-build/"
+title: Docker multi-stage build
+date: 2018-07-11 06:30:47 -04:00
+permalink: /2018/07/11/docker-multi-stage-build/
 categories:
 - Solution
 tags:
 - Containers
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2018/07/dark-flight-launch-73872.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="dark-flight-launch-73872" src="http://vincentlauzon.files.wordpress.com/2018/07/dark-flight-launch-73872_thumb.jpg" alt="dark-flight-launch-73872" width="320" height="213" align="right" border="0" /></a>I recently came across a really nice feature of Docker Build and wanted to share it.
+<a href="/assets/2018/7/docker-multi-stage-build/dark-flight-launch-73872.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="dark-flight-launch-73872" src="/assets/2018/7/docker-multi-stage-build/dark-flight-launch-73872_thumb.jpg" alt="dark-flight-launch-73872" width="320" height="213" align="right" border="0" /></a>I recently came across a really nice feature of Docker Build and wanted to share it.
 
 Building a Docker Image often requires to build binaries.  In my case I needed to build a .NET core application.  You might need to build a Java App or any other types of apps.
 

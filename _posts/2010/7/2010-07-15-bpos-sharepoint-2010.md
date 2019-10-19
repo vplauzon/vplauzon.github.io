@@ -1,7 +1,7 @@
 ---
-title:  BPOS SharePoint 2010
-date:  2010-07-15 11:14:19 -04:00
-permalink:  "/2010/07/15/bpos-sharepoint-2010/"
+title: BPOS SharePoint 2010
+date: 2010-07-15 11:14:19 -04:00
+permalink: /2010/07/15/bpos-sharepoint-2010/
 categories:
 - Solution
 tags:

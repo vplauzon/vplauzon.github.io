@@ -1,14 +1,14 @@
 ---
-title:  Quantum Computing - Scenarios
-date:  2018-03-14 06:30:22 -04:00
-permalink:  "/2018/03/14/quantum-computing-scenarios/"
+title: Quantum Computing - Scenarios
+date: 2018-03-14 06:30:22 -04:00
+permalink: /2018/03/14/quantum-computing-scenarios/
 categories:
 - Solution
 tags:
 - Machine Learning
 - Quantum
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2018/03/tail-2801599_640.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="tail-2801599_640" src="http://vincentlauzon.files.wordpress.com/2018/03/tail-2801599_640_thumb.jpg" alt="tail-2801599_640" width="320" height="100" align="left" border="0" /></a>We recently looked at <a href="https://vincentlauzon.com/2018/03/07/quantum-computing-value-proposition/">Quantum Computing value proposition</a>.
+<a href="/assets/2018/3/quantum-computing-scenarios/tail-2801599_640.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="tail-2801599_640" src="/assets/2018/3/quantum-computing-scenarios/tail-2801599_640_thumb.jpg" alt="tail-2801599_640" width="320" height="100" align="left" border="0" /></a>We recently looked at <a href="https://vincentlauzon.com/2018/03/07/quantum-computing-value-proposition/">Quantum Computing value proposition</a>.
 
 Quantum Computer can solve some problems by several order of magnitude. This brings today’s intractable problems to be easy to solve tomorrow.
 
@@ -16,7 +16,7 @@ Not all problems have this property. In this article, we’ll look at some probl
 
 This is a technical-light article with no mathematics.
 <h2>Cryptography</h2>
-<a href="http://vincentlauzon.files.wordpress.com/2018/03/pexels-photo-193349.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="binary damage code" src="http://vincentlauzon.files.wordpress.com/2018/03/pexels-photo-193349_thumb.jpg" alt="binary damage code" width="320" height="480" align="right" border="0" /></a>
+<a href="/assets/2018/3/quantum-computing-scenarios/pexels-photo-193349.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="binary damage code" src="/assets/2018/3/quantum-computing-scenarios/pexels-photo-193349_thumb.jpg" alt="binary damage code" width="320" height="480" align="right" border="0" /></a>
 
 Classical Computers are good at cryptography. They can encrypt and decrypt relatively quickly.  Every time a web site uses <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">HTTPS</a>, encryption / decryption is done at the sending and receiving ends seamlessly.
 
@@ -44,7 +44,7 @@ By contrast, a Quantum Computer would easily break today's Internet cryptography
 
 <a href="https://en.wikipedia.org/wiki/Post-quantum_cryptography">Post Quantum Cryptography</a> is already a flourishing field so not everything is lost.  But it gives a idea of the power of Quantum Computing.
 <h2>Material Research</h2>
-<a href="http://vincentlauzon.files.wordpress.com/2018/03/strychnine1.png"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="Strychnine[1]" src="http://vincentlauzon.files.wordpress.com/2018/03/strychnine1_thumb.png" alt="Strychnine[1]" width="320" height="248" align="left" border="0" />
+<a href="/assets/2018/3/quantum-computing-scenarios/strychnine1.png"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="Strychnine[1]" src="/assets/2018/3/quantum-computing-scenarios/strychnine1_thumb.png" alt="Strychnine[1]" width="320" height="248" align="left" border="0" />
 </a>
 
 The basic problem of a lot of material research have similar mathematical communalities. It is about finding a big molecule having a couple of interesting properties.  This could be pharmacology, agriculture (e.g. <a href="https://news.microsoft.com/transform/things-to-come-could-the-cloud-and-quantum-computing-help-feed-the-world/">finding fertilizer catalyst</a>), <a href="https://www.azonano.com/article.aspx?ArticleID=3251">nanotechnology</a>, etc.  .

@@ -1,9 +1,9 @@
 ---
-title:  Open Data Protocol
-date:  2010-04-21 16:34:14 -04:00
-permalink:  "/2010/04/21/open-data-protocol/"
+title: Open Data Protocol
+date: 2010-04-21 16:34:14 -04:00
+permalink: /2010/04/21/open-data-protocol/
 categories:
 - Solution
-tags:  []
+tags: []
 ---
 Microsoft has moved forward with their REST data-access strategy.&#160; They’ve introduced the <a href="http://www.odata.org/">Open Data Protocol</a> (oData).&#160; Formally known as <a href="http://msdn.microsoft.com/en-us/library/bb906063.aspx">Astoria</a>, OData is a web protocol for accessing data using different formats, including <a href="http://en.wikipedia.org/wiki/AtomPub">AtomPub</a> &amp; <a href="http://en.wikipedia.org/wiki/Json">JSON</a>.   <p>OData is supported in .NET 3.5 SP1.&#160; At first glance, it looks like a fancy way to access data, allowing a user to encode simple data queries in an HTTP URL query string and receiving data in the form of a feed.&#160; But with OData now being a standard protocol (ok, it’s a Microsoft standard, but it at least means Microsoft is putting its weight behind it, which is no small things), its usage is going to get widespread.</p>  <p>Now what does OData opens?&#160; For me, it really opens data-access through a business logic layer:&#160; application tier as opposed to data tier.&#160; A big limitation of SQL queries is that, hosted in <a href="http://en.wikipedia.org/wiki/Microsoft_SQL_Server">Microsoft SQL Server</a> (or other relational database server technology), it means your query has to look at tables or views.&#160; Having the queries running on the application tier opens up the visibility of what your query can look at.</p>  <p>Using .NET 3.5 SP1, a team I was leading implemented a little entity set accessible using OData.&#160; The entity set represented various state of an integration server (e.g. number of batch running, how many queued, etc.).&#160; What was interesting about it is that the data exposed there didn’t exist in any database.&#160; It was real time application server statistics.</p>  <p>You could think about different scenarios, exposing data from more than one database and an external service and what have you.&#160; That is just SOA, right?&#160; Well, with the amount of clients (consumers) of OData increasing, it’s now becoming a <em>well understood web service</em>.&#160; Think about a user bringing your data in Excel directly for instance.</p>  <p>Currently, the number of <a href="http://www.odata.org/consumers">consumers is limited</a>, but Microsoft has plan to get all its product lines consuming OData.</p>  <p>To me, that gives us a strong incentive to expose data using OData.</p>  <p><img src="http://www.odata.org/images/OData_logo_MS_small.png" /></p>

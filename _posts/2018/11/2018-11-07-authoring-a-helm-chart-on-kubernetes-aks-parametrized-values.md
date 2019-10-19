@@ -1,7 +1,7 @@
 ---
-title:  Authoring a Helm Chart on Kubernetes / AKS - Parametrized values
-date:  2018-11-07 06:30:50 -05:00
-permalink:  "/2018/11/07/authoring-a-helm-chart-on-kubernetes-aks-parametrized-values/"
+title: Authoring a Helm Chart on Kubernetes / AKS - Parametrized values
+date: 2018-11-07 06:30:50 -05:00
+permalink: /2018/11/07/authoring-a-helm-chart-on-kubernetes-aks-parametrized-values/
 categories:
 - Solution
 tags:

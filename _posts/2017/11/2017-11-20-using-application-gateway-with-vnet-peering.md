@@ -1,14 +1,14 @@
 ---
-title:  Using Application Gateway with VNET peering
-date:  2017-11-20 06:30:23 -05:00
-permalink:  "/2017/11/20/using-application-gateway-with-vnet-peering/"
+title: Using Application Gateway with VNET peering
+date: 2017-11-20 06:30:23 -05:00
+permalink: /2017/11/20/using-application-gateway-with-vnet-peering/
 categories:
 - Solution
 tags:
 - Networking
 - Web
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2017/11/pexels-photo-3747101.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-374710[1]" src="http://vincentlauzon.files.wordpress.com/2017/11/pexels-photo-3747101_thumb.jpg" alt="pexels-photo-374710[1]" width="320" height="211" align="right" border="0" /></a>As I write these lines (early November 2017), Application Gateway doesn’t integrate well across VNET peering.
+<a href="/assets/2017/11/using-application-gateway-with-vnet-peering/pexels-photo-3747101.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-374710[1]" src="/assets/2017/11/using-application-gateway-with-vnet-peering/pexels-photo-3747101_thumb.jpg" alt="pexels-photo-374710[1]" width="320" height="211" align="right" border="0" /></a>As I write these lines (early November 2017), Application Gateway doesn’t integrate well across VNET peering.
 
 More precisely, if we put the gateway in a VNET and have scale sets in another, the usual integration, where the scale set registers its VM automatically as the size of the set evolves, doesn’t work.
 

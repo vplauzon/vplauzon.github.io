@@ -1,7 +1,7 @@
 ---
-title:  Azure Key Vault - Pricing
-date:  2015-06-20 12:00:30 -04:00
-permalink:  "/2015/06/20/azure-key-vault-pricing/"
+title: Azure Key Vault - Pricing
+date: 2015-06-20 12:00:30 -04:00
+permalink: /2015/06/20/azure-key-vault-pricing/
 categories:
 - Solution
 tags:

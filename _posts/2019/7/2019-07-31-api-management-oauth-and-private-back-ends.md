@@ -1,7 +1,7 @@
 ---
-title:  API Management - OAuth and private back-ends
-date:  2019-07-31 06:30:43 -04:00
-permalink:  "/2019/07/31/api-management-oauth-and-private-back-ends/"
+title: API Management - OAuth and private back-ends
+date: 2019-07-31 06:30:43 -04:00
+permalink: /2019/07/31/api-management-oauth-and-private-back-ends/
 categories:
 - Solution
 tags:

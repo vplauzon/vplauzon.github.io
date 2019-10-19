@@ -1,13 +1,13 @@
 ---
-title:  Recreating VMs in Azure
-date:  2016-05-30 23:14:34 -04:00
-permalink:  "/2016/05/30/recreating-vms-in-azure/"
+title: Recreating VMs in Azure
+date: 2016-05-30 23:14:34 -04:00
+permalink: /2016/05/30/recreating-vms-in-azure/
 categories:
 - Solution
 tags:
 - Virtual Machines
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2016/05/darkphoenix1.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;margin:0 10px 0 0;display:inline;padding-right:0;border:0;" title="From http://www.hdwalls.xyz/" src="http://vincentlauzon.files.wordpress.com/2016/05/darkphoenix1_thumb.jpg" alt="From http://www.hdwalls.xyz/" width="325" height="280" align="right" border="0" /></a>In this article I’m going to explain how to destroy VMs, keep their disks on the backburner and re-create them later.
+<a href="/assets/2016/5/recreating-vms-in-azure/darkphoenix1.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;margin:0 10px 0 0;display:inline;padding-right:0;border:0;" title="From http://www.hdwalls.xyz/" src="/assets/2016/5/recreating-vms-in-azure/darkphoenix1_thumb.jpg" alt="From http://www.hdwalls.xyz/" width="325" height="280" align="right" border="0" /></a>In this article I’m going to explain how to destroy VMs, keep their disks on the backburner and re-create them later.
 
 Why would you do that?
 

@@ -1,9 +1,9 @@
 ---
-title:  CLR Stored Procedure inside SQL Server 2008
-date:  2010-05-07 10:40:36 -04:00
-permalink:  "/2010/05/07/clr-stored-procedure-inside-sql-server-2008/"
+title: CLR Stored Procedure inside SQL Server 2008
+date: 2010-05-07 10:40:36 -04:00
+permalink: /2010/05/07/clr-stored-procedure-inside-sql-server-2008/
 categories:
 - Solution
-tags:  []
+tags: []
 ---
 <p>Since SQL 2005 it has been possible to write stored procedure in .NET.&#160; This is part of the CLR hosting of SQL Server.</p>  <p>When SQL 2005 was released, I was quite skeptical about the two features enabled by CLR hosting, ie CLR Stored Procedure and CLR User Defined Type (UDT).&#160; I must say I was quite impressed at the effort Microsoft went through to enable this.&#160; Hosting the CLR in a way that was both safe and scalable required a lot of changes from the CLR 1.0 to CLR 2.0 (changes ASP.NET benefited from as well).&#160; I always wonder why they went to so much effort to enable something that looks like a gadget to me.</p>  <p>To this day I still think that using CLR UDT should really be the last option.&#160; I’ve never seen it deployed anywhere either.&#160; For me, SQL isn’t an object-oriented / procedural language and getting CLR types in SQL feels pretty awkward and inefficient.&#160; The killer for me would be to maintain CLR data stored in SQL table.&#160; What happens to your existing data if you update a CLR type?&#160; Data in SQL is meant to be lasting.&#160; CLR types belong to the OOP world:&#160; agile and changing.</p>  <p>&#160;</p>  <p>That being said, I finally got around a scenario where I would need to use CLR in a stored procedure.&#160; We required to have enterprise web services be accessible from SQL.&#160; Everywhere I’ve looked on the web, the best practice approach was to use CLR Stored Procedure.&#160; There was some old OLE objects but every expert discourages you to use it.&#160; So I went for it and started a proof of concept.</p>  <p>I was happily surprised.&#160; The development experience is quite good:&#160; you develop in Visual Studio, it deploys your assembly by itself, you can even debug.&#160; One of my requirements was to impersonate the calling user which was pretty trivial to do in .NET.</p>  <p>Where I saw more problems was some feature changes in SQL 2008.&#160; I was using VS 2010 with SQL 2008 R2.&#160; When I wanted to stream outputs out of a SQL sproc, the implementation has changed and I got many security exceptions I couldn’t get rid of.&#160; So at the end, I ended up doing only a web service call in CLR and all the rest in SQL.&#160; Conservative approach which I recommend!</p>

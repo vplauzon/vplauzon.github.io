@@ -1,7 +1,7 @@
 ---
-title:  BizTalk beyond 2010
-date:  2011-01-20 20:50:00 -05:00
-permalink:  "/2011/01/20/biztalk-beyond-2010/"
+title: BizTalk beyond 2010
+date: 2011-01-20 20:50:00 -05:00
+permalink: /2011/01/20/biztalk-beyond-2010/
 categories:
 - Solution
 tags:

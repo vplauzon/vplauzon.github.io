@@ -1,9 +1,9 @@
 ---
-title:  VM roles aren’t IaaS
-date:  2012-01-15 12:47:03 -05:00
-permalink:  "/2012/01/15/vm-roles-arent-iaas/"
+title: VM roles aren’t IaaS
+date: 2012-01-15 12:47:03 -05:00
+permalink: /2012/01/15/vm-roles-arent-iaas/
 categories:
 - Solution
-tags:  []
+tags: []
 ---
 <p>Back in <a href="http://vincentlauzon.wordpress.com/2010/10/28/pdc-2010-keynotes/">October 2010</a> I wrote about the PDC 2010 that the VM Role was bringing IaaS in the Windows Azure offering.</p>  <p>Well, I was wrong:&#160; VM role isn’t IaaS at all.</p>  <p>Why?</p>  <p>VM roles VMs are <strong>stateless</strong> as Web &amp; Worker roles are.</p>  <p>This means you provide a .vhd to Azure ; when the VM gets instantiated, the original disk image is your .vhd.&#160; The image will then evolve when the software on the VM decide to write on the .vhd.&#160; But when the VM gets teared down for some reason (e.g. upgrades, failures), the .vhd disappear and the original .vhd is re-installed in a new VM!</p>  <p>In that sense, Azure doesn’t keep the state of a VM role, hence it is stateless.</p>  <p>Also, VM Role supports a narrow choice of configuration.&#160; Basically, you need to be Windows 2008 R2 64 bits with some Azure bits installed on the VM.</p>  <p>What are VM role useful for then?</p>  <p>VM Role weren’t meant to be IaaS.&#160; This was reported by some people (like me, mea culpa) who jumped the gun a bit fast at the fact that you provided a .vhd as with IaaS provider.&#160; VM Role were actually meant as a complement to other stateless roles, such as web role.&#160; When the install script of a role is fairly complicated (e.g. you need to install a huge software on it), it becomes more practical to do that on one VM, take a snapshot and use that as a VM Role.&#160; The start-up time of such a role will than be much faster than installing all the bits every time.</p>  <p><a href="http://msdn.microsoft.com/en-us/library/windowsazure/gg465398.aspx">See VM Role section at MSDN for more details</a>.</p>  <p>&#160;</p>  <p><a title="http://www.zdnet.com/blog/microsoft/microsoft-to-enable-linux-on-its-windows-azure-cloud-in-2012/11508" href="http://www.zdnet.com/blog/microsoft/microsoft-to-enable-linux-on-its-windows-azure-cloud-in-2012/11508">http://www.zdnet.com/blog/microsoft/microsoft-to-enable-linux-on-its-windows-azure-cloud-in-2012/11508</a></p>

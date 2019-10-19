@@ -1,7 +1,7 @@
 ---
-title:  Applied SOA: Part 9–Service Versioning
-date:  2012-05-08 19:59:00 -04:00
-permalink:  "/2012/05/08/applied-soa-part-9service-versioning/"
+title: 'Applied SOA: Part 9–Service Versioning'
+date: 2012-05-08 19:59:00 -04:00
+permalink: /2012/05/08/applied-soa-part-9service-versioning/
 categories:
 - Solution
 tags:

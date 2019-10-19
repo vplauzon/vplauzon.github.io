@@ -1,7 +1,7 @@
 ---
-title:  Entity Framework 4.1: Override conventions (2)
-date:  2011-04-06 20:52:00 -04:00
-permalink:  "/2011/04/06/entity-framework-4-1-override-conventions-2/"
+title: 'Entity Framework 4.1: Override conventions (2)'
+date: 2011-04-06 20:52:00 -04:00
+permalink: /2011/04/06/entity-framework-4-1-override-conventions-2/
 categories:
 - Solution
 tags:

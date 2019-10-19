@@ -1,7 +1,7 @@
 ---
-title:  Machine Learning - An Introduction - Part 2
-date:  2015-07-12 15:00:30 -04:00
-permalink:  "/2015/07/12/machine-learning-an-introduction-part-2/"
+title: Machine Learning - An Introduction - Part 2
+date: 2015-07-12 15:00:30 -04:00
+permalink: /2015/07/12/machine-learning-an-introduction-part-2/
 categories:
 - Solution
 tags:
@@ -48,7 +48,7 @@ f(x) = a_0 + a_1*x + a_2*x^2 + a_3*x^3 + … + a_n*x^n
 
 For a given <strong>degree</strong> <em>n</em>.  The bigger the degree, the more the function can curve to fit the sample set as shown in the following examples:
 
-<a href="http://vincentlauzon.files.wordpress.com/2015/06/image3.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2015/06/image_thumb3.png" alt="image" width="966" height="852" border="0" /></a>
+<a href="/assets/2015/7/machine-learning-an-introduction-part-2/image3.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="image" src="/assets/2015/7/machine-learning-an-introduction-part-2/image_thumb3.png" alt="image" width="966" height="852" border="0" /></a>
 
 Another popular class of models are the <a href="https://en.wikipedia.org/wiki/Artificial_neural_network" target="_blank" rel="noopener">neural networks</a>.  They too have variable number of parameters and also have varying topology (single layer, multi-layer, deep, with feedback loops, etc.).
 

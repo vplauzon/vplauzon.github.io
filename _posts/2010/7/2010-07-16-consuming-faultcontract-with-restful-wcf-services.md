@@ -1,7 +1,7 @@
 ---
-title:  Consuming FaultContract with Restful WCF services
-date:  2010-07-16 12:48:54 -04:00
-permalink:  "/2010/07/16/consuming-faultcontract-with-restful-wcf-services/"
+title: Consuming FaultContract with Restful WCF services
+date: 2010-07-16 12:48:54 -04:00
+permalink: /2010/07/16/consuming-faultcontract-with-restful-wcf-services/
 categories:
 - Solution
 tags:

@@ -1,7 +1,7 @@
 ---
-title:  How to Create a Logic App Connector in an ARM Template
-date:  2017-10-28 19:25:50 -04:00
-permalink:  "/2017/10/28/how-to-create-a-logic-app-connector-in-an-arm-template/"
+title: How to Create a Logic App Connector in an ARM Template
+date: 2017-10-28 19:25:50 -04:00
+permalink: /2017/10/28/how-to-create-a-logic-app-connector-in-an-arm-template/
 categories:
 - Solution
 tags:
@@ -9,7 +9,7 @@ tags:
 - NoSQL
 - Serverless
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2017/10/pexels-photo-4150431.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-415043[1]" src="http://vincentlauzon.files.wordpress.com/2017/10/pexels-photo-4150431_thumb.jpg" alt="pexels-photo-415043[1]" width="320" height="213" align="right" border="0" /></a>I wanted to automate the performance test setup we discussed in the <a href="https://vincentlauzon.com/2017/10/25/cosmos-db-performance-with-geospatial-data/">last article</a>.  This includes a Logic App calling into a Cosmos DB stored procedure.
+<a href="/assets/2017/10/how-to-create-a-logic-app-connector-in-an-arm-template/pexels-photo-4150431.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-415043[1]" src="/assets/2017/10/how-to-create-a-logic-app-connector-in-an-arm-template/pexels-photo-4150431_thumb.jpg" alt="pexels-photo-415043[1]" width="320" height="213" align="right" border="0" /></a>I wanted to automate the performance test setup we discussed in the <a href="https://vincentlauzon.com/2017/10/25/cosmos-db-performance-with-geospatial-data/">last article</a>.  This includes a Logic App calling into a Cosmos DB stored procedure.
 
 Logic App uses <a href="https://docs.microsoft.com/en-ca/azure/connectors/apis-list" target="_blank" rel="noopener">connectors</a> when connecting to other services, either within or outside of Azure.  Now how do we create those in an ARM Template?  This problem is the same regardless if we want to connect to Cosmos DB, Blob Storage, an FTP site, SalesForce.com, Twitter, etc.  .
 

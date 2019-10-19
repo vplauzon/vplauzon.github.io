@@ -1,7 +1,7 @@
 ---
-title:  U-SQL Cross Apply
-date:  2016-01-10 19:00:40 -05:00
-permalink:  "/2016/01/10/u-sql-cross-apply/"
+title: U-SQL Cross Apply
+date: 2016-01-10 19:00:40 -05:00
+permalink: /2016/01/10/u-sql-cross-apply/
 categories:
 - Solution
 tags:

@@ -1,14 +1,14 @@
 ---
-title:  Using Azure Container Instances to complete automation
-date:  2018-06-13 06:30:13 -04:00
-permalink:  "/2018/06/13/using-azure-container-instances-to-complete-automation/"
+title: Using Azure Container Instances to complete automation
+date: 2018-06-13 06:30:13 -04:00
+permalink: /2018/06/13/using-azure-container-instances-to-complete-automation/
 categories:
 - Solution
 tags:
 - Automation
 - Containers
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2018/06/blur-close-up-engineering-633850.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="blur-close-up-engineering-633850" src="http://vincentlauzon.files.wordpress.com/2018/06/blur-close-up-engineering-633850_thumb.jpg" alt="blur-close-up-engineering-633850" width="320" height="214" align="left" border="0" /></a>We looked at <a href="https://vincentlauzon.com/2018/04/26/azure-container-instance-getting-started/">Azure Container Instances</a>.
+<a href="/assets/2018/6/using-azure-container-instances-to-complete-automation/blur-close-up-engineering-633850.jpg"><img style="border:0 currentcolor;float:left;display:inline;background-image:none;" title="blur-close-up-engineering-633850" src="/assets/2018/6/using-azure-container-instances-to-complete-automation/blur-close-up-engineering-633850_thumb.jpg" alt="blur-close-up-engineering-633850" width="320" height="214" align="left" border="0" /></a>We looked at <a href="https://vincentlauzon.com/2018/04/26/azure-container-instance-getting-started/">Azure Container Instances</a>.
 
 It allows us to launch a container without a cluster and without a VM.
 

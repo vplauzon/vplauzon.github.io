@@ -1,7 +1,7 @@
 ---
-title:  Entity Framework 4.1 RC:  Including Code-First
-date:  2011-03-29 20:22:00 -04:00
-permalink:  "/2011/03/29/entity-framework-4-1-rc-including-code-first/"
+title: 'Entity Framework 4.1 RC:  Including Code-First'
+date: 2011-03-29 20:22:00 -04:00
+permalink: /2011/03/29/entity-framework-4-1-rc-including-code-first/
 categories:
 - Solution
 tags:

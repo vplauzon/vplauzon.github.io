@@ -1,7 +1,7 @@
 ---
-title:  Azure Key Vault & SQL Server Connector Update
-date:  2015-10-07 19:00:23 -04:00
-permalink:  "/2015/10/07/azure-key-vault-sql-server-connector-update/"
+title: Azure Key Vault & SQL Server Connector Update
+date: 2015-10-07 19:00:23 -04:00
+permalink: /2015/10/07/azure-key-vault-sql-server-connector-update/
 categories:
 - Solution
 tags:

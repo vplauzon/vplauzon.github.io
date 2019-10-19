@@ -1,7 +1,7 @@
 ---
-title:  Move Azure Resources between Resource Groups using Powershell
-date:  2015-10-28 19:00:50 -04:00
-permalink:  "/2015/10/28/move-azure-resources-between-resource-groups-using-powershell/"
+title: Move Azure Resources between Resource Groups using Powershell
+date: 2015-10-28 19:00:50 -04:00
+permalink: /2015/10/28/move-azure-resources-between-resource-groups-using-powershell/
 categories:
 - Solution
 tags:

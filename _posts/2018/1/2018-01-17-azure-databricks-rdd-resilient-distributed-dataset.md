@@ -1,14 +1,14 @@
 ---
-title:  Azure Databricks - RDD - Resilient Distributed Dataset
-date:  2018-01-17 06:30:45 -05:00
-permalink:  "/2018/01/17/azure-databricks-rdd-resilient-distributed-dataset/"
+title: Azure Databricks - RDD - Resilient Distributed Dataset
+date: 2018-01-17 06:30:45 -05:00
+permalink: /2018/01/17/azure-databricks-rdd-resilient-distributed-dataset/
 categories:
 - Solution
 tags:
 - Big Data
 - Data
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2018/01/pexels-photo-7569011.jpg"><img style="float:right;display:inline;background-image:none;" title="pexels-photo-756901[1]" src="http://vincentlauzon.files.wordpress.com/2018/01/pexels-photo-7569011_thumb.jpg" alt="pexels-photo-756901[1]" width="324" height="212" align="right" border="0" /></a><a href="https://vincentlauzon.com/2017/12/18/azure-databricks-getting-started/" target="_blank" rel="noopener">We looked at Azure Databricks</a> a few weeks ago.  Azure Databricks is a managed Apache Spark Cluster service.
+<a href="/assets/2018/1/azure-databricks-rdd-resilient-distributed-dataset/pexels-photo-7569011.jpg"><img style="float:right;display:inline;background-image:none;" title="pexels-photo-756901[1]" src="/assets/2018/1/azure-databricks-rdd-resilient-distributed-dataset/pexels-photo-7569011_thumb.jpg" alt="pexels-photo-756901[1]" width="324" height="212" align="right" border="0" /></a><a href="https://vincentlauzon.com/2017/12/18/azure-databricks-getting-started/" target="_blank" rel="noopener">We looked at Azure Databricks</a> a few weeks ago.  Azure Databricks is a managed Apache Spark Cluster service.
 
 In this article, we are going to look at &amp; use a fundamental building block of Apache Spark:  Resilient Distributed Dataset or RDD.  We are going to use the Python SDK.
 

@@ -1,7 +1,7 @@
 ---
-title:  Understanding simple HTTP Ingress in AKS
-date:  2018-11-21 06:30:58 -05:00
-permalink:  "/2018/11/21/understanding-simple-http-ingress-in-aks/"
+title: Understanding simple HTTP Ingress in AKS
+date: 2018-11-21 06:30:58 -05:00
+permalink: /2018/11/21/understanding-simple-http-ingress-in-aks/
 categories:
 - Solution
 tags:

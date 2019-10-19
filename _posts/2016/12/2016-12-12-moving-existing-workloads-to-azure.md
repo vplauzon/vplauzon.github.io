@@ -1,13 +1,13 @@
 ---
-title:  Moving existing workloads to Azure
-date:  2016-12-12 14:16:55 -05:00
-permalink:  "/2016/12/12/moving-existing-workloads-to-azure/"
+title: Moving existing workloads to Azure
+date: 2016-12-12 14:16:55 -05:00
+permalink: /2016/12/12/moving-existing-workloads-to-azure/
 categories:
 - Solution
 tags:
 - Virtual Machines
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2016/12/space-shuttle-lift-off-liftoff-nasa11.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="From https://www.pexels.com/" src="http://vincentlauzon.files.wordpress.com/2016/12/space-shuttle-lift-off-liftoff-nasa1_thumb1.jpg" alt="From https://www.pexels.com/" width="317" height="266" align="right" border="0" /></a>
+<a href="/assets/2016/12/moving-existing-workloads-to-azure/space-shuttle-lift-off-liftoff-nasa11.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="From https://www.pexels.com/" src="/assets/2016/12/moving-existing-workloads-to-azure/space-shuttle-lift-off-liftoff-nasa1_thumb1.jpg" alt="From https://www.pexels.com/" width="317" height="266" align="right" border="0" /></a>
 
 Applications born in the cloud can take full advantage of the cloud and the agility it brings.
 
@@ -35,7 +35,7 @@ The last two points make Dev + Test workloads easier to move, i.e. there are les
 
 Where I would be cautious is to make sure you do not need to do a lot of costly transformations in order to purely do a lift and shift ; if that’s the case I would consider modernizing first, otherwise there won’t be budget in the bucket for the modernization later.
 <h2>Address blockers</h2>
-<strong><a href="http://vincentlauzon.files.wordpress.com/2016/12/red-building-industry-bricks11.jpg"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="red-building-industry-bricks[1]" src="http://vincentlauzon.files.wordpress.com/2016/12/red-building-industry-bricks1_thumb1.jpg" alt="red-building-industry-bricks[1]" width="376" height="250" align="left" border="0" /></a>Will it run on Azure</strong>?  Most x86 stuff that run on a VM will run in Azure, but not all.  Typically this boils down to unsupported network protocols and shared disks.  Azure supports most IP protocols, except <a href="https://en.wikipedia.org/wiki/Generic_Routing_Encapsulation" target="_blank">Generic Routing Encapsulation</a> (GRE), <a href="https://en.wikipedia.org/wiki/IP_in_IP" target="_blank">IP in IP</a> &amp; <a href="https://en.wikipedia.org/wiki/Multicast" target="_blank">multicast</a> ; <a href="https://en.wikipedia.org/wiki/User_Datagram_Protocol" target="_blank">User Datagram Protocol</a> is supported but not with multicast.  Shared disks are not supported in Azure:  every disk belong to one-and-only-one-VM.  Shared drive can be mounted via <a href="https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-how-to-use-files" target="_blank">Azure File Storage</a>, but for application requiring a disk accessible by multiple VMs, that isn’t supported.  This often is the case with Quorum disk-based HA solutions, e.g. <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-classic-oracle-considerations#oracle-database-virtual-machine-images" target="_blank">Oracle RAC</a>.
+<strong><a href="/assets/2016/12/moving-existing-workloads-to-azure/red-building-industry-bricks11.jpg"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="red-building-industry-bricks[1]" src="/assets/2016/12/moving-existing-workloads-to-azure/red-building-industry-bricks1_thumb1.jpg" alt="red-building-industry-bricks[1]" width="376" height="250" align="left" border="0" /></a>Will it run on Azure</strong>?  Most x86 stuff that run on a VM will run in Azure, but not all.  Typically this boils down to unsupported network protocols and shared disks.  Azure supports most IP protocols, except <a href="https://en.wikipedia.org/wiki/Generic_Routing_Encapsulation" target="_blank">Generic Routing Encapsulation</a> (GRE), <a href="https://en.wikipedia.org/wiki/IP_in_IP" target="_blank">IP in IP</a> &amp; <a href="https://en.wikipedia.org/wiki/Multicast" target="_blank">multicast</a> ; <a href="https://en.wikipedia.org/wiki/User_Datagram_Protocol" target="_blank">User Datagram Protocol</a> is supported but not with multicast.  Shared disks are not supported in Azure:  every disk belong to one-and-only-one-VM.  Shared drive can be mounted via <a href="https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-how-to-use-files" target="_blank">Azure File Storage</a>, but for application requiring a disk accessible by multiple VMs, that isn’t supported.  This often is the case with Quorum disk-based HA solutions, e.g. <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-classic-oracle-considerations#oracle-database-virtual-machine-images" target="_blank">Oracle RAC</a>.
 
 If you hit one of those walls, the question you have to ask yourself is <strong>are there any mitigation</strong>?  This will vary greatly depending on your solution and the blockers you face.
 
@@ -47,7 +47,7 @@ If you hit one of those walls, the question you have to ask yourself is <strong>
 
 <strong>Does it have a license that allow running in Azure</strong>?  Don’t forget the licenses!  Some vendors will have some funky licensing schemes for solution running in the cloud.  One question I get all the time is about Oracle, so here is the answer:  yes Oracle can be licensed under Azure and no you don’t have to pay for all the cores of the physical server you’re running on ; <a href="http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf" target="_blank">read about it here</a>.
 <h2>Address limitations</h2>
-<a href="http://vincentlauzon.files.wordpress.com/2016/12/fence-1809742_64011.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="fence-1809742_640[1]" src="http://vincentlauzon.files.wordpress.com/2016/12/fence-1809742_6401_thumb1.jpg" alt="fence-1809742_640[1]" width="339" height="226" align="right" border="0" /></a>
+<a href="/assets/2016/12/moving-existing-workloads-to-azure/fence-1809742_64011.jpg"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="fence-1809742_640[1]" src="/assets/2016/12/moving-existing-workloads-to-azure/fence-1809742_6401_thumb1.jpg" alt="fence-1809742_640[1]" width="339" height="226" align="right" border="0" /></a>
 
 <strong>Time Window to transition should drive your strategy</strong>.  This might sound obvious but often people do not know where to start, so start with your destination:  when do you want to be done?
 
@@ -67,7 +67,7 @@ If you hit one of those walls, the question you have to ask yourself is <strong>
 
 Basically, for most of those points, the idea is to consider the point and architect the solution to address it.  This will alter the cost.  For instance, if you put 2 instances instead  of 1, you’re gona pay for twice the compute.
 <h2>Make it great</h2>
-<a href="http://vincentlauzon.files.wordpress.com/2016/12/london-140785_64011.jpg"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="london-140785_640[1]" src="http://vincentlauzon.files.wordpress.com/2016/12/london-140785_6401_thumb1.jpg" alt="london-140785_640[1]" width="423" height="280" align="left" border="0" /></a>
+<a href="/assets/2016/12/moving-existing-workloads-to-azure/london-140785_64011.jpg"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="london-140785_640[1]" src="/assets/2016/12/moving-existing-workloads-to-azure/london-140785_6401_thumb1.jpg" alt="london-140785_640[1]" width="423" height="280" align="left" border="0" /></a>
 
 We have our solution.  We worked through the blockers &amp; limitations, now let’s take it to the next level.
 
@@ -91,13 +91,13 @@ For many reasons, this approach isn’t optimal in Azure:
 </ul>
 This is why I always give the same advise:  start now, start small, start on something low-risk.  If you migrate 30 solutions and realize that you bust a limit of Virtual Network and have to rebuild it one week-end, that’s expensive.  But if you migrate a solution, experiment, realize that the way you laid out the Network won’t scale to 30, you tear it down and rebuild it:  this will be much cheaper.
 
-<a href="http://vincentlauzon.files.wordpress.com/2016/12/image6.png"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/12/image_thumb6.png" alt="image" width="497" height="226" align="right" border="0" /></a>I’m not advocating to migrate all your environments freestyle in a cowboy manner, quite the opposite:  experiment with something real and low-risk and build from there.  You will learn from the experiment and move forward instead of experimenting in vacuum.  As you migrate more and more workloads, you’ll gain experience and expertise.  You’ll probably start with dev-test and in time you’ll feel confident to move to production workloads.
+<a href="/assets/2016/12/moving-existing-workloads-to-azure/image6.png"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2016/12/moving-existing-workloads-to-azure/image_thumb6.png" alt="image" width="497" height="226" align="right" border="0" /></a>I’m not advocating to migrate all your environments freestyle in a cowboy manner, quite the opposite:  experiment with something real and low-risk and build from there.  You will learn from the experiment and move forward instead of experimenting in vacuum.  As you migrate more and more workloads, you’ll gain experience and expertise.  You’ll probably start with dev-test and in time you’ll feel confident to move to production workloads.
 
 Look at your application park and try to take a few solutions with little dependencies, so you can move them without carrying your entire park with it.
 
 The diagram I’ve put here might look a bit simplistic.  To get there you’ll probably have to do a few transformations.  For instance, you might want to consider replicating your domain controllers to replica in Azure to break that dependency.  There might be a system everything depend on in a light way ; could your sample solutions access it through a VPN connection?
 <h2>Summary</h2>
-<a href="http://vincentlauzon.files.wordpress.com/2016/12/image7.png"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="http://vincentlauzon.files.wordpress.com/2016/12/image_thumb7.png" alt="image" width="356" height="237" align="left" border="0" /></a>I tried to summarize the general guidelines we give to customers when considering migration.
+<a href="/assets/2016/12/moving-existing-workloads-to-azure/image7.png"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/2016/12/moving-existing-workloads-to-azure/image_thumb7.png" alt="image" width="356" height="237" align="left" border="0" /></a>I tried to summarize the general guidelines we give to customers when considering migration.
 
 This is no one X steps plan, but a bunch of considerations to remove risk from the endeavor.
 

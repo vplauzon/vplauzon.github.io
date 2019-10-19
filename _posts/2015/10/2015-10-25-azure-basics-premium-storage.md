@@ -1,10 +1,10 @@
 ---
-title:  Azure Basics:  Premium Storage
-date:  2015-10-25 19:00:07 -04:00
-permalink:  "/2015/10/25/azure-basics-premium-storage/"
+title: 'Azure Basics:  Premium Storage'
+date: 2015-10-25 19:00:07 -04:00
+permalink: /2015/10/25/azure-basics-premium-storage/
 categories:
 - Solution
-tags:  []
+tags: []
 ---
 I thought I would do a lap around <a href="https://azure.microsoft.com/en-us/services/storage/premium-storage/" target="_blank">Azure Premium Storage</a> to clear some fog.
 

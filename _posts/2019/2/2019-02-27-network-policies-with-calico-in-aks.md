@@ -1,7 +1,7 @@
 ---
-title:  Network Policies with Calico in AKS
-date:  2019-02-27 06:30:49 -05:00
-permalink:  "/2019/02/27/network-policies-with-calico-in-aks/"
+title: Network Policies with Calico in AKS
+date: 2019-02-27 06:30:49 -05:00
+permalink: /2019/02/27/network-policies-with-calico-in-aks/
 categories:
 - Solution
 tags:

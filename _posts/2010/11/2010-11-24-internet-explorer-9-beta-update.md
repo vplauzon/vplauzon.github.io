@@ -1,7 +1,7 @@
 ---
-title:  Internet Explorer 9 – Beta Update
-date:  2010-11-24 20:31:00 -05:00
-permalink:  "/2010/11/24/internet-explorer-9-beta-update/"
+title: Internet Explorer 9 – Beta Update
+date: 2010-11-24 20:31:00 -05:00
+permalink: /2010/11/24/internet-explorer-9-beta-update/
 categories:
 - News
 tags:

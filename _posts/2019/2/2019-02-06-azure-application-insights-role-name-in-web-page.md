@@ -1,7 +1,7 @@
 ---
-title:  Azure Application Insights Role Name in web page
-date:  2019-02-06 06:30:40 -05:00
-permalink:  "/2019/02/06/azure-application-insights-role-name-in-web-page/"
+title: Azure Application Insights Role Name in web page
+date: 2019-02-06 06:30:40 -05:00
+permalink: /2019/02/06/azure-application-insights-role-name-in-web-page/
 categories:
 - Solution
 tags:

@@ -1,10 +1,10 @@
 ---
-title:  Introduction to AKS
-date:  2019-10-09 06:30:21 -04:00
-permalink:  "/2019/10/09/introduction-to-aks/"
+title: Introduction to AKS
+date: 2019-10-09 06:30:21 -04:00
+permalink: /2019/10/09/introduction-to-aks/
 categories:
 - Solution
-tags:  []
+tags: []
 ---
 I had the pleasure to present an introduction to Azure Kubernetes Service (AKS) to a customer crowd yesterday.
 

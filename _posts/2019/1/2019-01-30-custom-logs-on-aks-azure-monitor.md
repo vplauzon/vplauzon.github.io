@@ -1,7 +1,7 @@
 ---
-title:  Custom Logs on AKS & Azure Monitor
-date:  2019-01-30 06:30:44 -05:00
-permalink:  "/2019/01/30/custom-logs-on-aks-azure-monitor/"
+title: Custom Logs on AKS & Azure Monitor
+date: 2019-01-30 06:30:44 -05:00
+permalink: /2019/01/30/custom-logs-on-aks-azure-monitor/
 categories:
 - Solution
 tags:

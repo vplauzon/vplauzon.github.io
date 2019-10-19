@@ -1,7 +1,7 @@
 ---
-title:  5 reasons to use Helm charts in Kubernetes
-date:  2018-10-24 06:30:15 -04:00
-permalink:  "/2018/10/24/5-reasons-to-use-helm-charts-in-kubernetes/"
+title: 5 reasons to use Helm charts in Kubernetes
+date: 2018-10-24 06:30:15 -04:00
+permalink: /2018/10/24/5-reasons-to-use-helm-charts-in-kubernetes/
 categories:
 - Solution
 tags:

@@ -1,7 +1,7 @@
 ---
-title:  Analysing Application Logs with DocumentDb
-date:  2015-09-06 19:00:18 -04:00
-permalink:  "/2015/09/06/analysing-application-logs-with-documentdb/"
+title: Analysing Application Logs with DocumentDb
+date: 2015-09-06 19:00:18 -04:00
+permalink: /2015/09/06/analysing-application-logs-with-documentdb/
 categories:
 - Solution
 tags:

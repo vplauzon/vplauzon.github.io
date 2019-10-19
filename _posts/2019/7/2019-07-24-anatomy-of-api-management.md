@@ -1,7 +1,7 @@
 ---
-title:  Anatomy of API Management
-date:  2019-07-24 06:30:04 -04:00
-permalink:  "/2019/07/24/anatomy-of-api-management/"
+title: Anatomy of API Management
+date: 2019-07-24 06:30:04 -04:00
+permalink: /2019/07/24/anatomy-of-api-management/
 categories:
 - Solution
 tags:

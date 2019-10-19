@@ -1,7 +1,7 @@
 ---
-title:  Service Principal for Logic App Connector
-date:  2018-09-25 06:30:57 -04:00
-permalink:  "/2018/09/25/service-principal-for-logic-app-connector/"
+title: Service Principal for Logic App Connector
+date: 2018-09-25 06:30:57 -04:00
+permalink: /2018/09/25/service-principal-for-logic-app-connector/
 categories:
 - Solution
 tags:

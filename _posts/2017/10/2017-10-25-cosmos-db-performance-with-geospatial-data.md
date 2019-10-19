@@ -1,14 +1,14 @@
 ---
-title:  Cosmos DB Performance with Geospatial Data
-date:  2017-10-25 18:13:46 -04:00
-permalink:  "/2017/10/25/cosmos-db-performance-with-geospatial-data/"
+title: Cosmos DB Performance with Geospatial Data
+date: 2017-10-25 18:13:46 -04:00
+permalink: /2017/10/25/cosmos-db-performance-with-geospatial-data/
 categories:
 - Solution
 tags:
 - Data
 - NoSQL
 ---
-<a href="http://vincentlauzon.files.wordpress.com/2017/10/pexels-photo-3484891.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-348489[1]" src="http://vincentlauzon.files.wordpress.com/2017/10/pexels-photo-3484891_thumb.jpg" alt="pexels-photo-348489[1]" width="320" height="483" align="right" border="0" /></a>Time for some performance tests on Cosmos DB around Geospatial coordinates!
+<a href="/assets/2017/10/cosmos-db-performance-with-geospatial-data/pexels-photo-3484891.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-348489[1]" src="/assets/2017/10/cosmos-db-performance-with-geospatial-data/pexels-photo-3484891_thumb.jpg" alt="pexels-photo-348489[1]" width="320" height="483" align="right" border="0" /></a>Time for some performance tests on Cosmos DB around Geospatial coordinates!
 
 Let’s hurt the service and see where it shines, where it has a hard time and how scaling it (i.e. increasing Request Units or RUs) helps.
 
@@ -541,7 +541,7 @@ The data here is sorted by elapsed time, i.e. the time the query took to return.
 
 We can quickly see that the main driver for the performance is the number of documents returned.  If we plot one against the other:
 
-<a href="http://vincentlauzon.files.wordpress.com/2017/10/image7.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="http://vincentlauzon.files.wordpress.com/2017/10/image_thumb7.png" alt="image" border="0" /></a>
+<a href="/assets/2017/10/cosmos-db-performance-with-geospatial-data/image7.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/2017/10/cosmos-db-performance-with-geospatial-data/image_thumb7.png" alt="image" border="0" /></a>
 
 Here we transformed the elapsed time in total milliseconds in order to get an integer value which is easier to plot (in Excel anyway).
 
