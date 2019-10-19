@@ -34,10 +34,10 @@ As usual, <a href="https://github.com/vplauzon/aks/tree/master/kubenet-outbound"
 
 Let's start by downloading a <a href="https://github.com/vplauzon/aks/blob/master/kubenet-outbound/create-cluster.sh">script file from GitHub</a>:
 
-[code lang=bash]
+```bash
 curl https://raw.githubusercontent.com/vplauzon/aks/master/kubenet-outbound/create-cluster.sh \
-  &gt; create-cluster.sh
-[/code]
+  > create-cluster.sh
+```de]
 
 We are going to run that script with five parameters:
 
@@ -80,11 +80,12 @@ The last three parameters are related to the Service Principal that will be used
 
 Let's run the command locally, e.g.:
 
-[code lang=bash]
+```bash
 ./create-cluster.sh aks-group eastus myuniqueaks \
-    &lt;my-principal-app-id&gt; \
-    &lt;my-principal-object-id&gt; \
-    &lt;my-principal-password&gt;
+    <my-principal-app-id> \
+    <my-principal-object-id> \
+    <my-principal-password>
+```ssword&gt;
 [/code]
 
 This will run for several minutes and create 4 resources in the resource group:
@@ -102,12 +103,13 @@ The script will also connect kubectl to the newly created cluster (<code>az aks 
 
 The script also outputs an IP address, e.g.:
 
-[code lang=bash]
+```bash
 Successfully deployed cluster myuniqueaks and ACI with IP 172.16.32.4
 
 Connect kubectl to newly created cluster myuniqueaks...
 
-Merged &quot;myuniqueaks&quot; as current context in /home/myusername/.kube/config
+Merged "myuniqueaks" as current context in /home/myusername/.kube/config
+```ig
 [/code]
 
 Here the IP is <em>172.16.32.4</em>.  Let's copy that IP.
@@ -116,41 +118,42 @@ Here the IP is <em>172.16.32.4</em>.  Let's copy that IP.
 
 Let's do the experiment.  Let's deploy an observer pod within AKS:
 
-[code lang=bash]
+```bash
 $ kubectl run --rm -it --image=appropriate/curl:latest observer --generator=run-pod/v1 --command sh
-[/code]
+```
 
 This lands our session on a command prompt within a pod.
 
 Let's try to contact ACI:
 
-[code lang=bash]
-/ # watch -n 2 curl -v --connect-timeout 1 &lt;ACI IP&gt;
-[/code]
+```bash
+/ # watch -n 2 curl -v --connect-timeout 1 <ACI IP>
+```/code]
 
 We should see something like refreshing every 2 seconds:
 
-[code lang=bash]
+```bash
 Every 2s: curl -v --connect-timeout 1 172.16.32.4                                                   2019-03-22 21:56:44
 
 * Rebuilt URL to: 172.16.32.4/
 *   Trying 172.16.32.4...
 * TCP_NODELAY set
 * Connected to 172.16.32.4 (172.16.32.4) port 80 (#0)
-&gt; GET / HTTP/1.1
-&gt; Host: 172.16.32.4
-&gt; User-Agent: curl/7.59.0
-&gt; Accept: */*
-&gt;
+> GET / HTTP/1.1
+> Host: 172.16.32.4
+> User-Agent: curl/7.59.0
+> Accept: */*
+>
 * HTTP 1.0, assume close after body
-&lt; HTTP/1.0 200 OK
-&lt; Content-Type: text/html; charset=utf-8
-&lt; Content-Length: 130
-&lt; Server: Werkzeug/0.14.1 Python/2.7.14
-&lt; Date: Fri, 22 Mar 2019 21:56:44 GMT
-&lt;
+< HTTP/1.0 200 OK
+< Content-Type: text/html; charset=utf-8
+< Content-Length: 130
+< Server: Werkzeug/0.14.1 Python/2.7.14
+< Date: Fri, 22 Mar 2019 21:56:44 GMT
+<
 * Closing connection 0
-&lt;h3&gt;Hello World!&lt;/h3&gt;&lt;b&gt;Hostname:&lt;/b&gt; wk-caas-416604191f9b41ada1766436a3c4673b-203163b74dfca1b08abdec&lt;br/&gt;&lt;b&gt;Visits:&lt;/b&gt; undefined
+<h3>Hello World!</h3><b>Hostname:</b> wk-caas-416604191f9b41ada1766436a3c4673b-203163b74dfca1b08abdec<br/><b>Visits:</b> undefined
+```3163b74dfca1b08abdec&lt;br/&gt;&lt;b&gt;Visits:&lt;/b&gt; undefined
 [/code]
 
 The key part is that connection is established, so AKS can talk to ACI.
@@ -171,7 +174,7 @@ Let's modify the first rule by simply changing its priority from <em>100</em> to
 
 Now if we look at our watch, we should have something like the following:
 
-[code lang=bash]
+```bash
 Every 2s: curl -v --connect-timeout 1 172.16.32.4                                                   2019-03-22 22:03:08
 
 * Rebuilt URL to: 172.16.32.4/
@@ -180,7 +183,7 @@ Every 2s: curl -v --connect-timeout 1 172.16.32.4                               
 * Connection timed out after 1001 milliseconds
 * Closing connection 0
 curl: (28) Connection timed out after 1001 milliseconds
-[/code]
+```
 
 Basically, the connection now fails.
 

@@ -68,14 +68,15 @@ So here we go.  Ready?
 
 Request (parameters defined above are referred to in {curly braces}):
 
-[code lang=text]
+```text
 POST https://login.microsoftonline.com/{Tenant ID}/oauth2/v2.0/token HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 x-ms-version: 2018-11-01
 Host: login.microsoftonline.com
 content-length: ...
 
-grant_type=client_credentials&amp;scope={Audience}&amp;client_id={Client ID}&amp;client_secret={Client Secret}
+grant_type=client_credentials&scope={Audience}&client_id={Client ID}&client_secret={Client Secret}
+```ret}
 [/code]
 
 That's it.
@@ -84,13 +85,14 @@ Complicated?
 
 That gives us a response like:
 
-[code lang=text]
+```text
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 ...
 Content-Length: ...
 
-{&quot;token_type&quot;:&quot;Bearer&quot;,&quot;expires_in&quot;:3600,&quot;ext_expires_in&quot;:3600,&quot;access_token&quot;:&quot;VERY_LONG_STRING&quot;}
+{"token_type":"Bearer","expires_in":3600,"ext_expires_in":3600,"access_token":"VERY_LONG_STRING"}
+```uot;access_token&quot;:&quot;VERY_LONG_STRING&quot;}
 [/code]
 
 <h2>Using authentication</h2>

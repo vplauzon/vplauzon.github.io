@@ -96,16 +96,16 @@ In order to run those experiments, we'll need the Azure CLI tool connected to an
 
 First, let's download an <a href="https://github.com/vplauzon/aks/blob/master/requests-vs-limits/deploy.json">ARM template</a> and <a href="https://github.com/vplauzon/aks/blob/master/requests-vs-limits/create-cluster.sh">a script</a> invoking it:
 
-[code lang=bash]
-curl https://raw.githubusercontent.com/vplauzon/aks/master/requests-vs-limits/deploy.json &gt; deploy.json
-curl https://raw.githubusercontent.com/vplauzon/aks/master/requests-vs-limits/create-cluster.sh &gt; create-cluster.sh
-[/code]
+```bash
+curl https://raw.githubusercontent.com/vplauzon/aks/master/requests-vs-limits/deploy.json > deploy.json
+curl https://raw.githubusercontent.com/vplauzon/aks/master/requests-vs-limits/create-cluster.sh > create-cluster.sh
+```/code]
 
 Let's make the script executable:
 
-[code lang=bash]
+```bash
 chmod +x create-cluster.sh
-[/code]
+```
 
 We are going to run that script with five parameters:
 
@@ -154,11 +154,12 @@ The last three parameters are related to the Service Principal that will be used
 
 Let's run the command locally, e.g.:
 
-[code lang=bash]
+```bash
 ./create-cluster.sh aks-group eastus myuniquelaworkspace myuniqueaks \
-    &lt;my-principal-app-id&gt; \
-    &lt;my-principal-object-id&gt; \
-    &lt;my-principal-password&gt;
+    <my-principal-app-id> \
+    <my-principal-object-id> \
+    <my-principal-password>
+```ssword&gt;
 [/code]
 
 This takes a few minutes to execute.
@@ -167,7 +168,7 @@ This takes a few minutes to execute.
 
 Now that we have a cluster, let's deploy <a href="https://github.com/vplauzon/aks/blob/master/requests-vs-limits/service.yaml">something on it</a>:
 
-[code lang=Javascript]
+```Javascript
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -189,11 +190,11 @@ spec:
         - containerPort: 80
         resources:
           requests:
-            memory: &quot;64M&quot;
-            cpu: &quot;250m&quot;
+            memory: "64M"
+            cpu: "250m"
           limits:
-            memory: &quot;128M&quot;
-            cpu: &quot;2&quot;
+            memory: "128M"
+            cpu: "2"
 ---
 apiVersion: v1
 kind: Service
@@ -205,6 +206,8 @@ spec:
   - port: 80
   selector:
     app: cpu-ram-api
+```  selector:
+    app: cpu-ram-api
 [/code]
 
 We have a deployment and a public service load balancing the pods of the deployment.
@@ -215,13 +218,13 @@ We see under the subsection <em>resources</em> that we specify a request of 64 M
 
 Let's deploy it:
 
-[code lang=bash]
+```bash
 kubectl apply -f https://raw.githubusercontent.com/vplauzon/aks/master/requests-vs-limits/service.yaml
-[/code]
+```
 
 Let's look at the pods:
 
-[code lang=bash]
+```bash
 $ kubectl get pods
 
 NAME                           READY   STATUS    RESTARTS   AGE
@@ -231,32 +234,33 @@ cpu-ram-api-76cb6dbbff-sfjc4   1/1     Running   0          84s
 cpu-ram-api-76cb6dbbff-wn7rr   1/1     Running   0          84s
 cpu-ram-api-76cb6dbbff-wrpwv   0/1     Pending   0          84s
 cpu-ram-api-76cb6dbbff-zh5q8   1/1     Running   0          84s
-[/code]
+```
 
 We see that one of the pods is pending.  Our cluster has a single node.  The VM sku (B2ms) has 2 cores and 8 Gb of RAM.  Kubernetes uses a portion of those resources.  We do not have access to all resources of the VM for our pods.  With 5 pods active, we requested 1.25 cores.  There weren't enough resources for 1.5.
 
 Now let's look at the service:
 
-[code lang=bash]
+```bash
 $ kubectl get svc
 
 NAME          TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)        AGE
-kubernetes    ClusterIP      10.0.0.1      &lt;none&gt;           443/TCP        175m
+kubernetes    ClusterIP      10.0.0.1      <none>           443/TCP        175m
 web-service   LoadBalancer   10.0.183.39   52.232.248.115   80:31146/TCP   11m
-[/code]
+```/code]
 
 We need to copy the external IP of the <em>web-service</em> service.  That's the Azure public IP associated to the load balancer of that service.  Let's store that in a shell variable:
 
-[code lang=bash]
-ip=52.232.248.115  # Here, let&#039;s replace that specific IP with the one from our cluster
-[/code]
+```bash
+ip=52.232.248.115  # Here, let's replace that specific IP with the one from our cluster
+```code]
 
 Now let's try a few things:
 
-[code lang=bash]
-$ curl &quot;http://$ip/&quot;
+```bash
+$ curl "http://$ip/"
 
-{&quot;duration&quot;:1,&quot;numberOfCore&quot;:1,&quot;ram&quot;:10,&quot;realDuration&quot;:&quot;00:00:01.0021172&quot;}
+{"duration":1,"numberOfCore":1,"ram":10,"realDuration":"00:00:01.0021172"}
+```uot;realDuration&quot;:&quot;00:00:01.0021172&quot;}
 [/code]
 
 By default, the API will allocate 10 Mb of RAM, use one core to do some work and run for one second.
@@ -271,10 +275,11 @@ Now we are going to maximize the view (little chevrons on both sides), select th
 
 We do not see a blip on the radar.  So, let's run that for a little longer.  We can do that with specific query strings:
 
-[code lang=bash]
-$ curl &quot;http://$ip/?duration=90&quot;
+```bash
+$ curl "http://$ip/?duration=90"
 
-{&quot;duration&quot;:90,&quot;numberOfCore&quot;:1,&quot;ram&quot;:10,&quot;realDuration&quot;:&quot;00:01:30.0804972&quot;}
+{"duration":90,"numberOfCore":1,"ram":10,"realDuration":"00:01:30.0804972"}
+```uot;realDuration&quot;:&quot;00:01:30.0804972&quot;}
 [/code]
 
 This will take 90 seconds to run.
@@ -291,10 +296,11 @@ Here we just proved that a container can consumed more than its "requests" specs
 
 Let's do the same thing with 2 cores:
 
-[code lang=bash]
-$ curl &quot;http://$ip/?duration=90&amp;core=2&quot;
+```bash
+$ curl "http://$ip/?duration=90&core=2"
 
-{&quot;duration&quot;:90,&quot;numberOfCore&quot;:2,&quot;ram&quot;:10,&quot;realDuration&quot;:&quot;00:01:30.0031934&quot;}
+{"duration":90,"numberOfCore":2,"ram":10,"realDuration":"00:01:30.0031934"}
+```0,&quot;realDuration&quot;:&quot;00:01:30.0031934&quot;}
 [/code]
 
 we can see here:
@@ -309,10 +315,11 @@ We won't do it here, but if we set the limit to 1 core, the same experience woul
 
 Let's try to run many of those at the same time:
 
-[code lang=bash]
-curl &quot;http://$ip/?duration=90&amp;core=2&quot; &amp;
-curl &quot;http://$ip/?duration=90&amp;core=2&quot; &amp;
-curl &quot;http://$ip/?duration=90&amp;core=2&quot; &amp;
+```bash
+curl "http://$ip/?duration=90&core=2" &
+curl "http://$ip/?duration=90&core=2" &
+curl "http://$ip/?duration=90&core=2" &
+```http://$ip/?duration=90&amp;core=2&quot; &amp;
 [/code]
 
 Here we can see that each container takes less than one core:
@@ -327,8 +334,9 @@ This is the flip side of under provisioning:  if all pods peak at the same time,
 
 Now let's try to crank the memory used:
 
-[code lang=bash]
-curl &quot;http://$ip/?duration=5&amp;ram=20&quot;
+```bash
+curl "http://$ip/?duration=5&ram=20"
+```&quot;
 [/code]
 
 Here we request to use 20Mb within the request.  That adds up to the rest of the memory used by the container:
@@ -337,10 +345,11 @@ Here we request to use 20Mb within the request.  That adds up to the rest of the
 
 We then get close to our 128 Mb limit.  Let exceed it:
 
-[code lang=bash]
-$ curl &quot;http://$ip/?duration=5&amp;ram=100&quot;
+```bash
+$ curl "http://$ip/?duration=5&ram=100"
 
 curl: (52) Empty reply from server
+```server
 [/code]
 
 We see an error occurs.  That's because the container got killed when its memory demand occurred and the total memory exceeded the container's limit specification.

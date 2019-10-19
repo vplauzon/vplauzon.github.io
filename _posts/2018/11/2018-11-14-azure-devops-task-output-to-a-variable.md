@@ -76,8 +76,9 @@ It's easy to see that without an output variable, this pipeline would be very te
 
 The solution is pretty straightforward.  It doesn't require calling an API or an SDK, just to output something on the console:
 
-[code lang=text]
-##vso[task.setvariable variable=&lt;variable name&gt;;]&lt;variable value&gt;
+```text
+##vso[task.setvariable variable=<variable name>;]<variable value>
+```&gt;
 [/code]
 
 That's it!
@@ -86,8 +87,9 @@ Azure DevOps will automatically pick it up.  So we can do that from Python, Powe
 
 For instance, our Python line was:
 
-[code lang=python]
-print(&#039;##vso[task.setvariable variable=full-version;]%s&#039; % (fullVersion))
+```python
+print('##vso[task.setvariable variable=full-version;]%s' % (fullVersion))
+```))
 [/code]
 
 The variable we defined here is then instantiated as a variable in Azure DevOps and can be used by subsequent tasks in the same pipeline.

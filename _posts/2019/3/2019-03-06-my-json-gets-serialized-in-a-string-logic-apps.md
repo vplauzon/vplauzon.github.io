@@ -60,13 +60,20 @@ We see that the serialized value is within quote while the native one isn't.
 
 This is confirmed by looking the <a href="https://github.com/vplauzon/logic-apps/blob/master/serialized-json/deploy.json">ARM Template</a>:
 
-[code lang=javascript]
-&quot;use-json&quot;: {
-    &quot;type&quot;: &quot;Compose&quot;,
-    &quot;inputs&quot;: {
-        &quot;serialized&quot;: &quot;@{outputs(&#039;compose-some-json&#039;)}&quot;,
-        &quot;native&quot;: &quot;@outputs(&#039;compose-some-json&#039;)&quot;
+```javascript
+"use-json": {
+    "type": "Compose",
+    "inputs": {
+        "serialized": "@{outputs('compose-some-json')}",
+        "native": "@outputs('compose-some-json')"
     },
+    "runAfter": {
+        "compose-some-json": [
+            "Succeeded"
+        ]
+    }
+}
+```,
     &quot;runAfter&quot;: {
         &quot;compose-some-json&quot;: [
             &quot;Succeeded&quot;

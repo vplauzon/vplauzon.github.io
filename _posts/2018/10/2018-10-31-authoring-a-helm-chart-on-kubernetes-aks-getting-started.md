@@ -66,8 +66,8 @@ A chart is an archive, a TGZ (i.e. TAR + GZIP) archive.  It is composed of multi
 
 According to the <a href="https://docs.helm.sh/developing_charts/#the-chart-file-structure">official documentation</a>, the file structure of a chart is the following:
 
-[code lang=powershell]
-&lt;Chart Name&gt;/
+```powershell
+<Chart Name>/
   Chart.yaml          # A YAML file containing information about the chart
   LICENSE             # OPTIONAL: A plain text file containing the license for the chart
   README.md           # OPTIONAL: A human-readable README file
@@ -77,13 +77,13 @@ According to the <a href="https://docs.helm.sh/developing_charts/#the-chart-file
   templates/          # A directory of templates that, when combined with values,
                       # will generate valid Kubernetes manifest files.
   templates/NOTES.txt # OPTIONAL: A plain text file containing short usage notes
-[/code]
+```/code]
 
 We see there are a lot of <em>optionals</em> in there.  This is why it's easy to start.
 
 Let's look at our example at https://github.com/vplauzon/helm/tree/master/a-namespace.  It has the following files:
 
-[code lang=powershell]
+```powershell
 a-namespace/
   Chart.yaml
   README.md           # Optional but quick to write
@@ -91,7 +91,7 @@ a-namespace/
   templates/
     namespace.yaml    # The only resource this chart deploys:  a namespace
     NOTES.txt         # Optional but quick to write
-[/code]
+```
 
 As promised, this is pretty minimalist.
 
@@ -103,7 +103,7 @@ Chart.yaml's schema <a href="https://docs.helm.sh/developing_charts/#the-chart-y
 
 Our <a href="https://github.com/vplauzon/helm/blob/master/a-namespace/Chart.yaml">Chart.yaml</a> is defined as follow:
 
-[code lang=powershell]
+```powershell
 apiVersion: v1
 name: a-namespace
 version: 0.1.0
@@ -118,7 +118,7 @@ maintainers: # (optional)
   - name: Vincent-Philippe Lauzon
     email: NA
     url: http://vincentlauzon.com/
-[/code]
+```
 
 It stands in 14 lines.  Let's look at a few of them:
 
@@ -164,12 +164,12 @@ It is recommended practice to have one Kubernetes resource per template file.
 
 <a href="https://github.com/vplauzon/helm/blob/master/a-namespace/templates/namespace.yaml">namespace.yaml</a> has the following content:
 
-[code lang=powershell]
+```powershell
 apiVersion: v1
 kind: Namespace
 metadata:
   name: helm-deployed
-[/code]
+```
 
 This template is straightforward as there is no values.  We'll cover values in a future article.  It is a simple <a href="https://kubernetes.io/docs/tasks/administer-cluster/namespaces/#creating-a-new-namespace">namespace description</a>.
 
@@ -179,13 +179,13 @@ When there are many files in the template folder, or even many resources in one 
 
 Before we deploy our chart, let's look at the <em>current namespaces</em>:
 
-[code lang=bash]
+```bash
 $ kubectl get namespaces
 NAME          STATUS   AGE
 default       Active   4d
 kube-public   Active   4d
 kube-system   Active   4d
-[/code]
+```
 
 This is the typical configuration of a vanilla AKS cluster.
 
@@ -202,7 +202,7 @@ Let's do the first one.  Let's clone the <a href="https://github.com/vplauzon/he
 
 Now we can install by typing:
 
-[code lang=bash]
+```bash
 $ helm install a-namespace
 NAME:   coiled-heron
 LAST DEPLOYED: Wed Oct 17 13:33:26 2018
@@ -210,14 +210,14 @@ NAMESPACE: default
 STATUS: DEPLOYED
 
 RESOURCES:
-==&gt; v1/Namespace
+==> v1/Namespace
 NAME           AGE
 helm-deployed  0s
 
 
 NOTES:
 No values are supported.  This is the most vanilla chart.
-[/code]
+```de]
 
 A couple of observations here:
 
@@ -230,24 +230,24 @@ A couple of observations here:
 
 Now if we look at the cluster's namespaces again:
 
-[code lang=bash]
+```bash
 $ kubectl get namespaces
 NAME            STATUS   AGE
 default         Active   4d
 helm-deployed   Active   1m
 kube-public     Active   4d
 kube-system     Active   4d
-[/code]
+```
 
 We observe the <em>helm-deployed</em> namespace that was just deployed.
 
 Let's look at the charts installed in the cluster:
 
-[code lang=bash]
+```bash
 $ helm list
 NAME            REVISION        UPDATED                         STATUS          CHART                   APP VERSION     NAMESPACE
 coiled-heron    1               Wed Oct 17 13:33:26 2018        DEPLOYED        a-namespace-0.1.0                       default
-[/code]
+```
 
 We observe the following:
 
@@ -263,19 +263,20 @@ The revision is an integer incrementing at every update.  It is used to track up
 
 Let's delete the release and confirm the namespace is gone:
 
-[code lang=bash]
+```bash
 $ helm delete coiled-heron
-release &quot;coiled-heron&quot; deleted
+release "coiled-heron" deleted
 $ kubectl get namespaces
 NAME            STATUS   AGE
 default         Active   4d
 kube-public     Active   4d
 kube-system     Active   4d
+```4d
 [/code]
 
 Now, let's reinstall the chart by given the release a name this time:
 
-[code lang=bash]
+```bash
 $ helm install --name myrelease a-namespace
 NAME:   myrelease
 LAST DEPLOYED: Wed Oct 17 13:39:18 2018
@@ -283,38 +284,38 @@ NAMESPACE: default
 STATUS: DEPLOYED
 
 RESOURCES:
-==&gt; v1/Namespace
+==> v1/Namespace
 NAME           AGE
 helm-deployed  0s
 
 
 NOTES:
 No values are supported.  This is the most vanilla chart.
-[/code]
+```de]
 
 We can then find that release name in the list of releases as well:
 
-[code lang=bash]
+```bash
 $ helm list
 NAME            REVISION        UPDATED                         STATUS          CHART                   APP VERSION     NAMESPACE
 myrelease       1               Wed Oct 17 13:39:18 2018        DEPLOYED        a-namespace-0.1.0                       default
-[/code]
+```
 
 <code>helm list</code> returns the list of deployed releases.  Helm tracks deleted releases for audit purposes.  We can see all releases, including deleted ones with:
 
-[code lang=bash]
+```bash
 $ helm list --all
 NAME            REVISION        UPDATED                         STATUS          CHART                   APP VERSION     NAMESPACE
 coiled-heron    1               Wed Oct 17 13:33:26 2018        DELETED         a-namespace-0.1.0                       default
 myrelease       1               Wed Oct 17 13:39:18 2018        DEPLOYED        a-namespace-0.1.0                       default
-[/code]
+```
 
 Finally, we could package our chart:
 
-[code lang=bash]
+```bash
 $ helm package a-namespace/
 Successfully packaged chart and saved it to: /home/vplauzon/git/helm/a-namespace-0.1.0.tgz
-[/code]
+```
 
 The created archive could then be uploaded to a repository (e.g. <a href="https://docs.microsoft.com/en-us/azure/container-registry/container-registry-helm-repos">Azure Container Registry</a>).
 

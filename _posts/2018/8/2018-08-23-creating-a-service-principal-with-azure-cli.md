@@ -23,17 +23,17 @@ Short and sweet, let's just do that.
 
 A good way to understand the different parts of a Service Principal is to type:
 
-[code lang=bash]
-az ad sp show --id &lt;Object ID&gt;
-[/code]
+```bash
+az ad sp show --id <Object ID>
+```/code]
 
 This will return a JSON payload of a given principal.
 
 The following command will return the different credentials of the principal:
 
-[code lang=bash]
-az ad sp credential list --id &lt;Object ID&gt;
-[/code]
+```bash
+az ad sp credential list --id <Object ID>
+```/code]
 
 With that we can sketch the important components for us:
 
@@ -116,9 +116,9 @@ The third one is simply wrong.  In this blog we keep professing the <a href="htt
 
 So, instead we recommand using the following form:
 
-[code lang=bash]
-az ad sp create-for-rbac -n &lt;Service Principal Name&gt; --skip-assignment
-[/code]
+```bash
+az ad sp create-for-rbac -n <Service Principal Name> --skip-assignment
+```/code]
 
 <code>-n</code> allows us to give our principal a display name.  <code>--skip-assignment</code> <em>skips</em> the role assignment.  That is, the principal isn't given any access to our subscription.
 
@@ -128,12 +128,15 @@ We could have further customized by using a certificate instead of a password.  
 
 When our command executes, it returns a JSON payload such as this one:
 
-[code lang=bash]
+```bash
 {
-  &quot;appId&quot;: &quot;fe9ef829-ecc5-4573-ba2b-a3c391de49ee&quot;,
-  &quot;displayName&quot;: &quot;MyAksDelegate&quot;,
-  &quot;name&quot;: &quot;http://MyAksDelegate&quot;,
-  &quot;password&quot;: &quot;9dee4d72-8894-4028-977b-c05ca23dbd6d&quot;,
+  "appId": "fe9ef829-ecc5-4573-ba2b-a3c391de49ee",
+  "displayName": "MyAksDelegate",
+  "name": "http://MyAksDelegate",
+  "password": "9dee4d72-8894-4028-977b-c05ca23dbd6d",
+  "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+}
+```c05ca23dbd6d&quot;,
   &quot;tenant&quot;: &quot;72f988bf-86f1-41af-91ab-2d7cd011db47&quot;
 }
 [/code]
@@ -144,17 +147,17 @@ The <code>password</code> is also important as it will be needed for the princip
 
 Remains the elusive <em>Service Principal Object ID</em>.  It will eventually be needed, so let's find it now.
 
-[code lang=bash]
-az ad sp show --id &lt;Application ID&gt;
-[/code]
+```bash
+az ad sp show --id <Application ID>
+```/code]
 
 Results
 
-[code lang=bash]
+```bash
 AppId                                 DisplayName    ObjectId                              ObjectType
 ------------------------------------  -------------  ------------------------------------  ----------------
 fe9ef829-ecc5-4573-ba2b-a3c391de49ee  MyAksDelegate  e2b56ea3-98fa-4f01-8f0a-fbc080909bea  ServicePrincipal
-[/code]
+```
 
 We found our <em>Object ID</em> right there.
 

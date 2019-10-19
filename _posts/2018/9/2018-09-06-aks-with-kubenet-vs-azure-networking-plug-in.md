@@ -67,23 +67,23 @@ The fourth allows us to choose between <em>Kubenet</em> and <em>Azure</em> plugi
 
 Once deployed we can connect to the cluster and deploy our <a href="https://github.com/vplauzon/aks/blob/master/aks-kubenet/service.yaml">service.yaml</a> file:
 
-[code lang=bash]
+```bash
 kubectl apply -f service.yaml
-[/code]
+```
 
 This file deploys 3 pods in a deployment and a service to load balance them.  Let's look at the service:
 
-[code lang=bash]
+```bash
 kubectl get services
-[/code]
+```
 
 We should see something like this:
 
-[code lang=bash]
+```bash
 NAME          TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
-kubernetes    ClusterIP      10.0.0.1      &lt;none&gt;        443/TCP        6d
+kubernetes    ClusterIP      10.0.0.1      <none>        443/TCP        6d
 web-service   LoadBalancer   10.0.218.59   172.16.16.4   80:31917/TCP   1m
-[/code]
+```/code]
 
 Our service is the one named <strong>web-service</strong>.  Its external IP belongs to the virtual network.  The cluster-IP is something that can only be resolved within the cluster.
 
@@ -91,18 +91,18 @@ Service IPs aren't public because the annotation <strong>service.beta.kubernetes
 
 If we look at pods:
 
-[code lang=bash]
+```bash
 kubectl get pods -o wide
-[/code]
+```
 
 We can see the pods' IPs also are in the virtual network.
 
-[code lang=bash]
+```bash
 NAME                   READY     STATUS    RESTARTS   AGE       IP            NODE
 web-54b885b89b-cwd7d   1/1       Running   0          3m        172.16.0.10   aks-agentpool-40932894-2
 web-54b885b89b-j2xcc   1/1       Running   0          3m        172.16.0.73   aks-agentpool-40932894-1
 web-54b885b89b-kwvxd   1/1       Running   0          3m        172.16.0.46   aks-agentpool-40932894-0
-[/code]
+```
 
 The Azure plugin gives private IPs to pods.
 
@@ -146,23 +146,23 @@ If we look at the subnets where it is attached, we see it isn't attached.  This 
 
 Let's connect to the cluster and deploy our <a href="https://github.com/vplauzon/aks/blob/master/aks-kubenet/service.yaml">service.yaml</a> file:
 
-[code lang=bash]
+```bash
 kubectl apply -f service.yaml
-[/code]
+```
 
 It is the same file than the previous section.  It  deploys 3 pods in a deployment and a service to load balance them.  Let's look at the service:
 
-[code lang=bash]
+```bash
 kubectl get services
-[/code]
+```
 
 We should see something like this:
 
-[code lang=bash]
+```bash
 NAME          TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
-kubernetes    ClusterIP      10.0.0.1      &lt;none&gt;        443/TCP        2h
+kubernetes    ClusterIP      10.0.0.1      <none>        443/TCP        2h
 web-service   LoadBalancer   10.0.207.13   172.16.16.4   80:30431/TCP   1m
-[/code]
+```/code]
 
 <strong>web-service</strong> has an external IP belonging to the virtual network.  The cluster-IP is something that can only be resolved within the cluster.
 
@@ -170,18 +170,18 @@ AKS respected the <strong>service.beta.kubernetes.io/azure-load-balancer-interna
 
 Now if we look at pods:
 
-[code lang=bash]
+```bash
 kubectl get pods -o wide
-[/code]
+```
 
 We can see the pods' IPs <strong>do not</strong> belong to the virtual network.
 
-[code lang=bash]
+```bash
 NAME                   READY     STATUS    RESTARTS   AGE       IP            NODE
 web-54b885b89b-b8446   1/1       Running   0          6m        10.16.0.200   aks-agentpool-37067697-0
 web-54b885b89b-ml4tv   1/1       Running   0          6m        10.16.1.201   aks-agentpool-37067697-1
 web-54b885b89b-pmklk   1/1       Running   0          6m        10.16.2.200   aks-agentpool-37067697-2
-[/code]
+```
 
 The kubenet plugin gives cluster IPs to pods.
 

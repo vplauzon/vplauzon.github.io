@@ -74,24 +74,33 @@ As such we need to input the following parameters:
 
 The <a href="https://github.com/vplauzon/aks/blob/master/aks-auto-scaler/deploy.json">ARM template is on GitHub</a>.  The key section is the following:
 
-[code lang=Javascript]
+```Javascript
 {
-    &quot;type&quot;: &quot;Microsoft.ContainerService/managedClusters&quot;,
-    &quot;name&quot;: &quot;cluster&quot;,
-    &quot;apiVersion&quot;: &quot;2018-08-01-preview&quot;,
-    &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-    &quot;dependsOn&quot;: [
-        &quot;[resourceId(&#039;Microsoft.Network/virtualNetworks&#039;, variables(&#039;VNET Name&#039;))]&quot;
+    "type": "Microsoft.ContainerService/managedClusters",
+    "name": "cluster",
+    "apiVersion": "2018-08-01-preview",
+    "location": "[resourceGroup().location]",
+    "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', variables('VNET Name'))]"
     ],
-    &quot;properties&quot;: {
+    "properties": {
         ...
-        &quot;agentPoolProfiles&quot;: [
+        "agentPoolProfiles": [
             {
-                &quot;name&quot;: &quot;agentpool&quot;,
-                &quot;count&quot;: &quot;[variables(&#039;instance count&#039;)]&quot;,
-                &quot;vmSize&quot;: &quot;[variables(&#039;VM Size&#039;)]&quot;,
-                &quot;vnetSubnetID&quot;: &quot;[resourceId(&#039;Microsoft.Network/virtualNetworks/subnets&#039;, variables(&#039;VNET Name&#039;), &#039;aks&#039;)]&quot;,
-                &quot;maxPods&quot;: 30,
+                "name": "agentpool",
+                "count": "[variables('instance count')]",
+                "vmSize": "[variables('VM Size')]",
+                "vnetSubnetID": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('VNET Name'), 'aks')]",
+                "maxPods": 30,
+                "osType": "Linux",
+                "storageProfile": "ManagedDisks",
+                "enableAutoScaling": true,
+                "minCount": 1,
+                "maxCount": 5,
+                "type": "VirtualMachineScaleSets"
+            }
+        ],
+```t;: 30,
                 &quot;osType&quot;: &quot;Linux&quot;,
                 &quot;storageProfile&quot;: &quot;ManagedDisks&quot;,
                 &quot;enableAutoScaling&quot;: true,
@@ -165,7 +174,7 @@ We are going to do this by deploying a <a href="https://github.com/vplauzon/aks/
 
 In order to force Kubernetes to run out of resources, we configured our pods to request more memory than they need.  This is done at lines 20-26:
 
-[code lang=Javascript]
+```Javascript
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -187,11 +196,11 @@ spec:
           image: vplauzon/get-started:part2-no-redis
           resources:
             requests:
-              memory: &quot;1.5G&quot;
-              cpu: &quot;250m&quot;
+              memory: "1.5G"
+              cpu: "250m"
             limits:
-              memory: &quot;2G&quot;
-              cpu: &quot;500m&quot;
+              memory: "2G"
+              cpu: "500m"
           livenessProbe:
             httpGet:
               path: /
@@ -199,40 +208,44 @@ spec:
             initialDelaySeconds: 5
           ports:
           - containerPort: 80
+```s:
+          - containerPort: 80
 [/code]
 
 We can deploy it using the command line:
 
-[code lang=bash]
+```bash
 kubectl apply -f https://raw.githubusercontent.com/vplauzon/aks/master/aks-auto-scaler/deployment.yaml
-[/code]
+```
 
 We can then check on the status of the deployment:
 
-[code lang=bash]
+```bash
 $ kubectl get pods -o wide
 
 NAME                           READY   STATUS              RESTARTS   AGE   IP            NODE                                NOMINATED NODE
-demo-deploy-64567bf9df-49k9b   1/1     Running             0          22s   172.16.0.42   aks-agentpool-38816970-vmss000001   &lt;none&gt;
-demo-deploy-64567bf9df-5pjf6   1/1     Running             0          22s   172.16.0.96   aks-agentpool-38816970-vmss000002   &lt;none&gt;
-demo-deploy-64567bf9df-5r868   1/1     Running             0          22s   172.16.0.69   aks-agentpool-38816970-vmss000002   &lt;none&gt;
-demo-deploy-64567bf9df-8cnnv   0/1     ContainerCreating   0          22s   &lt;none&gt;        aks-agentpool-38816970-vmss000000   &lt;none&gt;
-demo-deploy-64567bf9df-8fdkf   0/1     Pending             0          22s   &lt;none&gt;        &lt;none&gt;                              &lt;none&gt;
-demo-deploy-64567bf9df-c5f5d   0/1     Pending             0          22s   &lt;none&gt;        &lt;none&gt;                              &lt;none&gt;
-demo-deploy-64567bf9df-cf8xx   1/1     Running             0          22s   172.16.0.68   aks-agentpool-38816970-vmss000002   &lt;none&gt;
-demo-deploy-64567bf9df-czh8n   0/1     Pending             0          22s   &lt;none&gt;        &lt;none&gt;                              &lt;none&gt;
-demo-deploy-64567bf9df-dq5nh   0/1     Pending             0          22s   &lt;none&gt;        &lt;none&gt;                              &lt;none&gt;
-demo-deploy-64567bf9df-dzn5p   0/1     Pending             0          22s   &lt;none&gt;        &lt;none&gt;                              &lt;none&gt;
-demo-deploy-64567bf9df-g2hx2   0/1     Pending             0          22s   &lt;none&gt;        &lt;none&gt;                              &lt;none&gt;
-demo-deploy-64567bf9df-g52j7   0/1     ContainerCreating   0          22s   &lt;none&gt;        aks-agentpool-38816970-vmss000000   &lt;none&gt;
-demo-deploy-64567bf9df-gjbhj   1/1     Running             0          22s   172.16.0.75   aks-agentpool-38816970-vmss000002   &lt;none&gt;
-demo-deploy-64567bf9df-k4fkv   0/1     Pending             0          22s   &lt;none&gt;        &lt;none&gt;                              &lt;none&gt;
-demo-deploy-64567bf9df-kxzr8   0/1     Pending             0          22s   &lt;none&gt;        &lt;none&gt;                              &lt;none&gt;
-demo-deploy-64567bf9df-ljmqv   0/1     Pending             0          22s   &lt;none&gt;        &lt;none&gt;                              &lt;none&gt;
-demo-deploy-64567bf9df-lm894   0/1     Pending             0          22s   &lt;none&gt;        &lt;none&gt;                              &lt;none&gt;
-demo-deploy-64567bf9df-m5q6t   1/1     Running             0          22s   172.16.0.39   aks-agentpool-38816970-vmss000001   &lt;none&gt;
-demo-deploy-64567bf9df-p2qhx   1/1     Running             0          22s   172.16.0.37   aks-agentpool-38816970-vmss000001   &lt;none&gt;
-demo-deploy-64567bf9df-qmcr6   0/1     ContainerCreating   0          22s   &lt;none&gt;        aks-agentpool-38816970-vmss000000   &lt;none&gt;
+demo-deploy-64567bf9df-49k9b   1/1     Running             0          22s   172.16.0.42   aks-agentpool-38816970-vmss000001   <none>
+demo-deploy-64567bf9df-5pjf6   1/1     Running             0          22s   172.16.0.96   aks-agentpool-38816970-vmss000002   <none>
+demo-deploy-64567bf9df-5r868   1/1     Running             0          22s   172.16.0.69   aks-agentpool-38816970-vmss000002   <none>
+demo-deploy-64567bf9df-8cnnv   0/1     ContainerCreating   0          22s   <none>        aks-agentpool-38816970-vmss000000   <none>
+demo-deploy-64567bf9df-8fdkf   0/1     Pending             0          22s   <none>        <none>                              <none>
+demo-deploy-64567bf9df-c5f5d   0/1     Pending             0          22s   <none>        <none>                              <none>
+demo-deploy-64567bf9df-cf8xx   1/1     Running             0          22s   172.16.0.68   aks-agentpool-38816970-vmss000002   <none>
+demo-deploy-64567bf9df-czh8n   0/1     Pending             0          22s   <none>        <none>                              <none>
+demo-deploy-64567bf9df-dq5nh   0/1     Pending             0          22s   <none>        <none>                              <none>
+demo-deploy-64567bf9df-dzn5p   0/1     Pending             0          22s   <none>        <none>                              <none>
+demo-deploy-64567bf9df-g2hx2   0/1     Pending             0          22s   <none>        <none>                              <none>
+demo-deploy-64567bf9df-g52j7   0/1     ContainerCreating   0          22s   <none>        aks-agentpool-38816970-vmss000000   <none>
+demo-deploy-64567bf9df-gjbhj   1/1     Running             0          22s   172.16.0.75   aks-agentpool-38816970-vmss000002   <none>
+demo-deploy-64567bf9df-k4fkv   0/1     Pending             0          22s   <none>        <none>                              <none>
+demo-deploy-64567bf9df-kxzr8   0/1     Pending             0          22s   <none>        <none>                              <none>
+demo-deploy-64567bf9df-ljmqv   0/1     Pending             0          22s   <none>        <none>                              <none>
+demo-deploy-64567bf9df-lm894   0/1     Pending             0          22s   <none>        <none>                              <none>
+demo-deploy-64567bf9df-m5q6t   1/1     Running             0          22s   172.16.0.39   aks-agentpool-38816970-vmss000001   <none>
+demo-deploy-64567bf9df-p2qhx   1/1     Running             0          22s   172.16.0.37   aks-agentpool-38816970-vmss000001   <none>
+demo-deploy-64567bf9df-qmcr6   0/1     ContainerCreating   0          22s   <none>        aks-agentpool-38816970-vmss000000   <none>
+demo-deploy-64567bf9df-sbnvk   0/1     ContainerCreating   0          22s   <none>        aks-agentpool-38816970-vmss000000   <none>
+```6   0/1     ContainerCreating   0          22s   &lt;none&gt;        aks-agentpool-38816970-vmss000000   &lt;none&gt;
 demo-deploy-64567bf9df-sbnvk   0/1     ContainerCreating   0          22s   &lt;none&gt;        aks-agentpool-38816970-vmss000000   &lt;none&gt;
 [/code]
 
@@ -244,29 +257,30 @@ We can then refresh our VM Scale Set view in the Portal and see it is now scalin
 
 Once the scaling operation is completed, we can look again at the pods' status:
 
-[code lang=bash]
+```bash
 $ kubectl get pods -o wide
 NAME                           READY   STATUS    RESTARTS   AGE     IP             NODE                                NOMINATED NODE
-demo-deploy-64567bf9df-49k9b   1/1     Running   0          9m15s   172.16.0.42    aks-agentpool-38816970-vmss000001   &lt;none&gt;
-demo-deploy-64567bf9df-5pjf6   1/1     Running   0          9m15s   172.16.0.96    aks-agentpool-38816970-vmss000002   &lt;none&gt;
-demo-deploy-64567bf9df-5r868   1/1     Running   0          9m15s   172.16.0.69    aks-agentpool-38816970-vmss000002   &lt;none&gt;
-demo-deploy-64567bf9df-8cnnv   1/1     Running   0          9m15s   172.16.0.34    aks-agentpool-38816970-vmss000000   &lt;none&gt;
-demo-deploy-64567bf9df-8fdkf   1/1     Running   0          9m15s   172.16.0.149   aks-agentpool-38816970-vmss000004   &lt;none&gt;
-demo-deploy-64567bf9df-cf8xx   1/1     Running   0          9m15s   172.16.0.68    aks-agentpool-38816970-vmss000002   &lt;none&gt;
-demo-deploy-64567bf9df-czh8n   1/1     Running   0          9m15s   172.16.0.104   aks-agentpool-38816970-vmss000003   &lt;none&gt;
-demo-deploy-64567bf9df-dzn5p   1/1     Running   0          9m15s   172.16.0.123   aks-agentpool-38816970-vmss000003   &lt;none&gt;
-demo-deploy-64567bf9df-g52j7   1/1     Running   0          9m15s   172.16.0.17    aks-agentpool-38816970-vmss000000   &lt;none&gt;
-demo-deploy-64567bf9df-gjbhj   1/1     Running   0          9m15s   172.16.0.75    aks-agentpool-38816970-vmss000002   &lt;none&gt;
-demo-deploy-64567bf9df-k4fkv   1/1     Running   0          9m15s   172.16.0.133   aks-agentpool-38816970-vmss000004   &lt;none&gt;
-demo-deploy-64567bf9df-kxzr8   1/1     Running   0          9m15s   172.16.0.115   aks-agentpool-38816970-vmss000003   &lt;none&gt;
-demo-deploy-64567bf9df-lm894   1/1     Running   0          9m15s   172.16.0.135   aks-agentpool-38816970-vmss000004   &lt;none&gt;
-demo-deploy-64567bf9df-m5q6t   1/1     Running   0          9m15s   172.16.0.39    aks-agentpool-38816970-vmss000001   &lt;none&gt;
-demo-deploy-64567bf9df-mpxgb   0/1     Pending   0          54s     &lt;none&gt;         &lt;none&gt;                              &lt;none&gt;
-demo-deploy-64567bf9df-p2qhx   1/1     Running   0          9m15s   172.16.0.37    aks-agentpool-38816970-vmss000001   &lt;none&gt;
-demo-deploy-64567bf9df-qmcr6   1/1     Running   0          9m15s   172.16.0.9     aks-agentpool-38816970-vmss000000   &lt;none&gt;
-demo-deploy-64567bf9df-sbnvk   1/1     Running   0          9m15s   172.16.0.5     aks-agentpool-38816970-vmss000000   &lt;none&gt;
-demo-deploy-64567bf9df-wj2pz   1/1     Running   0          9m15s   172.16.0.139   aks-agentpool-38816970-vmss000004   &lt;none&gt;
-demo-deploy-64567bf9df-x7tqj   1/1     Running   0          9m15s   172.16.0.108   aks-agentpool-38816970-vmss000003   &lt;none&gt;
+demo-deploy-64567bf9df-49k9b   1/1     Running   0          9m15s   172.16.0.42    aks-agentpool-38816970-vmss000001   <none>
+demo-deploy-64567bf9df-5pjf6   1/1     Running   0          9m15s   172.16.0.96    aks-agentpool-38816970-vmss000002   <none>
+demo-deploy-64567bf9df-5r868   1/1     Running   0          9m15s   172.16.0.69    aks-agentpool-38816970-vmss000002   <none>
+demo-deploy-64567bf9df-8cnnv   1/1     Running   0          9m15s   172.16.0.34    aks-agentpool-38816970-vmss000000   <none>
+demo-deploy-64567bf9df-8fdkf   1/1     Running   0          9m15s   172.16.0.149   aks-agentpool-38816970-vmss000004   <none>
+demo-deploy-64567bf9df-cf8xx   1/1     Running   0          9m15s   172.16.0.68    aks-agentpool-38816970-vmss000002   <none>
+demo-deploy-64567bf9df-czh8n   1/1     Running   0          9m15s   172.16.0.104   aks-agentpool-38816970-vmss000003   <none>
+demo-deploy-64567bf9df-dzn5p   1/1     Running   0          9m15s   172.16.0.123   aks-agentpool-38816970-vmss000003   <none>
+demo-deploy-64567bf9df-g52j7   1/1     Running   0          9m15s   172.16.0.17    aks-agentpool-38816970-vmss000000   <none>
+demo-deploy-64567bf9df-gjbhj   1/1     Running   0          9m15s   172.16.0.75    aks-agentpool-38816970-vmss000002   <none>
+demo-deploy-64567bf9df-k4fkv   1/1     Running   0          9m15s   172.16.0.133   aks-agentpool-38816970-vmss000004   <none>
+demo-deploy-64567bf9df-kxzr8   1/1     Running   0          9m15s   172.16.0.115   aks-agentpool-38816970-vmss000003   <none>
+demo-deploy-64567bf9df-lm894   1/1     Running   0          9m15s   172.16.0.135   aks-agentpool-38816970-vmss000004   <none>
+demo-deploy-64567bf9df-m5q6t   1/1     Running   0          9m15s   172.16.0.39    aks-agentpool-38816970-vmss000001   <none>
+demo-deploy-64567bf9df-mpxgb   0/1     Pending   0          54s     <none>         <none>                              <none>
+demo-deploy-64567bf9df-p2qhx   1/1     Running   0          9m15s   172.16.0.37    aks-agentpool-38816970-vmss000001   <none>
+demo-deploy-64567bf9df-qmcr6   1/1     Running   0          9m15s   172.16.0.9     aks-agentpool-38816970-vmss000000   <none>
+demo-deploy-64567bf9df-sbnvk   1/1     Running   0          9m15s   172.16.0.5     aks-agentpool-38816970-vmss000000   <none>
+demo-deploy-64567bf9df-wj2pz   1/1     Running   0          9m15s   172.16.0.139   aks-agentpool-38816970-vmss000004   <none>
+demo-deploy-64567bf9df-x7tqj   1/1     Running   0          9m15s   172.16.0.108   aks-agentpool-38816970-vmss000003   <none>
+```ploy-64567bf9df-x7tqj   1/1     Running   0          9m15s   172.16.0.108   aks-agentpool-38816970-vmss000003   &lt;none&gt;
 [/code]
 
 We can see that most pods managed to get scheduled on a pod.

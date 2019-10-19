@@ -91,16 +91,17 @@ Let's create the SAS token.  For that we'll need some scripting.
 
 First, we need to define the name of the storage account we just created in a shell variable:
 
-[code lang=bash]
-storage=&lt;my account name&gt;
-[/code]
+```bash
+storage=<my account name>
+```/code]
 
 Then we simply execute the following script:
 
-[code lang=bash]
-expiry=$(date -u -d &quot;45 minutes&quot; &#039;+%Y-%m-%dT%H:%MZ&#039;)
+```bash
+expiry=$(date -u -d "45 minutes" '+%Y-%m-%dT%H:%MZ')
 
 sas=$(az storage container generate-sas --account-name $storage -n deploy --https-only --permissions r --expiry $expiry -o tsv)
+```piry -o tsv)
 [/code]
 
 This puts the SAS token inside the variable <em>sas</em>.
@@ -111,19 +112,20 @@ Here we use an expiry date 45 minutes in the future.  This is to allow us to com
 
 Before copying files, we'll delete existing blobs in case there are:
 
-[code lang=bash]
-az storage blob list --account-name $storage -c deploy --query &quot;[].name&quot; -o tsv | \
+```bash
+az storage blob list --account-name $storage -c deploy --query "[].name" -o tsv | \
  xargs -P 5 -I blobName az storage blob delete --account-name $storage -c deploy -n blobName
+```me
 [/code]
 
 Not the fastest way to delete many blobs, but it works.
 
 Now we can copy the files.  Assuming we are in the <a href="https://github.com/vplauzon/devops/tree/master/multiple-templates/templates">templates folder</a> of the cloned GitHub, we can copy the arm templates there:
 
-[code lang=bash]
+```bash
 find * -type f | \
  xargs -P 5 -I blobName az storage blob upload --account-name $storage -c deploy --name blobName -f blobName
-[/code]
+```
 
 That command preserves the file hierarchy.
 
@@ -133,39 +135,48 @@ We can now deploy the root template.  We need to pass the SAS token as parameter
 
 Let's first define the resource group we want to deploy in.  It needs to already exist since we won't create it.
 
-[code lang=bash]
-group=&lt;my resource group name&gt;
-[/code]
+```bash
+group=<my resource group name>
+```/code]
 
 Then we need to find the blob prefix:
 
-[code lang=bash]
+```bash
 sample=$(az storage blob url --account-name $storage -c deploy -n sample -o tsv)
 blobPrefix=${sample%sample}
-[/code]
+```
 
-[code lang=bash]
-az group deployment create -n &quot;deploy-$(uuidgen)&quot; -g $group \
-    --template-uri &quot;${blobPrefix}root.json?$sas&quot; \
+```bash
+az group deployment create -n "deploy-$(uuidgen)" -g $group \
+    --template-uri "${blobPrefix}root.json?$sas" \
     --parameters \
     sas=$sas \
     blobPrefix=$blobPrefix
+```=$blobPrefix
 [/code]
 
 This will deploy our VNET &amp; Public IP.
 
 We can see by looking at <a href="https://github.com/vplauzon/devops/blob/master/multiple-templates/templates/root.json">root.json</a> that we can even pass parameters to deployments.
 
-[code lang=JavaScript]
+```JavaScript
 {
-    &quot;type&quot;: &quot;Microsoft.Resources/deployments&quot;,
-    &quot;apiVersion&quot;: &quot;2018-05-01&quot;,
-    &quot;name&quot;: &quot;vnet&quot;,
-    &quot;properties&quot;: {
-        &quot;templateLink&quot;: {
-            &quot;uri&quot;: &quot;[concat(parameters(&#039;blobPrefix&#039;), &#039;sub/vnet.json?&#039;, parameters(&#039;sas&#039;))]&quot;
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2018-05-01",
+    "name": "vnet",
+    "properties": {
+        "templateLink": {
+            "uri": "[concat(parameters('blobPrefix'), 'sub/vnet.json?', parameters('sas'))]"
         },
-        &quot;parameters&quot;: {
+        "parameters": {
+            "vnet-name": {
+                "value": "myvnet"
+            }
+        },
+        "mode": "Incremental"
+    }
+},
+```uot;: {
             &quot;vnet-name&quot;: {
                 &quot;value&quot;: &quot;myvnet&quot;
             }

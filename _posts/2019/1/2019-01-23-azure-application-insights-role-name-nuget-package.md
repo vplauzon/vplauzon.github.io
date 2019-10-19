@@ -54,15 +54,19 @@ It is interesting to note that the package will bring the following package with
 
 The <em>appsettings.json</em> file should look like this:
 
-[code lang=JavaScript]
+```JavaScript
 {
-  &quot;Logging&quot;: {
-    &quot;IncludeScopes&quot;: false,
-    &quot;LogLevel&quot;: {
-      &quot;Default&quot;: &quot;Warning&quot;
+  "Logging": {
+    "IncludeScopes": false,
+    "LogLevel": {
+      "Default": "Warning"
     }
   },
-  &quot;ApplicationInsights&quot;: {
+  "ApplicationInsights": {
+    "InstrumentationKey": "<MY KEY>"
+  }
+}
+```&quot;: {
     &quot;InstrumentationKey&quot;: &quot;&lt;MY KEY&gt;&quot;
   }
 }
@@ -76,12 +80,13 @@ The important part is the <em>ApplicationInsights</em> section.  The instrumenta
 
 Typically, the <em>Web Host</em> is initialized in the <em>Program.cs</em> file.  We should add <code>UseApplicationInsights</code> there, so it looks like this:
 
-[code lang=csharp]
-public static IWebHost BuildWebHost(string[] args) =&gt;
+```csharp
+public static IWebHost BuildWebHost(string[] args) =>
     WebHost.CreateDefaultBuilder(args)
         .UseApplicationInsights()
-        .UseStartup&lt;Startup&gt;()
+        .UseStartup<Startup>()
         .Build();
+```;
 [/code]
 
 Optionally the <em>instrumentation key</em> can be passed in parameter to that method.
@@ -90,8 +95,9 @@ Optionally the <em>instrumentation key</em> can be passed in parameter to that m
 
 Now, inside the <code>Startup.Configure</code> object, we need to add:
 
-[code lang=csharp]
-TelemetryConfiguration.Active.TelemetryInitializers.Add(new RoleNameInitializer(&quot;&lt;MY SERVICE NAME&gt;&quot;));
+```csharp
+TelemetryConfiguration.Active.TelemetryInitializers.Add(new RoleNameInitializer("<MY SERVICE NAME>"));
+```quot;));
 [/code]
 
 <code>TelemetryConfiguration.Active.TelemetryInitializers</code> belongs to the Microsoft Application Insights' SDK while <code>RoleNameInitializer</code> belongs to our Nuget Package.
@@ -104,10 +110,10 @@ That's it.  Our telemetry should now be tagged with our service name.
 
 We can see our telemetries is now segmented by role name.  For instance, if we query:
 
-[code lang=text]
+```text
 requests |
 distinct cloud_RoleName
-[/code]
+```
 
 We should see our service name in there.
 
@@ -119,18 +125,18 @@ The implementation, i.e. the <a href="https://github.com/vplauzon/AppInsights.Te
 
 It boils down to one class, <a href="https://github.com/vplauzon/AppInsights.TelemetryInitializers/blob/master/AppInsights.TelemetryInitializers/RoleNameInitializer.cs">RoleNameInitializer</a>:
 
-[code lang=csharp]
-/// &lt;summary&gt;Add a cloud role name to the context of every telemetries.&lt;/summary&gt;
-/// &lt;remarks&gt;
+```csharp
+/// <summary>Add a cloud role name to the context of every telemetries.</summary>
+/// <remarks>
 /// This allows to monitor multiple components and discriminate betweeen components.
 /// See https://docs.microsoft.com/en-us/azure/application-insights/app-insights-monitor-multi-role-apps.
-/// &lt;/remarks&gt;
+/// </remarks>
 public class RoleNameInitializer : ITelemetryInitializer
 {
     private readonly string _roleName;
 
-    /// &lt;summary&gt;Construct an initializer with a role name.&lt;/summary&gt;
-    /// &lt;param name=&quot;roleName&quot;&gt;Cloud role name to assign to telemetry&#039;s context.&lt;/param&gt;
+    /// <summary>Construct an initializer with a role name.</summary>
+    /// <param name="roleName">Cloud role name to assign to telemetry's context.</param>
     public RoleNameInitializer(string roleName)
     {
         if(string.IsNullOrWhiteSpace(roleName))
@@ -144,6 +150,9 @@ public class RoleNameInitializer : ITelemetryInitializer
     void ITelemetryInitializer.Initialize(ITelemetry telemetry)
     {
         telemetry.Context.Cloud.RoleName = _roleName;
+    }
+}
+```  telemetry.Context.Cloud.RoleName = _roleName;
     }
 }
 [/code]
@@ -164,7 +173,7 @@ It is a little trickier to use as it takes a <code>IHttpContextAccessor</code> i
 
 We therefore recommend adding the component to the services:
 
-[code lang=csharp]
+```csharp
 public class Startup
 {
     //  ...
@@ -173,23 +182,25 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         // ...
-        services.AddTransient&lt;RequestBodyInitializer, RequestBodyInitializer&gt;();
+        services.AddTransient<RequestBodyInitializer, RequestBodyInitializer>();
     }
-[/code]
+```/code]
 
 This way, when it is constructed, it will get an <code>IHttpContextAccessor</code>.
 
 We can then add it as a parameter to the <code>Configure</code> method and finally add it to the telemetry initializers list:
 
-[code lang=csharp]
+```csharp
 public void Configure(
     IApplicationBuilder app,
     IHostingEnvironment env,
     RequestBodyInitializer requestBodyInitializer)
 {
     //  ...
-    TelemetryConfiguration.Active.TelemetryInitializers.Add(new RoleNameInitializer(&quot;PasApi&quot;));
+    TelemetryConfiguration.Active.TelemetryInitializers.Add(new RoleNameInitializer("PasApi"));
     TelemetryConfiguration.Active.TelemetryInitializers.Add(requestBodyInitializer);
+
+```;
 
 [/code]
 

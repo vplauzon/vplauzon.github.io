@@ -36,13 +36,13 @@ By default, Kubernetes considers logs as something coming out of the standard ou
 
 One of the documented recommendation is to <a href="https://kubernetes.io/docs/concepts/cluster-administration/logging/#using-a-node-logging-agent">use an node-agent</a>.  This is what <a href="https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-overview">Azure Monitor for containers</a> does:  it deploys an agent on each node with a Daemon set:
 
-[code lang=bash]
+```bash
 $ kubectl get ds --all-namespaces=true
 NAMESPACE     NAME                DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 kube-system   kube-proxy          3         3         3       3            3           beta.kubernetes.io/os=linux   4h
 kube-system   kube-svc-redirect   3         3         3       3            3           beta.kubernetes.io/os=linux   4h
 kube-system   omsagent            3         3         3       3            3           beta.kubernetes.io/os=linux   4h
-[/code]
+```
 
 We see the <em>omsagent</em> as the last daemon set.
 
@@ -70,7 +70,7 @@ The simplest case is where the logs are outputted to the standard output.
 
 Let's deploy a <a href="https://github.com/vplauzon/aks/blob/master/custom-logs/standard-output.yaml">pod that does just that</a>:
 
-[code lang=text]
+```text
 apiVersion: v1
 kind: Pod
 metadata:
@@ -82,19 +82,20 @@ spec:
     args:
     - /bin/sh
     - -c
-    - &gt;
+    - >
       i=0;
       while true;
       do
-        echo &quot;$i: $(date) dog&quot;;
+        echo "$i: $(date) dog";
         i=$((i+1));
         sleep 1;
       done
+``` done
 [/code]
 
 We can check the logs it produces:
 
-[code lang=bash]
+```bash
 $ kubectl apply -f https://raw.githubusercontent.com/vplauzon/aks/master/custom-logs/standard-output.yaml
 $ kubectl get pods
 NAME                  READY   STATUS    RESTARTS   AGE
@@ -106,7 +107,7 @@ $ kubectl logs standard-output-pod
 2: Mon Jan 28 20:54:49 UTC 2019 dog
 3: Mon Jan 28 20:54:50 UTC 2019 dog
 ...
-[/code]
+```
 
 If we give a few minutes for Azure Monitor to gather the logs, we can use the following query:
 
@@ -123,7 +124,7 @@ As suggested in
 
 Let's simulate it <a href="https://github.com/vplauzon/aks/blob/master/custom-logs/single-file-to-output.yaml">this way</a>:
 
-[code lang=text]
+```text
 apiVersion: v1
 kind: Pod
 metadata:
@@ -135,11 +136,11 @@ spec:
     args:
     - /bin/sh
     - -c
-    - &gt;
+    - >
       i=0;
       while true;
       do
-        echo &quot;$i: $(date) dog&quot; &gt;&gt; /var/log/mylogs/log.log;
+        echo "$i: $(date) dog" >> /var/log/mylogs/log.log;
         i=$((i+1));
         sleep 1;
       done
@@ -148,12 +149,14 @@ spec:
       mountPath: /var/log/mylogs
   - name:  log-display
     image: busybox
-    args: [/bin/sh, -c, &#039;tail -n+1 -f /var/log/mylogs/log.log&#039;]
+    args: [/bin/sh, -c, 'tail -n+1 -f /var/log/mylogs/log.log']
     volumeMounts:
     - name: logs
       mountPath: /var/log/mylogs
   volumes:
   - name: logs
+    emptyDir: {}
+```logs
     emptyDir: {}
 [/code]
 
@@ -161,14 +164,14 @@ Here we have a multi-container pod.  The two pods share a mounted volume of type
 
 The first container writes in a file while the second one display (using <em>tail</em>) that file.
 
-[code lang=bash]
+```bash
 $ kubectl apply -f https://raw.githubusercontent.com/vplauzon/aks/master/custom-logs/single-file-to-output.yaml
 $ kubectl logs single-file-to-output-pod log-display
 0: Mon Jan 28 22:21:45 UTC 2019 dog
 1: Mon Jan 28 22:21:46 UTC 2019 dog
 2: Mon Jan 28 22:21:47 UTC 2019 dog
 ...
-[/code]
+```
 
 Similarly, those logs get ingested by Azure Monitor for Containers.
 
@@ -178,7 +181,7 @@ Now, rarely does an application logs on the same file forever.  Typically, appli
 
 We can use the same method than in the previous section and simulate it this way:
 
-[code lang=text]
+```text
 apiVersion: v1
 kind: Pod
 metadata:
@@ -190,12 +193,12 @@ spec:
     args:
     - /bin/sh
     - -c
-    - &gt;
+    - >
       i=0;
       while true;
       do
-        echo &quot;$i: $(date) dog&quot; &gt;&gt; /var/log/mylogs/1.log;
-        echo &quot;$i: $(date) cat&quot; &gt;&gt; /var/log/mylogs/2.log;
+        echo "$i: $(date) dog" >> /var/log/mylogs/1.log;
+        echo "$i: $(date) cat" >> /var/log/mylogs/2.log;
         i=$((i+1));
         sleep 1;
       done
@@ -204,11 +207,14 @@ spec:
       mountPath: /var/log/mylogs
   - name:  log-display
     image: busybox
-    args: [/bin/sh, -c, &#039;tail -n+1 -f /var/log/mylogs/*.log&#039;]
+    args: [/bin/sh, -c, 'tail -n+1 -f /var/log/mylogs/*.log']
     volumeMounts:
     - name: logs
       mountPath: /var/log/mylogs
   volumes:
+  - name: logs
+    emptyDir: {}
+```umes:
   - name: logs
     emptyDir: {}
 [/code]
@@ -217,20 +223,22 @@ Here we write to 2 files all the time.
 
 We can test it:
 
-[code lang=bash]
+```bash
 $ kubectl apply -f https://raw.githubusercontent.com/vplauzon/aks/master/custom-logs/multiple-file-to-output.yaml
 $ kubectl logs multiple-file-to-output-pod log-display
-==&gt; /var/log/mylogs/1.log &lt;==
+==> /var/log/mylogs/1.log <==
 0: Mon Jan 28 22:53:00 UTC 2019 dog
 
-==&gt; /var/log/mylogs/2.log &lt;==
+==> /var/log/mylogs/2.log <==
 0: Mon Jan 28 22:53:00 UTC 2019 cat
 
-==&gt; /var/log/mylogs/1.log &lt;==
+==> /var/log/mylogs/1.log <==
 1: Mon Jan 28 22:53:01 UTC 2019 dog
 
-==&gt; /var/log/mylogs/2.log &lt;==
+==> /var/log/mylogs/2.log <==
 1: Mon Jan 28 22:53:01 UTC 2019 cat
+...
+```UTC 2019 cat
 ...
 [/code]
 
@@ -260,7 +268,7 @@ In general, we advise against touching the hosts.
 
 Nevertheless, if we want to do it, we could simulate it <a href="https://github.com/vplauzon/aks/blob/master/custom-logs/multiple-file-to-host.yaml">like this</a>:
 
-[code lang=text]
+```text
 apiVersion: v1
 kind: Pod
 metadata:
@@ -272,12 +280,12 @@ spec:
     args:
     - /bin/sh
     - -c
-    - &gt;
+    - >
       i=0;
       while true;
       do
-        echo &quot;$i: $(date) dog&quot; &gt;&gt; /var/log/mylogs/1.log;
-        echo &quot;$i: $(date) cat&quot; &gt;&gt; /var/log/mylogs/2.log;
+        echo "$i: $(date) dog" >> /var/log/mylogs/1.log;
+        echo "$i: $(date) cat" >> /var/log/mylogs/2.log;
         i=$((i+1));
         sleep 1;
       done
@@ -289,6 +297,8 @@ spec:
     hostPath:
       # directory location on host
       path: /var/log/my-app-logs
+      type: Directory
+```-logs
       type: Directory
 [/code]
 

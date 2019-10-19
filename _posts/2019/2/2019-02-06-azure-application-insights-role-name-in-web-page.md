@@ -32,13 +32,16 @@ Similarly to what we did for back-end applications, the JavaScript SDK exposes <
 
 We can therefore easily set the role name for each telemetry with:
 
-[code lang=javascript]
+```javascript
 ...
 window.appInsights = appInsights;
 
 appInsights.queue.push(function () {
     appInsights.context.addTelemetryInitializer(function (envelope) {
-        envelope.tags[&quot;ai.cloud.role&quot;] = &quot;PasWorkbench-html&quot;;
+        envelope.tags["ai.cloud.role"] = "PasWorkbench-html";
+    });
+});
+```
     });
 });
 [/code]

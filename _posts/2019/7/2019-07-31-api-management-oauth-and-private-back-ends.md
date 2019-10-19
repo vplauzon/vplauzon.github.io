@@ -142,22 +142,26 @@ The public operation maps to the <em>public-service</em> Logic App.
 
 It is configured as an HTTP-get taking two query string parameters.  The transformation occurs in the inbound policies:
 
-[code lang=xml]
-&lt;inbound&gt;
-    &lt;base /&gt;
-    &lt;set-backend-service base-url=&quot;{{public-service-url}}&quot; /&gt;
-    &lt;set-body&gt;@{
+```xml
+<inbound>
+    <base />
+    <set-backend-service base-url="{{public-service-url}}" />
+    <set-body>@{
         var body=new
         {
-            intro=context.Request.OriginalUrl.Query[&quot;intro&quot;].First(),
-            number=int.Parse(context.Request.Url.Query[&quot;number&quot;].First())
+            intro=context.Request.OriginalUrl.Query["intro"].First(),
+            number=int.Parse(context.Request.Url.Query["number"].First())
         };
 
         return JObject.FromObject(body).ToString();
-    }&lt;/set-body&gt;
-    &lt;rewrite-uri template=&quot;{{public-service-query-string}}&quot; copy-unmatched-params=&quot;false&quot; /&gt;
-    &lt;set-method&gt;POST&lt;/set-method&gt;
-    &lt;set-header name=&quot;Content-Type&quot; exists-action=&quot;override&quot;&gt;
+    }</set-body>
+    <rewrite-uri template="{{public-service-query-string}}" copy-unmatched-params="false" />
+    <set-method>POST</set-method>
+    <set-header name="Content-Type" exists-action="override">
+        <value>application/json</value>
+    </set-header>
+</inbound>
+```pe&quot; exists-action=&quot;override&quot;&gt;
         &lt;value&gt;application/json&lt;/value&gt;
     &lt;/set-header&gt;
 &lt;/inbound&gt;
@@ -186,18 +190,21 @@ We can test the operation and get the simple result.
 
 This operation simply returns the response from the container.  Nothing fancy here:
 
-[code lang=xml]
-&lt;inbound&gt;
-    &lt;base /&gt;
-    &lt;set-backend-service base-url=&quot;{{private-service-url}}&quot; /&gt;
-    &lt;rewrite-uri template=&quot;/&quot; copy-unmatched-params=&quot;false&quot; /&gt;
+```xml
+<inbound>
+    <base />
+    <set-backend-service base-url="{{private-service-url}}" />
+    <rewrite-uri template="/" copy-unmatched-params="false" />
+</inbound>
+```ched-params=&quot;false&quot; /&gt;
 &lt;/inbound&gt;
 [/code]
 
 If we test the operation and get a result similar to:
 
-[code lang=text]
-&lt;h3&gt;Hello World!&lt;/h3&gt;&lt;b&gt;Hostname:&lt;/b&gt; wk-caas-5fcd43c10fa6404e87ca36b291c59013-4dda47657e18158b8ed3d7&lt;br/&gt;&lt;b&gt;Visits:&lt;/b&gt; undefined
+```text
+<h3>Hello World!</h3><b>Hostname:</b> wk-caas-5fcd43c10fa6404e87ca36b291c59013-4dda47657e18158b8ed3d7<br/><b>Visits:</b> undefined
+```t;b&gt;Visits:&lt;/b&gt; undefined
 [/code]
 
 The string starting with <em>wk-caas-5f</em>...  is the container ID.  This one will vary each time the ACI is deployed.
@@ -206,26 +213,31 @@ The string starting with <em>wk-caas-5f</em>...  is the container ID.  This one 
 
 Here we do some screen scraping.  We used the same back-end service, i.e. the Azure Container Instance, but we post-process its response:
 
-[code lang=xml]
-&lt;outbound&gt;
-    &lt;base /&gt;
-    &lt;set-body&gt;@{
-    var raw=context.Response.Body.As&lt;string&gt;(true);
-    var startIndex = raw.IndexOf(&quot;&lt;/b&gt;&quot;) + 4;
-    var endIndex = raw.IndexOf(&quot;&lt;br/&gt;&quot;);
+```xml
+<outbound>
+    <base />
+    <set-body>@{
+    var raw=context.Response.Body.As<string>(true);
+    var startIndex = raw.IndexOf("</b>") + 4;
+    var endIndex = raw.IndexOf("<br/>");
     var host = raw.Substring(startIndex, endIndex - startIndex).Trim();
     var response = new { hostName = host };
 
     return JObject.FromObject(response).ToString();
+    }</set-body>
+</outbound>
+```sponse).ToString();
     }&lt;/set-body&gt;
 &lt;/outbound&gt;
 [/code]
 
 The C# code might look a little cryptic but basically, we do a couple of string manipulation to extract the container ID and return it in a JSON response.  If we test it:
 
-[code lang=JavaScript]
+```JavaScript
 {
-  &quot;hostName&quot;: &quot;wk-caas-5fcd43c10fa6404e87ca36b291c59013-4dda47657e18158b8ed3d7&quot;
+  "hostName": "wk-caas-5fcd43c10fa6404e87ca36b291c59013-4dda47657e18158b8ed3d7"
+}
+```d3d7&quot;
 }
 [/code]
 
@@ -239,15 +251,18 @@ Now if we look at the products, we see the standard Starter &amp; Unlimited, but
 
 <em>Subscription based</em> product is pretty vanilla.  The <em>Token based</em> one is interesting.  If we look at its policies:
 
-[code lang=xml]
-&lt;inbound&gt;
-    &lt;base /&gt;
-    &lt;validate-jwt header-name=&quot;Authorization&quot; failed-validation-httpcode=&quot;401&quot; failed-validation-error-message=&quot;Unauthorized. Access token is missing or invalid.&quot; output-token-variable-name=&quot;jwt&quot;&gt;
-        &lt;openid-config url=&quot;https://login.microsoftonline.com/{{tenant-name}}.onmicrosoft.com/.well-known/openid-configuration&quot; /&gt;
-        &lt;audiences&gt;
-            &lt;audience&gt;{{app-id}}&lt;/audience&gt;
-        &lt;/audiences&gt;
-    &lt;/validate-jwt&gt;
+```xml
+<inbound>
+    <base />
+    <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid." output-token-variable-name="jwt">
+        <openid-config url="https://login.microsoftonline.com/{{tenant-name}}.onmicrosoft.com/.well-known/openid-configuration" />
+        <audiences>
+            <audience>{{app-id}}</audience>
+        </audiences>
+    </validate-jwt>
+    <set-header name="Authorization" exists-action="delete" />
+</inbound>
+``` &lt;/validate-jwt&gt;
     &lt;set-header name=&quot;Authorization&quot; exists-action=&quot;delete&quot; /&gt;
 &lt;/inbound&gt;
 [/code]
@@ -264,17 +279,19 @@ If we go back to test the public operation but we explicitly choose the product 
 
 we will hit a failure:
 
-[code lang=text]
+```text
 HTTP/1.1 401 Unauthorized
 
 content-length: 85
 content-type: application/json
 date: Fri, 12 Jul 2019 22:08:44 GMT
-ocp-apim-trace-location: https://apimgmtstcnmes4lawzbtjoj.blob.core.windows.net/apiinspectorcontainer/pt8ZzbIWYyFjQG3dBlRRgg2-2?sv=2018-03-28&amp;sr=b&amp;sig=%2FnJUrpsZ85J3a9RvZmhAGAQ0mCQ43ZfV6ek46xGjCIU%3D&amp;se=2019-07-13T22%3A08%3A45Z&amp;sp=r&amp;traceId=af662f0a7cd44949b15e61fe4f828000
+ocp-apim-trace-location: https://apimgmtstcnmes4lawzbtjoj.blob.core.windows.net/apiinspectorcontainer/pt8ZzbIWYyFjQG3dBlRRgg2-2?sv=2018-03-28&sr=b&sig=%2FnJUrpsZ85J3a9RvZmhAGAQ0mCQ43ZfV6ek46xGjCIU%3D&se=2019-07-13T22%3A08%3A45Z&sp=r&traceId=af662f0a7cd44949b15e61fe4f828000
 vary: Origin
 {
-    &quot;statusCode&quot;: 401,
-    &quot;message&quot;: &quot;Unauthorized. Access token is missing or invalid.&quot;
+    "statusCode": 401,
+    "message": "Unauthorized. Access token is missing or invalid."
+}
+```ccess token is missing or invalid.&quot;
 }
 [/code]
 

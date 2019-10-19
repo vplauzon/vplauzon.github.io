@@ -78,14 +78,16 @@ We won't replicate the <a href="https://github.com/Azure/aad-pod-identity/blob/m
 
 To configure a pod to use a pod identity, we first <a href="https://github.com/Azure/aad-pod-identity/blob/master/README.md#create-user-azure-identity">create a user managed identity</a>.  We then create an <a href="https://github.com/Azure/aad-pod-identity/blob/master/README.md#install-user-azure-identity-on-k8s-cluster">AzureIdentity resource</a>, for instance:
 
-[code lang=text]
-apiVersion: &quot;aadpodidentity.k8s.io/v1&quot;
+```text
+apiVersion: "aadpodidentity.k8s.io/v1"
 kind: AzureIdentity
 metadata:
- name: &lt;a-idname&gt;
+ name: <a-idname>
 spec:
  type: 0
- ResourceID: /subscriptions/&lt;subid&gt;/resourcegroups/&lt;resourcegroup&gt;/providers/Microsoft.ManagedIdentity/userAssignedIdentities/&lt;managedidentity-resourcename&gt;
+ ResourceID: /subscriptions/<subid>/resourcegroups/<resourcegroup>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<managedidentity-resourcename>
+ ClientID: <clientid>
+```&gt;
  ClientID: &lt;clientid&gt;
 [/code]
 
@@ -93,14 +95,15 @@ Basically, we reflect the Azure resource inside Kubernetes.
 
 We then create an <a href="https://github.com/Azure/aad-pod-identity/blob/master/README.md#install-pod-to-identity-binding-on-k8s-cluster">AzureIdentityBinding</a> which binds that identity to pods, via label selector:
 
-[code lang=text]
-apiVersion: &quot;aadpodidentity.k8s.io/v1&quot;
+```text
+apiVersion: "aadpodidentity.k8s.io/v1"
 kind: AzureIdentityBinding
 metadata:
  name: demo1-azure-identity-binding
 spec:
- AzureIdentity: &lt;a-idname&gt;
- Selector: &lt;label value to match&gt;
+ AzureIdentity: <a-idname>
+ Selector: <label value to match>
+```e to match&gt;
 [/code]
 
 That's it.
@@ -167,33 +170,34 @@ Let's do the steps lined up in the <a href="https://github.com/Azure/aad-pod-ide
 
 Notice the pod has a label <code>aadpodidbinding:  little-pod-binding</code>.  This label must match the selected in the <em>AzureIdentityBinding</em>.  For instance:
 
-[code lang=bash]
-apiVersion: &quot;aadpodidentity.k8s.io/v1&quot;
+```bash
+apiVersion: "aadpodidentity.k8s.io/v1"
 kind: AzureIdentityBinding
 metadata:
     name: vpl-id-to-little-pod
 spec:
     AzureIdentity: vpl-id
     Selector:  little-pod-binding
+```ng
 [/code]
 
 We now have a pod running which should have access to the managed identity access tokens.  Let's test that:
 
-[code lang=bash]
+```bash
 $ kubectl exec test-id-pod -it sh
 / # curl  http://169.254.169.254/metadata/identity/oauth2/token/?resource=https://vault.azure.net
-[/code]
+```
 
 This should return a JSON token.
 
 We can see that an <em>AzureAssignedIdentity</em> was created:
 
-[code lang=bash]
+```bash
 kubectl get AzureAssignedIdentity
 
 NAME                         AGE
 test-id-pod-default-vpl-id   58s
-[/code]
+```
 
 <h2>Summary</h2>
 

@@ -29,10 +29,10 @@ We'll need the Azure CLI tool connected to an Azure subscription.
 
 First, let's download an <a href="https://github.com/vplauzon/aks/blob/master/monitor-metrics/deploy.json">ARM template</a> and <a href="https://github.com/vplauzon/aks/blob/master/monitor-metrics/create-cluster.sh">a script</a> invoking it:
 
-[code lang=bash]
-curl https://raw.githubusercontent.com/vplauzon/aks/master/monitor-metrics/deploy.json &gt; deploy.json
-curl https://raw.githubusercontent.com/vplauzon/aks/master/monitor-metrics/create-cluster.sh &gt; create-cluster.sh
-[/code]
+```bash
+curl https://raw.githubusercontent.com/vplauzon/aks/master/monitor-metrics/deploy.json > deploy.json
+curl https://raw.githubusercontent.com/vplauzon/aks/master/monitor-metrics/create-cluster.sh > create-cluster.sh
+```/code]
 
 We are going to run that script with five parameters:
 
@@ -79,11 +79,12 @@ The last three parameters are related to the Service Principal that will be used
 
 Let's run the command locally, e.g.:
 
-[code lang=bash]
+```bash
 ./create-cluster.sh aks-group eastus myuniquelaworkspace myuniqueaks \
-    &lt;my-principal-app-id&gt; \
-    &lt;my-principal-object-id&gt; \
-    &lt;my-principal-password&gt;
+    <my-principal-app-id> \
+    <my-principal-object-id> \
+    <my-principal-password>
+```ssword&gt;
 [/code]
 
 This takes a few minutes to execute.
@@ -92,7 +93,7 @@ This takes a few minutes to execute.
 
 Let's deploy a set of pods in the cluster using the following <a href="https://github.com/vplauzon/aks/blob/master/monitor-metrics/service.yaml">yaml file</a>:
 
-[code lang=Javascript]
+```Javascript
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -114,11 +115,11 @@ spec:
         - containerPort: 80
         resources:
           requests:
-            memory: &quot;64M&quot;
-            cpu: &quot;250m&quot;
+            memory: "64M"
+            cpu: "250m"
           limits:
-            memory: &quot;128M&quot;
-            cpu: &quot;2&quot;
+            memory: "128M"
+            cpu: "2"
 ---
 apiVersion: v1
 kind: Service
@@ -130,6 +131,8 @@ spec:
   - port: 80
   selector:
     app: cpu-ram-api
+```  selector:
+    app: cpu-ram-api
 [/code]
 
 We have a deployment and a public service load balancing the pods of the deployment.
@@ -138,13 +141,13 @@ The pod has one container.  Container's image is <a href="https://hub.docker.com
 
 The deployment script already connected <em>kubectl</em> CLI to our cluster (i.e. executed the <em>az aks get-credentials</em> command for us).  So, we can simply deploy the yaml file with the following command:
 
-[code lang=bash]
+```bash
 kubectl apply -f https://raw.githubusercontent.com/vplauzon/aks/master/monitor-metrics/service.yaml
-[/code]
+```
 
 If we look at the pods:
 
-[code lang=bash]
+```bash
 $ kubectl get pods
 
 NAME                           READY   STATUS    RESTARTS   AGE
@@ -154,38 +157,41 @@ cpu-ram-api-5976cfdfb7-m26gn   1/1     Running   0          6m6s
 cpu-ram-api-5976cfdfb7-pgf9v   0/1     Pending   0          6m3s
 cpu-ram-api-5976cfdfb7-qj55t   1/1     Running   0          6m4s
 cpu-ram-api-5976cfdfb7-zrlcl   1/1     Running   0          6m3s
-[/code]
+```
 
 We see that one of the pods is pending because our single-node cluster is full.
 
 Now let's look at the service:
 
-[code lang=bash]
+```bash
 $ kubectl get svc
 
 NAME                      TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
 cpu-ram-request-api-svc   LoadBalancer   10.0.40.102   40.70.77.7    80:31744/TCP   7m8s
-kubernetes                ClusterIP      10.0.0.1      &lt;none&gt;        443/TCP        123m
-[/code]
+kubernetes                ClusterIP      10.0.0.1      <none>        443/TCP        123m
+```/code]
 
 We need to copy the external IP of the <em>cpu-ram-request-api-svc</em> service.  That's the Azure public IP associated to the load balancer of that service.  Let's store that in a shell variable:
 
-[code lang=bash]
-ip=40.70.77.7  # Here, let&#039;s replace that specific IP with the one from our cluster
-[/code]
+```bash
+ip=40.70.77.7  # Here, let's replace that specific IP with the one from our cluster
+```code]
 
 Now let's call the API we just deploy a few times:
 
-[code lang=bash]
-$ curl &quot;http://$ip/&quot;
+```bash
+$ curl "http://$ip/"
 
-{&quot;duration&quot;:1,&quot;numberOfCore&quot;:1,&quot;ram&quot;:10,&quot;realDuration&quot;:&quot;00:00:00.9995901&quot;}
+{"duration":1,"numberOfCore":1,"ram":10,"realDuration":"00:00:00.9995901"}
 
-$ curl &quot;http://$ip?duration=45&quot;
+$ curl "http://$ip?duration=45"
 
-{&quot;duration&quot;:45,&quot;numberOfCore&quot;:1,&quot;ram&quot;:10,&quot;realDuration&quot;:&quot;00:00:44.9990431&quot;}
+{"duration":45,"numberOfCore":1,"ram":10,"realDuration":"00:00:44.9990431"}
 
-$ curl &quot;http://$ip?duration=20&amp;core=2&quot;
+$ curl "http://$ip?duration=20&core=2"
+
+{"duration":20,"numberOfCore":2,"ram":10,"realDuration":"00:00:20.0014578"}
+```url &quot;http://$ip?duration=20&amp;core=2&quot;
 
 {&quot;duration&quot;:20,&quot;numberOfCore&quot;:2,&quot;ram&quot;:10,&quot;realDuration&quot;:&quot;00:00:20.0014578&quot;}
 [/code]
@@ -211,10 +217,10 @@ Those are all AKS related.
 
 Since we want to find out the CPU usage for pods, let's look at <em>KubePodInventory</em>.  We can type the following query:
 
-[code lang=sql]
+```sql
 KubePodInventory 
 | limit 5
-[/code]
+```
 
 We can then click <em>Run</em> (or type <em>Shift-Enter</em>).  The screen should look as follow once we exploded the <em>KubePodInventory</em> table on the left:
 
@@ -230,11 +236,11 @@ We can see the <em>Computer</em> column corresponds to AKS nodes.
 
 To get a better feel of a column, we can fetch its distinct (unique) values.  For instance:
 
-[code lang=sql]
+```sql
 KubePodInventory 
 | distinct Namespace, Name
 | sort by Namespace, Name asc
-[/code]
+```
 
 gives a list of <em>Name</em> that correspond to what we would get from a <code>kubectl get pods --all-namespaces</code>.
 
@@ -246,10 +252,10 @@ Let's look at the <em>Perf</em> table under <em>LogManagement</em> category.  It
 
 We can throw a few queries.  For instance:
 
-[code lang=sql]
+```sql
 Perf 
 | distinct ObjectName
-[/code]
+```
 
 shows us only two object names:
 
@@ -260,10 +266,10 @@ shows us only two object names:
 
 This tells us that AKS has put some data in that table.
 
-[code lang=sql]
+```sql
 Perf 
 | distinct InstanceName
-[/code]
+```
 
 This last query gives us very long ids where some ends with the name of containers.
 
@@ -277,11 +283,11 @@ Thankfully we had all that information in <em>KubePodInventory</em>.  This will 
 
 Another useful column is
 
-[code lang=sql]
+```sql
 Perf 
 | distinct CounterName
 | sort by CounterName asc 
-[/code]
+```
 
 where the values are:
 
@@ -304,10 +310,10 @@ where the values are:
 
 Let's try to find those values in <em>KubePodInventory</em>:
 
-[code lang=sql]
+```sql
 KubePodInventory 
 | distinct ClusterId, PodUid, ContainerName
-[/code]
+```
 
 We can see the result is close to what we need:
 
@@ -315,10 +321,11 @@ We can see the result is close to what we need:
 
 The first two columns look ok.  The <em>ContainerName</em> is prepended by an ID we do not need.  We can get rid of the prefix easily:
 
-[code lang=sql]
+```sql
 KubePodInventory 
-| extend JustContainerName=tostring(split(ContainerName, &#039;/&#039;)[1])
+| extend JustContainerName=tostring(split(ContainerName, '/')[1])
 | distinct ClusterId, PodUid, JustContainerName
+```me
 [/code]
 
 This gives us what we need.
@@ -327,23 +334,26 @@ This gives us what we need.
 
 We now have everything to join the two tables:
 
-[code lang=sql]
-let clusterName = &quot;&lt;our cluster name&gt;&quot;;
-let serviceName = &quot;cpu-ram-request-api-svc&quot;;
-let counterName = &quot;cpuUsageNanoCores&quot;;
+```sql
+let clusterName = "<our cluster name>";
+let serviceName = "cpu-ram-request-api-svc";
+let counterName = "cpuUsageNanoCores";
 let startTime=ago(60m);
 KubePodInventory
 | where ClusterName == clusterName
 | where ServiceName == serviceName
-| where TimeGenerated &gt;= startTime
-| extend JustContainerName=tostring(split(ContainerName, &#039;/&#039;)[1])
-| extend InstanceName=strcat(ClusterId, &#039;/&#039;, PodUid, &#039;/&#039;, JustContainerName) 
+| where TimeGenerated >= startTime
+| extend JustContainerName=tostring(split(ContainerName, '/')[1])
+| extend InstanceName=strcat(ClusterId, '/', PodUid, '/', JustContainerName) 
 | distinct Name, InstanceName
 | join (
     Perf
-    | where TimeGenerated &gt;= startTime
+    | where TimeGenerated >= startTime
     | where CounterName == counterName
     ) on InstanceName
+| project CounterValue, TimeGenerated, Name
+| render timechart 
+```
 | project CounterValue, TimeGenerated, Name
 | render timechart 
 [/code]
@@ -358,10 +368,10 @@ We get a chart of exactly what we needed:  the CPU usage of each pod.
 
 Time is given in GMT.  In order to convert it, <a href="https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/datetime-operations#time-zones">we can add / substract hours</a>.  For instance, in Montreal, currently (early May):
 
-[code lang=sql]
+```sql
 | extend LocalTimeGenerated = TimeGenerated - 4h
 | project CounterValue, LocalTimeGenerated, Name
-[/code]
+```
 
 As usually with Log Analytics, we can save this query.  We can also "pin" it to a shared dashboard.
 

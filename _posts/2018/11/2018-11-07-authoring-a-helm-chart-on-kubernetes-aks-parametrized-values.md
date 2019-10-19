@@ -28,9 +28,9 @@ Let's start by deploying a slightly more <a href="https://github.com/vplauzon/he
 
 So, from the root of the repo, we can type:
 
-[code lang=bash]
+```bash
 $ helm upgrade --install myservice b-service
-[/code]
+```
 
 Here we use the idempotent form of install with <em>Helm</em>.  This command will install the first time and update subsequent time.  It is equivalent to a <code>kubectl apply</code>.
 
@@ -38,31 +38,31 @@ We install the chart <em>b-service</em> (which is in the <em>b-service</em> sub 
 
 We can see that deployed a cluster-IP service in the <em>b</em> namespace:
 
-[code lang=bash]
+```bash
 $ kubectl get svc --namespace=b
 NAME         TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)   AGE
-my-service   ClusterIP   10.0.44.202   &lt;none&gt;        80/TCP    8m
-[/code]
+my-service   ClusterIP   10.0.44.202   <none>        80/TCP    8m
+```/code]
 
 It also deployed a deployment with 2 pods:
 
-[code lang=bash]
+```bash
 $ kubectl get deploy --namespace=b
 NAME            DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 my-deployment   2         2         2            2           8m
-[/code]
+```
 
 We could test the service using
 
-[code lang=bash]
+```bash
 kubectl run -i --tty console --image=appropriate/curl -- sh
-[/code]
+```
 
 and <em>curling</em> the service.
 
 Instead, let's look at files in the chart:
 
-[code lang=powershell]
+```powershell
 b-service/
   Chart.yaml
   README.md           # Optional but quick to write
@@ -72,13 +72,13 @@ b-service/
     namespace.yaml     # The namespace b
     service.yaml       # A service bound to the deployment
     NOTES.txt          # Optional but quick to write
-[/code]
+```
 
 This time around we have two (3) yaml files in the <em>templates</em> folder.
 
 <a href="https://github.com/vplauzon/helm/blob/master/b-service/templates/deployment.yaml">deployment.yaml</a>, a vanilla deployment with 2 replicas:
 
-[code lang=powershell]
+```powershell
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -100,20 +100,20 @@ spec:
         image: vplauzon/get-started:part2-no-redis
         ports:
         - containerPort: 80
-[/code]
+```
 
 <a href="https://github.com/vplauzon/helm/blob/master/b-service/templates/namespace.yaml">namespace.yaml</a>, a vanilla namespace:
 
-[code lang=powershell]
+```powershell
 apiVersion: v1
 kind: Namespace
 metadata:
   name: b
-[/code]
+```
 
 <a href="https://github.com/vplauzon/helm/blob/master/b-service/templates/service.yaml">service.yaml</a>, a vanilla service of type <em>ClusterIP</em>:
 
-[code lang=powershell]
+```powershell
 apiVersion: v1
 kind: Service
 metadata:
@@ -124,7 +124,7 @@ spec:
   - port: 80
   selector:
     app: get-started
-[/code]
+```
 
 This is Helm without values, without parameters.
 
@@ -142,45 +142,45 @@ For traditional work the <code>--namespace</code> is likely more useful.  Often 
 
 Now, let's deploy another chart:
 
-[code lang=bash]
+```bash
 helm upgrade --install myparameteredsvc c-parametrized-service
-[/code]
+```
 
 This is <a href="https://github.com/vplauzon/helm/tree/master/c-parametrized-service">c-parametrized-service</a>.
 
 On the surface, it is quite similar to the previous chart.  It deploys a service and a deployment with 2 replicas:
 
-[code lang=bash]
+```bash
 $ kubectl get svc --namespace=c
 NAME            TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)   AGE
-param-service   ClusterIP   10.0.187.51   &lt;none&gt;        80/TCP    3m
+param-service   ClusterIP   10.0.187.51   <none>        80/TCP    3m
 
 $ kubectl get deploy --namespace=c
 NAME          DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 get-started   2         2         2            2           3m
-[/code]
+```/code]
 
 The major difference is that this chart uses values.  Let's look at <a href="https://github.com/vplauzon/helm/blob/master/c-parametrized-service/values.yaml">values.yaml</a>:
 
-[code lang=bash]
+```bash
 #  We use parameters here:
 service:
-  name:  param-service # Name of the Kubernetes&#039; service
+  name:  param-service # Name of the Kubernetes' service
   replicaCount: 2 # Number of pods in the replica set
 deployment:
   name:  get-started # Name of the deployment
-[/code]
+```code]
 
 This file is a plain old YAML file.  Any values in the nodes of the YAML tree can be used.  For instance <code>service.name</code>.
 
 For instance, let's look at <a href="https://github.com/vplauzon/helm/blob/master/c-parametrized-service/templates/namespace.yaml">namespace.yaml</a>:
 
-[code lang=bash]
+```bash
 apiVersion: v1
 kind: Namespace
 metadata:
   name: {{ .Values.namespace }}
-[/code]
+```
 
 We see the value for the namespace name is pulled from the values yaml tree.
 
@@ -190,17 +190,17 @@ The template files are leveraging <a href="https://golang.org/pkg/text/template/
 
 We can then override the values.  We can do it piece by piece, using the <em>set</em> option.  For instance, let's bump the number of replica from 2 to 5:
 
-[code lang=bash]
+```bash
 helm upgrade --install myparameteredsvc c-parametrized-service --set service.replicaCount=5
-[/code]
+```
 
 We can then confirm the number of replica was changed:
 
-[code lang=bash]
+```bash
 $ kubectl get deploy --namespace=c
 NAME          DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 get-started   5         5         5            5           1m
-[/code]
+```
 
 Using this we can parametrize a release.
 
@@ -212,12 +212,12 @@ We can instead pass a file to override values.
 
 Let's look at <a href="https://github.com/vplauzon/helm/blob/master/c-parametrized-service/_values-override.yaml">_values-override.yaml</a>:
 
-[code lang=bash]
+```bash
 deployment:
   name:  my-deployment
 service:
   replicaCount: 4
-[/code]
+```
 
 Here we override the replica count but also the name of deployment.
 
@@ -225,17 +225,17 @@ The file name starts with an underscore.  This is a trick to get a file ignored 
 
 We can use that file with the <code>values</code> option:
 
-[code lang=bash]
+```bash
 helm upgrade --install myparameteredsvc c-parametrized-service --values=c-parametrized-service/_values-override.yaml
-[/code]
+```
 
 We can then validate:
 
-[code lang=bash]
+```bash
 $ kubectl get deploy --namespace=c
 NAME            DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 my-deployment   4         4         4            4           30s
-[/code]
+```
 
 The number of replica and the name of the deployment just changed.
 
@@ -243,9 +243,9 @@ The number of replica and the name of the deployment just changed.
 
 We can clean up our cluster with the following command:
 
-[code lang=bash]
+```bash
 helm delete myservice myparameteredsvc --purge
-[/code]
+```
 
 The <code>--purge</code> option clears the releases from Helm's audit.
 

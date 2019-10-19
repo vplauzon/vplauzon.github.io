@@ -38,19 +38,20 @@ Here we will use the Azure Command Line Interface (CLI).  The same thing could b
 
 We can type
 
-[code lang=bash]
+```bash
 az role definition list -o table
-[/code]
+```
 
 This gives a list of all the roles available.  It's a little hard to read since the output is large.  We can narrow it by using <a href="http://jmespath.org/">JMESPath standard</a>:
 
-[code lang=bash]
-az role definition list --query &quot;[*].{roleName:roleName, name:name}&quot; -o table
+```bash
+az role definition list --query "[*].{roleName:roleName, name:name}" -o table
+```le
 [/code]
 
 This should give us an output similar to:
 
-[code lang=text]
+```text
 RoleName                                              Name
 ----------------------------------------------------  ------------------------------------
 Azure Service Deploy Release Management Contributor   21d96096-b162-414a-8302-d8354f9d91b2
@@ -59,22 +60,23 @@ Dsms Role (deprecated)                                b91f4c0b-46e3-47bb-a242-ee
 Dsms Role (do not use)                                7aff565e-6c55-448d-83db-ccf482c6da2f
 GenevaWarmPathResourceContributor                     9f15f5f5-77bd-413a-aa88-4b9c68b1e7bc
 ...
-[/code]
+```
 
 In our case, we would be interested i
 
-[code lang=bash]
-az role definition list --query &quot;[? starts_with(roleName, &#039;Logic&#039;)].{roleName:roleName, name:name}&quot; -o table
+```bash
+az role definition list --query "[? starts_with(roleName, 'Logic')].{roleName:roleName, name:name}" -o table
+```ot; -o table
 [/code]
 
 which returns us:
 
-[code lang=text]
+```text
 RoleName               Name
 ---------------------  ------------------------------------
 Logic App Contributor  87a39d53-fc1b-424a-814c-f7e04687dc9e
 Logic App Operator     515c2055-d9d4-4321-b1b9-bd0c9a0f79fe
-[/code]
+```
 
 Let's keep the <em>name</em> of the role, i.e. the <em>GUID</em>.  We choose the <em>Logic App Contributor</em>.
 
@@ -88,15 +90,15 @@ There are three types of identity that makes sense here:  user, group and servic
 
 We can list the users in Azure AD with
 
-[code lang=bash]
+```bash
 az ad user list -o table
-[/code]
+```
 
 For large directories, this would return a lot of data.  We can filter by <em>display name</em> prefix.  The display name is something like <em>John Smith</em> as opposed to <em>jsmith</em>.
 
-[code lang=bash]
+```bash
 az ad user list --display-name john -o table
-[/code]
+```
 
 We need to find the user we're interested in and the corresponding <em>ObjectId</em>, which is a <em>GUID</em>.
 
@@ -104,17 +106,17 @@ We need to find the user we're interested in and the corresponding <em>ObjectId<
 
 Similarly, we can find a group starting with <em>admins</em> with
 
-[code lang=bash]
+```bash
 az ad group list --display-name admins -o table
-[/code]
+```
 
 <h3>Finding a Service Principal</h3>
 
 Similarly for Service principals starting with <em>my</em>
 
-[code lang=bash]
+```bash
 az ad sp list --display-name my -o table
-[/code]
+```
 
 It is important to take the <em>ObjectId</em> and not the <em>AppId</em>.  Those two have different values.
 
@@ -145,16 +147,21 @@ Basically, a role assignment is modelled as an Azure resource.  This is akeen to
 
 Here is the resource in <a href="https://github.com/vplauzon/arm/blob/master/rbac/rbac.json">our template</a>:
 
-[code lang=JavaScript]
+```JavaScript
 {
-    &quot;type&quot;: &quot;Microsoft.Authorization/roleAssignments&quot;,
-    &quot;apiVersion&quot;: &quot;2017-09-01&quot;,
-    &quot;name&quot;: &quot;[guid(concat(resourceGroup().id), resourceId(&#039;Microsoft.Logic/workflows&#039;, &#039;EmptyLogicApp&#039;), variables(&#039;Full Role Definition ID&#039;))]&quot;,
-    &quot;dependsOn&quot;: [
-        &quot;[resourceId(&#039;Microsoft.Logic/workflows&#039;, &#039;EmptyLogicApp&#039;)]&quot;
+    "type": "Microsoft.Authorization/roleAssignments",
+    "apiVersion": "2017-09-01",
+    "name": "[guid(concat(resourceGroup().id), resourceId('Microsoft.Logic/workflows', 'EmptyLogicApp'), variables('Full Role Definition ID'))]",
+    "dependsOn": [
+        "[resourceId('Microsoft.Logic/workflows', 'EmptyLogicApp')]"
     ],
-    &quot;properties&quot;: {
-        &quot;roleDefinitionId&quot;: &quot;[variables(&#039;Full Role Definition ID&#039;)]&quot;,
+    "properties": {
+        "roleDefinitionId": "[variables('Full Role Definition ID')]",
+        "principalId": "[parameters('AAD Object ID')]",
+        "scope": "[resourceGroup().id]"
+    }
+}
+```ot;[variables(&#039;Full Role Definition ID&#039;)]&quot;,
         &quot;principalId&quot;: &quot;[parameters(&#039;AAD Object ID&#039;)]&quot;,
         &quot;scope&quot;: &quot;[resourceGroup().id]&quot;
     }
@@ -177,16 +184,20 @@ There is a quickstart template doing a <a href="https://azure.microsoft.com/en-c
 
 Although only the scope is different, the solution isn't so similar.  Let's look at <a href="https://github.com/vplauzon/arm/blob/master/rbac/rbac.json">our template</a> again:
 
-[code lang=JavaScript]
+```JavaScript
 {
-    &quot;type&quot;: &quot;Microsoft.Logic/workflows/providers/roleAssignments&quot;,
-    &quot;apiVersion&quot;: &quot;2017-05-01&quot;,
-    &quot;name&quot;: &quot;[variables(&#039;Logic App Assignment Name&#039;)]&quot;,
-    &quot;dependsOn&quot;: [
-        &quot;[resourceId(&#039;Microsoft.Logic/workflows&#039;, &#039;EmptyLogicApp&#039;)]&quot;
+    "type": "Microsoft.Logic/workflows/providers/roleAssignments",
+    "apiVersion": "2017-05-01",
+    "name": "[variables('Logic App Assignment Name')]",
+    "dependsOn": [
+        "[resourceId('Microsoft.Logic/workflows', 'EmptyLogicApp')]"
     ],
-    &quot;properties&quot;: {
-        &quot;roleDefinitionId&quot;: &quot;[variables(&#039;Full Role Definition ID&#039;)]&quot;,
+    "properties": {
+        "roleDefinitionId": "[variables('Full Role Definition ID')]",
+        "principalId": "[parameters('AAD Object ID')]"
+    }
+}
+```finitionId&quot;: &quot;[variables(&#039;Full Role Definition ID&#039;)]&quot;,
         &quot;principalId&quot;: &quot;[parameters(&#039;AAD Object ID&#039;)]&quot;
     }
 }

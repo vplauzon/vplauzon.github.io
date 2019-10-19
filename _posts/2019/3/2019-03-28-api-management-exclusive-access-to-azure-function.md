@@ -113,8 +113,9 @@ Here we have the proxied service (e.g. Function) be represented as an Azure AD (
 
 In order to do so, we can leverage <a href="https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-use-managed-service-identity">API Management Managed Identity</a>.  This can be done with the following policy:
 
-[code lang=bash]
-&lt;authentication-token token-type=&quot;managed-service-identity&quot; resource-url=&quot;AAD APPLICATION ID&quot; /&gt;
+```bash
+<authentication-token token-type="managed-service-identity" resource-url="AAD APPLICATION ID" />
+```ION ID&quot; /&gt;
 [/code]
 
 This policy will acquire a token using the service managed identity.

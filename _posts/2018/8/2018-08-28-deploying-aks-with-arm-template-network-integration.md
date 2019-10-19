@@ -107,16 +107,20 @@ We notice the Service Principal we provided in input is <em>Network Contributor<
 
 This was accomplished using a role assignment resource.  We <a href="https://vincentlauzon.com/2018/08/15/rbac-and-role-assignment-using-arm-templates/">covered that in a previous article</a>:
 
-[code lang=JavaScript]
+```JavaScript
 {
-    &quot;type&quot;: &quot;Microsoft.Network/virtualNetworks/providers/roleAssignments&quot;,
-    &quot;apiVersion&quot;: &quot;2017-05-01&quot;,
-    &quot;name&quot;: &quot;[variables(&#039;Role Assignment Name&#039;)]&quot;,
-    &quot;dependsOn&quot;: [
-        &quot;[resourceId(&#039;Microsoft.Network/virtualNetworks&#039;, variables(&#039;VNET Name&#039;))]&quot;
+    "type": "Microsoft.Network/virtualNetworks/providers/roleAssignments",
+    "apiVersion": "2017-05-01",
+    "name": "[variables('Role Assignment Name')]",
+    "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', variables('VNET Name'))]"
     ],
-    &quot;properties&quot;: {
-        &quot;roleDefinitionId&quot;: &quot;[variables(&#039;Network Contributor Role&#039;)]&quot;,
+    "properties": {
+        "roleDefinitionId": "[variables('Network Contributor Role')]",
+        "principalId": "[parameters('Service Principal Object ID')]"
+    }
+}
+```;: &quot;[variables(&#039;Network Contributor Role&#039;)]&quot;,
         &quot;principalId&quot;: &quot;[parameters(&#039;Service Principal Object ID&#039;)]&quot;
     }
 }
@@ -150,10 +154,10 @@ We use a trivial image exposing a one-page web site telling on which node it is 
 
 First, let's login to Kubernetes with the following commands:
 
-[code lang=bash]
+```bash
 az aks install-cli
-az aks get-credentials --resource-group &lt;Resource Group&gt; --name cluster
-[/code]
+az aks get-credentials --resource-group <Resource Group> --name cluster
+```/code]
 
 The first command only need to be done once in an environment.
 
@@ -170,7 +174,7 @@ Let's deploy our service on the cluster.
 
 The <a href="">yaml file is on GitHub</a> and has the following content:
 
-[code lang=text]
+```text
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -196,14 +200,15 @@ kind: Service
 metadata:
   name: web-service
   annotations:
-    service.beta.kubernetes.io/azure-load-balancer-internal: &quot;true&quot;
-    service.beta.kubernetes.io/azure-load-balancer-internal-subnet: &quot;services&quot;
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+    service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "services"
 spec:
   type: LoadBalancer
   ports:
   - port: 80
   selector:
     app: web-get-started
+```-get-started
 [/code]
 
 The first part is a deployment of a replica-set of pods.  There are 3 replicas and the container image is vplauzon/get-started:part2-no-redis.  The <a href="https://github.com/vplauzon/containers/tree/master/get-started-no-redis">code for that container is on GitHub</a>.
@@ -212,9 +217,9 @@ The second part is a service.  It does a selection on the labels we defined for 
 
 We create this deployment with the command:
 
-[code lang=bash]
+```bash
 kubectl create -f service.yaml
-[/code]
+```
 
 Let's look at how that impact our Azure resources.
 
@@ -240,33 +245,34 @@ Let's look at how Kubernetes interpret those.
 
 Let's type:
 
-[code lang=bash]
+```bash
 kubectl get pods -o wide
-[/code]
+```
 
 This gives us a result similar to:
 
-[code lang=bash]
+```bash
 NAME                   READY     STATUS    RESTARTS   AGE       IP            NODE
 web-54b885b89b-9q9cr   1/1       Running   0          15m       172.16.0.70   aks-agentpool-15447536-0
 web-54b885b89b-b25rz   1/1       Running   0          15m       172.16.0.29   aks-agentpool-15447536-2
 web-54b885b89b-khklp   1/1       Running   0          15m       172.16.0.43   aks-agentpool-15447536-1
-[/code]
+```
 
 We see 3 pods, corresponding to the replica set.  They are each deployed in a different node.  They each have an IP address belonging to the <em>aks</em> subnet.
 
 Now if we type:
 
-[code lang=bash]
+```bash
 kubectl get services -o wide
-[/code]
+```
 
 We should see:
 
-[code lang=bash]
+```bash
 NAME          TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE       SELECTOR
-kubernetes    ClusterIP      10.0.0.1       &lt;none&gt;        443/TCP        1d        &lt;none&gt;
+kubernetes    ClusterIP      10.0.0.1       <none>        443/TCP        1d        <none>
 web-service   LoadBalancer   10.0.125.114   172.16.16.4   80:30981/TCP   17m       app=web-get-started
+```rted
 [/code]
 
 Let's ignore the <em>kubernetes</em> service, as this is an internal service.  Let's concentrate on the <em>web-service</em> service.
@@ -283,14 +289,15 @@ We recommend using our <a href="https://github.com/vplauzon/containers/tree/mast
 
 From that VM we can <code>curl</code> to the first pod, i.e. IP 172.16.0.70 in our case:
 
-[code lang=bash]
+```bash
 curl 172.16.0.70
-[/code]
+```
 
 and receive the following:
 
-[code lang=bash]
-&lt;h3&gt;Hello World!&lt;/h3&gt;&lt;b&gt;Hostname:&lt;/b&gt; web-54b885b89b-9q9cr&lt;br/&gt;&lt;b&gt;Visits:&lt;/b&gt; undefined
+```bash
+<h3>Hello World!</h3><b>Hostname:</b> web-54b885b89b-9q9cr<br/><b>Visits:</b> undefined
+```t;b&gt;Visits:&lt;/b&gt; undefined
 [/code]
 
 We can note that <em>web-54b885b89b-9q9cr</em> is the name of the pod.
@@ -299,54 +306,55 @@ We can do that for each pod.
 
 We can also <em>curl</em> the service:
 
-[code lang=bash]
+```bash
 curl 172.16.16.4
-[/code]
+```
 
 We should receive a similar return.  If we keep running this command we should see that we round robin through the pods.
 
 We could also try the internal port (in our case 30981).  For this we need to learn the nodes' IPs:
 
-[code lang=bash]
+```bash
 kubectl get nodes -o wide
-[/code]
+```
 
 The returned <em>internal-ip</em> is the node's IP:
 
-[code lang=bash]
+```bash
 NAME                       STATUS    ROLES     AGE       VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
-aks-agentpool-15447536-0   Ready     agent     1d        v1.11.1   172.16.0.66   &lt;none&gt;        Ubuntu 16.04.5 LTS   4.15.0-1018-azure   docker://1.13.1
-aks-agentpool-15447536-1   Ready     agent     1d        v1.11.1   172.16.0.35   &lt;none&gt;        Ubuntu 16.04.5 LTS   4.15.0-1018-azure   docker://1.13.1
-aks-agentpool-15447536-2   Ready     agent     1d        v1.11.1   172.16.0.4    &lt;none&gt;        Ubuntu 16.04.5 LTS   4.15.0-1018-azure   docker://1.13.1
+aks-agentpool-15447536-0   Ready     agent     1d        v1.11.1   172.16.0.66   <none>        Ubuntu 16.04.5 LTS   4.15.0-1018-azure   docker://1.13.1
+aks-agentpool-15447536-1   Ready     agent     1d        v1.11.1   172.16.0.35   <none>        Ubuntu 16.04.5 LTS   4.15.0-1018-azure   docker://1.13.1
+aks-agentpool-15447536-2   Ready     agent     1d        v1.11.1   172.16.0.4    <none>        Ubuntu 16.04.5 LTS   4.15.0-1018-azure   docker://1.13.1
+```r://1.13.1
 [/code]
 
 So now if we do:
 
-[code lang=bash]
+```bash
 curl 172.16.0.66:30981
-[/code]
+```
 
 We will again round robin through the pods.  The same result would occur with the IP of any node.
 
 In order to test the internal IPs, we need to be on the cluster itself.  This can easily be done by running a container in interactive mode:
 
-[code lang=bash]
+```bash
 kubectl run -i --tty console --image=appropriate/curl -- sh
-[/code]
+```
 
 Here we simply take the classic <a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet/#interacting-with-running-pods">Kubernetes trick</a> but using the <a href="https://hub.docker.com/r/appropriate/curl/">appropriate/curl</a> image.  That image has <em>curl</em> installed on it, which we can then use:
 
-[code lang=bash]
+```bash
 curl 10.0.125.114
-[/code]
+```
 
 or whatever the <em>cluster-ip</em> of the service is.  This will again round robin through the pods.
 
 Since the ARM Template activated the <a href="https://docs.microsoft.com/en-us/azure/aks/http-application-routing">HTTP Application Routing</a>, we could actually use the service name:
 
-[code lang=bash]
+```bash
 curl web-service
-[/code]
+```
 
 which would work the same way.
 
@@ -354,21 +362,25 @@ which would work the same way.
 
 Let's finally look at the <em>Network profile</em> in the ARM template:
 
-[code lang=JavaScript]
-&quot;networkProfile&quot;: {
-    &quot;networkPlugin&quot;: &quot;azure&quot;,
-    &quot;serviceCidr&quot;: &quot;[variables(&#039;Service Cidr&#039;)]&quot;,
-    &quot;dnsServiceIP&quot;: &quot;[variables(&#039;Dns Service IP&#039;)]&quot;,
+```JavaScript
+"networkProfile": {
+    "networkPlugin": "azure",
+    "serviceCidr": "[variables('Service Cidr')]",
+    "dnsServiceIP": "[variables('Dns Service IP')]",
+    "dockerBridgeCidr": "[variables('Docker Bridge Cidr')]"
+}
+```ce IP&#039;)]&quot;,
     &quot;dockerBridgeCidr&quot;: &quot;[variables(&#039;Docker Bridge Cidr&#039;)]&quot;
 }
 [/code]
 
 With the variables:
 
-[code lang=JavaScript]
-&quot;Service Cidr&quot;: &quot;10.0.0.0/16&quot;,
-&quot;Dns Service IP&quot;: &quot;10.0.0.0&quot;,
-&quot;Docker Bridge Cidr&quot;: &quot;10.2.0.1/16&quot;
+```JavaScript
+"Service Cidr": "10.0.0.0/16",
+"Dns Service IP": "10.0.0.0",
+"Docker Bridge Cidr": "10.2.0.1/16"
+```ot;Docker Bridge Cidr&quot;: &quot;10.2.0.1/16&quot;
 [/code]
 
 Those are explained in the <a href="https://docs.microsoft.com/en-us/azure/aks/networking-overview#plan-ip-addressing-for-your-cluster">AKS documentation</a>.  They are also explained in the <a href="https://docs.microsoft.com/en-ca/azure/templates/microsoft.containerservice/managedclusters#containerservicenetworkprofile-object">ARM Template documentation</a>.

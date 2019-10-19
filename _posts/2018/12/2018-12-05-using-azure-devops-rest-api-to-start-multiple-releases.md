@@ -80,9 +80,9 @@ To be clear, if the PAT value is <code>XYZ</code>, we need to take the base-64 v
 
 We can then use the following HTTP host header:
 
-[code lang=text]
+```text
 Authorization: Basic BASE64PATSTRING
-[/code]
+```
 
 A C# example is given at the <a href="https://docs.microsoft.com/en-us/azure/devops/integrate/get-started/authentication/pats?view=vsts">bottom of this article</a>.
 
@@ -92,9 +92,9 @@ Now we can look at specific API.
 
 First we'll need to <a href="https://docs.microsoft.com/en-ca/rest/api/azure/devops/release/releases/create?view=azure-devops-rest-5.0">create a release</a>:
 
-[code lang=text]
+```text
 POST https://vsrm.dev.azure.com/{organization}/{project}/_apis/release/releases?api-version=5.0-preview.8
-[/code]
+```
 
 The <a href="https://docs.microsoft.com/en-ca/rest/api/azure/devops/release/releases/create?view=azure-devops-rest-5.0#request-body">request body can contain a few specifics</a>, such as an artefact list.
 
@@ -108,9 +108,9 @@ This API returns a payload of information.  The key value to keep is the <code>i
 
 In order to wait for the release to be over, we'll need to probe the <a href="https://docs.microsoft.com/en-ca/rest/api/azure/devops/release/releases/get%20release?view=azure-devops-rest-5.0">get-release API</a>:
 
-[code lang=text]
+```text
 GET https://vsrm.dev.azure.com/{organization}/{project}/_apis/release/releases/{releaseId}?api-version=5.0-preview.8
-[/code]
+```
 
 This is where the <code>releaseId</code> we got from the previous API comes handy.
 

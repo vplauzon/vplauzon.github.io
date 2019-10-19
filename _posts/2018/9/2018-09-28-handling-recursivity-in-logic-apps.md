@@ -64,9 +64,11 @@ In order to test the apps, we need to do an HTTP POST.  Different tool can be us
 
 The HTTP body must conform to a <a href="https://github.com/vplauzon/logic-apps/blob/master/recursion/parent-child/schema.json">simple schema</a>.  Let's use the following content:
 
-[code lang=JavaScript]
+```JavaScript
 {
-    &quot;iterations&quot;: 3
+    "iterations": 3
+}
+```
 }
 [/code]
 
@@ -110,19 +112,21 @@ The example we are going to take is something that receives a hierarchical paylo
 
 The <a href="https://github.com/vplauzon/logic-apps/blob/master/recursion/flat/input.json">payload should look like</a>:
 
-[code lang=JavaScript]
+```JavaScript
 [
     {
-        &quot;name&quot;: &quot;master-1&quot;,
-        &quot;children&quot;: [
+        "name": "master-1",
+        "children": [
             {
-                &quot;name&quot;: &quot;child-1-A&quot;,
-                &quot;children&quot;: [
+                "name": "child-1-A",
+                "children": [
                     {
-                        &quot;name&quot;: &quot;child-1-A-I&quot;,
-                        &quot;children&quot;: [
+                        "name": "child-1-A-I",
+                        "children": [
                             {
-                                &quot;name&quot;: &quot;child-1-A-I-Alpha&quot;,
+                                "name": "child-1-A-I-Alpha",
+                                "children": []
+```       &quot;name&quot;: &quot;child-1-A-I-Alpha&quot;,
                                 &quot;children&quot;: []
 [/code]
 
@@ -150,7 +154,7 @@ We can see the output is a simple JSON where the <em>processed</em> property con
 
 The implementation contains a few actions but is quite simple.  In pseudo code it would look like this:
 
-[code lang=csharp]
+```csharp
 parse-payload = Parse(Payload)
 
 return-array = []
@@ -166,7 +170,7 @@ Until(current-items is not empty)
    current-items = next-items
 
 return return-array
-[/code]
+```
 
 No magic here:  we unfold a hierarchical data structure in a loop.
 

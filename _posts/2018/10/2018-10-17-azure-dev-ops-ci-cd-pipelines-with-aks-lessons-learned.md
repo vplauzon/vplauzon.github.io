@@ -110,27 +110,33 @@ It also allows us to remove deployment specific information from GitHub.
 
 We use Azure CLI to <a href="https://github.com/vplauzon/shared-infra/blob/master/secrets.sh">store secrets</a>, e.g.
 
-[code lang=bash]
-az keyvault secret set --vault-name $vault --name dev-shared-infra-ssh-public-key --value &lt;VALUE&gt;
-[/code]
+```bash
+az keyvault secret set --vault-name $vault --name dev-shared-infra-ssh-public-key --value <VALUE>
+```/code]
 
 and we retrieve those in the ARM templates as:
 
-[code lang=JavaScript]
-            &quot;name&quot;: &quot;Cluster&quot;,
-            &quot;type&quot;: &quot;Microsoft.Resources/deployments&quot;,
-            &quot;apiVersion&quot;: &quot;2018-05-01&quot;,
-            &quot;properties&quot;: {
-                &quot;mode&quot;: &quot;Incremental&quot;,
-                &quot;templateLink&quot;: {
-                    &quot;uri&quot;: &quot;[variables(&#039;AKS Cluster Template URL&#039;)]&quot;,
-                    &quot;contentVersion&quot;: &quot;1.0.0.0&quot;
+```JavaScript
+            "name": "Cluster",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-05-01",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('AKS Cluster Template URL')]",
+                    "contentVersion": "1.0.0.0"
                 },
-                &quot;parameters&quot;: {
-                    &quot;ssh Public Key&quot;: {
-                        &quot;reference&quot;: {
-                            &quot;keyVault&quot;: {
-                                &quot;id&quot;: &quot;[parameters(&#039;vault-id&#039;)]&quot;
+                "parameters": {
+                    "ssh Public Key": {
+                        "reference": {
+                            "keyVault": {
+                                "id": "[parameters('vault-id')]"
+                            },
+                            "secretName": "[concat(parameters('environment'),'-shared-infra-ssh-public-key')]"
+                        }
+                    },
+
+```ult-id&#039;)]&quot;
                             },
                             &quot;secretName&quot;: &quot;[concat(parameters(&#039;environment&#039;),&#039;-shared-infra-ssh-public-key&#039;)]&quot;
                         }

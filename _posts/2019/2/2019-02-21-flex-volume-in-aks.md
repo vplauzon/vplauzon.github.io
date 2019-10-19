@@ -41,13 +41,13 @@ Here, we'll simply go through the <a href="https://github.com/Azure/kubernetes-k
 
 Let's install Flex Volume.  This is done by applying a configuration file.  We can see the file contains a namespace, <em>kv</em>, and a simple daemon set:
 
-[code lang=bash]
+```bash
 $ kubectl create -f https://raw.githubusercontent.com/Azure/kubernetes-keyvault-flexvol/master/deployment/kv-flexvol-installer.yaml
 $ kubectl get ds -n kv
 
 NAMESPACE     NAME                  DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 kv            keyvault-flexvolume   4         4         4       4            4           beta.kubernetes.io/os=linux   71s
-[/code]
+```
 
 If we dig in the daemon set configuration, we see it simply installs a driver on each node at <code>/etc/kubernetes/volumeplugins</code>.
 
@@ -74,7 +74,7 @@ We then deploy a pod with the usual <code>kubectl apply -f pod.yaml</code>.
 
 Here is the <a href="https://github.com/vplauzon/aks/blob/master/flex-volume/pod.yaml">pod.yaml file</a>:
 
-[code lang=bash]
+```bash
 apiVersion: v1
 kind: Pod
 metadata:
@@ -92,9 +92,9 @@ spec:
   volumes:
   - name: secrets
     flexVolume:
-      driver: &quot;azure/kv&quot;
+      driver: "azure/kv"
       options:
-        usepodidentity: &quot;true&quot;
+        usepodidentity: "true"
         keyvaultname: # Azure Resource name for the Azure Key Vault
         keyvaultobjectnames: myname;myage
         keyvaultobjecttypes: secret;secret # OPTIONS: secret, key, cert
@@ -102,6 +102,7 @@ spec:
         resourcegroup: # Resource Group where the Key Vault is
         subscriptionid: # ID of the subscription where the Key Vault is
         tenantid: # AAD Tenant ID of the subscription
+```subscription
 [/code]
 
 First, we notice the <em>aadpodidbinding</em> label that must match the one defined in the <em>AzureIdentityBinding</em> we defined in previous step.
@@ -116,9 +117,9 @@ Finally, we see that we fetch two secrets:  <em>myname</em> and <em>myage</em>.
 
 We can then test the secrets materialized inside the pod.  For instance, for <em>myname</em> secret:
 
-[code lang=bash]
+```bash
 $ kubectl exec -it access-kv cat /kvmnt/myname
-[/code]
+```
 
 <h2>Summary</h2>
 

@@ -53,11 +53,19 @@ We see there exists one already for the <em>get-secret-app</em> Service Principa
 
 This was done by the ARM template
 
-[code lang=javascript]
-&quot;accessPolicies&quot;: [
+```javascript
+"accessPolicies": [
     {
-    &quot;tenantId&quot;: &quot;[reference(resourceId(&#039;Microsoft.Logic/workflows&#039;, variables(&#039;Get Secret App Name&#039;)), &#039;2017-07-01&#039;, &#039;Full&#039;).identity.tenantId]&quot;,
-    &quot;objectId&quot;: &quot;[reference(resourceId(&#039;Microsoft.Logic/workflows&#039;, variables(&#039;Get Secret App Name&#039;)), &#039;2017-07-01&#039;, &#039;Full&#039;).identity.principalId]&quot;,
+    "tenantId": "[reference(resourceId('Microsoft.Logic/workflows', variables('Get Secret App Name')), '2017-07-01', 'Full').identity.tenantId]",
+    "objectId": "[reference(resourceId('Microsoft.Logic/workflows', variables('Get Secret App Name')), '2017-07-01', 'Full').identity.principalId]",
+    "permissions": {
+        "secrets": [
+        "get"
+        ]
+    }
+    }
+]
+```9;Full&#039;).identity.principalId]&quot;,
     &quot;permissions&quot;: {
         &quot;secrets&quot;: [
         &quot;get&quot;
@@ -77,17 +85,24 @@ We should then be able to see the secrets.
 
 The template created only one secret:
 
-[code lang=javascript]
+```javascript
 {
-    &quot;name&quot;: &quot;[variables(&#039;Secret Name&#039;)]&quot;,
-    &quot;type&quot;: &quot;secrets&quot;,
-    &quot;apiVersion&quot;: &quot;2018-02-14&quot;,
-    &quot;tags&quot;: {},
-    &quot;dependsOn&quot;: [
-        &quot;[resourceId(&#039;Microsoft.KeyVault/vaults&#039;, parameters(&#039;Vault Name&#039;))]&quot;
+    "name": "[variables('Secret Name')]",
+    "type": "secrets",
+    "apiVersion": "2018-02-14",
+    "tags": {},
+    "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', parameters('Vault Name'))]"
     ],
-    &quot;properties&quot;: {
-        &quot;value&quot;: &quot;[variables(&#039;Secret Value&#039;)]&quot;,
+    "properties": {
+        "value": "[variables('Secret Value')]",
+        "contentType": "",
+        "attributes": {
+            "enabled": "true"
+        }
+    }
+}
+```;: &quot;[variables(&#039;Secret Value&#039;)]&quot;,
         &quot;contentType&quot;: &quot;&quot;,
         &quot;attributes&quot;: {
             &quot;enabled&quot;: &quot;true&quot;
@@ -128,9 +143,9 @@ It uses two REST API.
 
 There is an API to list <a href="https://docs.microsoft.com/en-us/rest/api/keyvault/getsecretversions/getsecretversions">all the versions of a secret</a>.  Unfortunately, it isn't trivial to find the current version with that list.  We instead used an undocumented API:
 
-[code lang=text]
+```text
 GET {vaultBaseUrl}/secrets/{secret-name}?api-version=7.0
-[/code]
+```
 
 which returns the current version.
 
@@ -138,15 +153,20 @@ To get the value of the secret's version, we used the <a href="https://docs.micr
 
 The trick to use REST API is of course to authenticate with it.  This is done by specifying the authentication section in the ARM Template:
 
-[code lang=javascript]
-&quot;get-current-version&quot;: {
-    &quot;inputs&quot;: {
-        &quot;authentication&quot;: {
-            &quot;audience&quot;: &quot;https://vault.azure.net&quot;,
-            &quot;type&quot;: &quot;ManagedServiceIdentity&quot;
+```javascript
+"get-current-version": {
+    "inputs": {
+        "authentication": {
+            "audience": "https://vault.azure.net",
+            "type": "ManagedServiceIdentity"
         },
-        &quot;method&quot;: &quot;GET&quot;,
-        &quot;uri&quot;: &quot;https://@{parameters(&#039;vault-name&#039;)}.vault.azure.net/secrets/@{triggerBody()[&#039;secret&#039;]}?api-version=7.0&quot;
+        "method": "GET",
+        "uri": "https://@{parameters('vault-name')}.vault.azure.net/secrets/@{triggerBody()['secret']}?api-version=7.0"
+    },
+    "runAfter": {},
+    "type": "Http"
+}
+```ure.net/secrets/@{triggerBody()[&#039;secret&#039;]}?api-version=7.0&quot;
     },
     &quot;runAfter&quot;: {},
     &quot;type&quot;: &quot;Http&quot;

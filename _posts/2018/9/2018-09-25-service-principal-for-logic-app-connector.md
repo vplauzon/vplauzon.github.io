@@ -88,16 +88,21 @@ We see a warning telling us the connection isn't authenticated.
 
 We've seen how to create Logic Apps Connector in a <a href="https://vincentlauzon.com/2017/10/28/how-to-create-a-logic-app-connector-in-an-arm-template/">past article</a>.  The ARM Template used here was:
 
-[code lang=JavaScript]
+```JavaScript
 {
-    &quot;type&quot;: &quot;microsoft.web/connections&quot;,
-    &quot;apiVersion&quot;: &quot;2016-06-01&quot;,
-    &quot;name&quot;: &quot;[variables(&#039;Current User Data Factory Connection Name&#039;)]&quot;,
-    &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-    &quot;dependsOn&quot;: [],
-    &quot;properties&quot;: {
-        &quot;api&quot;: {
-            &quot;id&quot;: &quot;[concat(subscription().id, &#039;/providers/Microsoft.Web/locations/&#039;, resourceGroup().location, &#039;/managedApis/azuredatafactory&#039;)]&quot;
+    "type": "microsoft.web/connections",
+    "apiVersion": "2016-06-01",
+    "name": "[variables('Current User Data Factory Connection Name')]",
+    "location": "[resourceGroup().location]",
+    "dependsOn": [],
+    "properties": {
+        "api": {
+            "id": "[concat(subscription().id, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/azuredatafactory')]"
+        },
+        "displayName": "Current User Data Factory Connection"
+    }
+}
+```urceGroup().location, &#039;/managedApis/azuredatafactory&#039;)]&quot;
         },
         &quot;displayName&quot;: &quot;Current User Data Factory Connection&quot;
     }
@@ -118,21 +123,28 @@ It doesn't display any warning.
 
 The ARM Template used here was:
 
-[code lang=JavaScript]
+```JavaScript
 {
-    &quot;type&quot;: &quot;microsoft.web/connections&quot;,
-    &quot;apiVersion&quot;: &quot;2016-06-01&quot;,
-    &quot;name&quot;: &quot;[variables(&#039;Principal Data Factory Connection Name&#039;)]&quot;,
-    &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-    &quot;dependsOn&quot;: [],
-    &quot;properties&quot;: {
-        &quot;api&quot;: {
-            &quot;id&quot;: &quot;[concat(subscription().id, &#039;/providers/Microsoft.Web/locations/&#039;, resourceGroup().location, &#039;/managedApis/azuredatafactory&#039;)]&quot;
+    "type": "microsoft.web/connections",
+    "apiVersion": "2016-06-01",
+    "name": "[variables('Principal Data Factory Connection Name')]",
+    "location": "[resourceGroup().location]",
+    "dependsOn": [],
+    "properties": {
+        "api": {
+            "id": "[concat(subscription().id, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/azuredatafactory')]"
         },
-        &quot;displayName&quot;: &quot;Service Princiapl Data Factory Connection&quot;,
-        &quot;parameterValues&quot;: {
-            &quot;token:clientId&quot;: &quot;[parameters(&#039;Service Principal App Id&#039;)]&quot;,
-            &quot;token:clientSecret&quot;: &quot;[parameters(&#039;Service Principal Secret&#039;)]&quot;,
+        "displayName": "Service Princiapl Data Factory Connection",
+        "parameterValues": {
+            "token:clientId": "[parameters('Service Principal App Id')]",
+            "token:clientSecret": "[parameters('Service Principal Secret')]",
+            "token:TenantId": "[parameters('Service Principal Tenant')]",
+            "token:resourceUri": "https://management.core.windows.net/",
+            "token:grantType": "client_credentials"
+        }
+    }
+}
+```pal Secret&#039;)]&quot;,
             &quot;token:TenantId&quot;: &quot;[parameters(&#039;Service Principal Tenant&#039;)]&quot;,
             &quot;token:resourceUri&quot;: &quot;https://management.core.windows.net/&quot;,
             &quot;token:grantType&quot;: &quot;client_credentials&quot;
@@ -173,16 +185,20 @@ In order for this sample to work, we needed to give the Service Principal the <e
 
 We've seen how to do role assignment in ARM Template in a <a href="https://vincentlauzon.com/2018/08/15/rbac-and-role-assignment-using-arm-templates/">past article</a>.
 
-[code lang=JavaScript]
+```JavaScript
 {
-    &quot;type&quot;: &quot;Microsoft.DataFactory/factories/providers/roleAssignments&quot;,
-    &quot;apiVersion&quot;: &quot;2017-05-01&quot;,
-    &quot;name&quot;: &quot;[variables(&#039;Data Factory Assignment Name&#039;)]&quot;,
-    &quot;dependsOn&quot;: [
-        &quot;[resourceId(&#039;Microsoft.DataFactory/factories&#039;, parameters(&#039;Data Factory Name&#039;))]&quot;
+    "type": "Microsoft.DataFactory/factories/providers/roleAssignments",
+    "apiVersion": "2017-05-01",
+    "name": "[variables('Data Factory Assignment Name')]",
+    "dependsOn": [
+        "[resourceId('Microsoft.DataFactory/factories', parameters('Data Factory Name'))]"
     ],
-    &quot;properties&quot;: {
-        &quot;roleDefinitionId&quot;: &quot;[variables(&#039;Full Data Factory Contributor Role Definition ID&#039;)]&quot;,
+    "properties": {
+        "roleDefinitionId": "[variables('Full Data Factory Contributor Role Definition ID')]",
+        "principalId": "[parameters('Service Principal Object Id')]"
+    }
+}
+```9;Full Data Factory Contributor Role Definition ID&#039;)]&quot;,
         &quot;principalId&quot;: &quot;[parameters(&#039;Service Principal Object Id&#039;)]&quot;
     }
 }

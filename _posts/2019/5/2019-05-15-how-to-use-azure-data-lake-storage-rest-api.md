@@ -78,11 +78,14 @@ Since this is another Logic App, it has a different managed identity.  That iden
 
 If we run that logic app, we'll see both HTTP call failing with a code 403 and the following payload:
 
-[code lang=JavaScript]
+```JavaScript
 {
-  &quot;error&quot;: {
-    &quot;code&quot;: &quot;AuthorizationPermissionMismatch&quot;,
-    &quot;message&quot;: &quot;This request is not authorized to perform this operation using this permission.\nRequestId:XYZ\nTime:XYZ&quot;
+  "error": {
+    "code": "AuthorizationPermissionMismatch",
+    "message": "This request is not authorized to perform this operation using this permission.\nRequestId:XYZ\nTime:XYZ"
+  }
+}
+```sion.\nRequestId:XYZ\nTime:XYZ&quot;
   }
 }
 [/code]
