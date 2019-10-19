@@ -18,6 +18,12 @@
       {% include nav-categories.html %}
     </section>
 
-  {% endif %}
+    {% elsif page.layout == "tags" %}
+    <section class="section  section--category-index">
+      <h3>Index</h3>
+      {% include nav-tags.html %}
+    </section>
+
+    {% endif %}
 
 </aside>
