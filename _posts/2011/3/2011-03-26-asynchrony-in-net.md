@@ -1,6 +1,6 @@
 ---
 title:  Asynchrony in .NET
-date:  2011-03-27 00:14:00 +00:00
+date:  2011-03-26 20:14:00 -04:00
 permalink:  "/2011/03/26/asynchrony-in-net/"
 categories:
 - Solution

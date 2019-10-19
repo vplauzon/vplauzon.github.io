@@ -1,6 +1,6 @@
 ---
 title:  Sharing Data Contracts between clients & servers with WCF Data Services
-date:  2010-11-18 00:40:00 +00:00
+date:  2010-11-17 19:40:00 -05:00
 permalink:  "/2010/11/17/sharing-data-contracts-between-clients-servers-with-wcf-data-services/"
 categories:
 - Solution

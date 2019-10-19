@@ -1,6 +1,6 @@
 ---
 title:  Cosmos DB Stored Procedures - handling continuation
-date:  2018-06-27 10:30:45 +00:00
+date:  2018-06-27 06:30:45 -04:00
 permalink:  "/2018/06/27/cosmos-db-stored-procedures-handling-continuation/"
 categories:
 - Solution

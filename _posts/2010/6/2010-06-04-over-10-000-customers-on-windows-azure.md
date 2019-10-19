@@ -1,6 +1,6 @@
 ---
 title:  Over 10 000 customers on Windows Azure
-date:  2010-06-04 19:04:23 +00:00
+date:  2010-06-04 15:04:23 -04:00
 permalink:  "/2010/06/04/over-10-000-customers-on-windows-azure/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Transport for London Moves to Windows Azure
-date:  2011-01-25 01:17:00 +00:00
+date:  2011-01-24 20:17:00 -05:00
 permalink:  "/2011/01/24/transport-for-london-moves-to-windows-azure/"
 categories:
 - Solution

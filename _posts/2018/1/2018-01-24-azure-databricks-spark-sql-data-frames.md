@@ -1,6 +1,6 @@
 ---
 title:  Azure Databricks - Spark SQL - Data Frames
-date:  2018-01-24 11:30:51 +00:00
+date:  2018-01-24 06:30:51 -05:00
 permalink:  "/2018/01/24/azure-databricks-spark-sql-data-frames/"
 categories:
 - Solution

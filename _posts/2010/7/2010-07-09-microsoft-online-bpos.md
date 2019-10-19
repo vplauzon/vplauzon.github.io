@@ -1,6 +1,6 @@
 ---
 title:  Microsoft Online (BPOS)
-date:  2010-07-09 15:42:28 +00:00
+date:  2010-07-09 11:42:28 -04:00
 permalink:  "/2010/07/09/microsoft-online-bpos/"
 categories:
 - Solution

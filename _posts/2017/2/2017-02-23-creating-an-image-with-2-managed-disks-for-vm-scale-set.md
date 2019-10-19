@@ -1,6 +1,6 @@
 ---
 title:  Creating an image with 2 Managed Disks for VM Scale Set
-date:  2017-02-23 16:00:59 +00:00
+date:  2017-02-23 11:00:59 -05:00
 permalink:  "/2017/02/23/creating-an-image-with-2-managed-disks-for-vm-scale-set/"
 categories:
 - Solution

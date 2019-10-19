@@ -1,6 +1,6 @@
 ---
 title:  Managing Documents with DocumentDB Studio
-date:  2014-10-23 02:23:35 +00:00
+date:  2014-10-22 22:23:35 -04:00
 permalink:  "/2014/10/22/managing-documents-with-documentdb-studio/"
 categories:
 - Solution

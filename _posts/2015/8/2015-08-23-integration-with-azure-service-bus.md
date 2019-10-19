@@ -1,6 +1,6 @@
 ---
 title:  Integration with Azure Service Bus
-date:  2015-08-23 23:00:25 +00:00
+date:  2015-08-23 19:00:25 -04:00
 permalink:  "/2015/08/23/integration-with-azure-service-bus/"
 categories:
 - Solution

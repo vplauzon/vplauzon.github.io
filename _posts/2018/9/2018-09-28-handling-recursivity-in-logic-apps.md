@@ -1,6 +1,6 @@
 ---
 title:  Handling recursivity in Logic Apps
-date:  2018-09-28 10:30:21 +00:00
+date:  2018-09-28 06:30:21 -04:00
 permalink:  "/2018/09/28/handling-recursivity-in-logic-apps/"
 categories:
 - Solution
@@ -69,8 +69,6 @@ The HTTP body must conform to a <a href="https://github.com/vplauzon/logic-apps/
     "iterations": 3
 }
 ```
-}
-[/code]
 
 We should obtain the following:
 
@@ -126,9 +124,7 @@ The <a href="https://github.com/vplauzon/logic-apps/blob/master/recursion/flat/i
                             {
                                 "name": "child-1-A-I-Alpha",
                                 "children": []
-```       &quot;name&quot;: &quot;child-1-A-I-Alpha&quot;,
-                                &quot;children&quot;: []
-[/code]
+```
 
 The schema is <a href="https://github.com/vplauzon/logic-apps/blob/master/recursion/flat/schema.json">available here</a>.
 

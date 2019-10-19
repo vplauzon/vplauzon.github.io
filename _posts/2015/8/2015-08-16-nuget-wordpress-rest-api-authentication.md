@@ -1,6 +1,6 @@
 ---
 title:  Nuget Wordpress REST API – Authentication
-date:  2015-08-16 23:00:11 +00:00
+date:  2015-08-16 19:00:11 -04:00
 permalink:  "/2015/08/16/nuget-wordpress-rest-api-authentication/"
 categories:
 - Solution

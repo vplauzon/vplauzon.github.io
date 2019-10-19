@@ -1,6 +1,6 @@
 ---
 title:  Azure Dev Ops CI / CD pipelines with AKS - Lessons learned
-date:  2018-10-17 10:30:06 +00:00
+date:  2018-10-17 06:30:06 -04:00
 permalink:  "/2018/10/17/azure-dev-ops-ci-cd-pipelines-with-aks-lessons-learned/"
 categories:
 - Solution
@@ -112,7 +112,7 @@ We use Azure CLI to <a href="https://github.com/vplauzon/shared-infra/blob/maste
 
 ```bash
 az keyvault secret set --vault-name $vault --name dev-shared-infra-ssh-public-key --value <VALUE>
-```/code]
+```
 
 and we retrieve those in the ARM templates as:
 
@@ -136,13 +136,7 @@ and we retrieve those in the ARM templates as:
                         }
                     },
 
-```ult-id&#039;)]&quot;
-                            },
-                            &quot;secretName&quot;: &quot;[concat(parameters(&#039;environment&#039;),&#039;-shared-infra-ssh-public-key&#039;)]&quot;
-                        }
-                    },
-
-[/code]
+```
 
 This requires us to declare a deployment resource and to split our deployment in multiple ARM template files.  In GitHub this is trivial since we use public repos.  With a private repo, it would add some complexity to point to a public URI.
 

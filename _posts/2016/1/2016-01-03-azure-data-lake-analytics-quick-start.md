@@ -1,6 +1,6 @@
 ---
 title:  Azure Data Lake Analytics Quick Start
-date:  2016-01-04 00:00:14 +00:00
+date:  2016-01-03 19:00:14 -05:00
 permalink:  "/2016/01/03/azure-data-lake-analytics-quick-start/"
 categories:
 - Solution

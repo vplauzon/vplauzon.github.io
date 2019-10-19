@@ -1,6 +1,6 @@
 ---
 title:  Departmental Application Migration to Azure – Part 1
-date:  2010-06-02 15:48:39 +00:00
+date:  2010-06-02 11:48:39 -04:00
 permalink:  "/2010/06/02/departmental-application-migration-to-azure-part-1/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Deploying an ARM template hierarchy
-date:  2019-04-24 10:30:07 +00:00
+date:  2019-04-24 06:30:07 -04:00
 permalink:  "/2019/04/24/deploying-an-arm-template-hierarchy/"
 categories:
 - Solution
@@ -93,7 +93,7 @@ First, we need to define the name of the storage account we just created in a sh
 
 ```bash
 storage=<my account name>
-```/code]
+```
 
 Then we simply execute the following script:
 
@@ -101,8 +101,7 @@ Then we simply execute the following script:
 expiry=$(date -u -d "45 minutes" '+%Y-%m-%dT%H:%MZ')
 
 sas=$(az storage container generate-sas --account-name $storage -n deploy --https-only --permissions r --expiry $expiry -o tsv)
-```piry -o tsv)
-[/code]
+```
 
 This puts the SAS token inside the variable <em>sas</em>.
 
@@ -115,8 +114,7 @@ Before copying files, we'll delete existing blobs in case there are:
 ```bash
 az storage blob list --account-name $storage -c deploy --query "[].name" -o tsv | \
  xargs -P 5 -I blobName az storage blob delete --account-name $storage -c deploy -n blobName
-```me
-[/code]
+```
 
 Not the fastest way to delete many blobs, but it works.
 
@@ -137,7 +135,7 @@ Let's first define the resource group we want to deploy in.  It needs to already
 
 ```bash
 group=<my resource group name>
-```/code]
+```
 
 Then we need to find the blob prefix:
 
@@ -152,8 +150,7 @@ az group deployment create -n "deploy-$(uuidgen)" -g $group \
     --parameters \
     sas=$sas \
     blobPrefix=$blobPrefix
-```=$blobPrefix
-[/code]
+```
 
 This will deploy our VNET &amp; Public IP.
 
@@ -176,15 +173,7 @@ We can see by looking at <a href="https://github.com/vplauzon/devops/blob/master
         "mode": "Incremental"
     }
 },
-```uot;: {
-            &quot;vnet-name&quot;: {
-                &quot;value&quot;: &quot;myvnet&quot;
-            }
-        },
-        &quot;mode&quot;: &quot;Incremental&quot;
-    }
-},
-[/code]
+```
 
 We could also use the outputs of a deployment although we do not do it here.
 

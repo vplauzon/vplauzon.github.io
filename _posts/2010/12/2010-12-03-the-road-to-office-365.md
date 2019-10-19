@@ -1,6 +1,6 @@
 ---
 title:  The road to Office 365
-date:  2010-12-03 23:37:00 +00:00
+date:  2010-12-03 18:37:00 -05:00
 permalink:  "/2010/12/03/the-road-to-office-365/"
 categories:
 - Solution

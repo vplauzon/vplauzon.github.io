@@ -1,6 +1,6 @@
 ---
 title:  Nuget WordPress REST API – Demo App
-date:  2016-12-06 22:40:23 +00:00
+date:  2016-12-06 17:40:23 -05:00
 permalink:  "/2016/12/06/nuget-wordpress-rest-api-demo-app/"
 categories:
 - Solution

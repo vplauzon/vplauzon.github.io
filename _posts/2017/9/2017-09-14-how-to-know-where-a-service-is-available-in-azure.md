@@ -1,6 +1,6 @@
 ---
 title:  How to know where a Service is Available in Azure
-date:  2017-09-14 16:00:39 +00:00
+date:  2017-09-14 12:00:39 -04:00
 permalink:  "/2017/09/14/how-to-know-where-a-service-is-available-in-azure/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Using Azure Container Instances to complete automation
-date:  2018-06-13 10:30:13 +00:00
+date:  2018-06-13 06:30:13 -04:00
 permalink:  "/2018/06/13/using-azure-container-instances-to-complete-automation/"
 categories:
 - Solution

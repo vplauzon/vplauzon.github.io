@@ -1,6 +1,6 @@
 ---
 title:  Testing outbound connections in AKS-Kubenet and ACI
-date:  2019-03-26 10:30:03 +00:00
+date:  2019-03-26 06:30:03 -04:00
 permalink:  "/2019/03/26/testing-outbound-connections-in-aks-kubenet-and-aci/"
 categories:
 - Solution
@@ -37,7 +37,7 @@ Let's start by downloading a <a href="https://github.com/vplauzon/aks/blob/maste
 ```bash
 curl https://raw.githubusercontent.com/vplauzon/aks/master/kubenet-outbound/create-cluster.sh \
   > create-cluster.sh
-```de]
+```
 
 We are going to run that script with five parameters:
 
@@ -85,8 +85,7 @@ Let's run the command locally, e.g.:
     <my-principal-app-id> \
     <my-principal-object-id> \
     <my-principal-password>
-```ssword&gt;
-[/code]
+```
 
 This will run for several minutes and create 4 resources in the resource group:
 
@@ -109,8 +108,7 @@ Successfully deployed cluster myuniqueaks and ACI with IP 172.16.32.4
 Connect kubectl to newly created cluster myuniqueaks...
 
 Merged "myuniqueaks" as current context in /home/myusername/.kube/config
-```ig
-[/code]
+```
 
 Here the IP is <em>172.16.32.4</em>.  Let's copy that IP.
 
@@ -128,7 +126,7 @@ Let's try to contact ACI:
 
 ```bash
 / # watch -n 2 curl -v --connect-timeout 1 <ACI IP>
-```/code]
+```
 
 We should see something like refreshing every 2 seconds:
 
@@ -153,8 +151,7 @@ Every 2s: curl -v --connect-timeout 1 172.16.32.4                               
 <
 * Closing connection 0
 <h3>Hello World!</h3><b>Hostname:</b> wk-caas-416604191f9b41ada1766436a3c4673b-203163b74dfca1b08abdec<br/><b>Visits:</b> undefined
-```3163b74dfca1b08abdec&lt;br/&gt;&lt;b&gt;Visits:&lt;/b&gt; undefined
-[/code]
+```
 
 The key part is that connection is established, so AKS can talk to ACI.
 

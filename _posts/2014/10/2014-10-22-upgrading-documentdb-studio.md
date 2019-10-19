@@ -1,6 +1,6 @@
 ---
 title:  Upgrading DocumentDB Studio
-date:  2014-10-23 02:12:51 +00:00
+date:  2014-10-22 22:12:51 -04:00
 permalink:  "/2014/10/22/upgrading-documentdb-studio/"
 categories:
 - Solution

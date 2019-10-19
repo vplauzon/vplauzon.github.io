@@ -1,6 +1,6 @@
 ---
 title:  Network Access Control on an HDInsight Cluster
-date:  2016-01-27 02:19:06 +00:00
+date:  2016-01-26 21:19:06 -05:00
 permalink:  "/2016/01/26/network-access-control-on-an-hdinsight-cluster/"
 categories:
 - Solution

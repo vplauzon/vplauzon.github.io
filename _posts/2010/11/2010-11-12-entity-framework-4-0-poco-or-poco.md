@@ -1,6 +1,6 @@
 ---
 title:  Entity Framework 4.0:  POCO or POCO?
-date:  2010-11-12 23:24:00 +00:00
+date:  2010-11-12 18:24:00 -05:00
 permalink:  "/2010/11/12/entity-framework-4-0-poco-or-poco/"
 categories:
 - Solution

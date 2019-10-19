@@ -1,6 +1,6 @@
 ---
 title:  Scaling a Multi-Tenant Application with Azure DocumentDB
-date:  2014-12-23 02:49:49 +00:00
+date:  2014-12-22 21:49:49 -05:00
 permalink:  "/2014/12/22/scaling-a-multi-tenant-application-with-azure-documentdb/"
 categories:
 - Solution

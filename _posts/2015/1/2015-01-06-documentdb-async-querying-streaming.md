@@ -1,6 +1,6 @@
 ---
 title:  DocumentDB Async Querying & Streaming
-date:  2015-01-07 02:31:41 +00:00
+date:  2015-01-06 21:31:41 -05:00
 permalink:  "/2015/01/06/documentdb-async-querying-streaming/"
 categories:
 - Solution

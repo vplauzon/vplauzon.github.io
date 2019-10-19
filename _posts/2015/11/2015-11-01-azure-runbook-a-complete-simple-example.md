@@ -1,6 +1,6 @@
 ---
 title:  Azure Runbook - A complete (simple) example
-date:  2015-11-02 00:00:17 +00:00
+date:  2015-11-01 19:00:17 -05:00
 permalink:  "/2015/11/01/azure-runbook-a-complete-simple-example/"
 categories:
 - Solution

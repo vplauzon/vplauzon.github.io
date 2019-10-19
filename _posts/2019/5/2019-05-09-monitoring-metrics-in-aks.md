@@ -1,6 +1,6 @@
 ---
 title:  Monitoring metrics in AKS
-date:  2019-05-09 10:30:16 +00:00
+date:  2019-05-09 06:30:16 -04:00
 permalink:  "/2019/05/09/monitoring-metrics-in-aks/"
 categories:
 - Solution
@@ -32,7 +32,7 @@ First, let's download an <a href="https://github.com/vplauzon/aks/blob/master/mo
 ```bash
 curl https://raw.githubusercontent.com/vplauzon/aks/master/monitor-metrics/deploy.json > deploy.json
 curl https://raw.githubusercontent.com/vplauzon/aks/master/monitor-metrics/create-cluster.sh > create-cluster.sh
-```/code]
+```
 
 We are going to run that script with five parameters:
 
@@ -84,8 +84,7 @@ Let's run the command locally, e.g.:
     <my-principal-app-id> \
     <my-principal-object-id> \
     <my-principal-password>
-```ssword&gt;
-[/code]
+```
 
 This takes a few minutes to execute.
 
@@ -131,9 +130,7 @@ spec:
   - port: 80
   selector:
     app: cpu-ram-api
-```  selector:
-    app: cpu-ram-api
-[/code]
+```
 
 We have a deployment and a public service load balancing the pods of the deployment.
 
@@ -169,13 +166,13 @@ $ kubectl get svc
 NAME                      TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
 cpu-ram-request-api-svc   LoadBalancer   10.0.40.102   40.70.77.7    80:31744/TCP   7m8s
 kubernetes                ClusterIP      10.0.0.1      <none>        443/TCP        123m
-```/code]
+```
 
 We need to copy the external IP of the <em>cpu-ram-request-api-svc</em> service.  That's the Azure public IP associated to the load balancer of that service.  Let's store that in a shell variable:
 
 ```bash
 ip=40.70.77.7  # Here, let's replace that specific IP with the one from our cluster
-```code]
+```
 
 Now let's call the API we just deploy a few times:
 
@@ -191,10 +188,7 @@ $ curl "http://$ip?duration=45"
 $ curl "http://$ip?duration=20&core=2"
 
 {"duration":20,"numberOfCore":2,"ram":10,"realDuration":"00:00:20.0014578"}
-```url &quot;http://$ip?duration=20&amp;core=2&quot;
-
-{&quot;duration&quot;:20,&quot;numberOfCore&quot;:2,&quot;ram&quot;:10,&quot;realDuration&quot;:&quot;00:00:20.0014578&quot;}
-[/code]
+```
 
 Those will create a few CPU spikes we'll be able to pick up in the logs.
 
@@ -325,8 +319,7 @@ The first two columns look ok.  The <em>ContainerName</em> is prepended by an ID
 KubePodInventory 
 | extend JustContainerName=tostring(split(ContainerName, '/')[1])
 | distinct ClusterId, PodUid, JustContainerName
-```me
-[/code]
+```
 
 This gives us what we need.
 
@@ -354,9 +347,6 @@ KubePodInventory
 | project CounterValue, TimeGenerated, Name
 | render timechart 
 ```
-| project CounterValue, TimeGenerated, Name
-| render timechart 
-[/code]
 
 We declared a few variables at the beginning using the <em>let</em> keyword.  First, we want to filter for our cluster.  In general, one Log Analytics workspace could be use as target for multiple AKS clusters.  Then we want to filter for a service name.  We also want to look only at the CPU usage metrics.  Finally, we are looking at a 60 minutes window.
 

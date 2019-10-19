@@ -1,6 +1,6 @@
 ---
 title:  Using Application Gateway with VNET peering
-date:  2017-11-20 11:30:23 +00:00
+date:  2017-11-20 06:30:23 -05:00
 permalink:  "/2017/11/20/using-application-gateway-with-vnet-peering/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Creating an Azure DocumentDB account
-date:  2014-10-17 02:34:44 +00:00
+date:  2014-10-16 22:34:44 -04:00
 permalink:  "/2014/10/16/creating-an-azure-documentdb-account/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Flex Volume in AKS
-date:  2019-02-21 11:30:26 +00:00
+date:  2019-02-21 06:30:26 -05:00
 permalink:  "/2019/02/21/flex-volume-in-aks/"
 categories:
 - Solution
@@ -102,8 +102,7 @@ spec:
         resourcegroup: # Resource Group where the Key Vault is
         subscriptionid: # ID of the subscription where the Key Vault is
         tenantid: # AAD Tenant ID of the subscription
-```subscription
-[/code]
+```
 
 First, we notice the <em>aadpodidbinding</em> label that must match the one defined in the <em>AzureIdentityBinding</em> we defined in previous step.
 

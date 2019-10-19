@@ -1,6 +1,6 @@
 ---
 title:  Quantum Computing - Scenarios
-date:  2018-03-14 10:30:22 +00:00
+date:  2018-03-14 06:30:22 -04:00
 permalink:  "/2018/03/14/quantum-computing-scenarios/"
 categories:
 - Solution

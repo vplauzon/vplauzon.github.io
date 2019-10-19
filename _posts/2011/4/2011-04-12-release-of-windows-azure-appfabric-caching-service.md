@@ -1,6 +1,6 @@
 ---
 title:  Release of Windows Azure AppFabric Caching service
-date:  2011-04-12 23:19:00 +00:00
+date:  2011-04-12 19:19:00 -04:00
 permalink:  "/2011/04/12/release-of-windows-azure-appfabric-caching-service/"
 categories:
 - Solution

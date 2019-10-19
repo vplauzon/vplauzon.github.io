@@ -1,6 +1,6 @@
 ---
 title:  Azure Application Insights Role Name Nuget Package
-date:  2019-01-23 11:30:06 +00:00
+date:  2019-01-23 06:30:06 -05:00
 permalink:  "/2019/01/23/azure-application-insights-role-name-nuget-package/"
 categories:
 - Solution
@@ -66,11 +66,7 @@ The <em>appsettings.json</em> file should look like this:
     "InstrumentationKey": "<MY KEY>"
   }
 }
-```&quot;: {
-    &quot;InstrumentationKey&quot;: &quot;&lt;MY KEY&gt;&quot;
-  }
-}
-[/code]
+```
 
 The important part is the <em>ApplicationInsights</em> section.  The instrumentation key is found in the overview pane:
 
@@ -86,8 +82,7 @@ public static IWebHost BuildWebHost(string[] args) =>
         .UseApplicationInsights()
         .UseStartup<Startup>()
         .Build();
-```;
-[/code]
+```
 
 Optionally the <em>instrumentation key</em> can be passed in parameter to that method.
 
@@ -97,8 +92,7 @@ Now, inside the <code>Startup.Configure</code> object, we need to add:
 
 ```csharp
 TelemetryConfiguration.Active.TelemetryInitializers.Add(new RoleNameInitializer("<MY SERVICE NAME>"));
-```quot;));
-[/code]
+```
 
 <code>TelemetryConfiguration.Active.TelemetryInitializers</code> belongs to the Microsoft Application Insights' SDK while <code>RoleNameInitializer</code> belongs to our Nuget Package.
 
@@ -152,10 +146,7 @@ public class RoleNameInitializer : ITelemetryInitializer
         telemetry.Context.Cloud.RoleName = _roleName;
     }
 }
-```  telemetry.Context.Cloud.RoleName = _roleName;
-    }
-}
-[/code]
+```
 
 The key is the initialize method.  As mentioned above, this is called by the Microsoft Application Insights SDK on each telemetry.
 
@@ -184,7 +175,7 @@ public class Startup
         // ...
         services.AddTransient<RequestBodyInitializer, RequestBodyInitializer>();
     }
-```/code]
+```
 
 This way, when it is constructed, it will get an <code>IHttpContextAccessor</code>.
 
@@ -200,9 +191,7 @@ public void Configure(
     TelemetryConfiguration.Active.TelemetryInitializers.Add(new RoleNameInitializer("PasApi"));
     TelemetryConfiguration.Active.TelemetryInitializers.Add(requestBodyInitializer);
 
-```;
-
-[/code]
+```
 
 <h2>Summary</h2>
 

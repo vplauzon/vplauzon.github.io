@@ -1,6 +1,6 @@
 ---
 title:  Joining an ARM Linux VM to AAD Domain Services
-date:  2017-01-18 17:40:53 +00:00
+date:  2017-01-18 12:40:53 -05:00
 permalink:  "/2017/01/18/joining-an-arm-linux-vm-to-aad-domain-services/"
 categories:
 - Solution

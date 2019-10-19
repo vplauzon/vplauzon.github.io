@@ -1,6 +1,6 @@
 ---
 title:  Serverless compute with Azure Functions - Getting Started
-date:  2017-11-27 11:30:39 +00:00
+date:  2017-11-27 06:30:39 -05:00
 permalink:  "/2017/11/27/serverless-compute-with-azure-functions-getting-started/"
 categories:
 - Solution

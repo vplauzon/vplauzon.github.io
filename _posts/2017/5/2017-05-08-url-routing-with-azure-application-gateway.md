@@ -1,6 +1,6 @@
 ---
 title:  URL Routing with Azure Application Gateway
-date:  2017-05-08 21:58:40 +00:00
+date:  2017-05-08 17:58:40 -04:00
 permalink:  "/2017/05/08/url-routing-with-azure-application-gateway/"
 categories:
 - Solution

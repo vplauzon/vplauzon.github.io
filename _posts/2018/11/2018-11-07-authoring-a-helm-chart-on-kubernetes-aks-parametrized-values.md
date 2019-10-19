@@ -1,6 +1,6 @@
 ---
 title:  Authoring a Helm Chart on Kubernetes / AKS - Parametrized values
-date:  2018-11-07 11:30:50 +00:00
+date:  2018-11-07 06:30:50 -05:00
 permalink:  "/2018/11/07/authoring-a-helm-chart-on-kubernetes-aks-parametrized-values/"
 categories:
 - Solution
@@ -42,7 +42,7 @@ We can see that deployed a cluster-IP service in the <em>b</em> namespace:
 $ kubectl get svc --namespace=b
 NAME         TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)   AGE
 my-service   ClusterIP   10.0.44.202   <none>        80/TCP    8m
-```/code]
+```
 
 It also deployed a deployment with 2 pods:
 
@@ -158,7 +158,7 @@ param-service   ClusterIP   10.0.187.51   <none>        80/TCP    3m
 $ kubectl get deploy --namespace=c
 NAME          DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 get-started   2         2         2            2           3m
-```/code]
+```
 
 The major difference is that this chart uses values.  Let's look at <a href="https://github.com/vplauzon/helm/blob/master/c-parametrized-service/values.yaml">values.yaml</a>:
 
@@ -169,7 +169,7 @@ service:
   replicaCount: 2 # Number of pods in the replica set
 deployment:
   name:  get-started # Name of the deployment
-```code]
+```
 
 This file is a plain old YAML file.  Any values in the nodes of the YAML tree can be used.  For instance <code>service.name</code>.
 

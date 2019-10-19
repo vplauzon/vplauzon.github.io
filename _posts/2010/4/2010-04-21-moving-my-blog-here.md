@@ -1,6 +1,6 @@
 ---
 title:  Moving my blog here
-date:  2010-04-21 20:14:56 +00:00
+date:  2010-04-21 16:14:56 -04:00
 permalink:  "/2010/04/21/moving-my-blog-here/"
 categories:
 - Logistic

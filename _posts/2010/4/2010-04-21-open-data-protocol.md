@@ -1,6 +1,6 @@
 ---
 title:  Open Data Protocol
-date:  2010-04-21 20:34:14 +00:00
+date:  2010-04-21 16:34:14 -04:00
 permalink:  "/2010/04/21/open-data-protocol/"
 categories:
 - Solution

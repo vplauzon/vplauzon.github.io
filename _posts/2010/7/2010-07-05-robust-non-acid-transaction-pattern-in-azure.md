@@ -1,6 +1,6 @@
 ---
 title:  Robust Non-ACID Transaction pattern in Azure
-date:  2010-07-05 17:26:32 +00:00
+date:  2010-07-05 13:26:32 -04:00
 permalink:  "/2010/07/05/robust-non-acid-transaction-pattern-in-azure/"
 categories:
 - Solution

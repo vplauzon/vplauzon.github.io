@@ -1,6 +1,6 @@
 ---
 title:  Azure Databricks - Parsing escaping CSV files in Spark
-date:  2018-02-07 11:30:56 +00:00
+date:  2018-02-07 06:30:56 -05:00
 permalink:  "/2018/02/07/parsing-escaping-csv-files-in-spark/"
 categories:
 - Solution

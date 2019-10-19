@@ -1,6 +1,6 @@
 ---
 title:  Large Projects
-date:  2014-11-19 03:07:34 +00:00
+date:  2014-11-18 22:07:34 -05:00
 permalink:  "/2014/11/18/large-projects/"
 categories:
 - Solution

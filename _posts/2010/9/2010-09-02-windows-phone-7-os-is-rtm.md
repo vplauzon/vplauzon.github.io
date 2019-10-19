@@ -1,6 +1,6 @@
 ---
 title:  Windows Phone 7 OS is RTM
-date:  2010-09-02 15:16:59 +00:00
+date:  2010-09-02 11:16:59 -04:00
 permalink:  "/2010/09/02/windows-phone-7-os-is-rtm/"
 categories:
 - Gadget

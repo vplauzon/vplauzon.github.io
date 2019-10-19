@@ -1,6 +1,6 @@
 ---
 title:  Azure Databricks - Getting Started
-date:  2017-12-18 11:30:30 +00:00
+date:  2017-12-18 06:30:30 -05:00
 permalink:  "/2017/12/18/azure-databricks-getting-started/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Entity Framework 4.1: Many to Many Relationships (5)
-date:  2011-04-16 00:05:00 +00:00
+date:  2011-04-15 20:05:00 -04:00
 permalink:  "/2011/04/15/entity-framework-4-1-many-to-many-relationships-5/"
 categories:
 - Solution

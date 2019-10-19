@@ -1,6 +1,6 @@
 ---
 title:  Multiple Service Endpoints to multiple services
-date:  2019-04-18 10:30:32 +00:00
+date:  2019-04-18 06:30:32 -04:00
 permalink:  "/2019/04/18/multiple-service-endpoints-to-multiple-services/"
 categories:
 - Solution

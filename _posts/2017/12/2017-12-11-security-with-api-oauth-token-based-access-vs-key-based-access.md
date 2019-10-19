@@ -1,6 +1,6 @@
 ---
 title:  Security with API: OAuth, token-based access vs key-based access
-date:  2017-12-11 11:30:39 +00:00
+date:  2017-12-11 06:30:39 -05:00
 permalink:  "/2017/12/11/security-with-api-oauth-token-based-access-vs-key-based-access/"
 categories:
 - Solution

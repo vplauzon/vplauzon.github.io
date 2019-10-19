@@ -1,6 +1,6 @@
 ---
 title:  Azure SQL Elastic Pool - ARM Templates
-date:  2016-12-22 00:00:10 +00:00
+date:  2016-12-21 19:00:10 -05:00
 permalink:  "/2016/12/21/azure-sql-elastic-pool-arm-templates/"
 categories:
 - Solution

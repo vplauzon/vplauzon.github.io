@@ -1,6 +1,6 @@
 ---
 title:  How to Create a Logic App Connector in an ARM Template
-date:  2017-10-28 23:25:50 +00:00
+date:  2017-10-28 19:25:50 -04:00
 permalink:  "/2017/10/28/how-to-create-a-logic-app-connector-in-an-arm-template/"
 categories:
 - Solution

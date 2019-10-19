@@ -1,6 +1,6 @@
 ---
 title:  Microsoft tech.ed Online
-date:  2010-06-28 20:21:38 +00:00
+date:  2010-06-28 16:21:38 -04:00
 permalink:  "/2010/06/28/microsoft-tech-ed-online/"
 categories:
 - Solution

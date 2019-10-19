@@ -1,6 +1,6 @@
 ---
 title:  Azure Managed Disk–Overview
-date:  2017-02-20 15:30:36 +00:00
+date:  2017-02-20 10:30:36 -05:00
 permalink:  "/2017/02/20/azure-managed-disk-overview/"
 categories:
 - Solution

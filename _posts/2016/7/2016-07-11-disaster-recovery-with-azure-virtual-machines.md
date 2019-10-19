@@ -1,6 +1,6 @@
 ---
 title:  Disaster Recovery with Azure Virtual Machines
-date:  2016-07-11 15:53:22 +00:00
+date:  2016-07-11 11:53:22 -04:00
 permalink:  "/2016/07/11/disaster-recovery-with-azure-virtual-machines/"
 categories:
 - Solution

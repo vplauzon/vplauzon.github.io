@@ -1,6 +1,6 @@
 ---
 title:  Azure basics: Availability sets
-date:  2015-10-21 23:00:29 +00:00
+date:  2015-10-21 19:00:29 -04:00
 permalink:  "/2015/10/21/azure-basics-availability-sets/"
 categories:
 - Solution

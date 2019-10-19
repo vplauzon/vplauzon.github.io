@@ -1,6 +1,6 @@
 ---
 title:  Using Microsoft Graph API to interact with Azure AD
-date:  2017-01-31 11:00:12 +00:00
+date:  2017-01-31 06:00:12 -05:00
 permalink:  "/2017/01/31/using-microsoft-graph-api-to-interact-with-azure-ad/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Taming the fire hose: Azure Stream Analytics
-date:  2018-05-22 10:30:51 +00:00
+date:  2018-05-22 06:30:51 -04:00
 permalink:  "/2018/05/22/taming-the-fire-hose-azure-stream-analytics/"
 categories:
 - Solution

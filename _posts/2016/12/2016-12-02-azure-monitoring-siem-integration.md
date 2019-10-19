@@ -1,6 +1,6 @@
 ---
 title:  Azure Monitoring - SIEM integration
-date:  2016-12-02 17:13:34 +00:00
+date:  2016-12-02 12:13:34 -05:00
 permalink:  "/2016/12/02/azure-monitoring-siem-integration/"
 categories:
 - Solution

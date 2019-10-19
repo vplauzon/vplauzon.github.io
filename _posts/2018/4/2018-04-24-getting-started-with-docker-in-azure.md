@@ -1,6 +1,6 @@
 ---
 title:  Getting started with Docker Containers in Azure
-date:  2018-04-24 10:30:54 +00:00
+date:  2018-04-24 06:30:54 -04:00
 permalink:  "/2018/04/24/getting-started-with-docker-in-azure/"
 categories:
 - Solution

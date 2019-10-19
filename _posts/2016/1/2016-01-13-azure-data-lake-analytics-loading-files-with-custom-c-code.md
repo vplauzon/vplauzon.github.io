@@ -1,6 +1,6 @@
 ---
 title:  Azure Data Lake Analytics - Loading files with custom C# code
-date:  2016-01-14 00:00:56 +00:00
+date:  2016-01-13 19:00:56 -05:00
 permalink:  "/2016/01/13/azure-data-lake-analytics-loading-files-with-custom-c-code/"
 categories:
 - Solution

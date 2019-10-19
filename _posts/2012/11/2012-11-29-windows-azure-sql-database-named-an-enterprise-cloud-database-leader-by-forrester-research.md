@@ -1,6 +1,6 @@
 ---
 title:  Windows Azure SQL Database named an Enterprise Cloud Database Leader by Forrester Research
-date:  2012-11-30 00:53:00 +00:00
+date:  2012-11-29 19:53:00 -05:00
 permalink:  "/2012/11/29/windows-azure-sql-database-named-an-enterprise-cloud-database-leader-by-forrester-research/"
 categories:
 - Solution

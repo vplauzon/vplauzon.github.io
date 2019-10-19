@@ -1,6 +1,6 @@
 ---
 title:  Introduction to AKS
-date:  2019-10-09 10:30:21 +00:00
+date:  2019-10-09 06:30:21 -04:00
 permalink:  "/2019/10/09/introduction-to-aks/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Entity Framework 4.1: Complex Types (4)
-date:  2011-04-14 00:55:00 +00:00
+date:  2011-04-13 20:55:00 -04:00
 permalink:  "/2011/04/13/entity-framework-4-1-complex-types-4/"
 categories:
 - Solution

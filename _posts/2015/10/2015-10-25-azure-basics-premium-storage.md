@@ -1,6 +1,6 @@
 ---
 title:  Azure Basics:  Premium Storage
-date:  2015-10-25 23:00:07 +00:00
+date:  2015-10-25 19:00:07 -04:00
 permalink:  "/2015/10/25/azure-basics-premium-storage/"
 categories:
 - Solution

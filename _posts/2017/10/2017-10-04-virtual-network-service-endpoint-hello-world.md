@@ -1,6 +1,6 @@
 ---
 title:  Virtual Network Service Endpoint - Hello World
-date:  2017-10-04 16:00:14 +00:00
+date:  2017-10-04 12:00:14 -04:00
 permalink:  "/2017/10/04/virtual-network-service-endpoint-hello-world/"
 categories:
 - Solution

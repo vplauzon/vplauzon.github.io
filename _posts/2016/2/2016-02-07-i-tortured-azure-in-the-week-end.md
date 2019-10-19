@@ -1,6 +1,6 @@
 ---
 title:  I tortured Azure in the Week-End
-date:  2016-02-07 12:21:56 +00:00
+date:  2016-02-07 07:21:56 -05:00
 permalink:  "/2016/02/07/i-tortured-azure-in-the-week-end/"
 categories:
 - Solution

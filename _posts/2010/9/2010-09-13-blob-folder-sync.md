@@ -1,6 +1,6 @@
 ---
 title:  Blob Folder Sync
-date:  2010-09-13 16:20:59 +00:00
+date:  2010-09-13 12:20:59 -04:00
 permalink:  "/2010/09/13/blob-folder-sync/"
 categories:
 - Solution

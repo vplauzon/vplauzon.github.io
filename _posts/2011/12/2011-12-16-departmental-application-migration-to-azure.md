@@ -1,6 +1,6 @@
 ---
 title:  Departmental Application Migration to Azure Blog Series
-date:  2011-12-17 02:49:11 +00:00
+date:  2011-12-16 21:49:11 -05:00
 permalink:  "/2011/12/16/departmental-application-migration-to-azure/"
 categories:
 - Solution

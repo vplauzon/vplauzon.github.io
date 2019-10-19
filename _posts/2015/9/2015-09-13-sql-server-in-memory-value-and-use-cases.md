@@ -1,6 +1,6 @@
 ---
 title:  SQL Server In-Memory value and use cases
-date:  2015-09-13 23:00:54 +00:00
+date:  2015-09-13 19:00:54 -04:00
 permalink:  "/2015/09/13/sql-server-in-memory-value-and-use-cases/"
 categories:
 - Solution

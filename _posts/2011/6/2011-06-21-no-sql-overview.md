@@ -1,6 +1,6 @@
 ---
 title:  No SQL overview
-date:  2011-06-22 00:24:00 +00:00
+date:  2011-06-21 20:24:00 -04:00
 permalink:  "/2011/06/21/no-sql-overview/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Windows 8:  Desktop as a Service?
-date:  2010-11-17 02:24:00 +00:00
+date:  2010-11-16 21:24:00 -05:00
 permalink:  "/2010/11/16/windows-8-desktop-as-a-service/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Microsoft Support for Windows Azure:  A+
-date:  2010-09-02 17:25:01 +00:00
+date:  2010-09-02 13:25:01 -04:00
 permalink:  "/2010/09/02/microsoft-support-for-windows-azure-a/"
 categories:
 - Logistic

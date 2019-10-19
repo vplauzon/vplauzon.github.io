@@ -1,6 +1,6 @@
 ---
 title:  How to get rid of /api in Azure Function’s route?
-date:  2018-02-14 11:30:39 +00:00
+date:  2018-02-14 06:30:39 -05:00
 permalink:  "/2018/02/14/how-to-get-rid-of-api-in-azure-functions-route/"
 categories:
 - Solution

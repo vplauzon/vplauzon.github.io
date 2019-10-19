@@ -1,6 +1,6 @@
 ---
 title:  Quantum Computing - How does it scale?
-date:  2018-03-21 10:30:14 +00:00
+date:  2018-03-21 06:30:14 -04:00
 permalink:  "/2018/03/21/quantum-computing-how-does-it-scale/"
 categories:
 - Solution

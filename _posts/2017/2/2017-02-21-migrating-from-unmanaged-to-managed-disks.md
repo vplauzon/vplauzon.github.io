@@ -1,6 +1,6 @@
 ---
 title:  Migrating from unmanaged to managed disks
-date:  2017-02-21 16:00:02 +00:00
+date:  2017-02-21 11:00:02 -05:00
 permalink:  "/2017/02/21/migrating-from-unmanaged-to-managed-disks/"
 categories:
 - Solution

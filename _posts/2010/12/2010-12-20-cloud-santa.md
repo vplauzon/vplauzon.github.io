@@ -1,6 +1,6 @@
 ---
 title:  Cloud Santa
-date:  2010-12-21 02:52:00 +00:00
+date:  2010-12-20 21:52:00 -05:00
 permalink:  "/2010/12/20/cloud-santa/"
 categories:
 - Gadget

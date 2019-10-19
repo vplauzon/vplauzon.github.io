@@ -1,6 +1,6 @@
 ---
 title:  BPOS is dead, long live Office 365
-date:  2010-10-20 00:06:00 +00:00
+date:  2010-10-19 20:06:00 -04:00
 permalink:  "/2010/10/19/bpos-is-dead-long-live-office-365/"
 categories:
 - Solution

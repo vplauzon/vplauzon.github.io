@@ -1,6 +1,6 @@
 ---
 title:  Hyperspheres & the curse of dimensionality
-date:  2017-06-22 01:23:18 +00:00
+date:  2017-06-21 21:23:18 -04:00
 permalink:  "/2017/06/21/hyperspheres-the-curse-of-dimensionality/"
 categories:
 - Solution

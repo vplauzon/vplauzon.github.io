@@ -1,6 +1,6 @@
 ---
 title:  Azure Active Directory Labs Series – Create Application
-date:  2016-08-31 23:00:40 +00:00
+date:  2016-08-31 19:00:40 -04:00
 permalink:  "/2016/08/31/azure-active-directory-labs-series-create-application/"
 categories:
 - Solution

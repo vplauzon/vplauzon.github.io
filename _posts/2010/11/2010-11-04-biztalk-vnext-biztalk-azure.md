@@ -1,6 +1,6 @@
 ---
 title:  BizTalk vNext: BizTalk Azure?
-date:  2010-11-05 00:28:00 +00:00
+date:  2010-11-04 20:28:00 -04:00
 permalink:  "/2010/11/04/biztalk-vnext-biztalk-azure/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Applied SOA: Part 8–Security
-date:  2012-02-10 01:13:00 +00:00
+date:  2012-02-09 20:13:00 -05:00
 permalink:  "/2012/02/09/applied-soa-part-8security/"
 categories:
 - Solution

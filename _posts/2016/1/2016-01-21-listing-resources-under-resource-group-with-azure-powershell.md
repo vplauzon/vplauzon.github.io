@@ -1,6 +1,6 @@
 ---
 title:  Listing Resources under Resource Group with Azure PowerShell
-date:  2016-01-22 03:14:43 +00:00
+date:  2016-01-21 22:14:43 -05:00
 permalink:  "/2016/01/21/listing-resources-under-resource-group-with-azure-powershell/"
 categories:
 - Solution

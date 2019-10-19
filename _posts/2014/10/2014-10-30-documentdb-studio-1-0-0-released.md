@@ -1,6 +1,6 @@
 ---
 title:  DocumentDB Studio 1.0.0 released!
-date:  2014-10-31 02:34:08 +00:00
+date:  2014-10-30 22:34:08 -04:00
 permalink:  "/2014/10/30/documentdb-studio-1-0-0-released/"
 categories:
 - Solution

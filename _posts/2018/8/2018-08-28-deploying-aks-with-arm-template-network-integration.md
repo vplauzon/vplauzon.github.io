@@ -1,6 +1,6 @@
 ---
 title:  Deploying AKS with ARM Template – Network integration
-date:  2018-08-28 10:30:21 +00:00
+date:  2018-08-28 06:30:21 -04:00
 permalink:  "/2018/08/28/deploying-aks-with-arm-template-network-integration/"
 categories:
 - Solution
@@ -120,11 +120,7 @@ This was accomplished using a role assignment resource.  We <a href="https://vin
         "principalId": "[parameters('Service Principal Object ID')]"
     }
 }
-```;: &quot;[variables(&#039;Network Contributor Role&#039;)]&quot;,
-        &quot;principalId&quot;: &quot;[parameters(&#039;Service Principal Object ID&#039;)]&quot;
-    }
-}
-[/code]
+```
 
 This is convenient as the ARM template hence self-sufficient.
 
@@ -157,7 +153,7 @@ First, let's login to Kubernetes with the following commands:
 ```bash
 az aks install-cli
 az aks get-credentials --resource-group <Resource Group> --name cluster
-```/code]
+```
 
 The first command only need to be done once in an environment.
 
@@ -208,8 +204,7 @@ spec:
   - port: 80
   selector:
     app: web-get-started
-```-get-started
-[/code]
+```
 
 The first part is a deployment of a replica-set of pods.  There are 3 replicas and the container image is vplauzon/get-started:part2-no-redis.  The <a href="https://github.com/vplauzon/containers/tree/master/get-started-no-redis">code for that container is on GitHub</a>.
 
@@ -272,8 +267,7 @@ We should see:
 NAME          TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE       SELECTOR
 kubernetes    ClusterIP      10.0.0.1       <none>        443/TCP        1d        <none>
 web-service   LoadBalancer   10.0.125.114   172.16.16.4   80:30981/TCP   17m       app=web-get-started
-```rted
-[/code]
+```
 
 Let's ignore the <em>kubernetes</em> service, as this is an internal service.  Let's concentrate on the <em>web-service</em> service.
 
@@ -297,8 +291,7 @@ and receive the following:
 
 ```bash
 <h3>Hello World!</h3><b>Hostname:</b> web-54b885b89b-9q9cr<br/><b>Visits:</b> undefined
-```t;b&gt;Visits:&lt;/b&gt; undefined
-[/code]
+```
 
 We can note that <em>web-54b885b89b-9q9cr</em> is the name of the pod.
 
@@ -325,8 +318,7 @@ NAME                       STATUS    ROLES     AGE       VERSION   INTERNAL-IP  
 aks-agentpool-15447536-0   Ready     agent     1d        v1.11.1   172.16.0.66   <none>        Ubuntu 16.04.5 LTS   4.15.0-1018-azure   docker://1.13.1
 aks-agentpool-15447536-1   Ready     agent     1d        v1.11.1   172.16.0.35   <none>        Ubuntu 16.04.5 LTS   4.15.0-1018-azure   docker://1.13.1
 aks-agentpool-15447536-2   Ready     agent     1d        v1.11.1   172.16.0.4    <none>        Ubuntu 16.04.5 LTS   4.15.0-1018-azure   docker://1.13.1
-```r://1.13.1
-[/code]
+```
 
 So now if we do:
 
@@ -369,10 +361,7 @@ Let's finally look at the <em>Network profile</em> in the ARM template:
     "dnsServiceIP": "[variables('Dns Service IP')]",
     "dockerBridgeCidr": "[variables('Docker Bridge Cidr')]"
 }
-```ce IP&#039;)]&quot;,
-    &quot;dockerBridgeCidr&quot;: &quot;[variables(&#039;Docker Bridge Cidr&#039;)]&quot;
-}
-[/code]
+```
 
 With the variables:
 
@@ -380,8 +369,7 @@ With the variables:
 "Service Cidr": "10.0.0.0/16",
 "Dns Service IP": "10.0.0.0",
 "Docker Bridge Cidr": "10.2.0.1/16"
-```ot;Docker Bridge Cidr&quot;: &quot;10.2.0.1/16&quot;
-[/code]
+```
 
 Those are explained in the <a href="https://docs.microsoft.com/en-us/azure/aks/networking-overview#plan-ip-addressing-for-your-cluster">AKS documentation</a>.  They are also explained in the <a href="https://docs.microsoft.com/en-ca/azure/templates/microsoft.containerservice/managedclusters#containerservicenetworkprofile-object">ARM Template documentation</a>.
 

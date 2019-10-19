@@ -1,6 +1,6 @@
 ---
 title:  Troubleshooting NSGs using Diagnostic Logs
-date:  2017-01-09 12:32:42 +00:00
+date:  2017-01-09 07:32:42 -05:00
 permalink:  "/2017/01/09/troubleshooting-nsgs-using-diagnostic-logs/"
 categories:
 - Solution

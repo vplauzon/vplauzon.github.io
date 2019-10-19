@@ -1,6 +1,6 @@
 ---
 title:  Windows NT vs VMS
-date:  2013-08-14 14:30:35 +00:00
+date:  2013-08-14 10:30:35 -04:00
 permalink:  "/2013/08/14/windows-nt-vs-vms/"
 categories:
 - Solution

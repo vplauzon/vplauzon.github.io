@@ -1,6 +1,6 @@
 ---
 title:  Securing Azure Messaging Service Bus access
-date:  2013-12-05 01:46:46 +00:00
+date:  2013-12-04 20:46:46 -05:00
 permalink:  "/2013/12/04/securing-azure-messaging-service-bus-access/"
 categories:
 - Solution

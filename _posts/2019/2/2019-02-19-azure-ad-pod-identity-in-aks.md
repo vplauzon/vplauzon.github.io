@@ -1,6 +1,6 @@
 ---
 title:  Azure AD Pod Identity in AKS
-date:  2019-02-19 11:30:22 +00:00
+date:  2019-02-19 06:30:22 -05:00
 permalink:  "/2019/02/19/azure-ad-pod-identity-in-aks/"
 categories:
 - Solution
@@ -87,9 +87,7 @@ spec:
  type: 0
  ResourceID: /subscriptions/<subid>/resourcegroups/<resourcegroup>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<managedidentity-resourcename>
  ClientID: <clientid>
-```&gt;
- ClientID: &lt;clientid&gt;
-[/code]
+```
 
 Basically, we reflect the Azure resource inside Kubernetes.
 
@@ -103,8 +101,7 @@ metadata:
 spec:
  AzureIdentity: <a-idname>
  Selector: <label value to match>
-```e to match&gt;
-[/code]
+```
 
 That's it.
 
@@ -178,8 +175,7 @@ metadata:
 spec:
     AzureIdentity: vpl-id
     Selector:  little-pod-binding
-```ng
-[/code]
+```
 
 We now have a pod running which should have access to the managed identity access tokens.  Let's test that:
 

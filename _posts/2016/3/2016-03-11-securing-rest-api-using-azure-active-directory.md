@@ -1,6 +1,6 @@
 ---
 title:  Securing REST API using Azure Active Directory
-date:  2016-03-11 18:00:34 +00:00
+date:  2016-03-11 13:00:34 -05:00
 permalink:  "/2016/03/11/securing-rest-api-using-azure-active-directory/"
 categories:
 - Solution

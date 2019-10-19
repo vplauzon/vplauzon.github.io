@@ -1,6 +1,6 @@
 ---
 title:  Code Review in Visual Studio 2012
-date:  2012-10-23 00:10:00 +00:00
+date:  2012-10-22 20:10:00 -04:00
 permalink:  "/2012/10/22/code-review-in-visual-studio-2012/"
 categories:
 - Solution

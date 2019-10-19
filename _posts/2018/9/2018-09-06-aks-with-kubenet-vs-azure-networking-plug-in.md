@@ -1,6 +1,6 @@
 ---
 title:  AKS with Kubenet vs Azure Networking plug-in
-date:  2018-09-06 10:30:01 +00:00
+date:  2018-09-06 06:30:01 -04:00
 permalink:  "/2018/09/06/aks-with-kubenet-vs-azure-networking-plug-in/"
 categories:
 - Solution
@@ -83,7 +83,7 @@ We should see something like this:
 NAME          TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
 kubernetes    ClusterIP      10.0.0.1      <none>        443/TCP        6d
 web-service   LoadBalancer   10.0.218.59   172.16.16.4   80:31917/TCP   1m
-```/code]
+```
 
 Our service is the one named <strong>web-service</strong>.  Its external IP belongs to the virtual network.  The cluster-IP is something that can only be resolved within the cluster.
 
@@ -162,7 +162,7 @@ We should see something like this:
 NAME          TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
 kubernetes    ClusterIP      10.0.0.1      <none>        443/TCP        2h
 web-service   LoadBalancer   10.0.207.13   172.16.16.4   80:30431/TCP   1m
-```/code]
+```
 
 <strong>web-service</strong> has an external IP belonging to the virtual network.  The cluster-IP is something that can only be resolved within the cluster.
 

@@ -1,6 +1,6 @@
 ---
 title:  Applied SOA: Part 1 – Introduction
-date:  2011-06-17 23:48:00 +00:00
+date:  2011-06-17 19:48:00 -04:00
 permalink:  "/2011/06/17/applied-soa-part-1-introduction/"
 categories:
 - Solution

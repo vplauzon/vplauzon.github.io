@@ -1,6 +1,6 @@
 ---
 title:  ePub Factory NuGet package
-date:  2013-11-07 02:51:11 +00:00
+date:  2013-11-06 21:51:11 -05:00
 permalink:  "/2013/11/06/epub-factory-nuget-package/"
 categories:
 - Solution

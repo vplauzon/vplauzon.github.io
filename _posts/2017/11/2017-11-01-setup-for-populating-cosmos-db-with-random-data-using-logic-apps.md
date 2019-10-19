@@ -1,6 +1,6 @@
 ---
 title:  Setup for populating Cosmos DB with random data using Logic Apps
-date:  2017-11-01 16:00:22 +00:00
+date:  2017-11-01 12:00:22 -04:00
 permalink:  "/2017/11/01/setup-for-populating-cosmos-db-with-random-data-using-logic-apps/"
 categories:
 - Solution

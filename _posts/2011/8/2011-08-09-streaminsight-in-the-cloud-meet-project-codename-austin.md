@@ -1,6 +1,6 @@
 ---
 title:  StreamInsight in the Cloud:  Meet Project Codename “Austin”
-date:  2011-08-10 00:46:00 +00:00
+date:  2011-08-09 20:46:00 -04:00
 permalink:  "/2011/08/09/streaminsight-in-the-cloud-meet-project-codename-austin/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Applied SOA: Part 5 – Interoperability
-date:  2011-12-14 03:04:30 +00:00
+date:  2011-12-13 22:04:30 -05:00
 permalink:  "/2011/12/13/applied-soa-part-5-interoperability/"
 categories:
 - Solution

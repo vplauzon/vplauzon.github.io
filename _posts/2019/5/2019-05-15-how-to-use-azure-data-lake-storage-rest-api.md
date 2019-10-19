@@ -1,6 +1,6 @@
 ---
 title:  How to use Azure Data Lake Storage REST API
-date:  2019-05-15 10:30:31 +00:00
+date:  2019-05-15 06:30:31 -04:00
 permalink:  "/2019/05/15/how-to-use-azure-data-lake-storage-rest-api/"
 categories:
 - Solution
@@ -85,10 +85,7 @@ If we run that logic app, we'll see both HTTP call failing with a code 403 and t
     "message": "This request is not authorized to perform this operation using this permission.\nRequestId:XYZ\nTime:XYZ"
   }
 }
-```sion.\nRequestId:XYZ\nTime:XYZ&quot;
-  }
-}
-[/code]
+```
 
 This is because the Logic App managed identity doesn't have any role or access permission.
 

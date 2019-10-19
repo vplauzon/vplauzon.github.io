@@ -1,6 +1,6 @@
 ---
 title:  Authoring a Helm Chart on Kubernetes / AKS - Getting started
-date:  2018-10-31 10:30:23 +00:00
+date:  2018-10-31 06:30:23 -04:00
 permalink:  "/2018/10/31/authoring-a-helm-chart-on-kubernetes-aks-getting-started/"
 categories:
 - Solution
@@ -77,7 +77,7 @@ According to the <a href="https://docs.helm.sh/developing_charts/#the-chart-file
   templates/          # A directory of templates that, when combined with values,
                       # will generate valid Kubernetes manifest files.
   templates/NOTES.txt # OPTIONAL: A plain text file containing short usage notes
-```/code]
+```
 
 We see there are a lot of <em>optionals</em> in there.  This is why it's easy to start.
 
@@ -217,7 +217,7 @@ helm-deployed  0s
 
 NOTES:
 No values are supported.  This is the most vanilla chart.
-```de]
+```
 
 A couple of observations here:
 
@@ -271,8 +271,7 @@ NAME            STATUS   AGE
 default         Active   4d
 kube-public     Active   4d
 kube-system     Active   4d
-```4d
-[/code]
+```
 
 Now, let's reinstall the chart by given the release a name this time:
 
@@ -291,7 +290,7 @@ helm-deployed  0s
 
 NOTES:
 No values are supported.  This is the most vanilla chart.
-```de]
+```
 
 We can then find that release name in the list of releases as well:
 

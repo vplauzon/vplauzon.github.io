@@ -1,6 +1,6 @@
 ---
 title:  How to improve Azure:  Can you keep a secret?
-date:  2014-03-08 01:00:43 +00:00
+date:  2014-03-07 20:00:43 -05:00
 permalink:  "/2014/03/07/how-to-improve-azure-can-you-keep-a-secret/"
 categories:
 - Solution

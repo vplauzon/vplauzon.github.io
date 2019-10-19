@@ -1,6 +1,6 @@
 ---
 title:  My new Windows Phone 7
-date:  2011-01-14 00:28:00 +00:00
+date:  2011-01-13 19:28:00 -05:00
 permalink:  "/2011/01/13/my-new-windows-phone-7/"
 categories:
 - Gadget

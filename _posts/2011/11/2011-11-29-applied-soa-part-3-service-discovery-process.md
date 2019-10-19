@@ -1,6 +1,6 @@
 ---
 title:  Applied SOA: Part 3 – Service Discovery Process
-date:  2011-11-29 23:33:00 +00:00
+date:  2011-11-29 18:33:00 -05:00
 permalink:  "/2011/11/29/applied-soa-part-3-service-discovery-process/"
 categories:
 - Solution

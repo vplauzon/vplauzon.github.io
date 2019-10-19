@@ -1,6 +1,6 @@
 ---
 title:  Windows Azure Pack Preview
-date:  2013-07-05 03:26:03 +00:00
+date:  2013-07-04 23:26:03 -04:00
 permalink:  "/2013/07/04/windows-azure-pack-preview/"
 categories:
 - Solution

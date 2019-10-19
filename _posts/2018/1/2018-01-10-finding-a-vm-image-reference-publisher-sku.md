@@ -1,6 +1,6 @@
 ---
 title:  Finding a VM Image Reference, Publisher & SKU
-date:  2018-01-10 11:30:09 +00:00
+date:  2018-01-10 06:30:09 -05:00
 permalink:  "/2018/01/10/finding-a-vm-image-reference-publisher-sku/"
 categories:
 - Solution

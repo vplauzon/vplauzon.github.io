@@ -1,6 +1,6 @@
 ---
 title:  Office Web App to power Facebook emails
-date:  2010-11-17 01:27:00 +00:00
+date:  2010-11-16 20:27:00 -05:00
 permalink:  "/2010/11/16/office-web-app-to-power-facebook-emails/"
 categories:
 - News

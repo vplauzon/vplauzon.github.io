@@ -1,6 +1,6 @@
 ---
 title:  Azure Virtual Machines Anatomy
-date:  2017-10-16 10:00:38 +00:00
+date:  2017-10-16 06:00:38 -04:00
 permalink:  "/2017/10/16/azure-virtual-machines-anatomy/"
 categories:
 - Solution

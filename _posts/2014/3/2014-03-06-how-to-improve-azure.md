@@ -1,6 +1,6 @@
 ---
 title:  How to improve Azure
-date:  2014-03-07 00:02:55 +00:00
+date:  2014-03-06 19:02:55 -05:00
 permalink:  "/2014/03/06/how-to-improve-azure/"
 categories:
 - Solution

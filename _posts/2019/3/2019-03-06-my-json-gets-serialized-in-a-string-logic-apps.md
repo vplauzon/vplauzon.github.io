@@ -1,6 +1,6 @@
 ---
 title:  My JSON gets serialized in a string - Logic Apps
-date:  2019-03-06 11:30:58 +00:00
+date:  2019-03-06 06:30:58 -05:00
 permalink:  "/2019/03/06/my-json-gets-serialized-in-a-string-logic-apps/"
 categories:
 - Solution
@@ -73,14 +73,7 @@ This is confirmed by looking the <a href="https://github.com/vplauzon/logic-apps
         ]
     }
 }
-```,
-    &quot;runAfter&quot;: {
-        &quot;compose-some-json&quot;: [
-            &quot;Succeeded&quot;
-        ]
-    }
-}
-[/code]
+```
 
 The serialized version has curly braces (i.e. <strong>{}</strong>) around the output while the native one doesn't.
 

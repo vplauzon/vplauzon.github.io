@@ -1,6 +1,6 @@
 ---
 title:  Azure Application Insights Role Name in web page
-date:  2019-02-06 11:30:40 +00:00
+date:  2019-02-06 06:30:40 -05:00
 permalink:  "/2019/02/06/azure-application-insights-role-name-in-web-page/"
 categories:
 - Solution
@@ -42,9 +42,6 @@ appInsights.queue.push(function () {
     });
 });
 ```
-    });
-});
-[/code]
 
 Doing this in each web page will ensure telemetries will be logged against that role name.
 

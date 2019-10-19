@@ -1,6 +1,6 @@
 ---
 title:  SOA vs Mobile APIs
-date:  2015-08-02 23:00:26 +00:00
+date:  2015-08-02 19:00:26 -04:00
 permalink:  "/2015/08/02/soa-vs-mobile-apis/"
 categories:
 - Solution

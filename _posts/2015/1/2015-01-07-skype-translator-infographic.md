@@ -1,6 +1,6 @@
 ---
 title:  Skype Translator Infographic
-date:  2015-01-08 00:00:48 +00:00
+date:  2015-01-07 19:00:48 -05:00
 permalink:  "/2015/01/07/skype-translator-infographic/"
 categories:
 - Solution

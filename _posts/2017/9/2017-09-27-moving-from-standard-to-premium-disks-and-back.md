@@ -1,6 +1,6 @@
 ---
 title:  Moving from Standard to Premium disks and back
-date:  2017-09-27 21:14:05 +00:00
+date:  2017-09-27 17:14:05 -04:00
 permalink:  "/2017/09/27/moving-from-standard-to-premium-disks-and-back/"
 categories:
 - Solution

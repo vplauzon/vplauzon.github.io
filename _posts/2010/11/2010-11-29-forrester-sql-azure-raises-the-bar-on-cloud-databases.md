@@ -1,6 +1,6 @@
 ---
 title:  Forrester: SQL Azure Raises The Bar On Cloud Databases
-date:  2010-11-30 00:28:00 +00:00
+date:  2010-11-29 19:28:00 -05:00
 permalink:  "/2010/11/29/forrester-sql-azure-raises-the-bar-on-cloud-databases/"
 categories:
 - Solution

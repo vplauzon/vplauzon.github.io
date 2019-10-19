@@ -1,6 +1,6 @@
 ---
 title:  Globalization Patterns in WCF (WS-I18N implementation)
-date:  2010-12-31 15:40:02 +00:00
+date:  2010-12-31 10:40:02 -05:00
 permalink:  "/2010/12/31/globalization-patterns-in-wcf-ws-i18n-implementation/"
 categories:
 - Solution

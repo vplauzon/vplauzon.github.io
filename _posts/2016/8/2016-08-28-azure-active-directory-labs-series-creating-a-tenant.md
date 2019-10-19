@@ -1,6 +1,6 @@
 ---
 title:  Azure Active Directory Labs Series - Creating a tenant
-date:  2016-08-28 22:13:02 +00:00
+date:  2016-08-28 18:13:02 -04:00
 permalink:  "/2016/08/28/azure-active-directory-labs-series-creating-a-tenant/"
 categories:
 - Solution

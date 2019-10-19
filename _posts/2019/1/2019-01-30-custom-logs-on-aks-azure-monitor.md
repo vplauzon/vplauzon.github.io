@@ -1,6 +1,6 @@
 ---
 title:  Custom Logs on AKS & Azure Monitor
-date:  2019-01-30 11:30:44 +00:00
+date:  2019-01-30 06:30:44 -05:00
 permalink:  "/2019/01/30/custom-logs-on-aks-azure-monitor/"
 categories:
 - Solution
@@ -90,8 +90,7 @@ spec:
         i=$((i+1));
         sleep 1;
       done
-``` done
-[/code]
+```
 
 We can check the logs it produces:
 
@@ -156,9 +155,7 @@ spec:
   volumes:
   - name: logs
     emptyDir: {}
-```logs
-    emptyDir: {}
-[/code]
+```
 
 Here we have a multi-container pod.  The two pods share a mounted volume of type <a href="https://kubernetes.io/docs/concepts/storage/volumes/#emptydir">emptyDir</a>.  That volume is bound to the pod and gets deleted with it.
 
@@ -214,10 +211,7 @@ spec:
   volumes:
   - name: logs
     emptyDir: {}
-```umes:
-  - name: logs
-    emptyDir: {}
-[/code]
+```
 
 Here we write to 2 files all the time.
 
@@ -238,9 +232,7 @@ $ kubectl logs multiple-file-to-output-pod log-display
 ==> /var/log/mylogs/2.log <==
 1: Mon Jan 28 22:53:01 UTC 2019 cat
 ...
-```UTC 2019 cat
-...
-[/code]
+```
 
 Again, this will be ingested by Azure Monitor for containers.
 
@@ -298,9 +290,7 @@ spec:
       # directory location on host
       path: /var/log/my-app-logs
       type: Directory
-```-logs
-      type: Directory
-[/code]
+```
 
 We would then follow the <a href="https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-sources-custom-logs#defining-a-custom-log">custom logs procedure</a>.
 

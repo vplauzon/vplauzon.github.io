@@ -1,6 +1,6 @@
 ---
 title:  Understanding multiple Ingress in AKS
-date:  2018-11-28 11:30:48 +00:00
+date:  2018-11-28 06:30:48 -05:00
 permalink:  "/2018/11/28/understanding-multiple-ingress-in-aks/"
 categories:
 - Solution
@@ -207,8 +207,7 @@ So we found out that, in our case, the first ingress controller corresponds to H
 ```bash
 $ curl 104.208.140.202/1-blue
 <h3>Hello Blue-Pod!</h3><b>Hostname:</b> blue-deploy-64fd54844c-q7nhk<br/><b>Visits:</b> undefined
-```t;b&gt;Visits:&lt;/b&gt; undefined
-[/code]
+```
 
 We can similarly test the other routes and other ingress.
 

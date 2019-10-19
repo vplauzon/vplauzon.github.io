@@ -1,6 +1,6 @@
 ---
 title:  Azure DevOps - Task output to a variable
-date:  2018-11-14 11:30:01 +00:00
+date:  2018-11-14 06:30:01 -05:00
 permalink:  "/2018/11/14/azure-devops-task-output-to-a-variable/"
 categories:
 - Solution
@@ -78,8 +78,7 @@ The solution is pretty straightforward.  It doesn't require calling an API or an
 
 ```text
 ##vso[task.setvariable variable=<variable name>;]<variable value>
-```&gt;
-[/code]
+```
 
 That's it!
 
@@ -89,8 +88,7 @@ For instance, our Python line was:
 
 ```python
 print('##vso[task.setvariable variable=full-version;]%s' % (fullVersion))
-```))
-[/code]
+```
 
 The variable we defined here is then instantiated as a variable in Azure DevOps and can be used by subsequent tasks in the same pipeline.
 

@@ -1,6 +1,6 @@
 ---
 title:  Recreating VMs in Azure
-date:  2016-05-31 03:14:34 +00:00
+date:  2016-05-30 23:14:34 -04:00
 permalink:  "/2016/05/30/recreating-vms-in-azure/"
 categories:
 - Solution

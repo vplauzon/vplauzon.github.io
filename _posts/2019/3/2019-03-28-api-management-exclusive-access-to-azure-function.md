@@ -1,6 +1,6 @@
 ---
 title:  API Management exclusive access to Azure Function
-date:  2019-03-28 10:30:58 +00:00
+date:  2019-03-28 06:30:58 -04:00
 permalink:  "/2019/03/28/api-management-exclusive-access-to-azure-function/"
 categories:
 - Solution
@@ -115,8 +115,7 @@ In order to do so, we can leverage <a href="https://docs.microsoft.com/en-us/azu
 
 ```bash
 <authentication-token token-type="managed-service-identity" resource-url="AAD APPLICATION ID" />
-```ION ID&quot; /&gt;
-[/code]
+```
 
 This policy will acquire a token using the service managed identity.
 

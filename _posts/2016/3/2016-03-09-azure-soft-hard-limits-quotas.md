@@ -1,6 +1,6 @@
 ---
 title:  Azure soft & hard limits & quotas
-date:  2016-03-09 13:48:54 +00:00
+date:  2016-03-09 08:48:54 -05:00
 permalink:  "/2016/03/09/azure-soft-hard-limits-quotas/"
 categories:
 - Solution

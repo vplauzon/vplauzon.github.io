@@ -1,6 +1,6 @@
 ---
 title:  Azure SQL Elastic Pool Overview
-date:  2016-12-19 00:00:56 +00:00
+date:  2016-12-18 19:00:56 -05:00
 permalink:  "/2016/12/18/azure-sql-elastic-pool-overview/"
 categories:
 - Solution

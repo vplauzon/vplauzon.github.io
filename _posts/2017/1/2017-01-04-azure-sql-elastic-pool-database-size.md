@@ -1,6 +1,6 @@
 ---
 title:  Azure SQL Elastic Pool – Database Size
-date:  2017-01-05 00:00:18 +00:00
+date:  2017-01-04 19:00:18 -05:00
 permalink:  "/2017/01/04/azure-sql-elastic-pool-database-size/"
 categories:
 - Solution

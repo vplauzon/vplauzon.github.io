@@ -1,6 +1,6 @@
 ---
 title:  Windows Azure gets a facelift: cool all-Silverlight Windows Azure Control Panel
-date:  2010-12-01 23:33:00 +00:00
+date:  2010-12-01 18:33:00 -05:00
 permalink:  "/2010/12/01/windows-azure-gets-a-facelift-cool-all-silverlight-windows-azure-control-panel/"
 categories:
 - Solution

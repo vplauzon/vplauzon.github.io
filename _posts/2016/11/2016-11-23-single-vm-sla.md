@@ -1,6 +1,6 @@
 ---
 title:  Single VM SLA
-date:  2016-11-23 16:43:03 +00:00
+date:  2016-11-23 11:43:03 -05:00
 permalink:  "/2016/11/23/single-vm-sla/"
 categories:
 - Solution

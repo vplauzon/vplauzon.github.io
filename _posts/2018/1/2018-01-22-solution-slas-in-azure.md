@@ -1,6 +1,6 @@
 ---
 title:  Solution SLAs in Azure
-date:  2018-01-22 11:30:44 +00:00
+date:  2018-01-22 06:30:44 -05:00
 permalink:  "/2018/01/22/solution-slas-in-azure/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Creating a Service Principal with Azure CLI
-date:  2018-08-23 10:30:26 +00:00
+date:  2018-08-23 06:30:26 -04:00
 permalink:  "/2018/08/23/creating-a-service-principal-with-azure-cli/"
 categories:
 - Solution
@@ -25,7 +25,7 @@ A good way to understand the different parts of a Service Principal is to type:
 
 ```bash
 az ad sp show --id <Object ID>
-```/code]
+```
 
 This will return a JSON payload of a given principal.
 
@@ -33,7 +33,7 @@ The following command will return the different credentials of the principal:
 
 ```bash
 az ad sp credential list --id <Object ID>
-```/code]
+```
 
 With that we can sketch the important components for us:
 
@@ -118,7 +118,7 @@ So, instead we recommand using the following form:
 
 ```bash
 az ad sp create-for-rbac -n <Service Principal Name> --skip-assignment
-```/code]
+```
 
 <code>-n</code> allows us to give our principal a display name.  <code>--skip-assignment</code> <em>skips</em> the role assignment.  That is, the principal isn't given any access to our subscription.
 
@@ -136,10 +136,7 @@ When our command executes, it returns a JSON payload such as this one:
   "password": "9dee4d72-8894-4028-977b-c05ca23dbd6d",
   "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47"
 }
-```c05ca23dbd6d&quot;,
-  &quot;tenant&quot;: &quot;72f988bf-86f1-41af-91ab-2d7cd011db47&quot;
-}
-[/code]
+```
 
 The <code>appId</code> property is the <em>Application ID</em> we talked about.  It is important to remember.
 
@@ -149,7 +146,7 @@ Remains the elusive <em>Service Principal Object ID</em>.  It will eventually be
 
 ```bash
 az ad sp show --id <Application ID>
-```/code]
+```
 
 Results
 

@@ -1,6 +1,6 @@
 ---
 title:  Applied SOA: Part 2 – SOA Basics
-date:  2011-11-27 17:08:00 +00:00
+date:  2011-11-27 12:08:00 -05:00
 permalink:  "/2011/11/27/applied-soa-part-2-soa-basics/"
 categories:
 - Solution

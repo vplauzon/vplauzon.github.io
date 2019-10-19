@@ -1,6 +1,6 @@
 ---
 title:  To GIT or not To GIT
-date:  2015-01-08 12:00:56 +00:00
+date:  2015-01-08 07:00:56 -05:00
 permalink:  "/2015/01/08/to-git-or-not-to-git/"
 categories:
 - Solution

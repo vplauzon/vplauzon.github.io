@@ -1,6 +1,6 @@
 ---
 title:  Windows Store App Lifecycle
-date:  2012-10-25 00:22:00 +00:00
+date:  2012-10-24 20:22:00 -04:00
 permalink:  "/2012/10/24/windows-store-app-lifecycle/"
 categories:
 - Solution

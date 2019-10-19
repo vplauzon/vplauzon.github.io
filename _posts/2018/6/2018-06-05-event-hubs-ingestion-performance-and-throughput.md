@@ -1,6 +1,6 @@
 ---
 title:  Event Hubs ingestion performance and throughput
-date:  2018-06-05 10:30:10 +00:00
+date:  2018-06-05 06:30:10 -04:00
 permalink:  "/2018/06/05/event-hubs-ingestion-performance-and-throughput/"
 categories:
 - Solution

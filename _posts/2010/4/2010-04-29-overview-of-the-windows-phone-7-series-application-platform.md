@@ -1,6 +1,6 @@
 ---
 title:  Overview of the Windows Phone 7 Series Application Platform
-date:  2010-04-29 15:48:36 +00:00
+date:  2010-04-29 11:48:36 -04:00
 permalink:  "/2010/04/29/overview-of-the-windows-phone-7-series-application-platform/"
 categories:
 - Solution

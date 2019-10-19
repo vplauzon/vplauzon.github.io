@@ -1,6 +1,6 @@
 ---
 title:  Hypersphere Volume
-date:  2017-07-08 21:46:50 +00:00
+date:  2017-07-08 17:46:50 -04:00
 permalink:  "/2017/07/08/hypersphere-volume/"
 categories:
 - Solution

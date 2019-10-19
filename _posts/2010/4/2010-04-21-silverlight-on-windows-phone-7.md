@@ -1,6 +1,6 @@
 ---
 title:  Silverlight on Windows Phone 7
-date:  2010-04-21 20:30:29 +00:00
+date:  2010-04-21 16:30:29 -04:00
 permalink:  "/2010/04/21/silverlight-on-windows-phone-7/"
 categories:
 - Solution

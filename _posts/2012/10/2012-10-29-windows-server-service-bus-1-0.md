@@ -1,6 +1,6 @@
 ---
 title:  Windows Server Service Bus 1.0
-date:  2012-10-29 23:05:00 +00:00
+date:  2012-10-29 19:05:00 -04:00
 permalink:  "/2012/10/29/windows-server-service-bus-1-0/"
 categories:
 - Solution

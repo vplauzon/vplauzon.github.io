@@ -1,6 +1,6 @@
 ---
 title:  Beyond 2 concurrent connections in .NET
-date:  2015-12-14 00:00:44 +00:00
+date:  2015-12-13 19:00:44 -05:00
 permalink:  "/2015/12/13/beyond-2-concurrent-connections-in-net/"
 categories:
 - Solution

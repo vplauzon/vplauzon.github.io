@@ -1,6 +1,6 @@
 ---
 title:  Azure Export Template - Your new best friend
-date:  2016-05-29 23:00:18 +00:00
+date:  2016-05-29 19:00:18 -04:00
 permalink:  "/2016/05/29/azure-export-template-your-new-best-friend/"
 categories:
 - Solution

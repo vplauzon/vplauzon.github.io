@@ -1,6 +1,6 @@
 ---
 title:  VNET Service Endpoints for Azure SQL & Storage
-date:  2017-10-02 11:00:07 +00:00
+date:  2017-10-02 07:00:07 -04:00
 permalink:  "/2017/10/02/vnet-service-endpoints-for-azure-sql-storage/"
 categories:
 - Solution

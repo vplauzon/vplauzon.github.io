@@ -1,6 +1,6 @@
 ---
 title:  Entity Framework 4.1 – MSDN Article
-date:  2011-05-10 00:12:00 +00:00
+date:  2011-05-09 20:12:00 -04:00
 permalink:  "/2011/05/09/entity-framework-4-1-msdn-article/"
 categories:
 - Solution

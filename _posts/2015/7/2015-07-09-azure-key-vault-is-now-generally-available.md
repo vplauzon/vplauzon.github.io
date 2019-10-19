@@ -1,6 +1,6 @@
 ---
 title:  Azure Key Vault is now generally available
-date:  2015-07-09 22:00:08 +00:00
+date:  2015-07-09 18:00:08 -04:00
 permalink:  "/2015/07/09/azure-key-vault-is-now-generally-available/"
 categories:
 - Solution

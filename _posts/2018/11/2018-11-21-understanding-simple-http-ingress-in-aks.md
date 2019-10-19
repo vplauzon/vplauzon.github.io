@@ -1,6 +1,6 @@
 ---
 title:  Understanding simple HTTP Ingress in AKS
-date:  2018-11-21 11:30:58 +00:00
+date:  2018-11-21 06:30:58 -05:00
 permalink:  "/2018/11/21/understanding-simple-http-ingress-in-aks/"
 categories:
 - Solution
@@ -118,7 +118,7 @@ $ kubectl get services --namespace kube-system -l app=nginx-ingress
 NAME                                              TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                      AGE
 stultified-puffin-nginx-ingress-controller        LoadBalancer   10.0.159.241   104.209.156.3   80:30737/TCP,443:32580/TCP   28m
 stultified-puffin-nginx-ingress-default-backend   ClusterIP      10.0.133.159   <none>          80/TCP                       28m
-```/code]
+```
 
 As we discussed in the <a href="https://vincentlauzon.com/2018/10/10/about-ingress-in-azure-kubernetes-service-aks/">conceptual article</a>, the ingress controller is itself a service that front other services.
 
@@ -136,8 +136,6 @@ $ az network public-ip list -g MC_aks-group_aks-cluster_eastus2 --query [*].ipAd
   "104.209.156.3"
 ]
 ```
-]
-[/code]
 
 Now if we browse at that IP:
 
@@ -316,8 +314,7 @@ $ kubectl get pods -l app=pizza-offers -o wide
 NAME                                   READY   STATUS    RESTARTS   AGE   IP           NODE                       NOMINATED NODE
 pizza-offers-deploy-78c8f6d797-fsb7c   1/1     Running   0          52m   10.244.0.6   aks-nodepool1-10135362-0   <none>
 pizza-offers-deploy-78c8f6d797-lffrt   1/1     Running   0          52m   10.244.1.7   aks-nodepool1-10135362-1   <none>
-```1   &lt;none&gt;
-[/code]
+```
 
 We see the ingress controller is running on node 1 &amp; 2 while the pizza-offers run on node 0 &amp; 1.
 

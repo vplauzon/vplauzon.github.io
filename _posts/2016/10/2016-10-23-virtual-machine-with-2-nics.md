@@ -1,6 +1,6 @@
 ---
 title:  Virtual Machine with 2 NICs
-date:  2016-10-23 23:00:25 +00:00
+date:  2016-10-23 19:00:25 -04:00
 permalink:  "/2016/10/23/virtual-machine-with-2-nics/"
 categories:
 - Solution

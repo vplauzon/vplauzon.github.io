@@ -1,6 +1,6 @@
 ---
 title:  Docker multi-stage build
-date:  2018-07-11 10:30:47 +00:00
+date:  2018-07-11 06:30:47 -04:00
 permalink:  "/2018/07/11/docker-multi-stage-build/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  RBAC and role assignment using ARM Templates
-date:  2018-08-15 10:30:16 +00:00
+date:  2018-08-15 06:30:16 -04:00
 permalink:  "/2018/08/15/rbac-and-role-assignment-using-arm-templates/"
 categories:
 - Solution
@@ -46,8 +46,7 @@ This gives a list of all the roles available.  It's a little hard to read since 
 
 ```bash
 az role definition list --query "[*].{roleName:roleName, name:name}" -o table
-```le
-[/code]
+```
 
 This should give us an output similar to:
 
@@ -66,8 +65,7 @@ In our case, we would be interested i
 
 ```bash
 az role definition list --query "[? starts_with(roleName, 'Logic')].{roleName:roleName, name:name}" -o table
-```ot; -o table
-[/code]
+```
 
 which returns us:
 
@@ -161,12 +159,7 @@ Here is the resource in <a href="https://github.com/vplauzon/arm/blob/master/rba
         "scope": "[resourceGroup().id]"
     }
 }
-```ot;[variables(&#039;Full Role Definition ID&#039;)]&quot;,
-        &quot;principalId&quot;: &quot;[parameters(&#039;AAD Object ID&#039;)]&quot;,
-        &quot;scope&quot;: &quot;[resourceGroup().id]&quot;
-    }
-}
-[/code]
+```
 
 A few observations:
 
@@ -197,11 +190,7 @@ Although only the scope is different, the solution isn't so similar.  Let's look
         "principalId": "[parameters('AAD Object ID')]"
     }
 }
-```finitionId&quot;: &quot;[variables(&#039;Full Role Definition ID&#039;)]&quot;,
-        &quot;principalId&quot;: &quot;[parameters(&#039;AAD Object ID&#039;)]&quot;
-    }
-}
-[/code]
+```
 
 Again a few observations:
 

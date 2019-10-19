@@ -1,6 +1,6 @@
 ---
 title:  Requests vs Limits in Kubernetes
-date:  2019-04-02 10:30:14 +00:00
+date:  2019-04-02 06:30:14 -04:00
 permalink:  "/2019/04/02/requests-vs-limits-in-kubernetes/"
 categories:
 - Solution
@@ -99,7 +99,7 @@ First, let's download an <a href="https://github.com/vplauzon/aks/blob/master/re
 ```bash
 curl https://raw.githubusercontent.com/vplauzon/aks/master/requests-vs-limits/deploy.json > deploy.json
 curl https://raw.githubusercontent.com/vplauzon/aks/master/requests-vs-limits/create-cluster.sh > create-cluster.sh
-```/code]
+```
 
 Let's make the script executable:
 
@@ -159,8 +159,7 @@ Let's run the command locally, e.g.:
     <my-principal-app-id> \
     <my-principal-object-id> \
     <my-principal-password>
-```ssword&gt;
-[/code]
+```
 
 This takes a few minutes to execute.
 
@@ -206,9 +205,7 @@ spec:
   - port: 80
   selector:
     app: cpu-ram-api
-```  selector:
-    app: cpu-ram-api
-[/code]
+```
 
 We have a deployment and a public service load balancing the pods of the deployment.
 
@@ -246,13 +243,13 @@ $ kubectl get svc
 NAME          TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)        AGE
 kubernetes    ClusterIP      10.0.0.1      <none>           443/TCP        175m
 web-service   LoadBalancer   10.0.183.39   52.232.248.115   80:31146/TCP   11m
-```/code]
+```
 
 We need to copy the external IP of the <em>web-service</em> service.  That's the Azure public IP associated to the load balancer of that service.  Let's store that in a shell variable:
 
 ```bash
 ip=52.232.248.115  # Here, let's replace that specific IP with the one from our cluster
-```code]
+```
 
 Now let's try a few things:
 
@@ -260,8 +257,7 @@ Now let's try a few things:
 $ curl "http://$ip/"
 
 {"duration":1,"numberOfCore":1,"ram":10,"realDuration":"00:00:01.0021172"}
-```uot;realDuration&quot;:&quot;00:00:01.0021172&quot;}
-[/code]
+```
 
 By default, the API will allocate 10 Mb of RAM, use one core to do some work and run for one second.
 
@@ -279,8 +275,7 @@ We do not see a blip on the radar.  So, let's run that for a little longer.  We 
 $ curl "http://$ip/?duration=90"
 
 {"duration":90,"numberOfCore":1,"ram":10,"realDuration":"00:01:30.0804972"}
-```uot;realDuration&quot;:&quot;00:01:30.0804972&quot;}
-[/code]
+```
 
 This will take 90 seconds to run.
 
@@ -300,8 +295,7 @@ Let's do the same thing with 2 cores:
 $ curl "http://$ip/?duration=90&core=2"
 
 {"duration":90,"numberOfCore":2,"ram":10,"realDuration":"00:01:30.0031934"}
-```0,&quot;realDuration&quot;:&quot;00:01:30.0031934&quot;}
-[/code]
+```
 
 we can see here:
 
@@ -319,8 +313,7 @@ Let's try to run many of those at the same time:
 curl "http://$ip/?duration=90&core=2" &
 curl "http://$ip/?duration=90&core=2" &
 curl "http://$ip/?duration=90&core=2" &
-```http://$ip/?duration=90&amp;core=2&quot; &amp;
-[/code]
+```
 
 Here we can see that each container takes less than one core:
 
@@ -336,8 +329,7 @@ Now let's try to crank the memory used:
 
 ```bash
 curl "http://$ip/?duration=5&ram=20"
-```&quot;
-[/code]
+```
 
 Here we request to use 20Mb within the request.  That adds up to the rest of the memory used by the container:
 
@@ -349,8 +341,7 @@ We then get close to our 128 Mb limit.  Let exceed it:
 $ curl "http://$ip/?duration=5&ram=100"
 
 curl: (52) Empty reply from server
-```server
-[/code]
+```
 
 We see an error occurs.  That's because the container got killed when its memory demand occurred and the total memory exceeded the container's limit specification.
 

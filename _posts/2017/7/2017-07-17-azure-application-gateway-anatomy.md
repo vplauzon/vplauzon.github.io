@@ -1,6 +1,6 @@
 ---
 title:  Azure Application Gateway Anatomy
-date:  2017-07-17 21:53:54 +00:00
+date:  2017-07-17 17:53:54 -04:00
 permalink:  "/2017/07/17/azure-application-gateway-anatomy/"
 categories:
 - Solution

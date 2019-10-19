@@ -1,6 +1,6 @@
 ---
 title:  Finding ARM template ApiVersion
-date:  2016-02-19 12:00:23 +00:00
+date:  2016-02-19 07:00:23 -05:00
 permalink:  "/2016/02/19/finding-arm-template-apiversion/"
 categories:
 - Solution

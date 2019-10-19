@@ -1,6 +1,6 @@
 ---
 title:  Registering assemblies in Azure Data Lake Analytics
-date:  2016-01-07 00:00:39 +00:00
+date:  2016-01-06 19:00:39 -05:00
 permalink:  "/2016/01/06/registering-assemblies-in-azure-data-lake-analytics/"
 categories:
 - Solution

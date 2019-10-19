@@ -1,6 +1,6 @@
 ---
 title:  Azure Data Factory Editor (ADF Editor)
-date:  2015-06-25 23:40:47 +00:00
+date:  2015-06-25 19:40:47 -04:00
 permalink:  "/2015/06/25/azure-data-factory-editor-adf-editor/"
 categories:
 - Solution

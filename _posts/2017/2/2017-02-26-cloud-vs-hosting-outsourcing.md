@@ -1,6 +1,6 @@
 ---
 title:  Cloud vs Hosting / Outsourcing
-date:  2017-02-27 00:00:05 +00:00
+date:  2017-02-26 19:00:05 -05:00
 permalink:  "/2017/02/26/cloud-vs-hosting-outsourcing/"
 categories:
 - Solution

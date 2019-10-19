@@ -1,6 +1,6 @@
 ---
 title:  Agile Trade-offs
-date:  2013-01-19 00:06:00 +00:00
+date:  2013-01-18 19:06:00 -05:00
 permalink:  "/2013/01/18/agile-trade-offs/"
 categories:
 - Solution

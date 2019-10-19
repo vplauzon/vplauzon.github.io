@@ -1,6 +1,6 @@
 ---
 title:  Advertisement tracking in iOS 6 vs no-tracking in IE 10
-date:  2012-10-26 00:05:00 +00:00
+date:  2012-10-25 20:05:00 -04:00
 permalink:  "/2012/10/25/advertisement-tracking-in-ios-6-vs-no-tracking-in-ie-10/"
 categories:
 - Gadget

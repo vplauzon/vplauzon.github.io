@@ -1,6 +1,6 @@
 ---
 title:  Departmental Application Migration to Azure – Part 3 – ADFS with on-premise web app
-date:  2010-07-15 20:52:20 +00:00
+date:  2010-07-15 16:52:20 -04:00
 permalink:  "/2010/07/15/departmental-application-migration-to-azure-part-3-adfs-with-on-premise-web-app/"
 categories:
 - Solution

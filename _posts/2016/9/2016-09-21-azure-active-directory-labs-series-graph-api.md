@@ -1,6 +1,6 @@
 ---
 title:  Azure Active Directory Labs Series – Graph API
-date:  2016-09-21 23:00:24 +00:00
+date:  2016-09-21 19:00:24 -04:00
 permalink:  "/2016/09/21/azure-active-directory-labs-series-graph-api/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Solution Skill Quadrants–Part II, Solution Architecture
-date:  2011-11-25 00:54:00 +00:00
+date:  2011-11-24 19:54:00 -05:00
 permalink:  "/2011/11/24/solution-skill-quadrantspart-ii-solution-architecture/"
 categories:
 - Solution

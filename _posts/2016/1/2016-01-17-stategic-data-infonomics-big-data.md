@@ -1,6 +1,6 @@
 ---
 title:  Stategic Data, Infonomics & Big Data
-date:  2016-01-18 00:00:09 +00:00
+date:  2016-01-17 19:00:09 -05:00
 permalink:  "/2016/01/17/stategic-data-infonomics-big-data/"
 categories:
 - Solution

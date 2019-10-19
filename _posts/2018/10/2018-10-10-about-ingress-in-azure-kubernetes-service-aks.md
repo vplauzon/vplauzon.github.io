@@ -1,6 +1,6 @@
 ---
 title:  About Ingress in Azure Kubernetes Service (AKS)
-date:  2018-10-10 10:30:27 +00:00
+date:  2018-10-10 06:30:27 -04:00
 permalink:  "/2018/10/10/about-ingress-in-azure-kubernetes-service-aks/"
 categories:
 - Solution

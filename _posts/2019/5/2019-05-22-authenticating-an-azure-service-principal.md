@@ -1,6 +1,6 @@
 ---
 title:  Authenticating an Azure service principal
-date:  2019-05-22 10:30:57 +00:00
+date:  2019-05-22 06:30:57 -04:00
 permalink:  "/2019/05/22/authenticating-an-azure-service-principal/"
 categories:
 - Solution
@@ -76,8 +76,7 @@ Host: login.microsoftonline.com
 content-length: ...
 
 grant_type=client_credentials&scope={Audience}&client_id={Client ID}&client_secret={Client Secret}
-```ret}
-[/code]
+```
 
 That's it.
 
@@ -92,8 +91,7 @@ Content-Type: application/json; charset=utf-8
 Content-Length: ...
 
 {"token_type":"Bearer","expires_in":3600,"ext_expires_in":3600,"access_token":"VERY_LONG_STRING"}
-```uot;access_token&quot;:&quot;VERY_LONG_STRING&quot;}
-[/code]
+```
 
 <h2>Using authentication</h2>
 

@@ -1,6 +1,6 @@
 ---
 title:  Disaster Recovery with VM Scale Sets & Geo-Replicated DBs
-date:  2017-11-09 14:17:50 +00:00
+date:  2017-11-09 09:17:50 -05:00
 permalink:  "/2017/11/09/disaster-recovery-with-vm-scale-sets-geo-replicated-dbs/"
 categories:
 - Solution

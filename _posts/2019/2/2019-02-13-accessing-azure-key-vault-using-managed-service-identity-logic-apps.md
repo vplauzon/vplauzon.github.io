@@ -1,6 +1,6 @@
 ---
 title:  Accessing Azure Key Vault using Managed Service Identity Logic Apps
-date:  2019-02-13 11:30:41 +00:00
+date:  2019-02-13 06:30:41 -05:00
 permalink:  "/2019/02/13/accessing-azure-key-vault-using-managed-service-identity-logic-apps/"
 categories:
 - Solution
@@ -65,15 +65,7 @@ This was done by the ARM template
     }
     }
 ]
-```9;Full&#039;).identity.principalId]&quot;,
-    &quot;permissions&quot;: {
-        &quot;secrets&quot;: [
-        &quot;get&quot;
-        ]
-    }
-    }
-]
-[/code]
+```
 
 That policy gives the <em>get</em> access on <em>secrets</em> only.  This is the minimal privilege needed for the application since it will only access a secret.
 
@@ -102,14 +94,7 @@ The template created only one secret:
         }
     }
 }
-```;: &quot;[variables(&#039;Secret Value&#039;)]&quot;,
-        &quot;contentType&quot;: &quot;&quot;,
-        &quot;attributes&quot;: {
-            &quot;enabled&quot;: &quot;true&quot;
-        }
-    }
-}
-[/code]
+```
 
 <h2>Demo App</h2>
 
@@ -166,12 +151,7 @@ The trick to use REST API is of course to authenticate with it.  This is done by
     "runAfter": {},
     "type": "Http"
 }
-```ure.net/secrets/@{triggerBody()[&#039;secret&#039;]}?api-version=7.0&quot;
-    },
-    &quot;runAfter&quot;: {},
-    &quot;type&quot;: &quot;Http&quot;
-}
-[/code]
+```
 
 This can also be seen in the HTTP tasks by <em>showing advanced options</em>:
 

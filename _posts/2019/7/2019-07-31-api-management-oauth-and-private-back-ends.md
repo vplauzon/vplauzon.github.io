@@ -1,6 +1,6 @@
 ---
 title:  API Management - OAuth and private back-ends
-date:  2019-07-31 10:30:43 +00:00
+date:  2019-07-31 06:30:43 -04:00
 permalink:  "/2019/07/31/api-management-oauth-and-private-back-ends/"
 categories:
 - Solution
@@ -161,11 +161,7 @@ It is configured as an HTTP-get taking two query string parameters.  The transfo
         <value>application/json</value>
     </set-header>
 </inbound>
-```pe&quot; exists-action=&quot;override&quot;&gt;
-        &lt;value&gt;application/json&lt;/value&gt;
-    &lt;/set-header&gt;
-&lt;/inbound&gt;
-[/code]
+```
 
 A couple of things to say about those policies:
 
@@ -196,16 +192,13 @@ This operation simply returns the response from the container.  Nothing fancy he
     <set-backend-service base-url="{{private-service-url}}" />
     <rewrite-uri template="/" copy-unmatched-params="false" />
 </inbound>
-```ched-params=&quot;false&quot; /&gt;
-&lt;/inbound&gt;
-[/code]
+```
 
 If we test the operation and get a result similar to:
 
 ```text
 <h3>Hello World!</h3><b>Hostname:</b> wk-caas-5fcd43c10fa6404e87ca36b291c59013-4dda47657e18158b8ed3d7<br/><b>Visits:</b> undefined
-```t;b&gt;Visits:&lt;/b&gt; undefined
-[/code]
+```
 
 The string starting with <em>wk-caas-5f</em>...  is the container ID.  This one will vary each time the ACI is deployed.
 
@@ -226,10 +219,7 @@ Here we do some screen scraping.  We used the same back-end service, i.e. the Az
     return JObject.FromObject(response).ToString();
     }</set-body>
 </outbound>
-```sponse).ToString();
-    }&lt;/set-body&gt;
-&lt;/outbound&gt;
-[/code]
+```
 
 The C# code might look a little cryptic but basically, we do a couple of string manipulation to extract the container ID and return it in a JSON response.  If we test it:
 
@@ -237,9 +227,7 @@ The C# code might look a little cryptic but basically, we do a couple of string 
 {
   "hostName": "wk-caas-5fcd43c10fa6404e87ca36b291c59013-4dda47657e18158b8ed3d7"
 }
-```d3d7&quot;
-}
-[/code]
+```
 
 Here we can see how we can easily transform APIs again.
 
@@ -262,10 +250,7 @@ Now if we look at the products, we see the standard Starter &amp; Unlimited, but
     </validate-jwt>
     <set-header name="Authorization" exists-action="delete" />
 </inbound>
-``` &lt;/validate-jwt&gt;
-    &lt;set-header name=&quot;Authorization&quot; exists-action=&quot;delete&quot; /&gt;
-&lt;/inbound&gt;
-[/code]
+```
 
 So here we do the JWT token validation at the product level.  This means that every operation under every API belonging to that product will have this validation.
 
@@ -291,9 +276,7 @@ vary: Origin
     "statusCode": 401,
     "message": "Unauthorized. Access token is missing or invalid."
 }
-```ccess token is missing or invalid.&quot;
-}
-[/code]
+```
 
 That's because the testing UI doesn't send JWT token along with the request.
 

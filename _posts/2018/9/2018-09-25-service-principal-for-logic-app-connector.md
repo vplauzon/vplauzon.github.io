@@ -1,6 +1,6 @@
 ---
 title:  Service Principal for Logic App Connector
-date:  2018-09-25 10:30:57 +00:00
+date:  2018-09-25 06:30:57 -04:00
 permalink:  "/2018/09/25/service-principal-for-logic-app-connector/"
 categories:
 - Solution
@@ -102,12 +102,7 @@ We've seen how to create Logic Apps Connector in a <a href="https://vincentlauzo
         "displayName": "Current User Data Factory Connection"
     }
 }
-```urceGroup().location, &#039;/managedApis/azuredatafactory&#039;)]&quot;
-        },
-        &quot;displayName&quot;: &quot;Current User Data Factory Connection&quot;
-    }
-}
-[/code]
+```
 
 If we click on the warning, we are taken to the following form:
 
@@ -144,14 +139,7 @@ The ARM Template used here was:
         }
     }
 }
-```pal Secret&#039;)]&quot;,
-            &quot;token:TenantId&quot;: &quot;[parameters(&#039;Service Principal Tenant&#039;)]&quot;,
-            &quot;token:resourceUri&quot;: &quot;https://management.core.windows.net/&quot;,
-            &quot;token:grantType&quot;: &quot;client_credentials&quot;
-        }
-    }
-}
-[/code]
+```
 
 Credentials are passed in the configuration.  There is no need to authorize / authenticate.
 
@@ -198,11 +186,7 @@ We've seen how to do role assignment in ARM Template in a <a href="https://vince
         "principalId": "[parameters('Service Principal Object Id')]"
     }
 }
-```9;Full Data Factory Contributor Role Definition ID&#039;)]&quot;,
-        &quot;principalId&quot;: &quot;[parameters(&#039;Service Principal Object Id&#039;)]&quot;
-    }
-}
-[/code]
+```
 
 We could have assigned the role at the resource group level but we prefer to limit the scope.
 

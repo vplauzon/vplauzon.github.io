@@ -1,6 +1,6 @@
 ---
 title:  Dynamic disks in AKS
-date:  2019-01-15 11:30:27 +00:00
+date:  2019-01-15 06:30:27 -05:00
 permalink:  "/2019/01/15/dynamic-disks-in-aks/"
 categories:
 - Solution
@@ -133,8 +133,7 @@ Let's scale that deployment to 4 pods:
 
 ```bash
 kubectl patch deploy disk-deploy -p '{"spec":{"replicas":4}}'
-```plicas&quot;:4}}&#039;
-[/code]
+```
 
 We quickly see there is a problem here.  First only one pod starts:
 
@@ -145,8 +144,7 @@ disk-deploy-6dfbb5cc-79bqx   1/1     Running             0          37m   10.244
 disk-deploy-6dfbb5cc-pl9wm   0/1     ContainerCreating   0          23m   <none>        aks-agentpool-22115152-0   <none>
 disk-deploy-6dfbb5cc-q89jb   1/1     Running             0          23m   10.244.2.12   aks-agentpool-22115152-2   <none>
 disk-deploy-6dfbb5cc-rkmf5   0/1     ContainerCreating   0          23m   <none>        aks-agentpool-22115152-0   <none>
-```ol-22115152-0   &lt;none&gt;
-[/code]
+```
 
 Important observation:  only the pod on the same node as the original pod could start.
 
@@ -161,8 +159,7 @@ Events:
   Normal   Scheduled           19m                default-scheduler                  Successfully assigned default/disk-deploy-6dfbb5cc-pl9wm to aks-agentpool-22115152-0
   Warning  FailedAttachVolume  19m                attachdetach-controller            Multi-Attach error for volume "pvc-d53e41ee-1810-11e9-bea0-0a58ac1f072d" Volume is already used by pod(s) disk-deploy-6dfbb5cc-79bqx
   Warning  FailedMount         89s (x8 over 17m)  kubelet, aks-agentpool-22115152-0  Unable to mount volumes for pod "disk-deploy-6dfbb5cc-pl9wm_default(41c47e32-1816-11e9-bea0-0a58ac1f072d)": timeout expired waiting for volumes to attach or mount for pod "default"/"disk-deploy-6dfbb5cc-pl9wm". list of unmounted volumes=[volume]. list of unattached volumes=[volume default-token-gljst]
-```mes=[volume default-token-gljst]
-[/code]
+```
 
 We see the volume failed to attach.
 

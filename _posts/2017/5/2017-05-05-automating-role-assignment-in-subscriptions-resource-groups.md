@@ -1,6 +1,6 @@
 ---
 title:  Automating Role Assignment in Subscriptions & Resource Groups
-date:  2017-05-05 13:49:42 +00:00
+date:  2017-05-05 09:49:42 -04:00
 permalink:  "/2017/05/05/automating-role-assignment-in-subscriptions-resource-groups/"
 categories:
 - Solution

@@ -1,6 +1,6 @@
 ---
 title:  Row Level Security in 3-tiers applications
-date:  2016-02-09 19:40:07 +00:00
+date:  2016-02-09 14:40:07 -05:00
 permalink:  "/2016/02/09/row-level-security-in-3-tiers-applications/"
 categories:
 - Solution

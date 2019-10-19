@@ -1,6 +1,6 @@
 ---
 title:  AKS Auto Scaler with ARM Template
-date:  2019-03-20 10:30:16 +00:00
+date:  2019-03-20 06:30:16 -04:00
 permalink:  "/2019/03/20/aks-auto-scaler-with-arm-template/"
 categories:
 - Solution
@@ -100,16 +100,7 @@ The <a href="https://github.com/vplauzon/aks/blob/master/aks-auto-scaler/deploy.
                 "type": "VirtualMachineScaleSets"
             }
         ],
-```t;: 30,
-                &quot;osType&quot;: &quot;Linux&quot;,
-                &quot;storageProfile&quot;: &quot;ManagedDisks&quot;,
-                &quot;enableAutoScaling&quot;: true,
-                &quot;minCount&quot;: 1,
-                &quot;maxCount&quot;: 5,
-                &quot;type&quot;: &quot;VirtualMachineScaleSets&quot;
-            }
-        ],
-[/code]
+```
 
 Key elements are:
 
@@ -208,9 +199,7 @@ spec:
             initialDelaySeconds: 5
           ports:
           - containerPort: 80
-```s:
-          - containerPort: 80
-[/code]
+```
 
 We can deploy it using the command line:
 
@@ -245,9 +234,7 @@ demo-deploy-64567bf9df-m5q6t   1/1     Running             0          22s   172.
 demo-deploy-64567bf9df-p2qhx   1/1     Running             0          22s   172.16.0.37   aks-agentpool-38816970-vmss000001   <none>
 demo-deploy-64567bf9df-qmcr6   0/1     ContainerCreating   0          22s   <none>        aks-agentpool-38816970-vmss000000   <none>
 demo-deploy-64567bf9df-sbnvk   0/1     ContainerCreating   0          22s   <none>        aks-agentpool-38816970-vmss000000   <none>
-```6   0/1     ContainerCreating   0          22s   &lt;none&gt;        aks-agentpool-38816970-vmss000000   &lt;none&gt;
-demo-deploy-64567bf9df-sbnvk   0/1     ContainerCreating   0          22s   &lt;none&gt;        aks-agentpool-38816970-vmss000000   &lt;none&gt;
-[/code]
+```
 
 We see that a few pods got scheduled on different nodes while many others are in <em>Pending</em> status since there are no node that can accomodate them.
 
@@ -280,8 +267,7 @@ demo-deploy-64567bf9df-qmcr6   1/1     Running   0          9m15s   172.16.0.9  
 demo-deploy-64567bf9df-sbnvk   1/1     Running   0          9m15s   172.16.0.5     aks-agentpool-38816970-vmss000000   <none>
 demo-deploy-64567bf9df-wj2pz   1/1     Running   0          9m15s   172.16.0.139   aks-agentpool-38816970-vmss000004   <none>
 demo-deploy-64567bf9df-x7tqj   1/1     Running   0          9m15s   172.16.0.108   aks-agentpool-38816970-vmss000003   <none>
-```ploy-64567bf9df-x7tqj   1/1     Running   0          9m15s   172.16.0.108   aks-agentpool-38816970-vmss000003   &lt;none&gt;
-[/code]
+```
 
 We can see that most pods managed to get scheduled on a pod.
 

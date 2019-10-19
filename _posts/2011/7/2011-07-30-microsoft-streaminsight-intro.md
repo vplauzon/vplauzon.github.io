@@ -1,6 +1,6 @@
 ---
 title:  Microsoft StreamInsight Intro
-date:  2011-07-31 00:29:00 +00:00
+date:  2011-07-30 20:29:00 -04:00
 permalink:  "/2011/07/30/microsoft-streaminsight-intro/"
 categories:
 - Solution

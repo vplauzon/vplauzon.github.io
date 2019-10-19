@@ -1,6 +1,6 @@
 ---
 title:  Instapaper - HTML Selector
-date:  2015-09-09 23:00:37 +00:00
+date:  2015-09-09 19:00:37 -04:00
 permalink:  "/2015/09/09/instapaper-html-selector/"
 categories:
 - Solution

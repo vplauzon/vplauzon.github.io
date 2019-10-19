@@ -1,6 +1,6 @@
 ---
 title:  Delaying action at transaction commit
-date:  2012-09-28 23:03:00 +00:00
+date:  2012-09-28 19:03:00 -04:00
 permalink:  "/2012/09/28/delaying-action-at-transaction-commit/"
 categories:
 - Solution

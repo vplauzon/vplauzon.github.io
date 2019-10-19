@@ -1,6 +1,6 @@
 ---
 title:  Using Network Security Groups (NSG) to secure network access to an environment
-date:  2015-12-21 18:00:07 +00:00
+date:  2015-12-21 13:00:07 -05:00
 permalink:  "/2015/12/21/using-network-security-groups-nsg-to-secure-network-access-to-an-environment/"
 categories:
 - Solution

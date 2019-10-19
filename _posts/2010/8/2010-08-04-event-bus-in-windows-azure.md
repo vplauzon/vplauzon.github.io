@@ -1,6 +1,6 @@
 ---
 title:  Event bus in Windows Azure
-date:  2010-08-04 17:09:52 +00:00
+date:  2010-08-04 13:09:52 -04:00
 permalink:  "/2010/08/04/event-bus-in-windows-azure/"
 categories:
 - Solution

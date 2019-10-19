@@ -1,6 +1,6 @@
 ---
 title:  Entity Framework 4.1: Bypassing EF query mapping (8)
-date:  2011-04-22 00:03:00 +00:00
+date:  2011-04-21 20:03:00 -04:00
 permalink:  "/2011/04/21/entity-framework-4-1-bypassing-ef-query-mapping-8/"
 categories:
 - Solution

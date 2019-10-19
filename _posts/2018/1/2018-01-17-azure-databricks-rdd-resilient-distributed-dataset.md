@@ -1,6 +1,6 @@
 ---
 title:  Azure Databricks - RDD - Resilient Distributed Dataset
-date:  2018-01-17 11:30:45 +00:00
+date:  2018-01-17 06:30:45 -05:00
 permalink:  "/2018/01/17/azure-databricks-rdd-resilient-distributed-dataset/"
 categories:
 - Solution

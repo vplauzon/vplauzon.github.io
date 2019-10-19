@@ -1,6 +1,6 @@
 ---
 title:  Update on TFS on Azure
-date:  2011-08-06 00:35:00 +00:00
+date:  2011-08-05 20:35:00 -04:00
 permalink:  "/2011/08/05/update-on-tfs-on-azure/"
 categories:
 - Solution

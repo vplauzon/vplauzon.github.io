@@ -1,6 +1,6 @@
 ---
 title:  More Best Practices for Large-Scale Websites: Lessons from eBay
-date:  2013-05-22 00:00:15 +00:00
+date:  2013-05-21 20:00:15 -04:00
 permalink:  "/2013/05/21/more-best-practices-for-large-scale-websites-lessons-from-ebay/"
 categories:
 - Solution
