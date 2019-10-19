@@ -37,7 +37,7 @@ plugins:
 
 # 3. Gem settings
 # Pagination:  https://jekyllrb.com/docs/pagination/
-paginate: 2 # jekyll-paginate > items per page
+paginate: 5 # jekyll-paginate > items per page
 paginate_path: /articles/page:num # jekyll-paginate > blog page
 jekyll-mentions: https://twitter.com # jekyll-mentions > service used when @replying
 twitter:
