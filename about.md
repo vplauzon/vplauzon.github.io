@@ -2,7 +2,7 @@
 title: Vincent-Philippe Lauzon's
 feature_text: |
   ## Vincent-Philippe Lauzon's
-  <span style="color:gray">Azure, Data & Learnings</span>
+  <span style="color:lightgray">Azure, Data & Learnings</span>
 feature_image: /assets/about/saguenay-lake.png
 ---
 
