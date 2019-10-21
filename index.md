@@ -2,7 +2,7 @@
 title: Home
 feature_text: |
   ## Vincent-Philippe Lauzon's
-  <span style="color:lightgray">Azure, Apps & Data</span>feature_image: /assets/about/saguenay-lake.png
+  <span style="color:lightgray">Azure, Apps & Data</span>
 feature_image: /assets/home/clouds-from-pexels.jpg
 ---
 

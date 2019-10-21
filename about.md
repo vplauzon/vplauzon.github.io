@@ -2,7 +2,8 @@
 title: About
 feature_text: |
   ## Vincent-Philippe Lauzon's
-  <span style="color:lightgray">Azure, Apps & Data</span>feature_image: /assets/about/saguenay-lake.png
+  <span style="color:lightgray">Azure, Apps & Data</span>
+feature_image: /assets/about/saguenay-lake.png
 ---
 
 <img style="float:right;padding-left:20px;" title="Hum..." src="/assets/about/vp-shot.png" />
