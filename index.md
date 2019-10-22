@@ -1,5 +1,5 @@
 ---
-title: Vincent-Philippe Lauzon's
+#title: Vincent-Philippe Lauzon's
 feature_text: |
   ## Vincent-Philippe Lauzon's
   <span style="color:lightgray">Azure, Apps & Data</span>

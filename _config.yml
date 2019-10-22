@@ -64,11 +64,11 @@ timezone: America/Montreal # Timezone for blog posts and alike
 # 5. Collections
 collections:
   posts:
-    title: Archive # Needed for Siteleaf
+    #title: Article rchive # Needed for Siteleaf
     output: true
-    description: "Articles archive" # The post list page content
+    #description: "Articles archive" # The post list page content
     feature_text: |
-      <span style="color:lightgray">Articles</span>
+      ## <span style="color:lightgray">Articles</span>
     feature_image: /assets/archive/archives.png
 
 # 6. Jekyll collections settings
