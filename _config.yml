@@ -68,7 +68,7 @@ collections:
     output: true
     #description: "Articles archive" # The post list page content
     feature_text: |
-      ## <span style="color:lightgray">Articles</span>
+      ## <span style="color:lightgreen">Articles</span>
     feature_image: /assets/archive/archives.png
 
 # 6. Jekyll collections settings
