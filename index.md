@@ -2,7 +2,7 @@
 #title: Vincent-Philippe Lauzon's
 feature_text: |
   ## Vincent-Philippe Lauzon's
-  <span style="color:darkgrey">Azure, Apps & Data</span>
+  <span style="color:darkgray">Azure, Apps & Data</span>
 feature_image: /assets/home/clouds-from-pexels.jpg
 ---
 
