@@ -34,11 +34,9 @@ plugins:
 - jekyll-commonmark
 - jekyll-include-cache
 - jemoji
-- jekyll-posts-json
 
 # 3. Gem settings
 # Pagination:  https://jekyllrb.com/docs/pagination/
-posts_json_path: post-list.json # jekyll-posts-json plugin
 paginate: 5 # jekyll-paginate > items per page
 paginate_path: /articles/page:num # jekyll-paginate > blog page
 jekyll-mentions: https://twitter.com # jekyll-mentions > service used when @replying
