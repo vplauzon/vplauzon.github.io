@@ -8,4 +8,7 @@ layout: empty
             "title" : "{{ post.title }}"
         {% raw  %} } {% endraw  %}
     {% endfor %}
+    {% if site.posts.last.url != post.url %}
+    ,
+    {% endif %}
 ]
