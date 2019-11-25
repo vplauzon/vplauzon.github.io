@@ -7,10 +7,8 @@ layout: empty
             "url" : "{{ post.url }}",
             "title" : "{{ post.title }}",
             "published" : "{{ post.date }}",
-            "categories" : "{{ post.categories }}",
-            "tags" : [
-                {{ post.tags | prepend: "12" }}
-            ]
+            "categories" : {{ post.categories }},
+            "tags" : {{ post.tags | }}
         }
         {% if site.posts.last.url != post.url %}
         ,
