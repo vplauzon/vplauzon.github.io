@@ -8,10 +8,10 @@ layout: empty
             "title" : "{{ post.title }}",
             "published" : "{{ post.date }}",
             "categories" : [
-                {{ post.categories | sort }}
+                {{ post.categories | sort  | prepend: "1" }}
             ],
             "tags" : [
-                {{ post.tags | sort }}
+                {{ post.tags | sort | prepend: "1" | remove_first:  "1" }}
             ]
         }
         {% if site.posts.last.url != post.url %}
