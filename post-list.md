@@ -10,7 +10,7 @@ layout: empty
             "categories" : [
                 {{ post.categories | sort }}
             ],
-            "tags" : {{ post.tags | sort | prepend }}
+            "tags" : {{ post.tags | sort }}
         }
         {% if site.posts.last.url != post.url %}
         ,
