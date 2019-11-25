@@ -7,8 +7,8 @@ layout: empty
             "url" : "{{ post.url }}",
             "title" : "{{ post.title }}",
             "published" : "{{ post.date }}",
-            "categories" : {{ post.categories }},
-            "tags" : {{ post.tags | }}
+            "categories" : {{ post.categories | sort }},
+            "tags" : {{ post.tags | sort }}
         }
         {% if site.posts.last.url != post.url %}
         ,
