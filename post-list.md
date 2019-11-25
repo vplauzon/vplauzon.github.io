@@ -8,7 +8,7 @@ layout: empty
             "title" : "{{ post.title }}",
             "published" : "{{ post.date }}",
             "categories" : [
-                {{ post.categories | sort  | prepend: "1" }}
+                {{ post.categories | sort  | prepend: "1" | remove_first:  "1" }}
             ],
             "tags" : [
                 {{ post.tags | sort | prepend: "1" | remove_first:  "1" }}
