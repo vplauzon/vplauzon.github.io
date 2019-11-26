@@ -2,14 +2,6 @@
 ---
 [
     {% for post in site.posts %}
-        {
-            "url" : "{{ post.url | jsonify }}",
-            "title" : "{{ post.title | escape }}",
-            "published" : "{{ post.date }}",
-            "content" : "{{ post.content | escape }}",
-            "excerpt" : "{{ post.excerpt | escape }}",
-            "categories" : {{ post.categories | sort  | prepend: "1" | remove_first:  "1" }},
-            "tags" : {{ post.tags | sort | prepend: "1" | remove_first:  "1" }}
-        } {% unless forloop.last %},{% endunless %}
+        {{ post | jsonify }} {% unless forloop.last %},{% endunless %}
     {% endfor %}
 ]
