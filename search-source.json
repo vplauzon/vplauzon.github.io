@@ -1,7 +1,8 @@
 ---
 ---
-[
-    {% for post in site.posts %}
-        {{ post | jsonify }} {% unless forloop.last %},{% endunless %}
-    {% endfor %}
-]
+{
+    "url" : {{ site.posts | map:  "url" | jsonify }}
+}
+{
+    "title" : {{ site.posts | map:  "url" | jsonify }}
+}
