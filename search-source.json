@@ -4,5 +4,5 @@
     "url" : {{ site.posts | map:  "url" | jsonify }}
 }
 {
-    "title" : {{ site.posts | map:  "url" | jsonify }}
+    "title" : {{ site.posts | map:  "title" | jsonify }}
 }
