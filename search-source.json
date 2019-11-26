@@ -6,3 +6,18 @@
 {
     "title" : {{ site.posts | map:  "title" | jsonify }}
 }
+{
+    "published" : {{ site.posts | map:  "published" | jsonify }}
+}
+{
+    "content" : {{ site.posts | map:  "content" | jsonify }}
+}
+{
+    "excerpt" : {{ site.posts | map:  "excerpt" | jsonify }}
+}
+{
+    "categories" : {{ site.posts | map:  "categories" | jsonify }}
+}
+{
+    "tags" : {{ site.posts | map:  "tags" | jsonify }}
+}
