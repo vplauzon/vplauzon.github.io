@@ -1,15 +1,20 @@
 ---
-title: Vincent-Philippe Lauzon's
+#title: Vincent-Philippe Lauzon's
 feature_text: |
   ## Vincent-Philippe Lauzon's
-  Azure, Data & Apps
+  Azure, Apps & Data
 feature_image: /assets/home/clouds-from-pexels.jpg
 ---
 
-I learn every day and write about my learnings.  This is my knowledge base.
+I'm a *Cloud Solution Architect* and work for Microsoft Canada.  Here I write [blog articles](/articles/) about everything I learn working on customer's scenarios.
 
-When people asked me questions about technlogy, instead of write a 2 pages email, I write an article and send the link.
+I write 2 types of articles:
 
-Hopefully it might help you learn, move forward on a decision or unblock you.
+* Introduction taking a different spin than online docs / videos
+* Advanced scenarios going beyond online docs / videos
 
-Here are the [articles](/articles/).
+I focus on Microsoft Azure Solutions, DevOps & Data & learnings.
+
+<a href="/articles/">
+  <img src="/assets/home/right-arrow.png" style="margin-left: auto;margin-right: auto;" />
+</a>
