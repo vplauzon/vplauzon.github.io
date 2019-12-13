@@ -1,5 +1,5 @@
 ---
-layout: default
+layout:  page
 #title: Vincent-Philippe Lauzon's
 feature_text: |
   ## Vincent-Philippe Lauzon's
