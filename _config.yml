@@ -118,8 +118,6 @@ navigation_header:
   url: /tags/
 - title: Categories
   url: /categories/
-- title: Search
-  url: /search/
 - title: About
   url: /about/
 
