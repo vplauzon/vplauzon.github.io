@@ -1,4 +1,5 @@
 ---
+layout: default
 #title: Vincent-Philippe Lauzon's
 feature_text: |
   ## Vincent-Philippe Lauzon's
@@ -6,15 +7,10 @@ feature_text: |
 feature_image: /assets/home/clouds-from-pexels.jpg
 ---
 
-I'm a *Cloud Solution Architect* and work for Microsoft Canada.  Here I write [blog articles](/articles/) about everything I learn working on customer's scenarios.
+I learn every day and write about my learnings.  This is my knowledge base.
 
-I write 2 types of articles:
+When people asked me questions about technlogy, instead of write a 2 pages email, I write an article and send the link.
 
-* Introduction taking a different spin than online docs / videos
-* Advanced scenarios going beyond online docs / videos
+Hopefully it might help you learn, move forward on a decision or unblock you.
 
-I focus on Microsoft Azure Solutions, DevOps & Data & learnings.
-
-<a href="/articles/">
-  <img src="/assets/home/right-arrow.png" style="margin-left: auto;margin-right: auto;" />
-</a>
+Here are the [articles](/articles/).
