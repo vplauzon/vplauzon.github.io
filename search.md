@@ -1,8 +1,6 @@
 ---
 layout:  page
-title: Vincent-Philippe Lauzon's
-feature_text: |
-  ## Search
+feature_text: ## <span style="color:lightgray">Search</span>
 feature_image: /assets/search/binoculars.jpg
 ---
 
