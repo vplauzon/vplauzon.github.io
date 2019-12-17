@@ -1,6 +1,7 @@
 ﻿function startScript() {
     var urlParams = new URLSearchParams(window.location.search);
     var query = urlParams.get('query');
+    var searchBox = document.getElementById('search-box');
     var waitImage = document.getElementById('wait-image');
     var searchCountSection = document.getElementById('search-count-section');
     var searchCount = document.getElementById('search-count');
@@ -8,6 +9,7 @@
     var topPart = document.getElementById('top-part');
     var bottomPart = document.getElementById('bottom-part');
 
+    searchBox.value = query;
     searchQueryTop(query, waitImage, searchCountSection, searchCount, searchCountMax, topPart);
     searchQueryBottom(query, bottomPart);
 }
