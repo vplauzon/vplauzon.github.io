@@ -78,7 +78,7 @@ function renderSearchNode(node) {
     var text = "";
 
     text += "<h2>";
-    text += "<a href '" + node.Url + "'>";
+    text += "<a href='" + node.Url + "'>";
     text += node.Title;
     text += "</a>";
     text += "</h2>";
