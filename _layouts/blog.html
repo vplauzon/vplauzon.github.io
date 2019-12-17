@@ -10,10 +10,6 @@ layout: default
 
     <article class="article  article--page  typeset">
 
-      <form action="/search">
-        <input id="search-box" type="search" class="search-field" placeholder="Search..." value="" name="query">
-      </form>
-  
       {% if paginator.posts %}
         {% assign collectiondata = site.collections | where: "label", page.collectionpage | first %}
         <h1>{{ collectiondata.title }}</h1>

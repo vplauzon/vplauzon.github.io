@@ -8,6 +8,10 @@ layout: default
 
   <article class="article  article--post  content  typeset">
 
+    <form action="/search">
+      <input id="search-box" type="search" class="search-field" placeholder="Search..." value="" name="query">
+    </form>
+
     <h1>{{ page.title }}</h1>
     {% include post-meta.html %}
     {{ content }}
