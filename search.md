@@ -7,7 +7,7 @@ feature_image: /assets/search/binoculars.jpg
 <div id="wait-image">
     ![Waiting for results](/assets/search/spinning-wheel.gif)
 </div>
-<div id="search-count-section">
+<div id="search-count-section" style="display:none">
     Articles found:  <span id="search-count"></span><span id="search-count-max"> (only 30 shown)</span>.
 </div>
 <div id="top-part"></div>
