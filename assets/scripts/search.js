@@ -9,7 +9,10 @@
     var topPart = document.getElementById('top-part');
     var bottomPart = document.getElementById('bottom-part');
 
+    //  Set the query value in the search box
     searchBox.value = query;
+    //  Set the focus on the search box (i.e. user inputs)
+    searchBox.focus();
     searchQueryTop(query, waitImage, searchCountSection, searchCount, searchCountMax, topPart);
     searchQueryBottom(query, bottomPart);
 }
