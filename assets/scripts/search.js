@@ -13,11 +13,27 @@
     searchBox.value = query;
     //  Set the focus on the search box (i.e. user inputs)
     searchBox.focus();
-    searchQueryTop(query, waitImage, searchCountSection, searchCount, searchCountMax, topPart);
+    searchQueryTop(
+        query,
+        waitImage,
+        searchCountSection,
+        searchCount,
+        searchCountMax,
+        topPart,
+        bottomPart);
 }
 
-function searchQueryTop(query, waitImage, searchCountSection, searchCount, searchCountMax, topPart) {
+function searchQueryTop(
+    query,
+    waitImage,
+    searchCountSection,
+    searchCount,
+    searchCountMax,
+    topPart,
+    bottomPart) {
     searchQuery(query, true, function (status, responseText) {
+        //  Hide wait image
+        waitImage.style.display = 'none';
         if (status >= 200 && status < 300) {
             var response = JSON.parse(responseText);
             var count = response["@odata.count"];
@@ -36,8 +52,6 @@ function searchQueryTop(query, waitImage, searchCountSection, searchCount, searc
         else {
             topPart.innerHTML = "<span style='color: red'>Some error occured in the search</span>";
         }
-        //  Hide wait image
-        waitImage.style.display = 'none';
     });
 }
 
