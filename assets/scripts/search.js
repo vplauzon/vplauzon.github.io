@@ -14,7 +14,6 @@
     //  Set the focus on the search box (i.e. user inputs)
     searchBox.focus();
     searchQueryTop(query, waitImage, searchCountSection, searchCount, searchCountMax, topPart);
-    searchQueryBottom(query, bottomPart);
 }
 
 function searchQueryTop(query, waitImage, searchCountSection, searchCount, searchCountMax, topPart) {
@@ -30,14 +29,15 @@ function searchQueryTop(query, waitImage, searchCountSection, searchCount, searc
             if (count < 30) {
                 searchCountMax.style.display = 'none';
             }
+            //  Show count
+            searchCountSection.style.display = 'inline';
+            searchQueryBottom(query, bottomPart);
         }
         else {
             topPart.innerHTML = "<span style='color: red'>Some error occured in the search</span>";
         }
         //  Hide wait image
         waitImage.style.display = 'none';
-        //  Show count
-        searchCountSection.style.display = 'inline';
     });
 }
 
@@ -69,7 +69,7 @@ function searchQuery(query, isTop, callBack) {
     request.open("get", serviceUrl, true);
     request.setRequestHeader("Content-Type", "application/json");
     request.setRequestHeader("Accept", "application/json");
-    request.setRequestHeader("Ocp-Apim-Subscription-Key", "4e89abae71f946ac9d353aae7f57df64");
+    request.setRequestHeader("Ocp-Apim-Subscription-Key", "ae9f97844d48495a9567f2c737ef4eb7");
     request.send("");
 }
 
