@@ -58,7 +58,7 @@ function searchQueryBottom(query, bottomPart) {
 
 function searchQuery(query, isTop, callBack) {
     var serviceUrl =
-        "https://vpl-blog.azure-api.net/search?top=" + isTop + "&query=" + query;
+        "https://vpl-blog-apim.azure-api.net/search-api?top=" + isTop + "&query=" + query;
     var request = new XMLHttpRequest();
 
     request.onreadystatechange = function () {
@@ -69,7 +69,7 @@ function searchQuery(query, isTop, callBack) {
     request.open("get", serviceUrl, true);
     request.setRequestHeader("Content-Type", "application/json");
     request.setRequestHeader("Accept", "application/json");
-    request.setRequestHeader("Ocp-Apim-Subscription-Key", "427f9658a6e343e6a568d8c1c7e689fa");
+    request.setRequestHeader("Ocp-Apim-Subscription-Key", "4e89abae71f946ac9d353aae7f57df64");
     request.send("");
 }
 
