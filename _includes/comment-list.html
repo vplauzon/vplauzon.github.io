@@ -29,13 +29,15 @@
 {% assign pathParts = page.path | split: "/" %}
 {% assign postNameParts = pathParts[3] | split: "." %}
 {% assign comments = site.data[pathParts[1]][pathParts[2]][postNameParts[0]] %}
+{% assign year = pathParts[1] %}
 
-<p>Year:  {{ pathParts[1] }}</p>
+<p>Year:  "{{ year }}"</p>
 <p>Month:  {{ pathParts[2] }}</p>
 <p>3rd:  {{ pathParts[3] }}</p>
 <p>Name:  {{ postNameParts[0] }}</p>
 
 <p>Size year:  {{ site.data[pathParts[1]] | size }}</p>
+<p>Size year year:  {{ site.data[year] | size }}</p>
 <p>My Size year:  {{ site.data["2017"] | size }}</p>
 <p>Size Month:  {{ site.data[pathParts[1]][pathParts[2]] | size }}</p>
 <p>Size Name:  {{ site.data[pathParts[1]][pathParts[2]][postNameParts[0]] | size }}</p>
