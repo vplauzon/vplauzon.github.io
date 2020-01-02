@@ -1,0 +1,6 @@
+id: 19542
+author:
+  name: AKS Auto Scaler with ARM Template &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2019/03/20/aks-auto-scaler-with-arm-template/
+date: 2019-03-20T06:32:09.0000000-04:00
+content: '[&#8230;] deployment is based on our article on Kubenet networking plugin. As such, it deploys the cluster within a custom Virtual Network while using Kubenet (as opposed to [&#8230;]'

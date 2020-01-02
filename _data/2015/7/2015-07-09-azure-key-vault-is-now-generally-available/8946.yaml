@@ -1,0 +1,6 @@
+id: 8946
+author:
+  name: Using Azure DevOps REST API to start multiple releases &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2018/12/05/using-azure-devops-rest-api-to-start-multiple-releases/
+date: 2018-12-05T06:32:27.0000000-05:00
+content: '[&#8230;] without any user authenticating. It is therefore important to handle the token with care. Ideally, Azure Key Vault should be used so the secret isn&#8217;t expose to [&#8230;]'

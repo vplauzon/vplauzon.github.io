@@ -1,0 +1,35 @@
+id: 203
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.wordpress.com
+date: 2011-07-08T13:00:50.0000000-04:00
+content: >-
+  True I did not cover querying for that specific topic.  For your specific example, it's pretty simple (for a given employee id):
+
+
+  var orders = from e in context.Employees
+     where e.EmployeeID==theEmployeeID
+     select e.Orders;
+
+  or if you already have a reference to an employee 'e':
+
+
+  e.Orders
+
+
+
+  Is that what you meant?
+
+
+  We could do something more complicated, for instance:
+
+
+  var names = from o in context.Orders
+     from e in o.InvolvedEmployees
+     where o.OrderID == 2
+     select e.EmployeeName;
+
+  This would fetch, for the orderID '2' all the employee names related to it.
+
+
+  Basically, as usual with EF, you can walk up and down relationships.

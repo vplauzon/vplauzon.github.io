@@ -1,0 +1,6 @@
+id: 20689
+author:
+  name: Testing outbound connections in AKS-Kubenet and ACI &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2019/03/26/testing-outbound-connections-in-aks-kubenet-and-aci/
+date: 2019-03-26T06:30:48.0000000-04:00
+content: '[&#8230;] if we are using kubenet plugin, Kubernetes does its own networking virtualization where pods get a cluster IP. Would that IP be [&#8230;]'

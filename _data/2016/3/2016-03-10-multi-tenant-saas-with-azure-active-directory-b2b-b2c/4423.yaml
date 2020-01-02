@@ -1,0 +1,6 @@
+id: 4423
+author:
+  name: djarvis8
+  url: http://gravatar.com/djarvis8
+date: 2017-01-16T11:39:36.0000000-05:00
+content: I was also re-thinking our strategy for a multi-tenant SaaS solution with this multi-ADs approach.  I wasn't thinking about the issue of provisioning ADs automatically, but I was starting to wonder how to know what AD to use at the time of user-login.  The user would have to choose the tenant pre-login (or otherwise navigate to different pages, etc).

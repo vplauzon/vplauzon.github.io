@@ -1,0 +1,14 @@
+id: 5717
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2017-10-12T13:56:49.0000000-04:00
+content: >-
+  Hi Jason,
+
+
+
+  Availability Set &amp; VM Set serves two different purposes.  The former ensures reliability of the overall service (as discussed in the article) while the latter allows you to manage multiple "identical" VMs as a single unit.
+
+
+  Scale Sets require automation since it is the Scale Set service that spins VMs up when you change the "number of instances" property on the set.  So if you can stomach the automation, you'll have a very flexible solution where you can bring new instances up easily and drop them easily also.  Otherwise, you can use normal VMs and configure them manually.

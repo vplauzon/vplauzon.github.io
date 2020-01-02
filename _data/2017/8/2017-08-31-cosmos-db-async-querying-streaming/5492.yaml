@@ -1,0 +1,9 @@
+id: 5492
+author:
+  name: Simon Bourdeau
+  url: ''
+date: 2017-09-11T00:01:24.0000000-04:00
+content: >-
+  Hey Vincent (long time!),
+
+  what do you think of DocumentDB's implementation of partions and it's partition keys? For a non structured storage I find the requirements of partitions in DocDB quite strict. Especially when trying to delete or move documents.

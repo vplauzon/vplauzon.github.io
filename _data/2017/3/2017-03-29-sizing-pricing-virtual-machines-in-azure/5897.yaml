@@ -1,0 +1,6 @@
+id: 5897
+author:
+  name: Carlos Chacon Chavarria
+  url: https://www.facebook.com/app_scoped_user_id/10159567693705230/
+date: 2017-10-31T18:39:57.0000000-04:00
+content: "nice articles, I was seeing they specify the max bandwitch o network perfomance that can be reached for some SKU Types (Max NICs / Expected network performance (Mbps))\n\nhttps://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-general#dsv2-series \n\nso only one NIC can reach those bandwidths? just to be sure or I have to do some nic teaming to achieve 3000 Mbps like the example you depicted above to achieve 20000 IOPS to stripe several disks\n\nthanks"

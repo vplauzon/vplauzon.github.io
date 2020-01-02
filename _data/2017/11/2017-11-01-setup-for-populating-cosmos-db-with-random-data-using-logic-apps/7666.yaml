@@ -1,0 +1,6 @@
+id: 7666
+author:
+  name: Cosmos DB Configuration Management &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2018/06/20/cosmos-db-configuration-management/
+date: 2018-06-20T06:32:54.0000000-04:00
+content: '[&#8230;] the article Setup for populating Cosmos DB with random data using Logic Apps.  On top of providing an ARM template, we needed to add bunch of steps in the Portal to setup [&#8230;]'

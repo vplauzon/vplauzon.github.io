@@ -1,0 +1,28 @@
+id: 7
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.wordpress.com
+date: 2010-06-16T19:10:32.0000000-04:00
+content: >-
+  Hi David,
+
+
+
+  Thanks for the feedback.  I'm looking forward to see more accurate figures on Azure user-base.
+
+
+  I plan to use WIF in its simplest form, to acquire the current user of a web request.  I know there's a WIF-http module that does just that and sets the current user to a WIF-IPrincipal derivative, I'll just have to dig back the article I read showing that.  My current task is to plug an application with ADFS.  I'm planning to use the claim-based guide (http://www.microsoft.com/downloads/details.aspx?familyid=4C09FFE4-43DD-4FCC-BE35-C897C9BC4386&amp;displaylang=en).  If you have more straightforward litterature, I all ears ;)
+
+
+  We are interested into B2B integration in the long run.  Being a financial institution, we integrate with many market data providers.  On the other hand, the finance industry, especially in the market data, tends to be a bit conservative in its technology, so SAML might not be available for a while there.
+
+
+  An area where I can foresee difficulties when porting applications to Azure is with authentication on the DB.  For better or worse, our Enterprise Standard is to use Kerboros and delegation all the way to the DB store (hence securing each user's acces, as oppose to trusting a service account for DB access).  That scenario isn't currently supported.  Do you know if SQL Azure will support claim-base authentication in the near-future?  Otherwise, would you recommend an approach closing-in delegation in the cloud?
+
+
+
+  Cheers,
+
+
+
+  Vincent-Philippe Lauzon

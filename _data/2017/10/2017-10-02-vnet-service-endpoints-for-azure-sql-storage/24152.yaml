@@ -1,0 +1,6 @@
+id: 24152
+author:
+  name: Multiple Service Endpoints to multiple services &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2019/04/18/multiple-service-endpoints-to-multiple-services/
+date: 2019-04-18T06:31:22.0000000-04:00
+content: '[&#8230;] case: I have a central thingy that needs to talk to a service protected by a service endpoints (e.g. storage account, Azure SQL DB, Azure Maria DB, etc.). That service is also accessible to [&#8230;]'

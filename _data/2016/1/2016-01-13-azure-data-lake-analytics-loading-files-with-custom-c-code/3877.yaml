@@ -1,0 +1,6 @@
+id: 3877
+author:
+  name: Analyzing Web Logs with Azure Data Lake Analytics (ADLA) | Vincent-Philippe Lauzon&#039;s blog
+  url: http://vincentlauzon.com/2016/01/24/analyzing-web-logs-with-azure-data-lake-analytics-adla/
+date: 2016-01-24T19:10:29.0000000-05:00
+content: '[&#8230;] could also have stored the logs in a table, which would have accelerated future processing.  See this post as an example of how to do [&#8230;]'

@@ -1,0 +1,6 @@
+id: 298
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.wordpress.com
+date: 2011-11-08T20:55:14.0000000-05:00
+content: For sure.  As long as your code can 'predict' what the ID property name will be (e.g. Class-Name + 'ID'), then you could craft an expression tree to do conversions and compile it.

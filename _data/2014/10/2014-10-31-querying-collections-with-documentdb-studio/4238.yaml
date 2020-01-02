@@ -1,0 +1,13 @@
+id: 4238
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2016-09-09T08:57:02.0000000-04:00
+content: >-
+  Indeed, I believe the SDK used in the code base taps into an obsolete version of the API, hence the incompatibility.
+
+
+  That tool has been superseded with the Azure Portal abilities, i.e. it now does everything that tool was doing.  I would suggest using the Portal from now on.
+
+
+  Unless you have a scenario where the tool would make more sense than the portal?

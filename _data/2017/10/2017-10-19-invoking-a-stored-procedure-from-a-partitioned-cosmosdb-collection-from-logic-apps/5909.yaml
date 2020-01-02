@@ -1,0 +1,6 @@
+id: 5909
+author:
+  name: Setup for populating Cosmos DB with random data using Logic Apps &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2017/11/01/setup-for-populating-cosmos-db-with-random-data-using-logic-apps/
+date: 2017-11-01T12:00:31.0000000-04:00
+content: '[&#8230;] For this we will use a stored procedure as we explored in a past article. [&#8230;]'

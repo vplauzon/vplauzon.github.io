@@ -1,0 +1,6 @@
+id: 7333
+author:
+  name: Understanding identities in Azure AKS / Kubernetes &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2018/05/10/understanding-identities-in-azure-aks-kubernetes/
+date: 2018-05-10T06:31:05.0000000-04:00
+content: '[&#8230;] We’ve recently looked at Azure AKS (Kubernetes Cluster Managed Services).  We’ve looked at how to create a Kubernetes Cluster with 3 lines of Azure CLI. [&#8230;]'

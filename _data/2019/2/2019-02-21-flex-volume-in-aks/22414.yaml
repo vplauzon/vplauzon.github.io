@@ -1,0 +1,6 @@
+id: 22414
+author:
+  name: Adrian
+  url: ''
+date: 2019-04-04T18:32:35.0000000-04:00
+content: Do you know, if it's possible to store files (entire files like appsettings.config for example) in Azure Key Vault, and mount them in the pods?

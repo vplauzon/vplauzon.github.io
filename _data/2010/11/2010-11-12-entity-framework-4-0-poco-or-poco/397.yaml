@@ -1,0 +1,6 @@
+id: 397
+author:
+  name: nbl
+  url: ''
+date: 2012-02-13T06:57:39.0000000-05:00
+content: You still  have to hand code these pocos in the code first angle right? Might as well generate the edmx files and write your own clean poco which you use in your UI.. right?

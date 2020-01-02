@@ -1,0 +1,6 @@
+id: 22031
+author:
+  name: Requests vs Limits in Kubernetes &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2019/04/02/requests-vs-limits-in-kubernetes/
+date: 2019-04-02T06:31:32.0000000-04:00
+content: '[&#8230;] review Kubernetes specs first. Then, as we did recently with outbound traffic, we&#8217;ll simply experiment to find [&#8230;]'

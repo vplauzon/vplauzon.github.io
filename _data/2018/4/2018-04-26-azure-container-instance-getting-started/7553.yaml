@@ -1,0 +1,6 @@
+id: 7553
+author:
+  name: Event Hubs ingestion performance and throughput &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2018/06/05/event-hubs-ingestion-performance-and-throughput/
+date: 2018-06-05T06:30:44.0000000-04:00
+content: '[&#8230;] deploys an Event Hub namespace with many Azure Container Instances.  Container instances are the clients performing different [&#8230;]'

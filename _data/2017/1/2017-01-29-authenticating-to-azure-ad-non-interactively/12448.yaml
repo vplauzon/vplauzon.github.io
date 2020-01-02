@@ -1,0 +1,6 @@
+id: 12448
+author:
+  name: Raju Chapagain
+  url: ''
+date: 2019-02-05T19:58:02.0000000-05:00
+content: Hi Vincent, Your article was helpful to understand the concept. I am looking to a single sign to some third party application through our web application. The provider suggested to go through Azure AD single sign-on, but I couldn't find any relevant resources. Could you advise if you have any sample?

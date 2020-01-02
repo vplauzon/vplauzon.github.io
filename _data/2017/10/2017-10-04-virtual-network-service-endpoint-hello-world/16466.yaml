@@ -1,0 +1,6 @@
+id: 16466
+author:
+  name: Network Policies with Calico in AKS &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2019/02/27/network-policies-with-calico-in-aks/
+date: 2019-02-27T06:31:49.0000000-05:00
+content: '[&#8230;] DB access. Since Azure SQL us outside AKS Cluster, we can&#8217;t use Network Policies. We can use Service Endpoint with Azure SQL to only allow AKS to access the DB. This reduces the attack surface drastically. We [&#8230;]'

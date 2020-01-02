@@ -1,0 +1,6 @@
+id: 5718
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2017-10-12T13:58:25.0000000-04:00
+content: You should be able to.  There might be something wrong with your configuration as it seems to require a pre-existing token in the cache and it shouldn't.

@@ -1,0 +1,6 @@
+id: 6271
+author:
+  name: shahbazkhanweb
+  url: http://shahbazkhanweb.wordpress.com
+date: 2017-12-16T00:01:05.0000000-05:00
+content: 'this line takes forever:  var payload = await client.GetStringAsync($"https://graph.microsoft.com/v1.0/users/{user}");'

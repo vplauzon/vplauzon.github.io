@@ -1,0 +1,6 @@
+id: 1306
+author:
+  name: ClickOnce on CodePlex.com | Vincent-Philippe Lauzon&#039;s blog
+  url: http://vincentlauzon.wordpress.com/2014/09/17/clickonce-on-codeplex-com/
+date: 2014-09-17T19:24:01.0000000-04:00
+content: '[&#8230;] could, of course, deploy it elsewhere (for instance, in Azure Blob Storage) and reference it in your CodePlex [&#8230;]'

@@ -1,0 +1,6 @@
+id: 4427
+author:
+  name: Joining an ARM Linux VM to AAD Domain Services | Vincent-Philippe Lauzon&#039;s blog
+  url: http://vincentlauzon.com/2017/01/18/joining-an-arm-linux-vm-to-aad-domain-services/
+date: 2017-01-18T12:41:12.0000000-05:00
+content: '[&#8230;] The underlying directory could even be synced with a corporate network, in which case users could log into the VMs using their corporate account.&nbsp; I won’t cover this here but you can read about it in a previous article for AD Connect part. [&#8230;]'

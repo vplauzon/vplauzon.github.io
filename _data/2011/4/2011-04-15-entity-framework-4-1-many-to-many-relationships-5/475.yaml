@@ -1,0 +1,9 @@
+id: 475
+author:
+  name: akhilesh
+  url: ''
+date: 2012-10-19T11:15:36.0000000-04:00
+content: >-
+  I wanted to implement same relation with additional column (Count) in EmployeeOrder table.
+
+  That i am able to create but dont find a way to get and update "Count" column.

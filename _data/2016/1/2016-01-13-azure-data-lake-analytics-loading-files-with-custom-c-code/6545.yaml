@@ -1,0 +1,6 @@
+id: 6545
+author:
+  name: Azure Databricks &#8211; Spark SQL &#8211; Data Frames &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2018/01/24/azure-databricks-spark-sql-data-frames/
+date: 2018-01-24T06:32:51.0000000-05:00
+content: '[&#8230;] More recently we looked at how to analyze a data set using Resilient Distributed Dataset (RDD).  We used the Social characteristics of the Marvel Universe public dataset, replicating some experiments we did 2 years ago with Azure Data Lake. [&#8230;]'

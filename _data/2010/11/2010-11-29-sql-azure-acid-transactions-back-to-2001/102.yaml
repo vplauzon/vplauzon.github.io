@@ -1,0 +1,6 @@
+id: 102
+author:
+  name: Luis Panzano
+  url: ''
+date: 2011-03-31T05:11:55.0000000-04:00
+content: 'Vincent, you can use TransactionScope as long as your code you use it in a way that the Transaction Manager does not promote the transaction to a distributed transaction. More info about this here: http://social.technet.microsoft.com/wiki/contents/articles/handling-transactions-in-sql-azure.aspx'

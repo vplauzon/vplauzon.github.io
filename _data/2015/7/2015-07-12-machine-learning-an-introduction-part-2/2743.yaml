@@ -1,0 +1,6 @@
+id: 2743
+author:
+  name: AzureML &#8211; Polynomial Regression with SQL Transformation | Vincent-Philippe Lauzon&#039;s blog
+  url: http://vincentlauzon.com/2015/08/05/azureml-polynomial-sql-transformation/
+date: 2015-08-05T19:05:55.0000000-04:00
+content: '[&#8230;] meant to illustrate over fitting (discussed in a past blog) with AzureML.  An easy way to illustrate it is to fit a bunch of sample [&#8230;]'

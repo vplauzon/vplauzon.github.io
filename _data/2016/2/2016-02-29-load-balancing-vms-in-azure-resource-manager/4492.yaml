@@ -1,0 +1,6 @@
+id: 4492
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2017-02-17T08:53:32.0000000-05:00
+content: It's an ARM template, so you can look at https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy on how to deploy ARM templates.

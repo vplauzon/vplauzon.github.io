@@ -1,0 +1,10 @@
+id: 9865
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2019-01-22T10:49:56.0000000-05:00
+content: >-
+  I've never tried it.  What I would recommend is to use the SDK on the server side and somehow keep the continuation token around.  You can then "continue" a given query later on.  Again, I never tried it.
+
+
+  Does that sound like a plan?

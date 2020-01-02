@@ -1,0 +1,6 @@
+id: 114
+author:
+  name: Entity Framework 4.1 Release to Web (RTW) &laquo; Vincent-Philippe Lauzon&#039;s blog
+  url: http://vincentlauzon.wordpress.com/2011/04/12/entity-framework-4-1-release-to-web-rtw/
+date: 2011-04-12T12:42:38.0000000-04:00
+content: '[...] The only change done from the RC is the default length of nvarchar from 128 to MAX. [...]'

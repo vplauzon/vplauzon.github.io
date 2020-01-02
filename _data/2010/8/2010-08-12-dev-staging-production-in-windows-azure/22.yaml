@@ -1,0 +1,6 @@
+id: 22
+author:
+  name: Departmental Application Migration to Azure &ndash; Part 4 &ndash; ADFS with Azure web app &laquo; Vincent-Philippe Lauzon&#039;s blog
+  url: http://vincentlauzon.wordpress.com/2010/08/25/departmental-application-migration-to-azure-part-4-adfs-with-azure-web-app/
+date: 2010-08-25T13:31:59.0000000-04:00
+content: '[...] first deploy to staging then to production.&#160; As I mentioned in a previous blog entry, staging isn’t a real staging as Microsoft recommend to have a separate subscription altogether [...]'

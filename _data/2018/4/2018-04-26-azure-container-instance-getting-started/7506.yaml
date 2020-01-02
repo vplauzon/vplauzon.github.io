@@ -1,0 +1,6 @@
+id: 7506
+author:
+  name: Implementing &amp; Automating Azure Stream Analytics Pipeline &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2018/05/31/implementing-automating-azure-stream-analytics-pipeline/
+date: 2018-05-31T06:30:52.0000000-04:00
+content: '[&#8230;] The database consist of two items:  a summary table and a stored procedure.  The script to create them is executed by an Azure Container Instance. [&#8230;]'

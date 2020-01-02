@@ -1,0 +1,6 @@
+id: 7239
+author:
+  name: Getting started with Docker Containers in Azure &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2018/04/24/getting-started-with-docker-in-azure/
+date: 2018-04-24T06:32:25.0000000-04:00
+content: '[&#8230;] CE) or the Docker extension on any VM.  We recommend trying the templates we’ve put forward in our last article.  They spin a VM with Docker installed and ready to use for dev purposes with least parameters.  [&#8230;]'

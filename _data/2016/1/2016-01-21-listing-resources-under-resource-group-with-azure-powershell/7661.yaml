@@ -1,0 +1,10 @@
+id: 7661
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2018-06-19T15:34:59.0000000-04:00
+content: >-
+  You can scan through resources in multiple ways.  The most generic is to use Get-AzureRmResource.
+
+
+  You can also update the tags of a resource using its update cmdlet.  E.g. https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/update-azurermvm?view=azurermps-6.3.0 for VMs.

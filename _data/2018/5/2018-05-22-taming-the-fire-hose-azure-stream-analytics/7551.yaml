@@ -1,0 +1,6 @@
+id: 7551
+author:
+  name: Event Hubs ingestion performance and throughput &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2018/06/05/event-hubs-ingestion-performance-and-throughput/
+date: 2018-06-05T06:30:37.0000000-04:00
+content: '[&#8230;] looked at Event Hubs as the ingestion end of Azure Stream Analytics in two recent articles (here &amp; [&#8230;]'

@@ -1,0 +1,10 @@
+id: 5336
+author:
+  name: davalmo
+  url: ''
+date: 2017-08-25T17:13:19.0000000-04:00
+content: >-
+  Hi ,your post is very interesting, I already did all the steps, I actually get a token but I do not understand when I use the microsoft graph api to upload a file is not working, in the AuthContext I only see that it gets the token, but not the user information or one account when save the file.
+
+
+  also create a console application and a web aplication and two Azure Aplications With respect to the previous article but i think this applications dont work together.

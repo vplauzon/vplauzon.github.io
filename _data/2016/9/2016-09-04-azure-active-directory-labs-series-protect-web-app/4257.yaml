@@ -1,0 +1,9 @@
+id: 4257
+author:
+  name: JJ
+  url: http://www.ima.it
+date: 2016-09-20T12:18:13.0000000-04:00
+content: >-
+  hello, I am not a developer so apologies but I'm not familiar at all with Visual Studio. when I add "AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;" I have a red line and it says that "'claimtypes' does not exist in the current contex". Do I have to install anything on top of VS?
+
+  Thanks!

@@ -1,0 +1,6 @@
+id: 5006
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2017-07-03T17:46:17.0000000-04:00
+content: Hum...  that's interesting.  You might have "over training" but I doubt it would be that pronounced.  Can you plot sample points (including training points but also new points) to check how your predictors is looking like?

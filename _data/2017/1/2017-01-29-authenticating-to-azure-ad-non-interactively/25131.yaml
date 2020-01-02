@@ -1,0 +1,9 @@
+id: 25131
+author:
+  name: Sree Chi
+  url: ''
+date: 2019-08-02T13:21:54.0000000-04:00
+content: >-
+  Hi Vincent,
+
+  Can you help in replacing LDAP with ADAL.net like what you explained here? Do i need to register two apps in the Azure AD? I thought i need to create a native app and i am not sure on Service app and APP ID uri. Can you please let me know in figuring out the "APP ID URI" ?

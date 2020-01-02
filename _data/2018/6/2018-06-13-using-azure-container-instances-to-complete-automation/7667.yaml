@@ -1,0 +1,6 @@
+id: 7667
+author:
+  name: Cosmos DB Configuration Management &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2018/06/20/cosmos-db-configuration-management/
+date: 2018-06-20T06:32:58.0000000-04:00
+content: '[&#8230;] Cosmos DB Target Config takes the form of a .NET Core Console Application.  It can easily be used as a Container Instance in an ARM Template deployment.  We discussed this automation approach here. [&#8230;]'

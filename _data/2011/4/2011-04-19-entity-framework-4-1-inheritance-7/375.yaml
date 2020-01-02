@@ -1,0 +1,6 @@
+id: 375
+author:
+  name: flindeberg
+  url: ''
+date: 2012-01-18T02:49:53.0000000-05:00
+content: "Interesting, though I wonder; how does EF handle inherited properties from interfaces in the various scenarios? \n\nI guess TPT in this case would generate a massive key-explosion? And therefor sink performance for advanced queries.\n\nWould TPH use the same columns for subclasses inheriting the same interfaces? Or if implementing an inherited interface which a sibling class implements? \n\nJust making a guess that TPC would be a good trade-off between performance and database readability.\n\nI'm really just looking for a way to make the application level developer not to have to care about database design and being unable to seriously fuck stuff up at database level with massive use of interfaces and inheritance for application logic layer stuff."

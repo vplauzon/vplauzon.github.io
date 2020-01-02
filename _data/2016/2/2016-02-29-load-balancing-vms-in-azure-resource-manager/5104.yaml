@@ -1,0 +1,13 @@
+id: 5104
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2017-07-17T18:09:36.0000000-04:00
+content: >-
+  Availability set is a one time decision:  at the creation of VMs.  You can't join or leave an availability set.
+
+
+  So unfortunately in your case, if you have pre-existing VMs, you won't be able to put them in the Availability Set.
+
+
+  The only solution I see is to destroy the VMs while keeping the disks.  You can then recreate the VMs using the disks and then joining the availability set.  You can do that either using the portal or in an ARM template (see https://vincentlauzon.com/2016/05/30/recreating-vms-in-azure/).

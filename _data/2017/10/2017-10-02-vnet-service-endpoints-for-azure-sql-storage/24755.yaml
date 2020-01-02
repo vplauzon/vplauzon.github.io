@@ -1,0 +1,22 @@
+id: 24755
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2019-06-27T08:42:03.0000000-04:00
+content: >-
+  Yes...  but they need to be admin on the SQL resource.  It's equivalent to opening the Azure Portal and changing the Firewall rules.
+
+
+  There are 2 Network Access control on Azure SQL (and most PaaS services):  Firewall &amp; Service Endpoint.  The former control access of Public IPs, the latter, of private IPs.
+
+
+  In the setup we shown in this diagram, we do not use the Firewall.  Hence we disable all public IP access.  We then only allow subnets using Service Endpoint.
+
+
+  The procedure you mention is SSMS allowing you to configure the Firewall to authorize client public IP.  Doing so, you break the setup...
+
+
+  So, yes, you are correct, but you need to be contributor on the resource to do so and yes, you can break the configuration when you are contributor...  But the setup is still secure if no one tempers with it.
+
+
+  In a typical production environment, developers / DBAs wouldn't be contributor on the resource and hence wouldn't be able to do that.
