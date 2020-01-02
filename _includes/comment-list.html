@@ -26,7 +26,7 @@
 
 <h2>Comments Debug</h2>
 
-{% assign pathParts = page.path | split("/") %}
+{% assign pathParts = page.path | split: "/" %}
 
 <p>Year:  {{ pathParts[1] }}</p>
 <p>Month:  {{ pathParts[2] }}</p>
