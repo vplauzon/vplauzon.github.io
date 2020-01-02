@@ -36,6 +36,7 @@
 <p>Name:  {{ postNameParts[0] }}</p>
 
 <p>Comments:  {{ comments }}</p>
+<p>Comments size:  {{ comments | size }}</p>
 
 {% for comment in comments %}
   <p>Comment:  {{ comment }}</p>
@@ -56,3 +57,4 @@
 <p>page.dir:  {{ page.dir }}</p>
 <p>page.path:  {{ page.path }}</p>
 <p>Test value:  {{ site.data["2010"]["6"]["2010-06-02-departmental-application-migration-to-azure-part-1"]["8"].author.name }}</p>
+<p>Test value2:  {{ site.data[pathParts[1]][pathParts[2]][postNameParts[0]]["4447"].author.name }}</p>
