@@ -27,9 +27,11 @@
 <h2>Comments Debug</h2>
 
 {% assign pathParts = page.path | split: "/" %}
-{% assign postNameParts = pathParts[3] | split: "." %}
-{% assign comments = site.data[pathParts[1]][pathParts[2]][postNameParts[0]] %}
 {% assign year = pathParts[1] %}
+{% assign month = pathParts[2] %}
+{% assign postNameParts = pathParts[3] | split: "." %}
+{% assign postName = postNameParts[0] %}
+{% assign comments = site.data[year][month][postName] %}
 
 <p>Year:  "{{ year }}"</p>
 <p>Month:  {{ pathParts[2] }}</p>
@@ -40,16 +42,12 @@
 <p>Size year year:  {{ site.data[year] | size }}</p>
 <p>My Size year:  {{ site.data["2017"] | size }}</p>
 <p>Size Month:  {{ site.data[pathParts[1]][pathParts[2]] | size }}</p>
+<p>Size month Month:  {{ site.data[year][month] | size }}</p>
 <p>Size Name:  {{ site.data[pathParts[1]][pathParts[2]][postNameParts[0]] | size }}</p>
+<p>Size name name:  {{ site.data[year][month][postName] | size }}</p>
 
 <p>Comments:  {{ comments }}</p>
 <p>Comments size:  {{ comments | size }}</p>
-
-{% for comment in comments %}
-  <p>Comment:  {{ comment }}</p>
-  <p>Author:  {{ comment.author }}</p>
-  <p>Author's name:  {{ comment.author.name }}</p>
-{% endfor %}
 
 {% for comment in comments %}
   <p>Comment:  {{ comment }}</p>
