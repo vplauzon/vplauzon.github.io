@@ -28,14 +28,20 @@
 
 {% assign pathParts = page.path | split: "/" %}
 {% assign postNameParts = pathParts[3] | split: "." %}
-{% assign comments = site.data[pathParts[1]][pathParts[2]][postNameParts[1]] %}
+{% assign comments = site.data[pathParts[1]][pathParts[2]][postNameParts[0]] %}
 
 <p>Year:  {{ pathParts[1] }}</p>
 <p>Month:  {{ pathParts[2] }}</p>
 <p>3rd:  {{ pathParts[3] }}</p>
-<p>Name:  {{ postNameParts[1] }}</p>
+<p>Name:  {{ postNameParts[0] }}</p>
 
 <p>Comments:  {{ comments }}</p>
+
+{% for comment in comments %}
+  <p>Comment:  {{ comment }}</p>
+  <p>Author:  {{ comment.author }}</p>
+  <p>Author's name:  {{ comment.author.name }}</p>
+{% endfor %}
 
 {% for comment in comments %}
   <p>Comment:  {{ comment }}</p>
