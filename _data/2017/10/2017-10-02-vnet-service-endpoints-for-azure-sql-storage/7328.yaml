@@ -1,6 +1,0 @@
-id: 7328
-author:
-  name: Mon Burayag
-  url: ''
-date: 2018-05-09T19:45:51.0000000-04:00
-content: With NSG allowing access to Azure SQL PaaS using tag and port 1433, you can disable the Service Endpoint and you still connect from IaaS VM to PaaS SQL. In other words, the SQL Service Endpoint is not really helping to secure communication. It is useless I should say. You can't use SQL Service Endpoint WITHOUT allowing the Azure VM to go to public internet. It would have been better if everything will happen without vNet\Subnet and SQL Serivce Endpoint only. But it's not.

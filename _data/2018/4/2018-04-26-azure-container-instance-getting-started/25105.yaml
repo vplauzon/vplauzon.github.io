@@ -1,6 +1,0 @@
-id: 25105
-author:
-  name: API Management &#8211; OAuth and private back-ends &#8211; Vincent-Philippe Lauzon&#039;s
-  url: http://vincentlauzon.com/2019/07/31/api-management-oauth-and-private-back-ends/
-date: 2019-07-31T06:31:21.0000000-04:00
-content: '[&#8230;] private service is implemented using an Azure Container Instance for pure convenience: it is quick and simple to [&#8230;]'

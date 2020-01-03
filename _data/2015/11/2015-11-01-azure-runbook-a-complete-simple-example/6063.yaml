@@ -1,6 +1,0 @@
-id: 6063
-author:
-  name: Using Application Gateway with VNET peering &#8211; Vincent-Philippe Lauzon&#039;s
-  url: http://vincentlauzon.com/2017/11/20/using-application-gateway-with-vnet-peering/
-date: 2017-11-20T06:32:48.0000000-05:00
-content: '[&#8230;] For Scale Set where the size of the set (i.e. the number of instances, or number of VMs) do not change much, this solution is ok.  When a Scale Set is on auto scale and the number of instances change regularly, it is important to run that script often (e.g. by using Azure Automation / Runbooks). [&#8230;]'

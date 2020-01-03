@@ -1,6 +1,0 @@
-id: 24749
-author:
-  name: Okan Aslaner
-  url: ''
-date: 2019-06-26T23:49:55.0000000-04:00
-content: The last diagram shows that access from the Internet to the Azure SQL db is not allowed.  If the user is trying to connect to the Azure SQL db using SSMS, the user will be asked if he/she wants to add the client IP to the whitelist of the firewall.  The user will be able to add his/her client IP if they have contributor level access to the Azure SQL resource.  At that point, if they know the username/password for the db, they will be able to get in.

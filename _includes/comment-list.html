@@ -31,20 +31,14 @@
 {% assign month = pathParts[2] %}
 {% assign postNameParts = pathParts[3] | split: "." %}
 {% assign postName = postNameParts[0] %}
-{% assign comments = ((site.data[year])[month])[postName] %}
-
-<p>Year:  "{{ year }}"</p>
-<p>Month:  {{ pathParts[2] }}</p>
-<p>3rd:  {{ pathParts[3] }}</p>
-<p>Name:  {{ postNameParts[0] }}</p>
-
-<p>Size year year:  {{ site.data[year] | size }}</p>
-<p>Size month Month:  {{ (site.data[year])[month] | size }}</p>
-<p>Size name name:  {{ ((site.data[year])[month])[postName] | size }}</p>
+{% assign comments = site.data[year][month][postName].comments %}
 
 <p>Comments size:  {{ comments | size }}</p>
 
 {% for comment in comments %}
+  <p>Comment:  {{ comment }}</p>
+  <p>Id:  {{ comment.id }}</p>
+  <p>Date:  {{ comment.date }}</p>
   <p>Author:  {{ comment.author }}</p>
   <p>Author's name:  {{ comment.author.name }}</p>
   <p>Content:  {{ comment.content }}</p>

@@ -1,6 +1,0 @@
-id: 160
-author:
-  name: Entity Framework 4.1 之六：乐观并发 &raquo; NoName
-  url: http://blog.luo1002.com/2011/05/entity-framework-4-1-%e4%b9%8b%e5%85%ad%ef%bc%9a%e4%b9%90%e8%a7%82%e5%b9%b6%e5%8f%91/
-date: 2011-05-08T02:10:43.0000000-04:00
-content: '[...] 原文地址：http://vincentlauzon.wordpress.com/2011/04/17/entity-framework-4-1-optimistic-concurrency-6/ 看到 Entity Framework 4.1 推荐英文教程，为了帮大家看起来方便一些，简单翻译下一。这是一个系列，共有 8 篇，这是第&nbsp;6 篇。 [...]'

@@ -1,6 +1,0 @@
-id: 4343
-author:
-  name: Single VM SLA | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2016/11/23/single-vm-sla/
-date: 2016-11-23T11:43:14.0000000-05:00
-content: '[&#8230;] With an Highly Available configuration, i.e. 2+ VMs in Availability Set, the downtime of one VM doesn’t affect the availability of the availability set since there is a guarantee that there will always be one VM available. [&#8230;]'

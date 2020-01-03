@@ -1,6 +1,0 @@
-id: 7863
-author:
-  name: Docker multi-stage build &#8211; Vincent-Philippe Lauzon&#039;s
-  url: http://vincentlauzon.com/2018/07/11/docker-multi-stage-build/
-date: 2018-07-11T06:33:03.0000000-04:00
-content: '[&#8230;] builds.  We won’t repeat the content here.  Instead, we’ll give an example with our recent Cosmos DB Configuration Management tool.  The tool is deployed as a Docker Image available on Docker [&#8230;]'

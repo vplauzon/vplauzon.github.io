@@ -1,6 +1,0 @@
-id: 8150
-author:
-  name: Deploying AKS with ARM Template – Network integration &#8211; Vincent-Philippe Lauzon&#039;s
-  url: http://vincentlauzon.com/2018/08/28/deploying-aks-with-arm-template-network-integration/
-date: 2018-08-28T06:30:53.0000000-04:00
-content: '[&#8230;] recently wrote an article showing how to create a Service Principal. We recommend creating a principal to use the [&#8230;]'

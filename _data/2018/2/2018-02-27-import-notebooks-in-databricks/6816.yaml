@@ -1,6 +1,0 @@
-id: 6816
-author:
-  name: Azure Databricks &#8211; Spark SQL &#8211; Data Frames &#8211; Vincent-Philippe Lauzon&#039;s
-  url: http://vincentlauzon.com/2018/01/24/azure-databricks-spark-sql-data-frames/
-date: 2018-02-27T09:18:16.0000000-05:00
-content: '[&#8230;] ensure future compatibility, we did copy the dataset in GitHub, along with the notebook  (see this article on how to import it in your [&#8230;]'

@@ -1,6 +1,0 @@
-id: 4447
-author:
-  name: Using Microsoft Graph API to interact with Azure AD | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2017/01/31/using-microsoft-graph-api-to-interact-with-azure-ad/
-date: 2017-01-31T06:05:37.0000000-05:00
-content: '[&#8230;] my last article, I showed how to authenticate on Azure AD using a user name / password without using the native web [&#8230;]'

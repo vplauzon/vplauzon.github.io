@@ -1,6 +1,0 @@
-id: 4297
-author:
-  name: stefflocke
-  url: ''
-date: 2016-10-18T09:28:15.0000000-04:00
-content: Heya Vincent, might be worth keeping an eye out on the Bingle Webmasters tools' search consoles. A lot of refactors here might cause a lot of broken links in the wild. I use yoast SEO Premium, which makes it easy to set up all the redirects, but of course you can do it manually, or programmatically yourself.

@@ -1,6 +1,0 @@
-id: 5777
-author:
-  name: Renaming Virtual Machine Disks | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2017/10/17/renaming-virtual-machine-disks/
-date: 2017-10-17T07:01:01.0000000-04:00
-content: '[&#8230;] second challenge is that, as we’ve seen with the Virtual Machine anatomy, although data disks can be added and removed on the fly, the OS disk (i.e. primary disk) cannot.  [&#8230;]'

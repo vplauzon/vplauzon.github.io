@@ -1,6 +1,0 @@
-id: 7638
-author:
-  name: Using Azure Container Instances to complete automation &#8211; Vincent-Philippe Lauzon&#039;s
-  url: http://vincentlauzon.com/2018/06/13/using-azure-container-instances-to-complete-automation/
-date: 2018-06-13T06:32:07.0000000-04:00
-content: '[&#8230;] Recently, we provided an ARM template deploying a full environment to test Azure Stream Analytics in action. [&#8230;]'

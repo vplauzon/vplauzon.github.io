@@ -1,6 +1,0 @@
-id: 4047
-author:
-  name: Securing REST API using Azure Active Directory | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2016/03/11/securing-rest-api-using-azure-active-directory/
-date: 2016-04-27T12:12:37.0000000-04:00
-content: '[&#8230;] building a three tier app, exposes you to the powerful Swagger integration (you can read about Swagger in this post) and the configurations around Cross-Origin Resource Sharing [&#8230;]'

@@ -1,6 +1,0 @@
-id: 5848
-author:
-  name: Testing Cosmos DB Performance With Geospatial Data &#8211; Curated SQL
-  url: https://curatedsql.com/2017/10/26/testing-cosmos-db-performance-with-geospatial-data/
-date: 2017-10-26T08:10:21.0000000-04:00
-content: '[&#8230;] Vincent-Philippe Lauzon has done some performance testing of Cosmos DB when querying geospatial data: [&#8230;]'

@@ -1,6 +1,0 @@
-id: 2694
-author:
-  name: SQL Server 2016 | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2015/07/22/sql-server-2016/
-date: 2015-07-22T19:01:08.0000000-04:00
-content: '[&#8230;] cryptographic keys aren’t stored in SQL Database either but on the client-side (Azure Vault anyone?) which means that even if your entire database gets stolen, the thief won’t be able to [&#8230;]'

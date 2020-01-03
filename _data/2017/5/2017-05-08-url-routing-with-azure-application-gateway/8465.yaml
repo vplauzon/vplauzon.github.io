@@ -1,6 +1,0 @@
-id: 8465
-author:
-  name: About Ingress in Azure Kubernetes Service (AKS) &#8211; Vincent-Philippe Lauzon&#039;s
-  url: http://vincentlauzon.com/2018/10/10/about-ingress-in-azure-kubernetes-service-aks/
-date: 2018-10-10T06:32:11.0000000-04:00
-content: '[&#8230;] first one is what in Application Gateway parlance we would call URL Based routing. For instance, an ingress takes requests for [&#8230;]'

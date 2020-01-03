@@ -1,6 +1,0 @@
-id: 15309
-author:
-  name: Azure AD Pod Identity in AKS &#8211; Vincent-Philippe Lauzon&#039;s
-  url: http://vincentlauzon.com/2019/02/19/azure-ad-pod-identity-in-aks/
-date: 2019-02-19T06:30:48.0000000-05:00
-content: '[&#8230;] To do one of the scenarios enumerated above traditionally, we would need to get a hold to a Service Principal&#8217;s client-id and secret / certificate. We can then call Azure AD authentication API and receive an access token. We can then use that access token with different API calls (see this article for an example). [&#8230;]'

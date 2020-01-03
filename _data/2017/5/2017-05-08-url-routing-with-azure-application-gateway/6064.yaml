@@ -1,6 +1,0 @@
-id: 6064
-author:
-  name: Using Application Gateway with VNET peering &#8211; Vincent-Philippe Lauzon&#039;s
-  url: http://vincentlauzon.com/2017/11/20/using-application-gateway-with-vnet-peering/
-date: 2017-11-20T06:32:51.0000000-05:00
-content: '[&#8230;] our example, we took the code from a past article and modify it for VNET [&#8230;]'

@@ -1,6 +1,0 @@
-id: 8750
-author:
-  name: Understanding simple HTTP Ingress in AKS &#8211; Vincent-Philippe Lauzon&#039;s
-  url: http://vincentlauzon.com/2018/11/21/understanding-simple-http-ingress-in-aks/
-date: 2018-11-21T06:31:07.0000000-05:00
-content: '[&#8230;] need Helm. We discussed Helm authoring. Here we are just going to use its package management capacity as a [&#8230;]'

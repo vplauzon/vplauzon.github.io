@@ -1,6 +1,0 @@
-id: 5949
-author:
-  name: A few CosmosDB query limitations &#8211; Vincent-Philippe Lauzon&#039;s
-  url: http://vincentlauzon.com/2017/11/06/a-few-cosmosdb-query-limitations/
-date: 2017-11-06T06:31:45.0000000-05:00
-content: '[&#8230;] a Cosmos DB account with a target API, we can still use other APIs.  See, for instance, how to access a graph in Cosmos DB with SQL / DocumentDB API.  We can also change the Portal experience from one API to [&#8230;]'

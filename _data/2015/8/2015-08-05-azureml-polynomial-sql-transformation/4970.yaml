@@ -1,6 +1,0 @@
-id: 4970
-author:
-  name: Andy
-  url: ''
-date: 2017-06-27T09:46:59.0000000-04:00
-content: Thanks for the great article!  Simply adding one X*X column using the Apply SQL Transform method you outlined significantly improved the accuracy of my model to a coefficient of 0.97.  However, when asking the trained model to predict new values, the accuracy is horrendous; previously if I passed a "0" value to the trained web service, it was within 10%, but now it's way way far off.  Any tips for how to use this approach for more accurate predictions?

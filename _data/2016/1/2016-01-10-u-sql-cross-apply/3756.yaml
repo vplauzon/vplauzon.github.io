@@ -1,6 +1,0 @@
-id: 3756
-author:
-  name: Azure Data Lake Analytics &#8211; Loading files with custom C# code | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2016/01/13/azure-data-lake-analytics-loading-files-with-custom-c-code/
-date: 2016-01-13T19:02:58.0000000-05:00
-content: '[&#8230;] In the third expression, we explode the array of relation IDs on different rows.  I covered the CROSS APPLY EXPLODE in the following post. [&#8230;]'
