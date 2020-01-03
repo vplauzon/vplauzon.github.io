@@ -40,11 +40,13 @@
 <p>Comments size:  {{ comments | size }}</p>
 
 {% for comment in comments %}
-  <p>Comment:  {{ comment }}</p>
-  <p>Id:  {{ comment.id }}</p>
-  <p>Date:  {{ comment.date }}</p>
-  <p>Author:  {{ comment.author }}</p>
-  <p>Author's name:  {{ comment.author.name }}</p>
-  <p>Content:  {{ comment.content }}</p>
+  {% assign oneComment = comment[1] %}
+  <p>Comment:  {{ oneComment }}</p>
+  <p>Id:  {{ oneComment.id }}</p>
+  <p>Date:  {{ oneComment.date }}</p>
+  <p>Author:  {{ oneComment.author }}</p>
+  <p>Author's name:  {{ oneComment.author.name }}</p>
+  <p>Content:  {{ oneComment.content }}</p>
+  <p>---</p>
 {% endfor %}
 
