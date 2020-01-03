@@ -1,0 +1,6 @@
+id: 7505
+author:
+  name: Implementing &amp; Automating Azure Stream Analytics Pipeline &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2018/05/31/implementing-automating-azure-stream-analytics-pipeline/
+date: 2018-05-31T06:30:50.0000000-04:00
+content: '[&#8230;] Connections are Azure resources.  They externalize connection configuration.  We have covered in another article how to create them in an ARM Template. [&#8230;]'

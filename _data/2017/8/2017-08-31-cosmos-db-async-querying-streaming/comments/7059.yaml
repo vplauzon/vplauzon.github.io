@@ -1,0 +1,16 @@
+id: 7059
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2018-03-30T14:15:50.0000000-04:00
+content: >-
+  Totally!
+
+
+  In the sample I gave I went the "let's load everything" route.  A more RAM conscious route would be to yield as you go.  I did do that in some private (i.e. I didn't blog about it) implementation and it works well.  I basically defined an "IAsyncEnumerable" interface, which I found has been missing in .NET since we introduced async.
+
+
+  I believe there is such an async-enumerable coming in an upcoming version of the Fx so it will be a nice opportunity to have a standard to build upon instead of my "Vincent-Async-Enumerable".
+
+
+  The advantage by doing so is RAM as you rightfully pointed out.  Also you can stop going through the list if you found what you were looking for...

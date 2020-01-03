@@ -1,0 +1,16 @@
+id: 6
+author:
+  name: David Chou
+  url: http://blogs.msdn.com/dachou
+date: 2010-06-16T01:42:30.0000000-04:00
+content: >-
+  Great posts Vincent (read through some of your other posts on the blog as well; including the over 10K customers on Azure - internally we actually see a lot more than that but we will probably publish the actual numbers at some point)! And thank you for taking a look at the Windows Azure platform:)
+
+
+  For the next part, and you probably know this already, try using Windows Identity Foundation (http://msdn.microsoft.com/en-us/security/aa570351.aspx) to integrate claims-based identities into an application.
+
+
+  A scenario I think is interesting when leveraging claims-based identities is when facilitating B2B integrations, and via the Windows Azure AppFabric which can serve as the intermediary between organizations and enabling them to use their own identities to communicate with each other's services. More food for thought!
+
+
+  Best, -David Chou (Microsoft)

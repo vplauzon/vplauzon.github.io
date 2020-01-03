@@ -1,0 +1,6 @@
+id: 7696
+author:
+  name: Turner Bass
+  url: http://laundryandlightbulbs.wordpress.com
+date: 2018-06-28T14:24:07.0000000-04:00
+content: "This has been really helpful, but I think it is worth noting the \"Override Backend Path\" feature that is available now which allows the /a/ route to be / when it gets to the server. \n\nSo for instance, using the Resource Manager, if I want my /a/ route to actually hit the default / route on the server it is pointed to, I would go to my Backend HTTP Settings and fill in the \"Override Backend Path\" with / then in the Rule I was using set the HTTP Setting for that path to be the HTTP Settings I made the override on. So the functionality is at least there if it is needed. This would make \"mydomain.com/a/\" still look like \"mydomain.com/a/\" but route to \"mydomain.com\" behind the scenes."

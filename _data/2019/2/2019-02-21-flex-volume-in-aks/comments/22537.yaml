@@ -1,0 +1,6 @@
+id: 22537
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2019-04-05T18:25:12.0000000-04:00
+content: Another way is to insert your secret in your Continuous Delivery (CD) process.  This way you do not put secrets in source control, you put them in KeyVault and you interrogate Key Vault during the CD process.  Typically app settings files are XML, JSON or YAML which can all easily be manipulated in CD process to insert secrets in them.

@@ -1,0 +1,6 @@
+id: 5452
+author:
+  name: 'Hacking: accessing a graph in Cosmos DB with SQL / DocumentDB API | Vincent-Philippe Lauzon&#039;s blog'
+  url: http://vincentlauzon.com/2017/09/05/hacking-accessing-a-graph-in-cosmos-db-with-sql-documentdb-api/
+date: 2017-09-05T06:02:09.0000000-04:00
+content: '[&#8230;] we build on the code from the Cosmos DB async streaming article.  We simply read all the documents in the graph with DocumentDB API and output them in JSON [&#8230;]'

@@ -1,0 +1,12 @@
+id: 14284
+author:
+  name: Ryan Berger
+  url: http://thelendingside.com
+date: 2019-02-14T13:45:09.0000000-05:00
+content: >-
+  Also, a quick question for veritifaction. Are you automatically adding the databases you are creating into the elastic pools? The screen shots confused me a bit, as you show the databases already in the pools. I am struggling to have my template create the elastic pool and THEN automatically add the database to that new pool. I've got my resources structured out and using the appropriate depends on. The below lines of code (properties of databases) seem like they should assign the databaseto the elastic pool, but I'm having no luck.
+
+
+  <pre><code>    "requestedServiceObjectiveName": "ElasticPool",
+      "elasticPoolName": "[variables('Pool B')]"
+  </code></pre>

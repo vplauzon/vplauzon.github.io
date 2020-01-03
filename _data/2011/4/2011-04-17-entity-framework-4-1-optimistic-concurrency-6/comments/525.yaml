@@ -1,0 +1,6 @@
+id: 525
+author:
+  name: Tome
+  url: ''
+date: 2012-11-26T21:14:42.0000000-05:00
+content: Hi my code returns an OptimisticConcurrencyException instead of an DbUpdateConcurrencyException, do you know what would be the problem?

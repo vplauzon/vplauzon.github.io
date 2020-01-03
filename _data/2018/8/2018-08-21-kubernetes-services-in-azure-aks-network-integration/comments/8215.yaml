@@ -1,0 +1,6 @@
+id: 8215
+author:
+  name: AKS with Kubenet vs Azure Networking plug-in &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2018/09/06/aks-with-kubenet-vs-azure-networking-plug-in/
+date: 2018-09-06T06:30:22.0000000-04:00
+content: '[&#8230;] we&#8217;ve seen in a past article, pods are assigned private IPs from an Azure Virtual Network. Those IPs belong to the NICs of the [&#8230;]'

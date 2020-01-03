@@ -1,0 +1,6 @@
+id: 8149
+author:
+  name: Deploying AKS with ARM Template – Network integration &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2018/08/28/deploying-aks-with-arm-template-network-integration/
+date: 2018-08-28T06:30:50.0000000-04:00
+content: '[&#8230;] needs a service principal as we&#8217;ve explored in a past article. The ARM template hence requires three parameters related to the service [&#8230;]'

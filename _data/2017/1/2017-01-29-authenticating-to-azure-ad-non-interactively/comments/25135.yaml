@@ -1,0 +1,9 @@
+id: 25135
+author:
+  name: Sree Chi
+  url: ''
+date: 2019-08-02T13:59:31.0000000-04:00
+content: >-
+  Hi Vincent,
+
+  I am trying to replace LDAP in a web application. Created the client as "public client" app and created service app as "web". No more i see "WebApp /API" and "Native". Instead listed as "Web" and "public client". But not sure what to give for "APP ID URI" for the service app. is that the web application login URL?

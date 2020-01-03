@@ -1,0 +1,6 @@
+id: 5613
+author:
+  name: Moving from Standard to Premium disks and back | Vincent-Philippe Lauzon&#039;s blog
+  url: http://vincentlauzon.com/2017/09/27/moving-from-standard-to-premium-disks-and-back/
+date: 2017-09-27T17:14:13.0000000-04:00
+content: '[&#8230;] the disk latency but also its resilience (for instance, only VMs with Premium disks can have a Single-VM SLA).  We might want to move from Premium to Standard in order to drive the cost of solution down, [&#8230;]'

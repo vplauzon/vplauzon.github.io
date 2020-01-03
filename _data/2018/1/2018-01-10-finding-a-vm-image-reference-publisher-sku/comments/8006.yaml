@@ -1,0 +1,13 @@
+id: 8006
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2018-08-14T09:08:43.0000000-04:00
+content: >-
+  Not that I know of.
+
+
+  Are you looking for Azure VMs or Azure VM Images?
+
+
+  If it's the latter, I don't think there is meta data for OS build number.  If it's the former, you could implement your own tagging using Azure tags and then query Azure to find all VMs having a specific tag...

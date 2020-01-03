@@ -1,0 +1,6 @@
+id: 5712
+author:
+  name: Siddharth Dhawan
+  url: https://www.facebook.com/app_scoped_user_id/1587049527982815/
+date: 2017-10-12T03:50:11.0000000-04:00
+content: 'Hey, can i tried to use the same approach to authenticate an AD user to a web app. I got the following exception: "Failed to acquire token silently as no token was found in the cache"'

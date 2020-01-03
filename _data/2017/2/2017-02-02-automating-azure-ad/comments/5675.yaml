@@ -1,0 +1,17 @@
+id: 5675
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2017-10-03T14:56:06.0000000-04:00
+content: >-
+  Hi Mavi,
+
+
+
+  AAD tenants do not belong to subscriptions like other Azure resources.  So they aren't limited to a subscription (see https://docs.microsoft.com/en-us/azure/active-directory/active-directory-how-subscriptions-associated-directory).  If that helps...
+
+
+  Otherwise, the way to that would be to bring the users in a tenant, using AAD B2B (see https://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+
+
+  But in general, ask yourself why you have two tenants.  It usually result in a mess.  User identity is key within an application and you shouldn't spread it around multiple tenants unless they are from different organisations, in which case you can integrate with B2B.

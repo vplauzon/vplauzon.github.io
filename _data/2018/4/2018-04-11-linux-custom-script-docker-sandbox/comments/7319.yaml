@@ -1,0 +1,6 @@
+id: 7319
+author:
+  name: Get Started with Kubernetes (AKS) in Azure &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2018/05/08/get-started-with-kubernetes-aks-in-azure/
+date: 2018-05-08T06:30:55.0000000-04:00
+content: '[&#8230;] It is quite easy and convenient to do this demo on our laptop.  Same thing for any training (e.g. those suggested in the previous section) .  It requires a Linux environment.  We use Windows Subsystem for Linux (aka bash shell).  If for some reason that isn’t possible, we can always provision a VM in Azure with Azure CLI. [&#8230;]'

@@ -1,0 +1,6 @@
+id: 6615
+author:
+  name: Azure Databricks &#8211; Parsing escaping CSV files in Spark &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2018/02/07/parsing-escaping-csv-files-in-spark/
+date: 2018-02-07T06:32:09.0000000-05:00
+content: '[&#8230;] then looked at Resilient Distributed Datasets (RDDs) &amp; Spark SQL / Data Frames.  We also looked at an example of more tedious transformation prior to querying using the H-1B [&#8230;]'

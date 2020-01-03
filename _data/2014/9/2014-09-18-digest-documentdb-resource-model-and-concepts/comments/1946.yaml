@@ -1,0 +1,6 @@
+id: 1946
+author:
+  name: DocumentDB Async Querying &amp; Streaming | Vincent-Philippe Lauzon&#039;s blog
+  url: http://vincentlauzon.com/2015/01/06/documentdb-async-querying-streaming/
+date: 2015-01-06T22:13:00.0000000-05:00
+content: '[&#8230;] with the .NET client SDK of Azure DocumentDB, I couldn&#8217;t find a way to query the store [&#8230;]'

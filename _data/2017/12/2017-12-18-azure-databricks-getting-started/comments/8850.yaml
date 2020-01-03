@@ -1,0 +1,17 @@
+id: 8850
+author:
+  name: Gerhard Brueckl
+  url: https://blog.gbrueckl.at/
+date: 2018-11-30T04:01:19.0000000-05:00
+content: >-
+  As there are no official PowerShell cmdlets for the Databricks REST API (and probably will never be according to my information), I created a module and uploaded it to the PowerShell gallery
+
+  https://www.powershellgallery.com/packages/DatabricksPS
+
+
+  The cmdlets work with Databricks on Azure and also Databricks on AWS
+
+
+  I also blogged about it here:
+
+  https://blog.gbrueckl.at/2018/11/powershell-module-databricks-azure-aws/

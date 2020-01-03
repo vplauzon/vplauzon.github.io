@@ -1,0 +1,10 @@
+id: 6935
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2018-03-17T07:34:15.0000000-04:00
+content: >-
+  I haven't looked into it.
+
+
+  It likely still is available in the REST API, but if it disappeared from the SDK, it is likely that the API is going to be removed in time.

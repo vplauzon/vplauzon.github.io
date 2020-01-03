@@ -1,0 +1,6 @@
+id: 2407
+author:
+  name: Bill Forney
+  url: http://www.facebook.com/508703965
+date: 2015-05-08T05:20:40.0000000-04:00
+content: You could rewrite this to return an IObservable and push the results out as they come in. You can then use the IObservable as an enumerable or subscribe to it and react. Just a thought.

@@ -1,0 +1,6 @@
+id: 329
+author:
+  name: Possible pitfall when using EF Migrations | Jayway Team Blog - Sharing Experience
+  url: http://blog.jayway.com/2011/12/14/possible-pitfall-when-using-ef-migrations/
+date: 2011-12-14T08:42:09.0000000-05:00
+content: '[...] friendly advice is to review your migrations or manually configure naming of relationship tables for full [...]'

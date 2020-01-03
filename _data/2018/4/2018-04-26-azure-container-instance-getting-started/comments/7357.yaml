@@ -1,0 +1,6 @@
+id: 7357
+author:
+  name: More reliable Replica Sets in AKS &#8211; Part 1 &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2018/05/15/more-reliable-replica-sets-in-aks-part-1/
+date: 2018-05-15T06:32:04.0000000-04:00
+content: '[&#8230;] the same Docker Image:  vplauzon/get-started:part2-no-redis.  We introduced that container in a past article.  It is a hello-world Flask app and consumes very little resources.  It won’t create memory or [&#8230;]'

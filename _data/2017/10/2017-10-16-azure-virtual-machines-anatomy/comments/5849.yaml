@@ -1,0 +1,22 @@
+id: 5849
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2017-10-26T14:34:22.0000000-04:00
+content: >-
+  Hi Marian.
+
+
+  No that isn't accurate.  You made me doubt myself, so I tested it and it can't be done.
+
+
+  I assumed it was possible because you can build the NICs separately in two different VNET.  But one you join them to a VM, there's a validation failing with the explicit error message:
+
+
+  "Subnet Subnet referenced by resource _X_ is not in the same Virtual _Y_ as the subnets of other VMs in the availability set."
+
+
+  I updated the blog, see UPDATE (26-10-2017).
+
+
+  Thanks for your input Marian!

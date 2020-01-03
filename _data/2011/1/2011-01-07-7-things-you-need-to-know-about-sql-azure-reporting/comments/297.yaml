@@ -1,0 +1,6 @@
+id: 297
+author:
+  name: Alyssa
+  url: http://www.healthfitted.com
+date: 2011-11-03T11:57:16.0000000-04:00
+content: "I have this error \n\nTables without a clustered index are not supported in this version of SQL Server. Create a clustered index and try again.\n\nCan anyone solve this?"

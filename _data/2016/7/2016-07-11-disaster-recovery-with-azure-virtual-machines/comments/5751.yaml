@@ -1,0 +1,16 @@
+id: 5751
+author:
+  name: Jason
+  url: ''
+date: 2017-10-15T20:18:33.0000000-04:00
+content: >-
+  So I dont need ASR service, as using CHEF I can sping up VM in DR site as and when required.
+
+  In response to your comment - "Just make sure that CHEF and all the scripts you need are available in your failover region though."
+
+  In order to have failover region, I guess need to store the CHEF related data on Storage Account (Files) and have GRS so the data is available in the other datacenter part of the same region.
+
+  If yes, any article that describes the same more in detail.
+
+
+  Jason

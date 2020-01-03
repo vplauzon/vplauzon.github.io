@@ -1,0 +1,6 @@
+id: 5711
+author:
+  name: Jason
+  url: ''
+date: 2017-10-12T01:36:32.0000000-04:00
+content: "Vincent,\nIn order to have 2 Windows VM with HA.\n\nAvailability Set seems to be the right option.\nHowever, to have Scalability as well please suggest if Availability set will do the job or do I need VMSET. \nif VMSET, my vierw so far is its required when you have more numbers of VM running at once ( not in case of 02 VM)\nStill, if VMSET will be applicable from the Scalability standpoint.\nPlease confirm If I need to have availability set as well?\n\nThanks in advance."

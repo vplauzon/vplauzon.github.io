@@ -1,0 +1,8 @@
+id: 4630
+author:
+  name: ''
+  url: ''
+date: 2017-04-27T09:11:08.0000000-04:00
+content: >-
+  Thanks for posting this, it really saved my bacon!. I ran into too many issues when trying to remove users from groups using the .Net API. It just wouldn't work.
+   This works like a champ for that.

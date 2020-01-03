@@ -1,0 +1,6 @@
+id: 24380
+author:
+  name: Monitoring metrics in AKS &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2019/05/09/monitoring-metrics-in-aks/
+date: 2019-05-09T06:30:43.0000000-04:00
+content: '[&#8230;] last three parameters are related to the Service Principal that will be used by AKS. See this article on how to create a service principal and recover this [&#8230;]'

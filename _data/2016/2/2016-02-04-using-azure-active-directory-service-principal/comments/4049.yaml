@@ -1,0 +1,6 @@
+id: 4049
+author:
+  name: Securing REST API using Azure Active Directory | Vincent-Philippe Lauzon&#039;s blog
+  url: http://vincentlauzon.com/2016/03/11/securing-rest-api-using-azure-active-directory/
+date: 2016-04-27T12:12:49.0000000-04:00
+content: '[&#8230;] If you are unfamiliar with AAD applications, have a look at Azure Active Directory Application and if you’re unfamiliar with AAD Service Principals, read Using Azure Active Directory Service Principal. [&#8230;]'

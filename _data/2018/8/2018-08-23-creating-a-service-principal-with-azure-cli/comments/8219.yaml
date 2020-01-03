@@ -1,0 +1,6 @@
+id: 8219
+author:
+  name: ''
+  url: ''
+date: 2018-09-07T05:12:40.0000000-04:00
+content: Great post! az ad sp show --id  --&gt; this is the application ID, the Object ID for some reason doesn't work.

@@ -1,0 +1,15 @@
+id: 5921
+author:
+  name: Razvan Goga (@WhiteRGR)
+  url: http://twitter.com/WhiteRGR
+date: 2017-11-02T12:41:38.0000000-04:00
+content: >-
+  Would you happen to know if there is there an official public documentation of any sort detailing this?
+
+
+  I've asked the same question about the role of the API switchin this context to the CosmosDB support guys (askcosmosdb@microsoft.com / askcosmosdbgraphapi@microsoft.com) and got basically the same vague eplination that the msdn docs give.
+
+
+  Thanks,
+
+  Razvan

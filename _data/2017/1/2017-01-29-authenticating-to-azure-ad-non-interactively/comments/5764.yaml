@@ -1,0 +1,14 @@
+id: 5764
+author:
+  name: Noor Elahi
+  url: ''
+date: 2017-10-16T08:59:17.0000000-04:00
+content: >-
+  Line 59:                 var credentials = new Microsoft.IdentityModel.Clients.ActiveDirectory.UserCredential(userName, password);
+
+  Line 60:                 //var credentials = new UserPasswordCredential(userName, password);
+
+  Line 61:                 var authResult = await authContext.AcquireTokenAsync(serviceUri, clientID, credentials);
+
+
+  [AdalServiceException: AADSTS70002: The request body must contain the following parameter: 'client_secret or client_assertion'.

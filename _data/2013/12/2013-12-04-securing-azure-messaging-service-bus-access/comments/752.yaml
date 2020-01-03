@@ -1,0 +1,6 @@
+id: 752
+author:
+  name: Azure ACS fading away | Vincent-Philippe Lauzon&#039;s blog
+  url: http://vincentlauzon.wordpress.com/2014/03/04/azure-acs-fading-away/
+date: 2014-03-04T20:02:03.0000000-05:00
+content: '[&#8230;] Bus.&#160; The Service Bus uses ACS as its Access Control mechanism.&#160; As I explained in a past blog, the Service Bus has a quite elegant and granular way of securing its different entities through [&#8230;]'

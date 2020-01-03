@@ -1,0 +1,6 @@
+id: 1312
+author:
+  name: robindotnet
+  url: http://robindotnet.wordpress.com
+date: 2014-09-18T14:06:42.0000000-04:00
+content: You're welcome. You might also checkout this post, which shows you how to write your own client app to upload the ClickOnce deployment files to blob storage and retain the directory structure. http://robindotnet.wordpress.com/2014/07/17/azure-blob-storage-click-once-deployment-and-recursive-file-uploads/

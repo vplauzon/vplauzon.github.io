@@ -1,0 +1,15 @@
+id: 25268
+author:
+  name: Andy Ball
+  url: ''
+date: 2019-08-17T07:12:36.0000000-04:00
+content: >-
+  Hiya,
+
+
+  Good solution as i hit the same issue with an Web App with Azure AD integration / EasyAuth . What about if you want to host on multiple web app instance (ie to load balance / redundancy)  , as you won't be able to register the custom domain on multiple Web App instances ?
+
+
+  cheers
+
+  Andy

@@ -1,0 +1,6 @@
+id: 8529
+author:
+  name: Azure Dev Ops CI / CD pipelines with AKS &#8211; Lessons learned &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2018/10/17/azure-dev-ops-ci-cd-pipelines-with-aks-lessons-learned/
+date: 2018-10-17T06:30:34.0000000-04:00
+content: '[&#8230;] we argued many times, Azure Key Vault isn&#8217;t good only to store / retrieve secrets in a secure manner. It&#8217;s a [&#8230;]'

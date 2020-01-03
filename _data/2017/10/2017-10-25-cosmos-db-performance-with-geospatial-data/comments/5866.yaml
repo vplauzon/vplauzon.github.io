@@ -1,0 +1,6 @@
+id: 5866
+author:
+  name: How to Create a Logic App Connector in an ARM Template &#8211; Vincent-Philippe Lauzon&#039;s
+  url: http://vincentlauzon.com/2017/10/28/how-to-create-a-logic-app-connector-in-an-arm-template/
+date: 2017-10-28T19:25:56.0000000-04:00
+content: '[&#8230;] wanted to automate the performance test setup we discussed in the last article.  This includes a Logic App calling into a Cosmos DB stored [&#8230;]'

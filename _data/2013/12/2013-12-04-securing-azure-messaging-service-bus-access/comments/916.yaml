@@ -1,0 +1,6 @@
+id: 916
+author:
+  name: 'How to improve Azure: Security Models | Vincent-Philippe Lauzon&#039;s blog'
+  url: http://vincentlauzon.wordpress.com/2014/04/28/how-to-improve-azure-security-models/
+date: 2014-04-28T20:33:30.0000000-04:00
+content: '[&#8230;] Service Bus:&#160; access token provided by Access Control Service (ACS) or a SAS (independent of the Azure Storage SAS).&#160; Both mechanisms can give limited access to resources (see my past blog on how to secure Service Bus access). [&#8230;]'
