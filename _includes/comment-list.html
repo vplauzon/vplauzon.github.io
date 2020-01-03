@@ -33,10 +33,10 @@
 {% assign postName = postNameParts[0] %}
 {% assign comments = site.data[year][month][postName].comments %}
 
-<p>Year size:  {{ site.data[year] | size }}</p>
-<p>Month size:  {{ site.data[year][month] | size }}</p>
+<p>Year ({{ year }}) size:  {{ site.data[year] | size }}</p>
+<p>Month ({{ month }}) size:  {{ site.data[year][month] | size }}</p>
 <p>Month () size:  {{ (site.data[year])[month] | size }}</p>
-<p>Name size:  {{ site.data[year][month][postName] | size }}</p>
+<p>Name ({{ postName }}) size:  {{ site.data[year][month][postName] | size }}</p>
 <p>Comments size:  {{ comments | size }}</p>
 
 {% for comment in comments %}
