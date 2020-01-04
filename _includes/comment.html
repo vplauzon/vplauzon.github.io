@@ -1,9 +1,9 @@
 {% if comment.author.name %}
 <a href="{{ comment.author.url }}" rel="nofollow">
-  {{ comment.author.name | xml_escape }}"
+  {{ comment.author.name | xml_escape }}
 </a>
 {% else %}
-{{ comment.author.name | xml_escape }}"
+{{ comment.author.name | xml_escape }}
 {% endif %}
 
 <blockquote id="{{ comment.id }}">
