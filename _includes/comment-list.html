@@ -24,12 +24,71 @@
 {% include comment-new.html %}
 {% endif %}
 
+<h2>Re-Comments</h2>
+
+{% assign pagePathParts = page.path | split: "/" %}
+{% assign year = pagePathParts[1] %}
+{% assign month = pagePathParts[2] %}
+{% assign postNameParts = pagePathParts[3] | split: "." %}
+{% assign postName = postNameParts[0] %}
+{% assign commentFiles = site.data[year][month][postName].comments %}
+
+{% assign comments = site.emptyArray %}
+{% for comment in commentFiles %}
+  {% assign comments = comments | push: comment[1] %}
+{% endfor %}
+{% assign commentCount = comments | size %}
+
+{% if commentCount > 0 %}
+  {% assign author = site.authors[page.author] %}
+<div id="comments">
+  <h3>{% if commentCount == 1 %}One response{% else %}{{ commentCount }} responses{% endif %}</h3>
+  <ol>
+  {% assign sortedComments = comments | sort: 'date' %}
+  {% for comment in sortedComments %}
+    <li{% if author.email != "" %} class="byauthor" {% endif %}>
+      {% include comment.content %}
+    </li>
+  {% endfor %}
+  </ol>
+</div>
+{% endif %}
+{% if page.commenting == 'open' %}
+{% include comment-new.html %}
+{% endif %}
+
+{% capture default_slug %}{{ page.slug | default: (page.title | slugify) }}{% endcapture %}
+{% capture slug %}{{ (page.slug | fallback: default_slug) | downcase | replace: '.', '-' | replace: '_' : '-' }}{% endcapture %}
+{% assign comments_map = site.data.comments[slug] %}
+{% assign comments = site.emptyArray %}
+{% for comment in comments_map %}
+  {% assign comments = comments | push: comment[1] %}
+{% endfor %}
+{% assign comment_count = comments | size %}
+{% if comment_count > 0 %}
+  {% assign author = site.authors[page.author] %}
+<div id="comments">
+  <h3>{% if comment_count == 1 %}One response{% else %}{{ comment_count }} responses{% endif %}</h3>
+  <ol>
+  {% assign sorted_comments = comments | sort: 'date' %}
+  {% for comment in sorted_comments %}
+    <li{% if comment.email == author.email %} class="byauthor" {% endif %}>
+      {% include comment.html %}
+    </li>
+  {% endfor %}
+  </ol>
+</div>
+{% endif %}
+{% if page.commenting == 'open' %}
+{% include comment-new.html %}
+{% endif %}
+
 <h2>Comments Debug</h2>
 
-{% assign pathParts = page.path | split: "/" %}
-{% assign year = pathParts[1] %}
-{% assign month = pathParts[2] %}
-{% assign postNameParts = pathParts[3] | split: "." %}
+{% assign pagePathParts = page.path | split: "/" %}
+{% assign year = pagePathParts[1] %}
+{% assign month = pagePathParts[2] %}
+{% assign postNameParts = pagePathParts[3] | split: "." %}
 {% assign postName = postNameParts[0] %}
 {% assign comments = site.data[year][month][postName].comments %}
 
