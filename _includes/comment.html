@@ -1,12 +1,12 @@
 <blockquote id="{{ comment.id }}">
   <div class="comment-body">{{ comment.content | markdownify }}</div>
   <cite>
-    {% if comment.author.url and comment.author.name %}
+    {% if comment.author.url and comment.author.url!="" and comment.author.name and comment.author.name!="" %}
       <a href="{{ comment.author.url }}" rel="nofollow">
         {{ comment.author.name | xml_escape }}
       </a>
     {% else %}
-      {% if comment.author.name %}
+      {% if comment.author.name and comment.author.name!="" %}
         {{ comment.author.name | xml_escape }}
       {% else %}
         Anonymous
