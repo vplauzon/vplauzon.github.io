@@ -9,9 +9,6 @@
     <label for="name">Name/alias <span>(Required, displayed)</span></label>
     <input type="text" name="name" id="name" placeholder="Name" />
 
-    <label for="email">Email <span>(Required, not shown)</span></label>
-    <input type="text" name="email" id="email" placeholder="myemail@somedomain.com" />
-
     <label for="url">Website <span>(Optional, displayed)</span></label>
     <input type="text" name="url" id="url" placeholder="https://mywebsite.com" />
 
@@ -23,7 +20,7 @@
       var status = document.getElementById('commentstatus')
       status.innerText = ''
 
-      var requiredIds = [ 'message', 'email', 'name']
+      var requiredIds = [ 'message', 'name']
       var missing = requiredIds.filter(id => document.getElementById(id).value.length < 3)
       if (missing.length > 0) {
         status.innerText = 'Some required fields are missing - (' + missing.join(', ') + ')'
