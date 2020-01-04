@@ -7,7 +7,6 @@ categories:
 tags:
 - API
 - Data
-commenting:  open
 ---
 <a href="https://www.pexels.com/photo/photo-of-boat-under-cloudy-sky-2123573/"><img style="float:left;padding-right:5px;" title="From pexels.com" src="/assets/2019/5/how-to-use-azure-data-lake-storage-rest-api/boat-canoe-clouds-2123573.jpg" /></a>
 

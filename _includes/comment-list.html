@@ -25,6 +25,6 @@
   </ol>
 </div>
 {% endif %}
-{% if page.commenting == 'open' %}
+{% if page.commenting != 'closed' %}
 {% include comment-new.html %}
 {% endif %}
