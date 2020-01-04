@@ -1,18 +1,18 @@
-{% if comment.url %}
-<a href="{{ comment.url }}" rel="nofollow">
-  <img alt="Gravatar for {{ comment.name | xml_escape }}" src="https://secure.gravatar.com/avatar/{{ comment.gravatar }}?s=64&amp;d=retro&amp;r=pg" srcset="https://secure.gravatar.com/avatar/{{ comment.gravatar }}?s=128&amp;d=retro&amp;r=pg 2x" class="avatar avatar-64 photo" height="64" width="64">
+{% if comment.author.name %}
+<a href="{{ comment.author.url }}" rel="nofollow">
+  {{ comment.author.name | xml_escape }}"
 </a>
 {% else %}
-<img alt="Gravatar for {{ comment.name | xml_escape }}" src="https://secure.gravatar.com/avatar/{{ comment.gravatar }}?s=64&amp;d=retro&amp;r=pg" srcset="https://secure.gravatar.com/avatar/{{ comment.gravatar }}?s=128&amp;d=retro&amp;r=pg 2x" class="avatar avatar-64 photo" height="64" width="64">
+{{ comment.author.name | xml_escape }}"
 {% endif %}
 
 <blockquote id="{{ comment.id }}">
-  <div class="comment-body">{{ comment.message | markdownify }}</div>
+  <div class="comment-body">{{ comment.content | markdownify }}</div>
   <cite>
-    {% if comment.url %}
-      <a href="{{ comment.url }}" rel="nofollow">{{ comment.name | xml_escape }}</a>
+    {% if comment.author.url %}
+      <a href="{{ comment.author.url }}" rel="nofollow">{{ comment.author.name | xml_escape }}</a>
     {% else %}
-      {{ comment.name | xml_escape }}
+      {{ comment.author.name | xml_escape }}
     {% endif %}
     &ndash;
     <span class="muted" title="{{ comment.date | date_to_rfc822 }}">
