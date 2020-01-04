@@ -30,28 +30,3 @@
 {% if page.commenting == 'open' %}
 {% include comment-new.html %}
 {% endif %}
-
-<h2>Comments Debug</h2>
-
-{% assign pagePathParts = page.path | split: "/" %}
-{% assign year = pagePathParts[1] %}
-{% assign month = pagePathParts[2] %}
-{% assign postNameParts = pagePathParts[3] | split: "." %}
-{% assign postName = postNameParts[0] %}
-{% assign comments = site.data[year][month][postName].comments %}
-
-<p>Year ({{ year }}) size:  {{ site.data[year] | size }}</p>
-<p>Month ({{ month }}) size:  {{ site.data[year][month] | size }}</p>
-<p>Month () size:  {{ (site.data[year])[month] | size }}</p>
-<p>Name ({{ postName }}) size:  {{ site.data[year][month][postName] | size }}</p>
-<p>Comments size:  {{ comments | size }}</p>
-
-{% for comment in comments %}
-  {% assign oneComment = comment[1] %}
-  <p>Id:  {{ oneComment.id }}</p>
-  <p>Date:  {{ oneComment.date }}</p>
-  <p>Author's name:  {{ oneComment.author.name }}</p>
-  <p>Author's url:  {{ oneComment.author.url }}</p>
-  <p>Content:  {{ oneComment.content }}</p>
-  <p>---</p>
-{% endfor %}
