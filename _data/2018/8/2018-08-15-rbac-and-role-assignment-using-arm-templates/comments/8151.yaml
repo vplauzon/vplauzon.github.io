@@ -1,6 +1,0 @@
-id: 8151
-author:
-  name: Deploying AKS with ARM Template – Network integration &#8211; Vincent-Philippe Lauzon&#039;s
-  url: http://vincentlauzon.com/2018/08/28/deploying-aks-with-arm-template-network-integration/
-date: 2018-08-28T06:30:58.0000000-04:00
-content: '[&#8230;] This was accomplished using a role assignment resource. We covered that in a previous article: [&#8230;]'

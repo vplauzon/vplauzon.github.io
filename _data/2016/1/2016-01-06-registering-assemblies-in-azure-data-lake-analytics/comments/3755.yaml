@@ -1,6 +1,0 @@
-id: 3755
-author:
-  name: Azure Data Lake Analytics &#8211; Loading files with custom C# code | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2016/01/13/azure-data-lake-analytics-loading-files-with-custom-c-code/
-date: 2016-01-13T19:02:55.0000000-05:00
-content: '[&#8230;] fully covered how to register assemblies in this post.  For this, since we are invoking C# code from within a function, we are going to use the Visual [&#8230;]'

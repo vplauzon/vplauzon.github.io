@@ -1,6 +1,0 @@
-id: 8528
-author:
-  name: Azure Dev Ops CI / CD pipelines with AKS &#8211; Lessons learned &#8211; Vincent-Philippe Lauzon&#039;s
-  url: http://vincentlauzon.com/2018/10/17/azure-dev-ops-ci-cd-pipelines-with-aks-lessons-learned/
-date: 2018-10-17T06:30:31.0000000-04:00
-content: '[&#8230;] we mentioned in a previous article, this gives us a few advantages, mainly it reduces the pressure on private IP [&#8230;]'

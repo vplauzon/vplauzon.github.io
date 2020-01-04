@@ -1,6 +1,0 @@
-id: 3809
-author:
-  name: Stategic Data, Infonomics &amp; Big Data | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2016/01/17/stategic-data-infonomics-big-data/
-date: 2016-01-17T19:06:26.0000000-05:00
-content: '[&#8230;] could use standard blob storage if the size of your data is below 500 TB.  You could use the new Data Lake Analytics to process that data at scale, Azure Data Factory to orchestrate that processing and the movement [&#8230;]'

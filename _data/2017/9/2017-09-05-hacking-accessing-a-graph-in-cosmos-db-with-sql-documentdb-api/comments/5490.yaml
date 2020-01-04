@@ -1,6 +1,0 @@
-id: 5490
-author:
-  name: 'Hacking: changing Cosmos DB Portal experience from Graph to SQL | Vincent-Philippe Lauzon&#039;s blog'
-  url: http://vincentlauzon.com/2017/09/10/hacking-changing-cosmos-db-portal-experience-from-graph-to-sql/
-date: 2017-09-10T18:01:38.0000000-04:00
-content: '[&#8230;] the last article, we looked at how we could access a graph using the SQL (aka DocumentDB) [&#8230;]'

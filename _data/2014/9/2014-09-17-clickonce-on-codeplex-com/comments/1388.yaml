@@ -1,6 +1,0 @@
-id: 1388
-author:
-  name: Installing DocumentDB Studio | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2014/10/16/installing-documentdb-studio/
-date: 2014-10-16T23:31:31.0000000-04:00
-content: '[&#8230;] current deployment package is a zip file. I wanted to do a Click Once deployment but with a self-signing certificate, Windows 8 seems to refuse to execute it (for security reason), [&#8230;]'

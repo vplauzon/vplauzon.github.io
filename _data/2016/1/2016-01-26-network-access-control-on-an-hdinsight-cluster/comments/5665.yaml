@@ -1,6 +1,0 @@
-id: 5665
-author:
-  name: VNET Service Endpoints for Azure SQL &amp; Storage | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2017/10/02/vnet-service-endpoints-for-azure-sql-storage/
-date: 2017-10-02T07:00:28.0000000-04:00
-content: '[&#8230;] is the approach taken by a lot of single-tenant PaaS services though, e.g. HD Insights, Application Gateway, Redis Cache, etc.&nbsp; [&#8230;]'

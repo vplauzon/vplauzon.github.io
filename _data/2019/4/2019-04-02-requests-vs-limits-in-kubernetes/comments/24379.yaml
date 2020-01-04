@@ -1,6 +1,0 @@
-id: 24379
-author:
-  name: Monitoring metrics in AKS &#8211; Vincent-Philippe Lauzon&#039;s
-  url: http://vincentlauzon.com/2019/05/09/monitoring-metrics-in-aks/
-date: 2019-05-09T06:30:39.0000000-04:00
-content: '[&#8230;] we are going to reuse elements of Requests vs Limits in Kubernetes article. We tweaked it a little, but it is otherwise very [&#8230;]'

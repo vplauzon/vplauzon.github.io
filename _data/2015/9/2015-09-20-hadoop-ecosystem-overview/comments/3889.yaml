@@ -1,6 +1,0 @@
-id: 3889
-author:
-  name: Network Access Control on an HDInsight Cluster | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2016/01/26/network-access-control-on-an-hdinsight-cluster/
-date: 2016-01-26T21:19:21.0000000-05:00
-content: '[&#8230;] HDInsight is basically Hadoop cluster as a service.  You can stand up a cluster in minutes and get on with your Big Data jobs.  Better, [&#8230;]'

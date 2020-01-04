@@ -1,6 +1,0 @@
-id: 5951
-author:
-  name: A few CosmosDB query limitations &#8211; Vincent-Philippe Lauzon&#039;s
-  url: http://vincentlauzon.com/2017/11/06/a-few-cosmosdb-query-limitations/
-date: 2017-11-06T06:31:48.0000000-05:00
-content: '[&#8230;] This example might seem a little artificial but we ran against that limitation when performing performance test on geospatial queries. [&#8230;]'

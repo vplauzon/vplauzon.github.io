@@ -1,6 +1,0 @@
-id: 1826
-author:
-  name: Scaling a Multi-Tenant Application with Azure DocumentDB | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2014/12/22/scaling-a-multi-tenant-application-with-azure-documentdb/
-date: 2014-12-22T21:49:58.0000000-05:00
-content: '[&#8230;] the release of Azure DocumentDB, Microsoft NoSQL document-oriented fully managed database, in preview mode, there was initial curiosity. Now we are starting to see more focused questions: how does it scale, [&#8230;]'

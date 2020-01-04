@@ -1,6 +1,0 @@
-id: 4405
-author:
-  name: Azure SQL Elastic Pool &ndash; Moving databases across pools using PowerShell | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2017/01/08/azure-sql-elastic-pool-moving-databases-across-pools-using-powershell/
-date: 2017-01-08T19:06:12.0000000-05:00
-content: '[&#8230;] written a bit about Azure SQL Elastic Pool lately:  an overview, about ARM template and about database [&#8230;]'

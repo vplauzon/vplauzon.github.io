@@ -1,6 +1,0 @@
-id: 3330
-author:
-  name: Azure DocumentDB Demo | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2015/12/01/azure-documentdb-demo/
-date: 2015-12-01T18:08:18.0000000-05:00
-content: '[&#8230;] you see that you can override the connection policy (see this post for details) and the consistency level for the [&#8230;]'

@@ -1,6 +1,0 @@
-id: 4499
-author:
-  name: Azure Managed Disk&ndash;Overview | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2017/02/20/azure-managed-disk-overview/
-date: 2017-02-20T10:31:56.0000000-05:00
-content: '[&#8230;] problem is when we match them with VMs.  We can setup high availability of a VM set by defining an availability set:  this gives some guarantees on how your VMs are affected during planned / unplanned downtime.  [&#8230;]'

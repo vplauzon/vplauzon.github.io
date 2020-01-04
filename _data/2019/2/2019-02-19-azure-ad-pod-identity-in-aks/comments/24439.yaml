@@ -1,6 +1,0 @@
-id: 24439
-author:
-  name: How to use Azure Data Lake Storage REST API &#8211; Vincent-Philippe Lauzon&#039;s
-  url: http://vincentlauzon.com/2019/05/15/how-to-use-azure-data-lake-storage-rest-api/
-date: 2019-05-15T06:31:49.0000000-04:00
-content: '[&#8230;] could be done using other compute (e.g. Function, AKS, VMs). We definitely recommend using MSI (or Pod Identity for AKS). MSI allows the acquisition of bearer token without the need to store Service Principal [&#8230;]'

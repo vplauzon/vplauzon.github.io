@@ -1,6 +1,0 @@
-id: 2695
-author:
-  name: SQL Server 2016 | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2015/07/22/sql-server-2016/
-date: 2015-07-22T19:01:10.0000000-04:00
-content: '[&#8230;] …  it also mean you’ll have to be freaking careful on how you manage those keys otherwise you’ll end up with encrypted data nobody can read (did I mention Azure Vault?) [&#8230;]'

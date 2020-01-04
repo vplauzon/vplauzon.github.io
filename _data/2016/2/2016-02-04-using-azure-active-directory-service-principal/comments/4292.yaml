@@ -1,6 +1,0 @@
-id: 4292
-author:
-  name: Shutting down VMs on schedule in Azure | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2016/02/05/shutting-down-vms-on-schedule-in-azure/
-date: 2016-10-16T17:12:56.0000000-04:00
-content: '[&#8230;] created, we should create a credential with a Service Principal.  Please read through Using Azure Active Directory Service Principal in order to create a Service [&#8230;]'

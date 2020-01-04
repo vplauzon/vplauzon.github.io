@@ -1,6 +1,0 @@
-id: 4398
-author:
-  name: Azure SQL Elastic Pool &ndash; Database Size | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2017/01/04/azure-sql-elastic-pool-database-size/
-date: 2017-01-04T19:03:28.0000000-05:00
-content: '[&#8230;] resource has a MaxSizeInBytes property.  We can set it either in an ARM template (see this ARM template and the property maxSizeBytes) or in [&#8230;]'

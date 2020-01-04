@@ -41,11 +41,10 @@
 
 {% for comment in comments %}
   {% assign oneComment = comment[1] %}
-  <p>Comment:  {{ oneComment }}</p>
   <p>Id:  {{ oneComment.id }}</p>
   <p>Date:  {{ oneComment.date }}</p>
-  <p>Author:  {{ oneComment.author }}</p>
   <p>Author's name:  {{ oneComment.author.name }}</p>
+  <p>Author's url:  {{ oneComment.author.url }}</p>
   <p>Content:  {{ oneComment.content }}</p>
   <p>---</p>
 {% endfor %}

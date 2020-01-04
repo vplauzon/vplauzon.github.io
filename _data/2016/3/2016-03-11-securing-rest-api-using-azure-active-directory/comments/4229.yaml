@@ -1,6 +1,0 @@
-id: 4229
-author:
-  name: Azure Active Directory Labs Series &ndash; Protect Web App | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2016/09/04/azure-active-directory-labs-series-protect-web-app/
-date: 2016-09-04T19:04:11.0000000-04:00
-content: '[&#8230;] against an Azure AD application (created in a previous lab) in order to access it.  You can read Securing REST API using Azure Active Directory for something similar but with a REST API as opposed to a Web [&#8230;]'

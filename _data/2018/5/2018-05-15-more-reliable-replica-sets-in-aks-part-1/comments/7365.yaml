@@ -1,6 +1,0 @@
-id: 7365
-author:
-  name: More reliable Replica Sets in AKS &#8211; Part 2 &#8211; Vincent-Philippe Lauzon&#039;s
-  url: http://vincentlauzon.com/2018/05/17/more-reliable-replica-sets-in-aks-part-2/
-date: 2018-05-17T06:31:09.0000000-04:00
-content: '[&#8230;] Part 1, we discussed how, by default, replica sets in AKS aren’t highly available.  In this article, we [&#8230;]'

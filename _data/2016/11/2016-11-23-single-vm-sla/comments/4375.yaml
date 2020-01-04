@@ -1,6 +1,0 @@
-id: 4375
-author:
-  name: Moving existing workloads to Azure | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2016/12/12/moving-existing-workloads-to-azure/
-date: 2016-12-12T14:17:05.0000000-05:00
-content: '[&#8230;] by a load balancer.  In Azure, this is less of a blocker as it use to be, thanks to the new single VM SLA, which isn’t a full fledged HA solution but at least provide a [&#8230;]'

@@ -1,6 +1,0 @@
-id: 99
-author:
-  name: 'SQL Azure Federation: Automating your database partitioning (sharding) &laquo; Vincent-Philippe Lauzon&#039;s blog'
-  url: http://vincentlauzon.wordpress.com/2011/02/05/sql-azure-federation-automating-your-database-partitioning-sharding/
-date: 2011-03-18T12:33:45.0000000-04:00
-content: '[...] to use, it’s basically using SQL Server in the cloud if you forget a couple of caveat (such as transaction management &amp; connection stability).&#160; But SQL Azure is your good old relational database and hence is [...]'

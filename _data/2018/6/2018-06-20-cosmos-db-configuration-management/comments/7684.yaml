@@ -1,6 +1,0 @@
-id: 7684
-author:
-  name: Cosmos DB Stored Procedures &#8211; handling continuation &#8211; Vincent-Philippe Lauzon&#039;s
-  url: http://vincentlauzon.com/2018/06/27/cosmos-db-stored-procedures-handling-continuation/
-date: 2018-06-27T06:31:48.0000000-04:00
-content: '[&#8230;] As usual, the code used here is available on GitHub.  We are using cosmos-db-target-config to deploy Cosmos DB artefacts.  We introduce that solution in a past article. [&#8230;]'

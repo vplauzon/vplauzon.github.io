@@ -1,6 +1,0 @@
-id: 7417
-author:
-  name: 'Taming the fire hose: Azure Stream Analytics &#8211; Vincent-Philippe Lauzon&#039;s'
-  url: http://vincentlauzon.com/2018/05/22/taming-the-fire-hose-azure-stream-analytics/
-date: 2018-05-22T06:37:13.0000000-04:00
-content: '[&#8230;] Event Hub, i.e. the one taking the source events.  Event Hub has an SLA of %99.9.  We discussed Azure SLAs at length so we won’t reproduce that discussion [&#8230;]'

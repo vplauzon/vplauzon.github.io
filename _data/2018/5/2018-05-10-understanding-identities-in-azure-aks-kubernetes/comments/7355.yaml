@@ -1,6 +1,0 @@
-id: 7355
-author:
-  name: More reliable Replica Sets in AKS &#8211; Part 1 &#8211; Vincent-Philippe Lauzon&#039;s
-  url: http://vincentlauzon.com/2018/05/15/more-reliable-replica-sets-in-aks-part-1/
-date: 2018-05-15T06:31:55.0000000-04:00
-content: '[&#8230;] taken a look at Azure Managed Kubernetes Cluster (AKS) here.  In this article (part 1), we’re going to experiment and prove that replica set aren’t [&#8230;]'

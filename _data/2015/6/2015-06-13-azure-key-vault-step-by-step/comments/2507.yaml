@@ -1,6 +1,0 @@
-id: 2507
-author:
-  name: Azure Key Vault &#8211; Pricing | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2015/06/20/azure-key-vault-pricing/
-date: 2015-06-20T12:05:19.0000000-04:00
-content: '[&#8230;] Azure Key Vault is an Azure packaged service allowing you to encrypt keys and small secrets (e.g. passwords, SAS) and manage them in a secure fashion.  Azure Key Vault actually allows you to store cryptographic keys and do operations with them (e.g. encrypt data) without revealing the key, which is pretty cool.  Check it out. [&#8230;]'

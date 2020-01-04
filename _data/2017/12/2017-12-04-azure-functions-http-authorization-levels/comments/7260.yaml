@@ -1,6 +1,0 @@
-id: 7260
-author:
-  name: Sending Push Notifications from a Azure Function - Gerald Versluis
-  url: https://blog.verslu.is/xamarin/push-notifications-azure-function/
-date: 2018-04-26T04:14:44.0000000-04:00
-content: '[&#8230;] are worried that anyone can invoke the function with a simple browser request, have a look at the authorization settings that are available or create a super-secret header value that you check in [&#8230;]'

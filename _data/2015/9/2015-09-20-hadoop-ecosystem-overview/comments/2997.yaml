@@ -1,6 +1,0 @@
-id: 2997
-author:
-  name: Azure Data Lake &#8211; Early look | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2015/09/30/azure-data-lake-early-look/
-date: 2015-09-30T19:11:16.0000000-04:00
-content: '[&#8230;] extension of T-SQL supporting C# for imperative programming.  It is built on top of YARN (see my Hadoop ecosystem overview) but seems to be a Microsoft-only implementation, i.e. it isn&#8217;t [&#8230;]'

@@ -1,6 +1,0 @@
-id: 3887
-author:
-  name: Network Access Control on an HDInsight Cluster | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2016/01/26/network-access-control-on-an-hdinsight-cluster/
-date: 2016-01-26T21:19:12.0000000-05:00
-content: '[&#8230;] Virtual Network with a Network Security Group to control the access (at the network level) to an HDInsight [&#8230;]'

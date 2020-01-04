@@ -1,6 +1,0 @@
-id: 2744
-author:
-  name: AzureML &#8211; Polynomial Regression with SQL Transformation | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2015/08/05/azureml-polynomial-sql-transformation/
-date: 2015-08-05T19:06:00.0000000-04:00
-content: '[&#8230;] I’ve shown in a previous blog, we can take that data and import it in AzureML as a Data Set.  I’ll skip the details for that [&#8230;]'

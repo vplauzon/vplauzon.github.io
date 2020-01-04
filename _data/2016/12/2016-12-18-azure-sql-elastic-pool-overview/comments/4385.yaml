@@ -1,6 +1,0 @@
-id: 4385
-author:
-  name: Azure SQL Elastic Pool &#8211; ARM Templates | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2016/12/21/azure-sql-elastic-pool-arm-templates/
-date: 2016-12-21T19:01:07.0000000-05:00
-content: '[&#8230;] my last article, I covered Azure SQL Elastic Pool.  In this one I cover how to provision it using ARM [&#8230;]'

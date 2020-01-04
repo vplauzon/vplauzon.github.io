@@ -1,6 +1,0 @@
-id: 5776
-author:
-  name: Renaming Virtual Machine Disks | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2017/10/17/renaming-virtual-machine-disks/
-date: 2017-10-17T07:00:58.0000000-04:00
-content: '[&#8230;] nomenclature right.  A typical example is when we do migrate from unmanaged to managed disk (see article here) using the ConvertTo-AzureRmVMManagedDisk command.  This command converts all disks from page [&#8230;]'

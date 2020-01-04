@@ -1,6 +1,0 @@
-id: 4478
-author:
-  name: Extended Outage @ Instapaper &#8211; Resiliency example | Vincent-Philippe Lauzon&#039;s blog
-  url: http://vincentlauzon.com/2017/02/12/extended-outage-instapaper-resiliency-example/
-date: 2017-02-12T19:04:08.0000000-05:00
-content: '[&#8230;] an article on SQL Database sizes in an elastic pool, we saw that we can fix a limit on database size to make sure it doesn’t consume the allowed size [&#8230;]'
