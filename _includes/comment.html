@@ -1,18 +1,16 @@
-{% if comment.author.name %}
-<a href="{{ comment.author.url }}" rel="nofollow">
-  {{ comment.author.name | xml_escape }}
-</a>
-{% else %}
-{{ comment.author.name | xml_escape }}
-{% endif %}
-
 <blockquote id="{{ comment.id }}">
   <div class="comment-body">{{ comment.content | markdownify }}</div>
   <cite>
-    {% if comment.author.url %}
-      <a href="{{ comment.author.url }}" rel="nofollow">{{ comment.author.name | xml_escape }}</a>
+    {% if comment.author.url and comment.author.name %}
+      <a href="{{ comment.author.url }}" rel="nofollow">
+        {{ comment.author.name | xml_escape }}
+      </a>
     {% else %}
-      {{ comment.author.name | xml_escape }}
+      {% if comment.author.name %}
+        {{ comment.author.name | xml_escape }}
+      {% else %}
+        Anonymous
+      {% endif %}
     {% endif %}
     &ndash;
     <span class="muted" title="{{ comment.date | date_to_rfc822 }}">
