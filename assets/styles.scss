@@ -4,3 +4,8 @@ styles: true
 ---
 
 @import "alembic";
+
+/*  Remove the numbers on comment list  */
+#comments li::before {
+    display: none;
+}
