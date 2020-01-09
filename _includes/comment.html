@@ -1,27 +1,21 @@
 <blockquote id="{{ comment.id }}" class="comment-block">
   <cite>
-    {% if comment.author.url and comment.author.url!="" and comment.author.name and comment.author.name!="" %}
-      <a href="{{ comment.author.url }}" rel="nofollow">
-        {{ comment.author.name | xml_escape }}
-      </a>
-    {% else %}
-      {% if comment.author.name and comment.author.name!="" %}
-        {{ comment.author.name | xml_escape }}
+    <strong>
+      {% if comment.author.url and comment.author.url!="" and comment.author.name and comment.author.name!="" %}
+        <a href="{{ comment.author.url }}" rel="nofollow">
+          {{ comment.author.name | xml_escape }}
+        </a>
       {% else %}
-        Anonymous
+        {% if comment.author.name and comment.author.name!="" %}
+          {{ comment.author.name | xml_escape }}
+        {% else %}
+          Anonymous
+        {% endif %}
       {% endif %}
-    {% endif %}
+    </strong>
     &ndash;
     <span class="muted" title="{{ comment.date | date_to_rfc822 }}">
-      {{ comment.date | date: '%B' }}
-      {% assign d = comment.date | date: "%-d" %}
-      {% case d %}
-        {% when '1' or '21' or '31' %}{{d}}st,
-        {% when '2' or '22' %}{{d}}nd,
-        {% when '3' or '23' %}{{d}}rd,
-        {% else %}{{d}}th,
-      {% endcase %}
-      {{ comment.date | date: '%Y' }}
+      {{ comment.date | date: "%Y-%m-%d %H:%M" }}
     </span>
   </cite>
   <div class="comment-body">{{ comment.content | markdownify }}</div>
