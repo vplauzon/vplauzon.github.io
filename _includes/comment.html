@@ -15,7 +15,7 @@
     </strong>
     &ndash;
     <span class="muted" title="{{ comment.date | date_to_rfc822 }}">
-      {{ comment.date | date: "%Y-%m-%d %H:%M" }}
+      {{ comment.date | date: "%Y-%m-%d at %H:%M" }}
     </span>
   </cite>
   <div class="comment-body">{{ comment.content | markdownify }}</div>
