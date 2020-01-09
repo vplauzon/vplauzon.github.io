@@ -9,3 +9,9 @@ styles: true
 #comments li::before {
     display: none;
 }
+
+.comment-block {
+    border-left-color:  blue;
+    border-left:  6px;
+    background-color: lightgray;
+}

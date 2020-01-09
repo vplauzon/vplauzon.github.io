@@ -1,5 +1,4 @@
-<blockquote id="{{ comment.id }}">
-  <div class="comment-body">{{ comment.content | markdownify }}</div>
+<blockquote id="{{ comment.id }}" class="comment-block">
   <cite>
     {% if comment.author.url and comment.author.url!="" and comment.author.name and comment.author.name!="" %}
       <a href="{{ comment.author.url }}" rel="nofollow">
@@ -25,4 +24,5 @@
       {{ comment.date | date: '%Y' }}
     </span>
   </cite>
+  <div class="comment-body">{{ comment.content | markdownify }}</div>
 </blockquote>
