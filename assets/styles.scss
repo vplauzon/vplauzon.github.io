@@ -11,8 +11,12 @@ styles: true
 }
 
 .comment-block {
-    border-left-color:  blue;
-    border-left:  6px;
+    border-top-color:  blue;
+    border-top:  6px;
+    border-top-style: solid;
+    border-bottom-color:  blue;
+    border-bottom:  6px;
+    border-bottom-style: solid;
     background-color: lightgray;
 }
 
