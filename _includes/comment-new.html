@@ -13,7 +13,7 @@
       <label for="url">Website <span>(Optional, displayed)</span></label>
       <input type="text" name="url" id="url" placeholder="https://mywebsite.com" />
 
-      <button onclick="setupCommentForm()" type="button" class="btn btn-primary" id="commentbutton">Leave response</button>
+      <button onclick="setupCommentForm('{{ site.url }}')" type="button" class="btn btn-primary" id="commentbutton">Leave response</button>
   </fieldset>
   <script type="text/javascript" src="{{ "/assets/scripts/fetch.js" | relative_url }}"></script>
 </form>
