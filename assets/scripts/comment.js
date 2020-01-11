@@ -15,8 +15,9 @@ function setupCommentForm() {
     var content = document.getElementById('content').value;
     var name = document.getElementById('name').value;
     var url = document.getElementById('url').value;
+    var postId = document.getElementById('post_id').value;
     var inputPayload = {
-        pagePath: "{{ slug }}",
+        pagePath: postId,
         userName: name,
         webSite: url,
         content: content
