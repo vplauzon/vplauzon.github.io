@@ -2,13 +2,15 @@
 
 {% assign pagePathParts = page.path | split: "/" %}
 {% assign year = pagePathParts[1] %}
+{% assign yearInteger = year | to_integer %}
 {% assign month = pagePathParts[2] %}
+{% assign monthInteger = month | to_integer %}
 {% assign postNameParts = pagePathParts[3] | split: "." %}
 {% assign postName = postNameParts[0] %}
-{% if year<10 %}
+{% if yearInteger<10 %}
   {% assign year = year | preprend:  "0" %}
 {% endif %}
-{% if month<10 %}
+{% if monthInteger<10 %}
   {% assign month = month | preprend:  "0" %}
 {% endif %}
 {% assign commentFiles = site.data[year][month][postName].comments %}
