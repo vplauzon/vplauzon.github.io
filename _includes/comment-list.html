@@ -1,8 +1,11 @@
+<hr>
+
 {% assign pagePathParts = page.path | split: "/" %}
 {% assign year = pagePathParts[1] %}
 {% assign month = pagePathParts[2] %}
 {% assign postNameParts = pagePathParts[3] | split: "." %}
 {% assign postName = postNameParts[0] %}
+{% if year %}
 {% assign commentFiles = site.data[year][month][postName].comments %}
 
 {% assign comments = site.emptyArray %}
@@ -14,7 +17,6 @@
 {% if commentCount > 0 %}
   {% assign author = site.authors[page.author] %}
 <div id="comments">
-  <hr>
   <h3>{% if commentCount == 1 %}One response{% else %}{{ commentCount }} responses{% endif %}</h3>
   <ol>
   {% assign sortedComments = comments | sort: 'date' %}
