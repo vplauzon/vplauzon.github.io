@@ -15,6 +15,11 @@
 {% endif %}
 {% assign commentFiles = site.data[year][month][postName].comments %}
 
+<p>Year:  {{ year }}</p>
+<p>Month:  {{ month }}</p>
+<p>yearInteger:  {{ yearInteger }}</p>
+<p>monthInteger:  {{ monthInteger }}</p>
+
 {% assign comments = site.emptyArray %}
 {% for comment in commentFiles %}
   {% assign comments = comments | push: comment[1] %}
