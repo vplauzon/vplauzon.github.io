@@ -2,22 +2,17 @@
 
 {% assign pagePathParts = page.path | split: "/" %}
 {% assign year = pagePathParts[1] %}
-{% assign yearSize = year | size %}
 {% assign month = pagePathParts[2] %}
 {% assign monthSize = month | size %}
 {% assign postNameParts = pagePathParts[3] | split: "." %}
 {% assign postName = postNameParts[0] %}
-{% if yearSize==1 %}
-  {% assign year = year | preprend:  "0" %}
-{% endif %}
 {% if monthSize==1 %}
+  <p>Small month indeed</p>
   {% assign month = month | preprend:  "0" %}
 {% endif %}
 {% assign commentFiles = site.data[year][month][postName].comments %}
 
-<p>Year:  {{ year }}</p>
 <p>Month:  {{ month }}</p>
-<p>yearSize:  {{ yearSize }}</p>
 <p>monthSize:  {{ monthSize }}</p>
 
 {% assign comments = site.emptyArray %}
