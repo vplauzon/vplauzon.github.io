@@ -14,6 +14,7 @@
 {% if commentCount > 0 %}
   {% assign author = site.authors[page.author] %}
 <div id="comments">
+  <hr>
   <h3>{% if commentCount == 1 %}One response{% else %}{{ commentCount }} responses{% endif %}</h3>
   <ol>
   {% assign sortedComments = comments | sort: 'date' %}
