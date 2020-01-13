@@ -8,6 +8,7 @@ tags:
 - API
 - Data
 ---
+
 <a href="https://www.pexels.com/photo/photo-of-boat-under-cloudy-sky-2123573/"><img style="float:left;padding-right:5px;" title="From pexels.com" src="/assets/posts/2019/2/how-to-use-azure-data-lake-storage-rest-api/boat-canoe-clouds-2123573.jpg" /></a>
 
 <a href="https://docs.microsoft.com/en-ca/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage (ADLS) Generation 2</a> has been around for a few months now.
