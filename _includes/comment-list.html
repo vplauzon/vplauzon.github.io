@@ -3,13 +3,15 @@
 {% assign urlParts = page.url | split: "/" %}
 {% assign year = urlParts[1] %}
 {% assign quarter = urlParts[2] %}
-{% assign postName = urlParts[3] %}
+{% assign postName = urlParts[4] %}
+{% assign postPath = page.path %}
 {% assign commentFiles = site.data[year][quarter][postName].comments %}
 
 <p>Url:  {{ page.url }}</p>
 <p>year:  {{ year }}</p>
 <p>quarter:  {{ quarter }}</p>
 <p>postName:  {{ postName }}</p>
+<p>postPath:  {{ postPath }}</p>
 
 {% assign comments = site.emptyArray %}
 {% for comment in commentFiles %}
