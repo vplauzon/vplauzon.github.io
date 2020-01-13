@@ -1,13 +1,14 @@
 <hr>
 
+{% assign postPathParts = page.path | split: "/" %}
 {% assign urlParts = page.url | split: "/" %}
-{% assign year = urlParts[1] %}
-{% assign quarter = urlParts[2] %}
+{% assign year = postPathParts[1] %}
+{% assign quarter = postPathParts[2] %}
 {% assign postName = urlParts[4] %}
-{% assign postPath = page.path %}
 {% assign commentFiles = site.data[year][quarter][postName].comments %}
 
 <p>Url:  {{ page.url }}</p>
+<p>path:  {{ page.path }}</p>
 <p>year:  {{ year }}</p>
 <p>quarter:  {{ quarter }}</p>
 <p>postName:  {{ postName }}</p>
