@@ -1,0 +1,6 @@
+id: 7056
+author:
+  name: jasonbsteele
+  url: http://jasonbsteele.wordpress.com
+date: 2018-03-30T10:00:05.0000000-07:00
+content: Would it be worth considering returning the docs using IEnumerable and "yield return". In that way would avoid having to put the whole resultset into memory and the LINQ query would filter for the ones actually required.

@@ -1,0 +1,10 @@
+id: 26785
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2019-12-02T15:05:54.0000000-08:00
+content: >-
+  Since the NSG let only private IPs coming from the AKS-subnet through and the request does go through, we're forced to conclude the oubound IP was from that AKS-subnet.
+
+
+  So, although the packets travel around AKS with cluster IPs, they still seem to be stamped with the VMs IPs when they leave it.

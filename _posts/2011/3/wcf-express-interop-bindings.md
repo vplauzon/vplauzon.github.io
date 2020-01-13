@@ -1,0 +1,10 @@
+---
+title: WCF Express Interop Bindings
+date: 2011-08-02 17:38:00 -07:00
+permalink: /2011/08/02/wcf-express-interop-bindings/
+categories:
+- Solution
+tags:
+- API
+---
+<p>Something that might come as a surprise for somebody who worked with WCF (even for years) but never had to interoperate with another platform than .NET is how much WCF isn’t interoperable out-of-the-box.</p>  <p>It isn’t WCF fault really.&#160; It’s SOAP’s fault and its lousy specs.&#160; Well…&#160; not so much lousy as big, complicated and extremely flexible.&#160; The result is that each vendor implements a subset of those or at least expose a subset as the default configuration for web service.&#160; So although you’re using a platform that is interoperable, the web services you are exposing are not.</p>  <p>Of course, if you’re exposing your web service using basic http binding with no security, no reliability, no session and plain old XML (even for big binary payload), you are probably interoperable (and pretty unsecure).&#160; If you use a fancier bindings, chances are you won’t be able to interoperate with another platform.</p>  <p>But rest assure, instead of mocking around binding configuration until you can talk to this Java server over there, Microsoft gives us the <a href="http://wcf.codeplex.com/wikipage?title=WCF%20Express%20Interop%20Bindings" target="_blank">WCF Express Interop Bindings</a> on CodePlex.&#160; Take a look at this picture (from the site) and reflect on how “Universal” SOAP is when you have platform technology names on both side of the diagram!</p>  <p><a href="/assets/posts/2011/3/wcf-express-interop-bindings/clip_image001_2.png"><img style="background-image:none;border-bottom:0;border-left:0;padding-left:0;padding-right:0;display:inline;border-top:0;border-right:0;padding-top:0;" title="clip_image001_2" border="0" alt="clip_image001_2" src="/assets/posts/2011/3/wcf-express-interop-bindings/clip_image001_2_thumb.png" width="665" height="340" /></a></p>

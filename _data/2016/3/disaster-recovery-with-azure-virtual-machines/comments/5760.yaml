@@ -1,0 +1,16 @@
+id: 5760
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2017-10-16T03:32:23.0000000-07:00
+content: >-
+  GRS doesn't give you access to your data in secondary location does.  It only stores the data there in case the primary Azure region goes down &amp; your data get lost.  RA-GRS allows you to have read-only (RA) access to your data in secondary region.
+
+
+  You can access your secondary region using the storage API.  So I don't know if that is convenient for accessing your CHEF scripts...
+
+
+  You can see a discussion about HA with Azure storage here:  https://docs.microsoft.com/en-ca/azure/storage/common/storage-designing-ha-apps-with-ragrs.  In this article, you have an example, in C#, of using the secondary region to access the data:  https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/
+
+
+  If that isn't convenient, a simpler option might just be to have automation copying data from one account to another (in different region) on a schedule.

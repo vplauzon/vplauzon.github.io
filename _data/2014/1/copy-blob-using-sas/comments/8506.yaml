@@ -1,0 +1,6 @@
+id: 8506
+author:
+  name: Angel Adrover
+  url: ''
+date: 2018-10-15T02:12:26.0000000-07:00
+content: "For me, it works fine, with an SAS, uploading files from my local computer to a Blob Container.\nAfter a bit of trial error, It worked with: \n     azCopy.exe /Source: /Dest:\"?\"\n and not . Don't forget the ? character. And  can be just obtained with Azure Storage Explorer.\n\nI used this utility, althougth It doesn't seem to be much more faster than just dragging and dropping files using Azure Storage Explorer."

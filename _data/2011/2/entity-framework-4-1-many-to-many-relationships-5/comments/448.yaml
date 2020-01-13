@@ -1,0 +1,6 @@
+id: 448
+author:
+  name: zomgman
+  url: ''
+date: 2012-09-07T02:41:35.0000000-07:00
+content: Thanks for this example. How would you delete such relations with join models? In your example, when i want to remove the relationship between an Order and an Employee, how would i do that? i basically want to delete only the OrderEmployees join model.

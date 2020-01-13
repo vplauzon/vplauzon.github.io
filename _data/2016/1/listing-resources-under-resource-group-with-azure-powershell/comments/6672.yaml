@@ -1,0 +1,19 @@
+id: 6672
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2018-02-13T03:08:14.0000000-08:00
+content: >-
+  This is kind of possible but not trivial.  You see, "Created By" isn't a property of the resource objects.
+
+
+  The way to correlate the two would be to access the Activity Logs (see https://vincentlauzon.com/2016/11/27/primer-on-azure-monitor/) find the log entry for the resource creation and then you'll find who did the REST action.  From there you could query AAD to get details on that user (see https://vincentlauzon.com/2017/02/02/automating-azure-ad/).
+
+
+  On top of that, activity logs are available only for the last 30 days unless you redirect them to some other storage.
+
+
+  So, not impossible, but not as simple as joining two tables in a db ;)
+
+
+  Now, if that is important to your organization to, you could run a job every day to scan newly created resources and TAG those resources with some meta data about the creating user.  Then it would be much easier to query the "created by" user, assuming nobody go and mess with the tags.

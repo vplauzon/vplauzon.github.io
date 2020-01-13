@@ -1,0 +1,6 @@
+id: 581
+author:
+  name: Hung Nguyen
+  url: ''
+date: 2013-04-16T16:38:05.0000000-07:00
+content: Your example illustrates new Order and new Employee. How about the scenario where you already have existing Order and Employee? How can you insert into the junction table when that happens? Can you give me an example? Thanks

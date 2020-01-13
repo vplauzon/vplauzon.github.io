@@ -1,0 +1,10 @@
+id: 7335
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2018-05-10T06:24:52.0000000-07:00
+content: >-
+  You do not need to allow internet access.  You can use "Service Tag" as Destination and then "SQL.EastUS" (for example) as "Destination Service Tag".
+
+
+  That is one of the goal of the Service Endpoint feature to not require outbound internet access.

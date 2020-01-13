@@ -1,6 +1,0 @@
-id: 3944
-author:
-  name: Vincent-Philippe Lauzon
-  url: http://vincentlauzon.com
-date: 2016-02-26T13:26:12.0000000-05:00
-content: Yes.  The secondary keys for Table Storage are an authentication secrets.  By secondary index I meant another index than the Partition key / Row Key, i.e. being able to index other columns.

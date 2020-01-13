@@ -1,6 +1,0 @@
-id: 4870
-author:
-  name: rajan bhayana
-  url: http://devopsandcloud.wordpress.com
-date: 2017-06-13T06:23:37.0000000-04:00
-content: "when making a scale set, why are we using the image for OSDisk?\n\"virtualMachineProfile\": {\n          \"storageProfile\": {\n            \"osDisk\": {\n              \"createOption\": \"FromImage\",\n              \"managedDisk\": {\n                \"storageAccountType\": \"Premium_LRS\"\n              }\n            },\n            \"imageReference\": {\n              \"id\": \"[resourceId('Microsoft.Compute/images', variables('Image Name'))]\"\n            },\n            \n\nis there a way to use an existing managed disk in vmss so that all the Vms that come up in scale set as using this disk as OSDisk?\n\"virtualMachineProfile\": {\n          \"storageProfile\": {\n            \"osDisk\": {\n              \"OSType\" :  \"Linux\",\n              \"caching\": \"ReadWrite\",\n              \"createOption\": \"attach\",\n              \"managedDisk\": {\n                \"id\": \"/subscriptions/xxx-xxx-xxx-xxxx/resourceGroups/VMSSAPPGATEWAYTEST/providers/Microsoft.Compute/disks/testvm_OsDisk_1_bac5bcaf20ec4cafbb0f452d631fe68f\"\n              }\n            },\n            \"dataDisks\": [\n              ],\n            },"

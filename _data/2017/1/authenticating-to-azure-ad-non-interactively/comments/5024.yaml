@@ -1,0 +1,10 @@
+id: 5024
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2017-07-07T10:11:38.0000000-07:00
+content: >-
+  The usual approach for Web Services is to accept an AAD token in the HTTP header of the request.  This is standard behaviour and can be enforced by configuration in the case of Azure Web App for instance (see https://vincentlauzon.com/2016/03/11/securing-rest-api-using-azure-active-directory/).
+
+
+  This way not every Web Service call has purview on your employee's credentials.

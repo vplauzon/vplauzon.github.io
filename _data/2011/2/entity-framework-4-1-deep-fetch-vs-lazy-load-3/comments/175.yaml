@@ -1,0 +1,6 @@
+id: 175
+author:
+  name: Dave
+  url: ''
+date: 2011-06-01T08:27:23.0000000-07:00
+content: "Yah...  nHibernate has the same problem with its eager loading.  They do a join to fetch all the data instead of N queries, where N is the number of interconnected entities in your query graph.  That pretty much sucks.  At the time, I wrote an ORM that would do the exact opposite: build N queries, propagate the WHERE clause in each queries, execute them in the parent to child order, and do a single pass on each resultset.  For each resultset, instantiate one object per row, and put it in an hashtable so that it could be retrieved by foreign-key by its child.  When you do the same pass with one of the child resultset, retrieve the parent object from the hashtable, and add the child to the parent's collection, and optionally assign the parent to the child.  Put the mapping in an xml file, generate IL code at run-time, and boom, you've got the best ORM, one that does CRUD on any graph in O(n)!!!  :-)  Well, enough self-contemplation...  In all cases, EF and nHibernate just don't do it that way, and that's about it.  Deal with it ;-P"

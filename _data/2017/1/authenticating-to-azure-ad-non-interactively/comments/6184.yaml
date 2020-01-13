@@ -1,0 +1,6 @@
+id: 6184
+author:
+  name: Justin
+  url: http://ndivision.com
+date: 2017-12-06T11:06:35.0000000-08:00
+content: I actually fixed the last issue as well. Now I just need to figure out how to extract the accessToken in the response body to pass as a bearer token.

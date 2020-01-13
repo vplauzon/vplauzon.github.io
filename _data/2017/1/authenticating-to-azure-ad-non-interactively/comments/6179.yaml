@@ -1,0 +1,6 @@
+id: 6179
+author:
+  name: Justin
+  url: http://ndivision.com
+date: 2017-12-06T08:09:09.0000000-08:00
+content: I am very new to async tasks so any help is much appreciated. I am never able to obtain the results of the async task you show above as I always seem to end up with "An asynchronous module or handler completed while an asynchronous operation was still pending." What is the correct way to obtain the results of the access token in the method you provide?

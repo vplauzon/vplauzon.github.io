@@ -1,0 +1,10 @@
+---
+title: Windows Azure SQL Database named an Enterprise Cloud Database Leader by Forrester Research
+date: 2012-11-29 16:53:00 -08:00
+permalink: /2012/11/29/windows-azure-sql-database-named-an-enterprise-cloud-database-leader-by-forrester-research/
+categories:
+- Solution
+tags:
+- Data
+---
+<p>Three weeks ago Forrester <a href="http://www.forrester.com/pimages/rws/reprints/document/70541/oid/1-LLP641">released a paper</a> on Cloud Databases.</p>  <p>As <a href="http://blogs.msdn.com/b/windowsazure/archive/2012/11/14/windows-azure-sql-database-named-an-enterprise-cloud-database-leader-by-forrester-research.aspx">pointed out by Microsoft</a>, Forrester declared SQL Azure <u><strong>and</strong></u> Amazon Relational Database Service (RDS) <u><strong>and</strong></u> Amazon DynamoDB <u><strong>and</strong></u> salesforce.com’s Database.com as leader of the pack.</p>  <p>That is quite impressive given the relatively late start Microsoft took on those competitors.</p>  <p>SQL Azure is a leading service in the Azure family.&#160; As an Azure observer, for me there was a before and an after SQL Azure.&#160; Before, Azure was a quaint initiative with potential but on the fringe with no mass adoption.&#160; When SQL Azure arrived, people got on board.&#160; The economics was good, the management and performance made it a no brainer and it is actually quite easy to know when it makes sense to use it or not!</p>  <p>With the addition of SQL Azure Federation, enabling a managed sharding of tables, SQL Azure outgrew its scale up limitation and enables truly huge scale such as consumer scale scenarios.</p>  <p>Slowly the entire SQL ecosystem is moving to Azure.&#160; Reporting Services have been there for more than a year and SSIS is suppose to come into town soon.&#160; We've heard rumours about Analytic Services although this seem to be more for the long run.</p>

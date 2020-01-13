@@ -1,0 +1,6 @@
+id: 478
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.wordpress.com
+date: 2012-10-23T09:19:18.0000000-07:00
+content: Relation table (e.g. EmployeeOrder) can only contain primary keys from their related tables in order to be represented 'implicitely' in the object model.  If we want more fields / columns, we need to represent them explicitely, e.g. as an EmployeeOrder object having two properties, Employee &amp; Order (then Employee &amp; Order objects could have a collection of Employee Orders) and the others (e.g. Count in your example).

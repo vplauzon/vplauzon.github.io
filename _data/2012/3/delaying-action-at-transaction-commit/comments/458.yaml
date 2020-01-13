@@ -1,0 +1,9 @@
+id: 458
+author:
+  name: davidlacerte
+  url: http://davidlacerte.wordpress.com
+date: 2012-09-30T17:23:13.0000000-07:00
+content: >-
+  Hey Vincent,
+
+  That's interesting, what I don't see though (and I didn't go and see for myself, it's easier to simply ask you ;-)) is what in that tells me that this volatile is called at the end of the transaction?  I understand that you want to do the insert at the end, so that you don't lock the table for the time of the long, read-only select operation (I assume you don't lock the table while reading from it).  But then, what tells me that the volatile isn't in fact called at the beginning of the transaction, or in the middle of it?

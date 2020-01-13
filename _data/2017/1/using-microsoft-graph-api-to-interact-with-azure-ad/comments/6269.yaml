@@ -1,0 +1,6 @@
+id: 6269
+author:
+  name: mohammad shahbaz khan
+  url: ''
+date: 2017-12-15T20:51:36.0000000-08:00
+content: await call stay forever when I check DoesUserExists in line await DoesUserExistsAsync(client, user);

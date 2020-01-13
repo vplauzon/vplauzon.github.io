@@ -1,0 +1,9 @@
+id: 5083
+author:
+  name: Prathamesh
+  url: ''
+date: 2017-07-15T04:18:27.0000000-07:00
+content: >-
+  HI,
+
+  I have existing Vnet and I am using ARM template to create Azure internal load balancer with Static Private IP address. Though my load balancer is created and backend pool is also created but failing to add an availability set under backend pool. Please suggest how to accomplish same using same ARM template. Appreciate prompt response.

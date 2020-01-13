@@ -1,0 +1,10 @@
+id: 346
+author:
+  name: Manuel Castro
+  url: http://www.facebook.com/manuelcl
+date: 2011-12-24T07:13:19.0000000-08:00
+content: >-
+  My guideline is to let EF build the queries when doing simple data access where you need flexibility but do write stored procedures for complex data fetching operations but make sure that they return a model type or a elaborate view type that you will map to, so you can benefit from EF mapping.
+
+
+  That gives you (almost) the best of both worlds: flexibility and speed on the bulk of the code and perfomance and control on the specific data bottlenecks of your application

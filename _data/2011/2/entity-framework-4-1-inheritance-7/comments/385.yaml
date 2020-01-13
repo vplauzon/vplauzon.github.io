@@ -1,0 +1,6 @@
+id: 385
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.wordpress.com
+date: 2012-02-02T09:20:57.0000000-08:00
+content: Good question.  I do not know how EF behaves with interfaces or abstract base class.  Did you test it?

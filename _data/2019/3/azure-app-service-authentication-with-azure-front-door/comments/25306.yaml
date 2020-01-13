@@ -1,0 +1,10 @@
+id: 25306
+author:
+  name: Andy Ball
+  url: http://andyjball.wordpress.com
+date: 2019-08-21T03:54:36.0000000-07:00
+content: >-
+  Hi,
+
+
+  Yes you can have multiple domains on a single web app , but i was talkin about allocating the same custom domain to multiple web apps, ie for load balancing , redundancy , which is not allowed.

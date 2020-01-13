@@ -1,0 +1,15 @@
+id: 24218
+author:
+  name: Raja Chava
+  url: ''
+date: 2019-04-24T12:06:22.0000000-07:00
+content: >-
+  The one problem I noticed with this approach is, the tags are lost. My idea was to read the tags before the change and apply them back but I have no luck yet.
+
+
+  $DiskConfig = New-AzureRmDiskUpdateConfig -AccountType Premium_LRS -Tag $tags
+
+  Tags are not stored in that variable
+
+
+  Update-AzureRmDisk -DiskUpdate $DiskConfig -ResourceGroupName $ResGrpName -DiskName $disk.Name

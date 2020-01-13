@@ -1,0 +1,19 @@
+id: 4873
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2017-06-13T13:24:59.0000000-07:00
+content: >-
+  Hi Rajan,
+
+
+  I'm not %100 sure I understand your question.  Let me state a few things and you can tell me if it answers your question or dig further.
+
+
+  VMs in Azure cannot share disks.  This is a limitation / by design.  This is why, among other things, we can't have a quorum disk in database cluster scenarios.
+
+
+  So for this reason, we can only point to "unused" disks when creating a VM.  It can either be a disk used by no VM, a snapshot (see https://vincentlauzon.com/2017/02/22/taking-a-snapshot-of-a-managed-disk/), a custom image (as shown in this article) or a Azure Marketplace (AMP) image.
+
+
+  The closest thing of the scenario you're invoking, I believe, would be to take a snapshot of the disk and use that for VMSS.  That being said, I've never tried it and I'm not sure it would work as all VMs in the set would have the same identity (same computer name)...  This is why I would use an image, i.e. a generalized VM, for VMSS.

@@ -1,0 +1,10 @@
+---
+title: Microsoft StreamInsight Intro
+date: 2011-07-30 17:29:00 -07:00
+permalink: /2011/07/30/microsoft-streaminsight-intro/
+categories:
+- Solution
+tags:
+- Data
+---
+<p>Microsoft released <a href="http://www.microsoft.com/sqlserver/en/us/solutions-technologies/business-intelligence/complex-event-processing.aspx" target="_blank">Microsoft StreamInsight</a> with SQL Server 2008 R2.</p>  <p>This is an engine for real time data analysis.&#160; It’s an alternative to traditional BI which typically crunch replicated data.&#160; Instead, StreamInsight let’s you analyse the data as it comes to you (as a <em>stream</em>).</p>  <p>The programming model is built on top of LINQ with the twist that the collection you’re linqing against isn’t entirely materialized yet and will keep coming.&#160; Therefore, it lets you produce results from an input streams by transforming query results.</p>  <p>I read a bunch of articles about it and I understand the purpose of it, pretty much where it would be useful, but I never tried it nor did I fully grasp how it would <em>really</em> be used.&#160; Finally I found an article giving you a flavour of how a StreamInsight <em>application </em>would look like!&#160; It’s on MSDN, written by <a href="http://msdn.microsoft.com/en-ca/magazine/ee532098.aspx?sdmr=RobPierry&amp;sdmi=authors" target="_blank">Rob Pierry</a>:</p>  <p><a title="http://msdn.microsoft.com/en-us/magazine/hh205648.aspx" href="http://msdn.microsoft.com/en-us/magazine/hh205648.aspx">http://msdn.microsoft.com/en-us/magazine/hh205648.aspx</a></p>  <p>It’s a great read and it goes just deep enough so that you can have a real grasp at how StreamInsight is used without getting too much into details.&#160; For instance, it does explain the concept of time Window rather succinctly and it’s the best explanation I’ve seen so far.</p>  <p>Enjoy!</p>

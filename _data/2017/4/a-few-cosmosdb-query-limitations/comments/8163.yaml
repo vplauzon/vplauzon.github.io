@@ -1,0 +1,17 @@
+id: 8163
+author:
+  name: Louis
+  url: ''
+date: 2018-08-30T07:51:39.0000000-07:00
+content: >-
+  Did you try the aggregate queries without the keyword 'VALUE'?
+
+
+  thus:
+
+
+  SELECT MIN(c.age) AS minAge, MAX(c.age) AS maxAge
+
+  FROM c
+
+  WHERE c.department="HR"

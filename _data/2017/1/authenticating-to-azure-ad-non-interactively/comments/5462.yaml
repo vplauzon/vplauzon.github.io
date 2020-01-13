@@ -1,0 +1,16 @@
+id: 5462
+author:
+  name: Gene
+  url: ''
+date: 2017-09-05T17:51:02.0000000-07:00
+content: >-
+  Hello Vincent,
+
+  The code calls I understand. But from where did the assigned values come from, for the variables: tenant , serviceUri , clientID?
+
+  I know what TenantId is, and what ApplicationId is (in this Azure AD context).  But 'tenant' is not TenantId, and I do not know that 'clientID' is?
+
+  For 'serviceUri', I expect to use http://manager.azure.com/ , does that seem sane?
+
+
+  Thanks for the C# code example, by the way.

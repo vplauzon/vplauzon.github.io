@@ -1,0 +1,16 @@
+id: 452
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.wordpress.com
+date: 2012-09-16T12:04:04.0000000-07:00
+content: >-
+  Hi Ed,
+
+
+  In your example, i.e. an existing employee gets a new oder, you need to load (select) the existing employee and add the new order on it.
+
+
+  Another exemple...  let say we have an existing employee &amp; an existing order that have no relationship up to this point but we want to put them in relationship.  We load both the employee and the order and add the employee in the Employees collection of the order.  Or...  alternatively, we add the order in the Orders collection of the employee.
+
+
+  Basically, we don't recreate object (record).  We just add them to respective collections.  Remember that those collections are not db-set collections on the db context, in which case that might actually recreate a record in the DB.

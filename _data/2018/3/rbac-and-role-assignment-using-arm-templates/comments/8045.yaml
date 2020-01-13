@@ -1,0 +1,6 @@
+id: 8045
+author:
+  name: Micah Jardine (@micah_jardine)
+  url: http://twitter.com/micah_jardine
+date: 2018-08-20T00:12:41.0000000-07:00
+content: Thank you for this, I had been looking last week how to apply rbac to a specific resource, the documentation is a bit unclear that the you have to assign the authorisation on the resource, rather that define the scope on the authorisation.

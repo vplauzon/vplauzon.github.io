@@ -1,0 +1,18 @@
+id: 26758
+author:
+  name: shilpa
+  url: https://vincentlauzon.com/2019/01/15/dynamic-disks-in-aks/
+date: 2019-11-29T02:49:13.0000000-08:00
+content: >-
+  Hello Team,
+
+
+  we are deploying statefulset in AKS with dynamic PV on managed disk, for single mount scenario the sample given in volumclaimtemplate works without any issues, but when we need 2 mounts to be provisioned dynamically how do we use volumclaimtemplate ?
+
+
+  could you please help us with a sample yaml with multiple metadata within volumeclaimtemplates.
+
+
+  Regards
+
+  Shilpa

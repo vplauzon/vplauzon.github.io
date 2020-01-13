@@ -1,6 +1,0 @@
-id: 5668
-author:
-  name: Mavi
-  url: ''
-date: 2017-10-02T15:37:41.0000000-04:00
-content: Hi, I've a problem about the permissions. How could I add permission app1 to app2 while app1 and app2 are in different azure active directories? Thanks.

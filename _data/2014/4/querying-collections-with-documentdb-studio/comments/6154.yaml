@@ -1,0 +1,6 @@
+id: 6154
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2017-12-01T03:51:43.0000000-08:00
+content: I'm not aware of plans to further improve that tool.  What I would look at if I were you is the Storage Explorer tool that recently includes Cosmos DB support.  https://azure.microsoft.com/en-us/features/storage-explorer/ It isn't a web tool but it is available on multiple platforms.

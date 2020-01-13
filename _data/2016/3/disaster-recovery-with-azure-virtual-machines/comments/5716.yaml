@@ -1,0 +1,16 @@
+id: 5716
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2017-10-12T10:53:20.0000000-07:00
+content: >-
+  You seem to have a typical stateless + DB in PaaS scenario.  You do not need to replicate nor backup your VMs since you can spin them back using CHEF.  Just make sure that CHEF and all the scripts you need are available in your failover region though.
+
+
+  To your question, your storage should be local (managed disks are always local anyway).  You do not need backup for your VMs.
+
+
+  For your DBs you can use Geo-Replication option of Azure SQL.  This way you can have a standby DB in the failover region.  That DB doesn't need to be as powerful (and expensive) as the primary one, as long as it can carry the storage.
+
+
+  If that option is too expensive, you can use backups to Blob Storage.  I've never tried it so I don't know if you can target a storage account from a different region.  Otherwise, you can have it RA-GRS to recover them or run a job of some sort to move the blobs to a storage account in the failover region.

@@ -1,0 +1,14 @@
+id: 333
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.wordpress.com
+date: 2011-12-16T10:13:31.0000000-08:00
+content: >-
+  Hi Arun,
+
+
+
+  It has been a while since I faced this issue.  I managed to trap the error on the client side with the information (i.e. fault) from the server side, but I had to go low level as with API call you only receive a generic exception.
+
+
+  As I mention in the blog you could write a WCF extension to handle that and surface the right exception to the client, but for me this would break the dev experience since you would need to know the type of faults that could be sent on the client-side.  This all boils down to the fact that with REST there are no WSDL and no service contract whatsoever, hence making ideal for an 'obvious' exchange pattern protocol, but once you want to communicate complicated error patterns, REST isn't really the right tool.

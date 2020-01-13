@@ -1,6 +1,0 @@
-id: 8268
-author:
-  name: pradeep
-  url: ''
-date: 2018-09-13T13:05:08.0000000-04:00
-content: "Hi ,\nI have one moblie app fronted we are using android and middle ware we are using java. we wanted to connect AAD through java and we need to pass the username and password( which we will be getting in  the middle ware from Ui) to Azure active directory for authentication .which type of grant type we need to use and our application should be registered in AAD (which one it should be web api / native api ) .Once the user is authenticated we need to get access toke n and through access token we need to access o365 .Please suggest if you have any idea .\n\nThanks \nPK"

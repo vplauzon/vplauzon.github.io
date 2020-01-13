@@ -1,0 +1,10 @@
+id: 25311
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2019-08-22T13:07:51.0000000-07:00
+content: >-
+  Hum...  are you sure?
+
+
+  I never tried it but we would have the same problem with Traffic Manager (TM, which is way older than AFD) with 2 Web Apps.  In order to have HTTPS on 2 Web Apps load balanced by TM, you would need the web apps to be aware of the custom domain and its certificate.

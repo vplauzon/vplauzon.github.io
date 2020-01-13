@@ -1,6 +1,0 @@
-id: 308
-author:
-  name: George R
-  url: ''
-date: 2011-11-28T21:28:00.0000000-05:00
-content: And for future readers, to do this with code-first fluent configuration, inherit your config from ComplexTypeConfiguration rather than EntityTypeConfiguration

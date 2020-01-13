@@ -1,0 +1,6 @@
+id: 7753
+author:
+  name: secuproff
+  url: ''
+date: 2018-07-02T05:59:35.0000000-07:00
+content: "Nice article.. very well explained. \nCan you help me to clear one of my doubt?\n\nCan we use Azure Analytics/Azure Monitoring itself as SIEM ? instead of deploying separate SIEM in Azure.\nMy requirement is related to PCI DSS wherein it is requirement of SIEM but I am thinking if Azure itself have all logging capabilities then why should install third party siem in azure.\n\nThanks for help."

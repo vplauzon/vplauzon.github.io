@@ -1,0 +1,9 @@
+---
+title: Windows Azure Storage Architecture Overview
+date: 2011-03-22 17:34:00 -07:00
+permalink: /2011/03/22/windows-azure-storage-architecture-overview/
+categories:
+- Solution
+tags: []
+---
+<p>Interesting article published at the end of last year:</p>  <p><a title="http://blogs.msdn.com/b/windowsazurestorage/archive/2010/12/30/windows-azure-storage-architecture-overview.aspx" href="http://blogs.msdn.com/b/windowsazurestorage/archive/2010/12/30/windows-azure-storage-architecture-overview.aspx">http://blogs.msdn.com/b/windowsazurestorage/archive/2010/12/30/windows-azure-storage-architecture-overview.aspx</a></p>  <p>The article does a deep dive into the Storage Architecture of Azure.&#160; It’s a shame this feature seems to on ice for Microsoft (by customer demand for sure, since SQL Azure is getting all the fans), since the architecture has a lot of potential in scalability and reliability.</p>  <p>The three main layers are:</p>  <ol>   <li>Front-End Layer, responsible to authenticate, authorize and route each requests to a partition server.</li>    <li>Partition Layer, responsible to load balance partitions across a server farm.</li>    <li>Distributed (and replicated) File System (DFS), responsible for storing bits on disk and to replicate it.</li> </ol>  <p><a href="http://blogs.msdn.com/cfs-file.ashx/__key/CommunityServer-Blogs-Components-WeblogFiles/00-00-01-36-55-metablogapi/0181.image_5F00_79D0B3C2.png"><img title="image" border="0" alt="image" src="http://blogs.msdn.com/cfs-file.ashx/__key/CommunityServer-Blogs-Components-WeblogFiles/00-00-01-36-55-metablogapi/6837.image_5F00_thumb_5F00_228C190C.png" width="484" height="364" /></a></p>  <p>The article goes through a request lifecycle, how failures at different layers are addressed, how Azure Fault &amp; Upgrade domains relate to this architecture and how partitioning is automatically handled.</p>  <p>This gives you a very good overview of Azure Storage behind the scene!</p>

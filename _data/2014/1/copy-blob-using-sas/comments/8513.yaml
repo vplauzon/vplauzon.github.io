@@ -1,0 +1,21 @@
+id: 8513
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2018-10-15T13:54:32.0000000-07:00
+content: >-
+  Yes, that is perfectly normal.  Both AzCopy &amp; Storage Explorer are based on the same library (https://github.com/Azure/azure-storage-net-data-movement).
+
+
+  The reasons to use AzCopy :
+
+
+  <ol>
+
+  <li>You are in an environment without UI</li>
+
+  <li>You want to automate data movement</li>
+
+  <li>You want to move data from one cloud source to a cloud destination and do not want to transit the data on your PC / network (related to 1)</li>
+
+  </ol>

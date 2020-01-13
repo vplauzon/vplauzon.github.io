@@ -1,0 +1,6 @@
+id: 3911
+author:
+  name: Alexandre Brisebois
+  url: http://alexandrebrisebois.wordpress.com
+date: 2016-02-05T06:32:22.0000000-08:00
+content: In the case where you need an arm template to recreate your VM, you can use tags to help identify which template to execute. Consequently, we have the opportunity to generalize the automation Runbook.

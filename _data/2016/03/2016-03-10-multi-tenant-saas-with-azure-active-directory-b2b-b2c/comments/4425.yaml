@@ -1,6 +1,0 @@
-id: 4425
-author:
-  name: Vincent-Philippe Lauzon
-  url: http://vincentlauzon.com
-date: 2017-01-17T14:06:01.0000000-05:00
-content: Yes, the user sort of specify it when they login since they need to provide the domain name, e.g. john@mytenant.com.  The domain is what AAD uses to map the tenant and route the authentication there.

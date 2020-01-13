@@ -1,0 +1,10 @@
+id: 7698
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2018-06-28T13:20:49.0000000-07:00
+content: >-
+  Interesting.  I believe that didn't exist when I wrote that blog.
+
+
+  I can't find it in the ARM template (https://docs.microsoft.com/en-ca/azure/templates/microsoft.network/applicationgateways).  Could you please point me to the property you are referring to?

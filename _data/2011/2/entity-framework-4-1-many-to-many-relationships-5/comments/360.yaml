@@ -1,0 +1,18 @@
+id: 360
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.wordpress.com
+date: 2012-01-06T18:27:23.0000000-08:00
+content: >-
+  Something like:
+
+
+  var q = from o in context.Orders
+     where o.OrderID==1
+     select o.InvolvedEmployees;
+
+  Despite 'o.OrderID' appearing in the query, it will never be fetched and materialized.  It will only be translated in the SQL query, doing what you suggested, i.e. querying the relation table.  Only employees will be materialized and returned.
+
+
+
+  I hope that answered your question.

@@ -1,0 +1,19 @@
+id: 4235
+author:
+  name: Mark Smith
+  url: http://www.SmiKar.com
+date: 2016-09-07T21:56:35.0000000-07:00
+content: >-
+  Hi there,
+
+
+  Nice article, just worth noting that we have developed some software that does all this without powershell.
+
+
+  You can also use the Azure Virtual Machine scheduler from SmiKar Software. AVMS as it is known will connect to your Azure Subscriptions and allow you to select the VMs and a power on or down schedule to suit.
+
+
+  Works with V1 and V2 Azure Virtual Machines
+
+
+  http://www.smikar.com/automate...

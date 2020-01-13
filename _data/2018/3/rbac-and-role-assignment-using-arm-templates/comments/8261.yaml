@@ -1,0 +1,10 @@
+id: 8261
+author:
+  name: Lauri Naulapää
+  url: ''
+date: 2018-09-12T01:04:03.0000000-07:00
+content: >-
+  So in the case of resource specific role assignment the target resource gets parsed from the specially formatted name property?
+
+
+  Any idea if/how it's possible to add a new role assignment to an existing resource? For example if I want to add a role assignment to a service bus namespace that already exists and is in a different resource group.

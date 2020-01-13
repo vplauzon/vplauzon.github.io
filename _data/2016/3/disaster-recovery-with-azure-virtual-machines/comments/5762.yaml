@@ -1,0 +1,12 @@
+id: 5762
+author:
+  name: Sujay
+  url: ''
+date: 2017-10-16T03:44:05.0000000-07:00
+content: >-
+  If you are using VMs for hosting your DBs, you can use ASR for DB VMs. And then have a recovery plan with the required automation scripts in place to bring up other stateless VMs along with the failed over DB VMs.
+
+
+  Thanks,
+
+  Sujay

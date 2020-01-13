@@ -1,6 +1,0 @@
-id: 4217
-author:
-  name: Pål Kristian Tønder
-  url: https://www.facebook.com/app_scoped_user_id/10153552072041116/
-date: 2016-08-17T09:47:52.0000000-04:00
-content: Personally I'm a bit skeptical about this approach since it entail creating a multitude of Azure ADs. This might be doable if there was some way of automating the creation of new Azure ADs, but as long as you have to do it manually, my feeling is that it doesn't scale for a solution with many customers.

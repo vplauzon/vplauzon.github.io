@@ -1,0 +1,11 @@
+id: 6182
+author:
+  name: Justin
+  url: http://ndivision.com
+date: 2017-12-06T10:45:46.0000000-08:00
+content: >-
+  I was able to get past the first issue but now I always get this error:
+
+
+
+  {"error":"invalid_client","error_description":"AADSTS70002: The request body must contain the following parameter: 'client_secret or client_assertion'.\r\nTrace ID: 5c2f3d11-97ca-4280-83ea-8e9c634c7000\r\nCorrelation ID: f18a2418-1f30-4ca2-8ead-000237b049ab\r\nTimestamp: 2017-12-06 18:43:01Z","error_codes":[70002],"timestamp":"2017-12-06 18:43:01Z","trace_id":"5c2f3d11-97ca-4280-83ea-8e9c634c7000","correlation_id":"f18a2418-1f30-4ca2-8ead-000237b049ab"}

@@ -1,0 +1,6 @@
+id: 26596
+author:
+  name: Binod
+  url: ''
+date: 2019-11-07T21:33:05.0000000-08:00
+content: "HI Justin\nI am using exactly same method as you mentioned , but i am still getting \"AADSTS70002: The request body must contain the following parameter: ‘client_secret or client_assertion’.\n\nCould you please tell me how exactly you solved this issue.\n\nThanks \nBG"

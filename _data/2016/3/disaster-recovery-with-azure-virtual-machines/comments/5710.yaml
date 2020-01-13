@@ -1,0 +1,26 @@
+id: 5710
+author:
+  name: Jason
+  url: ''
+date: 2017-10-11T21:56:25.0000000-07:00
+content: >-
+  Vincent,
+
+  First of all nice article that touches to most of the bits I`m searching with pulling my hair to get answers.
+
+
+  Few questions:
+
+  I`m using Stateless VM (2 VM in HA) at one Azure Datacenter. If the VM goes down then DR environment to be built using CHEF or Puppet.
+
+  Database: Azure SQL Database
+
+
+  In such a case, can you help me understand:
+
+  a) what sought of Azure Storage do I need  (RA-GRS or GRS)?
+
+  b) what should be Azure Backup (LRS or GRS)?
+
+
+  Any information will be valuable to head further.

@@ -1,0 +1,10 @@
+---
+title: Advertisement tracking in iOS 6 vs no-tracking in IE 10
+date: 2012-10-25 17:05:00 -07:00
+permalink: /2012/10/25/advertisement-tracking-in-ios-6-vs-no-tracking-in-ie-10/
+categories:
+- Gadget
+tags:
+- Security
+---
+<p>As the <a href="http://www.businessinsider.com/">Business Insider</a> reported, Apple <a href="http://www.businessinsider.com/ifa-apples-iphone-tracking-in-ios-6-2012-10">has quietly introduced a new technology</a> called IDFA (<em>Identification For Advisers</em>) in iOS 6.</p>  <p>This technology is similar to cookies in browser and advertisers to know which iPhone user has looked at which ads on which web site.&#160; It is anonymous in the sense that no other information beyond your ID is passed to advertisers.&#160; It allows different advertisers to do target advertisements, i.e. giving your browsing history, serving you a targeted ad.</p>  <p><a href="http://www.businessinsider.com/ifa-apples-iphone-tracking-in-ios-6-2012-10"><img alt="eye" src="http://static6.businessinsider.com/image/5040f640eab8eaf542000008-400-300/eye.jpg?maxX=378&amp;maxY=284" width="240" height="180" /></a></p>  <p>Tracking is on by default and the setting to turn it off isn’t in the <em>Privacy</em> settings but buried in the <em>General</em> ones, which is a little ironic.</p>  <p>In comparison, a few weeks ago <a href="http://www.zdnet.com">zdnet</a> reported that the <a href="http://www.zdnet.com/the-do-not-track-standard-has-crossed-into-crazy-territory-7000005502/">decision of Microsoft</a> to <strong>turn off</strong> tracking <em>by default</em> and how advertisers reacted, some cranking the crazy talk to unprecedented level (the call to defending democracy had a <a href="http://www.urbandictionary.com/define.php?term=kitchen%20sink">kitchen sink</a> to it).</p>  <p>It is obvious that tracking technology, supporting target advertising, has become key in the business and we’re certainly not done earing about it!</p>

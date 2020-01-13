@@ -1,0 +1,6 @@
+id: 26782
+author:
+  name: Karol Deland
+  url: ''
+date: 2019-12-02T11:31:58.0000000-08:00
+content: If I understand well the priority with NSGs, even though your traffic was coming from another IP outside the VNet, it would be blocked. I'm not very familiar with networking security. Could you explain why you can state your conclusion?

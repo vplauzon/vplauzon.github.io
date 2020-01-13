@@ -1,0 +1,6 @@
+id: 6402
+author:
+  name: RS
+  url: ''
+date: 2018-01-02T04:09:44.0000000-08:00
+content: "A good article Vincent. I understand the concept now. I am trying to follow it but facing the below issue:\nI created a console app (.net core) as my VS 2017 community edition only shows this project option for console app. \nI then installed the following ADAL package from NuGet - Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 3.17.3\n\nIn the article you have mentioned that we need the full .net version of ADAL. Could you please elaborate on this? From where do I get this? As when i cannot access the UserPasswordCredential Class in my console app code whereas it exists in v3.17.3 or ADAL.\n\nPlease ignore my lack of knowledge on this..it's been a while since i last did some coding.\n\nPlease let me know."

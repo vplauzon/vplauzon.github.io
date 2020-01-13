@@ -1,0 +1,6 @@
+id: 8605
+author:
+  name: Ranjith Nanjala
+  url: ''
+date: 2018-10-29T11:49:34.0000000-07:00
+content: Does this POST mothod works for .net Core. I am using .Net Core 2.0. I know we can directly give office 365 portal URL and redirect the user. However, we have some internal issues to use that route, instead I am trying to query against the Azure AD by sending the credentials.

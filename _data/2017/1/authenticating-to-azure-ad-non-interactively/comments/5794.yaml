@@ -1,0 +1,6 @@
+id: 5794
+author:
+  name: Joshua@MSFT
+  url: http://gravatar.com/joshuajdavis1980
+date: 2017-10-18T18:13:50.0000000-07:00
+content: "Great write up!  The only thing I'd add is if you do this in a static method, you'll need to call:\n\nauthContext.TokenCache.Clear(); \n\nright after instantiating the AuthorizationContext."

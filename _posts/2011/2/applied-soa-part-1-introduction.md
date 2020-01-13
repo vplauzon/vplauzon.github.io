@@ -1,0 +1,10 @@
+---
+title: 'Applied SOA: Part 1 – Introduction'
+date: 2011-06-17 16:48:00 -07:00
+permalink: /2011/06/17/applied-soa-part-1-introduction/
+categories:
+- Solution
+tags:
+- API
+---
+<p>I’ve been involved in multiple projects sporting some form of Service Oriented Architecture using Microsoft .NET technologies.&#160; Some were SOA in name only (Remote Procedure Calls were involved) while others were closer in spirit to the tenets of SOA.</p>  <p>The term SOA tends to be abused in the community.&#160; When I do interviews with candidates, I often see SOA on resumes simply because the person has seen a web service through a car window.&#160; On the other hand, when I read SOA books &amp; articles I sometimes find they are disconnected from the reality I’ve experienced and their field of application is too narrow.</p>  <p>I thought I would share my experience in applying SOA in the field.&#160; I will take the angle of bringing the concepts of SOA, discussing what they mean and then seeing how they can be applied.&#160; I’ll also discuss how principles can be bended or broken and how this can lead to situations we can see in the field.</p>  <p>SOA is an architecture style.&#160; It doesn’t fit in all situations but has been sufficiently studied to have a good body of knowledge (e.g. <a href="http://soapatterns.org/">SOA patterns</a>) attached to it, which makes it a good starting point to attack many software problems (but, by far, not all).</p>  <p>In this blog series, I will try to cover the following aspects:</p>  <ul>   <li>SOA Basics</li>    <li>Interoperability </li>    <li>Security</li>    <li>SOA Patterns</li>    <li>Evolution (e.g. Versioning) </li>    <li>Service Design (Discovery Process, Taxonomy) </li>    <li>Reuse (e.g. Composition) </li>    <li>Governance </li> </ul>  <p>As always, your comments are most welcome as this is just my viewpoint, coloured by the experienced I had.</p>

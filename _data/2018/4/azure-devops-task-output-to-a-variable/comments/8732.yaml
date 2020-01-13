@@ -1,0 +1,6 @@
+id: 8732
+author:
+  name: Ramesh
+  url: ''
+date: 2018-11-18T10:27:21.0000000-08:00
+content: "I have integrated SonarQube as a task \n1) Powershell - analysis start\n2) Prepare Analysis - Prepare Analysis Configuration Task\n   Here I have added in the Adfanced --&gt; Additional Properties\nsonar.cs.analyzer.projectOutPaths=$(Build.SourcesDirectory)\nsonar.issuesReport.json.enable=true\nsonar.report.export.path=sonar-report.json\n\nsonar.verbose=true\n\n3) Run Code Analysis - Run Code Analysis Task\n4) Publish Quality Gate Result \n5) Powershell - analysis end\n\nBut in spite of those 3 parameters , I do not see the analysis file being generated. If you can let me know a way to captur ethe analysis file that would be great.\n\nFYI, my sonar server is separate from the ADO servers and I could see the results being published in the sonar server successfully."

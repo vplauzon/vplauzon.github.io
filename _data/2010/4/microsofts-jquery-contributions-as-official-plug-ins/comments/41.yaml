@@ -1,0 +1,6 @@
+id: 41
+author:
+  name: Mohamed Hachem (Momozito)
+  url: ''
+date: 2010-10-15T13:06:55.0000000-07:00
+content: I have used jQuery with sharepoint to build custom navigation of the site, it works as charm, I think Jquery is gaing momentum over regular javascripting with its plugins and asynch models it is good alternative. With sharepoint it is very easy to have your webpart use Jquery, some xslt styling you have all what you want to build custom sharepoint components.Jquery can make calls to sharepoint services access/update data from lists or libraries all is done in asynch calls and user dont have to blink :). I also used Jquery to build custom photo gallery in sharepoint. it is real fun, thanks Mr vincent for your insight, cheers

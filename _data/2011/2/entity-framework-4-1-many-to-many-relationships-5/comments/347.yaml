@@ -1,0 +1,6 @@
+id: 347
+author:
+  name: jit
+  url: ''
+date: 2011-12-29T08:48:47.0000000-08:00
+content: here i have order entity and employee entity. Now i want to check the employees in the order number 1. So i will go and search in orderemployee table. But i do not have orderemployee entity. How can i retrieve the data of this specific query

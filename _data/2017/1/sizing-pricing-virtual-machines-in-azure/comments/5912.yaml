@@ -1,0 +1,16 @@
+id: 5912
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.com
+date: 2017-11-01T09:13:56.0000000-07:00
+content: >-
+  Hi Carlos,
+
+
+  Yes you're right:  since this article was published the actual bandwidth is published.
+
+
+  I believe the bandwidth is shared across NICs.  So if you have one NIC, you can reach the bandwidth.  The NICs are virtual.
+
+
+  IOPs is a different story.  It's a different 'channel', i.e. if you use a lot of network bandwidth you do not impact the IOPs of your disks &amp; vis versa.

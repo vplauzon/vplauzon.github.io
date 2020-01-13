@@ -1,0 +1,11 @@
+id: 22532
+author:
+  name: Adrian
+  url: ''
+date: 2019-04-05T14:57:27.0000000-07:00
+content: >-
+  Yeah! configmap is the first way we've tried. Some cases, application config contains lots of "secrets" within, so.. we're evaluating to include it as a whole secret to avoid lots of secrets replacements.
+
+  The size limit for a secret is 25Kb, so.. in most cases it should fit.
+
+  Not sure if it's the best way to proceed, but it's a way :)

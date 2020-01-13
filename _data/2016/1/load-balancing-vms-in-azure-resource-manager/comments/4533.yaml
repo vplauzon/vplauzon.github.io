@@ -1,0 +1,6 @@
+id: 4533
+author:
+  name: Rick
+  url: http://microtechinteractive.com/
+date: 2017-03-06T03:56:14.0000000-08:00
+content: Nice write up, I followed it and it works as described. One small question though, regarding the storage account, Do the 2 VMs share the same storage account where if I write something on VM-0 should appear on VM-1 also?

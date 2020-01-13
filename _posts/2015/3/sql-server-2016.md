@@ -1,0 +1,63 @@
+---
+title: SQL Server 2016
+date: 2015-07-22 16:00:45 -07:00
+permalink: /2015/07/22/sql-server-2016/
+categories:
+- Solution
+tags:
+- Data
+- NoSQL
+---
+Here's a rundown of my favourite new features in SQL Server 2016, largely inspired by the <a href="http://bit.ly/1Ifuveh" target="_blank">SQL Server Evolution</a> video.
+<h3>Impact of Cloud-First on SQL Design</h3>
+This is a really nice illustration of the consequences of Cloud-First for Microsoft products.
+
+<a href="/assets/posts/2015/3/sql-server-2016/4150-microsoft-mobile-first-cloud-first1.jpg"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;" title="4150.Microsoft-Mobile-First-Cloud-First[1]" src="/assets/posts/2015/3/sql-server-2016/4150-microsoft-mobile-first-cloud-first1_thumb.jpg" alt="4150.Microsoft-Mobile-First-Cloud-First[1]" width="240" height="160" align="left" border="0" /></a>SQL has been basically flipped around as a product.  When SQL Azure was introduced years ago, it was a version of SQL Server running in the cloud.  Nowadays, SQL Azure drives the development of the SQL Server product.
+
+Being cloud-first allows Microsoft to iterate much faster on different product feature in preview mode, gather a tone of feedback, thanks to the scale of Azure and deploy it (when the development cycles are over) globally very quickly.  That changes the entire dynamic of product development.
+
+The nice thing is that it actually improves the SQL Server product:  when a new version of SQL Server comes in, e.g. 2016 right now, the features have been explored by an order of magnitude greater user base than in beta-test in the old world.
+<h3>In-memory Columnstore indexes</h3>
+<a href="https://msdn.microsoft.com/en-us/library/dn133186.aspx" target="_blank">In-memory OLTP</a> was introduced in SQL Server 2014.  SQL Server 2016 adds another twist:  <a href="https://msdn.microsoft.com/en-us/library/gg492088.aspx" target="_blank">Columnstore indexes</a> on in-memory tables!
+
+<a href="/assets/posts/2015/3/sql-server-2016/ic70959411.gif"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="IC709594[1]" src="/assets/posts/2015/3/sql-server-2016/ic7095941_thumb1.gif" alt="IC709594[1]" width="446" height="195" align="right" border="0" /></a>You can now have an high throughput table being fully in-memory and also have it optimized for analytics (columnstore indexes).
+
+This unlocks scenarios such as real-time analytics (with no ETL to Data Warehouses)
+<h3>Always Encrypted</h3>
+<a href="https://msdn.microsoft.com/en-us/library/bb934049.aspx" target="_blank">Transparent Data Encryption</a> (TDE, only recently added to <a href="http://blogs.msdn.com/b/sqlsecurity/archive/2015/04/29/announcing-transparent-data-encryption-for-azure-sql-database.aspx" target="_blank">Azure SQL</a>) encrypts the data on disk.  This addresses mainly the physical compromising of data:  somebody steals your hard drive.
+
+<a href="/assets/posts/2015/3/sql-server-2016/encryption1.png"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="encryption[1]" src="/assets/posts/2015/3/sql-server-2016/encryption1_thumb.png" alt="encryption[1]" width="156" height="156" align="left" border="0" /></a>Not a bad start as often data center hard drives still get recycled and you’ll see headlines of data leaks caused by hard drives found with sensitive data on it once in a while.
+
+Now what <em>Always Encrypted </em>brings to the table is the ability to encrypt data <em>in motion</em>, i.e. while you are reading it…  and it is column based so you can very selectively choose what gets encrypted.
+
+With this an SQL Database administrator will only see rubbish in your encrypted columns.  Same thing for somebody who would eavesdrop on the wire.
+
+The cryptographic keys aren’t stored in SQL Database either but on the client-side (<a href="http://vincentlauzon.com/2015/07/09/azure-key-vault-is-now-generally-available/" target="_blank">Azure Vault</a> anyone?) which means that even if your entire database gets stolen, the thief won’t be able to read your encrypted data.
+
+…  it also mean you’ll have to be freaking careful on how you manage those keys otherwise you’ll end up with encrypted data nobody can read (did I mention <a href="http://vincentlauzon.com/2015/06/13/azure-key-vault-step-by-step/" target="_blank">Azure Vault</a>?)
+<h3>Polybase</h3>
+<a href="http://www.jamesserra.com/archive/2014/02/polybase-explained/" target="_blank">Polybase</a> was introduced in <a href="http://searchsqlserver.techtarget.com/definition/Microsoft-SQL-Server-Parallel-Data-Warehouse-SQL-Server-PDW" target="_blank">SQL Server Parallel Data Warehouse (PDW)</a>.
+
+It extends the reach of TSQL queries beyond SQL Server tables to unstructured data sources such as Hadoop.
+
+This will now be part of SQL Server 2016.
+<h3>Run ‘R’ models in SQL</h3>
+<a href="/assets/posts/2015/3/sql-server-2016/200px-r_logo-svg1_.png"><img style="background-image:none;float:right;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="200px-R_logo.svg[1]" src="/assets/posts/2015/3/sql-server-2016/200px-r_logo-svg1_thumb.png" alt="200px-R_logo.svg[1]" width="84" height="65" align="right" border="0" /></a>Microsoft <a href="http://blogs.technet.com/b/machinelearning/archive/2015/04/06/microsoft-closes-acquisition-of-revolution-analytics.aspx" target="_blank">recent acquisition</a> of Revolution Analytics didn’t take long to have impact.
+
+We will be able to run ‘R’ analytics model right into SQL Server 2016.  This brings the power of R Data Analysis right so much closer to the data!
+<h3>Advanced Analytics</h3>
+Power BI is of course at the center of this but also a complete revamp of Reporting Service.
+<h3>Stretching SQL Server to Azure</h3>
+A hybrid-cloud approach to SQL Azure:  put your cold data (typically historical) in the cloud storage but keep your database on-premise.
+
+I’m talking about data within the <strong>same table</strong> being both on-premise and in the cloud!
+
+Quite easy to setup, this feature has potential to be a really nice introduction to the cloud for many organization.  The high value scenario is to drop the storage cost for on-premise application having huge database with most of the data being historical, i.e. cold (rarely accessed).
+
+It is all configuration based, hence not requiring any changes in the consuming applications.
+<h3>Wrapping up</h3>
+SQL Server 2016 proves that SQL product line is alive and kicking with very valuable features for modern scenario, be it Big Data, Advanced Analytics or Hybrid Cloud computing.
+
+You can try SQL Server 2016 using the VM template <em>SQL Server 2016 CTP2 Evaluation on Windows Server 2012 R2</em> in the Marketplace as of this date (22/07/2015).
+
+If you want more details, so far, the best source is that <a href="http://bit.ly/1Ifuveh" target="_blank">SQL Server Evolution</a> video which is well done.

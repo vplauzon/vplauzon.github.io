@@ -1,6 +1,0 @@
-id: 5674
-author:
-  name: Mavi
-  url: ''
-date: 2017-10-03T14:06:19.0000000-04:00
-content: Thanks for replying! So I have two tenant, app1 in tenant1 and api2 in tenant2 (t1 and t2 are in different subscriptions). what I want to do is both users from t1 and t2 can access the api2. I've registered api2 as a service principal and added consent in the url, while I cannot find service principal of api2 in the required permission in app1. Do you have any suggestions? (thanks I know it's kind of confusing...

@@ -1,0 +1,6 @@
+id: 775
+author:
+  name: J.D.
+  url: ''
+date: 2014-03-10T14:09:34.0000000-07:00
+content: 'Thanks!  I did find a bug though: you need to pass comparer as the second parameter to ToLookup.'

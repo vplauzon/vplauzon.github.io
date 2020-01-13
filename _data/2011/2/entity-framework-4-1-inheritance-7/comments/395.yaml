@@ -1,0 +1,10 @@
+id: 395
+author:
+  name: Vincent-Philippe Lauzon
+  url: http://vincentlauzon.wordpress.com
+date: 2012-02-11T11:58:29.0000000-08:00
+content: >-
+  I do not think you can.  This is quite typical in OO that you can't convert an object type by flicking data in it.  A Worker will remain a Worker forever.
+
+
+  Although you could convert it by altering the DB state directly.

@@ -1,6 +1,0 @@
-id: 6513
-author:
-  name: Prashant Babber
-  url: https://www.facebook.com/app_scoped_user_id/10214526978785378/
-date: 2018-01-16T17:33:18.0000000-05:00
-content: "Try this-\n$groups = Get-AzureRmResourceGroup -Name   \nforeach ($g in $groups)\n{Find-AzureRmResource -ResourceGroupNameEquals $g.ResourceGroupName | ForEach-\nObject {Get-AzureRmResource}}"

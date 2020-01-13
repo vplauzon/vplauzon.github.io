@@ -1,0 +1,17 @@
+id: 800
+author:
+  name: J.D.
+  url: ''
+date: 2014-03-18T09:22:00.0000000-07:00
+content: >-
+  I was doing a case insensitive join on strings, e.g.:
+
+
+  var result = new[] { "a" }.FullOuterJoin(new[] { "A" }, n =&gt; n, n =&gt; n, (a, b) =&gt; Tuple.Create(a, b), StringComparer.OrdinalIgnoreCase).Single();
+
+  Console.WriteLine("Item 1: " + (result.Item1 ?? "(null)"));
+
+  Console.WriteLine("Item 2: " + (result.Item2 ?? "(null)"));
+
+
+  Hope that looks okay - I had problems posting the greater than symbols.

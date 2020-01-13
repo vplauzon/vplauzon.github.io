@@ -1,0 +1,9 @@
+---
+title: I’m a PC
+date: 2010-06-29 07:07:38 -07:00
+permalink: /2010/06/29/im-a-pc/
+categories:
+- Gadget
+tags: []
+---
+<p>I found this funny illustration on the web bringing back home the numbers…</p>  <p><img src="http://www.istartedsomething.com/uploads/macvspc.png" /></p>

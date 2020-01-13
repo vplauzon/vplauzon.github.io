@@ -1,0 +1,10 @@
+---
+title: 'Windows 8:  Desktop as a Service?'
+date: 2010-11-16 18:24:00 -08:00
+permalink: /2010/11/16/windows-8-desktop-as-a-service/
+categories:
+- Solution
+tags:
+- Office365
+---
+<p>In the wild country of rumours about Windows 8, there’s a new entry:&#160; <a href="http://www.zdnet.com/blog/microsoft/windows-8-to-showcase-desktop-as-a-service/7975">Desktop as a Service</a> (thanks to <a href="http://www.zdnet.com/blog/microsoft">Mary-Jo Foley</a> for the heads-up).&#160; Some slides have indeed leaked from the London <em>Microsoft architectural summit</em> in April 2010 showing Microsoft’s vision of the next step for Windows virtualization.</p>  <p><img style="display:block;float:none;margin-left:auto;margin-right:auto;" src="http://i.zdnet.com/blogs/desktop-as-a-service-in-win-next.png?tag=mantle_skin;content" width="626" height="407" /></p>  <p>The virtualization of the applications was done with <a href="http://www.microsoft.com/systemcenter/appv/default.mspx">App-V</a> in Windows 7 while the virtualization of the OS is meant to mean native vhd booting.&#160; That is already done in Windows 7 although it requires a bit of tweaking.</p>  <p>So we are left to speculate about Desktop as a Service (DaaS), although one of the slide gives some hints:</p>  <blockquote>   <p>The desktop should not be associated with the device. (T)he desktop can be thought of as a portal which surfaces the users apps, data, user state and authorisation and access.</p> </blockquote>  <p>Now that is interesting.&#160; With Office 365 (aka BPOS) for the server side of the apps, maybe Microsoft will eventually provide all the client apps as a service as well.</p>  <p>This would go a long way to resolve enterprise IT’s headaches where the migration from Windows XP is a major issue and the benefits rarely outweigh the costs.&#160; With a more lightweight OS and DaaS, a migration would be a better value proposition.&#160; This wouldn’t remove one of the big cost of migration though:&#160; training.</p>
