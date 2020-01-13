@@ -1,4 +1,4 @@
-function setupCommentForm(postId) {
+function setupCommentForm(year, quarter, postName) {
     var status = document.getElementById('commentstatus');
     status.innerText = '';
 
@@ -16,7 +16,9 @@ function setupCommentForm(postId) {
     var name = document.getElementById('name').value;
     var url = document.getElementById('url').value;
     var inputPayload = {
-        folder: postId,
+        year: quarter,
+        quarter: quarter,
+        postName: postName,
         userName: name,
         webSite: url,
         content: content
