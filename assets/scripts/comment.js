@@ -16,7 +16,7 @@ function setupCommentForm(year, quarter, postName) {
     var name = document.getElementById('name').value;
     var url = document.getElementById('url').value;
     var inputPayload = {
-        year: quarter,
+        year: year,
         quarter: quarter,
         postName: postName,
         userName: name,
