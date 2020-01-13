@@ -1,0 +1,29 @@
+id: 9ef09de1
+author:
+  name: vince
+  url: &o0
+    absolutePath: /
+    absoluteUri: *o0
+    localPath: /
+    authority: vincent.lauzon.com
+    hostNameType: Dns
+    isDefaultPort: true
+    isFile: false
+    isLoopback: false
+    pathAndQuery: /
+    segments:
+    - /
+    isUnc: false
+    host: vincent.lauzon.com
+    port: 80
+    query: ''
+    fragment: ''
+    scheme: http
+    originalString: http://vincent.lauzon.com
+    dnsSafeHost: vincent.lauzon.com
+    idnHost: vincent.lauzon.com
+    isAbsoluteUri: true
+    userEscaped: false
+    userInfo: ''
+date: 2020-01-13T17:26:13.6944351-06:00
+content: test failure
