@@ -16,7 +16,7 @@ function setupCommentForm(postId) {
     var name = document.getElementById('name').value;
     var url = document.getElementById('url').value;
     var inputPayload = {
-        pagePath: postId,
+        folder: postId,
         userName: name,
         webSite: url,
         content: content
