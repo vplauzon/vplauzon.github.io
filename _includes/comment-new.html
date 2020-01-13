@@ -1,19 +1,30 @@
+{% assign postPathParts = page.path | split: "/" %}
+{% assign urlParts = page.url | split: "/" %}
+{% assign year = postPathParts[1] %}
+{% assign quarter = postPathParts[2] %}
+{% assign postName = urlParts[4] %}
+
 <h3>Leave a comment</h3>
 <script type="text/javascript" src="{{ "/assets/scripts/comment.js" | relative_url }}"></script>
 <form action="/fake" method="post" id="commentform" class="form-horizontal">
   <fieldset id="commentfields">
-      <input name="redirect" type="hidden" value="{{ site.url }}/thanks">
-      <input name="post_id" type="hidden" value="{{ slug }}">
-      <input name="comment-site" type="hidden" value="{{ site.url }}">
-      <textarea name="content" id="content" placeholder="Continue the discussion."></textarea>
+    <input name="redirect" type="hidden" value="{{ site.url }}/thanks">
+    <input name="post_id" type="hidden" value="{{ slug }}">
+    <input name="comment-site" type="hidden" value="{{ site.url }}">
+    <textarea name="content" id="content" placeholder="Continue the discussion."></textarea>
 
-      <label for="name">Name/alias <span>(Required, displayed)</span></label>
-      <input type="text" name="name" id="name" placeholder="Name" />
+    <label for="name">Name/alias <span>(Required, displayed)</span></label>
+    <input type="text" name="name" id="name" placeholder="Name" />
 
-      <label for="url">Website <span>(Optional, displayed)</span></label>
-      <input type="text" name="url" id="url" placeholder="https://mywebsite.com" />
+    <label for="url">Website <span>(Optional, displayed)</span></label>
+    <input type="text" name="url" id="url" placeholder="https://mywebsite.com" />
 
-      <button onclick="setupCommentForm('{{ page.url }}')" type="button" class="btn btn-primary" id="commentbutton">Leave response</button>
+    <button
+    onclick="setupCommentForm('{{ year }}/{{ quarter }}/{{ postName }}')"
+    type="button"
+    class="btn btn-primary"
+    id="commentbutton">Leave response
+    </button>
   </fieldset>
   <script type="text/javascript" src="{{ "/assets/scripts/fetch.js" | relative_url }}"></script>
 </form>

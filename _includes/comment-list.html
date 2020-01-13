@@ -7,13 +7,6 @@
 {% assign postName = urlParts[4] %}
 {% assign commentFiles = site.data[year][quarter][postName].comments %}
 
-<p>Url:  {{ page.url }}</p>
-<p>path:  {{ page.path }}</p>
-<p>year:  {{ year }}</p>
-<p>quarter:  {{ quarter }}</p>
-<p>postName:  {{ postName }}</p>
-<p>postPath:  {{ postPath }}</p>
-
 {% assign comments = site.emptyArray %}
 {% for comment in commentFiles %}
   {% assign comments = comments | push: comment[1] %}
