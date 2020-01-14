@@ -1,4 +1,4 @@
-{% assign sortedTags = site.tags | sort_natural %}
+{% assign sortedTags = site.tags | sort %}
 {% for tag in sortedTags %}
   {% assign tag_name = tag | first %}
   <section class="section  typeset">
