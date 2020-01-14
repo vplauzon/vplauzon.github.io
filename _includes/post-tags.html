@@ -1,4 +1,5 @@
-{% for tag in site.tags %}
+{% assign sortedTags = site.tags | sort_natural %}
+{% for tag in sortedTags %}
   {% assign tag_name = tag | first %}
   <section class="section  typeset">
     <h2 id="{{ tag_name | slugify }}">{{ tag_name }}</h2>
