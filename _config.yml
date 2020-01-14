@@ -114,8 +114,6 @@ navigation_header:
   url: /
 - title: Tags
   url: /tags/
-- title: Categories
-  url: /categories/
 - title: About
   url: /about/
 
