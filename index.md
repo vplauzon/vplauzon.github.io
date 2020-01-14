@@ -5,6 +5,7 @@ feature_text: |
   ## Vincent-Philippe Lauzon's
   Azure, Apps & Data
 feature_image: /assets/home/clouds-from-pexels.jpg
+collectionpage: posts
 ---
 
 I learn every day and write about my learnings.  This is my knowledge base.
