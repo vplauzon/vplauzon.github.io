@@ -14,17 +14,6 @@ layout: default
         <input id="search-box" type="search" class="search-field" placeholder="Search..." value="" name="query">
       </form>
       
-      {% if paginator.posts %}
-        {% assign collectiondata = site.collections | where: "label", page.collectionpage | first %}
-        <h1>{{ collectiondata.title }}</h1>
-        {{ collectiondata.description | markdownify }}
-
-      {% else %}
-        <h1>{{ page.title }}</h1>
-        {{ content }}
-        
-      {% endif %}
-
     </article>
 
     {% include post-list.html %}
