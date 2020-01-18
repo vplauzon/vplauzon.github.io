@@ -1,6 +1,5 @@
 ---
 title: I moved my blog to GitHub pages!
-date: 2020-01-25 6:30:00 -05:00
 # doNotList: true
 permalink: /2020/01/25/i-moved-my-blog-to-github-pages/
 categories:
