@@ -80,7 +80,7 @@ defaults:
       image: "/assets/default-social-image.png" # Default image for sharing
 
 # 7. Site settings
-#future: false # Do not display future posts
+future: false # Do not display future posts
 encoding: utf-8 # Make sure the encoding is right
 lang: en-GB # Set the site language
 title: "Vincent-Philippe Lauzon's" # Site name or title, also used in jekyll-seo-tag
