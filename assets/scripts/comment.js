@@ -39,13 +39,6 @@ function setupCommentForm(year, quarter, postName) {
                 button.disabled = false;
                 fields.disabled = false;
             }
-            if (isAnalysisQueued) {
-                queueAnalysis(grammar, sample, analysisText);
-            }
-            else {
-                isAnalyzing = false;
-                analysisText.classList.remove("callInProgress");
-            }
         }
     };
     request.open("post", 'https://vpl-blog-apim.azure-api.net/comment-api/', true);
