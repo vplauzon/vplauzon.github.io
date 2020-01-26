@@ -51,18 +51,15 @@ As in <a href="https://vincentlauzon.com/2018/01/31/transforming-data-frames-in-
 
 Then, we simply point to the file in the storage account.
 
-[code language="python"]
-
+```python
 #  Replace with your container and storage account:  &quot;wasbs://&amp;lt;container&amp;gt;@&amp;lt;storage account&amp;gt;.blob.core.windows.net/&quot;
 pathPrefix = &quot;wasbs://ted@vpldb.blob.core.windows.net/&quot;
 path = pathPrefix + &quot;ted_main.csv&quot;
-
-[/code]
+```
 
 We’ll then do the heavy lifting:
 
-[code language="python"]
-
+```python
 import csv
 import StringIO
 
@@ -79,8 +76,7 @@ content = sc.parallelize(lines[1:])
 compliant = content.filter(lambda v: len(v)==len(columnNames))
 # Map list-rows to dictionaries using the column names
 talkDict = compliant.map(lambda r: dict(zip(columnNames, r)))
-
-[/code]
+```
 
 Since Spark CSV parser won’t work and that rows run on multiple lines, we load the entire file in memory.
 
@@ -96,8 +92,7 @@ We will then use some Python functions to rework the content.
 
 As mentioned previously, the JSON is malformed and won’t be read by Python’s JSON’s parser.  Fortunately, we can treat JSON as a Python dictionary which we can parse, using the <em>ast</em> module.
 
-[code language="python"]
-
+```python
 def parse(singleQuotedJson):
 import ast
 
@@ -126,13 +121,11 @@ del(dict['related_talks'])
 del(dict['tags'])
 
 return dict
-
-[/code]
+```
 
 On top of parsing the JSON, the rework function also force some fields to be integer (Python’s CSV parser parses everything in string).
 
-[code language="python"]
-
+```python
 # Rework some fields
 cleanFields = talkDict.map(lambda r: reworkFields(r))
 # Extract ratings as a separate RDD linked to the talks one with the talk name
@@ -143,8 +136,7 @@ relatedTalks = cleanFields.flatMap(lambda d: [{'talkName':d['name'], 'relatedTal
 tags = cleanFields.flatMap(lambda d: [{'talkName':d['name'], 'tag':t} for t in d['tags']])
 # Normalize the talkDict by removing denormalized attributes
 normalizedTalks = cleanFields.map(lambda d:  cleanDenormalizedAttributes(d))
-
-[/code]
+```
 
 We first rework the data content.  We then extract the three complex fields as different Resilient Distributed Datasets (RDDs).  We then remove the data used for those 3 new RDDs from the original RDD.
 
@@ -154,8 +146,7 @@ We then create data frames from each RDD and register those data frames as tempo
 
 We also cache the data frames so that subsequent queries won’t recalculate them each time.
 
-[code language="python"]
-
+```python
 from pyspark.sql import Row
 
 # Create data frames, cache them and register them as temp views
@@ -174,17 +165,16 @@ relatedTalksDf.createOrReplaceTempView(&quot;relatedTalks&quot;)
 tagsDf = spark.createDataFrame(tags.map(lambda d: Row(**d)))
 tagsDf.cache()
 tagsDf.createOrReplaceTempView(&quot;tags&quot;)
-
-[/code]
+```
 
 We here have a much meatier pre-processing of the data than we had in previous articles.  This is still simple as the data itself is clean (i.e. there aren’t missing data or malformed fields per se).
 
 Going back to RDD serves us well as we have a much better control to that level.  If the file was too big to be hold in memory, we would have had a challenge.  On the other hand, treating multiple files that way would have been trivial.
+
 <h2>Insights</h2>
 First, let’s check the size of each data frames:
 
-[code language="sql"]
-
+```sql
 %sql
 
 SELECT
@@ -204,8 +194,7 @@ FROM relatedTalks
 SELECT COUNT(*)
 FROM tags
 ) AS tagCount
-
-[/code]
+```
 
 This gives use the following cardinalities:
 
@@ -215,16 +204,14 @@ So despite the small number of Ted Talks covered, the file does contain a good c
 
 We can then ask what is the top ten talks, using the number of views as the success factor.  We could try to see if a talk that is viewed a lot generate a lot of comments ; for this, we’ll compare the number of comments with the number of view:
 
-[code language="sql"]
-
+```sql
 %sql
 
 SELECT title, main_speaker, views, ROUND(1000000*comments/views, 1) AS commentsPerMillionViews
 FROM talks
 ORDER BY views DESC
 LIMIT 10
-
-[/code]
+```
 
 <a href="/assets/posts/2018/1/parsing-escaping-csv-files-in-spark/image9.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/posts/2018/1/parsing-escaping-csv-files-in-spark/image_thumb9.png" alt="image" border="0" /></a>
 
@@ -232,8 +219,7 @@ In general, it seems that well viewed talks generate a lot of comments.
 
 Let’s look at tags and ask which tags are associated to popular talks:
 
-[code language="sql"]
-
+```sql
 %sql
 
 SELECT ROUND(AVG(t.views)) as avgViews, tg.tag
@@ -241,8 +227,7 @@ FROM talks AS t
 INNER JOIN tags tg ON tg.talkName=t.name
 GROUP BY tg.tag
 ORDER BY avgViews DESC
-
-[/code]
+```
 
 <a href="/assets/posts/2018/1/parsing-escaping-csv-files-in-spark/image10.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/posts/2018/1/parsing-escaping-csv-files-in-spark/image_thumb10.png" alt="image" border="0" /></a>
 
@@ -252,16 +237,14 @@ Let’s then check the ratings.  Ratings are a little more complicated to analy
 
 Let’s first look at the ratings in order of ratings’ number (not talks view, but the number of time the same category was given).
 
-[code language="sql"]
-
+```sql
 %sql
 
 SELECT name, SUM(count) AS ratingCount
 FROM ratings
 GROUP BY name
 ORDER BY ratingCount DESC
-
-[/code]
+```
 
 <a href="/assets/posts/2018/1/parsing-escaping-csv-files-in-spark/image11.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/posts/2018/1/parsing-escaping-csv-files-in-spark/image_thumb11.png" alt="image" border="0" /></a>
 
@@ -269,20 +252,19 @@ So inspiring speech are rated often.  This is consistent with our experience of
 
 Finally, let’s try to dig a little further in the ratings.  Since <em>Inspiring</em> is the most often rated rating, let’s rank the talks in order of those that received that rating the most often:
 
-[code language="sql"]
-
+```sql
 %sql
 
 SELECT t.title, t.main_speaker, t.views, r.count
 FROM talks AS t
 INNER JOIN ratings AS r ON r.talkName = t.name AND r.name=&quot;Inspiring&quot;
 ORDER BY r.count DESC
-
-[/code]
+```
 
 <a href="/assets/posts/2018/1/parsing-escaping-csv-files-in-spark/image12.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/posts/2018/1/parsing-escaping-csv-files-in-spark/image_thumb12.png" alt="image" border="0" /></a>
 
 We see that in general, the <em>Inspiring</em> rating is a good predictor of a talk’s popularity but that it doesn’t reproduce the entire top 10 in the right order (e.g. the fourth talk here was second in terms of views).
+
 <h2>Summary</h2>
 We went a bit further in terms of preprocessing of files using Python and RDDs.
 
