@@ -96,7 +96,7 @@ email: "???"
 # service_worker: false # Will turn off the service worker if set to false
 css_inline: true # Will insert all styles into a single <style> block in the <head> element and remove the style <link> reference
 feed: # Used by https://github.com/jekyll/jekyll-feed
-  path:  /feed
+  path:  /feed.xml
 
 # 8. Site favicons & manifest icons
 favicons: # Favicons are also used in the manifest file. Syntax is 'size: path'
@@ -116,7 +116,7 @@ navigation_header:
 - title: Tags
   url: /tags/
 - title: Feed
-  url: /feed
+  url: /feed.xml
 - title: About
   url: /about/
 

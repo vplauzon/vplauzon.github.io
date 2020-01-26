@@ -52,7 +52,7 @@ The details are for another day, but there was a bit of fun Azure development in
 
 My last ten years content is there, with the same URLs.
 
-There is still an [RSS Feed](/feed).
+There is still an [RSS Feed](/feed.xml).
 
 We can still leave comments.
 
