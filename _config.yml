@@ -116,7 +116,7 @@ navigation_header:
 - title: Tags
   url: /tags/
 - title: Feed
-  url: /feed/
+  url: /feed
 - title: About
   url: /about/
 

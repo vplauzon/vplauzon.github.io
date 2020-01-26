@@ -52,9 +52,9 @@ As in <a href="https://vincentlauzon.com/2018/01/31/transforming-data-frames-in-
 Then, we simply point to the file in the storage account.
 
 ```python
-#  Replace with your container and storage account:  &quot;wasbs://&amp;lt;container&amp;gt;@&amp;lt;storage account&amp;gt;.blob.core.windows.net/&quot;
-pathPrefix = &quot;wasbs://ted@vpldb.blob.core.windows.net/&quot;
-path = pathPrefix + &quot;ted_main.csv&quot;
+#  Replace with your container and storage account:  "wasbs://<container>@<storage account>.blob.core.windows.net/"
+pathPrefix = "wasbs://ted@vpldb.blob.core.windows.net"
+path = pathPrefix + "ted_main.csv"
 ```
 
 We’ll then do the heavy lifting:
@@ -152,19 +152,19 @@ from pyspark.sql import Row
 # Create data frames, cache them and register them as temp views
 normalizedTalksDf = spark.createDataFrame(normalizedTalks.map(lambda d: Row(**d)))
 normalizedTalksDf.cache()
-normalizedTalksDf.createOrReplaceTempView(&quot;talks&quot;)
+normalizedTalksDf.createOrReplaceTempView("talks")
 
 ratingsDf = spark.createDataFrame(ratings.map(lambda d: Row(**d)))
 ratingsDf.cache()
-ratingsDf.createOrReplaceTempView(&quot;ratings&quot;)
+ratingsDf.createOrReplaceTempView("ratings")
 
 relatedTalksDf = spark.createDataFrame(relatedTalks.map(lambda d: Row(**d)))
 relatedTalksDf.cache()
-relatedTalksDf.createOrReplaceTempView(&quot;relatedTalks&quot;)
+relatedTalksDf.createOrReplaceTempView("relatedTalks")
 
 tagsDf = spark.createDataFrame(tags.map(lambda d: Row(**d)))
 tagsDf.cache()
-tagsDf.createOrReplaceTempView(&quot;tags&quot;)
+tagsDf.createOrReplaceTempView("tags")
 ```
 
 We here have a much meatier pre-processing of the data than we had in previous articles.  This is still simple as the data itself is clean (i.e. there aren’t missing data or malformed fields per se).
@@ -257,7 +257,7 @@ Finally, let’s try to dig a little further in the ratings.  Since <em>Inspiri
 
 SELECT t.title, t.main_speaker, t.views, r.count
 FROM talks AS t
-INNER JOIN ratings AS r ON r.talkName = t.name AND r.name=&quot;Inspiring&quot;
+INNER JOIN ratings AS r ON r.talkName = t.name AND r.name="Inspiring"
 ORDER BY r.count DESC
 ```
 
