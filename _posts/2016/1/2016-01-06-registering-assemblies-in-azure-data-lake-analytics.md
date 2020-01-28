@@ -23,19 +23,19 @@ Let’s start with the problem.  Let’s say we need to have some C# custom cod
 
 I’m talking about “complex code”, not inline C# code you insert within a USQL script.  The following is inline C#:
 
-[code lang="sql"]
+```sql
 SELECT
 Line.Split('|')[0]
 FROM @lines
-[/code]
+```
 
 Here we simply call the <em>string.Split</em> method inline a select statement within a USQL script.  This is “complex code” called in USQL:
 
-[code lang="sql"]
+```sql
 SELECT
 MyNamespace.MyClass.MyMethod(Line)
 FROM @lines
-[/code]
+```
 
 where, of course, <em>MyNamespace.MyClass.MyMethod</em> is defined somewhere.
 
@@ -57,10 +57,10 @@ In the code-behind you can author classes &amp; methods and invoke those in the 
 
 Now when you submit your script, Visual Studio performs some magic on your behalf.  To see that magic, let’s look at an example:
 
-[code lang="sql"]
+```sql
 @lines =
 EXTRACT Line string
-FROM &quot;/Marvel/vert1.txt&quot;
+FROM "/Marvel/vert1.txt"
 USING Extractors.Text(delimiter : '$');
 
 @trans =
@@ -68,24 +68,24 @@ SELECT Mynamespace.MyClass.Hello(Line)
 FROM @lines;
 
 OUTPUT @trans
-TO &quot;bla&quot;
+TO "bla"
 USING Outputters.Csv();
-[/code]
+```
 
 This is a tad ceremonious, but you need to have an output for a script to be valid and it’s easier to take an input than create one from scratch.  Anyhow, the important part is the invocation of the <em>Hello</em> method.  Now here’s the code behind:
 
-[code lang="Csharp"]
+```Csharp
 namespace MyNamespace
 {
 	public static class MyClass
 	{
 		public static string Hello(string s)
 		{
-			return &quot;Hello &quot; + s;
+			return "Hello " + s;
 		}
 	}
 }
-[/code]
+```
 
 Now if you submit that script as a job and look at the generated script, by clicking at the bottom left “Script link” in the job tab:
 
@@ -93,7 +93,7 @@ Now if you submit that script as a job and look at the generated script, by clic
 
 You’ll see the script submitted to the ADLA engine:
 
-[code lang="sql"]
+```sql
 // Generated Code Behind Header
 CREATE ASSEMBLY [__codeBehind_gv215f0m.00i] FROM 0x4D5A900003000...;
 REFERENCE ASSEMBLY [__codeBehind_gv215f0m.00i];
@@ -101,7 +101,7 @@ REFERENCE ASSEMBLY [__codeBehind_gv215f0m.00i];
 // Generated Code Behind Header
 @lines =
 EXTRACT Line string
-FROM &quot;/Marvel/vert1.txt&quot;
+FROM "/Marvel/vert1.txt"
 USING Extractors.Text(delimiter : '$');
 
 @trans =
@@ -109,7 +109,7 @@ SELECT Mynamespace.MyClass.Hello(Line)
 FROM @lines;
 
 OUTPUT @trans
-TO &quot;bla&quot;
+TO "bla"
 USING Outputters.Csv();
 // Generated Code Behind Footer
 USE DATABASE [master];
@@ -117,7 +117,7 @@ USE SCHEMA [dbo];
 
 DROP ASSEMBLY [__codeBehind_gv215f0m.00i];
 // Generated Code Behind Footer
-[/code]
+```
 
 You see that a few lines were added.  Basically, the script is augmented to register an assembly and to drop it (delete it) at the end of the script.
 
@@ -148,11 +148,11 @@ Select which ADLA account and which DB you want the assembly to be registered in
 
 Again, if you look at the script submitted to ADLA, it looks like this:
 
-[code lang="sql"]
+```sql
 USE DATABASE [master];
 DROP ASSEMBLY IF EXISTS [XYZ];
 CREATE ASSEMBLY [XYZ] FROM 0x4D5A90000300000004000000FFFF0000…
-[/code]
+```
 
 So the assembly is registered independant of other scripts on your behalf.  This is done again by emitting the assembly’s byte-code inline.
 
@@ -164,11 +164,11 @@ Well, not exactly the same unless you want to input the byte-code in hexadecimal
 
 If you look at the <a href="https://msdn.microsoft.com/en-us/library/azure/mt621364.aspx" target="_blank">documentation</a> we can see there is another way to register an assembly:  by refering the dll in the Azure storage:
 
-[code lang="sql"]
+```sql
 USE DATABASE Marvel;
 DROP ASSEMBLY IF EXISTS XYZ;
-CREATE ASSEMBLY XYZ FROM &quot;&lt;my location&gt;&quot;;
-[/code]
+CREATE ASSEMBLY XYZ FROM "<my location>";
+```
 
 Now the major drawbacks of this approach are
 <ol>

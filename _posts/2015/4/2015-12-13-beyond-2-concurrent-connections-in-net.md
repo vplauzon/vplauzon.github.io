@@ -21,69 +21,69 @@ There are two ways to override it:  by configuration or by code.  I would sugg
 <h3>Configuration</h3>
 Here's an example on how to override in in configuration:
 
-[code lang="xml" gutter="false"]
-&lt;configuration&gt;
- &lt;system.net&gt;
-  &lt;connectionManagement&gt;
-   &lt;add address=&quot;myapi.com&quot; maxconnection=&quot;12&quot;/&gt;
-  &lt;/connectionManagement&gt;
- &lt;/system.net&gt;
-&lt;/configuration&gt;
-[/code]
+```xml
+<configuration>
+ <system.net>
+  <connectionManagement>
+   <add address="myapi.com" maxconnection="12"/>
+  </connectionManagement>
+ </system.net>
+</configuration>
+```
 
 Here I specify to have a maximum number of connections of <strong>12</strong> instead of 2 on the domain <em>myapi.com</em> only.
 
 I could specify different rules for different domains:
 
-[code lang="xml" gutter="false"]
-&lt;configuration&gt;
- &lt;system.net&gt;
-  &lt;connectionManagement&gt;
-   &lt;add address=&quot;myapi.com&quot; maxconnection=&quot;12&quot;/&gt;
-   &lt;add address=&quot;yourapi.com&quot; maxconnection=&quot;8&quot;/&gt;
-   &lt;add address=&quot;hisapi.com&quot; maxconnection=&quot;4&quot;/&gt;
-  &lt;/connectionManagement&gt;
- &lt;/system.net&gt;
-&lt;/configuration&gt;
-[/code]
+```xml
+<configuration>
+ <system.net>
+  <connectionManagement>
+   <add address="myapi.com" maxconnection="12"/>
+   <add address="yourapi.com" maxconnection="8"/>
+   <add address="hisapi.com" maxconnection="4"/>
+  </connectionManagement>
+ </system.net>
+</configuration>
+```
 
 Or I could do a blanket statement:
 
-[code lang="xml" gutter="false"]
-&lt;configuration&gt;
- &lt;system.net&gt;
-  &lt;connectionManagement&gt;
-   &lt;add address=&quot;*&quot; maxconnection=&quot;15&quot;/&gt;
-  &lt;/connectionManagement&gt;
- &lt;/system.net&gt;
-&lt;/configuration&gt;
-[/code]
+```xml
+<configuration>
+ <system.net>
+  <connectionManagement>
+   <add address="*" maxconnection="15"/>
+  </connectionManagement>
+ </system.net>
+</configuration>
+```
 
 <h3>Configuration</h3>
 In code, the easiest way is to do a blanket statement on all domains, using the static <a href="https://msdn.microsoft.com/en-us/library/system.net.servicepointmanager.defaultconnectionlimit.aspx" target="_blank">ServicePointManager.DefaultConnectionLimit property</a>:
 
-[code lang="csharp"]
+```csharp
 ServicePointManager.DefaultConnectionLimit = 15;
-[/code]
+```
 
 In order to go by domain, I would go through <a href="https://msdn.microsoft.com/en-us/library/system.net.servicepoint.aspx?f=255&amp;MSPPError=-2147217396" target="_blank">ServicePoint</a> objects, <strong>BUT I NEVER TRIED IT</strong>:
 
-[code lang="csharp"]
+```csharp
 var myApiServicePoint =
-  ServicePointManager.FindServicePoint(&quot;myapi.com&quot;);
+  ServicePointManager.FindServicePoint("myapi.com");
 
 myApiServicePoint.ConnectionLimit = 12;
 
 var yourApiServicePoint =
-  ServicePointManager.FindServicePoint(&quot;yourapi.com&quot;);
+  ServicePointManager.FindServicePoint("yourapi.com");
 
 yourApiServicePoint.ConnectionLimit = 8;
 
 var hisApiServicePoint =
-  ServicePointManager.FindServicePoint(&quot;hisapi.com&quot;);
+  ServicePointManager.FindServicePoint("hisapi.com");
 
 hisApiServicePoint.ConnectionLimit = 4;
-[/code]
+```
 
 <h2>The Silver Bullet</h2>
 Now that we have this solution, we feel all empowered, right?
