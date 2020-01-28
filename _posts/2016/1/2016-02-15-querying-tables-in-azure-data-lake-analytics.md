@@ -23,7 +23,8 @@ Obvious question:  which character is the most popular, i.e. which character ha
 
 Let’s ask the question:
 
-[code language="sql"]
+```sql
+
 USE DATABASE Marvel;
  
 //  Most popular characters
@@ -45,10 +46,10 @@ USE DATABASE Marvel;
     FETCH FIRST 15 ROWS ONLY;
  
 OUTPUT @charactersWithCount
-TO &quot;/Outputs/TopCharacters.tsv&quot;
+TO "/Outputs/TopCharacters.tsv"
 USING Outputters.Tsv();
  
-[/code]
+```
 
 We get the predictable result:
 <ul>
@@ -71,7 +72,8 @@ We get the predictable result:
 <h2>Popular DUOs</h2>
 Another obvious question is:  which 2 characters are published together the most?
 
-[code language="sql"]
+```sql
+
 USE DATABASE Marvel;
  
 //  Most popular duo of characters
@@ -86,7 +88,7 @@ USE DATABASE Marvel;
          // Eliminate duos consisting of the same character
     WHERE cb1.CharacterID != cb2.CharacterID
          // Making sure the same duo will be there only once
-         AND cb1.CharacterID &lt; cb2.CharacterID
+         AND cb1.CharacterID < cb2.CharacterID
     GROUP BY cb1.CharacterID,
              cb2.CharacterID;
  
@@ -107,9 +109,9 @@ USE DATABASE Marvel;
     FETCH FIRST 15 ROWS ONLY;
  
 OUTPUT @sortedDuos
-TO &quot;/Outputs/TopDuos.tsv&quot;
+TO "/Outputs/TopDuos.tsv"
 USING Outputters.Tsv();
-[/code]
+```
 
 Again, if you know the Marvel Universe, the results make sense:
 <ul>

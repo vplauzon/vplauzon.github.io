@@ -48,31 +48,32 @@ Add a user, give it the <em>Virtual Machine Contributor</em> role and type the n
 <h2>Shutdown Runbook</h2>
 At the center of this runbook is the <a href="https://msdn.microsoft.com/en-us/library/mt603483.aspx" target="_blank">Stop-AzureRmVm</a> cmdlet.
 
-[code language="powershell"]
+```powershell
+
 workflow Shutdown-VMs
 {
 	Param
     (
         [parameter(Mandatory=$true)]
-        [String] $tagKey=&quot;env&quot;,
+        [String] $tagKey="env",
         [parameter(Mandatory=$true)]
-        [String] $tagValue=&quot;dev&quot;
+        [String] $tagValue="dev"
     )
 
 	#	Refered to the credential stored in the Azure Automation account
-	$credentialAssetName = &quot;principal&quot;
+	$credentialAssetName = "principal"
 	$cred = Get-AutomationPSCredential -Name $credentialAssetName
 	
     if(!$cred)
 	{
-        Throw &quot;Could not find an Automation Credential Asset named '${credentialAssetName}'. Make sure you have created one in this Automation Account.&quot;
+        Throw "Could not find an Automation Credential Asset named '${credentialAssetName}'. Make sure you have created one in this Automation Account."
     }
 
     #	Connect to your Azure subscription
-    $account = Add-AzureRmAccount -ServicePrincipal -Credential $cred -Tenant &quot;72f988bf-86f1-41af-91ab-2d7cd011db47&quot;
+    $account = Add-AzureRmAccount -ServicePrincipal -Credential $cred -Tenant "72f988bf-86f1-41af-91ab-2d7cd011db47"
     if(!$account)
 	{
-        Throw &quot;Could not authenticate to Azure using the credential asset '${credentialAssetName}'. Make sure the user name and password are correct.&quot;
+        Throw "Could not authenticate to Azure using the credential asset '${credentialAssetName}'. Make sure the user name and password are correct."
     }
 
 	#	Get all the VMs in the subscription (the ones the principal is able to see)
@@ -82,50 +83,51 @@ workflow Shutdown-VMs
 	#	Shutdown-VMs in parallel	
 	ForEach -Parallel ($v in $vms)
 	{
-		Write-Output &quot;Stopping $($v.ResourceGroupName).$($v.Name)&quot;
+		Write-Output "Stopping $($v.ResourceGroupName).$($v.Name)"
 		$ops = Stop-AzureRmVM -ResourceGroupName $v.ResourceGroupName -Name $v.Name -Force
 		
 		if($ops.IsSuccessStatusCode -ine $true)
 		{
-			Write-Output &quot;Failure to stop $($v.ResourceGroupName).$($v.Name)&quot;
+			Write-Output "Failure to stop $($v.ResourceGroupName).$($v.Name)"
 		}
 		else
 		{
-			Write-Output &quot;$($v.ResourceGroupName).$($v.Name) Stopped&quot;
+			Write-Output "$($v.ResourceGroupName).$($v.Name) Stopped"
 		}
 	}	
 }
-[/code]
+```
 
 You can save, test and publish the runbook.
 <h2>Start Runbook</h2>
 At the center of this other runbook is the <a href="https://msdn.microsoft.com/en-us/library/mt603453.aspx" target="_blank">Start-AzureRmVm</a> cmdlet.  It is basically identical to the other one except for this cmdlet.
 
-[code language="PowerShell"]
+```PowerShell
+
 workflow Start-VMs
 {
 	Param
     (
         [parameter(Mandatory=$true)]
-        [String] $tagKey=&quot;env&quot;,
+        [String] $tagKey="env",
         [parameter(Mandatory=$true)]
-        [String] $tagValue=&quot;dev&quot;
+        [String] $tagValue="dev"
     )
 
 	#	Refered to the credential stored in the Azure Automation account
-	$credentialAssetName = &quot;principal&quot;
+	$credentialAssetName = "principal"
 	$cred = Get-AutomationPSCredential -Name $credentialAssetName
 	
     if(!$cred)
 	{
-        Throw &quot;Could not find an Automation Credential Asset named '${credentialAssetName}'. Make sure you have created one in this Automation Account.&quot;
+        Throw "Could not find an Automation Credential Asset named '${credentialAssetName}'. Make sure you have created one in this Automation Account."
     }
 
     #	Connect to your Azure subscription
-    $account = Add-AzureRmAccount -ServicePrincipal -Credential $cred -Tenant &quot;72f988bf-86f1-41af-91ab-2d7cd011db47&quot;
+    $account = Add-AzureRmAccount -ServicePrincipal -Credential $cred -Tenant "72f988bf-86f1-41af-91ab-2d7cd011db47"
     if(!$account)
 	{
-        Throw &quot;Could not authenticate to Azure using the credential asset '${credentialAssetName}'. Make sure the user name and password are correct.&quot;
+        Throw "Could not authenticate to Azure using the credential asset '${credentialAssetName}'. Make sure the user name and password are correct."
     }
 
 	#	Get all the VMs in the subscription (the ones the principal is able to see)
@@ -135,21 +137,21 @@ workflow Start-VMs
 	#	Start-VMs in parallel	
 	ForEach -Parallel ($v in $vms)
 	{
-		Write-Output &quot;Starting $($v.ResourceGroupName).$($v.Name)&quot;
+		Write-Output "Starting $($v.ResourceGroupName).$($v.Name)"
 		$ops = Start-AzureRmVM -ResourceGroupName $v.ResourceGroupName -Name $v.Name
 		
 		if($ops.IsSuccessStatusCode -ine $true)
 		{
-			Write-Output &quot;Failure to start $($v.ResourceGroupName).$($v.Name)&quot;
+			Write-Output "Failure to start $($v.ResourceGroupName).$($v.Name)"
 			Write-Output $ops
 		}
 		else
 		{
-			Write-Output &quot;$($v.ResourceGroupName).$($v.Name) Started&quot;
+			Write-Output "$($v.ResourceGroupName).$($v.Name) Started"
 		}
 	}	
 }
-[/code]
+```
 
 <h2>Scheduling</h2>
 Now that we have both runbooks we can give them a schedule by creating a job for each.

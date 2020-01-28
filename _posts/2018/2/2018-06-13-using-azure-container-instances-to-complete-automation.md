@@ -44,60 +44,61 @@ The beauty of this approach is the flexibility.  We can run any environment.  
 
 In the ARM template, we simply describe a container instance, put a dependency on the Azure SQL DB and pass parameters.
 
-[code language="JavaScript"]
+```JavaScript
+
 
 {
-  &quot;type&quot;: &quot;Microsoft.ContainerInstance/containerGroups&quot;,
-  &quot;apiVersion&quot;: &quot;2018-04-01&quot;,
-  &quot;name&quot;: &quot;container-group&quot;,
-  &quot;location&quot;: &quot;East US&quot;,
-  &quot;dependsOn&quot;: [
-    &quot;[resourceId('Microsoft.Sql/servers/databases', variables('SQL Server Name'), variables('SQL DB Name'))]&quot;
+  "type": "Microsoft.ContainerInstance/containerGroups",
+  "apiVersion": "2018-04-01",
+  "name": "container-group",
+  "location": "East US",
+  "dependsOn": [
+    "[resourceId('Microsoft.Sql/servers/databases', variables('SQL Server Name'), variables('SQL DB Name'))]"
   ],
-  &quot;properties&quot;: {
-    &quot;restartPolicy&quot;: &quot;Never&quot;,
-    &quot;containers&quot;: [
+  "properties": {
+    "restartPolicy": "Never",
+    "containers": [
       {
-        &quot;name&quot;: &quot;sql-script-runner&quot;,
-        &quot;properties&quot;: {
-          &quot;image&quot;: &quot;vplauzon/sql-script-runner&quot;,
-          &quot;environmentVariables&quot;: [
+        "name": "sql-script-runner",
+        "properties": {
+          "image": "vplauzon/sql-script-runner",
+          "environmentVariables": [
             {
-              &quot;name&quot;: &quot;SCRIPT_URL&quot;,
-              &quot;value&quot;: &quot;[variables('SQL Script URL')]&quot;
+              "name": "SCRIPT_URL",
+              "value": "[variables('SQL Script URL')]"
             },
             {
-              &quot;name&quot;: &quot;SQL_SERVER&quot;,
-              &quot;value&quot;: &quot;[variables('SQL Server FQDN')]&quot;
+              "name": "SQL_SERVER",
+              "value": "[variables('SQL Server FQDN')]"
             },
             {
-              &quot;name&quot;: &quot;SQL_DB&quot;,
-              &quot;value&quot;: &quot;[variables('SQL DB Name')]&quot;
+              "name": "SQL_DB",
+              "value": "[variables('SQL DB Name')]"
             },
             {
-              &quot;name&quot;: &quot;SQL_USER_NAME&quot;,
-              &quot;value&quot;: &quot;[variables('SQL Admin Name')]&quot;
+              "name": "SQL_USER_NAME",
+              "value": "[variables('SQL Admin Name')]"
             },
             {
-              &quot;name&quot;: &quot;SQL_PASSWORD&quot;,
-              &quot;value&quot;: &quot;[parameters('SQL Admin Password')]&quot;
+              "name": "SQL_PASSWORD",
+              "value": "[parameters('SQL Admin Password')]"
             }
           ],
-          &quot;resources&quot;: {
-            &quot;requests&quot;: {
-              &quot;cpu&quot;: 1,
-              &quot;memoryInGb&quot;: 0.2
+          "resources": {
+            "requests": {
+              "cpu": 1,
+              "memoryInGb": 0.2
             }
           }
         }
       }
     ],
-    &quot;osType&quot;: &quot;Linux&quot;
+    "osType": "Linux"
   }
 }
 
 
-[/code]
+```
 
 <h2>Updates</h2>
 As we mentioned above, the strength of ARM templates is their descriptive nature.  They only contain the target description, not the steps to get there.

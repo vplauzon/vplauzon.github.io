@@ -61,7 +61,8 @@ I want to put all the tables inside a database container so let’s create a dat
 
 In the <em>CreateDbAndSchemas.usql </em>file, let’s put the following content:
 
-[code language="sql"]
+```sql
+
 //  This drops the database (with its data) before recreating it
 DROP DATABASE IF EXISTS Marvel;
 
@@ -74,7 +75,7 @@ USE DATABASE Marvel;
 //  Create two schemas
 CREATE SCHEMA Input;
 CREATE SCHEMA Analytic;
-[/code]
+```
 
 Remember USQL keywords must be uppercase in order not conflict with C# (e.g. SELECT vs select in Linq / C#).
 
@@ -90,59 +91,62 @@ I fully covered <a href="http://vincentlauzon.com/2016/01/06/registering-assembl
 <h2>Vertex Format</h2>
 Let’s look at the first format, which I called the <em>vertex</em> format.  Here’s the beginning of <em>vert1.txt</em>:
 
-[code language="text"]
+```text
+
 Vertex 1: 24-HOUR MAN/EMMANUEL
-Vertex 2: 3-D MAN/CHARLES CHANDLER &amp; HAROLD CHANDLER
+Vertex 2: 3-D MAN/CHARLES CHANDLER & HAROLD CHANDLER
 Vertex 3: 4-D MAN/MERCURIO
 Vertex 4: 8-BALL/
-[/code]
+```
 
 The format is pretty obvious but it also doesn’t comply with any format supported by USQL extractors, i.e. it isn’t comma or tab separated…  This is why we’re going to use C# code to parse it.  The most elegant way is to use a regular expression to parse and extract the data.  Here is the C# helper class to accomplish that:
 
-[code language="csharp"]
+```csharp
+
 using System.Text.RegularExpressions;
 
 namespace MarvelLib
 {
-  /// &lt;summary&gt;Helper class containing methods parsing a vertex format file.&lt;/summary&gt;
+  /// <summary>Helper class containing methods parsing a vertex format file.</summary>
   public static class VertexFormatHelper
   {
-    private static readonly Regex _regex = new Regex(@&quot;^\s*Vertex\s*(?&lt;id&gt;\d*)\s*:\s*(?&lt;label&gt;.*)\s*$&quot;);
+    private static readonly Regex _regex = new Regex(@"^\s*Vertex\s*(?<id>\d*)\s*:\s*(?<label>.*)\s*$");
 
-    /// &lt;summary&gt;Predicate returning &lt;c&gt;true&lt;/c&gt; iif a line of text is in the vertex format.&lt;/summary&gt;
-    /// &lt;param name=&quot;line&quot;&gt;Input line of text.&lt;/param&gt;
-    /// &lt;returns&gt;&lt;/returns&gt;
+    /// <summary>Predicate returning <c>true</c> iif a line of text is in the vertex format.</summary>
+    /// <param name="line">Input line of text.</param>
+    /// <returns></returns>
     public static bool IsVertexMatch(string line)
     {
       return _regex.IsMatch(line);
     }
 
-    /// &lt;summary&gt;Get the ID from a vertex line.&lt;/summary&gt;
-    /// &lt;param name=&quot;line&quot;&gt;Input line of text.&lt;/param&gt;
-    /// &lt;returns&gt;ID of the vertex&lt;/returns&gt;
+    /// <summary>Get the ID from a vertex line.</summary>
+    /// <param name="line">Input line of text.</param>
+    /// <returns>ID of the vertex</returns>
     public static int GetID(string line)
     {
-      var idText = _regex.Match(line).Groups[&quot;id&quot;].Value;
+      var idText = _regex.Match(line).Groups["id"].Value;
 
       return int.Parse(idText);
     }
 
-    /// &lt;summary&gt;Get the label from a vertex line.&lt;/summary&gt;
-    /// &lt;param name=&quot;line&quot;&gt;Input line of text.&lt;/param&gt;
-    /// &lt;returns&gt;Label of the vertex.&lt;/returns&gt;
+    /// <summary>Get the label from a vertex line.</summary>
+    /// <param name="line">Input line of text.</param>
+    /// <returns>Label of the vertex.</returns>
     public static string GetLabel(string line)
     {
-      var label = _regex.Match(line).Groups[&quot;label&quot;].Value;
+      var label = _regex.Match(line).Groups["label"].Value;
 
       return label;
     }
   }
 }
-[/code]
+```
 
 The Function consuming this is the following:
 
-[code language="sql"]
+```sql
+
 CREATE FUNCTION Input.GetVertexData(@fileSet string)
 RETURNS @vertexData TABLE
 (
@@ -161,7 +165,7 @@ REFERENCE ASSEMBLY MarvelLib;
 
 //  Give the query a schema on read
 @vertexData =
-  //  Extract the vertex id &amp; label from the line
+  //  Extract the vertex id & label from the line
   SELECT MarvelLib.VertexFormatHelper.GetID(Line) AS VertexID,
   MarvelLib.VertexFormatHelper.GetLabel(Line) AS VertexLabel
   FROM @lines
@@ -169,7 +173,7 @@ REFERENCE ASSEMBLY MarvelLib;
 
 RETURN;
 END;
-[/code]
+```
 
 The function takes a string in parameter representing a <em>file set</em>.  A file set in U-SQL is either a file path or an expression representing multiple files (typically with ‘*’).
 
@@ -183,18 +187,20 @@ The second expression is what is returned by the function.  We’ll see how we�
 <h2>Relation Format</h2>
 Let’s look at the second format, which I called the <em>relation</em> format.  Here’s the beginning of <em>porgat.txt</em>:
 
-[code language="text"]
+```text
+
 1 6487
 2 6488 6489 6490 6491 6492 6493 6494 6495 6496
 3 6497 6498 6499 6500 6501 6502 6503 6504 6505
 4 6506 6507 6508
-[/code]
+```
 
 Again the format is pretty straightforward but isn’t directly supported by U-SQL Extractors.
 
 We’re going to use the following C# class (simply splitting the line on spaces) to help us out:
 
-[code language="csharp"]
+```csharp
+
 using Microsoft.Analytics.Types.Sql;
 using System.Linq;
 
@@ -216,7 +222,7 @@ namespace MarvelLib
       return int.Parse(parts[0].Trim());
     }
 
-    public static SqlArray&lt;int&gt; GetRelations(string line)
+    public static SqlArray<int> GetRelations(string line)
     {
       var parts = line.Split(' ');
       var relations = from p in parts.Skip(1)
@@ -226,11 +232,12 @@ namespace MarvelLib
     }
   }
 }
-[/code]
+```
 
 The function consuming this code is:
 
-[code language="sql"]
+```sql
+
 CREATE FUNCTION Input.GetRelationData(@fileSet string)
 RETURNS @relationData TABLE
 (
@@ -249,9 +256,9 @@ REFERENCE ASSEMBLY MarvelLib;
 
 //  Give the query a schema on read
 @flatRelations =
-  //  Extract the main id &amp; the relations (as an array) from the line
+  //  Extract the main id & the relations (as an array) from the line
   SELECT MarvelLib.RelationFormatHelper.GetID(Line) AS MainID,
-        //   This is a SQL.Array&lt;int&gt;, a special U-SQL type
+        //   This is a SQL.Array<int>, a special U-SQL type
         MarvelLib.RelationFormatHelper.GetRelations(Line) AS RelationIDs
   FROM @lines
   WHERE MarvelLib.RelationFormatHelper.IsRelationMatch(Line);
@@ -265,7 +272,7 @@ REFERENCE ASSEMBLY MarvelLib;
 
 RETURN;
 END;
-[/code]
+```
 
 In the first expression we parse the lines of the file.
 
@@ -275,7 +282,8 @@ In the third expression, we explode the array of relation IDs on different rows.
 
 The complete content of <em>CreateFormatFunctions.usql</em> is the following:
 
-[code language="sql"]
+```sql
+
 USE DATABASE Marvel;
 
 DROP FUNCTION IF EXISTS Input.GetVertexData;
@@ -299,7 +307,7 @@ REFERENCE ASSEMBLY MarvelLib;
 
 //  Give the query a schema on read
 @vertexData =
-  //  Extract the vertex id &amp; label from the line
+  //  Extract the vertex id & label from the line
   SELECT MarvelLib.VertexFormatHelper.GetID(Line) AS VertexID,
   MarvelLib.VertexFormatHelper.GetLabel(Line) AS VertexLabel
   FROM @lines
@@ -326,9 +334,9 @@ REFERENCE ASSEMBLY MarvelLib;
 
 //  Give the query a schema on read
 @flatRelations =
-  //  Extract the main id &amp; the relations (as an array) from the line
+  //  Extract the main id & the relations (as an array) from the line
   SELECT MarvelLib.RelationFormatHelper.GetID(Line) AS MainID,
-  //   This is a SQL.Array&lt;int&gt;, a special U-SQL type
+  //   This is a SQL.Array<int>, a special U-SQL type
   MarvelLib.RelationFormatHelper.GetRelations(Line) AS RelationIDs
   FROM @lines
   WHERE MarvelLib.RelationFormatHelper.IsRelationMatch(Line);
@@ -342,7 +350,7 @@ REFERENCE ASSEMBLY MarvelLib;
 
 RETURN;
 END;
-[/code]
+```
 
 You can submit the script as a job.  This will create the two functions.
 <h2>Bringing it all together:  importing the data</h2>
@@ -350,21 +358,22 @@ We’ve built all the tools to easily import the files into ADLA tables.
 
 In the file <em>ImportData.usql</em>:
 
-[code language="sql"]
+```sql
+
 USE DATABASE Marvel;
 
 //  Load row sets
 @characterVertices = Input.GetVertexData
                      (
-                         &quot;/Marvel/vert1.txt&quot;
+                         "/Marvel/vert1.txt"
                      );
 @bookVertices = Input.GetVertexData
                 (
-                    &quot;/Marvel/vert2.txt&quot;
+                    "/Marvel/vert2.txt"
                 );
 @characterBookIDs = Input.GetRelationData
                     (
-                        &quot;/Marvel/porgat.txt&quot;
+                        "/Marvel/porgat.txt"
                     );
 
 //  Schema on read:  project the generic schema into a specific one for characters
@@ -420,7 +429,7 @@ CREATE TABLE Input.CharacterBook
 ) AS
 SELECT *
 FROM @characterBooks;
-[/code]
+```
 
 The script is pretty straightforward.  The patterns used are:
 <ul>

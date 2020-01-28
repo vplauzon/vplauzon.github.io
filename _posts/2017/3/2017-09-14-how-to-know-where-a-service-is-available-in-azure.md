@@ -32,55 +32,60 @@ The key PowerShell <em>cmdlet</em> is Get-AzureRmResourceProvider.
 
 Let’s start by finding the service we’re interested at.
 
-[code language="PowerShell"]
+```PowerShell
+
 
 Get-AzureRmResourceProvider | select ProviderNamespace
 
-[/code]
+```
 
 This returns the name of all the Azure provider namespaces (around 40 at the time of this writing).
 
 Let’s say we are interested in <em>Microsoft.DataLakeStore</em>.
 
-[code language="PowerShell"]
+```PowerShell
+
 
 Get-AzureRmResourceProvider -ProviderNamespace Microsoft.DataLakeStore
 
-[/code]
+```
 
 This returns the resource providers associated with the given namespace.
 
 We now need to pick the one with the resource types interesting us.  In this case, let’s say, we are interested in Azure Data Lake Store accounts (the core resource for the service).  We can see it’s available in three regions:
 
-[code language="PowerShell"]
+```PowerShell
+
 
 ProviderNamespace : Microsoft.DataLakeStore
 RegistrationState : Registered
 ResourceTypes     : {accounts}
 Locations         : {East US 2, North Europe, Central US}
 
-[/code]
+```
 
 <h2>Which services are available in my region?</h2>
 Now, let’s take the opposite approach.  Let’s start with a region and see what services are available in there.
 
 Here the key cmdlet is Get-AzureRmLocation
 
-[code language="PowerShell"]
+```PowerShell
+
 
 Get-AzureRmLocation | select Location
 
-[/code]
+```
 
 This lists the region we have access to.  A user rarely have access to all region which is why the list you see likely is smaller than 40 items at the time of this writing.
 
 Let’s look at what’s available close to my place, <em>canadaeast</em>.
 
-[code language="PowerShell"]
+```PowerShell
 
-Get-AzureRmLocation | where {$_.Location -eq &quot;canadaeast&quot;} | select -ExpandProperty Providers
 
-[/code]
+Get-AzureRmLocation | where {$_.Location -eq "canadaeast"} | select -ExpandProperty Providers
+
+```
 
 This gives us a quick view of what’s available in a region.
 <h2>Summary</h2>

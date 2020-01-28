@@ -76,39 +76,40 @@ Selecting the <em>Activity Logs, </em>we should have a search form and some resu
 
 We can select one of those <em>ListKeys</em> and, in the tray below, select the JSON format:
 
-[code language="javascript"]
+```javascript
+
 
 {
-&quot;relatedEvents&quot;: [],
-&quot;authorization&quot;: {
-&quot;action&quot;: &quot;Microsoft.Storage/storageAccounts/listKeys/action&quot;,
-&quot;condition&quot;: null,
-&quot;role&quot;: null,
-&quot;scope&quot;: &quot;/subscriptions/&lt;MY SUB GUID&gt;/resourceGroups/securitydata/providers/Microsoft.Storage/storageAccounts/a92430canadaeast&quot;
+"relatedEvents": [],
+"authorization": {
+"action": "Microsoft.Storage/storageAccounts/listKeys/action",
+"condition": null,
+"role": null,
+"scope": "/subscriptions/<MY SUB GUID>/resourceGroups/securitydata/providers/Microsoft.Storage/storageAccounts/a92430canadaeast"
 },
-&quot;caller&quot;: null,
-&quot;category&quot;: {
-&quot;localizedValue&quot;: &quot;Administrative&quot;,
-&quot;value&quot;: &quot;Administrative&quot;
+"caller": null,
+"category": {
+"localizedValue": "Administrative",
+"value": "Administrative"
 },
-&quot;claims&quot;: {},
-&quot;correlationId&quot;: &quot;6c619af4-453e-4b24-8a4c-508af47f2b26&quot;,
-&quot;description&quot;: &quot;&quot;,
-&quot;eventChannels&quot;: 2,
-&quot;eventDataId&quot;: &quot;09d35196-1cae-4eca-903d-6e9b1fc71a78&quot;,
-&quot;eventName&quot;: {
-&quot;localizedValue&quot;: &quot;End request&quot;,
-&quot;value&quot;: &quot;EndRequest&quot;
+"claims": {},
+"correlationId": "6c619af4-453e-4b24-8a4c-508af47f2b26",
+"description": "",
+"eventChannels": 2,
+"eventDataId": "09d35196-1cae-4eca-903d-6e9b1fc71a78",
+"eventName": {
+"localizedValue": "End request",
+"value": "EndRequest"
 },
-&quot;eventTimestamp&quot;: &quot;2016-11-26T21:07:41.5355248Z&quot;,
-&quot;httpRequest&quot;: {
-&quot;clientIpAddress&quot;: &quot;104.208.33.166&quot;,
-&quot;clientRequestId&quot;: &quot;ba51469e-9339-4329-b957-de5d3071d719&quot;,
-&quot;method&quot;: &quot;POST&quot;,
-&quot;uri&quot;: null
+"eventTimestamp": "2016-11-26T21:07:41.5355248Z",
+"httpRequest": {
+"clientIpAddress": "104.208.33.166",
+"clientRequestId": "ba51469e-9339-4329-b957-de5d3071d719",
+"method": "POST",
+"uri": null
 },
 
-[/code]
+```
 
 I truncated the JSON here.  Basically, it is an activity event with all the details.
 <h3>Metrics example</h3>
@@ -128,13 +129,14 @@ Let’s create a blob container, copy a file into it and try to access it via it
 
 We should see a special <em>$logs</em> container in the storage account.  This container will contain log files, stored by date &amp; time.  For instance for the first file, just taking the first couple of lines:
 
-[code language="text"]
+```text
 
-1.0;2016-11-26T20:48:00.5433672Z;&lt;strong&gt;GetContainerACL&lt;/strong&gt;;Success;200;3;3;authenticated;monitorvpl;monitorvpl;blob;&quot;https://monitorvpl.blob.core.windows.net:443/$logs?restype=container&amp;amp;comp=acl&quot;;&quot;/monitorvpl/$logs&quot;;295a75a6-0001-0021-7b26-48c117000000;0;184.161.153.48:51484;2015-12-11;537;0;217;62;0;;;&quot;&amp;quot;0x8D4163D73154695&amp;quot;&quot;;Saturday, 26-Nov-16 20:47:34 GMT;;&quot;Microsoft Azure Storage Explorer, 0.8.5, win32, Azure-Storage/1.2.0 (NODE-VERSION v4.1.1; Windows_NT 10.0.14393)&quot;;;&quot;9e78fc90-b419-11e6-a392-8b41713d952c&quot;
-1.0;2016-11-26T20:48:01.0383516Z;&lt;strong&gt;GetContainerACL&lt;/strong&gt;;Success;200;3;3;authenticated;monitorvpl;monitorvpl;blob;&quot;https://monitorvpl.blob.core.windows.net:443/$logs?restype=container&amp;amp;comp=acl&quot;;&quot;/monitorvpl/$logs&quot;;06be52d9-0001-0093-7426-483a6d000000;0;184.161.153.48:51488;2015-12-11;537;0;217;62;0;;;&quot;&amp;quot;0x8D4163D73154695&amp;quot;&quot;;Saturday, 26-Nov-16 20:47:34 GMT;;&quot;Microsoft Azure Storage Explorer, 0.8.5, win32, Azure-Storage/1.2.0 (NODE-VERSION v4.1.1; Windows_NT 10.0.14393)&quot;;;&quot;9e9c6311-b419-11e6-a392-8b41713d952c&quot;
-1.0;2016-11-26T20:48:33.4973667Z;&lt;strong&gt;PutBlob&lt;/strong&gt;;Success;201;6;6;authenticated;monitorvpl;monitorvpl;blob;&quot;https://monitorvpl.blob.core.windows.net:443/sample/A.txt&quot;;&quot;/monitorvpl/sample/A.txt&quot;;965cb819-0001-0000-2a26-48ac26000000;0;184.161.153.48:51622;2015-12-11;655;7;258;0;7;&quot;Tj4nPz2/Vt7I1KEM2G8o4A==&quot;;&quot;Tj4nPz2/Vt7I1KEM2G8o4A==&quot;;&quot;&amp;quot;0x8D4163D961A76BE&amp;quot;&quot;;Saturday, 26-Nov-16 20:48:33 GMT;;&quot;Microsoft Azure Storage Explorer, 0.8.5, win32, Azure-Storage/1.2.0 (NODE-VERSION v4.1.1; Windows_NT 10.0.14393)&quot;;;&quot;b2006050-b419-11e6-a392-8b41713d952c&quot;
 
-[/code]
+1.0;2016-11-26T20:48:00.5433672Z;<strong>GetContainerACL</strong>;Success;200;3;3;authenticated;monitorvpl;monitorvpl;blob;"https://monitorvpl.blob.core.windows.net:443/$logs?restype=container&amp;comp=acl";"/monitorvpl/$logs";295a75a6-0001-0021-7b26-48c117000000;0;184.161.153.48:51484;2015-12-11;537;0;217;62;0;;;"&quot;0x8D4163D73154695&quot;";Saturday, 26-Nov-16 20:47:34 GMT;;"Microsoft Azure Storage Explorer, 0.8.5, win32, Azure-Storage/1.2.0 (NODE-VERSION v4.1.1; Windows_NT 10.0.14393)";;"9e78fc90-b419-11e6-a392-8b41713d952c"
+1.0;2016-11-26T20:48:01.0383516Z;<strong>GetContainerACL</strong>;Success;200;3;3;authenticated;monitorvpl;monitorvpl;blob;"https://monitorvpl.blob.core.windows.net:443/$logs?restype=container&amp;comp=acl";"/monitorvpl/$logs";06be52d9-0001-0093-7426-483a6d000000;0;184.161.153.48:51488;2015-12-11;537;0;217;62;0;;;"&quot;0x8D4163D73154695&quot;";Saturday, 26-Nov-16 20:47:34 GMT;;"Microsoft Azure Storage Explorer, 0.8.5, win32, Azure-Storage/1.2.0 (NODE-VERSION v4.1.1; Windows_NT 10.0.14393)";;"9e9c6311-b419-11e6-a392-8b41713d952c"
+1.0;2016-11-26T20:48:33.4973667Z;<strong>PutBlob</strong>;Success;201;6;6;authenticated;monitorvpl;monitorvpl;blob;"https://monitorvpl.blob.core.windows.net:443/sample/A.txt";"/monitorvpl/sample/A.txt";965cb819-0001-0000-2a26-48ac26000000;0;184.161.153.48:51622;2015-12-11;655;7;258;0;7;"Tj4nPz2/Vt7I1KEM2G8o4A==";"Tj4nPz2/Vt7I1KEM2G8o4A==";"&quot;0x8D4163D961A76BE&quot;";Saturday, 26-Nov-16 20:48:33 GMT;;"Microsoft Azure Storage Explorer, 0.8.5, win32, Azure-Storage/1.2.0 (NODE-VERSION v4.1.1; Windows_NT 10.0.14393)";;"b2006050-b419-11e6-a392-8b41713d952c"
+
+```
 
 Storage Account diagnostics obviously log in semicolon delimited values (variant of CSV), which isn’t trivial to read the way I pasted it here.  But basically we can see the logs contain details:  each operation done around the blobs are logged with lots of details.
 <h2>Querying</h2>

@@ -21,29 +21,31 @@ Select that database ; that will open the database blade. Click "Add Collection"
 
 Select the collection you just created. That will open the collection blade. We are going to create two documents. For that, click "Create Document" on top of the collection blade. First document:
 
-[code language="javascript"]
+```javascript
+
 {
-&quot;firstName&quot; : &quot;Vincent-Philippe&quot;,
-&quot;lastName&quot; : &quot;Lauzon&quot;,
-&quot;office&quot; : &quot;MTL&quot;
+"firstName" : "Vincent-Philippe",
+"lastName" : "Lauzon",
+"office" : "MTL"
 }
-[/code]
+```
 
 Second document:
 
-[code language="javascript"]
+```javascript
+
 {
-&quot;office&quot; : &quot;MTL&quot;,
-&quot;address&quot; :
+"office" : "MTL",
+"address" :
 {
-&quot;streetNumber&quot; : 2000,
-&quot;streetName&quot; : &quot;McGill College&quot;,
-&quot;streetType&quot; : &quot;Avenue&quot;,
-&quot;inBuilding&quot; : &quot;Suite 500&quot;,
-&quot;postalCode&quot; : &quot;H3A 3H3&quot;
+"streetNumber" : 2000,
+"streetName" : "McGill College",
+"streetType" : "Avenue",
+"inBuilding" : "Suite 500",
+"postalCode" : "H3A 3H3"
 }
 }
-[/code]
+```
 
 Now, let's look at those document within the collection. In the collection blade, click "Document Explorer" (at the bottom). You will notice a few things:
 <ul>
@@ -53,15 +55,16 @@ Now, let's look at those document within the collection. In the collection blade
 </ul>
 Let's add a third document:
 
-[code language="javascript"]
+```javascript
+
 {
-&quot;firstName&quot; : &quot;John&quot;,
-&quot;lastName&quot; : &quot;Smith&quot;,
-&quot;office&quot; : &quot;Calgary&quot;,
-&quot;id&quot; : &quot;emp-john-smith&quot;,
-&quot;phoneNumber&quot; : &quot;123-456-7890&quot;
+"firstName" : "John",
+"lastName" : "Smith",
+"office" : "Calgary",
+"id" : "emp-john-smith",
+"phoneNumber" : "123-456-7890"
 }
-[/code]
+```
 
 You can go ahead and look at the document and observe that:
 <ul>
@@ -73,9 +76,10 @@ For querying, in the collection blade, click "Query Explorer". Leave the query a
 
 &nbsp;
 
-[code language="sql"]
+```sql
+
 SELECT * FROM c
-[/code]
+```
 
 &nbsp;
 
@@ -89,11 +93,12 @@ Let's try something slightly less trivial:
 
 &nbsp;
 
-[code language="sql"]
+```sql
+
 SELECT *
 FROM c
 WHERE c.firstName != null
-[/code]
+```
 
 &nbsp;
 
@@ -103,36 +108,38 @@ The following query does a projection or a JSON transformation:
 
 &nbsp;
 
-[code language="sql"]
+```sql
+
 SELECT
-{&quot;firstName&quot;:c.firstName, &quot;lastName&quot;:c.lastName} AS name,
+{"firstName":c.firstName, "lastName":c.lastName} AS name,
 c.office
 FROM c
 WHERE c.firstName!=null
-[/code]
+```
 
 &nbsp;
 
 This yields the following results:
 
-[code language="sql"]
+```sql
+
 [
 {
- &quot;name&quot;: {
- &quot;firstName&quot;: &quot;Vincent-Philippe&quot;,
- &quot;lastName&quot;: &quot;Lauzon&quot;
+ "name": {
+ "firstName": "Vincent-Philippe",
+ "lastName": "Lauzon"
  },
- &quot;office&quot;: &quot;MTL&quot;
+ "office": "MTL"
  },
  {
- &quot;name&quot;: {
- &quot;firstName&quot;: &quot;John&quot;,
- &quot;lastName&quot;: &quot;Smith&quot;
+ "name": {
+ "firstName": "John",
+ "lastName": "Smith"
  },
- &quot;office&quot;: &quot;Calgary&quot;
+ "office": "Calgary"
  }
 ]
-[/code]
+```
 
 &nbsp;
 
@@ -144,49 +151,50 @@ To look at the current indexing policy of a collection, in the collection blade,
 
 &nbsp;
 
-[code language="javascript"]
+```javascript
+
 {
- &quot;indexingMode&quot;: &quot;consistent&quot;,
- &quot;automatic&quot;: true,
- &quot;includedPaths&quot;: [
+ "indexingMode": "consistent",
+ "automatic": true,
+ "includedPaths": [
  {
- &quot;path&quot;: &quot;/*&quot;,
- &quot;indexes&quot;: [
+ "path": "/*",
+ "indexes": [
  {
- &quot;kind&quot;: &quot;Range&quot;,
- &quot;dataType&quot;: &quot;Number&quot;,
- &quot;precision&quot;: -1
+ "kind": "Range",
+ "dataType": "Number",
+ "precision": -1
  },
  {
- &quot;kind&quot;: &quot;Hash&quot;,
- &quot;dataType&quot;: &quot;String&quot;,
- &quot;precision&quot;: 3
+ "kind": "Hash",
+ "dataType": "String",
+ "precision": 3
  },
  {
- &quot;kind&quot;: &quot;Spatial&quot;,
- &quot;dataType&quot;: &quot;Point&quot;
+ "kind": "Spatial",
+ "dataType": "Point"
  }
  ]
  },
  {
- &quot;path&quot;: &quot;/\&quot;_ts\&quot;/?&quot;,
- &quot;indexes&quot;: [
+ "path": "/\"_ts\"/?",
+ "indexes": [
  {
- &quot;kind&quot;: &quot;Range&quot;,
- &quot;dataType&quot;: &quot;Number&quot;,
- &quot;precision&quot;: -1
+ "kind": "Range",
+ "dataType": "Number",
+ "precision": -1
  },
  {
- &quot;kind&quot;: &quot;Hash&quot;,
- &quot;dataType&quot;: &quot;String&quot;,
- &quot;precision&quot;: 3
+ "kind": "Hash",
+ "dataType": "String",
+ "precision": 3
  }
  ]
  }
  ],
- &quot;excludedPaths&quot;: []
+ "excludedPaths": []
 }
-[/code]
+```
 
 &nbsp;
 
@@ -215,13 +223,14 @@ You'll need:
 </ul>
 In the code, simply instantiate it as:
 
-[code language="csharp"]
+```csharp
+
 private static readonly DocumentClient _docClient = new DocumentClient(
 new Uri(ENDPOINT),
 AUTH_KEY,
 ConnectionPolicy.Default,
 ConsistencyLevel.Session);
-[/code]
+```
 
 Here you see that you can override the connection policy (see <a href="http://vincentlauzon.com/2015/06/27/azure-documentdb-performance-tips/">this post</a> for details) and the consistency level for the connection.
 
@@ -232,8 +241,9 @@ First, let's find our collection, in purely scalable way:
 
 &nbsp;
 
-[code language="csharp"]
-private async static Task&lt;DocumentCollection&gt; GetCollectionAsync()
+```csharp
+
+private async static Task<DocumentCollection> GetCollectionAsync()
  {
  var dbQuery = from db in _docClient.CreateDatabaseQuery()
  where db.Id == DB_NAME
@@ -245,7 +255,7 @@ private async static Task&lt;DocumentCollection&gt; GetCollectionAsync()
  var collection = (await QueryAsync(collectionQuery)).FirstOrDefault();
  return collection;
  }
-[/code]
+```
 
 &nbsp;
 
@@ -258,25 +268,26 @@ private async static Task&lt;DocumentCollection&gt; GetCollectionAsync()
 <div>Let's define an employee object, a PONO:</div>
 <div>
 
-[code language="csharp"]
+```csharp
+
 public class Employee
  {
- [JsonProperty(&quot;id&quot;)]
+ [JsonProperty("id")]
  public string ID { get; set; }
 
- [JsonProperty(&quot;firstName&quot;)]
+ [JsonProperty("firstName")]
  public string FirstName { get; set; }
 
- [JsonProperty(&quot;lastName&quot;)]
+ [JsonProperty("lastName")]
  public string LastName { get; set; }
 
- [JsonProperty(&quot;office&quot;)]
+ [JsonProperty("office")]
  public string Office { get; set; }
 
- [JsonProperty(&quot;phoneNumber&quot;)]
+ [JsonProperty("phoneNumber")]
  public string PhoneNumber { get; set; }
  }
-[/code]
+```
 
 </div>
 <div></div>
@@ -289,16 +300,17 @@ public class Employee
 
 &nbsp;
 
-[code language="csharp"]
-private async static Task&lt;Employee&gt; QueryVinceAsync(DocumentCollection collection)
+```csharp
+
+private async static Task<Employee> QueryVinceAsync(DocumentCollection collection)
  {
- var employees = from e in _docClient.CreateDocumentQuery&lt;Employee&gt;(collection.SelfLink)
- where e.FirstName == &quot;Vincent-Philippe&quot;
+ var employees = from e in _docClient.CreateDocumentQuery<Employee>(collection.SelfLink)
+ where e.FirstName == "Vincent-Philippe"
  select e;
  var vincent = (await QueryAsync(employees)).FirstOrDefault();
  return vincent;
  }
-[/code]
+```
 
 &nbsp;
 
@@ -314,24 +326,25 @@ private async static Task&lt;Employee&gt; QueryVinceAsync(DocumentCollection col
 
 &nbsp;
 
-[code language="csharp"]
+```csharp
+
 private static async Task DemoAsync()
  {
  var collection = await GetCollectionAsync();
  var vincent = await QueryVinceAsync(collection);
  var newEmployee = new Employee
  {
- FirstName = &quot;Jessica&quot;,
- LastName = &quot;Jones&quot;,
- Office = &quot;Hell's Kitchen&quot;,
- PhoneNumber = &quot;Unknown&quot;
+ FirstName = "Jessica",
+ LastName = "Jones",
+ Office = "Hell's Kitchen",
+ PhoneNumber = "Unknown"
  };
  var newEmployeeResponse =
  await _docClient.CreateDocumentAsync(collection.SelfLink, newEmployee);
  // ID of the created employee document
  Console.WriteLine(newEmployeeResponse.Resource.Id);
  }
-[/code]
+```
 
 &nbsp;
 

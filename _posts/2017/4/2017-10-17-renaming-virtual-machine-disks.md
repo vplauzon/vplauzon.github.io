@@ -54,13 +54,14 @@ Let’s delete the Virtual Machine to better recreate it.
 
 We will use a PowerShell command.  Using the Azure Portal would yield the same result.
 
-[code language="PowerShell"]
+```PowerShell
+
 
 $rgName = 'ren' # or the Resource Group name we use
 $vmName = 'Demo-VM'    # or the name of the VM we use
 Remove-AzureRmVM -Force -ResourceGroupName $rgName -Name $vmName
 
-[/code]
+```
 
 Of course, we need to replace the variable with values corresponding to our case at hand.
 
@@ -72,52 +73,54 @@ Basically, the ARM templates create <a href="https://docs.microsoft.com/en-ca/az
 
 For the demo solution, we use a fancy trick where we map the old and new disk name in a variable:
 
-[code language="PowerShell"]
+```PowerShell
 
-&quot;disks&quot;: [
+
+"disks": [
   {
-    &quot;oldName&quot;: &quot;Demo-VM-OS&quot;,
-    &quot;newName&quot;: &quot;Clone-Demo-OS&quot;
+    "oldName": "Demo-VM-OS",
+    "newName": "Clone-Demo-OS"
   },
   {
-    &quot;oldName&quot;: &quot;Demo-VM-data2&quot;,
-    &quot;newName&quot;: &quot;Clone-Demo-data2&quot;
+    "oldName": "Demo-VM-data2",
+    "newName": "Clone-Demo-data2"
   },
   {
-    &quot;oldName&quot;: &quot;Demo-VM-data3&quot;,
-    &quot;newName&quot;: &quot;Clone-Demo-data3&quot;
+    "oldName": "Demo-VM-data3",
+    "newName": "Clone-Demo-data3"
   }
 ]
 
-[/code]
+```
 
 and then we use a copy construct to loop to the JSON array:
 
-[code language="JavaScript"]
+```JavaScript
+
 
     {
-      &quot;comments&quot;: &quot;Copy existing disks in order to change their names&quot;,
-      &quot;apiVersion&quot;: &quot;2017-03-30&quot;,
-      &quot;copy&quot;: {
-        &quot;name&quot;: &quot;snapshot-loop&quot;,
-        &quot;count&quot;: &quot;[length(variables('disks'))]&quot;
+      "comments": "Copy existing disks in order to change their names",
+      "apiVersion": "2017-03-30",
+      "copy": {
+        "name": "snapshot-loop",
+        "count": "[length(variables('disks'))]"
       },
-      &quot;type&quot;: &quot;Microsoft.Compute/disks&quot;,
-      &quot;name&quot;: &quot;[variables('disks')[copyIndex()].newName]&quot;,
-      &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-      &quot;sku&quot;: {
-        &quot;name&quot;: &quot;Premium_LRS&quot;
+      "type": "Microsoft.Compute/disks",
+      "name": "[variables('disks')[copyIndex()].newName]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "Premium_LRS"
       },
-      &quot;properties&quot;: {
-        &quot;creationData&quot;: {
-          &quot;createOption&quot;: &quot;copy&quot;,
-          &quot;sourceUri&quot;: &quot;[resourceId('Microsoft.Compute/disks', variables('disks')[copyIndex()].oldName)]&quot;
+      "properties": {
+        "creationData": {
+          "createOption": "copy",
+          "sourceUri": "[resourceId('Microsoft.Compute/disks', variables('disks')[copyIndex()].oldName)]"
         }
       }
     },
 
 
-[/code]
+```
 
 One of the advantage of using ARM templates to copy the disks is that the copy is parallelized:  in the case of our demo solution, we have 3 disks and they are copied in parallel instead of one after.  The is of course faster.
 <h3>Re-create the Virtual Machine and attach to disk copies</h3>
@@ -129,14 +132,15 @@ At this point we did “rename the disks”.  We just have some cleanups to do 
 
 We simply delete them:
 
-[code language="JavaScript"]
+```JavaScript
+
 
 $rgName = ‘ren’ # or the Resource Group name you used
 $oldDisks = 'Demo-VM-OS', 'Demo-VM-data2', 'Demo-VM-data3'
 
 $oldDisks | foreach {Remove-AzureRmDisk -ResourceGroupName $rgName -Force -DiskName $_}
 
-[/code]
+```
 
 Again, replacing the first two variables by what make sense in our use case.
 <h2>Summary</h2>

@@ -21,11 +21,12 @@ A role is an aggregation of actions.
 
 Let’s look at the available roles.
 
-[code language="PowerShell"]
+```PowerShell
+
 
 Get-AzureRmRoleDefinition | select Name | sort -Property Name
 
-[/code]
+```
 
 This gives us the rather long list of roles:
 <ul>
@@ -93,15 +94,17 @@ Some roles are specific, e.g. <em>Virtual Machine Contributor</em>, while others
 
 Let’s look at a specific role:
 
-[code language="PowerShell"]
+```PowerShell
 
-Get-AzureRmRoleDefinition &quot;Virtual Machine Contributor&quot;
 
-[/code]
+Get-AzureRmRoleDefinition "Virtual Machine Contributor"
+
+```
 
 This gives us a role definition object:
 
-[code language="PowerShell"]
+```PowerShell
+
 
 Name             : Virtual Machine Contributor
 Id               : 9980e02c-c2be-4d73-94e8-173b1dc7cf3c
@@ -113,15 +116,16 @@ Microsoft.Compute/virtualMachines/*...}
 NotActions       : {}
 AssignableScopes : {/}
 
-[/code]
+```
 
 Of particular interest are the actions allowed by that role:
 
-[code language="PowerShell"]
+```PowerShell
 
-(Get-AzureRmRoleDefinition &quot;Virtual Machine Contributor&quot;).Actions
 
-[/code]
+(Get-AzureRmRoleDefinition "Virtual Machine Contributor").Actions
+
+```
 
 This returns the 34 actions (as of the time of this writing) the role enables:
 <ul>
@@ -137,15 +141,17 @@ We see that wildcards are used to allow multiple actions.  Therefore there are 
 
 Let’s look at a more generic role:
 
-[code language="PowerShell"]
+```PowerShell
 
-Get-AzureRmRoleDefinition &quot;Contributor&quot;
 
-[/code]
+Get-AzureRmRoleDefinition "Contributor"
+
+```
 
 This role definition object is:
 
-[code language="PowerShell"]
+```PowerShell
+
 
 Name             : Contributor
 Id               : b24988ac-6180-42a0-ab88-20f7382dd24c
@@ -156,15 +162,16 @@ NotActions       : {Microsoft.Authorization/*/Delete, Microsoft.Authorizat
 Microsoft.Authorization/elevateAccess/Action}
 AssignableScopes : {/}
 
-[/code]
+```
 
 We notice that all actions (*) are allowed but that some actions are explicitly disallowed via the <em>NotActions</em> property.
 
-[code language="PowerShell"]
+```PowerShell
 
-(Get-AzureRmRoleDefinition &quot;Contributor&quot;).NotActions
 
-[/code]
+(Get-AzureRmRoleDefinition "Contributor").NotActions
+
+```
 
 <ul>
  	<li>Microsoft.Authorization/*/Delete</li>
@@ -181,29 +188,32 @@ Users &amp; groups will come from the Azure AD managing our Azure subscription.
 
 We can grab a user with <em>Get-AzureRmADUser</em>.  This will list all the users in the tenant.  If you are part of a large organization, this is likely a long list.  We can grab a specific user with the following command:
 
-[code language="PowerShell"]
+```PowerShell
+
 
 Get-AzureRmADUser -UserPrincipalName john.smith@contoso.com
 
-[/code]
+```
 
 We need to specify the domain of the user since we could have users coming from different domains inside the same tenant.
 
 Let’s grab the object ID of the user:
 
-[code language="PowerShell"]
+```PowerShell
+
 
 $userID = (Get-AzureRmADUser -UserPrincipalName john.smith@contoso.com).Id
 
-[/code]
+```
 
 Similarly, we could grab the object ID of a group:
 
-[code language="PowerShell"]
+```PowerShell
 
-$groupID = (Get-AzureRmADGroup -SearchString &quot;Azure Team&quot;).Id
 
-[/code]
+$groupID = (Get-AzureRmADGroup -SearchString "Azure Team").Id
+
+```
 
 <h2>Scope</h2>
 <a href="/assets/posts/2017/2/automating-role-assignment-in-subscriptions-resource-groups/apps-brackets-b-icon1.png"><img style="background-image:none;float:left;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="Apps-Brackets-B-icon[1]" src="/assets/posts/2017/2/automating-role-assignment-in-subscriptions-resource-groups/apps-brackets-b-icon1_thumb.png" alt="Apps-Brackets-B-icon[1]" width="128" height="128" align="left" border="0" /></a>Next thing to determine is the scope where we want to apply a role.
@@ -212,36 +222,40 @@ The scope can be either a subscription, a resource group or a resource.
 
 To use our subscription as the scope, let’s run:
 
-[code language="PowerShell"]
+```PowerShell
 
-$scope = &quot;/subscriptions/&quot; + (Get-AzureRmSubscription)[0].SubscriptionId
 
-[/code]
+$scope = "/subscriptions/" + (Get-AzureRmSubscription)[0].SubscriptionId
+
+```
 
 To use a resource group as the scope, let’s run:
 
-[code language="PowerShell"]
+```PowerShell
+
 
 $scope = (Get-AzureRmResourceGroup -Name MyGroup).ResourceId
 
-[/code]
+```
 
 Finally, to use a specific resource as the scope, let’s run:
 
-[code language="PowerShell"]
+```PowerShell
+
 
 $scope = (Get-AzureRmResource -ResourceGroupName MyGroup -ResourceName MyResource).ResourceId
 
-[/code]
+```
 
 <h2>Assigning a role</h2>
 Ok, let’s do this:  let’s put it all together:
 
-[code language="PowerShell"]
+```PowerShell
 
-New-AzureRmRoleAssignment -ObjectId $userID -Scope $scope -RoleDefinitionName &quot;Contributor&quot;
 
-[/code]
+New-AzureRmRoleAssignment -ObjectId $userID -Scope $scope -RoleDefinitionName "Contributor"
+
+```
 
 We can double check in the portal the assignation occurred.
 <h2>Summary</h2>

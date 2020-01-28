@@ -34,14 +34,15 @@ The reason it allows us to scale is that when we async / await on an I/O call (e
 
 The important part is to recognize that the query object (<em>IDocumentQuery&lt;T&gt;</em>) from the SDK is an asynchronous interface.  It fetches new results in batches.  So we can write a method to fetch all the results like this one:
 
-[code language="csharp"]
-private async static Task&lt;T[]&gt; GetAllResultsAsync&lt;T&gt;(IDocumentQuery&lt;T&gt; queryAll)
+```csharp
+
+private async static Task<T[]> GetAllResultsAsync<T>(IDocumentQuery<T> queryAll)
 {
-    var list = new List&lt;T&gt;();
+    var list = new List<T>();
 
     while (queryAll.HasMoreResults)
     {
-        var docs = await queryAll.ExecuteNextAsync&lt;T&gt;();
+        var docs = await queryAll.ExecuteNextAsync<T>();
 
         foreach (var d in docs)
         {
@@ -51,20 +52,21 @@ private async static Task&lt;T[]&gt; GetAllResultsAsync&lt;T&gt;(IDocumentQuery&
 
     return list.ToArray();
 }
-[/code]
+```
 
 Or one that allows us to process all the items in the query with an <em>action</em>:
 
-[code language="csharp"]
-private async static Task&lt;int&gt; ProcessAllResultsAsync&lt;T&gt;(
-    IDocumentQuery&lt;T&gt; queryAll,
-    Action&lt;T&gt; action)
+```csharp
+
+private async static Task<int> ProcessAllResultsAsync<T>(
+    IDocumentQuery<T> queryAll,
+    Action<T> action)
 {
     int count = 0;
 
     while (queryAll.HasMoreResults)
     {
-        var docs = await queryAll.ExecuteNextAsync&lt;T&gt;();
+        var docs = await queryAll.ExecuteNextAsync<T>();
 
         foreach (var d in docs)
         {
@@ -75,11 +77,12 @@ private async static Task&lt;int&gt; ProcessAllResultsAsync&lt;T&gt;(
 
     return count;
 }
-[/code]
+```
 
 We can create a query object with no fancy LINQ expression, i.e. basically querying the entire collection, like this:
 
-[code language="csharp"]
+```csharp
+
 var client = new DocumentClient(new Uri(SERVICE_ENDPOINT), AUTH_KEY);
 var collectionUri = UriFactory.CreateDocumentCollectionUri(DATABASE, COLLECTION);
 var query = client.CreateDocumentQuery(
@@ -89,23 +92,24 @@ var query = client.CreateDocumentQuery(
         EnableCrossPartitionQuery = true
     });
 var queryAll = query.AsDocumentQuery();
-[/code]
+```
 
 That code basically queries the entire collection and return an array of <em>Document</em> object.
 
 We could also serialize into a custom object and filter the query:
 
-[code language="csharp"]
-var query = client.CreateDocumentQuery&lt;MinimalDoc&gt;(
+```csharp
+
+var query = client.CreateDocumentQuery<MinimalDoc>(
     collectionUri,
     new FeedOptions
     {
         EnableCrossPartitionQuery = true
     });
 var queryNoDog = (from d in query
-                    where d.id != &quot;Dog&quot;
+                    where d.id != "Dog"
                     select d).AsDocumentQuery();
-[/code]
+```
 
 In the code sample there are 4 examples using different variations.
 <h2>Summary</h2>

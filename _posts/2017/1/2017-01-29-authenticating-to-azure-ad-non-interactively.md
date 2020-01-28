@@ -89,23 +89,24 @@ We’ll create a Console Application project.  We need the full .NET Framework 
 
 We need to install the NuGet package <a href="https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/" target="_blank" rel="noopener">Microsoft.IdentityModel.Clients.ActiveDirectory</a> in the project.
 
-[code language="csharp"]
+```csharp
+
         private static async Task AdalAuthenticationAsync()
         {
             //  Constants
-            var tenant = &quot;LdapVplDemo.onmicrosoft.com&quot;;
-            var serviceUri = &quot;https://LdapVplDemo.onmicrosoft.com/d0f883f6-1c32-4a14-a436-0a995a19c39b&quot;;
-            var clientID = &quot;b9faf13d-9258-4142-9a5a-bb9f2f335c2d&quot;;
-            var userName = $&quot;test@{tenant}&quot;;
-            var password = &quot;My$uperComplexPassw0rd1&quot;;
+            var tenant = "LdapVplDemo.onmicrosoft.com";
+            var serviceUri = "https://LdapVplDemo.onmicrosoft.com/d0f883f6-1c32-4a14-a436-0a995a19c39b";
+            var clientID = "b9faf13d-9258-4142-9a5a-bb9f2f335c2d";
+            var userName = $"test@{tenant}";
+            var password = "My$uperComplexPassw0rd1";
 
             //  Ceremony
-            var authority = &quot;https://login.microsoftonline.com/&quot; + tenant;
+            var authority = "https://login.microsoftonline.com/" + tenant;
             var authContext = new AuthenticationContext(authority);
             var credentials = new UserPasswordCredential(userName, password);
             var authResult = await authContext.AcquireTokenAsync(serviceUri, clientID, credentials);
         }
-[/code]
+```
 
 We have to make sure we’ve copied the constants in the constant section.
 
@@ -117,33 +118,34 @@ If we pass a wrong password or wrong user name, we should obtain an error as exp
 <h2>HTTP POST</h2>
 We can use <a href="http://www.telerik.com/fiddler" target="_blank" rel="noopener">Fiddler</a> or other HTTP sniffing tool to see what ADAL did for us.  It is easy enough to replicate.
 
-[code language="csharp"]
+```csharp
+
         private static async Task HttpAuthenticationAsync()
         {
             //  Constants
-            var tenant = &quot;LdapVplDemo.onmicrosoft.com&quot;;
-            var serviceUri = &quot;https://LdapVplDemo.onmicrosoft.com/d0f883f6-1c32-4a14-a436-0a995a19c39b&quot;;
-            var clientID = &quot;b9faf13d-9258-4142-9a5a-bb9f2f335c2d&quot;;
-            var userName = $&quot;test@{tenant}&quot;;
-            var password = &quot;My$uperComplexPassw0rd&quot;;
+            var tenant = "LdapVplDemo.onmicrosoft.com";
+            var serviceUri = "https://LdapVplDemo.onmicrosoft.com/d0f883f6-1c32-4a14-a436-0a995a19c39b";
+            var clientID = "b9faf13d-9258-4142-9a5a-bb9f2f335c2d";
+            var userName = $"test@{tenant}";
+            var password = "My$uperComplexPassw0rd";
 
             using (var webClient = new WebClient())
             {
                 var requestParameters = new NameValueCollection();
 
-                requestParameters.Add(&quot;resource&quot;, serviceUri);
-                requestParameters.Add(&quot;client_id&quot;, clientID);
-                requestParameters.Add(&quot;grant_type&quot;, &quot;password&quot;);
-                requestParameters.Add(&quot;username&quot;, userName);
-                requestParameters.Add(&quot;password&quot;, password);
-                requestParameters.Add(&quot;scope&quot;, &quot;openid&quot;);
+                requestParameters.Add("resource", serviceUri);
+                requestParameters.Add("client_id", clientID);
+                requestParameters.Add("grant_type", "password");
+                requestParameters.Add("username", userName);
+                requestParameters.Add("password", password);
+                requestParameters.Add("scope", "openid");
 
-                var url = $&quot;https://login.microsoftonline.com/{tenant}/oauth2/token&quot;;
-                var responsebytes = await webClient.UploadValuesTaskAsync(url, &quot;POST&quot;, requestParameters);
+                var url = $"https://login.microsoftonline.com/{tenant}/oauth2/token";
+                var responsebytes = await webClient.UploadValuesTaskAsync(url, "POST", requestParameters);
                 var responsebody = Encoding.UTF8.GetString(responsebytes);
             }
         }
-[/code]
+```
 
 Basically, we have an HTTP post where all the previous argument are passed in the POST body.
 

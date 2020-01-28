@@ -25,18 +25,19 @@ This is accomplished by using the <a href="https://msdn.microsoft.com/en-us/libr
 <h2>The Solution</h2>
 Let’s look at the solution.
 
-[code language="sql"]
+```sql
+
 @content =
 	SELECT *
 	FROM(
 		VALUES
 		(
 			12,
-			&quot;a, b, c&quot;
+			"a, b, c"
 		),
 		(
 			75,
-			&quot;f, g, h, i, j&quot;
+			"f, g, h, i, j"
 		)) AS t([ID], LetterList);
 
 @inArray =
@@ -52,9 +53,9 @@ Let’s look at the solution.
 	EXPLODE(LetterArray) AS r(letter);
 
 OUTPUT @exploded
-TO &quot;/Outputs/explosion.tsv&quot;
+TO "/Outputs/explosion.tsv"
 USING Outputters.Tsv();
-[/code]
+```
 
 In the first expression, I create a table from a string:
 <table border="3">

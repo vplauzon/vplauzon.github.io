@@ -61,29 +61,30 @@ We did that both for AMQP &amp; HTTP REST API.  The AMQP API is implemented by 
 
 We always send the same event payload.  The payload is small:  &lt; 1kb in JSON.  In C#:
 
-[code language="csharp"]
+```csharp
+
 
 
 new
 {
-    Name = &quot;John Smith&quot;,
+    Name = "John Smith",
     Age = 42,
     Address = new
     {
-        Street = &quot;Baker&quot;,
-        StreetNumber = &quot;221B&quot;
+        Street = "Baker",
+        StreetNumber = "221B"
     },
     Skills = new[]
     {
-        &quot;Engineer&quot;,
-        &quot;Flight&quot;,
-        &quot;Programming&quot;,
-        &quot;Talking&quot;
+        "Engineer",
+        "Flight",
+        "Programming",
+        "Talking"
     },
-    CreatedAt = DateTime.UtcNow.ToString(&quot;o&quot;)
+    CreatedAt = DateTime.UtcNow.ToString("o")
 };
 
-[/code]
+```
 
 The corresponding container instances for those scenarios are:
 <ul>

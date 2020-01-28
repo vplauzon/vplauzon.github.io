@@ -164,52 +164,53 @@ This ensures only that claim is looked up for when testing for forgery (see <a h
  	<li>Open \Views\Home\Index.cshtml.  In order to output the claims, add the following HTML after &lt;h1&gt;ASP.NET&lt;/h1&gt;
 <div>
 
-[code language="html"]
-
-&lt;h2&gt;Claims&lt;/h2&gt;
+```html
 
 
-&lt;table border=”1″&gt;
-
-&lt;thead&gt;
-
-&lt;tr&gt;
-
-&lt;th&gt;Issuer&lt;/th&gt;
+<h2>Claims</h2>
 
 
-&lt;th&gt;Type&lt;/th&gt;
+<table border=”1″>
+
+<thead>
+
+<tr>
+
+<th>Issuer</th>
 
 
-&lt;th&gt;Value&lt;/th&gt;
-
-        &lt;/tr&gt;
-
-    &lt;/thead&gt;
+<th>Type</th>
 
 
-&lt;tbody&gt;
-        @foreach (var c in ((ClaimsIdentity)User.Identity).Claims.OrderBy(c =&gt; c.Type))
+<th>Value</th>
+
+        </tr>
+
+    </thead>
+
+
+<tbody>
+        @foreach (var c in ((ClaimsIdentity)User.Identity).Claims.OrderBy(c => c.Type))
         {
 
-&lt;tr&gt;
+<tr>
 
-&lt;td&gt;@c.Issuer&lt;/td&gt;
-
-
-&lt;td&gt;@c.Type&lt;/td&gt;
+<td>@c.Issuer</td>
 
 
-&lt;td&gt;@c.Value&lt;/td&gt;
+<td>@c.Type</td>
 
-            &lt;/tr&gt;
+
+<td>@c.Value</td>
+
+            </tr>
 
         }
-    &lt;/tbody&gt;
+    </tbody>
 
-&lt;/table&gt;
+</table>
 
-[/code]
+```
 
 </div></li>
 </ol>

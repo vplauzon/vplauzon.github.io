@@ -52,34 +52,37 @@ Today, DocumentDB SQL implements the <a href="https://docs.microsoft.com/en-us/a
 
 So the following query would return the number of documents in a collection:
 
-[code language="SQL"]
+```SQL
+
 
 SELECT VALUE COUNT(1)
 FROM c
 
-[/code]
+```
 
 The following would give us the minimum age of employees in the HR department:
 
-[code language="SQL"]
+```SQL
+
 
 SELECT VALUE MIN(c.age)
 FROM c
-WHERE c.department=&quot;HR&quot;
+WHERE c.department="HR"
 
-[/code]
+```
 
 etc.
 
 Now we would expect the following to work quite easily:
 
-[code language="SQL"]
+```SQL
+
 
 SELECT VALUE MIN(c.age), VALUE MAX(c.age)
 FROM c
-WHERE c.department=&quot;HR&quot;
+WHERE c.department="HR"
 
-[/code]
+```
 
 but it doesn’t.  That isn’t even legal syntax and will be trapped by the client library before it even hits the service.
 
@@ -97,31 +100,33 @@ The ORDER BY clause is very handy in SQL.  Not only can we sort data in the dat
 
 Although simple ORDER BYs work well, for instance, the following will return us the employees in the HR department sorted by salary:
 
-[code language="SQL"]
+```SQL
+
 
 SELECT c
 FROM c
-WHERE c.department=&quot;HR&quot;
+WHERE c.department="HR"
 AND c.type=”Employee”
 ORDER BY c.profile.salary
 
-[/code]
+```
 
 We could even create something a little more complex by using sub queries:
 
-[code language="SQL"]
+```SQL
+
 
 SELECT c2.c
 FROM
 (
 SELECT c
 FROM c
-WHERE c.department=&quot;HR&quot;
+WHERE c.department="HR"
 AND c.type=”Employee”
 ) c2
 ORDER BY c2.c.profile.salary
 
-[/code]
+```
 
 This might look a little convoluted but in practice sub queries are often used to simplify the query for human readability.
 
@@ -129,19 +134,20 @@ In the end, even if the query contains sub query for human readability, the quer
 
 So we might expect the following to work as well:
 
-[code language="SQL"]
+```SQL
+
 
 SELECT c2
 FROM
 (
 SELECT c.profile.age*2 AS age, c.profile.salary AS salary
 FROM c
-WHERE c.department=&quot;HR&quot;
+WHERE c.department="HR"
 AND c.type=”Employee”
 ) c2
 ORDER BY c2.age
 
-[/code]
+```
 
 After all, we are simply aliasing 2*age for age in a subquery.
 

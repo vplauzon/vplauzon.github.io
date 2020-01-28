@@ -15,9 +15,10 @@ First thing, start PowerShell Integrated Script Environment (ISE) with the Azure
 <h2>Login</h2>
 Login to your accounts…
 
-[code language="powershell"]
+```powershell
+
 Login-AzureRmAccount
-[/code]
+```
 
 This will prompt you to enter an ID + credentials.  Once you enter them, you should be in your subscription.
 
@@ -25,29 +26,33 @@ This will prompt you to enter an ID + credentials.  Once you enter them, you sh
 
 You need to find the subscription ID you are interested in.  Either go to <a title="https://account.windowsazure.com/Subscriptions" href="https://account.windowsazure.com/Subscriptions">https://account.windowsazure.com/Subscriptions</a> to find it in the UI or…  use more PowerShell scripts:
 
-[code language="powershell"]
+```powershell
+
 Get-AzureRmSubscription
-[/code]
+```
 
 Once you have your subscription ID, simply grab the ID and pass it to:
 
-[code language="powershell"]
-Add-AzureRmAccount –SubscriptionId &lt;your subscription ID here&gt;
-[/code]
+```powershell
+
+Add-AzureRmAccount –SubscriptionId <your subscription ID here>
+```
 
 This should prompt you again and afterwards, you’ll be in the context of the right subscription.
 <h2>List resources under resource group</h2>
 Now that you’re within the right subscription, let’s list the resource groups within that subscription:
 
-[code language="powershell"]
+```powershell
+
 Get-AzureRmResourceGroup
-[/code]
+```
 
 This will give you the list of resources under that resource group.  Grab the resource group name and then you can list the resources underneath:
 
-[code language="powershell"]
-$res = Get-AzureRmResource | Where–Object {$_.ResourceGroupName –eq &lt;You resource group name&gt;}
-[/code]
+```powershell
+
+$res = Get-AzureRmResource | Where–Object {$_.ResourceGroupName –eq <You resource group name>}
+```
 
 <h2>Conclusion</h2>
 That’s it!  I just wanted to get this ceremony out of the way.

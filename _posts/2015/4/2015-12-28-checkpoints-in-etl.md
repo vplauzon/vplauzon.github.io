@@ -34,14 +34,15 @@ In my example, we’re going to take tweets (how can we do an data example witho
 
 The input comes in CSV files:
 
-[code language="text"]
+```text
+
 
 accountname, tweet
 @john, “Leaving for work now”
 @julie, “12km in one hour this morning!”
-@zul, “The trees, the leaves &amp; the wind, no more”
+@zul, “The trees, the leaves & the wind, no more”
 
-[/code]
+```
 
 The first thing we’re gona do is to load it <em>as is</em> in a database table:
 <table border="3" width="846">

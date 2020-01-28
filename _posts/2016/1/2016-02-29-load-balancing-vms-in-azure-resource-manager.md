@@ -190,7 +190,8 @@ That’s because your browser keeps the connection alive and we have 4 minutes b
 
 If you want to have a more spectacular test, go in Visual Studio and create a Console app with the following code:
 
-[code language="csharp"]
+```csharp
+
 using System;
 using System.IO;
 using System.Net;
@@ -204,7 +205,7 @@ namespace TestLbConsole
             for (int i = 0; i != 10; ++i)
             {
                 var request =
-                    WebRequest.Create(&quot;http://vpl-ip.southcentralus.cloudapp.azure.com/&quot;) as HttpWebRequest;
+                    WebRequest.Create("http://vpl-ip.southcentralus.cloudapp.azure.com/") as HttpWebRequest;
 
                 request.KeepAlive = false;
 
@@ -220,7 +221,7 @@ namespace TestLbConsole
         }
     }
 }
-[/code]
+```
 
 Since we disable the <em>KeepAlive</em>, we now hit a different VM each time!
 <h2>Conclusion</h2>
@@ -232,111 +233,112 @@ Here is the ARM template allowing you to reproduce what we did in this article.
 
 Please note <strong>I wasn’t able to incorporate the NAT rules into the ARM template</strong>.  This is due to a current limitation of the schema:  we can’t have loops within NAT rules.  So you’ll need to enter those rules manually in order to RDP into the VMs.
 
-[code language="javascript"]
+```javascript
+
 
 {
-  &quot;$schema&quot;: &quot;http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#&quot;,
-  &quot;contentVersion&quot;: &quot;1.0.0.0&quot;,
-  &quot;parameters&quot;: {
-    &quot;vm-admin-name&quot;: {
-      &quot;type&quot;: &quot;string&quot;,
-      &quot;defaultValue&quot;: &quot;Macgyver&quot;
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vm-admin-name": {
+      "type": "string",
+      "defaultValue": "Macgyver"
     },
-    &quot;vm-admin-password&quot;: {
-      &quot;type&quot;: &quot;securestring&quot;
+    "vm-admin-password": {
+      "type": "securestring"
     },
-    &quot;vm-prefix&quot;: {
-      &quot;type&quot;: &quot;string&quot;,
-      &quot;defaultValue&quot;: &quot;VM-&quot;
+    "vm-prefix": {
+      "type": "string",
+      "defaultValue": "VM-"
     },
-    &quot;storage-account-name&quot;: {
-      &quot;type&quot;: &quot;string&quot;
+    "storage-account-name": {
+      "type": "string"
     },
-    &quot;number-of-instance&quot;: {
-      &quot;type&quot;: &quot;int&quot;,
-      &quot;defaultValue&quot;: 2
+    "number-of-instance": {
+      "type": "int",
+      "defaultValue": 2
     },
-    &quot;vm-size&quot;: {
-      &quot;type&quot;: &quot;string&quot;,
-      &quot;minLength&quot;: 1,
-      &quot;defaultValue&quot;: &quot;Standard_A1&quot;,
-      &quot;allowedValues&quot;: [
-        &quot;Basic_A0&quot;,
-        &quot;Basic_A1&quot;,
-        &quot;Basic_A2&quot;,
-        &quot;Basic_A3&quot;,
-        &quot;Basic_A4&quot;,
-        &quot;Standard_A0&quot;,
-        &quot;Standard_A1&quot;,
-        &quot;Standard_A2&quot;,
-        &quot;Standard_A3&quot;,
-        &quot;Standard_A4&quot;,
-        &quot;Standard_A5&quot;,
-        &quot;Standard_A6&quot;,
-        &quot;Standard_A7&quot;,
-        &quot;Standard_D1&quot;,
-        &quot;Standard_D2&quot;,
-        &quot;Standard_D3&quot;,
-        &quot;Standard_D4&quot;,
-        &quot;Standard_D11&quot;,
-        &quot;Standard_D12&quot;,
-        &quot;Standard_D13&quot;,
-        &quot;Standard_D14&quot;
+    "vm-size": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "Standard_A1",
+      "allowedValues": [
+        "Basic_A0",
+        "Basic_A1",
+        "Basic_A2",
+        "Basic_A3",
+        "Basic_A4",
+        "Standard_A0",
+        "Standard_A1",
+        "Standard_A2",
+        "Standard_A3",
+        "Standard_A4",
+        "Standard_A5",
+        "Standard_A6",
+        "Standard_A7",
+        "Standard_D1",
+        "Standard_D2",
+        "Standard_D3",
+        "Standard_D4",
+        "Standard_D11",
+        "Standard_D12",
+        "Standard_D13",
+        "Standard_D14"
       ]
     }
   },
-  &quot;variables&quot;: {
-    &quot;AvailSet-name&quot;: &quot;AvailSet&quot;,
-    &quot;LoadBalancer-name&quot;: &quot;LB&quot;,
-    &quot;backend-address-pool-name&quot;: &quot;Web&quot;,
-    &quot;PublicIP-name&quot;: &quot;Public-IP&quot;,
-    &quot;VNet-name&quot;: &quot;VNet&quot;,
-    &quot;vm-subnet-name&quot;: &quot;vm-subnet&quot;,
-    &quot;NIC-prefix&quot;: &quot;NIC-&quot;,
-    &quot;VM-prefix&quot;: &quot;VM-&quot;
+  "variables": {
+    "AvailSet-name": "AvailSet",
+    "LoadBalancer-name": "LB",
+    "backend-address-pool-name": "Web",
+    "PublicIP-name": "Public-IP",
+    "VNet-name": "VNet",
+    "vm-subnet-name": "vm-subnet",
+    "NIC-prefix": "NIC-",
+    "VM-prefix": "VM-"
   },
-  &quot;resources&quot;: [
+  "resources": [
     {
-      &quot;type&quot;: &quot;Microsoft.Compute/availabilitySets&quot;,
-      &quot;name&quot;: &quot;[variables('AvailSet-name')]&quot;,
-      &quot;apiVersion&quot;: &quot;2015-06-15&quot;,
-      &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-      &quot;tags&quot;: {
-        &quot;displayName&quot;: &quot;Availability Set&quot;
+      "type": "Microsoft.Compute/availabilitySets",
+      "name": "[variables('AvailSet-name')]",
+      "apiVersion": "2015-06-15",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "displayName": "Availability Set"
       },
-      &quot;properties&quot;: {
-        &quot;platformUpdateDomainCount&quot;: 5,
-        &quot;platformFaultDomainCount&quot;: 3
+      "properties": {
+        "platformUpdateDomainCount": 5,
+        "platformFaultDomainCount": 3
       }
     },
     {
-      &quot;apiVersion&quot;: &quot;2015-06-15&quot;,
-      &quot;type&quot;: &quot;Microsoft.Network/networkInterfaces&quot;,
-      &quot;name&quot;: &quot;[concat(variables('NIC-prefix'), copyindex())]&quot;,
-      &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-      &quot;tags&quot;: {
-        &quot;displayName&quot;: &quot;Network Interface&quot;
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[concat(variables('NIC-prefix'), copyindex())]",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "displayName": "Network Interface"
       },
-      &quot;copy&quot;: {
-        &quot;name&quot;: &quot;nic-loop&quot;,
-        &quot;count&quot;: &quot;[parameters('number-of-instance')]&quot;
+      "copy": {
+        "name": "nic-loop",
+        "count": "[parameters('number-of-instance')]"
       },
-      &quot;dependsOn&quot;: [
-        &quot;[concat('Microsoft.Network/virtualNetworks/', variables('VNet-Name'))]&quot;,
-        &quot;[concat('Microsoft.Network/loadBalancers/', variables('LoadBalancer-name'))]&quot;
+      "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworks/', variables('VNet-Name'))]",
+        "[concat('Microsoft.Network/loadBalancers/', variables('LoadBalancer-name'))]"
       ],
-      &quot;properties&quot;: {
-        &quot;ipConfigurations&quot;: [
+      "properties": {
+        "ipConfigurations": [
           {
-            &quot;name&quot;: &quot;ipconfig1&quot;,
-            &quot;properties&quot;: {
-              &quot;privateIPAllocationMethod&quot;: &quot;Dynamic&quot;,
-              &quot;subnet&quot;: {
-                &quot;id&quot;: &quot;[concat(resourceId('Microsoft.Network/virtualNetworks', variables('VNet-Name')), '/subnets/', variables('vm-subnet-name'))]&quot;
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAllocationMethod": "Dynamic",
+              "subnet": {
+                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', variables('VNet-Name')), '/subnets/', variables('vm-subnet-name'))]"
               },
-              &quot;loadBalancerBackendAddressPools&quot;: [
+              "loadBalancerBackendAddressPools": [
                 {
-                  &quot;id&quot;: &quot;[concat(resourceId('Microsoft.Network/loadBalancers', variables('LoadBalancer-name')), '/backendAddressPools/', variables('backend-address-pool-name'))]&quot;
+                  "id": "[concat(resourceId('Microsoft.Network/loadBalancers', variables('LoadBalancer-name')), '/backendAddressPools/', variables('backend-address-pool-name'))]"
                 }
               ]
             }
@@ -345,181 +347,181 @@ Please note <strong>I wasn’t able to incorporate the NAT rules into the ARM te
       }
     },
     {
-      &quot;apiVersion&quot;: &quot;2015-06-15&quot;,
-      &quot;type&quot;: &quot;Microsoft.Compute/virtualMachines&quot;,
-      &quot;name&quot;: &quot;[concat(variables('VM-prefix'), copyindex())]&quot;,
-      &quot;copy&quot;: {
-        &quot;name&quot;: &quot;vm-loop&quot;,
-        &quot;count&quot;: &quot;[parameters('number-of-instance')]&quot;
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[concat(variables('VM-prefix'), copyindex())]",
+      "copy": {
+        "name": "vm-loop",
+        "count": "[parameters('number-of-instance')]"
       },
-      &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-      &quot;tags&quot;: {
-        &quot;displayName&quot;: &quot;Virtual Machines&quot;
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "displayName": "Virtual Machines"
       },
-      &quot;dependsOn&quot;: [
-        &quot;[concat('Microsoft.Storage/storageAccounts/', parameters('storage-account-name'))]&quot;,
-        &quot;nic-loop&quot;,
-        &quot;[concat('Microsoft.Compute/availabilitySets/', variables('AvailSet-name'))]&quot;
+      "dependsOn": [
+        "[concat('Microsoft.Storage/storageAccounts/', parameters('storage-account-name'))]",
+        "nic-loop",
+        "[concat('Microsoft.Compute/availabilitySets/', variables('AvailSet-name'))]"
       ],
-      &quot;properties&quot;: {
-        &quot;availabilitySet&quot;: {
-          &quot;id&quot;: &quot;[resourceId('Microsoft.Compute/availabilitySets', variables('AvailSet-name'))]&quot;
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', variables('AvailSet-name'))]"
         },
-        &quot;hardwareProfile&quot;: {
-          &quot;vmSize&quot;: &quot;[parameters('vm-size')]&quot;
+        "hardwareProfile": {
+          "vmSize": "[parameters('vm-size')]"
         },
-        &quot;osProfile&quot;: {
-          &quot;computerName&quot;: &quot;[concat(variables('VM-prefix'), copyIndex())]&quot;,
-          &quot;adminUsername&quot;: &quot;[parameters('vm-admin-name')]&quot;,
-          &quot;adminPassword&quot;: &quot;[parameters('vm-admin-password')]&quot;
+        "osProfile": {
+          "computerName": "[concat(variables('VM-prefix'), copyIndex())]",
+          "adminUsername": "[parameters('vm-admin-name')]",
+          "adminPassword": "[parameters('vm-admin-password')]"
         },
-        &quot;storageProfile&quot;: {
-          &quot;imageReference&quot;: {
-            &quot;publisher&quot;: &quot;MicrosoftWindowsServer&quot;,
-            &quot;offer&quot;: &quot;WindowsServer&quot;,
-            &quot;sku&quot;: &quot;2012-Datacenter&quot;,
-            &quot;version&quot;: &quot;latest&quot;
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "MicrosoftWindowsServer",
+            "offer": "WindowsServer",
+            "sku": "2012-Datacenter",
+            "version": "latest"
           },
-          &quot;osDisk&quot;: {
-            &quot;name&quot;: &quot;osdisk&quot;,
-            &quot;vhd&quot;: {
-              &quot;uri&quot;: &quot;[concat('http://', parameters('storage-account-name'), '.blob.core.windows.net/vhds/', 'osdisk', copyindex(), '.vhd')]&quot;
+          "osDisk": {
+            "name": "osdisk",
+            "vhd": {
+              "uri": "[concat('http://', parameters('storage-account-name'), '.blob.core.windows.net/vhds/', 'osdisk', copyindex(), '.vhd')]"
             },
-            &quot;caching&quot;: &quot;ReadWrite&quot;,
-            &quot;createOption&quot;: &quot;FromImage&quot;
+            "caching": "ReadWrite",
+            "createOption": "FromImage"
           }
         },
-        &quot;networkProfile&quot;: {
-          &quot;networkInterfaces&quot;: [
+        "networkProfile": {
+          "networkInterfaces": [
             {
-              &quot;id&quot;: &quot;[resourceId('Microsoft.Network/networkInterfaces', concat(variables('NIC-prefix'), copyindex()))]&quot;
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('NIC-prefix'), copyindex()))]"
             }
           ]
         }
       }
     },
     {
-      &quot;type&quot;: &quot;Microsoft.Network/loadBalancers&quot;,
-      &quot;name&quot;: &quot;[variables('LoadBalancer-name')]&quot;,
-      &quot;apiVersion&quot;: &quot;2015-06-15&quot;,
-      &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-      &quot;tags&quot;: {
-        &quot;displayName&quot;: &quot;Load Balancer&quot;
+      "type": "Microsoft.Network/loadBalancers",
+      "name": "[variables('LoadBalancer-name')]",
+      "apiVersion": "2015-06-15",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "displayName": "Load Balancer"
       },
-      &quot;properties&quot;: {
-        &quot;frontendIPConfigurations&quot;: [
+      "properties": {
+        "frontendIPConfigurations": [
           {
-            &quot;name&quot;: &quot;LoadBalancerFrontEnd&quot;,
-            &quot;properties&quot;: {
-              &quot;privateIPAllocationMethod&quot;: &quot;Dynamic&quot;,
-              &quot;publicIPAddress&quot;: {
-                &quot;id&quot;: &quot;[resourceId('Microsoft.Network/publicIPAddresses', variables('PublicIP-name'))]&quot;
+            "name": "LoadBalancerFrontEnd",
+            "properties": {
+              "privateIPAllocationMethod": "Dynamic",
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('PublicIP-name'))]"
               }
             }
           }
         ],
-        &quot;backendAddressPools&quot;: [
+        "backendAddressPools": [
           {
-            &quot;name&quot;: &quot;[variables('backend-address-pool-name')]&quot;
+            "name": "[variables('backend-address-pool-name')]"
           }
         ],
-        &quot;loadBalancingRules&quot;: [
+        "loadBalancingRules": [
           {
-            &quot;name&quot;: &quot;Http&quot;,
-            &quot;properties&quot;: {
-              &quot;frontendIPConfiguration&quot;: {
-                &quot;id&quot;: &quot;[concat(resourceId('Microsoft.Network/loadBalancers', variables('LoadBalancer-name')), '/frontendIPConfigurations/LoadBalancerFrontEnd')]&quot;
+            "name": "Http",
+            "properties": {
+              "frontendIPConfiguration": {
+                "id": "[concat(resourceId('Microsoft.Network/loadBalancers', variables('LoadBalancer-name')), '/frontendIPConfigurations/LoadBalancerFrontEnd')]"
               },
-              &quot;frontendPort&quot;: 80,
-              &quot;backendPort&quot;: 80,
-              &quot;enableFloatingIP&quot;: false,
-              &quot;idleTimeoutInMinutes&quot;: 4,
-              &quot;protocol&quot;: &quot;Tcp&quot;,
-              &quot;loadDistribution&quot;: &quot;Default&quot;,
-              &quot;backendAddressPool&quot;: {
-                &quot;id&quot;: &quot;[concat(resourceId('Microsoft.Network/loadBalancers', variables('LoadBalancer-name')), '/backendAddressPools/', variables('backend-address-pool-name'))]&quot;
+              "frontendPort": 80,
+              "backendPort": 80,
+              "enableFloatingIP": false,
+              "idleTimeoutInMinutes": 4,
+              "protocol": "Tcp",
+              "loadDistribution": "Default",
+              "backendAddressPool": {
+                "id": "[concat(resourceId('Microsoft.Network/loadBalancers', variables('LoadBalancer-name')), '/backendAddressPools/', variables('backend-address-pool-name'))]"
               },
-              &quot;probe&quot;: {
-                &quot;id&quot;: &quot;[concat(resourceId('Microsoft.Network/loadBalancers', variables('LoadBalancer-name')), '/probes/TCP-Probe')]&quot;
+              "probe": {
+                "id": "[concat(resourceId('Microsoft.Network/loadBalancers', variables('LoadBalancer-name')), '/probes/TCP-Probe')]"
               }
             }
           }
         ],
-        &quot;probes&quot;: [
+        "probes": [
           {
-            &quot;name&quot;: &quot;TCP-Probe&quot;,
-            &quot;properties&quot;: {
-              &quot;protocol&quot;: &quot;Tcp&quot;,
-              &quot;port&quot;: 80,
-              &quot;intervalInSeconds&quot;: 5,
-              &quot;numberOfProbes&quot;: 2
+            "name": "TCP-Probe",
+            "properties": {
+              "protocol": "Tcp",
+              "port": 80,
+              "intervalInSeconds": 5,
+              "numberOfProbes": 2
             }
           }
         ],
-        &quot;inboundNatRules&quot;: [ ],
-        &quot;outboundNatRules&quot;: [ ],
-        &quot;inboundNatPools&quot;: [ ]
+        "inboundNatRules": [ ],
+        "outboundNatRules": [ ],
+        "inboundNatPools": [ ]
       },
-      &quot;dependsOn&quot;: [
-        &quot;[resourceId('Microsoft.Network/publicIPAddresses', variables('PublicIP-name'))]&quot;
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/publicIPAddresses', variables('PublicIP-name'))]"
       ]
     },
     {
-      &quot;type&quot;: &quot;Microsoft.Network/publicIPAddresses&quot;,
-      &quot;name&quot;: &quot;[variables('PublicIP-name')]&quot;,
-      &quot;apiVersion&quot;: &quot;2015-06-15&quot;,
-      &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-      &quot;tags&quot;: {
-        &quot;displayName&quot;: &quot;Public IP&quot;
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "[variables('PublicIP-name')]",
+      "apiVersion": "2015-06-15",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "displayName": "Public IP"
       },
-      &quot;properties&quot;: {
-        &quot;publicIPAllocationMethod&quot;: &quot;Dynamic&quot;,
-        &quot;idleTimeoutInMinutes&quot;: 4,
-        &quot;dnsSettings&quot;: {
-          &quot;domainNameLabel&quot;: &quot;vpl-ip&quot;
+      "properties": {
+        "publicIPAllocationMethod": "Dynamic",
+        "idleTimeoutInMinutes": 4,
+        "dnsSettings": {
+          "domainNameLabel": "vpl-ip"
         }
       }
     },
     {
-      &quot;type&quot;: &quot;Microsoft.Network/virtualNetworks&quot;,
-      &quot;name&quot;: &quot;[variables('VNet-name')]&quot;,
-      &quot;apiVersion&quot;: &quot;2015-06-15&quot;,
-      &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-      &quot;tags&quot;: {
-        &quot;displayName&quot;: &quot;Virtual Network&quot;
+      "type": "Microsoft.Network/virtualNetworks",
+      "name": "[variables('VNet-name')]",
+      "apiVersion": "2015-06-15",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "displayName": "Virtual Network"
       },
-      &quot;properties&quot;: {
-        &quot;addressSpace&quot;: {
-          &quot;addressPrefixes&quot;: [
-            &quot;10.1.0.0/16&quot;
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.1.0.0/16"
           ]
         },
-        &quot;subnets&quot;: [
+        "subnets": [
           {
-            &quot;name&quot;: &quot;[variables('vm-subnet-name')]&quot;,
-            &quot;properties&quot;: {
-              &quot;addressPrefix&quot;: &quot;10.1.0.0/24&quot;
+            "name": "[variables('vm-subnet-name')]",
+            "properties": {
+              "addressPrefix": "10.1.0.0/24"
             }
           }
         ]
       }
     },
     {
-      &quot;type&quot;: &quot;Microsoft.Storage/storageAccounts&quot;,
-      &quot;name&quot;: &quot;[parameters('storage-account-name')]&quot;,
-      &quot;apiVersion&quot;: &quot;2015-06-15&quot;,
-      &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-      &quot;tags&quot;: {
-        &quot;displayName&quot;: &quot;Storage Account&quot;
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[parameters('storage-account-name')]",
+      "apiVersion": "2015-06-15",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "displayName": "Storage Account"
       },
-      &quot;properties&quot;: {
-        &quot;accountType&quot;: &quot;Standard_LRS&quot;
+      "properties": {
+        "accountType": "Standard_LRS"
       }
     }
   ]
 }
 
-[/code]
+```
 
 Here are the template's parameters:
 <table border="3" width="769">

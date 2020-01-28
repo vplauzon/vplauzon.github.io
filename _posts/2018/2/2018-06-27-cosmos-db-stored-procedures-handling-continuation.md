@@ -68,11 +68,12 @@ We can now run the code.  It will call the stored procedure several times.  It
 
 We can validate the result by running the following query:
 
-[code language="sql"]
+```sql
+
 SELECT VALUE COUNT(1)
 FROM c
 WHERE c.part='ABC'
-[/code]
+```
 
 and we should get 25000 as a result.
 
@@ -94,20 +95,22 @@ It then goes on filtering, in JavaScript for <em>c.oneThird=1</em>.  The <em>on
 
 It then counts the number of records satisfying that criterium.  Essentially, it is implementing, in JavaScript, the following query:
 
-[code language="sql"]
+```sql
+
 SELECT VALUE COUNT(1)
 FROM c
 WHERE c.part='ABC'
 AND c.oneThird=1
-[/code]
+```
 
 We have a very inefficient implementation on purpose here.  We want to show the effect of paging without having too big a partition for simplicity.
 
-[code language="JavaScript"]
+```JavaScript
+
 //  Flat query:  simply do the query in a sproc
 //
-//  We implement a &quot;SELECT * FROM c WHERE c.oneThird=1&quot; by doing a
-//  &quot;SELECT * FROM c&quot; and then doing the filtering in code
+//  We implement a "SELECT * FROM c WHERE c.oneThird=1" by doing a
+//  "SELECT * FROM c" and then doing the filtering in code
 //
 //  Problem:  Although this sproc is simple, it doesn't scale.
 //  It only select a page of result and hence won't return a good result
@@ -120,7 +123,7 @@ function countOnes() {
     //  Query all documents
     var isAccepted = collection.queryDocuments(
         collection.getSelfLink(),
-        &quot;SELECT * FROM c&quot;,
+        "SELECT * FROM c",
         {},
         function (err, feed, responseOptions) {
             if (err) {
@@ -146,7 +149,7 @@ function countOnes() {
         throw new Error('The query was not accepted by the server.');
     }
 }
-[/code]
+```
 
 <a href="/assets/posts/2018/2/cosmos-db-stored-procedures-handling-continuation/image23.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/posts/2018/2/cosmos-db-stored-procedures-handling-continuation/image_thumb23.png" alt="image" border="0" /></a>
 
@@ -166,11 +169,12 @@ Now it isn’t going to be a straight for-loop.  The thing is that Cosmos DB us
 
 So how can we then call query documents again?  We’ll need something akin to recursion.  Cosmos DB allows us to define functions within functions:
 
-[code language="JavaScript"]
+```JavaScript
+
 //  Query with continuation:  do the query in a sproc and continue paging the results
 //
-//  We implement a &quot;SELECT * FROM c WHERE c.oneThird=1&quot; by doing a
-//  &quot;SELECT * FROM c&quot; and then doing the filtering in code
+//  We implement a "SELECT * FROM c WHERE c.oneThird=1" by doing a
+//  "SELECT * FROM c" and then doing the filtering in code
 //
 //  Problem:  Although this sproc implements continuation on the server side and scale
 //  better, it won't scale to tens of thousands of records.  Cosmos DB imposes a 5 seconds
@@ -190,7 +194,7 @@ function countOnes() {
         //  Query all documents
         var isAccepted = collection.queryDocuments(
             collection.getSelfLink(),
-            &quot;SELECT * FROM c&quot;,
+            "SELECT * FROM c",
             requestOptions,
             function (err, feed, responseOptions) {
                 if (err) {
@@ -223,7 +227,7 @@ function countOnes() {
         }
     }
 }
-[/code]
+```
 
 So here we page until we get to the bottom of the feed.
 
@@ -255,13 +259,14 @@ So the client-side pattern is to call the stored procedure with no argument at f
 
 The custom token is actually a <em>stringified</em> JSON object.  It contains the “count so far” and the query continuation token.  The “count so far” is the stored procedure internal state.
 
-[code language="JavaScript"]
+```JavaScript
+
 //  Query with continuation on both sides:  do the query in a sproc and continue paging the results
 //  ; the sproc returns continuation token so it can be called multiple times and get around the
 //  5 seconds limit.
 //
-//  We implement a &quot;SELECT * FROM c WHERE c.oneThird=1&quot; by doing a
-//  &quot;SELECT * FROM c&quot; and then doing the filtering in code
+//  We implement a "SELECT * FROM c WHERE c.oneThird=1" by doing a
+//  "SELECT * FROM c" and then doing the filtering in code
 function countOnes(sprocContinuationToken) {
     var response = getContext().getResponse();
     var collection = getContext().getCollection();
@@ -276,7 +281,7 @@ function countOnes(sprocContinuationToken) {
         if (!token.queryContinuationToken) {
             throw new Error('Bad token format:  no continuation');
         }
-        //  Retrieve &quot;count so far&quot;
+        //  Retrieve "count so far"
         oneCount = token.countSoFar;
         //  Retrieve query continuation token to continue paging
         query(token.queryContinuationToken);
@@ -291,7 +296,7 @@ function countOnes(sprocContinuationToken) {
         //  Query all documents
         var isAccepted = collection.queryDocuments(
             collection.getSelfLink(),
-            &quot;SELECT * FROM c&quot;,
+            "SELECT * FROM c",
             requestOptions,
             function (err, feed, responseOptions) {
                 if (err) {
@@ -329,7 +334,7 @@ function countOnes(sprocContinuationToken) {
         }
     }
 }
-[/code]
+```
 
 It is easier to use the C# code to run that stored procedure multiple times.  Let’s make sure we comment back the <em>FillPartitionAsync</em> and uncomment <em>QueryAsync</em>:
 

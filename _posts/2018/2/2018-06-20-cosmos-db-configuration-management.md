@@ -37,27 +37,28 @@ We can use SAS token to make a private blob accessible.
 <h2>Target Configuration</h2>
 A Target Configuration file is a simple JSON file.  For instance:
 
-[code language="JavaScript"]
+```JavaScript
+
 
 {
-   &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/vplauzon/cosmos-db-target-config/master/documentation/cosmos-target-schema.json&quot;,
-   &quot;destructiveFlags&quot;: [
-     &quot;database&quot;,
-     &quot;collection&quot;,
-     &quot;storedProcedure&quot;
+   "$schema": "https://raw.githubusercontent.com/vplauzon/cosmos-db-target-config/master/documentation/cosmos-target-schema.json",
+   "destructiveFlags": [
+     "database",
+     "collection",
+     "storedProcedure"
    ],
-   &quot;databases&quot;: [
+   "databases": [
      {
-       &quot;name&quot;: &quot;simple-db&quot;,
-       &quot;collections&quot;: [
+       "name": "simple-db",
+       "collections": [
          {
-           &quot;name&quot;: &quot;partitioned-with-sproc&quot;,
-           &quot;partitionKey&quot;: &quot;/dept&quot;,
-           &quot;requestUnits&quot;: 1200,
-           &quot;storedProcedures&quot;: [
+           "name": "partitioned-with-sproc",
+           "partitionKey": "/dept",
+           "requestUnits": 1200,
+           "storedProcedures": [
              {
-               &quot;name&quot;: &quot;oneSproc&quot;,
-               &quot;targetUrl&quot;: &quot;sproc1.js&quot;
+               "name": "oneSproc",
+               "targetUrl": "sproc1.js"
              }
            ]
          }
@@ -66,7 +67,7 @@ A Target Configuration file is a simple JSON file.  For instance:
    ]
  }
 
-[/code]
+```
 
 This specific file creates a database named <em>simple-db</em>.  It creates one collection in that database named <em>partitioned-with-sproc</em>.  It finally creates a stored procedure within that collection.  The file defines the throughput of the collection and its partition key.
 
@@ -150,24 +151,25 @@ Here it
 <h2>Container Group Configuration</h2>
 We integrate cosmos-db-target-config with ARM template by using Azure Container Instance.  We pass parameters to the container as environment variables.
 
-[code language="JavaScript"]
+```JavaScript
 
-&quot;environmentVariables&quot;: [
+
+"environmentVariables": [
   {
-    &quot;name&quot;: &quot;ACCOUNT_ENDPOINT&quot;,
-    &quot;value&quot;: &quot;[reference(variables('Account Id')).documentEndpoint]&quot;
+    "name": "ACCOUNT_ENDPOINT",
+    "value": "[reference(variables('Account Id')).documentEndpoint]"
   },
   {
-    &quot;name&quot;: &quot;ACCOUNT_KEY&quot;,
-    &quot;value&quot;: &quot;[listKeys(variables('Account Id'), '2015-04-08').primaryMasterKey]&quot;
+    "name": "ACCOUNT_KEY",
+    "value": "[listKeys(variables('Account Id'), '2015-04-08').primaryMasterKey]"
   },
   {
-    &quot;name&quot;: &quot;TARGET_URL&quot;,
-    &quot;value&quot;: &quot;[variables('Target URL')]&quot;
+    "name": "TARGET_URL",
+    "value": "[variables('Target URL')]"
   }
 ]
 
-[/code]
+```
 
 The first two parameters are credentials to access Cosmos DB Account.  They do not need to be hardcoded.  They can be inferred by as we did here, pointing to the Cosmos DB Account resource.  The last variable is the target URL.
 <h2>Learning more</h2>

@@ -29,27 +29,28 @@ The schema for JSON ARM template of CosmosDB Database Account is <a href="https:
 
 There are two important properties for Cosmos DB model (i.e. SQL, Graph, Table or MongoDB):  <em>kind</em> and <em>defaultExperience</em> (on fourth and seventh line respectively).
 
-[code language="javascript"]
+```javascript
+
 {
-  &quot;apiVersion&quot;: &quot;2015-04-08&quot;,
-  &quot;type&quot;: &quot;Microsoft.DocumentDB/databaseAccounts&quot;,
-  &quot;kind&quot;: &quot;[parameters('kind')]&quot;,
-  &quot;name&quot;: &quot;[parameters('databaseAccountName')]&quot;,
-  &quot;tags&quot;: {
-    &quot;defaultExperience&quot;: &quot;[parameters('experience')]&quot;
+  "apiVersion": "2015-04-08",
+  "type": "Microsoft.DocumentDB/databaseAccounts",
+  "kind": "[parameters('kind')]",
+  "name": "[parameters('databaseAccountName')]",
+  "tags": {
+    "defaultExperience": "[parameters('experience')]"
   },
-  &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-  &quot;properties&quot;: {
-    &quot;name&quot;: &quot;[parameters('databaseAccountName')]&quot;,
-    &quot;databaseAccountOfferType&quot;: &quot;[variables('offerType')]&quot;,
-    &quot;consistencyPolicy&quot;: {
-      &quot;defaultConsistencyLevel&quot;: &quot;[parameters('consistencyLevel')]&quot;,
-      &quot;maxStalenessPrefix&quot;: &quot;[parameters('maxStalenessPrefix')]&quot;,
-      &quot;maxIntervalInSeconds&quot;: &quot;[parameters('maxIntervalInSeconds')]&quot;
+  "location": "[resourceGroup().location]",
+  "properties": {
+    "name": "[parameters('databaseAccountName')]",
+    "databaseAccountOfferType": "[variables('offerType')]",
+    "consistencyPolicy": {
+      "defaultConsistencyLevel": "[parameters('consistencyLevel')]",
+      "maxStalenessPrefix": "[parameters('maxStalenessPrefix')]",
+      "maxIntervalInSeconds": "[parameters('maxIntervalInSeconds')]"
     }
   }
 }
-[/code]
+```
 
 <em>Kind</em> takes the following values:  <em>GlobalDocumentDB</em>, <em>MongoDB</em> &amp; <em>Parse</em>.  It defines how the database engine is configured.  <strong>This property must be supplied at creation time and can’t be changed after</strong>.
 

@@ -59,15 +59,16 @@ In all cases, we’ll find it empty unless we tempered with it already.
 
 As we mentioned the route prefix default to <em>api</em> so we need to explicitly define it.  In order to have no prefix we can define the host.json file as:
 
-[code language="javascript"]
+```javascript
+
 
 {
-  &quot;http&quot;: {
-    &quot;routePrefix&quot;: &quot;&quot;
+  "http": {
+    "routePrefix": ""
   }
 }
 
-[/code]
+```
 
 If we test the URL again, we’ll see the /api has disappeared.
 

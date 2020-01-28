@@ -127,7 +127,8 @@ You can somewhat control where your data will go by using the <em>hash distribut
 
 So, let’s look at a simple example of a round-robin distributed table:
 
-[code language="sql"]
+```sql
+
 
 CREATE TABLE [dbo].MyTable
 (
@@ -141,11 +142,12 @@ WITH
   DISTRIBUTION = ROUND_ROBIN
 )
 
-[/code]
+```
 
 Since round robin also is the default distribution, I could have simply omit to specify it:
 
-[code language="sql"]
+```sql
+
 CREATE TABLE [dbo].MyTable
 (
   CustomerID      INT            NOT NULL,
@@ -157,11 +159,12 @@ WITH
   CLUSTERED COLUMNSTORE INDEX
 )
 
-[/code]
+```
 
 And now with a hash algorithm:
 
-[code language="sql"]
+```sql
+
 CREATE TABLE [dbo].MyTable
 (
   CustomerID      INT            NOT NULL,
@@ -174,7 +177,7 @@ WITH
   DISTRIBUTION = HASH(RegionID)
 )
 
-[/code]
+```
 
 Here I specified I want the hash to be taken from the <em>RegionID</em> column.  So all customers within the same region will be stored in the same database.
 
@@ -206,7 +209,8 @@ You need to have something big to make it worthwhile in terms of query speedup t
 
 Here is how I would partition my earlier table:
 
-[code language="sql"]
+```sql
+
 CREATE TABLE [dbo].MyTable
 (
   CustomerID      INT            NOT NULL,
@@ -223,7 +227,7 @@ WITH
   )
 )
 
-[/code]
+```
 
 I built on the previous example which had hash distribution.  But it could have been a round robin distribution.  Those two options (i.e. hash distribution &amp; partitioning) are orthogonal.
 

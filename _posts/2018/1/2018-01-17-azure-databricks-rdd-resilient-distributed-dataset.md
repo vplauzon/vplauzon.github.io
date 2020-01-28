@@ -49,59 +49,63 @@ We do that by configuring the cluster.  This is covered in the <a href="https:/
 <p align="left">So the first part looks like this:</p>
 
 
-[code language="Python"]
-*Vertices 19428 6486
-1 &quot;24-HOUR MAN/EMMANUEL&quot;
-2 &quot;3-D MAN/CHARLES CHAN&quot;
-3 &quot;4-D MAN/MERCURIO&quot;
-4 &quot;8-BALL/&quot;
-5 &quot;A&quot;
-6 &quot;A'YIN&quot;
-7 &quot;ABBOTT, JACK&quot;
-8 &quot;ABCISSA&quot;
-9 &quot;ABEL&quot;
+```Python
 
-[/code]
+*Vertices 19428 6486
+1 "24-HOUR MAN/EMMANUEL"
+2 "3-D MAN/CHARLES CHAN"
+3 "4-D MAN/MERCURIO"
+4 "8-BALL/"
+5 "A"
+6 "A'YIN"
+7 "ABBOTT, JACK"
+8 "ABCISSA"
+9 "ABEL"
+
+```
 
 <p align="left">The header, i.e. first row, starting with an <em>asterisk</em> or <em>star</em> is telling us there are 6486 characters.  Indeed, if we find the first occurrence of ‘6486’, we see we go back to letter ‘A’:</p>
 
 
-[code language="Python"]
-6484 &quot;STORMER&quot;
-6485 &quot;TIGER WYLDE&quot;
-6486 &quot;ZONE&quot;
-6487 &quot;AA2 35&quot;
-6488 &quot;M/PRM 35&quot;
-6489 &quot;M/PRM 36&quot;
-6490 &quot;M/PRM 37&quot;
-6491 &quot;WI? 9&quot;
-6492 &quot;AVF 4&quot;
-[/code]
+```Python
+
+6484 "STORMER"
+6485 "TIGER WYLDE"
+6486 "ZONE"
+6487 "AA2 35"
+6488 "M/PRM 35"
+6489 "M/PRM 36"
+6490 "M/PRM 37"
+6491 "WI? 9"
+6492 "AVF 4"
+```
 
 <p align="left">This is where the publications start.</p>
 <p align="left">The header also told us there were 19428 publications.  If we fast forward to 19428, we see a new header, <em>Edgeslist</em>:</p>
 
 
-[code language="Python"]
-19427 &quot;AA2 20&quot;
-19428 &quot;AA2 38&quot;
+```Python
+
+19427 "AA2 20"
+19428 "AA2 38"
 *Edgeslist
 1 6487
 2 6488 6489 6490 6491 6492 6493 6494 6495 6496
 3 6497 6498 6499 6500 6501 6502 6503 6504 6505
 4 6506 6507 6508
 
-[/code]
+```
 
 <p align="left">Although it looks like every line represents a character ID followed by a list of publication ID, some characters spawn two lines and their character ID is repeated.  For instance character <em>10</em>:</p>
 
 
-[code language="Python"]
+```Python
+
 10 6521 6522 6523 6524 6525 6526 6527 6528 6529 6530 6531 6532 6533 6534 6535
 10 6536 6537 6538 6539 6540 6541 6542 6543 6544 6545 6546 6547 6548 6549 6550
 10 6551 6552 6553 6554 6555 6556 6557 6558 6559 6560 6561 6562 6563 6564 6565
 
-[/code]
+```
 
 <p align="left">That is about it.</p>
 <p align="left">Dataset coming in text file often have bizarre and unique format.  Spark has good tools to deal with it.</p>
@@ -113,12 +117,13 @@ We do that by configuring the cluster.  This is covered in the <a href="https:/
 <p align="left">In the notebook, let’s simply copy this in the first</p>
 
 
-[code language="Python"]
-#  Fetch porgat.txt file from storage account
-pathPrefix = &quot;wasbs://&lt;CONTAINER&gt;@&lt;STORAGE ACCOUNT&gt;.blob.core.windows.net/&quot;
-file = sc.textFile(pathPrefix + &quot;porgat.txt&quot;)
+```Python
 
-[/code]
+#  Fetch porgat.txt file from storage account
+pathPrefix = "wasbs://<CONTAINER>@<STORAGE ACCOUNT>.blob.core.windows.net/"
+file = sc.textFile(pathPrefix + "porgat.txt")
+
+```
 
 The placeholders CONTAINER and STORAGE ACCOUNT are for the name of the container where we copied the file and the name of the storage account owning that container we created earlier.
 
@@ -130,22 +135,23 @@ All the Python-Spark knowledge required to understand the following is in the <a
 
 First, let’s define the different RDDs we are going to work on.  In a new cell of the Notebook, let’s paste:
 
-[code language="Python"]
+```Python
+
 
 #  Remove the headers from the file:  lines starting with a star
-noHeaders = file.filter(lambda x: len(x)&gt;0 and x[0]!='*')
+noHeaders = file.filter(lambda x: len(x)>0 and x[0]!='*')
 #  Extract a pair from each line:  the leading integer and a string for the rest of the line
-paired = noHeaders.map(lambda l:  l.partition(' ')).filter(lambda t:  len(t)==3 and len(t[0])&gt;0 and len(t[2])&gt;0).map(lambda t: (int(t[0]), t[2]))
+paired = noHeaders.map(lambda l:  l.partition(' ')).filter(lambda t:  len(t)==3 and len(t[0])>0 and len(t[2])>0).map(lambda t: (int(t[0]), t[2]))
 #  Filter relationships as they do not start with quotes, then split the integer list
-scatteredRelationships = paired.filter(lambda (charId, text):  text[0]!='&quot;').map(lambda (charId, text): (charId, [int(x) for x in text.split(' ')]))
+scatteredRelationships = paired.filter(lambda (charId, text):  text[0]!='"').map(lambda (charId, text): (charId, [int(x) for x in text.split(' ')]))
 #  Relationships for the same character id sometime spans more than a line in the file, so let's group them together
 relationships = scatteredRelationships.reduceByKey(lambda pubList1, pubList2: pubList1 + pubList2)
 #  Filter non-relationships as they start with quotes ; remove the quotes
-nonRelationships = paired.filter(lambda (index, text):  text[0]=='&quot;').map(lambda (index, text):  (index, text[1:-1].strip()))
+nonRelationships = paired.filter(lambda (index, text):  text[0]=='"').map(lambda (index, text):  (index, text[1:-1].strip()))
 #  Characters stop at a certain line (part of the initial header ; we hardcode it here)
-characters = nonRelationships.filter(lambda (charId, name): charId&lt;=6486) #  Publications starts after the characters publications = nonRelationships.filter(lambda (charId, name): charId&gt;6486)
+characters = nonRelationships.filter(lambda (charId, name): charId<=6486) #  Publications starts after the characters publications = nonRelationships.filter(lambda (charId, name): charId>6486)
 
-[/code]
+```
 
 When we run that, nothing gets computed and it returns quickly.  This is because Spark uses lazy-evaluation and we just defined transformations so far.
 
@@ -163,22 +169,23 @@ For this, we’ll take the relationship RDD and perform a Cartesian product on i
 
 Although the relationship dataset isn’t big, performing a Cartesian product will square its size.  This will bring the compute requirement where it will take a few seconds to compute.
 
-[code language="Python"]
+```Python
+
 
 #  Let's find the characters appearing together most often
 
 #  Let's take the relationship RDD and do a cartesian product with itself all possible duos ; we repartition to be able to scale
 product = relationships.repartition(100).cartesian(relationships)
 #  Let's then remap it to have the character ids together and intersect their publications (using Python's sets)
-remapped = product.map(lambda ((charId1, pubList1), (charId2, pubList2)): ((charId1, charId2), list(set(pubList1) &amp; set(pubList2))))
+remapped = product.map(lambda ((charId1, pubList1), (charId2, pubList2)): ((charId1, charId2), list(set(pubList1) & set(pubList2))))
 #  Let's eliminate doublons
-noDoublons = remapped.filter(lambda ((charId1, charId2), pubList): charId1&lt;charId2) #  Let's remove empty publication list noEmptyPublications = noDoublons.filter(lambda ((charId1, charId2), pubList): len(pubList)&gt;0)
-#  Let's flip the mapping in order to sort by length of publications &amp; drop the publication lists themselves
+noDoublons = remapped.filter(lambda ((charId1, charId2), pubList): charId1<charId2) #  Let's remove empty publication list noEmptyPublications = noDoublons.filter(lambda ((charId1, charId2), pubList): len(pubList)>0)
+#  Let's flip the mapping in order to sort by length of publications & drop the publication lists themselves
 sorted = noEmptyPublications.map(lambda ((charId1, charId2), pubList): (len(pubList), (charId1, charId2))).sortByKey(False)
 #  Action:  let's output the first 10 results
 top10 = sorted.take(10)
 
-[/code]
+```
 
 The last line is an action.  Spark lazy computing gives up and the cluster will finally get a job to run.  The job will be divided into tasks deployed into executors on different nodes of the cluster.
 
@@ -190,7 +197,8 @@ It is going to be much more interesting to look at the name of the characters. 
 
 Although we could have join before taking the top 10, that would have meant we would have join on <strong>every record</strong> and carry the name of the characters around which would have been heavier.  Instead, we first take the top 10, then perform the join on it, which is very fast:
 
-[code language="Python"]
+```Python
+
 # Join once for the first character ; we first need to flip the RDD to have charId1 as the key
 name1 = sc.parallelize(top10).map(lambda (pubCount, (charId1, charId2)): (charId1, (charId2, pubCount))).join(characters)
 # Let's perform a similar join on the second character
@@ -200,11 +208,12 @@ formattedTop10 = name2.map(lambda (charId2, ((name1, charId1, pubCount), name2))
 
 # We need to sort the results again: when we parallelized the top10 it got partitionned and each partition moved independantly
 formattedTop10.sortByKey(False).collect()
-[/code]
+```
 
 We finally get the answer to our question:
 
-[code language="Python"]
+```Python
+
 
 [(744, (u'HUMAN TORCH/JOHNNY S', 2557, u'THING/BENJAMIN J. GR', 5716)),
  (713, (u'HUMAN TORCH/JOHNNY S', 2557, u'MR. FANTASTIC/REED R', 3805)),
@@ -217,7 +226,7 @@ We finally get the answer to our question:
  (446, (u'CAPTAIN AMERICA', 859, u'IRON MAN/TONY STARK', 2664)),
  (422, (u'SCARLET WITCH/WANDA', 4898, u'VISION', 6066))]
 
-[/code]
+```
 
 It turns out the top 10 is dominated by members of the Fantastic Four, which makes sense since the four of them typically appear together.
 <h2>Observations</h2>

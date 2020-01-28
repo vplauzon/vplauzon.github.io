@@ -41,15 +41,16 @@ As in <a href="https://vincentlauzon.com/2018/01/17/azure-databricks-rdd-resilie
 
 Then, we simply point to the file in the storage account.
 
-[code language="python"]
+```python
 
-#  Replace with your container and storage account:  &quot;wasbs://&amp;lt;container&amp;gt;@&amp;lt;storage account&amp;gt;.blob.core.windows.net/&quot;
-pathPrefix = &quot;wasbs://hb1-visa@vpldb.blob.core.windows.net/&quot;
-path = pathPrefix + &quot;h1b_kaggle.csv&quot;
+
+#  Replace with your container and storage account:  "wasbs://&lt;container&gt;@&lt;storage account&gt;.blob.core.windows.net/"
+pathPrefix = "wasbs://hb1-visa@vpldb.blob.core.windows.net/"
+path = pathPrefix + "h1b_kaggle.csv"
 # Load CSV
-df = spark.read.option(&quot;header&quot;,&quot;true&quot;).csv(path)
+df = spark.read.option("header","true").csv(path)
 
-[/code]
+```
 
 Here we use the spark session to load the data as a Data Frame.  The spark context is used to manipulate RDDs while the session is used for Spark SQL.  Each interface offer different load methods with the Spark Context offering more high level methods.
 
@@ -61,7 +62,8 @@ That RDD will be an RDD of <em>Row </em>(i.e. strong typed).  A <em>Row</em> is
 
 So we define the following Python method to manipulate a row:
 
-[code language="python"]
+```python
+
 
 # Manipulate a data-row to change some columns
 def reworkRow(row):
@@ -75,10 +77,10 @@ dict = row.asDict()
 dict['id'] = dict['_c0']
 del(dict['_c0'])
 
-# Split the WORKSITE column into city &amp;amp; state
+# Split the WORKSITE column into city &amp; state
 worksite = dict['WORKSITE'].split(',')
-city = worksite[0].strip() if len(worksite)&amp;gt;0 else None
-state = worksite[1].strip() if len(worksite)&amp;gt;1 else None
+city = worksite[0].strip() if len(worksite)&gt;0 else None
+state = worksite[1].strip() if len(worksite)&gt;1 else None
 dict['CITY'] = city
 dict['STATE'] = state
 del(dict['WORKSITE'])
@@ -88,13 +90,14 @@ dict['FULL_TIME_POSITION'] = True if dict['FULL_TIME_POSITION']=='Y' else False
 
 return Row(**dict)
 
-[/code]
+```
 
 We address the three changes we wanted to address:  id column, worksite column &amp; full time position column.
 
 We can then simply do a <em>map</em> on the RDD and recreate a data frame from the mapped RDD:
 
-[code language="python"]
+```python
+
 
 # Convert back to RDD to manipulate the rows
 rdd = df.rdd.map(lambda row: reworkRow(row))
@@ -103,9 +106,9 @@ hb1 = spark.createDataFrame(rdd)
 # Let's cache this bad boy
 hb1.cache()
 # Create a temporary view from the data frame
-hb1.createOrReplaceTempView(&quot;hb1&quot;)
+hb1.createOrReplaceTempView("hb1")
 
-[/code]
+```
 
 We cached the data frame.  Since the data set is 0.5GB on disk, it is useful to keep it in memory.  The <em>.cache</em> method does a best effort job of keeping the data in the RAM of the worker nodes.  This means that from one query to the next, the dataframe isn’t fully reconstructed.  It does improve the performance drastically as we can easily test by commenting that command out.
 
@@ -115,19 +118,21 @@ This is the extend of wrangling we do with this data set.  Nothing very complic
 <h2>Insights</h2>
 First, let’s check the size of the data set:
 
-[code language="sql"]
+```sql
+
 
 %sql
 SELECT COUNT(*)
 FROM hb1
 
-[/code]
+```
 
 This gives us a count of 3 002 458, which is a good size data set.
 
 We can then check which state are most popular for immigration requests in the USA:
 
-[code language="sql"]
+```sql
+
 
 %sql
 SELECT STATE, COUNT(*) AS petitions
@@ -135,7 +140,7 @@ FROM hb1
 GROUP BY STATE
 ORDER BY petitions DESC
 
-[/code]
+```
 
 The result is our first insight:
 
@@ -145,7 +150,8 @@ California being on top isn’t surprising.  Texas being second is a little mor
 
 If we breakdown by city, a different immigration portrait appears:
 
-[code language="sql"]
+```sql
+
 
 %sql
 SELECT CITY, STATE, COUNT(*) AS petitions
@@ -153,7 +159,7 @@ FROM hb1
 GROUP BY CITY, STATE
 ORDER BY petitions DESC
 
-[/code]
+```
 
 <a href="/assets/posts/2018/1/transforming-data-frames-in-spark/image2.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/posts/2018/1/transforming-data-frames-in-spark/image_thumb2.png" alt="image" border="0" /></a>
 
@@ -163,7 +169,8 @@ This is a great example of drill down to better understand the data.
 
 We could have a look at the distribution of the <em>case status</em>:
 
-[code language="sql"]
+```sql
+
 
 %sql
 SELECT CASE_STATUS, COUNT(*) AS petitions
@@ -171,7 +178,7 @@ FROM hb1
 GROUP BY CASE_STATUS
 ORDER BY petitions DESC
 
-[/code]
+```
 
 <a href="/assets/posts/2018/1/transforming-data-frames-in-spark/image3.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/posts/2018/1/transforming-data-frames-in-spark/image_thumb3.png" alt="image" border="0" /></a>
 
@@ -179,7 +186,8 @@ A surprisingly low level of rejection.
 
 Let’s look at the employers sponsoring those visas.
 
-[code language="sql"]
+```sql
+
 
 %sql
 SELECT EMPLOYER_NAME, COUNT(*) as count
@@ -188,7 +196,7 @@ GROUP BY EMPLOYER_NAME
 ORDER BY count DESC
 LIMIT 20
 
-[/code]
+```
 
 We see that the top of employers is dominated by the IT industry.
 
@@ -196,7 +204,8 @@ We see that the top of employers is dominated by the IT industry.
 
 Looking at the job title of applicants corroborates the dominance of the IT industry:
 
-[code language="sql"]
+```sql
+
 
 %sql
 SELECT JOB_TITLE, COUNT(*) AS count
@@ -205,7 +214,7 @@ GROUP BY JOB_TITLE
 ORDER BY count DESC
 LIMIT 20
 
-[/code]
+```
 
 <a href="/assets/posts/2018/1/transforming-data-frames-in-spark/image5.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/posts/2018/1/transforming-data-frames-in-spark/image_thumb5.png" alt="image" border="0" /></a>
 

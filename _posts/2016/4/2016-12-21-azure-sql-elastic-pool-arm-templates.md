@@ -18,199 +18,200 @@ So I hope this article fills that gap and is easy to search for &amp; consume.
 <h2>ARM Template</h2>
 Here we’re going to provision a Server with two pools, <em>Pool-A</em> &amp; <em>Pool-B</em> (yeah, sounds a bit like <a href="http://seuss.wikia.com/wiki/Thing_One_and_Thing_Two" target="_blank">Thing 1 &amp; Thing 2</a>), each having a few (configurable number of) databases in them.
 
-[code language="javascript"]
+```javascript
+
 {
-  &quot;$schema&quot;: &quot;https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#&quot;,
-  &quot;contentVersion&quot;: &quot;1.0.0.0&quot;,
-  &quot;parameters&quot;: {
-    &quot;Server Name&quot;: {
-      &quot;defaultValue&quot;: &quot;pooldemoserver&quot;,
-      &quot;type&quot;: &quot;string&quot;,
-      &quot;metadata&quot;: {
-        &quot;description&quot;: &quot;Name of the SQL:  needs to be unique among all servers in Azure&quot;
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "Server Name": {
+      "defaultValue": "pooldemoserver",
+      "type": "string",
+      "metadata": {
+        "description": "Name of the SQL:  needs to be unique among all servers in Azure"
       }
     },
-    &quot;Admin Login&quot;: {
-      &quot;defaultValue&quot;: &quot;myadmin&quot;,
-      &quot;type&quot;: &quot;string&quot;,
-      &quot;metadata&quot;: {
-        &quot;description&quot;: &quot;SQL Server Admin login name&quot;
+    "Admin Login": {
+      "defaultValue": "myadmin",
+      "type": "string",
+      "metadata": {
+        "description": "SQL Server Admin login name"
       }
     },
-    &quot;Admin Password&quot;: {
-      &quot;type&quot;: &quot;securestring&quot;,
-      &quot;metadata&quot;: {
-        &quot;description&quot;: &quot;SQL Server Admin login password&quot;
+    "Admin Password": {
+      "type": "securestring",
+      "metadata": {
+        "description": "SQL Server Admin login password"
       }
     },
-    &quot;Pool A Edition&quot;: {
-      &quot;defaultValue&quot;: &quot;Standard&quot;,
-      &quot;type&quot;: &quot;string&quot;,
-      &quot;allowedValues&quot;: [
-        &quot;Basic&quot;,
-        &quot;Standard&quot;,
-        &quot;Premium&quot;
+    "Pool A Edition": {
+      "defaultValue": "Standard",
+      "type": "string",
+      "allowedValues": [
+        "Basic",
+        "Standard",
+        "Premium"
       ],
-      &quot;metadata&quot;: {
-        &quot;description&quot;: &quot;Pool A Edition&quot;
+      "metadata": {
+        "description": "Pool A Edition"
       }
     },
-    &quot;Pool B Edition&quot;: {
-      &quot;defaultValue&quot;: &quot;Standard&quot;,
-      &quot;type&quot;: &quot;string&quot;,
-      &quot;allowedValues&quot;: [
-        &quot;Basic&quot;,
-        &quot;Standard&quot;,
-        &quot;Premium&quot;
+    "Pool B Edition": {
+      "defaultValue": "Standard",
+      "type": "string",
+      "allowedValues": [
+        "Basic",
+        "Standard",
+        "Premium"
       ],
-      &quot;metadata&quot;: {
-        &quot;description&quot;: &quot;Pool B Edition&quot;
+      "metadata": {
+        "description": "Pool B Edition"
       }
     },
-    &quot;DB Max Size&quot;: {
-      &quot;defaultValue&quot;: &quot;10737418240&quot;,
-      &quot;type&quot;: &quot;string&quot;,
-      &quot;allowedValues&quot;: [
-        &quot;104857600&quot;,
-        &quot;524288000&quot;,
-        &quot;1073741824&quot;,
-        &quot;2147483648&quot;,
-        &quot;5368709120&quot;,
-        &quot;10737418240&quot;,
-        &quot;21474836480&quot;,
-        &quot;32212254720&quot;,
-        &quot;42949672960&quot;,
-        &quot;53687091200&quot;,
-        &quot;107374182400&quot;,
-        &quot;161061273600&quot;,
-        &quot;214748364800&quot;,
-        &quot;268435456000&quot;,
-        &quot;322122547200&quot;,
-        &quot;429496729600&quot;,
-        &quot;536870912000&quot;
+    "DB Max Size": {
+      "defaultValue": "10737418240",
+      "type": "string",
+      "allowedValues": [
+        "104857600",
+        "524288000",
+        "1073741824",
+        "2147483648",
+        "5368709120",
+        "10737418240",
+        "21474836480",
+        "32212254720",
+        "42949672960",
+        "53687091200",
+        "107374182400",
+        "161061273600",
+        "214748364800",
+        "268435456000",
+        "322122547200",
+        "429496729600",
+        "536870912000"
       ],
-      &quot;metadata&quot;: {
-        &quot;description&quot;: &quot;DB Max Size, in bytes&quot;
+      "metadata": {
+        "description": "DB Max Size, in bytes"
       }
     }
   },
-  &quot;variables&quot;: {
-    &quot;Pool A&quot;: &quot;Pool-A&quot;,
-    &quot;Pool B&quot;: &quot;Pool-B&quot;,
-    &quot;DB A Prefix&quot;: &quot;Pool-A-Db&quot;,
-    &quot;DB B Prefix&quot;: &quot;Pool-B-Db&quot;,
-    &quot;Count A&quot;: 2,
-    &quot;Count B&quot;: 4
+  "variables": {
+    "Pool A": "Pool-A",
+    "Pool B": "Pool-B",
+    "DB A Prefix": "Pool-A-Db",
+    "DB B Prefix": "Pool-B-Db",
+    "Count A": 2,
+    "Count B": 4
   },
-  &quot;resources&quot;: [
+  "resources": [
     {
-      &quot;name&quot;: &quot;[parameters('Server Name')]&quot;,
-      &quot;type&quot;: &quot;Microsoft.Sql/servers&quot;,
-      &quot;apiVersion&quot;: &quot;2014-04-01-preview&quot;,
-      &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-      &quot;dependsOn&quot;: [],
-      &quot;properties&quot;: {
-        &quot;administratorLogin&quot;: &quot;[parameters('Admin Login')]&quot;,
-        &quot;administratorLoginPassword&quot;: &quot;[parameters('Admin Password')]&quot;,
-        &quot;version&quot;: &quot;12.0&quot;
+      "name": "[parameters('Server Name')]",
+      "type": "Microsoft.Sql/servers",
+      "apiVersion": "2014-04-01-preview",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [],
+      "properties": {
+        "administratorLogin": "[parameters('Admin Login')]",
+        "administratorLoginPassword": "[parameters('Admin Password')]",
+        "version": "12.0"
       },
-      &quot;resources&quot;: [
+      "resources": [
         {
-          &quot;type&quot;: &quot;firewallRules&quot;,
-          &quot;kind&quot;: &quot;v12.0&quot;,
-          &quot;name&quot;: &quot;AllowAllAzureIps&quot;,
-          &quot;apiVersion&quot;: &quot;2014-04-01-preview&quot;,
-          &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-          &quot;dependsOn&quot;: [
-            &quot;[resourceId('Microsoft.Sql/servers', parameters('Server Name'))]&quot;
+          "type": "firewallRules",
+          "kind": "v12.0",
+          "name": "AllowAllAzureIps",
+          "apiVersion": "2014-04-01-preview",
+          "location": "[resourceGroup().location]",
+          "dependsOn": [
+            "[resourceId('Microsoft.Sql/servers', parameters('Server Name'))]"
           ],
-          &quot;properties&quot;: {
-            &quot;startIpAddress&quot;: &quot;0.0.0.0&quot;,
-            &quot;endIpAddress&quot;: &quot;0.0.0.0&quot;
+          "properties": {
+            "startIpAddress": "0.0.0.0",
+            "endIpAddress": "0.0.0.0"
           }
         },
         {
-          &quot;type&quot;: &quot;elasticpools&quot;,
-          &quot;name&quot;: &quot;[variables('Pool A')]&quot;,
-          &quot;apiVersion&quot;: &quot;2014-04-01-preview&quot;,
-          &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-          &quot;dependsOn&quot;: [
-            &quot;[resourceId('Microsoft.Sql/servers', parameters('Server Name'))]&quot;
+          "type": "elasticpools",
+          "name": "[variables('Pool A')]",
+          "apiVersion": "2014-04-01-preview",
+          "location": "[resourceGroup().location]",
+          "dependsOn": [
+            "[resourceId('Microsoft.Sql/servers', parameters('Server Name'))]"
           ],
-          &quot;properties&quot;: {
-            &quot;edition&quot;: &quot;[parameters('Pool A Edition')]&quot;,
-            &quot;dtu&quot;: &quot;200&quot;,
-            &quot;databaseDtuMin&quot;: &quot;10&quot;,
-            &quot;databaseDtuMax&quot;: &quot;50&quot;
+          "properties": {
+            "edition": "[parameters('Pool A Edition')]",
+            "dtu": "200",
+            "databaseDtuMin": "10",
+            "databaseDtuMax": "50"
           }
         },
         {
-          &quot;type&quot;: &quot;elasticpools&quot;,
-          &quot;name&quot;: &quot;[variables('Pool B')]&quot;,
-          &quot;apiVersion&quot;: &quot;2014-04-01-preview&quot;,
-          &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-          &quot;dependsOn&quot;: [
-            &quot;[resourceId('Microsoft.Sql/servers', parameters('Server Name'))]&quot;
+          "type": "elasticpools",
+          "name": "[variables('Pool B')]",
+          "apiVersion": "2014-04-01-preview",
+          "location": "[resourceGroup().location]",
+          "dependsOn": [
+            "[resourceId('Microsoft.Sql/servers', parameters('Server Name'))]"
           ],
-          &quot;properties&quot;: {
-            &quot;edition&quot;: &quot;[parameters('Pool B Edition')]&quot;,
-            &quot;dtu&quot;: &quot;400&quot;,
-            &quot;databaseDtuMin&quot;: &quot;0&quot;,
-            &quot;databaseDtuMax&quot;: null
+          "properties": {
+            "edition": "[parameters('Pool B Edition')]",
+            "dtu": "400",
+            "databaseDtuMin": "0",
+            "databaseDtuMax": null
           }
         }
       ]
     },
     {
-      &quot;type&quot;: &quot;Microsoft.Sql/servers/databases&quot;,
-      &quot;copy&quot;: {
-        &quot;name&quot;: &quot;DBs-A&quot;,
-        &quot;count&quot;: &quot;[variables('Count A')]&quot;
+      "type": "Microsoft.Sql/servers/databases",
+      "copy": {
+        "name": "DBs-A",
+        "count": "[variables('Count A')]"
       },
-      &quot;name&quot;: &quot;[concat(parameters('Server Name'), '/', variables('DB A Prefix'), copyIndex())]&quot;,
-      &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-      &quot;dependsOn&quot;: [
-        &quot;[resourceId('Microsoft.Sql/servers', parameters('Server Name'))]&quot;,
-        &quot;[resourceId('Microsoft.Sql/servers/elasticpools', parameters('Server Name'), variables('Pool A'))]&quot;
+      "name": "[concat(parameters('Server Name'), '/', variables('DB A Prefix'), copyIndex())]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('Server Name'))]",
+        "[resourceId('Microsoft.Sql/servers/elasticpools', parameters('Server Name'), variables('Pool A'))]"
       ],
-      &quot;tags&quot;: {
-        &quot;displayName&quot;: &quot;Pool-A DBs&quot;
+      "tags": {
+        "displayName": "Pool-A DBs"
       },
-      &quot;apiVersion&quot;: &quot;2014-04-01-preview&quot;,
-      &quot;properties&quot;: {
-        &quot;collation&quot;: &quot;SQL_Latin1_General_CP1_CI_AS&quot;,
-        &quot;maxSizeBytes&quot;: &quot;[parameters('DB Max Size')]&quot;,
-        &quot;requestedServiceObjectiveName&quot;: &quot;ElasticPool&quot;,
-        &quot;elasticPoolName&quot;: &quot;[variables('Pool A')]&quot;
+      "apiVersion": "2014-04-01-preview",
+      "properties": {
+        "collation": "SQL_Latin1_General_CP1_CI_AS",
+        "maxSizeBytes": "[parameters('DB Max Size')]",
+        "requestedServiceObjectiveName": "ElasticPool",
+        "elasticPoolName": "[variables('Pool A')]"
       }
     },
     {
-      &quot;type&quot;: &quot;Microsoft.Sql/servers/databases&quot;,
-      &quot;copy&quot;: {
-        &quot;name&quot;: &quot;DBs-B&quot;,
-        &quot;count&quot;: &quot;[variables('Count B')]&quot;
+      "type": "Microsoft.Sql/servers/databases",
+      "copy": {
+        "name": "DBs-B",
+        "count": "[variables('Count B')]"
       },
-      &quot;name&quot;: &quot;[concat(parameters('Server Name'), '/', variables('DB B Prefix'), copyIndex())]&quot;,
-      &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-      &quot;dependsOn&quot;: [
-        &quot;[resourceId('Microsoft.Sql/servers', parameters('Server Name'))]&quot;,
-        &quot;[resourceId('Microsoft.Sql/servers/elasticpools', parameters('Server Name'), variables('Pool B'))]&quot;
+      "name": "[concat(parameters('Server Name'), '/', variables('DB B Prefix'), copyIndex())]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('Server Name'))]",
+        "[resourceId('Microsoft.Sql/servers/elasticpools', parameters('Server Name'), variables('Pool B'))]"
       ],
-      &quot;tags&quot;: {
-        &quot;displayName&quot;: &quot;Pool-B DBs&quot;
+      "tags": {
+        "displayName": "Pool-B DBs"
       },
-      &quot;apiVersion&quot;: &quot;2014-04-01-preview&quot;,
-      &quot;properties&quot;: {
-        &quot;edition&quot;: &quot;[parameters('Pool B Edition')]&quot;,
-        &quot;collation&quot;: &quot;SQL_Latin1_General_CP1_CI_AS&quot;,
-        &quot;maxSizeBytes&quot;: &quot;[parameters('DB Max Size')]&quot;,
-        &quot;requestedServiceObjectiveName&quot;: &quot;ElasticPool&quot;,
-        &quot;elasticPoolName&quot;: &quot;[variables('Pool B')]&quot;
+      "apiVersion": "2014-04-01-preview",
+      "properties": {
+        "edition": "[parameters('Pool B Edition')]",
+        "collation": "SQL_Latin1_General_CP1_CI_AS",
+        "maxSizeBytes": "[parameters('DB Max Size')]",
+        "requestedServiceObjectiveName": "ElasticPool",
+        "elasticPoolName": "[variables('Pool B')]"
       }
     }
   ]
 }
-[/code]
+```
 
 We can deploy the template as is.  We’ll need to enter at least an Admin password (for the Azure SQL server).
 
@@ -232,23 +233,24 @@ Let’s select <em>Pool-A</em>.
 
 We can see the pool is of <em>Standard</em> edition, has 200 eDTUs with a minimum of 10 eDTUs and maximum 50 per databases, which is faithful to its ARM definition (line 10-13).
 
-[code language="javascript"]
+```javascript
+
         {
-          &quot;type&quot;: &quot;elasticpools&quot;,
-          &quot;name&quot;: &quot;[variables('Pool A')]&quot;,
-          &quot;apiVersion&quot;: &quot;2014-04-01-preview&quot;,
-          &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-          &quot;dependsOn&quot;: [
-            &quot;[resourceId('Microsoft.Sql/servers', parameters('Server Name'))]&quot;
+          "type": "elasticpools",
+          "name": "[variables('Pool A')]",
+          "apiVersion": "2014-04-01-preview",
+          "location": "[resourceGroup().location]",
+          "dependsOn": [
+            "[resourceId('Microsoft.Sql/servers', parameters('Server Name'))]"
           ],
-          &quot;properties&quot;: {
-            &quot;edition&quot;: &quot;[parameters('Pool A Edition')]&quot;,
-            &quot;dtu&quot;: &quot;200&quot;,
-            &quot;databaseDtuMin&quot;: &quot;10&quot;,
-            &quot;databaseDtuMax&quot;: &quot;50&quot;
+          "properties": {
+            "edition": "[parameters('Pool A Edition')]",
+            "dtu": "200",
+            "databaseDtuMin": "10",
+            "databaseDtuMax": "50"
           }
         }
-[/code]
+```
 
 Similarly, <em>Pool-B</em> has a minimum of 0 and a maximum of 100.  The maximum was set to <em>null</em> in the template and hence is the maximum allowed for a <a href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-resource-limits#service-tiers-and-performance-levels" target="_blank">standard pool of 400 DTUs</a>.
 

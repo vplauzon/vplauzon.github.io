@@ -42,11 +42,12 @@ You can now delete your VMs.  You might want to hook that to a Run Book as I di
 
 One way to do it, with PowerShell, is to use the following command:
 
-[code language="PowerShell"]
+```PowerShell
 
-Get-AzureRmVM | Where-Object {$_.ResourceGroupName -eq &quot;NAME OF YOUR RESOURCE GROUP&quot;} | Select-Object Name, ResourceGroupName | ForEach-Object {Remove-AzureRmVM -ResourceGroupName $_.ResourceGroupName -Name $_.Name -Force}
 
-[/code]
+Get-AzureRmVM | Where-Object {$_.ResourceGroupName -eq "NAME OF YOUR RESOURCE GROUP"} | Select-Object Name, ResourceGroupName | ForEach-Object {Remove-AzureRmVM -ResourceGroupName $_.ResourceGroupName -Name $_.Name -Force}
+
+```
 
 Here I basically list the VMs within one resource group and delete them.
 
@@ -71,14 +72,15 @@ We have to make several changes to the template before being able to use it to r
 </ol>
 Here’s how the osDisk property should look after modifications
 
-[code language="javascript"]
-&quot;osDisk&quot;: {
-&quot;name&quot;: &quot;osdisk&quot;,
-&quot;osType&quot;: &quot;Windows&quot;,
-&quot;createOption&quot;: &quot;Attach&quot;,
-&quot;vhd&quot;: {
+```javascript
 
-[/code]
+"osDisk": {
+"name": "osdisk",
+"osType": "Windows",
+"createOption": "Attach",
+"vhd": {
+
+```
 
 After this little massage of the ARM template you should be able to run the template and recreate your VMs as is.
 <h2>Making your own modifications</h2>

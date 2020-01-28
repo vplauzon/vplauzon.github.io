@@ -21,16 +21,17 @@ This is why today we’re going to look at how to find the image reference of yo
 
 For instance, when you look at some ARM template, how does the author found this piece of JSON?
 
-[code language="Javascript"]
+```Javascript
 
-&quot;Image Reference&quot;: {
-&quot;publisher&quot;: &quot;OpenLogic&quot;,
-&quot;offer&quot;: &quot;CentOS&quot;,
-&quot;sku&quot;: &quot;7.3&quot;,
-&quot;version&quot;: &quot;latest&quot;
+
+"Image Reference": {
+"publisher": "OpenLogic",
+"offer": "CentOS",
+"sku": "7.3",
+"version": "latest"
 }
 
-[/code]
+```
 
 We’ll look at a few ways to find that, both in the Portal and in PowerShell.
 <h2>From the Azure Marketplace</h2>
@@ -56,16 +57,17 @@ On the left-hand side menu, let’s open the <em>Resources</em> node and look fo
 
 Scrolling down we should find the <em>storageProfile</em> JSON node and the <em>imageReference</em> under it.  This is what we are looking for:
 
-[code language="Javascript"]
+```Javascript
 
-&quot;imageReference&quot;: {
-&quot;publisher&quot;: &quot;microsoft-ads&quot;,
-&quot;offer&quot;: &quot;windows-data-science-vm&quot;,
-&quot;sku&quot;: &quot;windows2016&quot;,
-&quot;version&quot;: &quot;latest&quot;
+
+"imageReference": {
+"publisher": "microsoft-ads",
+"offer": "windows-data-science-vm",
+"sku": "windows2016",
+"version": "latest"
 }
 
-[/code]
+```
 
 Boom.  Pause for effect.
 <h2>Existing Deployment</h2>
@@ -93,29 +95,32 @@ Now it might be interesting to explore the quadruple (i.e. publisher, offer, sku
 
 First, we’ll need to target an Azure region.  Easy enough, let’s choose.
 
-[code language="PowerShell"]
+```PowerShell
+
 
 Get-AzureRmLocation | select Location
 
-[/code]
+```
 
 Let’s say we choose <em>northcentralus</em> (North Central USA).  We can now look at the publishers available in that region.
 
-[code language="PowerShell"]
+```PowerShell
 
-$location = &quot;northcentralus&quot;
+
+$location = "northcentralus"
 
 Get-AzureRmVMImagePublisher -Location $location
 
-[/code]
+```
 
 We might want to narrow it down.  For example we might want to look at only Microsoft-related ones
 
-[code language="PowerShell"]
+```PowerShell
 
-Get-AzureRmVMImagePublisher -Location $location | where {$_.PublisherName.Contains(&quot;microsoft&quot;)}
 
-[/code]
+Get-AzureRmVMImagePublisher -Location $location | where {$_.PublisherName.Contains("microsoft")}
+
+```
 
 which gives us a shorter list.
 
@@ -125,37 +130,40 @@ which gives us a shorter list.
 
 Let’s say we choose <em>microsoft-ads</em>.  We can look at the offering of that publisher.
 
-[code language="PowerShell"]
+```PowerShell
 
-$publisher = &quot;microsoft-ads&quot;
+
+$publisher = "microsoft-ads"
 
 Get-AzureRmVMImageOffer -Location $location -PublisherName $publisher
 
-[/code]
+```
 
 <a href="/assets/posts/2018/1/finding-a-vm-image-reference-publisher-sku/image25.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/posts/2018/1/finding-a-vm-image-reference-publisher-sku/image_thumb25.png" alt="image" border="0" /></a>
 
 Let’s say we picked the first one and look at the different skus available.
 
-[code language="PowerShell"]
+```PowerShell
 
-$offer = &quot;linux-data-science-vm&quot;
+
+$offer = "linux-data-science-vm"
 
 Get-AzureRmVMImageSku -Location $location -PublisherName $publisher -Offer $offer
 
-[/code]
+```
 
 <a href="/assets/posts/2018/1/finding-a-vm-image-reference-publisher-sku/image26.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/posts/2018/1/finding-a-vm-image-reference-publisher-sku/image_thumb26.png" alt="image" border="0" /></a>
 
 Again, let’s say we picked the first one, we can now look at all the versions available:
 
-[code language="PowerShell"]
+```PowerShell
 
-$sku = &quot;linuxdsvm&quot;
+
+$sku = "linuxdsvm"
 
 Get-AzureRmVMImage -Location $location -PublisherName $publisher -Offer $offer -Skus $sku
 
-[/code]
+```
 
 <a href="/assets/posts/2018/1/finding-a-vm-image-reference-publisher-sku/image27.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/posts/2018/1/finding-a-vm-image-reference-publisher-sku/image_thumb27.png" alt="image" border="0" /></a>
 

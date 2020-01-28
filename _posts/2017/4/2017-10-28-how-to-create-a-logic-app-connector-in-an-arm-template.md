@@ -31,29 +31,30 @@ The tools are available for <a href="https://marketplace.visualstudio.com/items?
 
 I did navigate the web before finding an answer and I saw a lot of dead ends out there, so if you are looking specifically for Cosmos DB connector, here it is:
 
-[code language="JavaScript"]
+```JavaScript
+
 
 {
-  &quot;apiVersion&quot;: &quot;2016-06-01&quot;,
-  &quot;type&quot;: &quot;Microsoft.Web/connections&quot;,
-  &quot;name&quot;: &quot;connector-resource-name-here&quot;,
-  &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-  &quot;properties&quot;: {
-    &quot;displayName&quot;: &quot;[concat('Connection to Cosmos DB account \&quot;', parameters('Cosmos DB Account Name'), '\&quot;')]&quot;,
-    &quot;api&quot;: {
-      &quot;id&quot;: &quot;[concat(subscription().id, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/documentdb')]&quot;
+  "apiVersion": "2016-06-01",
+  "type": "Microsoft.Web/connections",
+  "name": "connector-resource-name-here",
+  "location": "[resourceGroup().location]",
+  "properties": {
+    "displayName": "[concat('Connection to Cosmos DB account \"', parameters('Cosmos DB Account Name'), '\"')]",
+    "api": {
+      "id": "[concat(subscription().id, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/documentdb')]"
     },
-    &quot;parameterValues&quot;: {
-      &quot;databaseAccount&quot;: &quot;[parameters('Cosmos DB Account Name')]&quot;,
-      &quot;accessKey&quot;: &quot;[listKeys(resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('Cosmos DB Account Name')), '2015-04-08').primaryMasterKey]&quot;
+    "parameterValues": {
+      "databaseAccount": "[parameters('Cosmos DB Account Name')]",
+      "accessKey": "[listKeys(resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('Cosmos DB Account Name')), '2015-04-08').primaryMasterKey]"
     }
   },
-  &quot;dependsOn&quot;: [
-    &quot;[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('Cosmos DB Account Name'))]&quot;
+  "dependsOn": [
+    "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('Cosmos DB Account Name'))]"
   ]
 }
 
-[/code]
+```
 
 Notice that we hook on a Cosmos DB account in order to list its keys.  We assume the Cosmos DB account is part of the same deployment.
 

@@ -28,17 +28,18 @@ UPDATE (01-11-2017):  A deeper discussion about changing the underlying API can
 <h2>Creating a simple graph in Gremlin</h2>
 Let’s create a simple graph in a Cosmos DB using Gremlin.  <a href="https://vincentlauzon.com/2017/08/28/cosmos-db-graph-with-gremlin-getting-started/">In a past article we’ve looked at how to setup Gremlin with Cosmos DB</a>.
 
-[code language="groovy"]
+```groovy
 
-gremlin&gt; :remote connect tinkerpop.server conf/remote-secure.yaml
 
-gremlin&gt; :&gt; g.addV('person').property('id', 'Alice').property('age', 42).property('department', 'stereotype')
+gremlin> :remote connect tinkerpop.server conf/remote-secure.yaml
 
-gremlin&gt; :&gt; g.addV('person').property('id', 'Bob').property('age', 24).property('department', 'support character')
+gremlin> :> g.addV('person').property('id', 'Alice').property('age', 42).property('department', 'stereotype')
 
-gremlin&gt; :&gt; g.V('Alice').addE('communicatesWith').property('id', 'AliceToBob').property('language', 'English').to(g.V('Bob'))
+gremlin> :> g.addV('person').property('id', 'Bob').property('age', 24).property('department', 'support character')
 
-[/code]
+gremlin> :> g.V('Alice').addE('communicatesWith').property('id', 'AliceToBob').property('language', 'English').to(g.V('Bob'))
+
+```
 
 The first line is there to connect to the remote server we configured in <em>remote-secure.yaml</em>.  For details <a href="https://vincentlauzon.com/2017/08/28/cosmos-db-graph-with-gremlin-getting-started/">see the setup article</a>.
 
@@ -57,7 +58,8 @@ We can note the following:
 
 Here we build on the code from the <a href="https://vincentlauzon.com/2017/08/31/cosmos-db-async-querying-streaming/">Cosmos DB async streaming article</a>.  We simply read all the documents in the graph with DocumentDB API and output them in JSON format:
 
-[code language="groovy"]
+```groovy
+
 
 private async static Task ListAllDocumentsAsync(
     DocumentClient client,
@@ -72,19 +74,19 @@ private async static Task ListAllDocumentsAsync(
     var queryAll = query.AsDocumentQuery();
     var all = await GetAllResultsAsync(queryAll);
 
-    Console.WriteLine($&quot;Collection contains {all.Length} documents:&quot;);
+    Console.WriteLine($"Collection contains {all.Length} documents:");
 
     foreach (var d in all)
     {
         var json = GetJson(d);
 
-        if (d.Id == &quot;CarolToAlice&quot;)
+        if (d.Id == "CarolToAlice")
         {
             await client.DeleteDocumentAsync(
                 d.SelfLink,
                 new RequestOptions
                 {
-                    PartitionKey = new PartitionKey(d.GetPropertyValue&lt;string&gt;(&quot;department&quot;))
+                    PartitionKey = new PartitionKey(d.GetPropertyValue<string>("department"))
                 });
         }
 
@@ -94,60 +96,61 @@ private async static Task ListAllDocumentsAsync(
     Console.WriteLine();
 }
 
-[/code]
+```
 
 The output should be the following:
 
-[code language="javascript"]
+```javascript
+
 
 {
-   &quot;id&quot;: &quot;Bob&quot;,
-   &quot;_rid&quot;: &quot;smp9AKyqeQADAAAAAAAABA==&quot;,
-   &quot;_self&quot;: &quot;dbs/smp9AA==/colls/smp9AKyqeQA=/docs/smp9AKyqeQADAAAAAAAABA==/&quot;,
-   &quot;_ts&quot;: 1504096168,
-   &quot;_etag&quot;: &quot;\&quot;00001c04-0000-0000-0000-59a6afad0000\&quot;&quot;,
-   &quot;label&quot;: &quot;person&quot;,
-   &quot;age&quot;: [
+   "id": "Bob",
+   "_rid": "smp9AKyqeQADAAAAAAAABA==",
+   "_self": "dbs/smp9AA==/colls/smp9AKyqeQA=/docs/smp9AKyqeQADAAAAAAAABA==/",
+   "_ts": 1504096168,
+   "_etag": "\"00001c04-0000-0000-0000-59a6afad0000\"",
+   "label": "person",
+   "age": [
      {
-       &quot;_value&quot;: 24,
-       &quot;id&quot;: &quot;88a659bf-84d1-4c13-8450-ee57b426b7b3&quot;
+       "_value": 24,
+       "id": "88a659bf-84d1-4c13-8450-ee57b426b7b3"
      }
    ],
-   &quot;department&quot;: &quot;support character&quot;
+   "department": "support character"
 }
  {
-   &quot;id&quot;: &quot;Alice&quot;,
-   &quot;_rid&quot;: &quot;smp9AKyqeQAKAAAAAAAABg==&quot;,
-   &quot;_self&quot;: &quot;dbs/smp9AA==/colls/smp9AKyqeQA=/docs/smp9AKyqeQAKAAAAAAAABg==/&quot;,
-   &quot;_ts&quot;: 1504096164,
-   &quot;_etag&quot;: &quot;\&quot;0000ed09-0000-0000-0000-59a6afa60000\&quot;&quot;,
-   &quot;label&quot;: &quot;person&quot;,
-   &quot;age&quot;: [
+   "id": "Alice",
+   "_rid": "smp9AKyqeQAKAAAAAAAABg==",
+   "_self": "dbs/smp9AA==/colls/smp9AKyqeQA=/docs/smp9AKyqeQAKAAAAAAAABg==/",
+   "_ts": 1504096164,
+   "_etag": "\"0000ed09-0000-0000-0000-59a6afa60000\"",
+   "label": "person",
+   "age": [
      {
-       &quot;_value&quot;: 42,
-       &quot;id&quot;: &quot;78109dc8-587f-4d87-9d2e-e4a1731dec2b&quot;
+       "_value": 42,
+       "id": "78109dc8-587f-4d87-9d2e-e4a1731dec2b"
      }
    ],
-   &quot;department&quot;: &quot;stereotype&quot;
+   "department": "stereotype"
  }
  {
-   &quot;id&quot;: &quot;AliceToBob&quot;,
-   &quot;_rid&quot;: &quot;smp9AKyqeQALAAAAAAAABg==&quot;,
-   &quot;_self&quot;: &quot;dbs/smp9AA==/colls/smp9AKyqeQA=/docs/smp9AKyqeQALAAAAAAAABg==/&quot;,
-   &quot;_ts&quot;: 1504096178,
-   &quot;_etag&quot;: &quot;\&quot;0000ee09-0000-0000-0000-59a6afb40000\&quot;&quot;,
-   &quot;label&quot;: &quot;communicatesWith&quot;,
-   &quot;language&quot;: &quot;English&quot;,
-   &quot;_sink&quot;: &quot;Bob&quot;,
-   &quot;_sinkLabel&quot;: &quot;person&quot;,
-   &quot;_sinkPartition&quot;: &quot;support character&quot;,
-   &quot;_vertexId&quot;: &quot;Alice&quot;,
-   &quot;_vertexLabel&quot;: &quot;person&quot;,
-   &quot;_isEdge&quot;: true,
-   &quot;department&quot;: &quot;stereotype&quot;
+   "id": "AliceToBob",
+   "_rid": "smp9AKyqeQALAAAAAAAABg==",
+   "_self": "dbs/smp9AA==/colls/smp9AKyqeQA=/docs/smp9AKyqeQALAAAAAAAABg==/",
+   "_ts": 1504096178,
+   "_etag": "\"0000ee09-0000-0000-0000-59a6afb40000\"",
+   "label": "communicatesWith",
+   "language": "English",
+   "_sink": "Bob",
+   "_sinkLabel": "person",
+   "_sinkPartition": "support character",
+   "_vertexId": "Alice",
+   "_vertexLabel": "person",
+   "_isEdge": true,
+   "department": "stereotype"
  }
 
-[/code]
+```
 
 We can learn a lot from this projection:
 <ul>
@@ -165,7 +168,8 @@ We can learn a lot from this projection:
 </ul>
 Given that information, we can easily write queries, for instance, to list only vertices:
 
-[code language="csharp"]
+```csharp
+
 
 private class MinimalDoc
 {
@@ -177,7 +181,7 @@ private async static Task ListOnlyVerticesAsync(
     DocumentClient client,
     Uri collectionUri)
 {
-    var query = client.CreateDocumentQuery&lt;MinimalDoc&gt;(
+    var query = client.CreateDocumentQuery<MinimalDoc>(
         collectionUri,
         new FeedOptions
         {
@@ -188,7 +192,7 @@ private async static Task ListOnlyVerticesAsync(
                         select d).AsDocumentQuery();
     var all = await GetAllResultsAsync(queryVertex);
 
-    Console.WriteLine($&quot;Collection contains {all.Length} documents:&quot;);
+    Console.WriteLine($"Collection contains {all.Length} documents:");
 
     foreach (var d in all)
     {
@@ -198,7 +202,7 @@ private async static Task ListOnlyVerticesAsync(
     Console.WriteLine();
 }
 
-[/code]
+```
 
 This should list Alice &amp; Bob but not the edge between them.
 <h2>Can we write?</h2>
@@ -206,7 +210,8 @@ Querying is all nice and good, but what about writing?
 
 Let’s try to simply add a document in the graph:
 
-[code language="csharp"]
+```csharp
+
 
 private async static Task AddTrivialVertexAsync(
     DocumentClient client,
@@ -216,32 +221,34 @@ private async static Task AddTrivialVertexAsync(
         collectionUri,
         new
         {
-            id = &quot;Carol&quot;,
-            label = &quot;person&quot;,
-            department = &quot;support character&quot;
+            id = "Carol",
+            label = "person",
+            department = "support character"
         });
     var json = GetJson(response.Resource);
 
     Console.WriteLine(json);
 }
 
-[/code]
+```
 
 If we use the Gremlin Console to look at it:
 
-[code language="groovy"]
+```groovy
 
-gremlin&gt; :&gt; g.V(&quot;Carol&quot;)
 
-==&gt;[id:Carol,label:person,type:vertex,properties:[department:[[id:Carol|department,value:support character]]]]
+gremlin> :> g.V("Carol")
 
-[/code]
+==>[id:Carol,label:person,type:vertex,properties:[department:[[id:Carol|department,value:support character]]]]
+
+```
 
 Hence we see the new document as a vertex.  That makes sense since we’ve seen that vertices are projected as simple documents.
 
 If we add other simple properties (like we did with <em>label</em>) this will not work.  Those properties won’t show up in Gremlin.  That is because, as we’ve seen, in Gremlin, properties are always collections.  We can do that:
 
-[code language="csharp"]
+```csharp
+
 
 private async static Task AddVertexWithPropertiesAsync(
     DocumentClient client,
@@ -251,8 +258,8 @@ private async static Task AddVertexWithPropertiesAsync(
         collectionUri,
         new
         {
-            id = &quot;David&quot;,
-            label = &quot;person&quot;,
+            id = "David",
+            label = "person",
             age = new[] {
                 new
                 {
@@ -260,24 +267,25 @@ private async static Task AddVertexWithPropertiesAsync(
                     _value = 48
                 }
             },
-            department = &quot;support character&quot;
+            department = "support character"
         });
     var json = GetJson(response.Resource);
 
     Console.WriteLine(json);
 }
 
-[/code]
+```
 
 and in Gremlin:
 
-[code language="groovy"]
+```groovy
 
-gremlin&gt; :&gt; g.V(&quot;David&quot;).valueMap()
 
-==&gt;[age:[48],department:[support character]]
+gremlin> :> g.V("David").valueMap()
 
-[/code]
+==>[age:[48],department:[support character]]
+
+```
 
 So it appears we can successfully write vertices in a graph using the DocumentDB API.
 
@@ -287,7 +295,8 @@ We can write vertices.  That is only half the equation for importing data in a 
 
 It turns out we simply have to mimic what we’ve seen with existing edges:
 
-[code language="csharp"]
+```csharp
+
 
 private static async Task AddEdgeAsync(DocumentClient client, Uri collectionUri)
 {
@@ -296,39 +305,40 @@ private static async Task AddEdgeAsync(DocumentClient client, Uri collectionUri)
         new
         {
             _isEdge = true,
-            id = &quot;CarolToAlice&quot;,
-            label = &quot;eavesdropOn&quot;,
-            language = &quot;English&quot;,
-            department = &quot;support character&quot;,
-            _vertexId = &quot;Carol&quot;,
-            _vertexLabel = &quot;person&quot;,
-            _sink = &quot;Alice&quot;,
-            _sinkLabel = &quot;person&quot;,
-            _sinkPartition = &quot;stereotype&quot;
+            id = "CarolToAlice",
+            label = "eavesdropOn",
+            language = "English",
+            department = "support character",
+            _vertexId = "Carol",
+            _vertexLabel = "person",
+            _sink = "Alice",
+            _sinkLabel = "person",
+            _sinkPartition = "stereotype"
         });
     var json = GetJson(response.Resource);
 
     Console.WriteLine(json);
 }
 
-[/code]
+```
 
 It is important for the edge's partition to be the same as the source vertex, otherwise the edge won’t be seen by Gremlin.
 
 We can validate the edge is now present in Gremlin:
 
-[code language="groovy"]
+```groovy
 
-gremlin&gt; :&gt; g.E()
 
-==&gt;[id:CarolToAlice,label:eavesdropOn,type:edge,inVLabel:person,outVLabel:person,inV:Alice,outV:Carol,properties:[language:English]]
- ==&gt;[id:AliceToBob,label:communicatesWith,type:edge,inVLabel:person,outVLabel:person,inV:Bob,outV:Alice,properties:[language:English]]
+gremlin> :> g.E()
 
-gremlin&gt; :&gt; g.V(&quot;Carol&quot;).out(&quot;eavesdropOn&quot;)
+==>[id:CarolToAlice,label:eavesdropOn,type:edge,inVLabel:person,outVLabel:person,inV:Alice,outV:Carol,properties:[language:English]]
+ ==>[id:AliceToBob,label:communicatesWith,type:edge,inVLabel:person,outVLabel:person,inV:Bob,outV:Alice,properties:[language:English]]
 
-==&gt;[id:Alice,label:person,type:vertex,properties:[age:[[id:78109dc8-587f-4d87-9d2e-e4a1731dec2b,value:42]],department:[[id:Alice|department,value:stereotype]]]]
+gremlin> :> g.V("Carol").out("eavesdropOn")
 
-[/code]
+==>[id:Alice,label:person,type:vertex,properties:[age:[[id:78109dc8-587f-4d87-9d2e-e4a1731dec2b,value:42]],department:[[id:Alice|department,value:stereotype]]]]
+
+```
 
 <h2>Summary</h2>
 We’ve seen it is possible to both read and write to a Cosmos DB graph using the DocumentDB API.

@@ -34,22 +34,23 @@ As previously mentioned, our <a href="https://github.com/vplauzon/app-gateway/tr
 
 Here is an example of PowerShell script that goes in each Scale Set and register the instances to the application gateway (code is in <a href="https://github.com/vplauzon/app-gateway/blob/master/multi-vnets-vmss/UpdateBackendPools.ps1" target="_blank" rel="noopener">UpdateBackendPools.ps1</a>)
 
-[code language="PowerShell"]
+```PowerShell
 
-$resourceGroupName = &quot;appgw&quot;
-$appGatewayName = &quot;AppGateway&quot;
+
+$resourceGroupName = "appgw"
+$appGatewayName = "AppGateway"
 #  Map between the backend pool names of the Application gateway and the scale set names
 $backendPoolToScaleSetNameMap = @{
-&quot;backendPool&quot; = &quot;app-a-Pool&quot;;
-&quot;scaleSet&quot; = &quot;App-A&quot;
+"backendPool" = "app-a-Pool";
+"scaleSet" = "App-A"
 },
 @{
-&quot;backendPool&quot; = &quot;app-b-Pool&quot;;
-&quot;scaleSet&quot; = &quot;App-B&quot;
+"backendPool" = "app-b-Pool";
+"scaleSet" = "App-B"
 },
 @{
-&quot;backendPool&quot; = &quot;app-c-Pool&quot;;
-&quot;scaleSet&quot; = &quot;App-C&quot;
+"backendPool" = "app-c-Pool";
+"scaleSet" = "App-C"
 }
 
 #  Fetch Application Gateway object
@@ -70,7 +71,7 @@ $ag = Set-AzureRmApplicationGatewayBackendAddressPool -ApplicationGateway $ag -N
 #  Update Application Gateway resource with the object
 Set-AzureRmApplicationGateway -ApplicationGateway $ag
 
-[/code]
+```
 
 <h2>Other Updates</h2>
 A major drawback of this approach is that we can’t use the ARM template to update the Application Gateway anymore.
@@ -81,18 +82,19 @@ We therefore need to those updates using PowerShell.
 
 As an example, here we add a URL map rule (see <a href="https://github.com/vplauzon/app-gateway/blob/master/multi-vnets-vmss/ChangeRule.ps1" target="_blank" rel="noopener">ChangeRule.ps1</a>):
 
-[code language="PowerShell"]
+```PowerShell
 
-$resourceGroupName = &quot;appgw&quot;
-$appGatewayName = &quot;AppGateway&quot;
+
+$resourceGroupName = "appgw"
+$appGatewayName = "AppGateway"
 
 #  Fetch Application Gateway object
 $ag = Get-AzureRmApplicationGateway -ResourceGroupName $resourceGroupName -Name $appGatewayName
 
 #  Grab backend address pools (A, B, C)
-$backendAddressPoolA = $ag.BackendAddressPools | where {$_.Name -eq &quot;app-a-Pool&quot;}
-$backendAddressPoolB = $ag.BackendAddressPools | where {$_.Name -eq &quot;app-b-Pool&quot;}
-$backendAddressPoolC = $ag.BackendAddressPools | where {$_.Name -eq &quot;app-c-Pool&quot;}
+$backendAddressPoolA = $ag.BackendAddressPools | where {$_.Name -eq "app-a-Pool"}
+$backendAddressPoolB = $ag.BackendAddressPools | where {$_.Name -eq "app-b-Pool"}
+$backendAddressPoolC = $ag.BackendAddressPools | where {$_.Name -eq "app-c-Pool"}
 
 #  Grab http settings (in our case, there is only one)
 $backendHttpSetting = $ag.BackendHttpSettingsCollection[0]
@@ -100,8 +102,8 @@ $backendHttpSetting = $ag.BackendHttpSettingsCollection[0]
 #  Grab existing rules
 $rules = $ag.UrlPathMaps[0].PathRules
 
-#  Create a new rule, &quot;rule-D&quot;
-$newRule = New-AzureRmApplicationGatewayPathRuleConfig -Name &quot;rule-D&quot; -Paths &quot;/d/*&quot; `
+#  Create a new rule, "rule-D"
+$newRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "rule-D" -Paths "/d/*" `
 -BackendAddressPoolId $backendAddressPoolA.Id `
 -BackendHttpSettingsId $backendHttpSetting.Id
 
@@ -111,7 +113,7 @@ $rules.Add($newRule)
 #  Update Application Gateway resource with the object
 Set-AzureRmApplicationGateway -ApplicationGateway $ag
 
-[/code]
+```
 
 <h2>Summary</h2>
 This workaround is fastidious and breaks the concept of using ARM template both to create and update a deployment.  But until this limitation is lifted, it is the only way to work with Application Gateway routing traffic across peered VNETs.

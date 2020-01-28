@@ -18,15 +18,16 @@ We need to update a table in Azure SQL with a summary of the events.
 
 Let’s just assume the events are about widgets.  So each event contain a widget id.
 
-[code language="JavaScript"]
+```JavaScript
+
 
 {
 
-  &quot;widgetId&quot; : 42
+  "widgetId" : 42
 
 }
 
-[/code]
+```
 
 Let’s assume the summary table is the list of widget ids and the number of time they each appeared in the event streams.
 
@@ -72,7 +73,8 @@ The key is that ASA absorbs the fire hose of events.  It takes hundreds of even
 
 It is important to note that ASA does all that with resilience to failure.  If the service goes down, it won’t drop events.  It will start back where it stopped.
 
-[code language="SQL"]
+```SQL
+
 
 SELECT
 COUNT(*) AS Count,
@@ -85,23 +87,25 @@ GROUP BY
 WidgetId,
 TumblingWindow(second, 5)
 
-[/code]
+```
 
 We use a <a href="https://msdn.microsoft.com/azure/stream-analytics/reference/tumbling-window-azure-stream-analytics?f=255&amp;MSPPError=-2147217396">tumbling window</a> to compute our aggregates (see <a href="https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-window-functions">all types of windowing function</a>).  It is important to note that events need to have a timestamp field so ASA can filter on those.  That <a href="https://msdn.microsoft.com/en-ca/azure/stream-analytics/reference/timestamp-by-azure-stream-analytics?f=255&amp;MSPPError=-2147217396">field needs to be ISO 8601</a>.  In C#, that is achieved by
 
-[code language="csharp"]
+```csharp
 
-DateTime.UtcNow.ToString(&quot;o&quot;)
 
-[/code]
+DateTime.UtcNow.ToString("o")
+
+```
 
 ASA supports Azure Function as a native output.  The events are pumped towards a function directly.  Each event will be of the form
 
-[code language="JavaScript"]
+```JavaScript
+
 
 {“WidgetId”:42, “Count”:25}
 
-[/code]
+```
 
 ASA allows to batch many events to functions.  The function could then call a stored procedure processing a batch of JSON.
 

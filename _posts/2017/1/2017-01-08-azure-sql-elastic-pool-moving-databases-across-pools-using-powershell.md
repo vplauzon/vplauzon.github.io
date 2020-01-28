@@ -27,13 +27,14 @@ Let’s start with the pools we established with <a href="http://vincentlauzon.c
 
 From there we can look at the pool <em>Pool-A</em> using the following PowerShell command:
 
-[code language="PowerShell"]
+```PowerShell
+
 
 $old = Get-AzureRmSqlElasticPool -ResourceGroupName DBs -ElasticPoolName Pool-A -ServerName pooldemoserver
 
 $old
 
-[/code]
+```
 
 We can see the pool current edition is <em>Standard</em> while its Data Transaction Unit (DTU) count is 200.
 
@@ -41,45 +42,49 @@ We can see the pool current edition is <em>Standard</em> while its Data Transact
 <h2>Create a temporary pool</h2>
 We’ll create a temporary pool, aptly named <em>temporary</em>, attached to the same server:
 
-[code language="PowerShell"]
+```PowerShell
+
 
 $temp = New-AzureRmSqlElasticPool -ResourceGroupName DBs -ElasticPoolName Temporary -ServerName pooldemoserver -Edition $old.Edition -Dtu $old.Dtu
 
 $temp
 
-[/code]
+```
 
 It’s important to create a pool that will allow the databases to be moved into.  The maximum size of a database is dependent of the edition and number of DTU of the elastic pool.  The easiest way is to create a pool with the same edition / DTU and this is what we do here by referencing the <strong>$old</strong> variable.
 <h2>Move databases across</h2>
 First, let’s grab the databases in the original pool:
 
-[code language="PowerShell"]
+```PowerShell
+
 
 $dbs = Get-AzureRmSqlDatabase -ResourceGroupName DBs -ServerName pooldemoserver | where {$_.ElasticPoolName -eq $old.ElasticPoolName}
 
 $dbs | select DatabaseName
 
-[/code]
+```
 
 <em>ElasticPoolName</em> is a property of a database.  We’ll simply change it by <em>setting</em> each database:
 
-[code language="PowerShell"]
+```PowerShell
+
 
 $dbs | foreach {Set-AzureRmSqlDatabase -ResourceGroupName DBs -ServerName pooldemoserver -DatabaseName $_.DatabaseName -ElasticPoolName $temp.ElasticPoolName}
 
-[/code]
+```
 
 That command takes longer to run as the databases have to move from one compute to another.
 <h2>Delete / Recreate pool</h2>
 We can now delete the original pool.  It’s important to note that we wouldn’t have been able to delete a pool with databases in it.
 
-[code language="PowerShell"]
+```PowerShell
+
 
 Remove-AzureRmSqlElasticPool -ResourceGroupName DBs -ElasticPoolName $old.ElasticPoolName -ServerName pooldemoserver
 
 $new = New-AzureRmSqlElasticPool -ResourceGroupName DBs -ElasticPoolName $old.ElasticPoolName -ServerName pooldemoserver -Edition Premium -Dtu 250
 
-[/code]
+```
 
 The second line recreates it with <em>Premium</em> edition.  We could keep the original DTU, but it’s not always possible since different editions support different DTU values.  In this case, for instance, it wasn’t possible since 200 DTUs isn’t supported for Premium pools.
 
@@ -87,13 +92,14 @@ If you execute those two commands without pausing in between, you will likely re
 <h2>Move databases back</h2>
 We can then move the databases back to the new pool:
 
-[code language="PowerShell"]
+```PowerShell
+
 
 $dbs | foreach {Set-AzureRmSqlDatabase -ResourceGroupName DBs -ServerName pooldemoserver -DatabaseName $_.DatabaseName -ElasticPoolName $new.ElasticPoolName}
 
 Remove-AzureRmSqlElasticPool -ResourceGroupName DBs -ElasticPoolName $temp.ElasticPoolName -ServerName pooldemoserver
 
-[/code]
+```
 
 In the second line we delete the temporary pool.  Again, this takes a little longer to execute since databases must be moved from one compute to another.
 <h2>Summary</h2>

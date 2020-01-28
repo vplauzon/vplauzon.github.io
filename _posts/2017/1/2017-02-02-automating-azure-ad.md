@@ -43,17 +43,19 @@ I want to give a big shout to <a href="http://spr.com/author/chris-d/" target="_
 
 The first thing we’ll need to do is to install the PowerShell package.  Easy:
 
-[code language="powershell"]
+```powershell
+
 Install-Module AzureADPreview
-[/code]
+```
 
 If you read this from the future, this might have changed, so check out the <a href="https://docs.microsoft.com/en-us/powershell/azuread/v2/azureactivedirectory" target="_blank">documentation page</a> for install instructions.
 <h2>Connect-AzureAD</h2>
 We need to connect to our tenant:
 
-[code language="powershell"]
+```powershell
+
 connect-azuread -TenantId bc7d0032…
-[/code]
+```
 
 You can see the documentation on the <a href="https://docs.microsoft.com/en-us/powershell/azuread/v2/connect-azuread" target="_blank">Connect-AzureAD command here</a>.
 
@@ -69,40 +71,41 @@ Remember, those are two applications, a service and a client one.  The client o
 
 Let’s start by the final PowerShell code:
 
-[code language="powershell"]
+```powershell
+
 #  Grab the Azure AD Service principal
 $aad = (Get-AzureADServicePrincipal | `
-    where {$_.ServicePrincipalNames.Contains(&quot;https://graph.windows.net&quot;)})[0]
+    where {$_.ServicePrincipalNames.Contains("https://graph.windows.net")})[0]
 #  Grab the User.Read permission
-$userRead = $aad.Oauth2Permissions | ? {$_.Value -eq &quot;User.Read&quot;}
+$userRead = $aad.Oauth2Permissions | ? {$_.Value -eq "User.Read"}
 
 #  Resource Access User.Read + Sign in
 $readUserAccess = [Microsoft.Open.AzureAD.Model.RequiredResourceAccess]@{
   ResourceAppId=$aad.AppId ;
   ResourceAccess=[Microsoft.Open.AzureAD.Model.ResourceAccess]@{
     Id = $userRead.Id ;
-    Type = &quot;Scope&quot;}}
+    Type = "Scope"}}
 
 #  Create Service App
-$svc = New-AzureADApplication -DisplayName &quot;MyLegacyService&quot; `
-    -IdentifierUris &quot;uri://mylegacyservice.com&quot;
+$svc = New-AzureADApplication -DisplayName "MyLegacyService" `
+    -IdentifierUris "uri://mylegacyservice.com"
 # Associate a Service Principal to the service Application 
 $spSvc = New-AzureADServicePrincipal -AppId $svc.AppId
 #  Grab the user-impersonation permission
 $svcUserImpersonation = $spSvc.Oauth2Permissions | `
-    ?{$_.Value -eq &quot;user_impersonation&quot;}
+    ?{$_.Value -eq "user_impersonation"}
  
 #  Resource Access 'Access' a service
 $accessAccess = [Microsoft.Open.AzureAD.Model.RequiredResourceAccess]@{
   ResourceAppId=$svc.AppId ;
   ResourceAccess=[Microsoft.Open.AzureAD.Model.ResourceAccess]@{
     Id = $svcUserImpersonation.Id ;
-    Type = &quot;Scope&quot;}}
+    Type = "Scope"}}
 #  Create Required Access 
-$client = New-AzureADApplication -DisplayName &quot;MyLegacyClient&quot; `
+$client = New-AzureADApplication -DisplayName "MyLegacyClient" `
   -PublicClient $true `
   -RequiredResourceAccess $readUserAccess, $accessAccess
-[/code]
+```
 
 As promised, there is ample amount of ceremony.  Let’s go through it.
 <ul>
@@ -132,9 +135,10 @@ Basically, an administrator (of the Azure AD tenant) needs to approve the use of
 
 We can also do it, still manually, via the portal as we did in the article.  But first, let’s throw the following command:
 
-[code language="powershell"]
+```powershell
+
 Get-AzureADOAuth2PermissionGrant
-[/code]
+```
 
 On an empty tenant, there should be nothing returned.  Unfortunately, there are no Add/New-AzureADOAuth2PermissionGrant at the time of this writing (this might have changed if you are from the future so make sure you check out the available commands).
 
@@ -144,9 +148,10 @@ So the manual step is, in the portal, to go in the MyLegacyClient App, select <e
 
 Once we’ve done this we can run the same PowerShell command, i.e.
 
-[code language="powershell"]
+```powershell
+
 Get-AzureADOAuth2PermissionGrant
-[/code]
+```
 
 and have two entries now.
 
@@ -160,29 +165,30 @@ Here we’ll replicate the application we created by hand in the <a href="https:
 
 This is going to be quite similar, except we’re going to attach a client secret on the application so that we can authenticate against it.
 
-[code language="powershell"]
+```powershell
+
 #  Grab the Azure AD Service principal
 $aad = (Get-AzureADServicePrincipal | `
-    where {$_.ServicePrincipalNames.Contains(&quot;https://graph.windows.net&quot;)})[0]
+    where {$_.ServicePrincipalNames.Contains("https://graph.windows.net")})[0]
 #  Grab the User.Read permission
-$userRead = $aad.Oauth2Permissions | ? {$_.Value -eq &quot;User.Read&quot;}
+$userRead = $aad.Oauth2Permissions | ? {$_.Value -eq "User.Read"}
 #  Grab the Directory.ReadWrite.All permission
 $directoryWrite = $aad.Oauth2Permissions | `
-  ? {$_.Value -eq &quot;Directory.ReadWrite.All&quot;}
+  ? {$_.Value -eq "Directory.ReadWrite.All"}
 
 
-#  Resource Access User.Read + Sign in &amp; Directory.ReadWrite.All
+#  Resource Access User.Read + Sign in & Directory.ReadWrite.All
 $readWriteAccess = [Microsoft.Open.AzureAD.Model.RequiredResourceAccess]@{
   ResourceAppId=$aad.AppId ;
   ResourceAccess=[Microsoft.Open.AzureAD.Model.ResourceAccess]@{
     Id = $userRead.Id ;
-    Type = &quot;Scope&quot;}, [Microsoft.Open.AzureAD.Model.ResourceAccess]@{
+    Type = "Scope"}, [Microsoft.Open.AzureAD.Model.ResourceAccess]@{
     Id = $directoryWrite.Id ;
-    Type = &quot;Role&quot;}}
+    Type = "Role"}}
 
 #  Create querying App
-$queryApp = New-AzureADApplication -DisplayName &quot;QueryingApp&quot; `
-    -IdentifierUris &quot;uri://myqueryingapp.com&quot; `
+$queryApp = New-AzureADApplication -DisplayName "QueryingApp" `
+    -IdentifierUris "uri://myqueryingapp.com" `
     -RequiredResourceAccess $readWriteAccess
 
 #  Associate a Service Principal so it can login
@@ -196,8 +202,8 @@ $endDate = $startDate.AddMonths(3)
 
 $pwd = New-AzureADApplicationPasswordCredential -ObjectId $queryApp.ObjectId `
   -StartDate $startDate -EndDate $endDate `
-  -CustomKeyIdentifier &quot;MyCredentials&quot;
-[/code]
+  -CustomKeyIdentifier "MyCredentials"
+```
 
 You need to “grant permissions” for the new application before trying to authenticate against it.
 

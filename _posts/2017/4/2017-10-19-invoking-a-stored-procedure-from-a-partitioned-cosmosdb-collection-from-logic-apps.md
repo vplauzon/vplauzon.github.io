@@ -27,14 +27,15 @@ One of them is to update the content of a stored procedure (same thing for trigg
 
 Here is the stored procedure we used:
 
-[code language="JavaScript"]
+```JavaScript
+
 function createRecords(recordCount) {
     var context = getContext();
     var collection = context.getCollection();
     var createdIds = [];
 
-    for (i = 0; i &lt; recordCount; i++) {
-        var documentToCreate = { part: &quot;abc&quot;, name: &quot;sample&quot; + i };
+    for (i = 0; i < recordCount; i++) {
+        var documentToCreate = { part: "abc", name: "sample" + i };
         var accepted = collection.createDocument(
             collection.getSelfLink(),
             documentToCreate,
@@ -53,7 +54,7 @@ function createRecords(recordCount) {
 
     context.getResponse().setBody(createdIds)
 }
-[/code]
+```
 
 We take the number of documents to create in parameter, loop &amp; create documents.  We return the document IDs in a list in the output.
 

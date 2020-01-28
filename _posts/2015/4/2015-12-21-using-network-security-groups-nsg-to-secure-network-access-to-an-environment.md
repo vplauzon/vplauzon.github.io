@@ -382,61 +382,62 @@ I’ve used few tricks in this template:
 	<li>I used dependsOn &amp; resourceId to attach the Network Security Groups to the subnets.</li>
 </ul>
 
-[code language="javascript"]
+```javascript
+
 {
-  &quot;$schema&quot;: &quot;https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#&quot;,
-  &quot;contentVersion&quot;: &quot;1.0.0.0&quot;,
-  &quot;parameters&quot;: {
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
   },
-  &quot;variables&quot;: {
-    &quot;cidrNet&quot;: &quot;10.0.0.0/24&quot;,
-    &quot;frontNet&quot;: &quot;10.0.0.0/28&quot;,
-    &quot;middleNet&quot;: &quot;10.0.0.16/28&quot;,
-    &quot;backNet&quot;: &quot;10.0.0.32/28&quot;
+  "variables": {
+    "cidrNet": "10.0.0.0/24",
+    "frontNet": "10.0.0.0/28",
+    "middleNet": "10.0.0.16/28",
+    "backNet": "10.0.0.32/28"
   },
-  &quot;resources&quot;: [
+  "resources": [
     {
-      &quot;apiVersion&quot;: &quot;2015-06-15&quot;,
-      &quot;name&quot;: &quot;Poc-Net&quot;,
-      &quot;type&quot;: &quot;Microsoft.Network/virtualNetworks&quot;,
-      &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-      &quot;dependsOn&quot;: [
-        &quot;Microsoft.Network/networkSecurityGroups/frontSecurityGroup&quot;,
-        &quot;Microsoft.Network/networkSecurityGroups/middleSecurityGroup&quot;,
-        &quot;Microsoft.Network/networkSecurityGroups/backSecurityGroup&quot;
+      "apiVersion": "2015-06-15",
+      "name": "Poc-Net",
+      "type": "Microsoft.Network/virtualNetworks",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "Microsoft.Network/networkSecurityGroups/frontSecurityGroup",
+        "Microsoft.Network/networkSecurityGroups/middleSecurityGroup",
+        "Microsoft.Network/networkSecurityGroups/backSecurityGroup"
       ],
-      &quot;tags&quot;: { },
-      &quot;properties&quot;: {
-        &quot;addressSpace&quot;: {
-          &quot;addressPrefixes&quot;: [
-            &quot;[variables('cidrNet')]&quot;
+      "tags": { },
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "[variables('cidrNet')]"
           ]
         },
-        &quot;subnets&quot;: [
+        "subnets": [
           {
-            &quot;name&quot;: &quot;front-end&quot;,
-            &quot;properties&quot;: {
-              &quot;addressPrefix&quot;: &quot;[variables('frontNet')]&quot;,
-              &quot;networkSecurityGroup&quot;: {
-                &quot;id&quot;: &quot;[resourceId('Microsoft.Network/networkSecurityGroups','frontSecurityGroup')]&quot;
+            "name": "front-end",
+            "properties": {
+              "addressPrefix": "[variables('frontNet')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups','frontSecurityGroup')]"
               }
             }
           },
           {
-            &quot;name&quot;: &quot;middle&quot;,
-            &quot;properties&quot;: {
-              &quot;addressPrefix&quot;: &quot;[variables('middleNet')]&quot;,
-              &quot;networkSecurityGroup&quot;: {
-                &quot;id&quot;: &quot;[resourceId('Microsoft.Network/networkSecurityGroups','middleSecurityGroup')]&quot;
+            "name": "middle",
+            "properties": {
+              "addressPrefix": "[variables('middleNet')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups','middleSecurityGroup')]"
               }
             }
           },
           {
-            &quot;name&quot;: &quot;back-end&quot;,
-            &quot;properties&quot;: {
-              &quot;addressPrefix&quot;: &quot;[variables('backNet')]&quot;,
-              &quot;networkSecurityGroup&quot;: {
-                &quot;id&quot;: &quot;[resourceId('Microsoft.Network/networkSecurityGroups','backSecurityGroup')]&quot;
+            "name": "back-end",
+            "properties": {
+              "addressPrefix": "[variables('backNet')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups','backSecurityGroup')]"
               }
             }
           }
@@ -444,276 +445,276 @@ I’ve used few tricks in this template:
       }
     },
     {
-      &quot;apiVersion&quot;: &quot;2015-06-15&quot;,
-      &quot;name&quot;: &quot;frontSecurityGroup&quot;,
-      &quot;type&quot;: &quot;Microsoft.Network/networkSecurityGroups&quot;,
-      &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-      &quot;tags&quot;: { },
-      &quot;properties&quot;: {
-        &quot;securityRules&quot;: [
+      "apiVersion": "2015-06-15",
+      "name": "frontSecurityGroup",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "location": "[resourceGroup().location]",
+      "tags": { },
+      "properties": {
+        "securityRules": [
           {
-            &quot;name&quot;: &quot;Allow-HTTP&quot;,
-            &quot;properties&quot;: {
-              &quot;protocol&quot;: &quot;Tcp&quot;,
-              &quot;sourcePortRange&quot;: &quot;*&quot;,
-              &quot;destinationPortRange&quot;: &quot;80&quot;,
-              &quot;sourceAddressPrefix&quot;: &quot;Internet&quot;,
-              &quot;destinationAddressPrefix&quot;: &quot;*&quot;,
-              &quot;access&quot;: &quot;Allow&quot;,
-              &quot;priority&quot;: 100,
-              &quot;direction&quot;: &quot;Inbound&quot;
+            "name": "Allow-HTTP",
+            "properties": {
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "80",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
             }
           },
           //{
-          //  &quot;name&quot;: &quot;Allow-RDP&quot;,
-          //  &quot;properties&quot;: {
-          //    &quot;protocol&quot;: &quot;Tcp&quot;,
-          //    &quot;sourcePortRange&quot;: &quot;*&quot;,
-          //    &quot;destinationPortRange&quot;: &quot;3389&quot;,
-          //    &quot;sourceAddressPrefix&quot;: &quot;*&quot;,
-          //    &quot;destinationAddressPrefix&quot;: &quot;*&quot;,
-          //    &quot;access&quot;: &quot;Allow&quot;,
-          //    &quot;priority&quot;: 150,
-          //    &quot;direction&quot;: &quot;Inbound&quot;
+          //  "name": "Allow-RDP",
+          //  "properties": {
+          //    "protocol": "Tcp",
+          //    "sourcePortRange": "*",
+          //    "destinationPortRange": "3389",
+          //    "sourceAddressPrefix": "*",
+          //    "destinationAddressPrefix": "*",
+          //    "access": "Allow",
+          //    "priority": 150,
+          //    "direction": "Inbound"
           //  }
           //},
           {
-            &quot;name&quot;: &quot;Allow-Health-Monitoring&quot;,
-            &quot;properties&quot;: {
-              &quot;protocol&quot;: &quot;*&quot;,
-              &quot;sourcePortRange&quot;: &quot;*&quot;,
-              &quot;destinationPortRange&quot;: &quot;*&quot;,
-              &quot;sourceAddressPrefix&quot;: &quot;AzureLoadBalancer&quot;,
-              &quot;destinationAddressPrefix&quot;: &quot;*&quot;,
-              &quot;access&quot;: &quot;Allow&quot;,
-              &quot;priority&quot;: 200,
-              &quot;direction&quot;: &quot;Inbound&quot;
+            "name": "Allow-Health-Monitoring",
+            "properties": {
+              "protocol": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "*",
+              "sourceAddressPrefix": "AzureLoadBalancer",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 200,
+              "direction": "Inbound"
             }
           },
           {
-            &quot;name&quot;: &quot;Disallow-everything-else&quot;,
-            &quot;properties&quot;: {
-              &quot;protocol&quot;: &quot;*&quot;,
-              &quot;sourcePortRange&quot;: &quot;*&quot;,
-              &quot;destinationPortRange&quot;: &quot;*&quot;,
-              &quot;sourceAddressPrefix&quot;: &quot;*&quot;,
-              &quot;destinationAddressPrefix&quot;: &quot;*&quot;,
-              &quot;access&quot;: &quot;Deny&quot;,
-              &quot;priority&quot;: 300,
-              &quot;direction&quot;: &quot;Inbound&quot;
+            "name": "Disallow-everything-else",
+            "properties": {
+              "protocol": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "*",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Deny",
+              "priority": 300,
+              "direction": "Inbound"
             }
           },
           {
-            &quot;name&quot;: &quot;Allow-to-VNet&quot;,
-            &quot;properties&quot;: {
-              &quot;protocol&quot;: &quot;*&quot;,
-              &quot;sourcePortRange&quot;: &quot;*&quot;,
-              &quot;destinationPortRange&quot;: &quot;*&quot;,
-              &quot;sourceAddressPrefix&quot;: &quot;*&quot;,
-              &quot;destinationAddressPrefix&quot;: &quot;VirtualNetwork&quot;,
-              &quot;access&quot;: &quot;Allow&quot;,
-              &quot;priority&quot;: 100,
-              &quot;direction&quot;: &quot;Outbound&quot;
+            "name": "Allow-to-VNet",
+            "properties": {
+              "protocol": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "*",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "VirtualNetwork",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Outbound"
             }
           },
           {
-            &quot;name&quot;: &quot;Deny-All-Traffic&quot;,
-            &quot;properties&quot;: {
-              &quot;protocol&quot;: &quot;*&quot;,
-              &quot;sourcePortRange&quot;: &quot;*&quot;,
-              &quot;destinationPortRange&quot;: &quot;*&quot;,
-              &quot;sourceAddressPrefix&quot;: &quot;*&quot;,
-              &quot;destinationAddressPrefix&quot;: &quot;*&quot;,
-              &quot;access&quot;: &quot;Deny&quot;,
-              &quot;priority&quot;: 200,
-              &quot;direction&quot;: &quot;Outbound&quot;
+            "name": "Deny-All-Traffic",
+            "properties": {
+              "protocol": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "*",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Deny",
+              "priority": 200,
+              "direction": "Outbound"
             }
           }
         ],
-        &quot;subnets&quot;: [ ]
+        "subnets": [ ]
       }
     },
     {
-      &quot;apiVersion&quot;: &quot;2015-06-15&quot;,
-      &quot;name&quot;: &quot;middleSecurityGroup&quot;,
-      &quot;type&quot;: &quot;Microsoft.Network/networkSecurityGroups&quot;,
-      &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-      &quot;tags&quot;: { },
-      &quot;properties&quot;: {
-        &quot;provisioningState&quot;: &quot;Succeeded&quot;,
-        &quot;securityRules&quot;: [
+      "apiVersion": "2015-06-15",
+      "name": "middleSecurityGroup",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "location": "[resourceGroup().location]",
+      "tags": { },
+      "properties": {
+        "provisioningState": "Succeeded",
+        "securityRules": [
           {
-            &quot;name&quot;: &quot;Allow-Front&quot;,
-            &quot;properties&quot;: {
-              &quot;provisioningState&quot;: &quot;Succeeded&quot;,
-              &quot;protocol&quot;: &quot;Tcp&quot;,
-              &quot;sourcePortRange&quot;: &quot;*&quot;,
-              &quot;destinationPortRange&quot;: &quot;80&quot;,
-              &quot;sourceAddressPrefix&quot;: &quot;[variables('frontNet')]&quot;,
-              &quot;destinationAddressPrefix&quot;: &quot;*&quot;,
-              &quot;access&quot;: &quot;Allow&quot;,
-              &quot;priority&quot;: 100,
-              &quot;direction&quot;: &quot;Inbound&quot;
+            "name": "Allow-Front",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "80",
+              "sourceAddressPrefix": "[variables('frontNet')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
             }
           },
           //{
-          //  &quot;name&quot;: &quot;Allow-RDP&quot;,
-          //  &quot;properties&quot;: {
-          //    &quot;protocol&quot;: &quot;Tcp&quot;,
-          //    &quot;sourcePortRange&quot;: &quot;*&quot;,
-          //    &quot;destinationPortRange&quot;: &quot;3389&quot;,
-          //    &quot;sourceAddressPrefix&quot;: &quot;*&quot;,
-          //    &quot;destinationAddressPrefix&quot;: &quot;*&quot;,
-          //    &quot;access&quot;: &quot;Allow&quot;,
-          //    &quot;priority&quot;: 150,
-          //    &quot;direction&quot;: &quot;Inbound&quot;
+          //  "name": "Allow-RDP",
+          //  "properties": {
+          //    "protocol": "Tcp",
+          //    "sourcePortRange": "*",
+          //    "destinationPortRange": "3389",
+          //    "sourceAddressPrefix": "*",
+          //    "destinationAddressPrefix": "*",
+          //    "access": "Allow",
+          //    "priority": 150,
+          //    "direction": "Inbound"
           //  }
           //},
           {
-            &quot;name&quot;: &quot;Allow-Health-Monitoring&quot;,
-            &quot;properties&quot;: {
-              &quot;provisioningState&quot;: &quot;Succeeded&quot;,
-              &quot;protocol&quot;: &quot;*&quot;,
-              &quot;sourcePortRange&quot;: &quot;*&quot;,
-              &quot;destinationPortRange&quot;: &quot;80&quot;,
-              &quot;sourceAddressPrefix&quot;: &quot;AzureLoadBalancer&quot;,
-              &quot;destinationAddressPrefix&quot;: &quot;*&quot;,
-              &quot;access&quot;: &quot;Allow&quot;,
-              &quot;priority&quot;: 200,
-              &quot;direction&quot;: &quot;Inbound&quot;
+            "name": "Allow-Health-Monitoring",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "protocol": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "80",
+              "sourceAddressPrefix": "AzureLoadBalancer",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 200,
+              "direction": "Inbound"
             }
           },
           {
-            &quot;name&quot;: &quot;Deny-Everything-Else&quot;,
-            &quot;properties&quot;: {
-              &quot;provisioningState&quot;: &quot;Succeeded&quot;,
-              &quot;protocol&quot;: &quot;*&quot;,
-              &quot;sourcePortRange&quot;: &quot;*&quot;,
-              &quot;destinationPortRange&quot;: &quot;80&quot;,
-              &quot;sourceAddressPrefix&quot;: &quot;*&quot;,
-              &quot;destinationAddressPrefix&quot;: &quot;*&quot;,
-              &quot;access&quot;: &quot;Deny&quot;,
-              &quot;priority&quot;: 300,
-              &quot;direction&quot;: &quot;Inbound&quot;
+            "name": "Deny-Everything-Else",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "protocol": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "80",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Deny",
+              "priority": 300,
+              "direction": "Inbound"
             }
           },
           {
-            &quot;name&quot;: &quot;Allow-to-VNet&quot;,
-            &quot;properties&quot;: {
-              &quot;provisioningState&quot;: &quot;Succeeded&quot;,
-              &quot;protocol&quot;: &quot;*&quot;,
-              &quot;sourcePortRange&quot;: &quot;*&quot;,
-              &quot;destinationPortRange&quot;: &quot;80&quot;,
-              &quot;sourceAddressPrefix&quot;: &quot;*&quot;,
-              &quot;destinationAddressPrefix&quot;: &quot;VirtualNetwork&quot;,
-              &quot;access&quot;: &quot;Allow&quot;,
-              &quot;priority&quot;: 100,
-              &quot;direction&quot;: &quot;Outbound&quot;
+            "name": "Allow-to-VNet",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "protocol": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "80",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "VirtualNetwork",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Outbound"
             }
           },
           {
-            &quot;name&quot;: &quot;Deny-All-Traffic&quot;,
-            &quot;properties&quot;: {
-              &quot;provisioningState&quot;: &quot;Succeeded&quot;,
-              &quot;protocol&quot;: &quot;*&quot;,
-              &quot;sourcePortRange&quot;: &quot;*&quot;,
-              &quot;destinationPortRange&quot;: &quot;80&quot;,
-              &quot;sourceAddressPrefix&quot;: &quot;*&quot;,
-              &quot;destinationAddressPrefix&quot;: &quot;*&quot;,
-              &quot;access&quot;: &quot;Deny&quot;,
-              &quot;priority&quot;: 200,
-              &quot;direction&quot;: &quot;Outbound&quot;
+            "name": "Deny-All-Traffic",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "protocol": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "80",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Deny",
+              "priority": 200,
+              "direction": "Outbound"
             }
           }
         ],
-        &quot;subnets&quot;: [ ]
+        "subnets": [ ]
       }
     },
     {
-      &quot;apiVersion&quot;: &quot;2015-06-15&quot;,
-      &quot;name&quot;: &quot;backSecurityGroup&quot;,
-      &quot;type&quot;: &quot;Microsoft.Network/networkSecurityGroups&quot;,
-      &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-      &quot;tags&quot;: { },
-      &quot;properties&quot;: {
-        &quot;securityRules&quot;: [
+      "apiVersion": "2015-06-15",
+      "name": "backSecurityGroup",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "location": "[resourceGroup().location]",
+      "tags": { },
+      "properties": {
+        "securityRules": [
           {
-            &quot;name&quot;: &quot;Allow-Middle&quot;,
-            &quot;properties&quot;: {
-              &quot;provisioningState&quot;: &quot;Succeeded&quot;,
-              &quot;protocol&quot;: &quot;Tcp&quot;,
-              &quot;sourcePortRange&quot;: &quot;*&quot;,
-              &quot;destinationPortRange&quot;: &quot;1433&quot;,
-              &quot;sourceAddressPrefix&quot;: &quot;[variables('middleNet')]&quot;,
-              &quot;destinationAddressPrefix&quot;: &quot;*&quot;,
-              &quot;access&quot;: &quot;Allow&quot;,
-              &quot;priority&quot;: 100,
-              &quot;direction&quot;: &quot;Inbound&quot;
+            "name": "Allow-Middle",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "1433",
+              "sourceAddressPrefix": "[variables('middleNet')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
             }
           },
           //{
-          //  &quot;name&quot;: &quot;Allow-RDP&quot;,
-          //  &quot;properties&quot;: {
-          //    &quot;protocol&quot;: &quot;Tcp&quot;,
-          //    &quot;sourcePortRange&quot;: &quot;*&quot;,
-          //    &quot;destinationPortRange&quot;: &quot;3389&quot;,
-          //    &quot;sourceAddressPrefix&quot;: &quot;*&quot;,
-          //    &quot;destinationAddressPrefix&quot;: &quot;*&quot;,
-          //    &quot;access&quot;: &quot;Allow&quot;,
-          //    &quot;priority&quot;: 150,
-          //    &quot;direction&quot;: &quot;Inbound&quot;
+          //  "name": "Allow-RDP",
+          //  "properties": {
+          //    "protocol": "Tcp",
+          //    "sourcePortRange": "*",
+          //    "destinationPortRange": "3389",
+          //    "sourceAddressPrefix": "*",
+          //    "destinationAddressPrefix": "*",
+          //    "access": "Allow",
+          //    "priority": 150,
+          //    "direction": "Inbound"
           //  }
           //},
           {
-            &quot;name&quot;: &quot;Allow-Health-Monitoring&quot;,
-            &quot;properties&quot;: {
-              &quot;provisioningState&quot;: &quot;Succeeded&quot;,
-              &quot;protocol&quot;: &quot;*&quot;,
-              &quot;sourcePortRange&quot;: &quot;*&quot;,
-              &quot;destinationPortRange&quot;: &quot;80&quot;,
-              &quot;sourceAddressPrefix&quot;: &quot;AzureLoadBalancer&quot;,
-              &quot;destinationAddressPrefix&quot;: &quot;*&quot;,
-              &quot;access&quot;: &quot;Allow&quot;,
-              &quot;priority&quot;: 200,
-              &quot;direction&quot;: &quot;Inbound&quot;
+            "name": "Allow-Health-Monitoring",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "protocol": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "80",
+              "sourceAddressPrefix": "AzureLoadBalancer",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 200,
+              "direction": "Inbound"
             }
           },
           {
-            &quot;name&quot;: &quot;Deny-Everything-Else&quot;,
-            &quot;properties&quot;: {
-              &quot;provisioningState&quot;: &quot;Succeeded&quot;,
-              &quot;protocol&quot;: &quot;*&quot;,
-              &quot;sourcePortRange&quot;: &quot;*&quot;,
-              &quot;destinationPortRange&quot;: &quot;80&quot;,
-              &quot;sourceAddressPrefix&quot;: &quot;*&quot;,
-              &quot;destinationAddressPrefix&quot;: &quot;*&quot;,
-              &quot;access&quot;: &quot;Deny&quot;,
-              &quot;priority&quot;: 300,
-              &quot;direction&quot;: &quot;Inbound&quot;
+            "name": "Deny-Everything-Else",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "protocol": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "80",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Deny",
+              "priority": 300,
+              "direction": "Inbound"
             }
           },
           {
-            &quot;name&quot;: &quot;Deny-All-Traffic&quot;,
-            &quot;properties&quot;: {
-              &quot;provisioningState&quot;: &quot;Succeeded&quot;,
-              &quot;protocol&quot;: &quot;*&quot;,
-              &quot;sourcePortRange&quot;: &quot;*&quot;,
-              &quot;destinationPortRange&quot;: &quot;80&quot;,
-              &quot;sourceAddressPrefix&quot;: &quot;*&quot;,
-              &quot;destinationAddressPrefix&quot;: &quot;*&quot;,
-              &quot;access&quot;: &quot;Deny&quot;,
-              &quot;priority&quot;: 100,
-              &quot;direction&quot;: &quot;Outbound&quot;
+            "name": "Deny-All-Traffic",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "protocol": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "80",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Deny",
+              "priority": 100,
+              "direction": "Outbound"
             }
           }
         ],
-        &quot;subnets&quot;: [ ]
+        "subnets": [ ]
       }
     }
   ],
-  &quot;outputs&quot;: { }
+  "outputs": { }
 }
-[/code]
+```
 
 <h2>Conclusion</h2>
 You can see that you can “bring your own network” to Azure and define rules that mimic the rules of your on-premise firewall.

@@ -29,10 +29,11 @@ Docker has a nice <a href="https://docs.docker.com/develop/develop-images/multis
 
 The Docker file, <a href="https://github.com/vplauzon/cosmos-db-target-config/blob/master/CosmosTargetConsole/Dockerfile">available on GitHub</a> is reproduced here:
 
-[code language="shell"]
+```shell
 
-#    Multi-stage docker build file (see &lt;a href=&quot;https://docs.docker.com/develop/develop-images/multistage-build/)&quot;&gt;https://docs.docker.com/develop/develop-images/multistage-build/)&lt;/a&gt;
-#    Use a Microsoft image with .NET core runtime (&lt;a href=&quot;https://hub.docker.com/r/microsoft/dotnet/tags/)&quot;&gt;https://hub.docker.com/r/microsoft/dotnet/tags/)&lt;/a&gt;
+
+#    Multi-stage docker build file (see <a href="https://docs.docker.com/develop/develop-images/multistage-build/)">https://docs.docker.com/develop/develop-images/multistage-build/)</a>
+#    Use a Microsoft image with .NET core runtime (<a href="https://hub.docker.com/r/microsoft/dotnet/tags/)">https://hub.docker.com/r/microsoft/dotnet/tags/)</a>
 FROM microsoft/dotnet:2.1-sdk AS build
 
 WORKDIR /src
@@ -45,7 +46,7 @@ RUN dotnet publish . -c release -o app
 
 ###########################################################
 #    Final container image
-#    Use a Microsoft image with .NET core runtime (&lt;a href=&quot;https://hub.docker.com/r/microsoft/dotnet/tags/)&quot;&gt;https://hub.docker.com/r/microsoft/dotnet/tags/)&lt;/a&gt;
+#    Use a Microsoft image with .NET core runtime (<a href="https://hub.docker.com/r/microsoft/dotnet/tags/)">https://hub.docker.com/r/microsoft/dotnet/tags/)</a>
 FROM microsoft/dotnet:2.1-runtime AS final
 
 #    Set the working directory to /work
@@ -55,14 +56,14 @@ WORKDIR /work
 COPY --from=build /src/app .
 
 #    Define environment variables
-ENV ACCOUNT_ENDPOINT &quot;&quot;
-ENV ACCOUNT_KEY &quot;&quot;
-ENV TARGET_URL &quot;&quot;
+ENV ACCOUNT_ENDPOINT ""
+ENV ACCOUNT_KEY ""
+ENV TARGET_URL ""
 
 #    Run console app
-CMD [&quot;dotnet&quot;, &quot;CosmosTargetConsole.dll&quot;]
+CMD ["dotnet", "CosmosTargetConsole.dll"]
 
-[/code]
+```
 
 Let’s review that Docker File.
 

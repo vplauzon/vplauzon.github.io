@@ -33,11 +33,12 @@ When done, click the “Add” button at the bottom.
 <h2>Skipping line problem</h2>
 Currently skipping lines in an input file isn’t supported.  This is quite unfortunate because log files come with two header rows:
 
-[code language="text"]
+```text
+
  
 #Software: Microsoft Internet Information Services 8.0
 #Fields: date time s-sitename cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Cookie) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken 
-[/code]
+```
 
 The obvious way to get around this would be to skip the first two lines.  You can see the feature is sort of there in the code documentation of Extractors but you’ll never be able to use it at this point (early January 2016).
 
@@ -47,7 +48,8 @@ Because of this, we’ll have to jump through hoops and do some preprocessing.
 <h2>Preprocessing Script</h2>
 Let’s create a U-SQL script.  First, let’s load all the logs:
 
-[code language="sql"]
+```sql
+
 @lines =
     EXTRACT Line string,
             FileName string,
@@ -55,10 +57,10 @@ Let’s create a U-SQL script.  First, let’s load all the logs:
             Month string,
             Day string,
             Hour string
-    FROM &quot;wasb://@.blob.core.windows.net//{Year:*}/{Month:*}/{Day:*}/{Hour:*}/{FileName:*}&quot;
+    FROM "wasb://@.blob.core.windows.net//{Year:*}/{Month:*}/{Day:*}/{Hour:*}/{FileName:*}"
     // Hack in order not to have the extractor delimitate columns
     USING Extractors.Text(delimiter : '$');
-[/code]
+```
 
 First notice that the file path starts with “wasb”.  This is because we aren’t targetting the default data source (the first one) of our ADLA account.  For secondary data sources, we need to specify the source using:
 <ul>
@@ -71,17 +73,19 @@ Finally, we use my good old trick to get the entire line without parsing columns
 
 Then, we’ll filter out those header lines (starting with ‘#’) and reconstruct the blob path for future references:
 
-[code language="sql"]
+```sql
+
 @logLines =
     SELECT Line,
-           &quot;//&quot; + Year + &quot;/&quot; + Month + &quot;/&quot; + Day + &quot;/&quot; + Hour + &quot;/&quot; + FileName AS BlobPath
+           "//" + Year + "/" + Month + "/" + Day + "/" + Hour + "/" + FileName AS BlobPath
     FROM @lines
-    WHERE !Line.StartsWith(&quot;#&quot;);
-[/code]
+    WHERE !Line.StartsWith("#");
+```
 
 In order to parse the lines, we’ll need some C# code:
 
-[code language="csharp"]
+```csharp
+
 namespace MarvelUsql
 {
     public static class SpaceSplit
@@ -90,10 +94,10 @@ namespace MarvelUsql
         {
             var parts = line.Split(' ');
  
-            if(index&gt;= parts.Length)
+            if(index>= parts.Length)
             {
                 throw new ArgumentOutOfRangeException(
-                    &quot;index&quot;, &quot;Column &quot; + index + &quot; isn't available in line &quot; + line);
+                    "index", "Column " + index + " isn't available in line " + line);
             }
             else
             {
@@ -102,13 +106,14 @@ namespace MarvelUsql
         }
     }
 }
-[/code]
+```
 
 Yes, I keep the old Marvel theme from the other posts.
 
 We can put that code in the code behind of the script we are building.  This simplifies the compilation and <a href="http://vincentlauzon.com/2016/01/06/registering-assemblies-in-azure-data-lake-analytics/">assembly registration process</a>.  We can then leverage the custom code in our script:
 
-[code language="sql"]
+```sql
+
 @logs =
     SELECT DateTime.Parse(MarvelUsql.SpaceSplit.GetColumn(Line, 0)) AS s_date,
            MarvelUsql.SpaceSplit.GetColumn(Line, 1) AS s_time,
@@ -131,15 +136,16 @@ We can put that code in the code behind of the script we are building.  This si
            int.Parse(MarvelUsql.SpaceSplit.GetColumn(Line, 18)) AS s_timetaken,
            BlobPath
     FROM @logLines;
-[/code]
+```
 
 Finally, we’ll output the result into a consolidated file:
 
-[code language="sql"]
+```sql
+
 OUTPUT @logs
-TO &quot;/Preprocess/Logs.log&quot;
+TO "/Preprocess/Logs.log"
 USING Outputters.Text(delimiter:' ');
-[/code]
+```
 
 This basically concludes the pre-processing of the logs.  We now have them all in one file.  The file might be huge, but thanks to ADLS no storage limit, that is ok.
 
@@ -149,7 +155,8 @@ Now that we’ve pre processed the logs, let’s run some analytics.
 
 Let’s determine the most popular pages:
 
-[code language="sql"]
+```sql
+
 @logs =
     EXTRACT s_date DateTime,
             s_time string,
@@ -171,7 +178,7 @@ Let’s determine the most popular pages:
             cs_bytes int,
             s_timetaken int,
             BlobPath string
-    FROM &quot;/Preprocess/Logs.log&quot;
+    FROM "/Preprocess/Logs.log"
     USING Extractors.Text(delimiter : ' ');
  
 @popular =
@@ -187,9 +194,9 @@ Let’s determine the most popular pages:
     FETCH FIRST 10 ROWS ONLY;
  
 OUTPUT @popular
-TO &quot;/Outputs/PopularPages.tsv&quot;
+TO "/Outputs/PopularPages.tsv"
 USING Outputters.Tsv();
-[/code]
+```
 
 First query, we schema-on-read the aggregated logs we just created.
 
@@ -199,7 +206,8 @@ Third, we output that result to a TSV file.
 <h2>Hit per day</h2>
 Similarly, we can check the top days for traffic:
 
-[code language="sql"]
+```sql
+
 @logs =
     EXTRACT s_date DateTime,
             s_time string,
@@ -221,7 +229,7 @@ Similarly, we can check the top days for traffic:
             cs_bytes int,
             s_timetaken int,
             BlobPath string
-    FROM &quot;/Preprocess/Logs.log&quot;
+    FROM "/Preprocess/Logs.log"
     USING Extractors.Text(delimiter : ' ');
  
 @perDay =
@@ -233,9 +241,9 @@ Similarly, we can check the top days for traffic:
     FETCH FIRST 10 ROWS ONLY;
  
 OUTPUT @perDay
-TO &quot;/Outputs/PagesPerDay.tsv&quot;
+TO "/Outputs/PagesPerDay.tsv"
 USING Outputters.Tsv();
-[/code]
+```
 
 <h2>Conclusion</h2>
 You can see how quickly we can ingest web server logs and do some simple analytics at scale.

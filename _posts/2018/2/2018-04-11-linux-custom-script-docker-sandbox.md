@@ -75,28 +75,29 @@ In Visual Studio we can even add extension on VMs with right-clicks.
 
 The extension resource is quite simple:
 
-[code language="JavaScript"]
+```JavaScript
+
 {
- &quot;type&quot;: &quot;extensions&quot;,
- &quot;name&quot;: &quot;[variables('Custom Script Name')]&quot;,
- &quot;tags&quot;: {},
- &quot;apiVersion&quot;: &quot;2017-12-01&quot;,
- &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
- &quot;dependsOn&quot;: [
- &quot;[resourceId('Microsoft.Compute/virtualMachines', variables('VM Name'))]&quot;
+ "type": "extensions",
+ "name": "[variables('Custom Script Name')]",
+ "tags": {},
+ "apiVersion": "2017-12-01",
+ "location": "[resourceGroup().location]",
+ "dependsOn": [
+ "[resourceId('Microsoft.Compute/virtualMachines', variables('VM Name'))]"
  ],
- &quot;properties&quot;: {
- &quot;publisher&quot;: &quot;Microsoft.Azure.Extensions&quot;,
- &quot;type&quot;: &quot;CustomScript&quot;,
- &quot;typeHandlerVersion&quot;: &quot;2.0&quot;,
- &quot;autoUpgradeMinorVersion&quot;: true,
- &quot;settings&quot;: {
- &quot;fileUris&quot;: &quot;[variables('Script URLs')]&quot;,
- &quot;commandToExecute&quot;: &quot;[variables('Command')]&quot;
+ "properties": {
+ "publisher": "Microsoft.Azure.Extensions",
+ "type": "CustomScript",
+ "typeHandlerVersion": "2.0",
+ "autoUpgradeMinorVersion": true,
+ "settings": {
+ "fileUris": "[variables('Script URLs')]",
+ "commandToExecute": "[variables('Command')]"
  }
  }
 }
-[/code]
+```
 
 The template file is <a href="https://github.com/vplauzon/containers/blob/master/DockerVM/DeployVM/azuredeploy.json">available here on GitHub</a>.
 <h2>Conditional deployment</h2>
@@ -108,21 +109,23 @@ We use the parameter <em>Operating System</em>, which is of type string and can 
 
 We then defined a boolean variable <em>isCentOS</em>:
 
-[code language="JavaScript"]
+```JavaScript
 
-&quot;isCentOS&quot;: &quot;[if(equals(parameters('Operating System'), 'CentOS'), bool('true'), bool('false'))]&quot;
 
-[/code]
+"isCentOS": "[if(equals(parameters('Operating System'), 'CentOS'), bool('true'), bool('false'))]"
+
+```
 
 From there we use that variable to define other variable.  Here is an example of the pattern:
 
-[code language="JavaScript"]
+```JavaScript
 
-&quot;VM CentOS Name&quot;: &quot;DockerCentOS-VM&quot;,
-&quot;VM Ubuntu Name&quot;: &quot;DockerUbuntu-VM&quot;,
-&quot;VM Name&quot;: &quot;[if(variables('isCentOS'), variables('VM CentOS Name'), variables('VM Ubuntu Name'))]&quot;,
 
-[/code]
+"VM CentOS Name": "DockerCentOS-VM",
+"VM Ubuntu Name": "DockerUbuntu-VM",
+"VM Name": "[if(variables('isCentOS'), variables('VM CentOS Name'), variables('VM Ubuntu Name'))]",
+
+```
 
 This way we can refer to the variable <em>VM Name</em> in the template and have no <em>if</em> in the template.
 

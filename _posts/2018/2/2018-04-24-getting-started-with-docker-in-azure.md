@@ -31,21 +31,23 @@ Let’s pause here.
 
 In our VM, let’s execute the following command:
 
-[code language="bash"]
+```bash
+
 
 sudo docker image ls
 
-[/code]
+```
 
 We should get at least the following images:
 
-[code language="bash"]
+```bash
+
 
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 friendlyhello       latest              fd88801c252a        2 minutes ago       150MB
 python              2.7-slim            b16fde09c92c        10 days ago         139MB
 
-[/code]
+```
 
 <em>friendlyhello</em> is the image we just built in the tutorial.
 
@@ -59,39 +61,42 @@ Following the tutorial, we can now <a href="https://docs.docker.com/get-started/
 
 The container we defined in previous section exposes port 80.  We need to make sure the mapped port is open in Azure.  If we are using <a href="https://github.com/vplauzon/containers/tree/master/DockerVM">the VM we built in our last article</a>, we did open port 22 (SSH) but also 80 to 89.  So if we execute the following command:
 
-[code language="bash"]
+```bash
+
 
 sudo docker run -d -p 81:80 friendlyhello
 
-[/code]
+```
 
 This maps the port 80 inside the container to the port 81 on the VM.  The –<em>d</em> parameter also let the container run in the background.  We can therefore do the following command in the VM:
 
-[code language="bash"]
+```bash
+
 
 curl http://localhost:81
 
-[/code]
+```
 
 We should see something like:
 
-[code language="bash"]
+```bash
 
 
 
 
 
 
-&lt;h3&gt;Hello World!&lt;/h3&gt;
+
+<h3>Hello World!</h3>
 
 
 
 
 
-&lt;b&gt;Hostname:&lt;/b&gt; effb80f5a3d2
-&lt;b&gt;Visits:&lt;/b&gt; &lt;i&gt;cannot connect to Redis, counter disabled&lt;/i&gt;
+<b>Hostname:</b> effb80f5a3d2
+<b>Visits:</b> <i>cannot connect to Redis, counter disabled</i>
 
-[/code]
+```
 
 The request takes a few seconds because of the redis error.  This is on purpose as Redis is connected in a later part of the tutorial…
 
@@ -101,28 +106,31 @@ We know the theory.  Docker creates a user space in order to isolate the contai
 
 We can explore that by looking at what the container sees.  For that, let’s first find the container ID by listing all running containers:
 
-[code language="bash"]
+```bash
 
-sudo docker container ls --filter &quot;ancestor=friendlyhello&quot;
 
-[/code]
+sudo docker container ls --filter "ancestor=friendlyhello"
+
+```
 
 This should only list running containers using the <em>friendlyhello</em> image.  In our case:
 
-[code language="bash"]
+```bash
+
 
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                NAMES
-effb80f5a3d2        friendlyhello       &quot;python app.py&quot;     6 hours ago         Up 6 hours          0.0.0.0:81-&amp;gt;80/tcp   compassionate_shtern
+effb80f5a3d2        friendlyhello       "python app.py"     6 hours ago         Up 6 hours          0.0.0.0:81-&gt;80/tcp   compassionate_shtern
 
-[/code]
+```
 
 So we found the ID is <em>effb80f5a3d2</em>.  We can now execute an interactive shell within that container:
 
-[code language="bash"]
+```bash
+
 
 sudo docker exec -it effb80f5a3d2 sh
 
-[/code]
+```
 
 We now have an interactive shell within the context of the container.
 
@@ -132,28 +140,31 @@ If we type <em>ls /</em>, we’ll see the container has access to the OS librari
 
 Let’s go back to /app and execute the following command:
 
-[code language="bash"]
+```bash
 
-echo &quot;New file within a running container&quot; &gt; abc.123
 
-[/code]
+echo "New file within a running container" > abc.123
+
+```
 
 Now let’s exit the shell to go back to the VM.  Let’s find the file within the VM:
 
-[code language="bash"]
+```bash
 
-sudo find -iname &quot;abc.123&quot;
 
-[/code]
+sudo find -iname "abc.123"
+
+```
 
 This should yield result similar to:
 
-[code language="bash"]
+```bash
+
 
 ./var/lib/docker/overlay2/2ea5eb77ab5cdcae9a61aed73a809d6784b04bb6ab141993140293382b427ec5/merged/app/abc.123
 ./var/lib/docker/overlay2/2ea5eb77ab5cdcae9a61aed73a809d6784b04bb6ab141993140293382b427ec5/diff/app/abc.123
 
-[/code]
+```
 
 If we look at the content of those files (e.g. <em>sudo cat</em>), we’ll find the content of the file we just created.
 

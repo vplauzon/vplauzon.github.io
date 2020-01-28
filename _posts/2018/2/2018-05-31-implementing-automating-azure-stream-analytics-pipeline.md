@@ -17,15 +17,16 @@ In this article, we are going to build the solution.  We are going to use an <a
 
 The goal of the architecture was to allow a fast pace stream of events with a shape akin to
 
-[code language="JavaScript"]
+```JavaScript
+
 
 {
 
-  &quot;widgetId&quot; : 42
+  "widgetId" : 42
 
 }
 
-[/code]
+```
 
 to be simply aggregated at constant intervals (say once a minute).  We wanted the solution to be resilient to different service failures.
 
@@ -153,31 +154,33 @@ We see that we defined a different policy for send and listen action.  This way
 
 It is also interesting to notice that the ARM template doesn’t explicitly define the keys.  It simply defines the policy:
 
-[code language="JavaScript"]
+```JavaScript
+
 
 {
-  &quot;type&quot;: &quot;authorizationRules&quot;,
-  &quot;apiVersion&quot;: &quot;2017-04-01&quot;,
-  &quot;name&quot;: &quot;listenTelemetryRule&quot;,
-  &quot;dependsOn&quot;: [
-    &quot;[variables('Primary Telemetry Hub Id')]&quot;
+  "type": "authorizationRules",
+  "apiVersion": "2017-04-01",
+  "name": "listenTelemetryRule",
+  "dependsOn": [
+    "[variables('Primary Telemetry Hub Id')]"
   ],
-  &quot;properties&quot;: {
-    &quot;rights&quot;: [
-      &quot;Listen&quot;
+  "properties": {
+    "rights": [
+      "Listen"
     ]
   }
 }
 
-[/code]
+```
 
 and when the key is needed, the following syntax is used:
 
-[code language="JavaScript"]
+```JavaScript
+
 
 listKeys(variables('Primary Telemetry Listen Rule Id'), '2017-04-01').primaryKey
 
-[/code]
+```
 
 This has a definite security advantage.  ARM templates are typically stored in widely available internal source control.  Here the keys aren’t available in the template.  We therefore avoid storing secret.
 
@@ -207,7 +210,8 @@ Here we choose <em>array</em>, as opposed to <em>line separated</em>.  Basicall
 
 The query is interesting:
 
-[code language="SQL"]
+```SQL
+
 
 SELECT
 COUNT(*) AS Count,
@@ -223,7 +227,7 @@ FROM [secondary-telemetry]
 TIMESTAMP BY createdAt
 GROUP BY widgetId, TumblingWindow(second, 5)
 
-[/code]
+```
 
 We use the input / output aliases in the query.
 
@@ -257,37 +261,39 @@ The stored procedure action is configured to call <em>[dbo].[updateSummaries].</
 
 Both the trigger and the action relies on connections.  For instance, the SQL connection:
 
-[code language="JavaScript"]
+```JavaScript
+
 
 {
-  &quot;type&quot;: &quot;microsoft.web/connections&quot;,
-  &quot;apiVersion&quot;: &quot;2016-06-01&quot;,
-  &quot;name&quot;: &quot;sqlConnection&quot;,
-  &quot;location&quot;: &quot;[resourceGroup().location]&quot;,
-  &quot;dependsOn&quot;: [
-    &quot;[resourceId('Microsoft.Sql/servers/databases', variables('SQL Server Name'), variables('SQL DB Name'))]&quot;
+  "type": "microsoft.web/connections",
+  "apiVersion": "2016-06-01",
+  "name": "sqlConnection",
+  "location": "[resourceGroup().location]",
+  "dependsOn": [
+    "[resourceId('Microsoft.Sql/servers/databases', variables('SQL Server Name'), variables('SQL DB Name'))]"
   ],
-  &quot;properties&quot;: {
-    &quot;api&quot;: {
-      &quot;id&quot;: &quot;[concat(subscription().id, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/', 'sql')]&quot;
+  "properties": {
+    "api": {
+      "id": "[concat(subscription().id, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/', 'sql')]"
     },
-    &quot;displayName&quot;: &quot;SQL Connection&quot;,
-    &quot;parameterValues&quot;: {
-      &quot;server&quot;: &quot;[variables('SQL Server FQDN')]&quot;,
-      &quot;database&quot;: &quot;[variables('SQL DB Name')]&quot;,
-      &quot;username&quot;: &quot;[variables('SQL Admin Name')]&quot;,
-      &quot;password&quot;: &quot;[parameters('SQL Admin Password')]&quot;
+    "displayName": "SQL Connection",
+    "parameterValues": {
+      "server": "[variables('SQL Server FQDN')]",
+      "database": "[variables('SQL DB Name')]",
+      "username": "[variables('SQL Admin Name')]",
+      "password": "[parameters('SQL Admin Password')]"
     }
   }
 }
 
-[/code]
+```
 
 Connections are Azure resources.  They externalize connection configuration.  We have covered in another article <a href="https://vincentlauzon.com/2017/10/28/how-to-create-a-logic-app-connector-in-an-arm-template/">how to create them in an ARM Template</a>.
 <h2>Database</h2>
 The database consist of two items:  a summary table and a stored procedure.  <a href="https://github.com/vplauzon/streaming/blob/master/SummaryStreaming/Deployment/db-script.sql">The script to create them</a> is executed by an <a href="https://vincentlauzon.com/2018/04/26/azure-container-instance-getting-started/">Azure Container Instance</a>.
 
-[code language="SQL"]
+```SQL
+
 
 --DROP PROC dbo.updateSummaries
 --DROP TABLE [dbo].WidgetSummary
@@ -327,18 +333,19 @@ VALUES (source.WidgetId, source.WidgetCount);
 END
 GO
 
-[/code]
+```
 
 The table has two fields:  a widget ID and the count.  The count will reflect how many telemetry events with the given widget ID have been observed.
 
 We can connect to the database using our favorite tool.  We are going to use Visual Studio and run the following query:
 
-[code language="SQL"]
+```SQL
+
 
 SELECT * FROM [dbo].WidgetSummary
 SELECT SUM(widgetCount) FROM [dbo].WidgetSummary
 
-[/code]
+```
 
 We should have the following output:
 

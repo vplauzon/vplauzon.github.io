@@ -20,36 +20,37 @@ We populated a partitioned collection with random data.
 
 We wanted some volume so we did put of lot of non-geospatial data in there.  Documents have a geospatial “point” but also a bunch of long random strings and numbers.  Here is a sample document:
 
-[code language="JavaScript"]
+```JavaScript
+
 
 {
- &quot;part&quot;: &quot;2802&quot;,
- &quot;name&quot;: &quot;s2%R/@qcP@T&lt;W?n_]\&quot;f#2]QF3QHHC]PvzCDWP;`aE]WDCC`&gt;Fnw?w9x9/+a(j^%^&quot;,
- &quot;profile&quot;: {
- &quot;age&quot;: 89,
- &quot;salary&quot;: 23967.67,
- &quot;project&quot;: &quot;A$zGuVg/a8\\r[EComB\&quot;zF!'82lR]M((1Z?Omt?Gm%,OE&amp;QlO%w4Ti;NO+w5F?umRJdxwOk-b^bMkL/s)3qV_+Ph!VEvm//cO\\!,Itebb\\gn_&gt;dK4tbyG.Rgh/tPW@DwG&quot;
+ "part": "2802",
+ "name": "s2%R/@qcP@T<W?n_]\"f#2]QF3QHHC]PvzCDWP;`aE]WDCC`>Fnw?w9x9/+a(j^%^",
+ "profile": {
+ "age": 89,
+ "salary": 23967.67,
+ "project": "A$zGuVg/a8\\r[EComB\"zF!'82lR]M((1Z?Omt?Gm%,OE&QlO%w4Ti;NO+w5F?umRJdxwOk-b^bMkL/s)3qV_+Ph!VEvm//cO\\!,Itebb\\gn_>dK4tbyG.Rgh/tPW@DwG"
  },
- &quot;alias&quot;: {
- &quot;name&quot;: &quot;m#L]wu6.vw/Sj6LwI1=Ph&amp;!cM!782m!knm&amp;u5b![@1',g-uo'_7k+mZgMbg&lt;!22\&quot;X'*1Nf8&amp;8?Szu#WbeWB5[VwWonJC-S,./9SUudjypf&lt;Xf2e\\&gt;06jDFwwXi]@@\\+2/X&gt;9d/1KE]F*Z!,7[1\&quot;]`g&amp;]#_&lt;O\\%fC\\Z`Oc55e_dP#q]\\bzW%:^0=[d3U*x%k-r,H0s_&lt;P=n_5_ks`#$3;D:L]Ko`8/6y#'BTcxU@-*1LP'_j#)BxC!A5V9yu9^M@.&quot;,
- &quot;reference&quot;: &quot;m@,%ms)`75so_7lLsM&lt;y++b&amp;BTdw('DPZ3C/j?RuHfzMF!lT$#2XH`zn&amp;HEy_Z\&quot;[;*b9?K_!jWG$.G^X3-&amp;\\6ts)R'&lt;Yu.-xWg51#.e+Rz#*1jdQxPk:gj%yw/c.X`f6F0ya#l^v!Bm/4#&lt;Ljmp8\\=o@q$1=yck$RE(&amp;)onVr*Op.Fev(j664oZD&amp;\\n+(9wFd`&amp;uGEYoI&amp;Bg_CXl5i27UWsQ@]\\KL9zAo1FF-#OhB\\`Dk_-6PTA8Hp0*\\7b^fCFO&quot;
+ "alias": {
+ "name": "m#L]wu6.vw/Sj6LwI1=Ph&!cM!782m!knm&u5b![@1',g-uo'_7k+mZgMbg<!22\"X'*1Nf8&8?Szu#WbeWB5[VwWonJC-S,./9SUudjypf<Xf2e\\>06jDFwwXi]@@\\+2/X>9d/1KE]F*Z!,7[1\"]`g&]#_<O\\%fC\\Z`Oc55e_dP#q]\\bzW%:^0=[d3U*x%k-r,H0s_<P=n_5_ks`#$3;D:L]Ko`8/6y#'BTcxU@-*1LP'_j#)BxC!A5V9yu9^M@.",
+ "reference": "m@,%ms)`75so_7lLsM<y++b&BTdw('DPZ3C/j?RuHfzMF!lT$#2XH`zn&HEy_Z\"[;*b9?K_!jWG$.G^X3-&\\6ts)R'<Yu.-xWg51#.e+Rz#*1jdQxPk:gj%yw/c.X`f6F0ya#l^v!Bm/4#<Ljmp8\\=o@q$1=yck$RE(&)onVr*Op.Fev(j664oZD&\\n+(9wFd`&uGEYoI&Bg_CXl5i27UWsQ@]\\KL9zAo1FF-#OhB\\`Dk_-6PTA8Hp0*\\7b^fCFO"
  },
- &quot;weapon&quot;: &quot;eew,/:0GQxEOp0O8&amp;m4=v$ousJB=..giIy!(SdW2.0qr@y(+!.&amp;t0&amp;]l#'C;QJW9=,ebaN#!aQ!q2DbW6'Vb!)U-\\gkfouy/&amp;plw1l=yTq0c`m]uS9HWCJu&lt;sN_R%]C)b.PIYEPb?HDn&gt;4@&lt;`SUSa/$$dt7-atQyS%LMgs0HJ#XX0XAXp0,dd0n=Bf\&quot;-bpgFG9;v*^rscbxDnCnBY2Gd?P]-m@F(p\\BY;3ai;&lt;3b_zLc_v(p0@Fk9pFwB-u?+lFEqj=2k@93K+48)4I9jl\\W[`k-VwL`J\\hT*WI]`^\\U=BOI%lKq[VXD^Qc7=+ZhEylN&quot;,
- &quot;location&quot;: {
- &quot;type&quot;: &quot;Point&quot;,
- &quot;coordinates&quot;: [
+ "weapon": "eew,/:0GQxEOp0O8&m4=v$ousJB=..giIy!(SdW2.0qr@y(+!.&t0&]l#'C;QJW9=,ebaN#!aQ!q2DbW6'Vb!)U-\\gkfouy/&plw1l=yTq0c`m]uS9HWCJu<sN_R%]C)b.PIYEPb?HDn>4@<`SUSa/$$dt7-atQyS%LMgs0HJ#XX0XAXp0,dd0n=Bf\"-bpgFG9;v*^rscbxDnCnBY2Gd?P]-m@F(p\\BY;3ai;<3b_zLc_v(p0@Fk9pFwB-u?+lFEqj=2k@93K+48)4I9jl\\W[`k-VwL`J\\hT*WI]`^\\U=BOI%lKq[VXD^Qc7=+ZhEylN",
+ "location": {
+ "type": "Point",
+ "coordinates": [
  -73.69452978624741,
  45.521848354422204
  ]
  },
- &quot;id&quot;: &quot;f06047a6-d5e7-4b10-dc30-7797f7a0145d&quot;,
- &quot;_rid&quot;: &quot;VlN5AL+aJAAIAAAAAAAAAA==&quot;,
- &quot;_self&quot;: &quot;dbs/VlN5AA==/colls/VlN5AL+aJAA=/docs/VlN5AL+aJAAIAAAAAAAAAA==/&quot;,
- &quot;_etag&quot;: &quot;\&quot;0100a6dc-0000-0000-0000-59ea53720000\&quot;&quot;,
- &quot;_attachments&quot;: &quot;attachments/&quot;,
- &quot;_ts&quot;: 1508529010
+ "id": "f06047a6-d5e7-4b10-dc30-7797f7a0145d",
+ "_rid": "VlN5AL+aJAAIAAAAAAAAAA==",
+ "_self": "dbs/VlN5AA==/colls/VlN5AL+aJAA=/docs/VlN5AL+aJAAIAAAAAAAAAA==/",
+ "_etag": "\"0100a6dc-0000-0000-0000-59ea53720000\"",
+ "_attachments": "attachments/",
+ "_ts": 1508529010
 }
-[/code]
+```
 
 The idea here was not to create a too artificial sample set containing only indexed geospatial data in a very compact form.  Instead we have lots of noise.  Actually, only %33 of documents contain geospatial data (the other %66 skip the location node).
 
@@ -73,7 +74,8 @@ We ran the tests with 4 different Request Units (RUs) configurations:
 <h2>First test:  within a polygon</h2>
 For the first test we take a query looking for points within a given polygon:
 
-[code language="SQL"]
+```SQL
+
 
 SELECT VALUE COUNT(1)
 FROM record r
@@ -81,7 +83,7 @@ WHERE ST_WITHIN(
 r.location,
 {'type':'Polygon', 'coordinates':[@polyCoordinates]})
 
-[/code]
+```
 
 The polygon coordinates are passed in parameter here.
 
@@ -601,16 +603,17 @@ This might be necessary for an application but often we want to limit the number
 
 Let’s modify the test query to:
 
-[code language="SQL"]
+```SQL
+
 
 SELECT VALUE COUNT(1)
 FROM record r
 WHERE ST_WITHIN(
 r.location,
 {'type':'Polygon', 'coordinates':[@polyCoordinates]})
-AND r.profile.age&lt;25
+AND r.profile.age<25
 
-[/code]
+```
 
 The age property is randomly generated to be uniformly distributed between 0 and 99.  The filter we just put should shrink the result set by a factor 4.
 
@@ -620,16 +623,17 @@ Here we see the power of automatic indexing in Cosmos DB.
 <h2>Second (and last) test:  proximity</h2>
 For the second test our query is looking for points at proximity to a given poing:
 
-[code language="SQL"]
+```SQL
+
 
 SELECT
 VALUE COUNT(1)
 FROM record r
 WHERE ST_DISTANCE (
 r.location,
-{'type':'Point', 'coordinates':@center})&lt;@radius
+{'type':'Point', 'coordinates':@center})<@radius
 
-[/code]
+```
 
 The center and radius are passed in parameters here.
 

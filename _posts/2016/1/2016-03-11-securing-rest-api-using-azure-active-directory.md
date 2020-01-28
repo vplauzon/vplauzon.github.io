@@ -67,7 +67,8 @@ Let’s flesh out the API.  And when I say flesh out, I mean let’s change 500
 
 Under <em>Models</em> folder, create a class <em>PersonaModel</em> with the following code:
 
-[code language="csharp"]
+```csharp
+
 
 namespace AboutMeApi.Models
 {
@@ -78,11 +79,12 @@ namespace AboutMeApi.Models
         public string[] Claims { get; internal set; }
     }
 }
-[/code]
+```
 
 Under the <em>Controllers</em> folder rename <em>ValuesController</em> by <em>PersonaController</em>.  This should hopefully rename the underlying class.  Let’s keep the following code:
 
-[code language="csharp"]
+```csharp
+
 using AboutMeApi.Models;
 using System.Linq;
 using System.Security.Claims;
@@ -97,29 +99,30 @@ namespace AboutMeApi.Controllers
         {
             var identity = (ClaimsIdentity)User.Identity;
             var claims = from i in identity.Claims
-                         select i.Type + &quot; | &quot; + i.Value;
+                         select i.Type + " | " + i.Value;
 
             return new PersonaModel
             {
-                Description = &quot;Description of the invoking user&quot;,
+                Description = "Description of the invoking user",
                 Name = identity.Name,
                 Claims = claims.ToArray()
             };
         }
     }
 }
-[/code]
+```
 
 As you can see, what this API does is take the current user information and return it to the caller.
 
 Then under <em>App_Start</em> folder, in <em>SwaggerConfig</em>, uncomment the following:
 
-[code language="csharp"]
+```csharp
+
 // ***** Uncomment the following to enable the swagger UI *****
 })
-.EnableSwaggerUi(c =&amp;gt;
+.EnableSwaggerUi(c =&gt;
 {
-[/code]
+```
 
 Now we can start the web app to check out our API.  Start it with F5.  You should land on the root of your web site and get a Forbidden 403 error.  That’s because there is no content in the web site, it’s an API.
 
@@ -127,9 +130,10 @@ Go to the Swagger path:  <a title="http://localhost:18008/swagger/" href="http:
 
 This gives you the beautiful Swagger UI.  You see the Persona API, expend it.  You’ll see the GET operation ; click it.  Then <em>Try it out</em>.  No parameters are required and you should have the following in return payload:
 
-[code language="JavaScript"]
-{ &quot;Description&quot;: &quot;Description of the invoking user&quot;, &quot;Name&quot;: &quot;&quot;, &quot;Claims&quot;: [] }
-[/code]
+```JavaScript
+
+{ "Description": "Description of the invoking user", "Name": "", "Claims": [] }
+```
 
 That is because you aren’t authenticated so the current user is empty.  No problem, we’ll get there.
 <h2>Configuring Service Principal in AAD</h2>
@@ -215,7 +219,8 @@ Change the namespace for <em>AboutMeConsole.AboutMeApi</em> before hitting <em>O
 
 Now you can go in the <em>Program</em> file and paste the following code:
 
-[code language="csharp"]
+```csharp
+
 using AboutMeConsole.AboutMeApi;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
@@ -239,19 +244,19 @@ namespace AboutMeConsole
             };
 
             client.HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
-                &quot;Bearer&quot;,
+                "Bearer",
                 authenticationResult.AccessToken);
 
             var persona = await client.Persona.GetAsync();
         }
 
-        private async static Task&lt;AuthenticationResult&gt; AuthenticateAsync()
+        private async static Task<AuthenticationResult> AuthenticateAsync()
         {
-            var authority = &quot;https://login.microsoftonline.com/&lt;your AAD name here&gt;.onmicrosoft.com&quot;;
+            var authority = "https://login.microsoftonline.com/<your AAD name here>.onmicrosoft.com";
             //  Invoked App ID
-            var resource = &quot;&lt;The client ID of AboutMeApi app&gt;&quot;;
-            var clientID = &quot;&lt;The client ID of AboutMeConsoleClient app&gt;&quot;;
-            var clientSecret = &quot;&lt;The secret key of AboutMeConsoleClient app&gt;&quot;;
+            var resource = "<The client ID of AboutMeApi app>";
+            var clientID = "<The client ID of AboutMeConsoleClient app>";
+            var clientSecret = "<The secret key of AboutMeConsoleClient app>";
             var clientCredential = new ClientCredential(clientID, clientSecret);
             var context = new AuthenticationContext(authority, false);
             var authenticationResult = await context.AcquireTokenAsync(
@@ -262,7 +267,7 @@ namespace AboutMeConsole
         }
     }
 }
-[/code]
+```
 
 You should have a few classes your system doesn’t recognize.  You need to import the NuGet package <em>Microsoft.IdentityModel.Clients.ActiveDirectory</em> to get those classes.
 
@@ -310,12 +315,13 @@ You can save your API App configuration in the portal.
 <h2>Console App pointing to Azure App</h2>
 Now let’s go back to our Console app and change the following code in <em>DoJobAsync</em>:
 
-[code language="csharp"]
+```csharp
+
             var client = new AboutMeApiClient
             {
-                BaseUri = new Uri(&quot;https://aboutmeapi2016.azurewebsites.net&quot;)
+                BaseUri = new Uri("https://aboutmeapi2016.azurewebsites.net")
             };
-[/code]
+```
 
 Of course, you need to put your own unique URL there but…  <strong>and I can’t stress that enough</strong>, you need to put HTTPS in your url there.  If you don’t, the authorization feature is going to give you an unauthorized and if you’re lucky like me, you’ll need 3 hours to find out why.  Hint:  it is the letter ‘s’ missing at the end of ‘http’
 

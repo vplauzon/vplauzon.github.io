@@ -50,26 +50,27 @@ The template will take a little while to deploy, thanks to the fact it contains 
 
 If you’ve done VMs with ARM before, it is pretty much the same thing, except with two NICs references in the VM.  The only thing to be watchful for is that you have to specify which NIC is primary.  You do this with the <em>primary</em> property:
 
-[code language="javascript"]
+```javascript
 
-&quot;networkProfile&quot;: {
-  &quot;networkInterfaces&quot;: [
+
+"networkProfile": {
+  "networkInterfaces": [
     {
-      &quot;id&quot;: &quot;[resourceId('Microsoft.Network/networkInterfaces', concat(variables('Web NIC Prefix'), '-', copyIndex()))]&quot;,
-      &quot;properties&quot;: {
-        &quot;primary&quot;: true
+      "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('Web NIC Prefix'), '-', copyIndex()))]",
+      "properties": {
+        "primary": true
       }
     },
     {
-      &quot;id&quot;: &quot;[resourceId('Microsoft.Network/networkInterfaces', concat(variables('Maintenance NIC Prefix'), '-', copyIndex()))]&quot;,
-      &quot;properties&quot;: {
-        &quot;primary&quot;: false
+      "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('Maintenance NIC Prefix'), '-', copyIndex()))]",
+      "properties": {
+        "primary": false
       }
     }
   ]
 }
 
-[/code]
+```
 
 If you want to push the example and test it with a VPN gateway, consult <a title="https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-howto-point-to-site-rm-ps/" href="https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-howto-point-to-site-rm-ps/">https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-howto-point-to-site-rm-ps/</a> to do a point-to-site connection with your PC.
 <h2>Conclusion</h2>

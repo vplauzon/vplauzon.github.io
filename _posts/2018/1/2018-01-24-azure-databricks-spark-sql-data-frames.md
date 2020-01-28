@@ -42,12 +42,13 @@ We recommend cloning the notebook used in the previous article since the beginni
 <h2>Loading the data:  RDDs</h2>
 We’ll first load the data.  This is identical to our previous article and we use RDDs:
 
-[code language="python"]
+```python
+
 
 #  Fetch porgat.txt from storage account
-pathPrefix = &quot;wasbs://&lt;span style=&quot;display: inline !important; float: none; background-color: transparent; color: #333333; cursor: text; font-family: Georgia,'Times New Roman','Bitstream Charter',Times,serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;&quot;&gt;&lt;CONTAINER&gt;@&lt;STORAGE ACCOUNT&gt;&lt;/span&gt;/&quot;
-file = sc.textFile(pathPrefix + &quot;porgat.txt&quot;)
-[/code]
+pathPrefix = "wasbs://<span style="display: inline !important; float: none; background-color: transparent; color: #333333; cursor: text; font-family: Georgia,'Times New Roman','Bitstream Charter',Times,serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;"><CONTAINER>@<STORAGE ACCOUNT></span>/"
+file = sc.textFile(pathPrefix + "porgat.txt")
+```
 
 To ensure future compatibility, we did <a href="https://github.com/vplauzon/databricks/tree/master/dataframes">copy the dataset in GitHub</a>, along with the notebook <span style="display:inline !important;float:none;background-color:transparent;color:#333333;cursor:text;font-family:Georgia, 'Times New Roman', 'Bitstream Charter', Times, serif;font-size:16px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:left;text-decoration:none;text-indent:0;text-transform:none;white-space:normal;word-spacing:0;"> (see </span><a href="https://vincentlauzon.com/2018/02/27/import-notebooks-in-databricks/">this article</a><span style="display:inline !important;float:none;background-color:transparent;color:#333333;cursor:text;font-family:Georgia, 'Times New Roman', 'Bitstream Charter', Times, serif;font-size:16px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:left;text-decoration:none;text-indent:0;text-transform:none;white-space:normal;word-spacing:0;"> on how to import it in your Workspace)</span>.
 
@@ -55,24 +56,25 @@ The placeholders CONTAINER and STORAGE ACCOUNT are for the name of the container
 
 Then let’s transform the data.  Remember that all the three RDDs (i.e. characters, publications &amp; relationships) are all coming from a single file.
 
-[code language="python"]
+```python
+
 
 #  Remove the headers from the file:  lines starting with a star
-noHeaders = file.filter(lambda x: len(x)&amp;gt;0 and x[0]!='*')
+noHeaders = file.filter(lambda x: len(x)&gt;0 and x[0]!='*')
 #  Extract a pair from each line:  the leading integer and a string for the rest of the line
-paired = noHeaders.map(lambda l:  l.partition(' ')).filter(lambda t:  len(t)==3 and len(t[0])&amp;gt;0 and len(t[2])&amp;gt;0).map(lambda t: (int(t[0]), t[2]))
+paired = noHeaders.map(lambda l:  l.partition(' ')).filter(lambda t:  len(t)==3 and len(t[0])&gt;0 and len(t[2])&gt;0).map(lambda t: (int(t[0]), t[2]))
 #  Filter relationships as they do not start with quotes, then split the integer list
-scatteredRelationships = paired.filter(lambda (charId, text):  text[0]!='&quot;').map(lambda (charId, text): (charId, [int(x) for x in text.split(' ')]))
+scatteredRelationships = paired.filter(lambda (charId, text):  text[0]!='"').map(lambda (charId, text): (charId, [int(x) for x in text.split(' ')]))
 #  Relationships for the same character id sometime spans more than a line in the file, so let's group them together
 relationships = scatteredRelationships.reduceByKey(lambda pubList1, pubList2: pubList1 + pubList2)
 #  Filter non-relationships as they start with quotes ; remove the quotes
-nonRelationships = paired.filter(lambda (index, text):  text[0]=='&quot;').map(lambda (index, text):  (index, text[1:-1].strip()))
+nonRelationships = paired.filter(lambda (index, text):  text[0]=='"').map(lambda (index, text):  (index, text[1:-1].strip()))
 #  Characters stop at a certain line (part of the initial header ; we hardcode it here)
-characters = nonRelationships.filter(lambda (charId, name): charId&amp;lt;=6486)
+characters = nonRelationships.filter(lambda (charId, name): charId&lt;=6486)
 #  Publications starts after the characters
-publications = nonRelationships.filter(lambda (charId, name): charId&amp;gt;6486)
+publications = nonRelationships.filter(lambda (charId, name): charId&gt;6486)
 
-[/code]
+```
 
 Comments explain what each line does.
 <h2>Transitioning to Spark SQL:  Data Frames</h2>
@@ -82,7 +84,8 @@ The integration between the two works by creating a RDD of <em>Row</em> (a type 
 
 The Data Frames can then be registered as views.  It is those views we’ll query using Spark SQL.
 
-[code language="python"]
+```python
+
 
 from pyspark.sql import Row
 
@@ -93,17 +96,17 @@ flatRelationships = relationships.flatMap(lambda (charId, pubList):  [(charId, 
 #  Let's map the relationships to an RDD of rows in order to create a data frame out of it
 relationshipsDf = spark.createDataFrame(flatRelationships.map(lambda t: Row(charId=t[0], pubId=t[1])))
 #  Register relationships as a temporary view
-relationshipsDf.createOrReplaceTempView(&quot;relationships&quot;)
+relationshipsDf.createOrReplaceTempView("relationships")
 
 #  Let's do the same for characters
 charactersDf = spark.createDataFrame(characters.map(lambda t:  Row(charId=t[0], name=t[1])))
-charactersDf.createOrReplaceTempView(&quot;characters&quot;)
+charactersDf.createOrReplaceTempView("characters")
 
 #  and for publications
 publicationsDf = spark.createDataFrame(publications.map(lambda t:  Row(pubId=t[0], name=t[1])))
-publicationsDf.createOrReplaceTempView(&quot;publications&quot;)
+publicationsDf.createOrReplaceTempView("publications")
 
-[/code]
+```
 
 We could easily come back to a RDD object with, for instance, <em>publicationsDf.rdd</em>.
 <h2>Querying using Spark SQL</h2>
@@ -111,7 +114,8 @@ Using our Python Notebook, we’ll now transition to SQL.
 
 We can mix languages in the Notebook, as <a href="https://docs.azuredatabricks.net/user-guide/notebooks/index.html#mixing-languages-in-a-notebook" target="_blank" rel="noopener">the online documentation explains</a>, by simply starting a command with %&lt;language&gt;.  In this case we start with <em>%sql</em>.
 
-[code language="sql"]
+```sql
+
 
 %sql
 
@@ -121,7 +125,7 @@ FROM
 SELECT r1.charId AS charId1, r2.charId AS charId2, COUNT(r1.pubId, r2.pubId) AS pubCount
 FROM relationships AS r1
 CROSS JOIN relationships AS r2
-WHERE r1.charId &amp;lt; r2.charId
+WHERE r1.charId &lt; r2.charId
 AND r1.pubId=r2.pubId
 GROUP BY r1.charId, r2.charId
 ) AS sub
@@ -130,7 +134,7 @@ INNER JOIN characters c2 ON c2.charId=sub.charId2
 ORDER BY sub.pubCount DESC
 LIMIT 10
 
-[/code]
+```
 
 Here we see the power of Spark SQL.  No longer do we have strange manipulation of RDDs where we flipped the data around to have some item in first position in order to sort or group it.  We have plain SQL playing with the data in a very natural manner.
 
@@ -138,7 +142,8 @@ It is also extremely fast compare to the RDD code from our last article performi
 
 That code ranks Marvel characters in duo in order of join-appearances in publications.  Here is the code ranking trios:
 
-[code language="sql"]
+```sql
+
 
 %sql
 
@@ -149,8 +154,8 @@ SELECT r1.charId AS charId1, r2.charId AS charId2, r3.charId AS charId3, COUNT(r
 FROM relationships AS r1
 CROSS JOIN relationships AS r2
 CROSS JOIN relationships AS r3
-WHERE r1.charId &amp;lt; r2.charId
-AND r2.charId &amp;lt; r3.charId
+WHERE r1.charId &lt; r2.charId
+AND r2.charId &lt; r3.charId
 AND r1.pubId=r2.pubId
 AND r2.pubId=r3.pubId
 GROUP BY r1.charId, r2.charId, r3.charId
@@ -161,7 +166,7 @@ INNER JOIN characters c3 ON c3.charId=sub.charId3
 ORDER BY sub.pubCount DESC
 LIMIT 10
 
-[/code]
+```
 
 Not much more complex nor longer to execute.
 

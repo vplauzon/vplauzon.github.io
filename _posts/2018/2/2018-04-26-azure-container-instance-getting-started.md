@@ -83,17 +83,18 @@ Here we define a few shell variables that should be unique to our environment:
 </tbody>
 </table>
 
-[code language="bash"]
+```bash
 
-rg=&quot;aci&quot;
 
-cn=&quot;mycontainer&quot;
+rg="aci"
 
-dns=&quot;flaskdemo&quot;
+cn="mycontainer"
+
+dns="flaskdemo"
 
 az container create --resource-group $rg --location eastus --name $cn --image vplauzon/get-started:part2-no-redis --dns-name-label $dns --ports 80
 
-[/code]
+```
 
 This should only take a few seconds to deploy.  We can then test it by going to <a href="http://&lt;dns&gt;.&lt;region&gt;.azurecontainer.io">http://&lt;dns&gt;.&lt;region&gt;.azurecontainer.io</a>
 
@@ -107,21 +108,23 @@ ACI runs in an inaccessible host.  So we can’t use the <em>docker</em> comman
 
 A few of those are available through Azure CLI.  For instance, if we want to look at the logs of the container:
 
-[code language="bash"]
+```bash
+
 
 az container logs --resource-group $rg --name $cn
 
-[/code]
+```
 
 As shown in the <a href="https://docs.microsoft.com/en-us/azure/container-instances/container-instances-quickstart#attach-output-streams">online documentations</a>, we can also attach our standard output to the log streams.
 <h2>Access the container shell</h2>
 As shown in the <a href="https://docs.microsoft.com/en-us/azure/container-instances/container-instances-exec">online documentation</a>, we can also access the shell of the container:
 
-[code language="bash"]
+```bash
 
-az container exec --resource-group $rg --name $cn --exec-command &quot;/bin/bash&quot;
 
-[/code]
+az container exec --resource-group $rg --name $cn --exec-command "/bin/bash"
+
+```
 
 We can then navigate through the directory structure.  This shows the container is identical to one running locally.  Of course this is how containers should behave.
 <h2>PowerShell</h2>
@@ -131,25 +134,27 @@ Let’s quickly run the same sample in PowerShell.
 
 For creation we have:
 
-[code language="PowerShell"]
+```PowerShell
 
-$rg=&quot;aci&quot;
-$cn=&quot;mycontainer&quot;
-$dns=&quot;flaskdemo&quot;
+
+$rg="aci"
+$cn="mycontainer"
+$dns="flaskdemo"
 
 New-AzureRmContainerGroup -ResourceGroupName $rg -Location eastus -Name $cn -Image vplauzon/get-started:part2-no-redis -Port 80
 
-[/code]
+```
 
 Again, only a few seconds are necessary to see the result.
 
 We can take a look at the logs:
 
-[code language="PowerShell"]
+```PowerShell
+
 
 Get-AzureRmContainerInstanceLog -ResourceGroupName $rg -Name $cn -ContainerGroupName $cn
 
-[/code]
+```
 
 At the time of this writing (early April 2018), it is impossible to execute a command into a container via PowerShell.  Therefore, it is impossible to access the shell of a container.
 <h2>Summary</h2>

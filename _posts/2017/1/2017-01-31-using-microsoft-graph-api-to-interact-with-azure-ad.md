@@ -50,24 +50,25 @@ This sample is in C# / .NET but since the Active Directory Authentication Librar
 
 We need to install the NuGet package <a href="https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/">Microsoft.IdentityModel.Clients.ActiveDirectory</a> in our project.
 
-[code language="csharp"]
-        private static async Task&lt;string&gt; AppAuthenticationAsync()
+```csharp
+
+        private static async Task<string> AppAuthenticationAsync()
         {
             //  Constants
-            var tenant = &quot;LdapVplDemo.onmicrosoft.com&quot;;
-            var resource = &quot;https://graph.microsoft.com/&quot;;
-            var clientID = &quot;9a9f5e70-5501-4e9c-bd00-d4114ebeb419&quot;;
-            var secret = &quot;Ou+KN1DYv8337hG8o8+qRZ1EPqBMWwER/zvgqvmEe74=&quot;;
+            var tenant = "LdapVplDemo.onmicrosoft.com";
+            var resource = "https://graph.microsoft.com/";
+            var clientID = "9a9f5e70-5501-4e9c-bd00-d4114ebeb419";
+            var secret = "Ou+KN1DYv8337hG8o8+qRZ1EPqBMWwER/zvgqvmEe74=";
 
             //  Ceremony
-            var authority = $&quot;https://login.microsoftonline.com/{tenant}&quot;;
+            var authority = $"https://login.microsoftonline.com/{tenant}";
             var authContext = new AuthenticationContext(authority);
             var credentials = new ClientCredential(clientID, secret);
             var authResult = await authContext.AcquireTokenAsync(resource, credentials);
 
             return authResult.AccessToken;
         }
-[/code]
+```
 
 Here the <em>clientID </em>is the application ID of the application we created at <em>secret </em>is the secret key we created for it.
 
@@ -77,34 +78,35 @@ Here we return the access token as we’re going to use them.
 
 If we do not want to integrate with the ADAL, here’s the bare bone HTTP post version:
 
-[code language="csharp"]
-        private static async Task&lt;string&gt; HttpAppAuthenticationAsync()
+```csharp
+
+        private static async Task<string> HttpAppAuthenticationAsync()
         {
             //  Constants
-            var tenant = &quot;LdapVplDemo.onmicrosoft.com&quot;;
-            var clientID = &quot;9a9f5e70-5501-4e9c-bd00-d4114ebeb419&quot;;
-            var resource = &quot;https://graph.microsoft.com/&quot;;
-            var secret = &quot;Ou+KN1DYv8337hG8o8+qRZ1EPqBMWwER/zvgqvmEe74=&quot;;
+            var tenant = "LdapVplDemo.onmicrosoft.com";
+            var clientID = "9a9f5e70-5501-4e9c-bd00-d4114ebeb419";
+            var resource = "https://graph.microsoft.com/";
+            var secret = "Ou+KN1DYv8337hG8o8+qRZ1EPqBMWwER/zvgqvmEe74=";
 
             using (var webClient = new WebClient())
             {
                 var requestParameters = new NameValueCollection();
 
-                requestParameters.Add(&quot;resource&quot;, resource);
-                requestParameters.Add(&quot;client_id&quot;, clientID);
-                requestParameters.Add(&quot;grant_type&quot;, &quot;client_credentials&quot;);
-                requestParameters.Add(&quot;client_secret&quot;, secret);
+                requestParameters.Add("resource", resource);
+                requestParameters.Add("client_id", clientID);
+                requestParameters.Add("grant_type", "client_credentials");
+                requestParameters.Add("client_secret", secret);
 
-                var url = $&quot;https://login.microsoftonline.com/{tenant}/oauth2/token&quot;;
-                var responsebytes = await webClient.UploadValuesTaskAsync(url, &quot;POST&quot;, requestParameters);
+                var url = $"https://login.microsoftonline.com/{tenant}/oauth2/token";
+                var responsebytes = await webClient.UploadValuesTaskAsync(url, "POST", requestParameters);
                 var responsebody = Encoding.UTF8.GetString(responsebytes);
-                var obj = JsonConvert.DeserializeObject&lt;JObject&gt;(responsebody);
-                var token = obj[&quot;access_token&quot;].Value&lt;string&gt;();
+                var obj = JsonConvert.DeserializeObject<JObject>(responsebody);
+                var token = obj["access_token"].Value<string>();
 
                 return token;
             }
         }
-[/code]
+```
 
 Here I use the popular <a href="https://www.nuget.org/packages/Newtonsoft.Json/" target="_blank" rel="noopener">Newtonsoft Json Nuget Package</a> to handle JSON.
 
@@ -116,12 +118,13 @@ Here we’re going to use <a href="https://developer.microsoft.com/en-us/graph/d
 
 There is actually a NuGet package for <a href="https://www.nuget.org/packages/Microsoft.Graph" target="_blank" rel="noopener">Microsoft Graph API</a> and, in general <a href="https://graph.microsoft.io/en-us/code-samples-and-sdks" target="_blank" rel="noopener">SDKs (at the time of this writing) for 9 platforms</a>.
 
-[code language="csharp"]
-        private static async Task&lt;bool&gt; DoesUserExistsAsync(HttpClient client, string user)
+```csharp
+
+        private static async Task<bool> DoesUserExistsAsync(HttpClient client, string user)
         {
             try
             {
-                var payload = await client.GetStringAsync($&quot;https://graph.microsoft.com/v1.0/users/{user}&quot;);
+                var payload = await client.GetStringAsync($"https://graph.microsoft.com/v1.0/users/{user}");
 
                 return true;
             }
@@ -130,7 +133,7 @@ There is actually a NuGet package for <a href="https://www.nuget.org/packages/Mi
                 return false;
             }
         }
-[/code]
+```
 
 Again, the code is minimalist here.  The HTTP GET actually returns user information that could be used.
 
@@ -138,18 +141,19 @@ Again, the code is minimalist here.  The HTTP GET actually returns user informa
 
 Here we’re going to use the <a href="https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_list_memberof" target="_blank" rel="noopener">memberof</a> method of Microsoft Graph API.
 
-[code language="csharp"]
-        private static async Task&lt;string[]&gt; GetUserGroupsAsync(HttpClient client, string user)
+```csharp
+
+        private static async Task<string[]> GetUserGroupsAsync(HttpClient client, string user)
         {
             var payload = await client.GetStringAsync(
-                $&quot;https://graph.microsoft.com/v1.0/users/{user}/memberOf&quot;);
-            var obj = JsonConvert.DeserializeObject&lt;JObject&gt;(payload);
-            var groupDescription = from g in obj[&quot;value&quot;]
-                                   select g[&quot;displayName&quot;].Value&lt;string&gt;();
+                $"https://graph.microsoft.com/v1.0/users/{user}/memberOf");
+            var obj = JsonConvert.DeserializeObject<JObject>(payload);
+            var groupDescription = from g in obj["value"]
+                                   select g["displayName"].Value<string>();
 
             return groupDescription.ToArray();
         }
-[/code]
+```
 
 Here, we deserialize the returned payload to extract the group display names.  The information returned is richer and could be used.
 
@@ -159,7 +163,8 @@ Finally we’re going to use the <a href="https://developer.microsoft.com/en-us/
 
 This is slightly more complicated as it is an HTTP POST with a JSON payload in input.
 
-[code language="csharp"]
+```csharp
+
         private static async Task CreateUserAsync(HttpClient client, string user, string domain)
         {
             using (var stream = new MemoryStream())
@@ -170,11 +175,11 @@ This is slightly more complicated as it is an HTTP POST with a JSON payload in i
                     accountEnabled = true,
                     displayName = user,
                     mailNickname = user,
-                    userPrincipalName = $&quot;{user}@{domain}&quot;,
+                    userPrincipalName = $"{user}@{domain}",
                     passwordProfile = new
                     {
                         forceChangePasswordNextSignIn = true,
-                        password = &quot;tempPa$$w0rd&quot;
+                        password = "tempPa$$w0rd"
                     }
                 };
                 var payloadText = JsonConvert.SerializeObject(payload);
@@ -186,9 +191,9 @@ This is slightly more complicated as it is an HTTP POST with a JSON payload in i
 
                 using (var content = new StreamContent(stream))
                 {
-                    content.Headers.Add(&quot;Content-Type&quot;, &quot;application/json&quot;);
+                    content.Headers.Add("Content-Type", "application/json");
 
-                    var response = await client.PostAsync(&quot;https://graph.microsoft.com/v1.0/users/&quot;, content);
+                    var response = await client.PostAsync("https://graph.microsoft.com/v1.0/users/", content);
 
                     if (!response.IsSuccessStatusCode)
                     {
@@ -198,13 +203,14 @@ This is slightly more complicated as it is an HTTP POST with a JSON payload in i
             }
         }
 
-[/code]
+```
 
 <h2>Calling Code</h2>
 
 The calling code looks like this:
 
-[code language="csharp"]
+```csharp
+
 
         private static async Task Test()
         {
@@ -213,12 +219,12 @@ The calling code looks like this:
 
             using (var client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(&quot;Bearer&quot;, token);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                var user = &quot;test@LdapVplDemo.onmicrosoft.com&quot;;
+                var user = "test@LdapVplDemo.onmicrosoft.com";
                 var userExist = await DoesUserExistsAsync(client, user);
 
-                Console.WriteLine($&quot;Does user exists?  {userExist}&quot;);
+                Console.WriteLine($"Does user exists?  {userExist}");
 
                 if (userExist)
                 {
@@ -226,15 +232,15 @@ The calling code looks like this:
 
                     foreach (var g in groups)
                     {
-                        Console.WriteLine($&quot;Group:  {g}&quot;);
+                        Console.WriteLine($"Group:  {g}");
                     }
 
-                    await CreateUserAsync(client, &quot;newuser&quot;, &quot;LdapVplDemo.onmicrosoft.com&quot;);
+                    await CreateUserAsync(client, "newuser", "LdapVplDemo.onmicrosoft.com");
                 }
             }
         }
 
-[/code]
+```
 
 <h2>Summary</h2>
 
