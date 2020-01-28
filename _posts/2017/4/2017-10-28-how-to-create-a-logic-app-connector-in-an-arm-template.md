@@ -32,8 +32,6 @@ The tools are available for <a href="https://marketplace.visualstudio.com/items?
 I did navigate the web before finding an answer and I saw a lot of dead ends out there, so if you are looking specifically for Cosmos DB connector, here it is:
 
 ```JavaScript
-
-
 {
   "apiVersion": "2016-06-01",
   "type": "Microsoft.Web/connections",
@@ -53,7 +51,6 @@ I did navigate the web before finding an answer and I saw a lot of dead ends out
     "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('Cosmos DB Account Name'))]"
   ]
 }
-
 ```
 
 Notice that we hook on a Cosmos DB account in order to list its keys.  We assume the Cosmos DB account is part of the same deployment.

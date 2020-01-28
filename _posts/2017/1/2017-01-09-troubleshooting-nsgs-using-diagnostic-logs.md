@@ -39,7 +39,6 @@ Nevertheless, the logs give us a picture of what really is happening.  They are
 I provide here a sample configuration I’m going to use to walk through the troubleshooting process.
 
 ```JavaScript
-
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -595,7 +594,6 @@ Preferably, use a viewer / editor that understands JSON (I use Visual Studio). 
 If we look at the subnet NSG logs first and search for “RDP”, we’ll find this entry:
 
 ```JavaScript
-
     {
       "time": "2017-01-09T11:46:44.9090000Z",
       "systemId": "...",
@@ -620,7 +618,6 @@ The most interesting part is the <em>matchedConnections</em> property, which is 
 If we look in the VM logs, we’ll find this:
 
 ```JavaScript
-
     {
       "time": "2017-01-09T11:46:44.9110000Z",
       "systemId": "...",

@@ -18,14 +18,11 @@ In this article, we are going to build the solution.  We are going to use an <a
 The goal of the architecture was to allow a fast pace stream of events with a shape akin to
 
 ```JavaScript
-
-
 {
 
   "widgetId" : 42
 
 }
-
 ```
 
 to be simply aggregated at constant intervals (say once a minute).  We wanted the solution to be resilient to different service failures.
@@ -155,8 +152,6 @@ We see that we defined a different policy for send and listen action.  This way
 It is also interesting to notice that the ARM template doesn’t explicitly define the keys.  It simply defines the policy:
 
 ```JavaScript
-
-
 {
   "type": "authorizationRules",
   "apiVersion": "2017-04-01",
@@ -170,16 +165,12 @@ It is also interesting to notice that the ARM template doesn’t explicitly defi
     ]
   }
 }
-
 ```
 
 and when the key is needed, the following syntax is used:
 
 ```JavaScript
-
-
 listKeys(variables('Primary Telemetry Listen Rule Id'), '2017-04-01').primaryKey
-
 ```
 
 This has a definite security advantage.  ARM templates are typically stored in widely available internal source control.  Here the keys aren’t available in the template.  We therefore avoid storing secret.
@@ -211,8 +202,6 @@ Here we choose <em>array</em>, as opposed to <em>line separated</em>.  Basicall
 The query is interesting:
 
 ```SQL
-
-
 SELECT
 COUNT(*) AS Count,
 widgetId
@@ -226,7 +215,6 @@ widgetId
 FROM [secondary-telemetry]
 TIMESTAMP BY createdAt
 GROUP BY widgetId, TumblingWindow(second, 5)
-
 ```
 
 We use the input / output aliases in the query.
@@ -262,8 +250,6 @@ The stored procedure action is configured to call <em>[dbo].[updateSummaries].</
 Both the trigger and the action relies on connections.  For instance, the SQL connection:
 
 ```JavaScript
-
-
 {
   "type": "microsoft.web/connections",
   "apiVersion": "2016-06-01",
@@ -285,7 +271,6 @@ Both the trigger and the action relies on connections.  For instance, the SQL c
     }
   }
 }
-
 ```
 
 Connections are Azure resources.  They externalize connection configuration.  We have covered in another article <a href="https://vincentlauzon.com/2017/10/28/how-to-create-a-logic-app-connector-in-an-arm-template/">how to create them in an ARM Template</a>.
@@ -293,8 +278,6 @@ Connections are Azure resources.  They externalize connection configuration.  
 The database consist of two items:  a summary table and a stored procedure.  <a href="https://github.com/vplauzon/streaming/blob/master/SummaryStreaming/Deployment/db-script.sql">The script to create them</a> is executed by an <a href="https://vincentlauzon.com/2018/04/26/azure-container-instance-getting-started/">Azure Container Instance</a>.
 
 ```SQL
-
-
 --DROP PROC dbo.updateSummaries
 --DROP TABLE [dbo].WidgetSummary
 
@@ -332,7 +315,6 @@ INSERT (WidgetId, WidgetCount)
 VALUES (source.WidgetId, source.WidgetCount);
 END
 GO
-
 ```
 
 The table has two fields:  a widget ID and the count.  The count will reflect how many telemetry events with the given widget ID have been observed.
@@ -340,11 +322,8 @@ The table has two fields:  a widget ID and the count.  The count will reflect 
 We can connect to the database using our favorite tool.  We are going to use Visual Studio and run the following query:
 
 ```SQL
-
-
 SELECT * FROM [dbo].WidgetSummary
 SELECT SUM(widgetCount) FROM [dbo].WidgetSummary
-
 ```
 
 We should have the following output:

@@ -43,8 +43,6 @@ We recommend cloning the notebook used in the previous article since the beginni
 We’ll first load the data.  This is identical to our previous article and we use RDDs:
 
 ```python
-
-
 #  Fetch porgat.txt from storage account
 pathPrefix = "wasbs://<span style="display: inline !important; float: none; background-color: transparent; color: #333333; cursor: text; font-family: Georgia,'Times New Roman','Bitstream Charter',Times,serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;"><CONTAINER>@<STORAGE ACCOUNT></span>/"
 file = sc.textFile(pathPrefix + "porgat.txt")
@@ -57,8 +55,6 @@ The placeholders CONTAINER and STORAGE ACCOUNT are for the name of the container
 Then let’s transform the data.  Remember that all the three RDDs (i.e. characters, publications &amp; relationships) are all coming from a single file.
 
 ```python
-
-
 #  Remove the headers from the file:  lines starting with a star
 noHeaders = file.filter(lambda x: len(x)&gt;0 and x[0]!='*')
 #  Extract a pair from each line:  the leading integer and a string for the rest of the line
@@ -73,7 +69,6 @@ nonRelationships = paired.filter(lambda (index, text):  text[0]=='"').map(lambd
 characters = nonRelationships.filter(lambda (charId, name): charId&lt;=6486)
 #  Publications starts after the characters
 publications = nonRelationships.filter(lambda (charId, name): charId&gt;6486)
-
 ```
 
 Comments explain what each line does.
@@ -85,8 +80,6 @@ The integration between the two works by creating a RDD of <em>Row</em> (a type 
 The Data Frames can then be registered as views.  It is those views we’ll query using Spark SQL.
 
 ```python
-
-
 from pyspark.sql import Row
 
 #  Let's create dataframes out of the RDDs and register them as temporary views for SQL to use
@@ -105,7 +98,6 @@ charactersDf.createOrReplaceTempView("characters")
 #  and for publications
 publicationsDf = spark.createDataFrame(publications.map(lambda t:  Row(pubId=t[0], name=t[1])))
 publicationsDf.createOrReplaceTempView("publications")
-
 ```
 
 We could easily come back to a RDD object with, for instance, <em>publicationsDf.rdd</em>.
@@ -115,8 +107,6 @@ Using our Python Notebook, we’ll now transition to SQL.
 We can mix languages in the Notebook, as <a href="https://docs.azuredatabricks.net/user-guide/notebooks/index.html#mixing-languages-in-a-notebook" target="_blank" rel="noopener">the online documentation explains</a>, by simply starting a command with %&lt;language&gt;.  In this case we start with <em>%sql</em>.
 
 ```sql
-
-
 %sql
 
 SELECT c1.name AS name1, c2.name AS name2, sub.charId1, sub.charId2, sub.pubCount
@@ -133,7 +123,6 @@ INNER JOIN characters c1 ON c1.charId=sub.charId1
 INNER JOIN characters c2 ON c2.charId=sub.charId2
 ORDER BY sub.pubCount DESC
 LIMIT 10
-
 ```
 
 Here we see the power of Spark SQL.  No longer do we have strange manipulation of RDDs where we flipped the data around to have some item in first position in order to sort or group it.  We have plain SQL playing with the data in a very natural manner.
@@ -143,8 +132,6 @@ It is also extremely fast compare to the RDD code from our last article performi
 That code ranks Marvel characters in duo in order of join-appearances in publications.  Here is the code ranking trios:
 
 ```sql
-
-
 %sql
 
 SELECT c1.name AS name1, c2.name AS name2, c3.name AS name3, sub.charId1, sub.charId2, sub.charId3, sub.pubCount
@@ -165,7 +152,6 @@ INNER JOIN characters c2 ON c2.charId=sub.charId2
 INNER JOIN characters c3 ON c3.charId=sub.charId3
 ORDER BY sub.pubCount DESC
 LIMIT 10
-
 ```
 
 Not much more complex nor longer to execute.

@@ -62,7 +62,6 @@ I want to put all the tables inside a database container so let’s create a dat
 In the <em>CreateDbAndSchemas.usql </em>file, let’s put the following content:
 
 ```sql
-
 //  This drops the database (with its data) before recreating it
 DROP DATABASE IF EXISTS Marvel;
 
@@ -92,7 +91,6 @@ I fully covered <a href="http://vincentlauzon.com/2016/01/06/registering-assembl
 Let’s look at the first format, which I called the <em>vertex</em> format.  Here’s the beginning of <em>vert1.txt</em>:
 
 ```text
-
 Vertex 1: 24-HOUR MAN/EMMANUEL
 Vertex 2: 3-D MAN/CHARLES CHANDLER & HAROLD CHANDLER
 Vertex 3: 4-D MAN/MERCURIO
@@ -102,7 +100,6 @@ Vertex 4: 8-BALL/
 The format is pretty obvious but it also doesn’t comply with any format supported by USQL extractors, i.e. it isn’t comma or tab separated…  This is why we’re going to use C# code to parse it.  The most elegant way is to use a regular expression to parse and extract the data.  Here is the C# helper class to accomplish that:
 
 ```csharp
-
 using System.Text.RegularExpressions;
 
 namespace MarvelLib
@@ -146,7 +143,6 @@ namespace MarvelLib
 The Function consuming this is the following:
 
 ```sql
-
 CREATE FUNCTION Input.GetVertexData(@fileSet string)
 RETURNS @vertexData TABLE
 (
@@ -188,7 +184,6 @@ The second expression is what is returned by the function.  We’ll see how we�
 Let’s look at the second format, which I called the <em>relation</em> format.  Here’s the beginning of <em>porgat.txt</em>:
 
 ```text
-
 1 6487
 2 6488 6489 6490 6491 6492 6493 6494 6495 6496
 3 6497 6498 6499 6500 6501 6502 6503 6504 6505
@@ -200,7 +195,6 @@ Again the format is pretty straightforward but isn’t directly supported by U-S
 We’re going to use the following C# class (simply splitting the line on spaces) to help us out:
 
 ```csharp
-
 using Microsoft.Analytics.Types.Sql;
 using System.Linq;
 
@@ -237,7 +231,6 @@ namespace MarvelLib
 The function consuming this code is:
 
 ```sql
-
 CREATE FUNCTION Input.GetRelationData(@fileSet string)
 RETURNS @relationData TABLE
 (
@@ -283,7 +276,6 @@ In the third expression, we explode the array of relation IDs on different rows.
 The complete content of <em>CreateFormatFunctions.usql</em> is the following:
 
 ```sql
-
 USE DATABASE Marvel;
 
 DROP FUNCTION IF EXISTS Input.GetVertexData;
@@ -359,7 +351,6 @@ We’ve built all the tools to easily import the files into ADLA tables.
 In the file <em>ImportData.usql</em>:
 
 ```sql
-
 USE DATABASE Marvel;
 
 //  Load row sets

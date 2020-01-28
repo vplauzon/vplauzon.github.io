@@ -29,8 +29,6 @@ UPDATE (01-11-2017):  A deeper discussion about changing the underlying API can
 Let’s create a simple graph in a Cosmos DB using Gremlin.  <a href="https://vincentlauzon.com/2017/08/28/cosmos-db-graph-with-gremlin-getting-started/">In a past article we’ve looked at how to setup Gremlin with Cosmos DB</a>.
 
 ```groovy
-
-
 gremlin> :remote connect tinkerpop.server conf/remote-secure.yaml
 
 gremlin> :> g.addV('person').property('id', 'Alice').property('age', 42).property('department', 'stereotype')
@@ -38,7 +36,6 @@ gremlin> :> g.addV('person').property('id', 'Alice').property('age', 42).propert
 gremlin> :> g.addV('person').property('id', 'Bob').property('age', 24).property('department', 'support character')
 
 gremlin> :> g.V('Alice').addE('communicatesWith').property('id', 'AliceToBob').property('language', 'English').to(g.V('Bob'))
-
 ```
 
 The first line is there to connect to the remote server we configured in <em>remote-secure.yaml</em>.  For details <a href="https://vincentlauzon.com/2017/08/28/cosmos-db-graph-with-gremlin-getting-started/">see the setup article</a>.
@@ -59,8 +56,6 @@ We can note the following:
 Here we build on the code from the <a href="https://vincentlauzon.com/2017/08/31/cosmos-db-async-querying-streaming/">Cosmos DB async streaming article</a>.  We simply read all the documents in the graph with DocumentDB API and output them in JSON format:
 
 ```groovy
-
-
 private async static Task ListAllDocumentsAsync(
     DocumentClient client,
     Uri collectionUri)
@@ -95,14 +90,11 @@ private async static Task ListAllDocumentsAsync(
 
     Console.WriteLine();
 }
-
 ```
 
 The output should be the following:
 
 ```javascript
-
-
 {
    "id": "Bob",
    "_rid": "smp9AKyqeQADAAAAAAAABA==",
@@ -149,7 +141,6 @@ The output should be the following:
    "_isEdge": true,
    "department": "stereotype"
  }
-
 ```
 
 We can learn a lot from this projection:
@@ -169,8 +160,6 @@ We can learn a lot from this projection:
 Given that information, we can easily write queries, for instance, to list only vertices:
 
 ```csharp
-
-
 private class MinimalDoc
 {
     public string id { get; set; }
@@ -201,7 +190,6 @@ private async static Task ListOnlyVerticesAsync(
 
     Console.WriteLine();
 }
-
 ```
 
 This should list Alice &amp; Bob but not the edge between them.
@@ -211,8 +199,6 @@ Querying is all nice and good, but what about writing?
 Let’s try to simply add a document in the graph:
 
 ```csharp
-
-
 private async static Task AddTrivialVertexAsync(
     DocumentClient client,
     Uri collectionUri)
@@ -229,18 +215,14 @@ private async static Task AddTrivialVertexAsync(
 
     Console.WriteLine(json);
 }
-
 ```
 
 If we use the Gremlin Console to look at it:
 
 ```groovy
-
-
 gremlin> :> g.V("Carol")
 
 ==>[id:Carol,label:person,type:vertex,properties:[department:[[id:Carol|department,value:support character]]]]
-
 ```
 
 Hence we see the new document as a vertex.  That makes sense since we’ve seen that vertices are projected as simple documents.
@@ -248,8 +230,6 @@ Hence we see the new document as a vertex.  That makes sense since we’ve seen
 If we add other simple properties (like we did with <em>label</em>) this will not work.  Those properties won’t show up in Gremlin.  That is because, as we’ve seen, in Gremlin, properties are always collections.  We can do that:
 
 ```csharp
-
-
 private async static Task AddVertexWithPropertiesAsync(
     DocumentClient client,
     Uri collectionUri)
@@ -273,18 +253,14 @@ private async static Task AddVertexWithPropertiesAsync(
 
     Console.WriteLine(json);
 }
-
 ```
 
 and in Gremlin:
 
 ```groovy
-
-
 gremlin> :> g.V("David").valueMap()
 
 ==>[age:[48],department:[support character]]
-
 ```
 
 So it appears we can successfully write vertices in a graph using the DocumentDB API.
@@ -296,8 +272,6 @@ We can write vertices.  That is only half the equation for importing data in a 
 It turns out we simply have to mimic what we’ve seen with existing edges:
 
 ```csharp
-
-
 private static async Task AddEdgeAsync(DocumentClient client, Uri collectionUri)
 {
     var response = await client.CreateDocumentAsync(
@@ -319,7 +293,6 @@ private static async Task AddEdgeAsync(DocumentClient client, Uri collectionUri)
 
     Console.WriteLine(json);
 }
-
 ```
 
 It is important for the edge's partition to be the same as the source vertex, otherwise the edge won’t be seen by Gremlin.
@@ -327,8 +300,6 @@ It is important for the edge's partition to be the same as the source vertex, ot
 We can validate the edge is now present in Gremlin:
 
 ```groovy
-
-
 gremlin> :> g.E()
 
 ==>[id:CarolToAlice,label:eavesdropOn,type:edge,inVLabel:person,outVLabel:person,inV:Alice,outV:Carol,properties:[language:English]]
@@ -337,7 +308,6 @@ gremlin> :> g.E()
 gremlin> :> g.V("Carol").out("eavesdropOn")
 
 ==>[id:Alice,label:person,type:vertex,properties:[age:[[id:78109dc8-587f-4d87-9d2e-e4a1731dec2b,value:42]],department:[[id:Alice|department,value:stereotype]]]]
-
 ```
 
 <h2>Summary</h2>

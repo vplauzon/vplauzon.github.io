@@ -30,8 +30,6 @@ Docker has a nice <a href="https://docs.docker.com/develop/develop-images/multis
 The Docker file, <a href="https://github.com/vplauzon/cosmos-db-target-config/blob/master/CosmosTargetConsole/Dockerfile">available on GitHub</a> is reproduced here:
 
 ```shell
-
-
 #    Multi-stage docker build file (see <a href="https://docs.docker.com/develop/develop-images/multistage-build/)">https://docs.docker.com/develop/develop-images/multistage-build/)</a>
 #    Use a Microsoft image with .NET core runtime (<a href="https://hub.docker.com/r/microsoft/dotnet/tags/)">https://hub.docker.com/r/microsoft/dotnet/tags/)</a>
 FROM microsoft/dotnet:2.1-sdk AS build
@@ -62,7 +60,6 @@ ENV TARGET_URL ""
 
 #    Run console app
 CMD ["dotnet", "CosmosTargetConsole.dll"]
-
 ```
 
 Let’s review that Docker File.

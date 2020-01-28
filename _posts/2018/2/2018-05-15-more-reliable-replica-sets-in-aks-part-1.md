@@ -78,10 +78,7 @@ It is quite easy to show.  Let’s do an experiment with our 20 nodes cluster.
 We created the cluster with
 
 ```shell
-
-
 az aks create --resource-group aks2 --name aks2 --kubernetes-version 1.9.6 --node-count 20 --generate-ssh-keys
-
 ```
 
 Our code is <a href="https://github.com/vplauzon/containers/tree/master/replicasets-ha">available on GitHub</a>.
@@ -91,8 +88,6 @@ We start by creating a few deployments.  Each deploy one replica set.  Each re
 We are going to run the following code in the shell (also available as a <a href="https://github.com/vplauzon/containers/blob/master/replicasets-ha/initial-create.sh">shell script here</a>):
 
 ```shell
-
-
 kubectl create -f dep-a.yaml
 
 kubectl create -f dep-b.yaml
@@ -102,7 +97,6 @@ kubectl create -f dep-c.yaml
 kubectl create -f dep-d.yaml
 
 kubectl create -f dep-e.yaml
-
 ```
 
 We can then look at the pods placement by executing <em>kubectl get pods -o wide</em>.
@@ -151,12 +145,9 @@ Pod placement is somehow randomize.  We chose that sequence of deployments as i
 An easy way to “reshuffle the deck” here is to delete the replica set ‘e’.  Kubernetes will recreate the replica set and place pods again.  We could also do that to see how frequent a non-HA configuration is.  Let’s run the following code:
 
 ```shell
-
-
 kubectl delete rs -l app=app-e
 
 watch kubectl get pods -o wide
-
 ```
 
 If we do that 10 times on our 20 nodes cluster we get the following results:

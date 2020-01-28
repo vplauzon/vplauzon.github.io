@@ -14,7 +14,6 @@ Let’s migrate existing VMs from unmanaged to managed disks.
 Update your Microsoft Azure PowerShell to the latest bits in order to include Managed Disks functionalities
 <h3>Deploy ARM Template</h3>
 ```JavaScript
-
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",

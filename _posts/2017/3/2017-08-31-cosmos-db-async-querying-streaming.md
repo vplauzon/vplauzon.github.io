@@ -35,7 +35,6 @@ The reason it allows us to scale is that when we async / await on an I/O call (e
 The important part is to recognize that the query object (<em>IDocumentQuery&lt;T&gt;</em>) from the SDK is an asynchronous interface.  It fetches new results in batches.  So we can write a method to fetch all the results like this one:
 
 ```csharp
-
 private async static Task<T[]> GetAllResultsAsync<T>(IDocumentQuery<T> queryAll)
 {
     var list = new List<T>();
@@ -57,7 +56,6 @@ private async static Task<T[]> GetAllResultsAsync<T>(IDocumentQuery<T> queryAll)
 Or one that allows us to process all the items in the query with an <em>action</em>:
 
 ```csharp
-
 private async static Task<int> ProcessAllResultsAsync<T>(
     IDocumentQuery<T> queryAll,
     Action<T> action)
@@ -82,7 +80,6 @@ private async static Task<int> ProcessAllResultsAsync<T>(
 We can create a query object with no fancy LINQ expression, i.e. basically querying the entire collection, like this:
 
 ```csharp
-
 var client = new DocumentClient(new Uri(SERVICE_ENDPOINT), AUTH_KEY);
 var collectionUri = UriFactory.CreateDocumentCollectionUri(DATABASE, COLLECTION);
 var query = client.CreateDocumentQuery(
@@ -99,7 +96,6 @@ That code basically queries the entire collection and return an array of <em>Doc
 We could also serialize into a custom object and filter the query:
 
 ```csharp
-
 var query = client.CreateDocumentQuery<MinimalDoc>(
     collectionUri,
     new FeedOptions

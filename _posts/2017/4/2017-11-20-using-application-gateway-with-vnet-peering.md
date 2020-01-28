@@ -35,8 +35,6 @@ As previously mentioned, our <a href="https://github.com/vplauzon/app-gateway/tr
 Here is an example of PowerShell script that goes in each Scale Set and register the instances to the application gateway (code is in <a href="https://github.com/vplauzon/app-gateway/blob/master/multi-vnets-vmss/UpdateBackendPools.ps1" target="_blank" rel="noopener">UpdateBackendPools.ps1</a>)
 
 ```PowerShell
-
-
 $resourceGroupName = "appgw"
 $appGatewayName = "AppGateway"
 #  Map between the backend pool names of the Application gateway and the scale set names
@@ -70,7 +68,6 @@ $ag = Set-AzureRmApplicationGatewayBackendAddressPool -ApplicationGateway $ag -N
 
 #  Update Application Gateway resource with the object
 Set-AzureRmApplicationGateway -ApplicationGateway $ag
-
 ```
 
 <h2>Other Updates</h2>
@@ -83,8 +80,6 @@ We therefore need to those updates using PowerShell.
 As an example, here we add a URL map rule (see <a href="https://github.com/vplauzon/app-gateway/blob/master/multi-vnets-vmss/ChangeRule.ps1" target="_blank" rel="noopener">ChangeRule.ps1</a>):
 
 ```PowerShell
-
-
 $resourceGroupName = "appgw"
 $appGatewayName = "AppGateway"
 
@@ -112,7 +107,6 @@ $rules.Add($newRule)
 
 #  Update Application Gateway resource with the object
 Set-AzureRmApplicationGateway -ApplicationGateway $ag
-
 ```
 
 <h2>Summary</h2>

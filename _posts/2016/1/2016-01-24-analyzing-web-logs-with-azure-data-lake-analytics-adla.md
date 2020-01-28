@@ -34,7 +34,6 @@ When done, click the “Add” button at the bottom.
 Currently skipping lines in an input file isn’t supported.  This is quite unfortunate because log files come with two header rows:
 
 ```text
-
  
 #Software: Microsoft Internet Information Services 8.0
 #Fields: date time s-sitename cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Cookie) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken 
@@ -49,7 +48,6 @@ Because of this, we’ll have to jump through hoops and do some preprocessing.
 Let’s create a U-SQL script.  First, let’s load all the logs:
 
 ```sql
-
 @lines =
     EXTRACT Line string,
             FileName string,
@@ -74,7 +72,6 @@ Finally, we use my good old trick to get the entire line without parsing columns
 Then, we’ll filter out those header lines (starting with ‘#’) and reconstruct the blob path for future references:
 
 ```sql
-
 @logLines =
     SELECT Line,
            "//" + Year + "/" + Month + "/" + Day + "/" + Hour + "/" + FileName AS BlobPath
@@ -85,7 +82,6 @@ Then, we’ll filter out those header lines (starting with ‘#’) and reconstr
 In order to parse the lines, we’ll need some C# code:
 
 ```csharp
-
 namespace MarvelUsql
 {
     public static class SpaceSplit
@@ -113,7 +109,6 @@ Yes, I keep the old Marvel theme from the other posts.
 We can put that code in the code behind of the script we are building.  This simplifies the compilation and <a href="http://vincentlauzon.com/2016/01/06/registering-assemblies-in-azure-data-lake-analytics/">assembly registration process</a>.  We can then leverage the custom code in our script:
 
 ```sql
-
 @logs =
     SELECT DateTime.Parse(MarvelUsql.SpaceSplit.GetColumn(Line, 0)) AS s_date,
            MarvelUsql.SpaceSplit.GetColumn(Line, 1) AS s_time,
@@ -141,7 +136,6 @@ We can put that code in the code behind of the script we are building.  This si
 Finally, we’ll output the result into a consolidated file:
 
 ```sql
-
 OUTPUT @logs
 TO "/Preprocess/Logs.log"
 USING Outputters.Text(delimiter:' ');
@@ -156,7 +150,6 @@ Now that we’ve pre processed the logs, let’s run some analytics.
 Let’s determine the most popular pages:
 
 ```sql
-
 @logs =
     EXTRACT s_date DateTime,
             s_time string,
@@ -207,7 +200,6 @@ Third, we output that result to a TSV file.
 Similarly, we can check the top days for traffic:
 
 ```sql
-
 @logs =
     EXTRACT s_date DateTime,
             s_time string,

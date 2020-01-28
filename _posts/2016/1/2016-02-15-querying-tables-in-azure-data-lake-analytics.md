@@ -24,7 +24,6 @@ Obvious question:  which character is the most popular, i.e. which character ha
 Let’s ask the question:
 
 ```sql
-
 USE DATABASE Marvel;
  
 //  Most popular characters
@@ -73,7 +72,6 @@ We get the predictable result:
 Another obvious question is:  which 2 characters are published together the most?
 
 ```sql
-
 USE DATABASE Marvel;
  
 //  Most popular duo of characters

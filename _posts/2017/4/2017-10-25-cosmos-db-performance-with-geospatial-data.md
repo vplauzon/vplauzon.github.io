@@ -21,8 +21,6 @@ We populated a partitioned collection with random data.
 We wanted some volume so we did put of lot of non-geospatial data in there.  Documents have a geospatial “point” but also a bunch of long random strings and numbers.  Here is a sample document:
 
 ```JavaScript
-
-
 {
  "part": "2802",
  "name": "s2%R/@qcP@T<W?n_]\"f#2]QF3QHHC]PvzCDWP;`aE]WDCC`>Fnw?w9x9/+a(j^%^",
@@ -75,14 +73,11 @@ We ran the tests with 4 different Request Units (RUs) configurations:
 For the first test we take a query looking for points within a given polygon:
 
 ```SQL
-
-
 SELECT VALUE COUNT(1)
 FROM record r
 WHERE ST_WITHIN(
 r.location,
 {'type':'Polygon', 'coordinates':[@polyCoordinates]})
-
 ```
 
 The polygon coordinates are passed in parameter here.
@@ -604,15 +599,12 @@ This might be necessary for an application but often we want to limit the number
 Let’s modify the test query to:
 
 ```SQL
-
-
 SELECT VALUE COUNT(1)
 FROM record r
 WHERE ST_WITHIN(
 r.location,
 {'type':'Polygon', 'coordinates':[@polyCoordinates]})
 AND r.profile.age<25
-
 ```
 
 The age property is randomly generated to be uniformly distributed between 0 and 99.  The filter we just put should shrink the result set by a factor 4.
@@ -624,15 +616,12 @@ Here we see the power of automatic indexing in Cosmos DB.
 For the second test our query is looking for points at proximity to a given poing:
 
 ```SQL
-
-
 SELECT
 VALUE COUNT(1)
 FROM record r
 WHERE ST_DISTANCE (
 r.location,
 {'type':'Point', 'coordinates':@center})<@radius
-
 ```
 
 The center and radius are passed in parameters here.

@@ -28,10 +28,7 @@ For me, since I’m looking for the backup vault, the <em>Microsoft.Backup</em> 
 The following will give you all the resource types under the provider (in this case only one):
 
 ```PowerShell
-
-
 (Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Backup").ResourceTypes
-
 ```
 
 <a href="/assets/posts/2016/1/finding-arm-template-apiversion/image10.png"><img style="background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border:0;" title="image" src="/assets/posts/2016/1/finding-arm-template-apiversion/image_thumb10.png" alt="image" width="1151" height="73" border="0" /></a>
@@ -41,7 +38,6 @@ You see already that we get very valuable information here.  We get the API ver
 Once you know the Api Version it is much easier to create the arm template.  In the case of my backup vault:
 
 ```javascript
-
 {
       "name": "AdvVault-cp",
       "type": "Microsoft.Backup/BackupVault",

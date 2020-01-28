@@ -13,7 +13,6 @@ Let’s snapshot a Managed Disk and restore the snapshot on another VM.
 <h3>Deploy ARM Template</h3>
 
 ```JavaScript
-
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -433,7 +432,6 @@ touch myotherfile</li>
 <h3>Deploy VM from snapshot</h3>
 
 ```JavaScript
-
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",

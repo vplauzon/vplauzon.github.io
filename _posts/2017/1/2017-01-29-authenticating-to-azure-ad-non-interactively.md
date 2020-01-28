@@ -90,7 +90,6 @@ We’ll create a Console Application project.  We need the full .NET Framework 
 We need to install the NuGet package <a href="https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/" target="_blank" rel="noopener">Microsoft.IdentityModel.Clients.ActiveDirectory</a> in the project.
 
 ```csharp
-
         private static async Task AdalAuthenticationAsync()
         {
             //  Constants
@@ -119,7 +118,6 @@ If we pass a wrong password or wrong user name, we should obtain an error as exp
 We can use <a href="http://www.telerik.com/fiddler" target="_blank" rel="noopener">Fiddler</a> or other HTTP sniffing tool to see what ADAL did for us.  It is easy enough to replicate.
 
 ```csharp
-
         private static async Task HttpAuthenticationAsync()
         {
             //  Constants

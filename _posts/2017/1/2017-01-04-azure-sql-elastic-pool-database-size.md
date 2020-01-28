@@ -147,10 +147,7 @@ Using ARM template, it is easy to change the parameter.  Here, let’s simply s
 Building on the example we gave in a <a href="https://vincentlauzon.com/2016/12/21/azure-sql-elastic-pool-arm-templates/">previous article</a>, we can easily grab the <em>Pool-A-Db0</em> database in resource group <em>DBs</em> and server <em>pooldemoserver</em>:
 
 ```PowerShell
-
-
 Get-AzureRmSqlDatabase -ServerName pooldemoserver -ResourceGroupName DBs -DatabaseName Pool-A-Db0
-
 ```
 
 <a href="/assets/posts/2017/1/azure-sql-elastic-pool-database-size/image18.png"><img style="background-image:none;float:none;padding-top:0;padding-left:0;margin-left:auto;display:block;padding-right:0;margin-right:auto;border-width:0;" title="image" src="/assets/posts/2017/1/azure-sql-elastic-pool-database-size/image_thumb18.png" alt="image" width="640" height="272" border="0" /></a>
@@ -158,10 +155,7 @@ Get-AzureRmSqlDatabase -ServerName pooldemoserver -ResourceGroupName DBs -Databa
 We can see the size is the one that was specified in the ARM template (ARM parameter <em>DB Max Size</em> default value), i.e. 10 GB.  We can bump it to 50 GB, i.e. 53687091200 bytes:
 
 ```PowerShell
-
-
 Set-AzureRmSqlDatabase -ServerName pooldemoserver -ResourceGroupName DBs -DatabaseName Pool-A-Db0 -MaxSizeBytes 53687091200
-
 ```
 
 We can confirm the change in the portal by looking at the <strong>properties</strong>.

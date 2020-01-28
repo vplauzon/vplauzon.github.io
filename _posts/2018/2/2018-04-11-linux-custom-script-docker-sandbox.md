@@ -76,7 +76,6 @@ In Visual Studio we can even add extension on VMs with right-clicks.
 The extension resource is quite simple:
 
 ```JavaScript
-
 {
  "type": "extensions",
  "name": "[variables('Custom Script Name')]",
@@ -110,21 +109,15 @@ We use the parameter <em>Operating System</em>, which is of type string and can 
 We then defined a boolean variable <em>isCentOS</em>:
 
 ```JavaScript
-
-
 "isCentOS": "[if(equals(parameters('Operating System'), 'CentOS'), bool('true'), bool('false'))]"
-
 ```
 
 From there we use that variable to define other variable.  Here is an example of the pattern:
 
 ```JavaScript
-
-
 "VM CentOS Name": "DockerCentOS-VM",
 "VM Ubuntu Name": "DockerUbuntu-VM",
 "VM Name": "[if(variables('isCentOS'), variables('VM CentOS Name'), variables('VM Ubuntu Name'))]",
-
 ```
 
 This way we can refer to the variable <em>VM Name</em> in the template and have no <em>if</em> in the template.

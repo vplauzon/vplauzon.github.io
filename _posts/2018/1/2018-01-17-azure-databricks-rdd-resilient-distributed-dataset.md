@@ -50,7 +50,6 @@ We do that by configuring the cluster.  This is covered in the <a href="https:/
 
 
 ```Python
-
 *Vertices 19428 6486
 1 "24-HOUR MAN/EMMANUEL"
 2 "3-D MAN/CHARLES CHAN"
@@ -61,14 +60,12 @@ We do that by configuring the cluster.  This is covered in the <a href="https:/
 7 "ABBOTT, JACK"
 8 "ABCISSA"
 9 "ABEL"
-
 ```
 
 <p align="left">The header, i.e. first row, starting with an <em>asterisk</em> or <em>star</em> is telling us there are 6486 characters.  Indeed, if we find the first occurrence of ‘6486’, we see we go back to letter ‘A’:</p>
 
 
 ```Python
-
 6484 "STORMER"
 6485 "TIGER WYLDE"
 6486 "ZONE"
@@ -85,7 +82,6 @@ We do that by configuring the cluster.  This is covered in the <a href="https:/
 
 
 ```Python
-
 19427 "AA2 20"
 19428 "AA2 38"
 *Edgeslist
@@ -93,18 +89,15 @@ We do that by configuring the cluster.  This is covered in the <a href="https:/
 2 6488 6489 6490 6491 6492 6493 6494 6495 6496
 3 6497 6498 6499 6500 6501 6502 6503 6504 6505
 4 6506 6507 6508
-
 ```
 
 <p align="left">Although it looks like every line represents a character ID followed by a list of publication ID, some characters spawn two lines and their character ID is repeated.  For instance character <em>10</em>:</p>
 
 
 ```Python
-
 10 6521 6522 6523 6524 6525 6526 6527 6528 6529 6530 6531 6532 6533 6534 6535
 10 6536 6537 6538 6539 6540 6541 6542 6543 6544 6545 6546 6547 6548 6549 6550
 10 6551 6552 6553 6554 6555 6556 6557 6558 6559 6560 6561 6562 6563 6564 6565
-
 ```
 
 <p align="left">That is about it.</p>
@@ -118,11 +111,9 @@ We do that by configuring the cluster.  This is covered in the <a href="https:/
 
 
 ```Python
-
 #  Fetch porgat.txt file from storage account
 pathPrefix = "wasbs://<CONTAINER>@<STORAGE ACCOUNT>.blob.core.windows.net/"
 file = sc.textFile(pathPrefix + "porgat.txt")
-
 ```
 
 The placeholders CONTAINER and STORAGE ACCOUNT are for the name of the container where we copied the file and the name of the storage account owning that container we created earlier.
@@ -136,8 +127,6 @@ All the Python-Spark knowledge required to understand the following is in the <a
 First, let’s define the different RDDs we are going to work on.  In a new cell of the Notebook, let’s paste:
 
 ```Python
-
-
 #  Remove the headers from the file:  lines starting with a star
 noHeaders = file.filter(lambda x: len(x)>0 and x[0]!='*')
 #  Extract a pair from each line:  the leading integer and a string for the rest of the line
@@ -150,7 +139,6 @@ relationships = scatteredRelationships.reduceByKey(lambda pubList1, pubList2: pu
 nonRelationships = paired.filter(lambda (index, text):  text[0]=='"').map(lambda (index, text):  (index, text[1:-1].strip()))
 #  Characters stop at a certain line (part of the initial header ; we hardcode it here)
 characters = nonRelationships.filter(lambda (charId, name): charId<=6486) #  Publications starts after the characters publications = nonRelationships.filter(lambda (charId, name): charId>6486)
-
 ```
 
 When we run that, nothing gets computed and it returns quickly.  This is because Spark uses lazy-evaluation and we just defined transformations so far.
@@ -170,8 +158,6 @@ For this, we’ll take the relationship RDD and perform a Cartesian product on i
 Although the relationship dataset isn’t big, performing a Cartesian product will square its size.  This will bring the compute requirement where it will take a few seconds to compute.
 
 ```Python
-
-
 #  Let's find the characters appearing together most often
 
 #  Let's take the relationship RDD and do a cartesian product with itself all possible duos ; we repartition to be able to scale
@@ -184,7 +170,6 @@ noDoublons = remapped.filter(lambda ((charId1, charId2), pubList): charId1<charI
 sorted = noEmptyPublications.map(lambda ((charId1, charId2), pubList): (len(pubList), (charId1, charId2))).sortByKey(False)
 #  Action:  let's output the first 10 results
 top10 = sorted.take(10)
-
 ```
 
 The last line is an action.  Spark lazy computing gives up and the cluster will finally get a job to run.  The job will be divided into tasks deployed into executors on different nodes of the cluster.
@@ -198,7 +183,6 @@ It is going to be much more interesting to look at the name of the characters. 
 Although we could have join before taking the top 10, that would have meant we would have join on <strong>every record</strong> and carry the name of the characters around which would have been heavier.  Instead, we first take the top 10, then perform the join on it, which is very fast:
 
 ```Python
-
 # Join once for the first character ; we first need to flip the RDD to have charId1 as the key
 name1 = sc.parallelize(top10).map(lambda (pubCount, (charId1, charId2)): (charId1, (charId2, pubCount))).join(characters)
 # Let's perform a similar join on the second character
@@ -213,8 +197,6 @@ formattedTop10.sortByKey(False).collect()
 We finally get the answer to our question:
 
 ```Python
-
-
 [(744, (u'HUMAN TORCH/JOHNNY S', 2557, u'THING/BENJAMIN J. GR', 5716)),
  (713, (u'HUMAN TORCH/JOHNNY S', 2557, u'MR. FANTASTIC/REED R', 3805)),
  (708, (u'MR. FANTASTIC/REED R', 3805, u'THING/BENJAMIN J. GR', 5716)),
@@ -225,7 +207,6 @@ We finally get the answer to our question:
  (526, (u'JAMESON, J. JONAH', 2959, u'SPIDER-MAN/PETER PAR', 5306)),
  (446, (u'CAPTAIN AMERICA', 859, u'IRON MAN/TONY STARK', 2664)),
  (422, (u'SCARLET WITCH/WANDA', 4898, u'VISION', 6066))]
-
 ```
 
 It turns out the top 10 is dominated by members of the Fantastic Four, which makes sense since the four of them typically appear together.

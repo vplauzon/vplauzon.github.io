@@ -18,8 +18,6 @@ We continue using our 20 nodes AKS cluster.
 Let’s look at the nodes of our cluster.  Let’s run the following command in the shell:
 
 ```shell
-
-
 $ kubectl get nodes
 
 NAME                        STATUS    ROLES     AGE       VERSION
@@ -44,23 +42,17 @@ aks-nodepool1-37473667-6    Ready     agent     2d        v1.9
 aks-nodepool1-37473667-7    Ready     agent     2d        v1.9.6
 aks-nodepool1-37473667-8    Ready     agent     2d        v1.9.6
 aks-nodepool1-37473667-9    Ready     agent     2d        v1.9.6
-
 ```
 
 Let’s take one of those nodes and look at its labels.
 
 ```shell
-
-
 kubectl describe nodes aks-nodepool1-37473667-0
-
 ```
 
 This returns a lot of detail about the node.  If we look at the first lines, we’ll see the labels:
 
 ```shell
-
-
 Name:               aks-nodepool1-37473667-0
 Roles:              agent
 Labels:             agentpool=nodepool1
@@ -77,7 +69,6 @@ storagetier=Premium_LRS
 Annotations:        node.alpha.kubernetes.io/ttl=0
 volumes.kubernetes.io/controller-managed-attach-detach=true
 CreationTimestamp:  Tue, 24 Apr 2018 10:53:59 -0400
-
 ```
 
 We can see at first glance that Azure surface some information in there.  For instance, the label <em>failure-domain.beta.kubernetes.io/region</em> exposes the Azure region.
@@ -85,8 +76,6 @@ We can see at first glance that Azure surface some information in there.  For i
 An interesting label is <em>failure-domain.beta.kubernetes.io/zone</em>.  Could it be the fault domain of the node?  Let’s find out by listing that label for each node:
 
 ```shell
-
-
 $ kubectl get nodes -L failure-domain.beta.kubernetes.io/zone
 
 NAME                        STATUS    ROLES     AGE       VERSION   ZONE
@@ -110,7 +99,6 @@ aks-nodepool1-37473667-6    Ready     agent     2d        v1.9
 aks-nodepool1-37473667-7    Ready     agent     2d        v1.9.6    0
 aks-nodepool1-37473667-8    Ready     agent     2d        v1.9.6    1
 aks-nodepool1-37473667-9    Ready     agent     2d        v1.9.6    0
-
 ```
 
 Comparing that with the Availability Set in the portal we see there is a match.
@@ -130,8 +118,6 @@ The only challenge here is that there are 20 nodes.  We simply wrote a <a href=
 We called the label <em>azure-update-domain</em>.
 
 ```shell
-
-
 $ kubectl get nodes -L azure-update-domain
 
 NAME                        STATUS    ROLES     AGE       VERSION   AZURE-UPDATE-DOMAIN
@@ -155,7 +141,6 @@ aks-nodepool1-37473667-6    Ready     agent     2d        v1.9
 aks-nodepool1-37473667-7    Ready     agent     2d        v1.9.6    0
 aks-nodepool1-37473667-8    Ready     agent     2d        v1.9.6    1
 aks-nodepool1-37473667-9    Ready     agent     2d        v1.9.6    0
-
 ```
 
 <h2>Anti-affinity</h2>
@@ -181,8 +166,6 @@ It is tempting for us to use the “required” type.  That would, in general, 
 The spec file for a deployment using inter-pod anti-affinity is <a href="https://github.com/vplauzon/containers/blob/master/replicasets-ha/dep-f-with-anti-affinity.yaml">available on GitHub</a>.
 
 ```python
-
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -225,10 +208,7 @@ If we now try the same experiment as we did in the previous article, we can see 
 First, we’ll create the deployment:
 
 ```shell
-
-
 kubectl create -f dep-f-with-anti-affinity.yaml
-
 ```
 
 (The <a href="https://github.com/vplauzon/containers/blob/master/replicasets-ha/dep-f-with-anti-affinity.yaml">YAML file is on GitHub</a>)
@@ -236,12 +216,9 @@ kubectl create -f dep-f-with-anti-affinity.yaml
 We’ll run the following commands a few times:
 
 ```shell
-
-
 kubectl delete rs -l app=app-f
 
 watch kubectl get pods -o wide
-
 ```
 
 which gives us the following results:

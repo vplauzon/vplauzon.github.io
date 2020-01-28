@@ -191,7 +191,6 @@ That’s because your browser keeps the connection alive and we have 4 minutes b
 If you want to have a more spectacular test, go in Visual Studio and create a Console app with the following code:
 
 ```csharp
-
 using System;
 using System.IO;
 using System.Net;
@@ -234,8 +233,6 @@ Here is the ARM template allowing you to reproduce what we did in this article.
 Please note <strong>I wasn’t able to incorporate the NAT rules into the ARM template</strong>.  This is due to a current limitation of the schema:  we can’t have loops within NAT rules.  So you’ll need to enter those rules manually in order to RDP into the VMs.
 
 ```javascript
-
-
 {
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -520,7 +517,6 @@ Please note <strong>I wasn’t able to incorporate the NAT rules into the ARM te
     }
   ]
 }
-
 ```
 
 Here are the template's parameters:

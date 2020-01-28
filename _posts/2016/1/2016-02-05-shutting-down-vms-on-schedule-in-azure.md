@@ -49,7 +49,6 @@ Add a user, give it the <em>Virtual Machine Contributor</em> role and type the n
 At the center of this runbook is the <a href="https://msdn.microsoft.com/en-us/library/mt603483.aspx" target="_blank">Stop-AzureRmVm</a> cmdlet.
 
 ```powershell
-
 workflow Shutdown-VMs
 {
 	Param
@@ -103,7 +102,6 @@ You can save, test and publish the runbook.
 At the center of this other runbook is the <a href="https://msdn.microsoft.com/en-us/library/mt603453.aspx" target="_blank">Start-AzureRmVm</a> cmdlet.  It is basically identical to the other one except for this cmdlet.
 
 ```PowerShell
-
 workflow Start-VMs
 {
 	Param

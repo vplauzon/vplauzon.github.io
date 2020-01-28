@@ -22,10 +22,7 @@ A role is an aggregation of actions.
 Let’s look at the available roles.
 
 ```PowerShell
-
-
 Get-AzureRmRoleDefinition | select Name | sort -Property Name
-
 ```
 
 This gives us the rather long list of roles:
@@ -95,17 +92,12 @@ Some roles are specific, e.g. <em>Virtual Machine Contributor</em>, while others
 Let’s look at a specific role:
 
 ```PowerShell
-
-
 Get-AzureRmRoleDefinition "Virtual Machine Contributor"
-
 ```
 
 This gives us a role definition object:
 
 ```PowerShell
-
-
 Name             : Virtual Machine Contributor
 Id               : 9980e02c-c2be-4d73-94e8-173b1dc7cf3c
 IsCustom         : False
@@ -115,16 +107,12 @@ Actions          : {Microsoft.Authorization/*/read, Microsoft.Compute/a
 Microsoft.Compute/virtualMachines/*...}
 NotActions       : {}
 AssignableScopes : {/}
-
 ```
 
 Of particular interest are the actions allowed by that role:
 
 ```PowerShell
-
-
 (Get-AzureRmRoleDefinition "Virtual Machine Contributor").Actions
-
 ```
 
 This returns the 34 actions (as of the time of this writing) the role enables:
@@ -142,17 +130,12 @@ We see that wildcards are used to allow multiple actions.  Therefore there are 
 Let’s look at a more generic role:
 
 ```PowerShell
-
-
 Get-AzureRmRoleDefinition "Contributor"
-
 ```
 
 This role definition object is:
 
 ```PowerShell
-
-
 Name             : Contributor
 Id               : b24988ac-6180-42a0-ab88-20f7382dd24c
 IsCustom         : False
@@ -161,16 +144,12 @@ Actions          : {*}
 NotActions       : {Microsoft.Authorization/*/Delete, Microsoft.Authorization/*/Write,
 Microsoft.Authorization/elevateAccess/Action}
 AssignableScopes : {/}
-
 ```
 
 We notice that all actions (*) are allowed but that some actions are explicitly disallowed via the <em>NotActions</em> property.
 
 ```PowerShell
-
-
 (Get-AzureRmRoleDefinition "Contributor").NotActions
-
 ```
 
 <ul>
@@ -189,10 +168,7 @@ Users &amp; groups will come from the Azure AD managing our Azure subscription.
 We can grab a user with <em>Get-AzureRmADUser</em>.  This will list all the users in the tenant.  If you are part of a large organization, this is likely a long list.  We can grab a specific user with the following command:
 
 ```PowerShell
-
-
 Get-AzureRmADUser -UserPrincipalName john.smith@contoso.com
-
 ```
 
 We need to specify the domain of the user since we could have users coming from different domains inside the same tenant.
@@ -200,19 +176,13 @@ We need to specify the domain of the user since we could have users coming from 
 Let’s grab the object ID of the user:
 
 ```PowerShell
-
-
 $userID = (Get-AzureRmADUser -UserPrincipalName john.smith@contoso.com).Id
-
 ```
 
 Similarly, we could grab the object ID of a group:
 
 ```PowerShell
-
-
 $groupID = (Get-AzureRmADGroup -SearchString "Azure Team").Id
-
 ```
 
 <h2>Scope</h2>
@@ -223,38 +193,26 @@ The scope can be either a subscription, a resource group or a resource.
 To use our subscription as the scope, let’s run:
 
 ```PowerShell
-
-
 $scope = "/subscriptions/" + (Get-AzureRmSubscription)[0].SubscriptionId
-
 ```
 
 To use a resource group as the scope, let’s run:
 
 ```PowerShell
-
-
 $scope = (Get-AzureRmResourceGroup -Name MyGroup).ResourceId
-
 ```
 
 Finally, to use a specific resource as the scope, let’s run:
 
 ```PowerShell
-
-
 $scope = (Get-AzureRmResource -ResourceGroupName MyGroup -ResourceName MyResource).ResourceId
-
 ```
 
 <h2>Assigning a role</h2>
 Ok, let’s do this:  let’s put it all together:
 
 ```PowerShell
-
-
 New-AzureRmRoleAssignment -ObjectId $userID -Scope $scope -RoleDefinitionName "Contributor"
-
 ```
 
 We can double check in the portal the assignation occurred.

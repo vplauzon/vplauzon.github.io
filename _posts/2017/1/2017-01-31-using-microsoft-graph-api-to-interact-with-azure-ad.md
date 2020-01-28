@@ -51,7 +51,6 @@ This sample is in C# / .NET but since the Active Directory Authentication Librar
 We need to install the NuGet package <a href="https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/">Microsoft.IdentityModel.Clients.ActiveDirectory</a> in our project.
 
 ```csharp
-
         private static async Task<string> AppAuthenticationAsync()
         {
             //  Constants
@@ -79,7 +78,6 @@ Here we return the access token as we’re going to use them.
 If we do not want to integrate with the ADAL, here’s the bare bone HTTP post version:
 
 ```csharp
-
         private static async Task<string> HttpAppAuthenticationAsync()
         {
             //  Constants
@@ -119,7 +117,6 @@ Here we’re going to use <a href="https://developer.microsoft.com/en-us/graph/d
 There is actually a NuGet package for <a href="https://www.nuget.org/packages/Microsoft.Graph" target="_blank" rel="noopener">Microsoft Graph API</a> and, in general <a href="https://graph.microsoft.io/en-us/code-samples-and-sdks" target="_blank" rel="noopener">SDKs (at the time of this writing) for 9 platforms</a>.
 
 ```csharp
-
         private static async Task<bool> DoesUserExistsAsync(HttpClient client, string user)
         {
             try
@@ -142,7 +139,6 @@ Again, the code is minimalist here.  The HTTP GET actually returns user informa
 Here we’re going to use the <a href="https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_list_memberof" target="_blank" rel="noopener">memberof</a> method of Microsoft Graph API.
 
 ```csharp
-
         private static async Task<string[]> GetUserGroupsAsync(HttpClient client, string user)
         {
             var payload = await client.GetStringAsync(
@@ -164,7 +160,6 @@ Finally we’re going to use the <a href="https://developer.microsoft.com/en-us/
 This is slightly more complicated as it is an HTTP POST with a JSON payload in input.
 
 ```csharp
-
         private static async Task CreateUserAsync(HttpClient client, string user, string domain)
         {
             using (var stream = new MemoryStream())
@@ -202,7 +197,6 @@ This is slightly more complicated as it is an HTTP POST with a JSON payload in i
                 }
             }
         }
-
 ```
 
 <h2>Calling Code</h2>
@@ -210,8 +204,6 @@ This is slightly more complicated as it is an HTTP POST with a JSON payload in i
 The calling code looks like this:
 
 ```csharp
-
-
         private static async Task Test()
         {
             //var token = await AppAuthenticationAsync();
@@ -239,7 +231,6 @@ The calling code looks like this:
                 }
             }
         }
-
 ```
 
 <h2>Summary</h2>

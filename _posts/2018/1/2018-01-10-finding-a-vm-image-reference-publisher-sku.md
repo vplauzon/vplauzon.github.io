@@ -22,15 +22,12 @@ This is why today we’re going to look at how to find the image reference of yo
 For instance, when you look at some ARM template, how does the author found this piece of JSON?
 
 ```Javascript
-
-
 "Image Reference": {
 "publisher": "OpenLogic",
 "offer": "CentOS",
 "sku": "7.3",
 "version": "latest"
 }
-
 ```
 
 We’ll look at a few ways to find that, both in the Portal and in PowerShell.
@@ -58,15 +55,12 @@ On the left-hand side menu, let’s open the <em>Resources</em> node and look fo
 Scrolling down we should find the <em>storageProfile</em> JSON node and the <em>imageReference</em> under it.  This is what we are looking for:
 
 ```Javascript
-
-
 "imageReference": {
 "publisher": "microsoft-ads",
 "offer": "windows-data-science-vm",
 "sku": "windows2016",
 "version": "latest"
 }
-
 ```
 
 Boom.  Pause for effect.
@@ -96,30 +90,21 @@ Now it might be interesting to explore the quadruple (i.e. publisher, offer, sku
 First, we’ll need to target an Azure region.  Easy enough, let’s choose.
 
 ```PowerShell
-
-
 Get-AzureRmLocation | select Location
-
 ```
 
 Let’s say we choose <em>northcentralus</em> (North Central USA).  We can now look at the publishers available in that region.
 
 ```PowerShell
-
-
 $location = "northcentralus"
 
 Get-AzureRmVMImagePublisher -Location $location
-
 ```
 
 We might want to narrow it down.  For example we might want to look at only Microsoft-related ones
 
 ```PowerShell
-
-
 Get-AzureRmVMImagePublisher -Location $location | where {$_.PublisherName.Contains("microsoft")}
-
 ```
 
 which gives us a shorter list.
@@ -131,12 +116,9 @@ which gives us a shorter list.
 Let’s say we choose <em>microsoft-ads</em>.  We can look at the offering of that publisher.
 
 ```PowerShell
-
-
 $publisher = "microsoft-ads"
 
 Get-AzureRmVMImageOffer -Location $location -PublisherName $publisher
-
 ```
 
 <a href="/assets/posts/2018/1/finding-a-vm-image-reference-publisher-sku/image25.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/posts/2018/1/finding-a-vm-image-reference-publisher-sku/image_thumb25.png" alt="image" border="0" /></a>
@@ -144,12 +126,9 @@ Get-AzureRmVMImageOffer -Location $location -PublisherName $publisher
 Let’s say we picked the first one and look at the different skus available.
 
 ```PowerShell
-
-
 $offer = "linux-data-science-vm"
 
 Get-AzureRmVMImageSku -Location $location -PublisherName $publisher -Offer $offer
-
 ```
 
 <a href="/assets/posts/2018/1/finding-a-vm-image-reference-publisher-sku/image26.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/posts/2018/1/finding-a-vm-image-reference-publisher-sku/image_thumb26.png" alt="image" border="0" /></a>
@@ -157,12 +136,9 @@ Get-AzureRmVMImageSku -Location $location -PublisherName $publisher -Offer $offe
 Again, let’s say we picked the first one, we can now look at all the versions available:
 
 ```PowerShell
-
-
 $sku = "linuxdsvm"
 
 Get-AzureRmVMImage -Location $location -PublisherName $publisher -Offer $offer -Skus $sku
-
 ```
 
 <a href="/assets/posts/2018/1/finding-a-vm-image-reference-publisher-sku/image27.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/posts/2018/1/finding-a-vm-image-reference-publisher-sku/image_thumb27.png" alt="image" border="0" /></a>

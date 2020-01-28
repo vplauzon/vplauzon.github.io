@@ -30,7 +30,6 @@ The schema for JSON ARM template of CosmosDB Database Account is <a href="https:
 There are two important properties for Cosmos DB model (i.e. SQL, Graph, Table or MongoDB):  <em>kind</em> and <em>defaultExperience</em> (on fourth and seventh line respectively).
 
 ```javascript
-
 {
   "apiVersion": "2015-04-08",
   "type": "Microsoft.DocumentDB/databaseAccounts",

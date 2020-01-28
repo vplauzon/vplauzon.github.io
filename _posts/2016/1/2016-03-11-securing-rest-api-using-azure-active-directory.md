@@ -68,8 +68,6 @@ Let’s flesh out the API.  And when I say flesh out, I mean let’s change 500
 Under <em>Models</em> folder, create a class <em>PersonaModel</em> with the following code:
 
 ```csharp
-
-
 namespace AboutMeApi.Models
 {
     public class PersonaModel
@@ -84,7 +82,6 @@ namespace AboutMeApi.Models
 Under the <em>Controllers</em> folder rename <em>ValuesController</em> by <em>PersonaController</em>.  This should hopefully rename the underlying class.  Let’s keep the following code:
 
 ```csharp
-
 using AboutMeApi.Models;
 using System.Linq;
 using System.Security.Claims;
@@ -117,7 +114,6 @@ As you can see, what this API does is take the current user information and retu
 Then under <em>App_Start</em> folder, in <em>SwaggerConfig</em>, uncomment the following:
 
 ```csharp
-
 // ***** Uncomment the following to enable the swagger UI *****
 })
 .EnableSwaggerUi(c =&gt;
@@ -131,7 +127,6 @@ Go to the Swagger path:  <a title="http://localhost:18008/swagger/" href="http:
 This gives you the beautiful Swagger UI.  You see the Persona API, expend it.  You’ll see the GET operation ; click it.  Then <em>Try it out</em>.  No parameters are required and you should have the following in return payload:
 
 ```JavaScript
-
 { "Description": "Description of the invoking user", "Name": "", "Claims": [] }
 ```
 
@@ -220,7 +215,6 @@ Change the namespace for <em>AboutMeConsole.AboutMeApi</em> before hitting <em>O
 Now you can go in the <em>Program</em> file and paste the following code:
 
 ```csharp
-
 using AboutMeConsole.AboutMeApi;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
@@ -316,7 +310,6 @@ You can save your API App configuration in the portal.
 Now let’s go back to our Console app and change the following code in <em>DoJobAsync</em>:
 
 ```csharp
-
             var client = new AboutMeApiClient
             {
                 BaseUri = new Uri("https://aboutmeapi2016.azurewebsites.net")

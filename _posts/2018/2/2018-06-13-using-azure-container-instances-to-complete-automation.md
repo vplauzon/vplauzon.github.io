@@ -45,8 +45,6 @@ The beauty of this approach is the flexibility.  We can run any environment.  
 In the ARM template, we simply describe a container instance, put a dependency on the Azure SQL DB and pass parameters.
 
 ```JavaScript
-
-
 {
   "type": "Microsoft.ContainerInstance/containerGroups",
   "apiVersion": "2018-04-01",
@@ -96,8 +94,6 @@ In the ARM template, we simply describe a container instance, put a dependency o
     "osType": "Linux"
   }
 }
-
-
 ```
 
 <h2>Updates</h2>

@@ -55,12 +55,9 @@ Let’s delete the Virtual Machine to better recreate it.
 We will use a PowerShell command.  Using the Azure Portal would yield the same result.
 
 ```PowerShell
-
-
 $rgName = 'ren' # or the Resource Group name we use
 $vmName = 'Demo-VM'    # or the name of the VM we use
 Remove-AzureRmVM -Force -ResourceGroupName $rgName -Name $vmName
-
 ```
 
 Of course, we need to replace the variable with values corresponding to our case at hand.
@@ -74,8 +71,6 @@ Basically, the ARM templates create <a href="https://docs.microsoft.com/en-ca/az
 For the demo solution, we use a fancy trick where we map the old and new disk name in a variable:
 
 ```PowerShell
-
-
 "disks": [
   {
     "oldName": "Demo-VM-OS",
@@ -90,14 +85,11 @@ For the demo solution, we use a fancy trick where we map the old and new disk na
     "newName": "Clone-Demo-data3"
   }
 ]
-
 ```
 
 and then we use a copy construct to loop to the JSON array:
 
 ```JavaScript
-
-
     {
       "comments": "Copy existing disks in order to change their names",
       "apiVersion": "2017-03-30",
@@ -118,8 +110,6 @@ and then we use a copy construct to loop to the JSON array:
         }
       }
     },
-
-
 ```
 
 One of the advantage of using ARM templates to copy the disks is that the copy is parallelized:  in the case of our demo solution, we have 3 disks and they are copied in parallel instead of one after.  The is of course faster.
@@ -133,13 +123,10 @@ At this point we did “rename the disks”.  We just have some cleanups to do 
 We simply delete them:
 
 ```JavaScript
-
-
 $rgName = ‘ren’ # or the Resource Group name you used
 $oldDisks = 'Demo-VM-OS', 'Demo-VM-data2', 'Demo-VM-data3'
 
 $oldDisks | foreach {Remove-AzureRmDisk -ResourceGroupName $rgName -Force -DiskName $_}
-
 ```
 
 Again, replacing the first two variables by what make sense in our use case.

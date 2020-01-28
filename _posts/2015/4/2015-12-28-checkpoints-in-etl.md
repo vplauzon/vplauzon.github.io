@@ -35,13 +35,10 @@ In my example, we’re going to take tweets (how can we do an data example witho
 The input comes in CSV files:
 
 ```text
-
-
 accountname, tweet
 @john, “Leaving for work now”
 @julie, “12km in one hour this morning!”
 @zul, “The trees, the leaves & the wind, no more”
-
 ```
 
 The first thing we’re gona do is to load it <em>as is</em> in a database table:

@@ -40,12 +40,9 @@ This is the <a href="https://msdn.microsoft.com/en-us/library/mt590806.aspx" tar
 It can be manipulated with the system stored procedure <a href="https://msdn.microsoft.com/en-us/library/mt605113.aspx" target="_blank">sp_set_session_context</a> and can later be access with the SESSION_CONTEXT object:
 
 ```sql
-
-
 EXEC sp_set_session_context 'user_department_id', 42;
 
 SELECT SESSION_CONTEXT(N'user_department_id');
-
 ```
 
 So you can see that this feature alone unlocks 3-tiers scenarios.  If you can inject information in the SESSION_CONTEXT shortly after creating your SQL connection, then you can use that information in the security predicates.

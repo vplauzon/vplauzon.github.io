@@ -22,7 +22,6 @@ Select that database ; that will open the database blade. Click "Add Collection"
 Select the collection you just created. That will open the collection blade. We are going to create two documents. For that, click "Create Document" on top of the collection blade. First document:
 
 ```javascript
-
 {
 "firstName" : "Vincent-Philippe",
 "lastName" : "Lauzon",
@@ -33,7 +32,6 @@ Select the collection you just created. That will open the collection blade. We 
 Second document:
 
 ```javascript
-
 {
 "office" : "MTL",
 "address" :
@@ -56,7 +54,6 @@ Now, let's look at those document within the collection. In the collection blade
 Let's add a third document:
 
 ```javascript
-
 {
 "firstName" : "John",
 "lastName" : "Smith",
@@ -77,7 +74,6 @@ For querying, in the collection blade, click "Query Explorer". Leave the query a
 &nbsp;
 
 ```sql
-
 SELECT * FROM c
 ```
 
@@ -94,7 +90,6 @@ Let's try something slightly less trivial:
 &nbsp;
 
 ```sql
-
 SELECT *
 FROM c
 WHERE c.firstName != null
@@ -109,7 +104,6 @@ The following query does a projection or a JSON transformation:
 &nbsp;
 
 ```sql
-
 SELECT
 {"firstName":c.firstName, "lastName":c.lastName} AS name,
 c.office
@@ -122,7 +116,6 @@ WHERE c.firstName!=null
 This yields the following results:
 
 ```sql
-
 [
 {
  "name": {
@@ -152,7 +145,6 @@ To look at the current indexing policy of a collection, in the collection blade,
 &nbsp;
 
 ```javascript
-
 {
  "indexingMode": "consistent",
  "automatic": true,
@@ -224,7 +216,6 @@ You'll need:
 In the code, simply instantiate it as:
 
 ```csharp
-
 private static readonly DocumentClient _docClient = new DocumentClient(
 new Uri(ENDPOINT),
 AUTH_KEY,
@@ -242,7 +233,6 @@ First, let's find our collection, in purely scalable way:
 &nbsp;
 
 ```csharp
-
 private async static Task<DocumentCollection> GetCollectionAsync()
  {
  var dbQuery = from db in _docClient.CreateDatabaseQuery()
@@ -269,7 +259,6 @@ private async static Task<DocumentCollection> GetCollectionAsync()
 <div>
 
 ```csharp
-
 public class Employee
  {
  [JsonProperty("id")]
@@ -301,7 +290,6 @@ public class Employee
 &nbsp;
 
 ```csharp
-
 private async static Task<Employee> QueryVinceAsync(DocumentCollection collection)
  {
  var employees = from e in _docClient.CreateDocumentQuery<Employee>(collection.SelfLink)
@@ -327,7 +315,6 @@ private async static Task<Employee> QueryVinceAsync(DocumentCollection collectio
 &nbsp;
 
 ```csharp
-
 private static async Task DemoAsync()
  {
  var collection = await GetCollectionAsync();

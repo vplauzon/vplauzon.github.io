@@ -26,7 +26,6 @@ This is accomplished by using the <a href="https://msdn.microsoft.com/en-us/libr
 Let’s look at the solution.
 
 ```sql
-
 @content =
 	SELECT *
 	FROM(

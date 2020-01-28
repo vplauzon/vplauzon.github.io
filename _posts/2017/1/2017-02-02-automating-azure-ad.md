@@ -44,7 +44,6 @@ I want to give a big shout to <a href="http://spr.com/author/chris-d/" target="_
 The first thing we’ll need to do is to install the PowerShell package.  Easy:
 
 ```powershell
-
 Install-Module AzureADPreview
 ```
 
@@ -53,7 +52,6 @@ If you read this from the future, this might have changed, so check out the <a h
 We need to connect to our tenant:
 
 ```powershell
-
 connect-azuread -TenantId bc7d0032…
 ```
 
@@ -72,7 +70,6 @@ Remember, those are two applications, a service and a client one.  The client o
 Let’s start by the final PowerShell code:
 
 ```powershell
-
 #  Grab the Azure AD Service principal
 $aad = (Get-AzureADServicePrincipal | `
     where {$_.ServicePrincipalNames.Contains("https://graph.windows.net")})[0]
@@ -136,7 +133,6 @@ Basically, an administrator (of the Azure AD tenant) needs to approve the use of
 We can also do it, still manually, via the portal as we did in the article.  But first, let’s throw the following command:
 
 ```powershell
-
 Get-AzureADOAuth2PermissionGrant
 ```
 
@@ -149,7 +145,6 @@ So the manual step is, in the portal, to go in the MyLegacyClient App, select <e
 Once we’ve done this we can run the same PowerShell command, i.e.
 
 ```powershell
-
 Get-AzureADOAuth2PermissionGrant
 ```
 
@@ -166,7 +161,6 @@ Here we’ll replicate the application we created by hand in the <a href="https:
 This is going to be quite similar, except we’re going to attach a client secret on the application so that we can authenticate against it.
 
 ```powershell
-
 #  Grab the Azure AD Service principal
 $aad = (Get-AzureADServicePrincipal | `
     where {$_.ServicePrincipalNames.Contains("https://graph.windows.net")})[0]

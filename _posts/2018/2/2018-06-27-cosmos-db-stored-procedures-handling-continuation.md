@@ -69,7 +69,6 @@ We can now run the code.  It will call the stored procedure several times.  It
 We can validate the result by running the following query:
 
 ```sql
-
 SELECT VALUE COUNT(1)
 FROM c
 WHERE c.part='ABC'
@@ -96,7 +95,6 @@ It then goes on filtering, in JavaScript for <em>c.oneThird=1</em>.  The <em>on
 It then counts the number of records satisfying that criterium.  Essentially, it is implementing, in JavaScript, the following query:
 
 ```sql
-
 SELECT VALUE COUNT(1)
 FROM c
 WHERE c.part='ABC'
@@ -106,7 +104,6 @@ AND c.oneThird=1
 We have a very inefficient implementation on purpose here.  We want to show the effect of paging without having too big a partition for simplicity.
 
 ```JavaScript
-
 //  Flat query:  simply do the query in a sproc
 //
 //  We implement a "SELECT * FROM c WHERE c.oneThird=1" by doing a
@@ -170,7 +167,6 @@ Now it isn’t going to be a straight for-loop.  The thing is that Cosmos DB us
 So how can we then call query documents again?  We’ll need something akin to recursion.  Cosmos DB allows us to define functions within functions:
 
 ```JavaScript
-
 //  Query with continuation:  do the query in a sproc and continue paging the results
 //
 //  We implement a "SELECT * FROM c WHERE c.oneThird=1" by doing a
@@ -260,7 +256,6 @@ So the client-side pattern is to call the stored procedure with no argument at f
 The custom token is actually a <em>stringified</em> JSON object.  It contains the “count so far” and the query continuation token.  The “count so far” is the stored procedure internal state.
 
 ```JavaScript
-
 //  Query with continuation on both sides:  do the query in a sproc and continue paging the results
 //  ; the sproc returns continuation token so it can be called multiple times and get around the
 //  5 seconds limit.

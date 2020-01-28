@@ -19,7 +19,6 @@ So I hope this article fills that gap and is easy to search for &amp; consume.
 Here we’re going to provision a Server with two pools, <em>Pool-A</em> &amp; <em>Pool-B</em> (yeah, sounds a bit like <a href="http://seuss.wikia.com/wiki/Thing_One_and_Thing_Two" target="_blank">Thing 1 &amp; Thing 2</a>), each having a few (configurable number of) databases in them.
 
 ```javascript
-
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -234,7 +233,6 @@ Let’s select <em>Pool-A</em>.
 We can see the pool is of <em>Standard</em> edition, has 200 eDTUs with a minimum of 10 eDTUs and maximum 50 per databases, which is faithful to its ARM definition (line 10-13).
 
 ```javascript
-
         {
           "type": "elasticpools",
           "name": "[variables('Pool A')]",

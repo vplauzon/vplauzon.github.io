@@ -43,14 +43,11 @@ AKS has a very low friction <a href="https://docs.microsoft.com/en-us/azure/aks/
 The creation of a cluster is one simple command:
 
 ```bash
-
-
 az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
 
 az aks install-cli
 
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
-
 ```
 
 The first command creates the cluster (in a pre-existing resource group).  The second installs Kubernetes CLI.  The third one downloads the cluster’s credentials for Kubernetes CLI to use.

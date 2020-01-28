@@ -16,7 +16,6 @@ Let’s create an image from an OS + Data disk &amp; create a Scale Set with tha
 <h3>Deploy ARM Template</h3>
 
 ```JavaScript
-
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -484,7 +483,6 @@ Remove-AzureRmDisk -ResourceGroupName $rgName -DiskName Demo-VM-data -Force</li>
 <h3>Deploy Scale Set</h3>
 
 ```JavaScript
-
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",

@@ -53,8 +53,6 @@ We first do a GET in order to get the disk meta-data object, we then change the 
 In the following example, I zoom in to a Resource Group and convert all the disks to Premium storage:
 
 ```PowerShell
-
-
 $rg = "Docker"
 
 Get-AzureRmDisk -ResourceGroupName $rg | foreach {
@@ -62,7 +60,6 @@ Get-AzureRmDisk -ResourceGroupName $rg | foreach {
     $disk.AccountType = "PremiumLRS"
     Update-AzureRmDisk -ResourceGroupName $disk.ResourceGroupName -DiskName $disk.Name -Disk $disk
 }
-
 ```
 
 The property <em>AccountType</em> can take the following values:

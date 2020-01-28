@@ -42,14 +42,11 @@ As in <a href="https://vincentlauzon.com/2018/01/17/azure-databricks-rdd-resilie
 Then, we simply point to the file in the storage account.
 
 ```python
-
-
 #  Replace with your container and storage account:  "wasbs://&lt;container&gt;@&lt;storage account&gt;.blob.core.windows.net/"
 pathPrefix = "wasbs://hb1-visa@vpldb.blob.core.windows.net/"
 path = pathPrefix + "h1b_kaggle.csv"
 # Load CSV
 df = spark.read.option("header","true").csv(path)
-
 ```
 
 Here we use the spark session to load the data as a Data Frame.  The spark context is used to manipulate RDDs while the session is used for Spark SQL.  Each interface offer different load methods with the Spark Context offering more high level methods.
@@ -63,8 +60,6 @@ That RDD will be an RDD of <em>Row </em>(i.e. strong typed).  A <em>Row</em> is
 So we define the following Python method to manipulate a row:
 
 ```python
-
-
 # Manipulate a data-row to change some columns
 def reworkRow(row):
 from pyspark.sql import Row
@@ -89,7 +84,6 @@ del(dict['WORKSITE'])
 dict['FULL_TIME_POSITION'] = True if dict['FULL_TIME_POSITION']=='Y' else False
 
 return Row(**dict)
-
 ```
 
 We address the three changes we wanted to address:  id column, worksite column &amp; full time position column.
@@ -97,8 +91,6 @@ We address the three changes we wanted to address:  id column, worksite column 
 We can then simply do a <em>map</em> on the RDD and recreate a data frame from the mapped RDD:
 
 ```python
-
-
 # Convert back to RDD to manipulate the rows
 rdd = df.rdd.map(lambda row: reworkRow(row))
 # Create a dataframe with the manipulated rows
@@ -107,7 +99,6 @@ hb1 = spark.createDataFrame(rdd)
 hb1.cache()
 # Create a temporary view from the data frame
 hb1.createOrReplaceTempView("hb1")
-
 ```
 
 We cached the data frame.  Since the data set is 0.5GB on disk, it is useful to keep it in memory.  The <em>.cache</em> method does a best effort job of keeping the data in the RAM of the worker nodes.  This means that from one query to the next, the dataframe isn’t fully reconstructed.  It does improve the performance drastically as we can easily test by commenting that command out.
@@ -119,12 +110,9 @@ This is the extend of wrangling we do with this data set.  Nothing very complic
 First, let’s check the size of the data set:
 
 ```sql
-
-
 %sql
 SELECT COUNT(*)
 FROM hb1
-
 ```
 
 This gives us a count of 3 002 458, which is a good size data set.
@@ -132,14 +120,11 @@ This gives us a count of 3 002 458, which is a good size data set.
 We can then check which state are most popular for immigration requests in the USA:
 
 ```sql
-
-
 %sql
 SELECT STATE, COUNT(*) AS petitions
 FROM hb1
 GROUP BY STATE
 ORDER BY petitions DESC
-
 ```
 
 The result is our first insight:
@@ -151,14 +136,11 @@ California being on top isn’t surprising.  Texas being second is a little mor
 If we breakdown by city, a different immigration portrait appears:
 
 ```sql
-
-
 %sql
 SELECT CITY, STATE, COUNT(*) AS petitions
 FROM hb1
 GROUP BY CITY, STATE
 ORDER BY petitions DESC
-
 ```
 
 <a href="/assets/posts/2018/1/transforming-data-frames-in-spark/image2.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/posts/2018/1/transforming-data-frames-in-spark/image_thumb2.png" alt="image" border="0" /></a>
@@ -170,14 +152,11 @@ This is a great example of drill down to better understand the data.
 We could have a look at the distribution of the <em>case status</em>:
 
 ```sql
-
-
 %sql
 SELECT CASE_STATUS, COUNT(*) AS petitions
 FROM hb1
 GROUP BY CASE_STATUS
 ORDER BY petitions DESC
-
 ```
 
 <a href="/assets/posts/2018/1/transforming-data-frames-in-spark/image3.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/posts/2018/1/transforming-data-frames-in-spark/image_thumb3.png" alt="image" border="0" /></a>
@@ -187,15 +166,12 @@ A surprisingly low level of rejection.
 Let’s look at the employers sponsoring those visas.
 
 ```sql
-
-
 %sql
 SELECT EMPLOYER_NAME, COUNT(*) as count
 FROM hb1
 GROUP BY EMPLOYER_NAME
 ORDER BY count DESC
 LIMIT 20
-
 ```
 
 We see that the top of employers is dominated by the IT industry.
@@ -205,15 +181,12 @@ We see that the top of employers is dominated by the IT industry.
 Looking at the job title of applicants corroborates the dominance of the IT industry:
 
 ```sql
-
-
 %sql
 SELECT JOB_TITLE, COUNT(*) AS count
 FROM hb1
 GROUP BY JOB_TITLE
 ORDER BY count DESC
 LIMIT 20
-
 ```
 
 <a href="/assets/posts/2018/1/transforming-data-frames-in-spark/image5.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/posts/2018/1/transforming-data-frames-in-spark/image_thumb5.png" alt="image" border="0" /></a>

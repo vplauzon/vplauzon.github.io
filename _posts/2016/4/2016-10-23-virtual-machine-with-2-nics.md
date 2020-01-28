@@ -51,8 +51,6 @@ The template will take a little while to deploy, thanks to the fact it contains 
 If you’ve done VMs with ARM before, it is pretty much the same thing, except with two NICs references in the VM.  The only thing to be watchful for is that you have to specify which NIC is primary.  You do this with the <em>primary</em> property:
 
 ```javascript
-
-
 "networkProfile": {
   "networkInterfaces": [
     {
@@ -69,7 +67,6 @@ If you’ve done VMs with ARM before, it is pretty much the same thing, except w
     }
   ]
 }
-
 ```
 
 If you want to push the example and test it with a VPN gateway, consult <a title="https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-howto-point-to-site-rm-ps/" href="https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-howto-point-to-site-rm-ps/">https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-howto-point-to-site-rm-ps/</a> to do a point-to-site connection with your PC.

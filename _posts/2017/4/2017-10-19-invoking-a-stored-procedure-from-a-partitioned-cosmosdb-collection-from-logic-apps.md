@@ -28,7 +28,6 @@ One of them is to update the content of a stored procedure (same thing for trigg
 Here is the stored procedure we used:
 
 ```JavaScript
-
 function createRecords(recordCount) {
     var context = getContext();
     var collection = context.getCollection();

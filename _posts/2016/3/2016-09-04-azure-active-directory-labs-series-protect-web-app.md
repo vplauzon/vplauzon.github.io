@@ -165,8 +165,6 @@ This ensures only that claim is looked up for when testing for forgery (see <a h
 <div>
 
 ```html
-
-
 <h2>Claims</h2>
 
 
@@ -209,7 +207,6 @@ This ensures only that claim is looked up for when testing for forgery (see <a h
     </tbody>
 
 </table>
-
 ```
 
 </div></li>

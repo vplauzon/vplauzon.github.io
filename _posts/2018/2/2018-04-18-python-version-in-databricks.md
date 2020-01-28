@@ -41,7 +41,6 @@ As the time of this writing, i.e. end-of-March 2018, the default is version 2.
 We can also see this by running the following command in a notebook:
 
 ```python
-
 import sys
 
 sys.version
