@@ -1,6 +1,6 @@
 ---
-title: public...
-permalink: /2020/02/03/public/
+title: Using subnets to control inbound/outbound access to Azure Functions
+permalink: /2020/02/03/using-subnets-to-control-inbound-outbound-access-to-azure-functions
 categories:
 - Solution
 tags:
