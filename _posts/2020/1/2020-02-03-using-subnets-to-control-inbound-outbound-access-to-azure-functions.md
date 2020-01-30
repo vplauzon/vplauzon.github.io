@@ -15,7 +15,14 @@ date: 2020-01-28
 
 Typically serverless compute offer less networking options since they do not run on compute dedicated to customer.
 
-This isn't the case with Azure Functions anymore.  We will show in this article that we can easily implement the following pattern:
+Until recently, the only option was to lock down the function's firewall to some public IPs.  That isn't very useful when 2 functions are speaking to each other since functions doesn't have a unique outbound public IP:  multiple functions share the same public IP.
 
+In the last couple of months, there are features that now allow us to do more.  In this article, we will show in this article that we can easily implement the following pattern:
+
+<center>
 ![target implementation](/assets/posts/2020/1/using-subnets-to-control-inbound-outbound-access-to-azure-functions/function-networking.png)
+</center>
 
+That is, we'll lock down the communication between two functions using a subnet.  No more public IPs shared with other customers.
+
+As usual the [code is on GitHub](https://github.com/vplauzon/function/tree/master/lock-in-subnet).
