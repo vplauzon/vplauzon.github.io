@@ -15,4 +15,7 @@ date: 2020-01-28
 
 Typically serverless compute offer less networking options since they do not run on compute dedicated to customer.
 
-But with 
+This isn't the case with Azure Functions anymore.  We will show in this article that we can easily implement the following pattern:
+
+![target implementation](/assets/posts/2020/1/using-subnets-to-control-inbound-outbound-access-to-azure-functions/function-networking.png)
+
