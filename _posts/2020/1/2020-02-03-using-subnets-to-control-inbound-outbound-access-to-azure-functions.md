@@ -23,6 +23,6 @@ In the last couple of months, there are features that now allow us to do more.  
 ![target implementation](/assets/posts/2020/1/using-subnets-to-control-inbound-outbound-access-to-azure-functions/function-networking.png)
 </center>
 
-That is, we'll lock down the communication between two functions using a subnet.  No more public IPs shared with other customers.
+That is, we'll lock down the communication between two functions using a subnet.  No more public IPs shared with other customers.  This will not be using [App Service Environment](https://docs.microsoft.com/en-us/azure/app-service/environment/intro) (ASE) or [Azure Function Premium](https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan).  Just plain old public Azure Functions.
 
 As usual the [code is on GitHub](https://github.com/vplauzon/function/tree/master/lock-in-subnet).
