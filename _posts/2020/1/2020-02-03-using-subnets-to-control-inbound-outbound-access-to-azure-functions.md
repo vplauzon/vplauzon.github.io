@@ -7,8 +7,12 @@ tags:
     - Security
     - Serverless
     - Networking
-date: 2019-04-02
+date: 2020-01-28
 ---
-<img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/1/i-moved-my-blog-to-github-pages/mic.png" />
+<img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/posts/2020/1/using-subnets-to-control-inbound-outbound-access-to-azure-functions/buckets.jpg" />
 
-Blah
+[Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview) are serverless [Function as a Service](https://en.wikipedia.org/wiki/Function_as_a_service).
+
+Typically serverless compute offer less networking options since they do not run on compute dedicated to customer.
+
+But with 
