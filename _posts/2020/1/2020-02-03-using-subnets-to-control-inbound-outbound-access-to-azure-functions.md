@@ -23,6 +23,8 @@ In the last couple of months, there are features that now allow us to do more.  
 
 That is, we'll lock down the communication between two functions using a subnet.  No more public IPs shared with other customers.  This will not be using [App Service Environment](https://docs.microsoft.com/en-us/azure/app-service/environment/intro) (ASE) or [Azure Function Premium](https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan).  Just plain old public Azure Functions.
 
+Everything we do here can also be done with a web site in Azure App Service.
+
 As usual the [code is on GitHub](https://github.com/vplauzon/function/tree/master/lock-in-subnet).
 
 ## Deploy Solution
