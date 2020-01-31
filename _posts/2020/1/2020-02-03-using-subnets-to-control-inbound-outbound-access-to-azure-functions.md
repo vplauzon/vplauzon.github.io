@@ -1,6 +1,6 @@
 ---
-title: Using subnets to control inbound/outbound access to Azure Functions
-permalink: /2020/02/03/using-subnets-to-control-inbound-outbound-access-to-azure-functions
+title: Locking down Web App to Functions communications using subnets
+permalink: /2020/02/03/locking-down-web-app-to-functions-communications-using-subnets
 categories:
 - Solution
 tags:
@@ -9,7 +9,7 @@ tags:
     - Networking
 date: 2020-01-28
 ---
-<img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/posts/2020/1/using-subnets-to-control-inbound-outbound-access-to-azure-functions/buckets.jpg" />
+<img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/posts/2020/1/locking-down-web-app-to-functions-communications-using-subnets/buckets.jpg" />
 
 [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview) are serverless [Function as a Service](https://en.wikipedia.org/wiki/Function_as_a_service).
 
@@ -19,7 +19,7 @@ Until recently, the only option was to lock down the function's firewall to some
 
 In the last couple of months, there are features that now allow us to do more.  In this article, we will show in this article that we can easily implement the following pattern:
 
-![target implementation](/assets/posts/2020/1/using-subnets-to-control-inbound-outbound-access-to-azure-functions/function-networking.png)
+![target implementation](/assets/posts/2020/1/locking-down-web-app-to-functions-communications-using-subnets/function-networking.png)
 
 That is, we'll lock down the communication between two functions using a subnet.  No more public IPs shared with other customers.  This will not be using [App Service Environment](https://docs.microsoft.com/en-us/azure/app-service/environment/intro) (ASE) or [Azure Function Premium](https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan).  Just plain old public Azure Functions.
 
@@ -29,3 +29,6 @@ As usual the [code is on GitHub](https://github.com/vplauzon/function/tree/maste
 
 ## Deploy Solution
 
+https://docs.microsoft.com/en-us/azure/app-service/web-sites-integrate-with-vnet
+
+https://docs.microsoft.com/en-us/azure/app-service/app-service-ip-restrictions#service-endpoints
