@@ -37,7 +37,7 @@ First, let's deploy the solution:
 
 No parameters are required, only a resource group.
 
-After the deployment is completed we should have the following resources:
+After the deployment is completed, we should have the following resources:
 
 ![Resources](/assets/posts/2020/1/locking-down-web-app-to-functions-communications-using-subnets/resources.png)
 
@@ -85,7 +85,7 @@ We can test it and see it returns with a 200.
 
 Now how can it access *function b*?  *function b* lets only compute from the default subnet accessing it.
 
-Let's look at the Networking configuration of *function a*.  This time, let's select the *VNET Integration* configuration.
+Let's look at the Networking configuration of *function a*.  This time let's select the *VNET Integration* configuration.
 
 ![VNET Integration](/assets/posts/2020/1/locking-down-web-app-to-functions-communications-using-subnets/vnet-integration.png)
 
@@ -103,11 +103,11 @@ This integration uses the new [private link](https://docs.microsoft.com/en-us/az
 
 ## Summary
 
-So we've seen we could secure the communication between 2 functions with VNET integration.
+We've seen we could secure the communication between 2 functions with VNET integration.
 
 The function initiating the communication uses VNET Integration to get a private outbound IP while the receiving function uses Service Endpoint to accepts connection coming from specific subnets only.
 
-What does that bring us?  Without this, it is much harder to secure functions.  App Service shares public IPs between tenants so it isn't possible to descriminate a tenant (i.e. a specific function app) using the public IP.  This solution allows us to do that.
+What does that bring us?  Without this, it is much harder to secure functions.  App Service shares public IPs between tenants so it isn't possible to discriminate a tenant (i.e. a specific function app) using the public IP.  This solution allows us to do that.
 
 The current limitation is that VNET Integration is only possible on Standard App Service Plan and above.  So serverless (consumption App Plan) functions wouldn't be able to use it.
 
