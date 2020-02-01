@@ -67,9 +67,11 @@ We can then see the rules defined to restrict the access:
 
 The first rule lets only the default subnet of the vnet *vnet* access the function app.  The second rule forbids everything else.
 
-This 
+This is basically a [Service Endpoint](https://vincentlauzon.com/2019/04/18/multiple-service-endpoints-to-multiple-services/).
 
-https://docs.microsoft.com/en-us/azure/app-service/app-service-ip-restrictions#service-endpoints
+The reason we can't run the function is because we aren't in the subnet.  If we would access the portal from a VM sitting in that VNET, that would work.
+
+Now Azure App Service (and therefore functions) supports [Service Endpoint](https://docs.microsoft.com/en-us/azure/app-service/app-service-ip-restrictions#service-endpoints).
 
 ## VNET Integration
 
