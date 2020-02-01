@@ -49,7 +49,25 @@ Let's start with *function-app-b-XYZ* (the suffix varies depending on the deploy
 
 ![Function b](/assets/posts/2020/1/locking-down-web-app-to-functions-communications-using-subnets/function-b.png)
 
+We can see something is wrong.
 
+If we try to run the function, we'll hit an error.
+
+Let's open the networking configuration for the function app.
+
+![Networking](/assets/posts/2020/1/locking-down-web-app-to-functions-communications-using-subnets/networking.png)
+
+Let's then open the *access restriction* configuration.
+
+![Access Restriction](/assets/posts/2020/1/locking-down-web-app-to-functions-communications-using-subnets/access-restriction.png)
+
+We can then see the rules defined to restrict the access:
+
+![Rules](/assets/posts/2020/1/locking-down-web-app-to-functions-communications-using-subnets/rules.png)
+
+The first rule lets only the default subnet of the vnet *vnet* access the function app.  The second rule forbids everything else.
+
+This 
 
 https://docs.microsoft.com/en-us/azure/app-service/app-service-ip-restrictions#service-endpoints
 
