@@ -75,5 +75,40 @@ Now Azure App Service (and therefore functions) supports [Service Endpoint](http
 
 ## VNET Integration
 
-https://docs.microsoft.com/en-us/azure/app-service/web-sites-integrate-with-vnet
+Let's now look at *function-app-a-XYZ*.
 
+We didn't lock that app in a Service Endpoint, so we can look at the [function code](https://github.com/vplauzon/function/blob/master/lock-in-subnet/functions/function-a.csx).
+
+The function basically calls *function b* and display its result.  It is just a way to prove that *function a* does have access to *function b*.
+
+We can test it and see it returns with a 200.
+
+Now how can it access *function b*?  *function b* lets only compute from the default subnet accessing it.
+
+Let's look at the Networking configuration of *function a*.  This time, let's select the *VNET Integration* configuration.
+
+![VNET Integration](/assets/posts/2020/1/locking-down-web-app-to-functions-communications-using-subnets/vnet-integration.png)
+
+We didn't have that option in *function b*.  This option is only available when the function app is in an App Plan of sku *Standard* or above.
+
+![VNETs](/assets/posts/2020/1/locking-down-web-app-to-functions-communications-using-subnets/vnets.png)
+
+We can see the function app is integrated inside the default subnet.
+
+This is the new [VNET Integration](https://docs.microsoft.com/en-us/azure/app-service/web-sites-integrate-with-vnet#managing-vnet-integration) in App Service (as opposed to the old integration using [VPN Gateway](https://docs.microsoft.com/en-us/azure/app-service/web-sites-integrate-with-vnet#gateway-required-vnet-integration)).
+
+Although it is still in preview at the time of this writing (early February 2020), it is supported in production for Windows App Plan.
+
+This integration uses the new [private link](https://docs.microsoft.com/en-us/azure/private-link/private-link-overview).
+
+## Summary
+
+So we've seen we could secure the communication between 2 functions with VNET integration.
+
+The function initiating the communication uses VNET Integration to get a private outbound IP while the receiving function uses Service Endpoint to accepts connection coming from specific subnets only.
+
+What does that bring us?  Without this, it is much harder to secure functions.  App Service shares public IPs between tenants so it isn't possible to descriminate a tenant (i.e. a specific function app) using the public IP.  This solution allows us to do that.
+
+The current limitation is that VNET Integration is only possible on Standard App Service Plan and above.  So serverless (consumption App Plan) functions wouldn't be able to use it.
+
+The solution can be adapted to other scenarios.  For instance, an Azure API Management (APIM) could front functions.  APIM could have a public IP while being integration in a VNET.  The function could then use Service Endpoint to limit the calls from the APIM subnet only.
