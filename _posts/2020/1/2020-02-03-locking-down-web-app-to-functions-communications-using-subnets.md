@@ -7,7 +7,6 @@ tags:
     - Security
     - Serverless
     - Networking
-date: 2020-01-28
 ---
 <img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/posts/2020/1/locking-down-web-app-to-functions-communications-using-subnets/buckets.jpg" />
 
