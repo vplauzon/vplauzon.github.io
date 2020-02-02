@@ -127,7 +127,6 @@ metadata:
   namespace: hello1
 ```
 
-
 ## Testing the solution
 
 We can test those rules.  First, let's find the Public IP of the Ingress Controller.  We have already seen it when we validated the deployment of the ingress controller:
@@ -144,11 +143,11 @@ nginx-ingress-default-backend   ClusterIP      10.0.82.178    <none>           8
 
 In our case, the public IP is **52.228.111.215**.  We can find that public IP in the managed resource group (i.e. *MC_...* resource group).
 
-If we browse to that IP we should have a `default backend - 404` message at the root.
+If we browse to http://52.228.111.215 we should have a `default backend - 404` message at the root.  That is because there are no Ingress rule routing from the root.
 
-If we go at http://52.228.111.215/hello-world-1, we should see `AKS Ingress Demo - 1`.
+If we browse at http://52.228.111.215/hello-world-1, we should see `AKS Ingress Demo - 1`.
 
-If we go to http://52.228.111.215/hello-world-2, we should see `AKS Ingress Demo - 2`.
+If we browse to http://52.228.111.215/hello-world-2, we should see `AKS Ingress Demo - 2`.
 
 There we have it.  2 services, in separate namespaces, exposed through one Ingress Controller.
 
@@ -164,4 +163,6 @@ This makes that site a very bad candidate to use URL routing as we did.  But it'
 
 Simple demo for a simple concept.
 
-As mentionned in the introduction, the trick simply to deploy the ingress rules
+As we mentionned in the introduction, the trick simply to deploy the ingress rules in the same namespace as the services they point to.
+
+As we explored in a [past article](https://vincentlauzon.com/2018/11/28/understanding-multiple-ingress-in-aks/), we could also have multiple Ingress Controller within a cluster.
