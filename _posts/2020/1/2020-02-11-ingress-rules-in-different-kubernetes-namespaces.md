@@ -23,9 +23,14 @@ As usual, the [code is in GitHub](https://github.com/vplauzon/aks/tree/master/in
 
 ## Installing NGinx
 
+<img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/posts/2020/1/ingress-rules-in-different-kubernetes-namespaces/nginx.png" />
+
 Assuming we are starting from a vanilla cluster, we first need to install an Ingress Controller.
 
 Here we are going to use NGinx, but any Ingress Controller could support the rest of the code.
+
+Details of this installation can be found in the [AKS online documentation](https://docs.microsoft.com/en-us/azure/aks/ingress-basic#create-an-ingress-controller).  The basic steps are:
+
 
 ```bash
 # Create a namespace for your ingress resources
@@ -42,19 +47,23 @@ helm install nginx-ingress stable/nginx-ingress \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-Find details of this installation in the [AKS online documentation](https://docs.microsoft.com/en-us/azure/aks/ingress-basic#create-an-ingress-controller).
-
 This installs the Ingress Controller in the namespace *ingress-basic*.
 
 We can validate the Ingress Controller is installed:
 
 ```bash
-$ kubectl get svc -ningress-basic
+kubectl get svc -ningress-basic
+```
 
+```bash
 NAME                            TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                      AGE
 nginx-ingress-controller        LoadBalancer   10.0.211.140   52.228.111.215   80:30725/TCP,443:30354/TCP   34m
 nginx-ingress-default-backend   ClusterIP      10.0.82.178    <none>           80/TCP                       34m
 ```
+
+Remember, [an Ingress Controller is itself a Kubernetes service](https://vincentlauzon.com/2018/11/28/understanding-multiple-ingress-in-aks/).
+
+## Blah
 
 We're going to use one of the Azure samples charts to deploy services.  Let's add the charts to Helm Repo:
 
