@@ -7,7 +7,6 @@ tags:
     - Containers
     - Web
     - Networking
-date:  2020/02/1
 ---
 <img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/1/ingress-rules-in-different-kubernetes-namespaces/black-and-white-carbon-close-up-close-up-2092075.jpg" />
 
