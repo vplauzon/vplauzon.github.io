@@ -40,6 +40,8 @@ AzureDiagnostics
 | limit 100
 ```
 
+And the result on a collection where we just ran a few queries:
+
 activityId_g|requestCharge_s|activityId_g1|querytext_s
 ---|---|---|---
 a3d1...|2.85|a3d1...|{"query":"SELECT {\"p1\": {\"p2\": sum(c.p3)}} AS p4\nFROM c","parameters":[]}
@@ -48,3 +50,9 @@ eae0|2.44|eae0...|{"query":"SELECT c.id, c._self, c._rid, c._ts, c[\"p1\"] AS p2
 4f44...|2.39|4f44...|{"query":"SELECT *\nFROM c","parameters":[]}
 d2a5...|2.39|d2a5...|{"query":"SELECT c.p1, c.p2, c.p3\nFROM c","parameters":[]}
 167a...|2.36|167a...|{"query":"SELECT c.name\nFROM c","parameters":[]}
+
+We can see the queries aren't as we entered them.  Parameters have been aliased.  Nevertheless, it gives us an idea of the shape of the query.
+
+Looking over a longer period we could determine the minimum and maximum RU used by a workload.
+
+We could then make an inform decision on the amount RU to provision or start using [autopilot](https://docs.microsoft.com/en-us/azure/cosmos-db/provision-throughput-autopilot).
