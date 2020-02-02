@@ -43,8 +43,8 @@ AzureDiagnostics
 activityId_g|requestCharge_s|activityId_g1|querytext_s
 ---|---|---|---
 a3d1...|2.85|a3d1...|{"query":"SELECT {\"p1\": {\"p2\": sum(c.p3)}} AS p4\nFROM c","parameters":[]}
-eae0|2.44|eae092b5-94b3-4d12-bab9-4c2c22bca78b|{"query":"SELECT c.id, c._self, c._rid, c._ts, c[\"p1\"] AS p2__18\nFROM c","parameters":[]}
-26c0|2.39|26c0|{"query":"SELECT *\nFROM c","parameters":[]}
-4f44|2.39|4f44|{"query":"SELECT *\nFROM c","parameters":[]}
-d2a5|2.39|d2a5|{"query":"SELECT c.p1, c.p2, c.p3\nFROM c","parameters":[]}
-167a|2.36|167a|{"query":"SELECT c.name\nFROM c","parameters":[]}
+eae0|2.44|eae0...|{"query":"SELECT c.id, c._self, c._rid, c._ts, c[\"p1\"] AS p2__18\nFROM c","parameters":[]}
+26c0...|2.39|26c0...|{"query":"SELECT *\nFROM c","parameters":[]}
+4f44...|2.39|4f44...|{"query":"SELECT *\nFROM c","parameters":[]}
+d2a5...|2.39|d2a5...|{"query":"SELECT c.p1, c.p2, c.p3\nFROM c","parameters":[]}
+167a...|2.36|167a...|{"query":"SELECT c.name\nFROM c","parameters":[]}
