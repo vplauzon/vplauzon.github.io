@@ -11,7 +11,7 @@ date:  2020/02/1
 ---
 <img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/1/ingress-rules-in-different-kubernetes-namespaces/black-and-white-carbon-close-up-close-up-2092075.jpg" />
 
-In this article I want to show how an ingress controller in Kubernetes can be use to route traffic to workloads deployed in multiple namespaces.
+In this article I want to show how an ingress controller in Kubernetes can be used to route traffic to workloads deployed in multiple namespaces.
 
 The [online doc](https://docs.microsoft.com/en-us/azure/aks/ingress-basic) for AKS deploys everything in the same namespace.  Hence this article is a thin extension to the online doc.
 
@@ -115,7 +115,7 @@ A couple of things to notice about those ingress rules:
 * They are deployed in the same namespace as the service they point to
 * They use URL-based routing
 
-The first observation makes the ingress rule work.  The second is simply incidental.  We could have used different routing mechanism, this simply was the simplest to implement.
+The first observation makes the ingress rule work.  The second is simply incidental.  We could have used different routing mechanism ; this simply was the simplest to implement.
 
 To put the rule in a namespace, we simply specified the namespace in the metadata section.  For example, in [ingress1.yaml](https://github.com/vplauzon/aks/blob/master/ingress-multiple-ns/ingress1.yaml#L5):
 
@@ -143,7 +143,7 @@ nginx-ingress-default-backend   ClusterIP      10.0.82.178    <none>           8
 
 In our case, the public IP is **52.228.111.215**.  We can find that public IP in the managed resource group (i.e. *MC_...* resource group).
 
-If we browse to http://52.228.111.215 we should have a `default backend - 404` message at the root.  That is because there are no Ingress rule routing from the root.
+If we browse to http://52.228.111.215 we should have a `default backend - 404` message at the root.  That is because there is no Ingress rule routing from the root.
 
 If we browse at http://52.228.111.215/hello-world-1, we should see `AKS Ingress Demo - 1`.
 
@@ -163,6 +163,6 @@ This makes that site a very bad candidate to use URL routing as we did.  But it'
 
 Simple demo for a simple concept.
 
-As we mentionned in the introduction, the trick simply to deploy the ingress rules in the same namespace as the services they point to.
+As we mentioned in the introduction, the trick simply to deploy the ingress rules in the same namespace as the services they point to.
 
 As we explored in a [past article](https://vincentlauzon.com/2018/11/28/understanding-multiple-ingress-in-aks/), we could also have multiple Ingress Controller within a cluster.
