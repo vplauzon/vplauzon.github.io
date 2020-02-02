@@ -7,7 +7,6 @@ tags:
     - Data
     - NoSQL
     - Operations
-date:  2020-2-1
 ---
 <img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/posts/2020/1/monitoring-query-performance-in-cosmos-db/close-up-of-electric-lamp-against-black-background-248747.jpg" />
 
