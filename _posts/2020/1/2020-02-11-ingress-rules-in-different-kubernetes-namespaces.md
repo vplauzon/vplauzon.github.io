@@ -117,6 +117,17 @@ A couple of things to notice about those ingress rules:
 
 The first observation makes the ingress rule work.  The second is simply incidental.  We could have used different routing mechanism, this simply was the simplest to implement.
 
+To put the rule in a namespace, we simply specified the namespace in the metadata section.  For example, in [ingress1.yaml](https://github.com/vplauzon/aks/blob/master/ingress-multiple-ns/ingress1.yaml#L5):
+
+```bash
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-hello-world-1
+  namespace: hello1
+```
+
+
 ## Testing the solution
 
 We can test those rules.  First, let's find the Public IP of the Ingress Controller.  We have already seen it when we validated the deployment of the ingress controller:
@@ -150,3 +161,7 @@ This is because both sites point to `/static/...` for their images.
 This makes that site a very bad candidate to use URL routing as we did.  But it's simpler to demo...
 
 ## Summary
+
+Simple demo for a simple concept.
+
+As mentionned in the introduction, the trick simply to deploy the ingress rules
