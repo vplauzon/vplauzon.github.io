@@ -111,6 +111,8 @@ This ARM template doesn't have any parameter.  It deploys the following resource
 
 ![Resources](/assets/posts/2020/1/broadcasting-events-to-multiple-solutions/resources.png)
 
+Here is what those resources are for:
+
 Name|Type|Description
 -|-|-
 function-app-* | App Service |Azure Function sending events to the topic.  It simulates the *Producing App*.
