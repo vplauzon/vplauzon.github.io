@@ -10,7 +10,7 @@ date:  2020-02-05
 ---
 <img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/posts/2020/1/azure-data-explorer-kusto/silhouette-of-person-holding-glass-mason-jar-1274260.jpg" />
 
-Let's talk about [Azure Data Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/data-explorer-overview) (ADX).
+Let's talk about [Azure Data Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/data-explorer-overview) (ADX ![ADX](/assets/posts/2020/1/azure-data-explorer-kusto/logo-analytics-145-Azure-Data-Explorer-Clusters.svg)).
 
 If you ask me that is the best kept secret in Azure.
 
