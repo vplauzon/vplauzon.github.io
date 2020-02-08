@@ -28,22 +28,19 @@ styles: true
 table
 {
     padding: 4px;
+    border-collapse:collapse;
+    width:20%;
+    color:black;
 }
 
 table,th,td
 {
     border:2px solid darkgray;
 }
-table
-{
-    border-collapse:collapse;
-    width:20%;
-    color:black;
-}
 
 thead
 {
-  background: lightgreen;
+  background: orange;
 }
 
 tbody tr:nth-child(even)

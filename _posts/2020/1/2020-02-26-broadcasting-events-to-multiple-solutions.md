@@ -39,7 +39,7 @@ At first, it seems a little baffling.  An API seems so easy to secure:  we just 
 
 A good approach when we have a solution that works in one context but not in another is to take a step back and understand the reasons why the solution works in the former context.
 
-So for APIs, we had that mental model:
+For APIs, we have that mental model:
 
 ![Secure APIs](/assets/posts/2020/1/broadcasting-events-to-multiple-solutions/secure-apis.png)
 
@@ -51,11 +51,11 @@ Basically, each API:
 
 That is why it is easy to secure.
 
-A much harder way to model the APIs from a security perspective is to have one endpoint for all type of data:  a buffet.  The only way to secure it is to apply security trimming, i.e. identifying the caller and hidding data they do not have the right to see in the response payload.
+A much harder way to model the APIs from a security perspective is to have one endpoint for all type of data:  a buffet.  The only way to secure it is to apply security trimming, i.e. identifying the caller and hiding data they do not have the right to see in the response payload.
 
 Cyber security people typically do not like security trimming because it pushes the access control mechanisms deeper inside an API's implementation.  In order to validate security compliance, we often need to validate the code of a solution.
 
-So keeping the simpler approach in mind, we can now replicate it to event topics:
+Hence keeping the simpler approach in mind, we can now replicate it to event topics:
 
 ![Secure Events](/assets/posts/2020/1/broadcasting-events-to-multiple-solutions/secure-events.png)
 
@@ -65,9 +65,9 @@ Again here, for this to work, each topic need to:
 * Expose different data
 * Have different access control rules applied to it
 
-So this is basically the dual of an API.
+This is basically the [dual](https://en.wikipedia.org/wiki/Duality_(mathematics)) of an API.
 
-It requires us to think about all the data our broadcasting solution is producing in terms of data buckets.  Each bucket has a security context.  The sensitive data are appart from the non-sensitive ones.
+It requires us to think about all the data our broadcasting solution is producing in terms of data buckets.  Each bucket has a security context.  The sensitive data are apart from the non-sensitive ones.
 
 This requires us to make some artificial separation.  For instance, if we think about HR data, we would need to set appart non-sensitive attributes (e.g. the skills of an employee, their department, etc.) from the sensitive ones (e.g. salary, complaints, etc.).  But even further, maybe there are levels of sensitive information.  For instance, the salary of employees might be visible to any HR staff, but the salary of CxO might be accessible only to HR executives...
 
@@ -91,7 +91,7 @@ Our *Producing App* emits events to different Azure Event Grid topics.  Each top
 
 From a self-service perspective, this solution is quite attractive.  The Event Grid Topics belong to the *Producing App* while both the subscriptions and the event hubs belong to the *Consuming App*.
 
-The only thing we need to link the two is the act of creating a subscription.  This is an administration task, perform when setuping the integration.  The access control for that relies on [Azure RBAC mechanisms](https://docs.microsoft.com/en-us/azure/event-grid/security-authentication#management-access-control).
+The only thing we need to link the two is the act of creating a subscription.  This is an administration task, perform when setting up the integration.  The access control for that relies on [Azure RBAC mechanisms](https://docs.microsoft.com/en-us/azure/event-grid/security-authentication#management-access-control).
 
 We can look at the solution with a different view.  Let's take a single topic consumed by multiple solutions:
 
@@ -99,7 +99,7 @@ We can look at the solution with a different view.  Let's take a single topic co
 
 We see that each solution owns the subscriptions and event hubs.
 
-This solution ticked all the boxes so we kept it.  It is secure, it is self served and the team managing the producing app doesn't become a bottle neck for the organisation.  Security Governance needs to be applied when a subscription to a topic is created.  This is similar to allowing API access.
+This solution ticked all the boxes.  So we kept it.  It is secure, it is self served and the team managing the producing app doesn't become a bottle neck for the organisation.  Security Governance needs to be applied when a subscription to a topic is created.  This is similar to allowing API access.
 
 ## Proof of concept
 
@@ -107,7 +107,7 @@ Now, let's look at how this is implemented.  Let's deploy the proof of concept:
 
 [![Deploy button](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvplauzon%2Fmessaging%2Fmaster%2Fevent-grid-broadcast-2-event-hubs%2Fdeploy.json)
 
-This ARM template doesn' have any parameter.  It deploys the following resources:
+This ARM template doesn't have any parameter.  It deploys the following resources:
 
 ![Resources](/assets/posts/2020/1/broadcasting-events-to-multiple-solutions/resources.png)
 
@@ -119,13 +119,13 @@ topic-* | Event Grid Topic | Represents a single data bucket
 event-hub-* | Event Hubs Namespace | Represents the *consuming app* event hub
 storage* | Storage account |Storage for the Azure function
 
-Let's take a look at the function.  Looking at the code we can see the function simply fires a number of random events to the topic.  The number of event (environment variable *EVENT_COUNT*) is set to 50 by default and can be changed.
+Let's look at the function.  Looking at the code we can see the function simply fires several random events to the topic.  The number of events is defined in environment variable *EVENT_COUNT* is set to 50 by default.
 
 Let's run the function once.
 
 We'll have to wait about 5 minutes to see the result of that in Azure Monitor.
 
-So after 5 minutes, let's open the Event Grid resource.  We should see a recent spike:
+After 5 minutes, let's open the Event Grid resource.  We should see a recent spike:
 
 ![Event Grid Spike](/assets/posts/2020/1/broadcasting-events-to-multiple-solutions/grid-spike.png)
 
