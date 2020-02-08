@@ -31,7 +31,17 @@ Now there was security concerns.  There are different delivery mechanisms (or [h
 
 That was deamed unacceptable as it brought too much risks.  The endpoint could be attacked.  We can now [secure web hooks with AAD authentication](https://docs.microsoft.com/en-us/azure/event-grid/secure-webhook-delivery), but that remains a public endpoint.
 
-## Second attempt
+## Securing publishing
+
+Before we talk about the second draft, let's address the security concern:  how do we secure publications?
+
+At first, it seems a little baffling.  An API seems so easy to secure:  you just lock the door.  But something that broadcast events...  how do you make sure some events aren't picked up by some actor.
+
+![Secure APIs](/assets/posts/2020/1/broadcasting-events-to-multiple-solutions/secure-apis.png)
+
+![Secure Events](/assets/posts/2020/1/broadcasting-events-to-multiple-solutions/secure-events.png)
+
+## Second draft
 
 ![Broadcast many topics](/assets/posts/2020/1/broadcasting-events-to-multiple-solutions/broadcast-many-topics.png)
 
