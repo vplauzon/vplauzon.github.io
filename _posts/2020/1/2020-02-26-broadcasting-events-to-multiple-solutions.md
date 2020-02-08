@@ -119,4 +119,12 @@ topic-* | Event Grid Topic | Represents a single data bucket
 event-hub-* | Event Hubs Namespace | Represents the *consuming app* event hub
 storage* | Storage account |Storage for the Azure function
 
+Let's take a look at the function.  Looking at the code we can see the function simply fires a number of random events to the topic.  The number of event (environment variable *EVENT_COUNT*) is set to 50 by default and can be changed.
 
+Let's run the function once.
+
+We'll have to wait about 5 minutes to see the result of that in Azure Monitor.
+
+So after 5 minutes, let's open the Event Grid resource.  We should see a recent spike:
+
+![Resources](/assets/posts/2020/1/resources.png)
