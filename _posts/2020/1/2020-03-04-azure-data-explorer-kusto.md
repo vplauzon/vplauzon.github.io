@@ -6,7 +6,6 @@ categories:
 tags:
     - BigData
     - Data
-date:  2020-02-05
 ---
 <img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/posts/2020/1/azure-data-explorer-kusto/silhouette-of-person-holding-glass-mason-jar-1274260.jpg" />
 
@@ -108,4 +107,4 @@ It is also important to note that it is a building block for other Azure Service
 * [Azure Monitor logs](https://docs.microsoft.com/en-us/azure/azure-monitor/overview)
 * [Application Insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview)
 * [Time Series Insights](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-update-overview)
-* [Windows Defender Advanced Threat Protection](https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection).
+* [Windows Defender Advanced Threat Protection](https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)
