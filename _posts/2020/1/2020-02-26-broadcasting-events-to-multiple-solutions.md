@@ -127,4 +127,10 @@ We'll have to wait about 5 minutes to see the result of that in Azure Monitor.
 
 So after 5 minutes, let's open the Event Grid resource.  We should see a recent spike:
 
-![Resources](/assets/posts/2020/1/resources.png)
+![Event Grid Spike](/assets/posts/2020/1/broadcasting-events-to-multiple-solutions/grid-spike.png)
+
+The spike has a height of 50, which is the number of events the function fired.
+
+We can move to the single subscription (at the bottom of the *Overview* page).  We should see a similar spike.
+
+If we now go to the Event Hub, we should see similar spikes.
