@@ -56,6 +56,8 @@ At heart Azure Data Explorer (ADX) is about...  Data Exploration.  It is a real 
 
 ## Integration
 
+<img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/1/azure-data-explorer-kusto/person-holding-white-wireless-electronic-device-3531849.jpg" />
+
 ## What ADX isn't optimal for
 
 Dashboard
