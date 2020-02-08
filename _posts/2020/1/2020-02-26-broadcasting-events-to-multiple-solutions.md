@@ -65,11 +65,29 @@ Again here, for this to work, each topic need to:
 * Expose different data
 * Have different access control rules applied to it
 
-So this is basically the dual 
+So this is basically the dual of an API.
+
+It requires us to think about all the data our broadcasting solution is producing in terms of data buckets.  Each bucket has a security context.  The sensitive data are appart from the non-sensitive ones.
+
+This requires us to make some artificial separation.  For instance, if we think about HR data, we would need to set appart non-sensitive attributes (e.g. the skills of an employee, their department, etc.) from the sensitive ones (e.g. salary, complaints, etc.).  But even further, maybe there are levels of sensitive information.  For instance, the salary of employees might be visible to any HR staff, but the salary of CxO might be accessible only to HR executives...
+
+Before going too wild in partitioning the data, let's remember that this isn't Facebook.  It isn't about securing individuals but securing systems.  We do not want to have HR complaints transiting in payroll systems.  But having the salary of every employees, including executives, transiting in a payroll solution is probably fine.
+
+With all of that in mind, we need to design data buckets that make sense.
 
 ## Second draft
 
+Now that we have a model to secure our events, we need to come back with the shortcomings of publishing events on public endpoints.
+
+An easy solution we found is to use a different type of handler:  [event hub](https://docs.microsoft.com/en-us/azure/event-grid/event-handlers#event-hubs).  Azure Event Grid can publish events to Azure Event Hub.
+
+The customer we were working with is already using Kafka as a messaging infrastructure in a couple of solutions.  So having [Azure Event Hub with Kafka](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-for-kafka-ecosystem-overview) made a lot of sense and didn't bring much friction.
+
+So we came up with the following solution:
+
 ![Broadcast many topics](/assets/posts/2020/1/broadcasting-events-to-multiple-solutions/broadcast-many-topics.png)
+
+sadf
 
 ![Broadcast to many solutions](/assets/posts/2020/1/broadcasting-events-to-multiple-solutions/broadcast-to-many.png)
 
