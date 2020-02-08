@@ -10,6 +10,7 @@ styles: true
     display: none;
 }
 
+/*  Style comments  */
 .comment-block {
     border-top:  6px;
     border-top-color:  blueviolet;
@@ -21,4 +22,15 @@ styles: true
 
 .comment-block a {
     text-shadow: none !important;
+}
+
+/*  Style markup tables  */
+thead
+{
+  background: lightgreen;
+}
+
+tbody tr:nth-child(even)
+{
+  background: lightgray;
 }

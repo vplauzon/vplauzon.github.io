@@ -109,7 +109,7 @@ Now, let's look at how this is implemented.  Let's deploy the proof of concept:
 
 This ARM template doesn' have any parameter.  It deploys the following resources:
 
-![Resources](/assets/posts/2020/1/resources.png)
+![Resources](/assets/posts/2020/1/broadcasting-events-to-multiple-solutions/resources.png)
 
 Name|Type|Description
 -|-|-
