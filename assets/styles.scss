@@ -25,6 +25,11 @@ styles: true
 }
 
 /*  Style markup tables  */
+table
+{
+    padding: 4px;
+}
+
 table,th,td
 {
     border:2px solid darkgray;

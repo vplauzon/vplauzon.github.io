@@ -25,17 +25,17 @@ As usual, [code is in GitHub](https://github.com/vplauzon/messaging/tree/master/
 
 At first we thought about [Azure Event Grid](https://docs.microsoft.com/en-us/azure/event-grid/overview).
 
-Event Grid is great for that scenario as it is a push solutions:  it delivers the events to subscribers.
+Event Grid is great for that scenario as it is a push solution:  it delivers the events to subscribers.
 
-Now there was security concerns.  There are different delivery mechanisms (or [handlers](https://docs.microsoft.com/en-us/azure/event-grid/overview#event-handlers)).  The most obvious one, i.e. a web hook, would required the different solutions to expose a public endpoint for Event Grid to contact.  At the time of this writing, i.e. February 2020, Event Grid doesn't integrate with VNETs.
+Now there was security concerns.  There are different delivery mechanisms (or [handlers](https://docs.microsoft.com/en-us/azure/event-grid/overview#event-handlers)).  The most obvious one, i.e. a web hook, would require the different solutions to expose a public endpoint for Event Grid to contact.  At the time of this writing, i.e. February 2020, Event Grid doesn't integrate with VNETs.
 
-That was deamed unacceptable as it brought too much risks.  The endpoint could be attacked.  We can now [secure web hooks with AAD authentication](https://docs.microsoft.com/en-us/azure/event-grid/secure-webhook-delivery), but that remains a public endpoint.
+That was deemed unacceptable as it brought too much risks.  The endpoint could be attacked.  We can now [secure web hooks with AAD authentication](https://docs.microsoft.com/en-us/azure/event-grid/secure-webhook-delivery), but that remains a public endpoint.
 
 ## Securing publishing
 
 Before we talk about the second draft, let's address the security concern:  how do we secure publications?
 
-At first, it seems a little baffling.  An API seems so easy to secure:  you just lock the door.  But something that broadcast events...  how do you make sure some events aren't picked up by some actor.
+At first, it seems a little baffling.  An API seems so easy to secure:  we just lock the door.  But something that broadcast events...  how do we make sure some events aren't picked up by some actor.
 
 A good approach when we have a solution that works in one context but not in another is to take a step back and understand the reasons why the solution works in the former context.
 
@@ -53,7 +53,7 @@ That is why it is easy to secure.
 
 A much harder way to model the APIs from a security perspective is to have one endpoint for all type of data:  a buffet.  The only way to secure it is to apply security trimming, i.e. identifying the caller and hidding data they do not have the right to see in the response payload.
 
-Cyber security people typically do not like security trimming because it pushes the access control mechanisms deeper inside an API's implementation.  In order to validate security compliance, you often need to validate the code of a solution.
+Cyber security people typically do not like security trimming because it pushes the access control mechanisms deeper inside an API's implementation.  In order to validate security compliance, we often need to validate the code of a solution.
 
 So keeping the simpler approach in mind, we can now replicate it to event topics:
 
@@ -147,4 +147,4 @@ Basically, %40 of events are news while %60 are updates.  Filtering on the event
 
 We wanted to show the thought process in crafting an eventing solution from requirements to POC.
 
-Different approaches could 
+Different approaches could have been taken.  For instance, instead of using Event Hubs, we could have used any of the supported handlers.
