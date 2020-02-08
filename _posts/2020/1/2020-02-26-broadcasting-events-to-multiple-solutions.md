@@ -87,8 +87,36 @@ So we came up with the following solution:
 
 ![Broadcast many topics](/assets/posts/2020/1/broadcasting-events-to-multiple-solutions/broadcast-many-topics.png)
 
-sadf
+Our *Producing App* emits events to different Azure Event Grid topics.  Each topic represents a data bucket with a specific security context.  A solution can then subscribe to some (or all) of those topics using Azure Event Grid Subscription.  Some [filtering](https://docs.microsoft.com/en-us/azure/event-grid/event-filtering) can even be applied at the subscription for convenience (i.e. to offload the *Consuming App* from data it doesn't need).  The subscription delivers the events in an Azure Event Hub belonging to a specific solution.  The *Consuming App* (or solution) can then pickup those events.
+
+From a self-service perspective, this solution is quite attractive.  The Event Grid Topics belong to the *Producing App* while both the subscriptions and the event hubs belong to the *Consuming App*.
+
+The only thing we need to link the two is the act of creating a subscription.  This is an administration task, perform when setuping the integration.  The access control for that relies on [Azure RBAC mechanisms](https://docs.microsoft.com/en-us/azure/event-grid/security-authentication#management-access-control).
+
+We can look at the solution with a different view.  Let's take a single topic consumed by multiple solutions:
 
 ![Broadcast to many solutions](/assets/posts/2020/1/broadcasting-events-to-multiple-solutions/broadcast-to-many.png)
 
+We see that each solution owns the subscriptions and event hubs.
+
+This solution ticked all the boxes so we kept it.  It is secure, it is self served and the team managing the producing app doesn't become a bottle neck for the organisation.  Security Governance needs to be applied when a subscription to a topic is created.  This is similar to allowing API access.
+
 ## Proof of concept
+
+Now, let's look at how this is implemented.  Let's deploy the proof of concept:
+
+[![Deploy button](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvplauzon%2Fmessaging%2Fmaster%2Fevent-grid-broadcast-2-event-hubs%2Fdeploy.json)
+
+This ARM template doesn' have any parameter.  It deploys the following resources:
+
+![Resources](/assets/posts/2020/1/resources.png)
+
+Name|Type|Description
+-|-|-
+function-app-* | App Service |Azure Function sending events to the topic.  It simulates the *Producing App*.
+demo-app-plan | App Service plan |Consumption plan (i.e. serverless) of the Azure function
+topic-* | Event Grid Topic | Represents a single data bucket
+event-hub-* | Event Hubs Namespace | Represents the *consuming app* event hub
+storage* | Storage account |Storage for the Azure function
+
+
