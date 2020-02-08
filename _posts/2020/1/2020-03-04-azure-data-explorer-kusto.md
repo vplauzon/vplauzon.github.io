@@ -14,17 +14,15 @@ Let's talk about [Azure Data Explorer](https://docs.microsoft.com/en-us/azure/da
 
 If you ask me that is the best kept secret in Azure.
 
-Well, it isn't exactly a secret but most people do not know about it or if they do just think of it as the back-end engine behind [Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/overview).
+Well, it isn't exactly a secret but most people do not know about it or if they do, they just think of it as the back-end engine behind [Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/overview).
 
-ADX is an Azure Data Service.  It is ideal to analyze large volume of data.
+ADX is an [Azure Analytics Service](https://azure.microsoft.com/en-us/services/#analytics).  It is great at analyzing large volume of moving data.
 
-Isn't that what [Azure Datawarehouse](https://vincentlauzon.com/2016/07/31/how-does-azure-data-warehouse-scale/) is supposed to do?  Or [Azure Databricks](https://vincentlauzon.com/2017/12/18/azure-databricks-getting-started/)?  Actually, there is an entire [category of Analytics Services](https://azure.microsoft.com/en-us/services/#analytics) ADX is part of.
+Isn't that what [Azure Datawarehouse](https://vincentlauzon.com/2016/07/31/how-does-azure-data-warehouse-scale/) is supposed to do?  Or [Azure Databricks](https://vincentlauzon.com/2017/12/18/azure-databricks-getting-started/)?
 
 In this article, I'll go around characteristics of the service:  what its strenght are and where it is complemented by other services.
 
-ADX does a lot of things and is kind of in a category of its own, so it often is a little difficult to describe since we can't simply name drop its category.  I tried to group the caracteristics together.
-
-I started with a huge essay trying to cover every bases but I was bored writing it so I guess it wouldn't have been very exciting to read.  I went with a much shorter version. I'll explore each attributes in future articles.
+I started with a huge essay trying to cover every bases but I was bored writing it so I guess it wouldn't have been very exciting to reading material.  I went with a much lighter version. I'll explore it further in future articles.
 
 ## Scale & Performance
 
