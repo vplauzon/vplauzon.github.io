@@ -44,7 +44,7 @@ At heart Azure Data Explorer (ADX) is about...  Data Exploration.  It is a real 
 * ADX can perform some [Machine Learning](https://docs.microsoft.com/en-us/azure/data-explorer/machine-learning-clustering) (ML) algorithm through a big data sets or use a pre-trained model (e.g. in Python) and use the prediction of a model in the queries.
 * ADX can process **structured, semi-structured & unstructured** at great speed.  Although other solutions can go through small sets of JSON or text fields, they usually take minutes to process large data sets.  ADX answers in seconds.
 * [Visualisation](https://docs.microsoft.com/en-us/azure/data-explorer/viz-overview) is part of the exploration and can be challenging in huge data sets.  Visualization is actually part of the query language.  It seems odd at first but turns out to be very productive.
-* The query language, [Kusto](https://docs.microsoft.com/en-us/azure/data-explorer/write-queries), is unique to ADX.  This also seems odd at first:  isn't SQL the perfect language to query data?  It turns out that Kusto is way more productive than SQL for complex queries.
+* The query language, [Kusto](https://docs.microsoft.com/en-us/azure/data-explorer/write-queries), is unique to ADX.  This also seems odd at first:  isn't SQL the perfect language to query data?  It turns out that Kusto is way more productive than SQL for complex queries.  ADX also supports [TSQL](https://docs.microsoft.com/en-us/azure/kusto/api/tds/t-sql).
 
 ## Near real time
 
@@ -58,7 +58,31 @@ At heart Azure Data Explorer (ADX) is about...  Data Exploration.  It is a real 
 
 <img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/1/azure-data-explorer-kusto/person-holding-white-wireless-electronic-device-3531849.jpg" />
 
+ADX has an impressive gallery of integration for such a young service:
+
+*   Azure Data Factory
+* Spark
+* Jupyter Notebooks
+* Azure Pipelines
+* Event Hub
+* Event Grid
+* IoT Hub
+* Kafka
+* Logstash
+* Power BI
+* Excel
+* Grafana
+* Tableau
+* ODBC connector
+* Sisense
+* Redash
+* Python (i.e. running Python wihtin queries)
+* R (i.e. similar to Python)
+* SQL Server (including Azure SQL & Azure Synapse SQL Pools)
+
 ## What ADX isn't optimal for
+
+Updates
 
 Dashboard
 
