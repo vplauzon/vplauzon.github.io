@@ -22,4 +22,21 @@ Isn't that what [Azure Datawarehouse](https://vincentlauzon.com/2016/07/31/how-d
 
 In this article, I'll go around characteristics of the Service:  what its strenght are and where it is complemented by other services.
 
+## Scale
+
 ## Data Exploration
+
+## Ad Hoc Queries - Fast
+
+## Big Data Analytics - Fast
+
+## Structured, Semi-Structured & Unstructured - Fast
+
+## Near real time ingestion
+
+## Data Transformation
+
+## Integration
+
+## Summary
+
