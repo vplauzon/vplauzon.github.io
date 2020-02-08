@@ -6,7 +6,7 @@ categories:
 tags:
     - BigData
     - Data
-date:2020-02-05
+date:  2020-02-05
 ---
 <img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/posts/2020/1/azure-data-explorer-kusto/silhouette-of-person-holding-glass-mason-jar-1274260.jpg" />
 
