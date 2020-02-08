@@ -90,20 +90,15 @@ The public cloud brought a lot of fragmentation in the Data services.  Although 
 
 Since we do not own the hardware the workloads are running on, we do not have to get married with one technology and run everything on it.  We can use the best tool for the job.
 
+This is a balancing act as we need to take the skill set of people into account.
+
 Most of the scenarios we are citing here can be done with ADX but it wouldn't be the best platform to do so.
 
-Scenario|Why|Alternatives
+Scenario|Why|Azure PaaS Alternatives
 -|-|-
-
-
-
-Updates
-
-Dashboard
-
-ML Training
-
-Real time analysis
+[Datawarehouse](https://en.wikipedia.org/wiki/Data_warehouse)|For starter, ADX is mostly an append-only store.  It isn't transactional, doesn't have log journals, etc.  .  This is part of the reasons it is so fast, but also part of the reasons it is a poor fit for a Datawarehouse.  Also, although it is very fast, it is likely that pre-computed aggregations would be better for dashboards.|[Azure Synapse](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is) & [Power BI Premium](https://docs.microsoft.com/en-us/power-bi/service-premium-what-is)
+[Machine Learning](https://en.wikipedia.org/wiki/Machine_learning) (ML) Training|ADX supports some built-in [ML algorithms](https://docs.microsoft.com/en-us/azure/data-explorer/machine-learning-clustering) (mostly clustering at the time of this writing, i.e. February 2020), it isn't an ML training platform.  It is excellent for running prediction on a pre-training model though.|[Azure ML](https://docs.microsoft.com/en-us/azure/machine-learning/overview-what-is-azure-ml), Spark ([Azure Databricks](https://docs.microsoft.com/en-us/azure/databricks/getting-started/spark/machine-learning) or [Azure HD Insight](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-overview)), [Azure Batch](https://docs.microsoft.com/en-us/azure/batch/batch-technical-overview) & [Data Science Virtual Machine](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/overview) (DSVM)
+Real time analysis|ADX is getting in the 10 seconds latency of near real time.  There are a lot of "real time" scenarios that fit in that window, but for seconds and sub seconds, it isn't there.|[Azure Stream Analytics](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-introduction), [Structured Streaming in Continuous Mode in Spark](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-overview) ([Azure Databricks](https://docs.microsoft.com/en-us/azure/databricks/getting-started/spark/streaming) or [Azure HD Insight](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-overview)), [Kafka Streams](https://kafka.apache.org/documentation/streams/) on [Azure HD Insight](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-overview), [Flink](https://flink.apache.org/) on [Azure HD Insight](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-overview)
 
 ## Summary
 
