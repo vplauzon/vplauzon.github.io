@@ -27,7 +27,7 @@ styles: true
 /*  Style markup tables  */
 table
 {
-    margin: 10px;
+    margin-bottom: 10px;
     border-collapse:collapse;
     width:20%;
     color:black;
@@ -40,7 +40,7 @@ table,th,td
 
 thead
 {
-  background: blue;
+  background: lightgray;
 }
 
 tbody tr:nth-child(even)
