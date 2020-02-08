@@ -27,7 +27,7 @@ styles: true
 /*  Style markup tables  */
 table
 {
-    margin-bottom: 10px;
+    margin-bottom: 10px !important;
     border-collapse:collapse;
     width:20%;
     color:black;
@@ -35,7 +35,7 @@ table
 
 table,th,td
 {
-    border:2px solid darkgray;
+    border:2px solid lightgreen;
 }
 
 thead
