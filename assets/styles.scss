@@ -25,6 +25,17 @@ styles: true
 }
 
 /*  Style markup tables  */
+table,th,td
+{
+    border:2px solid black;
+}
+table
+{
+    border-collapse:collapse;
+    width:20%;
+    color:black;
+}
+
 thead
 {
   background: lightgreen;
