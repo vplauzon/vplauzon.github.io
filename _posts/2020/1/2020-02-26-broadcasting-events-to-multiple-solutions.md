@@ -37,9 +37,35 @@ Before we talk about the second draft, let's address the security concern:  how 
 
 At first, it seems a little baffling.  An API seems so easy to secure:  you just lock the door.  But something that broadcast events...  how do you make sure some events aren't picked up by some actor.
 
+A good approach when we have a solution that works in one context but not in another is to take a step back and understand the reasons why the solution works in the former context.
+
+So for APIs, we had that mental model:
+
 ![Secure APIs](/assets/posts/2020/1/broadcasting-events-to-multiple-solutions/secure-apis.png)
 
+Basically, each API:
+
+* Has a different endpoint 
+* Exposes different data
+* Has different access control rules applied to it
+
+That is why it is easy to secure.
+
+A much harder way to model the APIs from a security perspective is to have one endpoint for all type of data:  a buffet.  The only way to secure it is to apply security trimming, i.e. identifying the caller and hidding data they do not have the right to see in the response payload.
+
+Cyber security people typically do not like security trimming because it pushes the access control mechanisms deeper inside an API's implementation.  In order to validate security compliance, you often need to validate the code of a solution.
+
+So keeping the simpler approach in mind, we can now replicate it to event topics:
+
 ![Secure Events](/assets/posts/2020/1/broadcasting-events-to-multiple-solutions/secure-events.png)
+
+Again here, for this to work, each topic need to:
+
+* Have a different endpoint 
+* Expose different data
+* Have different access control rules applied to it
+
+So this is basically the dual 
 
 ## Second draft
 
