@@ -21,10 +21,20 @@ In this article, we'll dive into that problem and the solution we came up with, 
 
 As usual, [code is in GitHub](https://github.com/vplauzon/messaging/tree/master/event-grid-broadcast-2-event-hubs).
 
-## Possible solutions
+## First draft
 
 At first we thought about [Azure Event Grid](https://docs.microsoft.com/en-us/azure/event-grid/overview).
+
+Event Grid is great for that scenario as it is a push solutions:  it delivers the events to subscribers.
+
+Now there was security concerns.  There are different delivery mechanisms (or [handlers](https://docs.microsoft.com/en-us/azure/event-grid/overview#event-handlers)).  The most obvious one, i.e. a web hook, would required the different solutions to expose a public endpoint for Event Grid to contact.  At the time of this writing, i.e. February 2020, Event Grid doesn't integrate with VNETs.
+
+That was deamed unacceptable as it brought too much risks.  The endpoint could be attacked.  We can now [secure web hooks with AAD authentication](https://docs.microsoft.com/en-us/azure/event-grid/secure-webhook-delivery), but that remains a public endpoint.
+
+## Second attempt
 
 ![Broadcast many topics](/assets/posts/2020/1/broadcasting-events-to-multiple-solutions/broadcast-many-topics.png)
 
 ![Broadcast to many solutions](/assets/posts/2020/1/broadcasting-events-to-multiple-solutions/broadcast-to-many.png)
+
+## Proof of concept
