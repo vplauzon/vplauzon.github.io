@@ -5,7 +5,6 @@ categories:
 - Solution
 tags:
     - Integration
-date:  2020-2-4
 ---
 <img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/1/broadcasting-events-to-multiple-solutions/broadcast.jpg" />
 
