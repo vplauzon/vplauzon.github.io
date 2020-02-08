@@ -60,7 +60,7 @@ At heart Azure Data Explorer (ADX) is about...  Data Exploration.  It is a real 
 
 ADX has an impressive gallery of integration for such a young service:
 
-*   Azure Data Factory
+* Azure Data Factory
 * Spark
 * Jupyter Notebooks
 * Azure Pipelines
@@ -80,7 +80,22 @@ ADX has an impressive gallery of integration for such a young service:
 * R (i.e. similar to Python)
 * SQL Server (including Azure SQL & Azure Synapse SQL Pools)
 
-## What ADX isn't optimal for
+The list is growing and doesn't contain only Azure technology.  ADX can therefore easily be part of a bigger solution.
+
+## What ADX isn't optimal for / stretch scenarios
+
+<img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/posts/2020/1/azure-data-explorer-kusto/animal-animal-photography-big-big-cat-572861.jpg" />
+
+The public cloud brought a lot of fragmentation in the Data services.  Although a good part of the reason for that is the youth of the public cloud, it is also due to inherent characteristics of big data analytics in the cloud.
+
+Since we do not own the hardware the workloads are running on, we do not have to get married with one technology and run everything on it.  We can use the best tool for the job.
+
+Most of the scenarios we are citing here can be done with ADX but it wouldn't be the best platform to do so.
+
+Scenario|Why|Alternatives
+-|-|-
+
+
 
 Updates
 
