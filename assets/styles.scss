@@ -27,7 +27,7 @@ styles: true
 /*  Style markup tables  */
 table,th,td
 {
-    border:2px solid black;
+    border:2px solid darkgray;
 }
 table
 {
@@ -43,5 +43,5 @@ thead
 
 tbody tr:nth-child(even)
 {
-  background: lightgray;
+  background: whitesmoke;
 }

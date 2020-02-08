@@ -134,3 +134,17 @@ The spike has a height of 50, which is the number of events the function fired.
 We can move to the single subscription (at the bottom of the *Overview* page).  We should see a similar spike.
 
 If we now go to the Event Hub, we should see similar spikes.
+
+We could play with filtering.  The event type would be an easy property to filter on.  The code generating it is:
+
+```csharp
+EventType = random.Next(0, 10) < 4 ? "news" : "updates",
+```
+
+Basically, %40 of events are news while %60 are updates.  Filtering on the event type on either "news" or "updates" should yield %40 x 50 = 20 or %60 x 50 = 30 events in the subscription / Event Hub (or close to, given the random nature of assignation).
+
+## Summary
+
+We wanted to show the thought process in crafting an eventing solution from requirements to POC.
+
+Different approaches could 
