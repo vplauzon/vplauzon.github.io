@@ -50,10 +50,9 @@ At heart Azure Data Explorer (ADX) is about...  Data Exploration.  It is a real 
 
 <img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/posts/2020/1/azure-data-explorer-kusto/adult-backpack-blur-business-298018.jpg" />
 
-
-### Ingestion
-
-## Data Transformation
+* ADX operates in this **near-real time window**.  Unlike at Datawarehouse updated hourly (or less), ADX can ingest data every 5 minutes by default and has [new features](https://docs.microsoft.com/en-us/azure/data-explorer/ingest-data-streaming) allowing it to absorb streaming data at less than [10 seconds latency](https://docs.microsoft.com/en-us/azure/data-explorer/ingest-data-streaming).
+* In order to have this low latency of data "freshness", ADX can **ingest data by itself**, without relying on external services (such as Azure Data Factory).  For instance it can [ingest data from Event Hub directly](https://docs.microsoft.com/en-us/azure/data-explorer/data-connection-event-hub-python).
+* Since it requires to ingest data by itself, it can also **transform the data as it is ingested** (cf [update policy](https://docs.microsoft.com/en-us/azure/kusto/management/update-policy)).
 
 ## Integration
 
@@ -62,6 +61,8 @@ At heart Azure Data Explorer (ADX) is about...  Data Exploration.  It is a real 
 Dashboard
 
 ML Training
+
+Real time analysis
 
 ## Summary
 
