@@ -1,6 +1,6 @@
 ---
-title:  Impersonating user with Data Explorer & Azure Storage
-permalink: /2020/03/11/impersonating-user-with-data-explorer-azurestorage
+title:  Impersonating user in ADLS with Data Explorer
+permalink: /2020/03/11/impersonating-user-in-adls-with-data-explorer
 categories:
 - Solution
 tags:
@@ -8,7 +8,7 @@ tags:
     - Security
 date: 2020-02-13
 ---
-<img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/1/impersonating-user-with-data-explorer-azurestorage/airplane-blur-close-up-desk-346793.jpg" />
+<img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/1/impersonating-user-in-adls-with-data-explorer/airplane-blur-close-up-desk-346793.jpg" />
 
 We discussed Azure Data Explorer (ADX) in a <span style="background-color:yellow">Past article</span>.
 
@@ -28,7 +28,7 @@ In order to easily reproduce the issue, let's deploy the ARM Template:
 
 The template has no parameters and will deploy two resources:  a storage account and an ADX cluster:
 
-![resources](/assets/posts/2020/1/impersonating-user-with-data-explorer-azurestorage/resources.png)
+![resources](/assets/posts/2020/1/impersonating-user-in-adls-with-data-explorer/resources.png)
 
 The cluster is a dev-cluster, the cheapest available option.
 
