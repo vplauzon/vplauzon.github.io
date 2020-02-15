@@ -6,7 +6,7 @@ categories:
 tags:
     - BigData
     - Data
-date: 2020-02-10
+date: 2020-02-12
 ---
 <img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/posts/2020/1/azure-data-explorer-kusto/silhouette-of-person-holding-glass-mason-jar-1274260.jpg" />
 
@@ -111,7 +111,7 @@ Also quite popular is IoT telemetry analysis.  As customers capture telemetry th
 
 We see different businesses using it to analyze transactions (sales) to understand customer behaviours, predict trends or spike and optimize go-to-market strategy.  What if in days of deploying a new product we could figure out what customer segment is having traction and which ones are lagging behind?
 
-In general we see customers
+In general we see customers starting with historical analysis and then move to more and more real time analysis as the teams are getting more comfortable with the service.
 
 ## Summary
 
