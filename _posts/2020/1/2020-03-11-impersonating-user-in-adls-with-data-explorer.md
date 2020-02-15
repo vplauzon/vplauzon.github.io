@@ -1,6 +1,6 @@
 ---
-title:  Impersonating user in ADLS with Data Explorer
-permalink: /2020/03/11/impersonating-user-in-adls-with-data-explorer
+title:  Impersonating user in ADLS with Kusto
+permalink: /2020/03/11/impersonating-user-in-adls-with-kusto
 categories:
 - Solution
 tags:
@@ -8,7 +8,7 @@ tags:
     - Security
 date: 2020-02-13
 ---
-<img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/1/impersonating-user-in-adls-with-data-explorer/airplane-blur-close-up-desk-346793.jpg" />
+<img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/1/impersonating-user-in-adls-with-kusto/airplane-blur-close-up-desk-346793.jpg" />
 
 We discussed Azure Data Explorer (ADX) in a <span style="background-color:yellow">Past article</span>.
 
@@ -28,7 +28,7 @@ In order to easily reproduce the issue, let's deploy the ARM Template:
 
 The template has no parameters and will deploy two resources:  a storage account and an ADX cluster:
 
-![resources](/assets/posts/2020/1/impersonating-user-in-adls-with-data-explorer/resources.png)
+![resources](/assets/posts/2020/1/impersonating-user-in-adls-with-kusto/resources.png)
 
 The cluster is a dev-cluster, the cheapest available option.
 
@@ -42,7 +42,7 @@ The storage account should have been deployed with a container named *data*.  We
 
 Let's jump to ADX.  The easiest way to do queries is to use the *query pane* in the ADX resource:
 
-![query pane](/assets/posts/2020/1/impersonating-user-in-adls-with-data-explorer/query-pane.png)
+![query pane](/assets/posts/2020/1/impersonating-user-in-adls-with-kusto/query-pane.png)
 
 We can also go to the ADX Web UI, which is an outside-of-portal Web UI experience, by clicking *Open in Web UI*.
 
@@ -58,7 +58,7 @@ It is important to replace the storage account name by ours.
 
 This should fail with the following error message:
 
-![error message](/assets/posts/2020/1/impersonating-user-in-adls-with-data-explorer/failure.png)
+![error message](/assets/posts/2020/1/impersonating-user-in-adls-with-kusto/failure.png)
 
 Basically, we do not have access.  We'll explain why that is, but before, let's fix the problem.
 
