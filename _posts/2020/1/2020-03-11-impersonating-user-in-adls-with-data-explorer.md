@@ -142,7 +142,7 @@ Basically, although *Contributor* has * (i.e. *all*) *actions*, it doesn't have 
 
 We can read about [Data actions here](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions#dataactions).  Those actions are separate from [actions](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions#actions), which are administrative by nature.
 
-It's a little counter-intuitive, especially if we consider that a *Contributor* can give him / herself any role he / she wants.  But it makes for a nice separation of concerns.  Also, in an audited environment, the previous argument is mooth.
+It's a little counter-intuitive, especially if we consider that a *Contributor* can give him / herself any role he / she wants.  But it makes for a nice separation of concerns.  Also, in an audited environment, the previous argument is moot.
 
 ## Summary
 
