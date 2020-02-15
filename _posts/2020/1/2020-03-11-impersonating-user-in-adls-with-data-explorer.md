@@ -24,7 +24,7 @@ As usual, the [code is in GitHub](https://github.com/vplauzon/data-explorer/tree
 
 In order to easily reproduce the issue, let's deploy the ARM Template:
 
-[![Deploy button](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvplauzon%2Faks%2Fmaster%2Faks-kubenet%2Fdeploy.json)
+[![Deploy button](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvplauzon%2Fdata-explorer%2Fmaster%2Fimpersonation-storage%2Fdeploy.json)
 
 The template has no parameters and will deploy two resources:  a storage account and an ADX cluster:
 
@@ -36,4 +36,18 @@ The cluster is a dev-cluster, the cheapest available option.
 
 First thing we'll do is to copy a CSV file in the storage account.  This is the CSV file we'll be trying to read using ADX.
 
-The storage account should have been deployed with a container named *data*.  We'll copy the [sample.csv](https://github.com/vplauzon/data-explorer/blob/master/impersonation-storage/sample.csv) file into the root of that container (sometimes called file system in ADLS gen 2)
+The storage account should have been deployed with a container named *data*.  We'll copy the [sample.csv](https://github.com/vplauzon/data-explorer/blob/master/impersonation-storage/sample.csv) file into the root of that container (sometimes called file system in ADLS gen 2).
+
+## Trying to access the file
+
+Let's jump to ADX.
+
+![query pane](/assets/posts/2020/1/impersonating-user-in-adls-with-data-explorer/query-pane.png)
+
+## Role assignment
+
+## Trying again
+
+## Why didn't it work?
+
+## Summary
