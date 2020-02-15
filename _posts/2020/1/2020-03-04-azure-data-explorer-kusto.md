@@ -82,7 +82,7 @@ The list is growing and doesn't contain only Azure technology.  ADX can therefor
 
 ## What ADX isn't optimal for / stretch scenarios
 
-<img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/posts/2020/1/azure-data-explorer-kusto/animal-animal-photography-big-big-cat-572861.jpg" />
+<img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/1/azure-data-explorer-kusto/animal-animal-photography-big-big-cat-572861.jpg" />
 
 The public cloud brought a lot of fragmentation in the Data services.  Although part of the reasons for that is the youth of the public cloud technologies, it is also due to inherent characteristics of big data analytics in the cloud:
 
@@ -101,7 +101,7 @@ Sub-second streaming|ADX can go as low as seconds of latency in ingesting data. 
 
 ## Concrete scenarios
 
-<img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/1/azure-data-explorer-kusto/aerial-photography-of-cars-on-the-road-1123972.jpg" />
+<img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/posts/2020/1/azure-data-explorer-kusto/aerial-photography-of-cars-on-the-road-1123972.jpg" />
 
 Here are some scenarios we've seen in different industries.  This is by no mean an exhaustive list but the popular scenarios.
 
