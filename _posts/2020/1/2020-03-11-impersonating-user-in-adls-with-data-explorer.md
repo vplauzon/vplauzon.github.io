@@ -40,14 +40,33 @@ The storage account should have been deployed with a container named *data*.  We
 
 ## Trying to access the file
 
-Let's jump to ADX.
+Let's jump to ADX.  The easiest way to do queries is to use the *query pane* in the ADX resource:
 
 ![query pane](/assets/posts/2020/1/impersonating-user-in-adls-with-data-explorer/query-pane.png)
+
+We can also go to the ADX Web UI, which is an outside-of-portal Web UI experience, by clicking *Open in Web UI*.
+
+We can then type the following query:
+
+```sql
+externaldata (text:string)
+[@"abfss://data@<storage account name>.dfs.core.windows.net/sample.csv;impersonate"]
+with (format='txt')
+```
+
+It is important to replace the storage account name by ours.
+
+This should fail with the following error message:
+
+![error message](/assets/posts/2020/1/impersonating-user-in-adls-with-data-explorer/failure.png)
+
 
 ## Role assignment
 
 ## Trying again
 
 ## Why didn't it work?
+
+https://github.com/vplauzon/azure-training/tree/master/rbac
 
 ## Summary
