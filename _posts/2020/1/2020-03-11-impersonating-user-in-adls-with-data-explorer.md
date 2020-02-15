@@ -70,10 +70,82 @@ This is a [standard procedure](https://docs.microsoft.com/en-us/azure/role-based
 
 ## Trying again
 
+Let's try again the same Kusto query:
 
+```sql
+externaldata (text:string)
+[@"abfss://data@<storage account name>.dfs.core.windows.net/sample.csv;impersonate"]
+with (format='txt')
+```
+
+This might take several minutes for the permission to propagate.  But when it does this query should go through and return the content of the blob.
+
+We can then parse the CSV content:
+
+```sql
+externaldata (name:string, age:int)
+[@"abfss://data@<storage account name>.dfs.core.windows.net/sample.csv;impersonate"]
+with (format='csv', ignoreFirstRecord=true)
+```
 
 ## Why didn't it work?
 
-https://github.com/vplauzon/azure-training/tree/master/rbac
+Being contributor on a resource should be the end-all discussion, shouldn't it?  It doesn't seem to be the case as we needed to explicitly add another role.
+
+Let's explore what is going on a little bit.  We'll look at role definition.  We covered those at large in some [training material](https://github.com/vplauzon/azure-training/tree/master/rbac) we prepared but here let's just go straight to the point with Azure CLI:
+
+```bash
+az role definition list --query "[?roleName == 'Contributor'].permissions" -o jsonc
+
+az role definition list --query "[?roleName == 'Storage Blob Data Reader'].permissions" -o jsonc
+```
+
+This should give us the following results:
+
+```JavaScript
+[
+  [
+    {
+      "actions": [
+        "*"
+      ],
+      "dataActions": [],
+      "notActions": [
+        "Microsoft.Authorization/*/Delete",
+        "Microsoft.Authorization/*/Write",
+        "Microsoft.Authorization/elevateAccess/Action",
+        "Microsoft.Blueprint/blueprintAssignments/write",
+        "Microsoft.Blueprint/blueprintAssignments/delete"
+      ],
+      "notDataActions": []
+    }
+  ]
+]
+[
+  [
+    {
+      "actions": [
+        "Microsoft.Storage/storageAccounts/blobServices/containers/read",
+        "Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action"
+      ],
+      "dataActions": [
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+      ],
+      "notActions": [],
+      "notDataActions": []
+    }
+  ]
+]
+```
+
+Basically, although *Contributor* has * (i.e. *all*) *actions*, it doesn't have any *DataActions*.
+
+We can read about [Data actions here](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions#dataactions).  Those actions are separate from [actions](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions#actions), which are administrative by nature.
+
+It's a little counter-intuitive, especially if we consider that a *Contributor* can give him / herself any role he / she wants.  But it makes for a nice separation of concerns.  Also, in an audited environment, the previous argument is mooth.
 
 ## Summary
+
+There we go.  We hope this quick explanation was useful.
+
+We recommend using the impersonation as it is more secure than littering code with SAS tokens or access keys.
