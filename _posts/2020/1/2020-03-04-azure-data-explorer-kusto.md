@@ -101,7 +101,17 @@ Sub-second streaming|ADX can go as low as seconds of latency in ingesting data. 
 
 ## Concrete scenarios
 
-.
+<img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/1/aerial-photography-of-cars-on-the-road-1123972.jpg" />
+
+Here are some scenarios we've seen in different industries.  This is by no mean an exhaustive list but the popular scenarios.
+
+Quite a few customers are using ADX / Kusto to analyze unified logs, i.e. logs from on-premise systems and different clouds.  This is typical log analysis, so it could be for security, relyability engineering, forecasting, etc.  .
+
+Also quite popular is IoT telemetry analysis.  As customers capture telemetry they want to mine that data.
+
+We see different businesses using it to analyze transactions (sales) to understand customer behaviours, predict trends or spike and optimize go-to-market strategy.  What if in days of deploying a new product we could figure out what customer segment is having traction and which ones are lagging behind?
+
+In general we see customers
 
 ## Summary
 
