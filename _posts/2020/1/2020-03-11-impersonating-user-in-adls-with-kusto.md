@@ -17,7 +17,7 @@ It would be all trivial and boring if it wouldn't be for a peculiar aspect of RB
 
 How can I be contributor on the resource group and not have access?  We'll see how.
 
-As usual, the [code is in GitHub](https://github.com/vplauzon/data-explorer/tree/master/impersonation-storage).
+As usual, the [code is in GitHub](https://github.com/vplauzon/kusto/tree/master/impersonation-storage).
 
 ## Sample solution
 
