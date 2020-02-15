@@ -60,10 +60,17 @@ This should fail with the following error message:
 
 ![error message](/assets/posts/2020/1/impersonating-user-in-adls-with-data-explorer/failure.png)
 
+Basically, we do not have access.  We'll explain why that is, but before, let's fix the problem.
 
 ## Role assignment
 
+We need to add the role [Storage Blob Data Reader](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) to ourselves (or who ever access the data lake using ADX).
+
+This is a [standard procedure](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal) so we won't document it here.
+
 ## Trying again
+
+
 
 ## Why didn't it work?
 
