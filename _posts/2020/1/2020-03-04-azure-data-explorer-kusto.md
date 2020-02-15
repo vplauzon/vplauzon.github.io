@@ -101,7 +101,7 @@ Sub-second streaming|ADX can go as low as seconds of latency in ingesting data. 
 
 ## Concrete scenarios
 
-<img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/1/aerial-photography-of-cars-on-the-road-1123972.jpg" />
+<img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/1/azure-data-explorer-kusto/aerial-photography-of-cars-on-the-road-1123972.jpg" />
 
 Here are some scenarios we've seen in different industries.  This is by no mean an exhaustive list but the popular scenarios.
 
