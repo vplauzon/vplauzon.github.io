@@ -25,3 +25,11 @@ As usual, the [code is in GitHub](https://github.com/vplauzon/kusto/tree/master/
 Let's look at two streams of events from two devices:
 
 ![2 streams](/assets/posts/2020/1/synchronizing-two-streams-with-kusto/streams.png)
+
+The events from stream 1 are letters while the events from stream 2 are numbers.
+
+We can make a number of observations:
+
+* No event in one stream occur at the same time than an event in the other stream
+* Event A occur before any event in Stream 2 occur
+* 
