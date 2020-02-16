@@ -12,6 +12,14 @@ date:  2020-02-14
 
 We discussed Azure Data Explorer (ADX) and its query language Kusto in a <span style="background-color:yellow">Past article</span>.
 
-In this article I want to talk about a typical problem in real time analytics:  synchronizing two streams of data.  This happens all the time when sensor data are produced by different devices.
+In this article I want to talk about a typical problem in real time analytics:  synchronizing two streams of data.
+
+This happens all the time when sensor data are produced by different devices.  Different devices may record measurements at different times and different frequency.  In order to reason about measurements from different devices, we need to synchronize those events.
+
+We'll first explain what the problem is.  We'll then give a naïve solution which we'll show doesn't scale.  We'll then give a solution that can scale to milion of records.
+
+As usual, the [code is in GitHub](https://github.com/vplauzon/kusto/tree/master/sync-2-streams).
+
+
 
 ![2 streams](/assets/posts/2020/1/synchronizing-two-streams-with-kusto/streams.png)
