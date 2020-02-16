@@ -8,4 +8,6 @@ tags:
     - Streaming
 date:  2020-02-14
 ---
-<img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/1/impersonating-user-in-adls-with-kusto/airplane-blur-close-up-desk-346793.jpg" />
+<img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/1/synchronizing-two-streams-with-kusto/landscape-photography-of-waterfalls-surrounded-by-green-931007.jpg" />
+
+![2 streams](/assets/posts/2020/1/synchronizing-two-streams-with-kusto/streams.png)
