@@ -16,7 +16,7 @@ In this article I want to talk about a typical problem in real time analytics:  
 
 This happens all the time when sensor data are produced by different devices.  Different devices may record measurements at different times and different frequency.  In order to reason about measurements from different devices, we need to synchronize those events.
 
-We'll first explain what the problem is.  We'll then give a naïve solution which we'll show doesn't scale.  We'll then give a solution that can scale to milion of records.
+We'll first explain what the problem is.  We'll then give a naïve solution which we'll show doesn't scale.  We'll then give a solution that can scale to millions of records.
 
 As usual, the [code is in GitHub](https://github.com/vplauzon/kusto/tree/master/sync-2-streams).
 
@@ -28,7 +28,7 @@ Let's look at two streams of events from two devices:
 
 The events from stream 1 are letters while the events from stream 2 are numbers.
 
-We can make a number of observations:
+We can make several observations:
 
 * No event in one stream occur at the same time than an event in the other stream
 * Events aren't necessarily happening at regular pace
@@ -41,7 +41,7 @@ There are multiple things we might want to do with those streams.  For this arti
 
 Also, we'll define the correlation further:
 
-> The correlation should work in a way that for a measurement (event) in stream 1, we're going to take the value of the measurement in stream 2 that happend "just before" (i.e. as close as possible AND before).
+> The correlation should work in a way that for a measurement (event) in stream 1, we're going to take the value of the measurement in stream 2 that happened "just before" (i.e. as close as possible AND before).
 
 We could frame the problem differently, but we found that solving this problem provides a lot of techniques that can be reused to solve similar problems.
 
@@ -49,7 +49,7 @@ For the example we gave we should have the following result:
 
 |Event in Stream 1|Event in Stream 2 (correlated)
 |-|-
-|A|*NULL / Missing* (no event in stream 2 occured before event A)
+|A|*NULL / Missing* (no event in stream 2 occurred before event A)
 |B|1
 |C|3
 |D|3
@@ -59,11 +59,11 @@ Also, for the different solutions we are going to present, we are going to assum
 
 ## Naïve solution
 
-We are going to test a solution using Kusto query language.  We suggest to try that solution on a new database.
+We are going to test a solution using Kusto query language.  We suggest trying that solution on a new database.
 
-The naïve solution is basically to formulate the problem and let Kusto take care of it.  We want, for each asset, to map an event in one stream with the latest event in the other stream that happend before or at the same time.
+The naïve solution is basically to formulate the problem and let Kusto take care of it.  We want, for each asset, to map an event in one stream with the latest event in the other stream that happened before or at the same time.
 
-Let's create some sensor data.  First we measure the "colour" of an asset every *even* seconds:
+Let's create some sensor data.  First, we measure the "colour" of an asset every *even* second:
 
 ```sql
 .set-or-replace colours <| datatable(assetId:int, timeStamp:datetime, colour:string)
@@ -77,9 +77,9 @@ Let's create some sensor data.  First we measure the "colour" of an asset every 
     ];
 ```
 
-So we had two assets (12 & 13) having "colour" measurements taken every two seconds.
+We had two assets (12 & 13) having "colour" measurements taken every two seconds.
 
-Then we measure the temperature of an asset every *odd* seconds:
+Then we measure the temperature of an asset every *odd* second:
 ```sql
 .set-or-replace temperatures <| datatable(assetId:int, timeStamp:datetime, temperature:int)
     [
@@ -98,7 +98,7 @@ colours
 | join kind=inner temperatures on assetId
 ```
 
-We want to find the timestamp in temperatures that is the closest to the one in colours ; we want one early or at the same time.  This is how we're going to eliminate the cross-product rows. Let's start by having the colour timestamp be greater or equal to emperature's timestamp:
+We want to find the timestamp in temperatures that is the closest to the one in colours ; we want one early or at the same time.  This is how we're going to eliminate the cross-product rows. Let's start by having the colour timestamp be greater or equal to temperature's timestamp:
 ```sql
 colours
 | join kind=inner temperatures on assetId
@@ -115,7 +115,7 @@ colours
 | summarize temperatureTimeStamp=max(timeStamp1) by assetId, colourTimeStamp=timeStamp
 ```
 
-Now, let's use that mapping to match the sensor values.  Again we lost the two colour readings at 20:00:04 since there was no temperature reading earlier or at the same time.
+Now, let's use that mapping to match the sensor values.  We lost the two colour readings at 20:00:04 again since there was no temperature reading earlier or at the same time.
 ```sql
 let mapping=colours
 | join kind=inner temperatures on assetId
@@ -142,7 +142,7 @@ assetId|colourTimeStamp|temperatureTimeStamp|colour|temperature
 
 The solution works.  Let's see if it can scale.
 
-Let's create 10 millions records colour table (with 5000 assets):
+Let's create 10 million records colour table (with 5000 assets):
 ```sql
 .set-or-replace fullColours <|
 (
@@ -156,7 +156,7 @@ Let's create 10 millions records colour table (with 5000 assets):
 )
 ```
 
-Similarly, let's create 20 millions records (5000 assets) temperature table.  This will cover the same time range but with twice the measurement frequency.
+Similarly, let's create 20 million records (5000 assets) temperature table.  This will cover the same time range but with twice the measurement frequency.
 ```sql
 .set-or-replace fullTemperatures <|
 (
@@ -183,7 +183,7 @@ This query fails on a dev cluster:
 
 ![Failure](/assets/posts/2020/1/synchronizing-two-streams-with-kusto/failure.png)
 
-The reason this fails is that the query doesn't scale.  It requires to do an aggregation for each of the 10 milion records over milion of other records.
+The reason this fails is that the query doesn't scale.  It requires to do an aggregation for each of the 10 million records over million of other records.
 
 ## Time in a bucket
 
@@ -191,7 +191,7 @@ We'll develop a more scalable solution in this section.  This is largely inspire
 
 What we want to do is to reduce drastically the cardinality of the set on which we perform an aggregation, i.e. the `min(timeStamp1)` in the last section.  The issue we have is that we join on *assetID* but we take all the *temperature* measurements for that asset.  What we would like to do is just take measurements *around* the timestamp of the colour measurement.
 
-We can't join on a range of value.  So the trick is to quantize the time variable into buckets.  Doing this we can then join on a given time bucket.
+We can't join on a range of value.  The trick is to quantize the time variable into buckets.  Doing this we can then join on a given time bucket.
 
 ![Failure](/assets/posts/2020/1/synchronizing-two-streams-with-kusto/buckets.png)
 
@@ -206,7 +206,7 @@ Given that, we can have an elegant solution:
 *   Let's define the time bucket being of size *maxDelta* (a time span)
 * This way we only need the bucket of the event in stream 1 and the preceeding bucket.
 
-This is easy to see.  The extreme case are as follow:
+This is easy to see.  The extreme cases are as follow:
 
 * The correlated event is happening at the same timestamp as the event in stream 1:  in this case we only need the time bucket of stream 1's event
 * The correlated event is happening *maxDelta* **before** the event in stream 1:  in this case, the event will be in the previous bucket
@@ -215,7 +215,7 @@ We can easily see that cases in between fall in between.
 
 This allows us to drastically reduce the cardinality of the set as we wanted, provided *maxDelta* is small enough.
 
-## Solution with bucketted time
+## Solution with bucketed time
 
 Here we choose 1 second for *maxDelta*.  We'll first try on the small tables:
 ```sql
@@ -243,7 +243,7 @@ We obtain the same result as before.
 
 The result set is so small, it's not possible to measure how more memory-efficient it was though.
 
-So let's try on the bigger result set and let's store the result in a new table:
+Let's try on the bigger result set and let's store the result in a new table:
 ```sql
 .set-or-replace fullColoursWithTemperatures <|
 let maxDelta=1s;
@@ -272,7 +272,9 @@ fullColours
 | project assetId, colourTimeStamp, temperatureTimeStamp, colour, temperature
 ```
 
-This query runs in about 50 seconds on a cluster of sku *dev* (i.e. the smallest / cheapest cluster).  So it is still demanding, but it does execute.
+This query runs in about 50 seconds on a cluster of sku *dev* (i.e. the smallest / cheapest cluster).
+
+It is still demanding, but it does execute and terminate.
 
 We can notice the cardinality of that last table is 9 995 001.
 
@@ -295,7 +297,7 @@ In order to fix that, we could simply detect those and union another query fetch
 
 We assumed that taking the previous event was a good idea.
 
-A more general solution would be to interpolate (e.g. linearly) the measurement values.  This would be useful especially if measurements in one of the stream are far in between and are not "slow moving".
+A more general solution would be to interpolate (e.g. linearly) the measurement values.  This would be useful especially if measurements in one of the streams are far in between and are not "slow moving".
 
 ## Relative time
 
