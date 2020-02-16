@@ -191,20 +191,33 @@ We'll develop a more scalable solution in this section.  This is largely inspire
 
 What we want to do is to reduce drastically the cardinality of the set on which we perform an aggregation, i.e. the `min(timeStamp1)` in the last section.  The issue we have is that we join on *assetID* but we take all the *temperature* measurements for that asset.  What we would like to do is just take measurements *around* the timestamp of the colour measurement.
 
-We can't join on a range of value.  So the trick is to quantize the time variable into buckets.
+We can't join on a range of value.  So the trick is to quantize the time variable into buckets.  Doing this we can then join on a given time bucket.
 
 ![Failure](/assets/posts/2020/1/synchronizing-two-streams-with-kusto/buckets.png)
 
+If we look at the example above, we can immediately see that we can't simply go within one bucket.  This works for event A, B, C & E but not for D.  Although D is in bucket *Delta*, the correlated event of stream 2, i.e. event 3, is in bucket *Gamma*.
+
+How far back do we need to go?
+
+In order not to force ourselves to go back to the beginning in the general case, we need to impose a constraint on the problem.  We need to cap the distance between an event in stream 1 and its correlated event in stream 2.  We'll call that "distance" *maxDelta*, i.e. the maximum delta between two events in two different streams.
+
+Given that, we can have an elegant solution:
+
+*   Let's define the time bucket being of size *maxDelta* (a time span)
+* This way we only need the bucket of the event in stream 1 and the preceeding bucket.
+
+This is easy to see.  The extreme case are as follow:
+
+* The correlated event is happening at the same timestamp as the event in stream 1:  in this case we only need the time bucket of stream 1's event
+* The correlated event is happening *maxDelta* **before** the event in stream 1:  in this case, the event will be in the previous bucket
+
+We can easily see that cases in between fall in between.
+
+This allows us to drastically reduce the cardinality of the set as we wanted, provided *maxDelta* is small enough.
 
 ## Solution with bucketted time
 
-//  Let's try the approach laid out in
-//  
-//  We quantitize time in bins.
-//  The size of the bucket should be the longest time interval we expect
-//  between the 2 sensors' reading.  This should be including clock
-//  discrepencies.
-//  Here we choose 1 seconds
+Here we choose 1 second for *maxDelta*.  We'll first try on the small tables:
 ```sql
 let maxDelta=1s;
 colours
@@ -266,5 +279,7 @@ fullColours
 fullColoursWithTemperatures
 | count
 ```
+
+## Relative time
 
 ## Summary
