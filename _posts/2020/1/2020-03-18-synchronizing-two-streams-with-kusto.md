@@ -142,8 +142,7 @@ assetId|colourTimeStamp|temperatureTimeStamp|colour|temperature
 
 The solution works.  Let's see if it can scale.
 
-//  Let's try this solution with volume
-//  Let's create 10 millions records colour table (with 5000 assets)
+Let's create 10 millions records colour table (with 5000 assets):
 ```sql
 .set-or-replace fullColours <|
 (
@@ -157,8 +156,7 @@ The solution works.  Let's see if it can scale.
 )
 ```
 
-//  Let's create 20 millions records (5000 assets) temperature table
-//  It covers the same time range but with twice the measurement frequency
+Similarly, let's create 20 millions records (5000 assets) temperature table.  This will cover the same time range but with twice the measurement frequency.
 ```sql
 .set-or-replace fullTemperatures <|
 (
@@ -171,8 +169,7 @@ The solution works.  Let's see if it can scale.
 )
 ```
 
-//  Now, let's try the same solution on the bigger tables
-//  This busts on a dev cluster (E_RUNAWAY_QUERY)
+Now, let's try the same solution on the bigger tables
 ```sql
 let mapping=fullColours
 | join kind=inner fullTemperatures on assetId
@@ -181,6 +178,11 @@ let mapping=fullColours
 mapping
 | limit 10
 ```
+
+This fails on a dev cluster (E_RUNAWAY_QUERY):
+
+
+
 
 ## Time in a bucket
 
