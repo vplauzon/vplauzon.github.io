@@ -37,4 +37,23 @@ We can make a number of observations:
 
 There are multiple things we might want to do with those streams.  For this article, we'll focus on one problem:
 
-> We want to measure 
+> We want to look at measurements done in both streams, so we want measurements in stream 2 to be correlated to measurements in stream 1.
+
+Also, we'll define the correlation further:
+
+> The correlation should work in a way that for a measurement (event) in stream 1, we're going to take the value of the measurement in stream 2 that happend "just before" (i.e. as close as possible AND before).
+
+We could frame the problem differently, but we found that solving this problem provides a lot of techniques that can be reused to solve similar problems.
+
+For the example we gave we should have the following result:
+
+|Event in Stream 1|Event in Stream 2 (correlated)
+|-|-
+|A|*NULL / Missing* (no event in stream 2 occured before event A)
+|B|1
+|C|3
+|D|3
+|E|5
+
+## Naïve solution
+
