@@ -179,18 +179,27 @@ mapping
 | limit 10
 ```
 
-This fails on a dev cluster (E_RUNAWAY_QUERY):
+This query fails on a dev cluster:
 
 ![Failure](/assets/posts/2020/1/synchronizing-two-streams-with-kusto/failure.png)
 
-
+The reason this fails is that the query doesn't scale.  It requires to do an aggregation for each of the 10 milion records over milion of other records.
 
 ## Time in a bucket
+
+We'll develop a more scalable solution in this section.  This is largely inspired by the [join-timewindow](https://docs.microsoft.com/en-us/azure/kusto/query/join-timewindow) article on the online documentation but it gives a more general solution.
+
+What we want to do is to reduce drastically the cardinality of the set on which we perform an aggregation, i.e. the `min(timeStamp1)` in the last section.  The issue we have is that we join on *assetID* but we take all the *temperature* measurements for that asset.  What we would like to do is just take measurements *around* the timestamp of the colour measurement.
+
+We can't join on a range of value.  So the trick is to quantize the time variable into buckets.
+
+![Failure](/assets/posts/2020/1/synchronizing-two-streams-with-kusto/buckets.png)
+
 
 ## Solution with bucketted time
 
 //  Let's try the approach laid out in
-//  https://docs.microsoft.com/en-us/azure/kusto/query/join-timewindow
+//  
 //  We quantitize time in bins.
 //  The size of the bucket should be the longest time interval we expect
 //  between the 2 sensors' reading.  This should be including clock
