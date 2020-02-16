@@ -181,6 +181,7 @@ mapping
 
 This fails on a dev cluster (E_RUNAWAY_QUERY):
 
+![Failure](/assets/posts/2020/1/synchronizing-two-streams-with-kusto/failure.png)
 
 
 
