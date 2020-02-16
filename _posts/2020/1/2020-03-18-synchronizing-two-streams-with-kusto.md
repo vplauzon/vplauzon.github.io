@@ -57,3 +57,9 @@ For the example we gave we should have the following result:
 
 ## Naïve solution
 
+We are going to test a solution using Kusto query language.  We suggest to try that solution on a new database:
+
+```sql
+.create database test2streams
+```
+
