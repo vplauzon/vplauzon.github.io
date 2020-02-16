@@ -20,6 +20,8 @@ We'll first explain what the problem is.  We'll then give a naïve solution whic
 
 As usual, the [code is in GitHub](https://github.com/vplauzon/kusto/tree/master/sync-2-streams).
 
+## 2 streams problem
 
+Let's look at two streams of events from two devices:
 
 ![2 streams](/assets/posts/2020/1/synchronizing-two-streams-with-kusto/streams.png)
