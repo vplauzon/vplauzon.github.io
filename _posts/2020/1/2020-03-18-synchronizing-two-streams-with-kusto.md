@@ -239,10 +239,11 @@ on $left.assetId==$right.assetId, $left.colourTimeKey==$right.temperatureTimeKey
 | summarize temperatureTimeStamp=max(temperatureTimeStamp) by assetId, colourTimeStamp;
 ```
 
-//  We obtain the same result as before
-//  The result set is so small, it's not possible to measure how more
-//  memory-efficient it was though
-//  So let's try on the bigger result set
+We obtain the same result as before.
+
+The result set is so small, it's not possible to measure how more memory-efficient it was though.
+
+So let's try on the bigger result set and let's store the result in a new table:
 ```sql
 .set-or-replace fullColoursWithTemperatures <|
 let maxDelta=1s;
@@ -271,15 +272,41 @@ fullColours
 | project assetId, colourTimeStamp, temperatureTimeStamp, colour, temperature
 ```
 
-//  We can notice the cardinality of that last table is 9 995 001
-//  That is 5000 less than the fullColours table
-//  This makes sense as the first record for each of the 5000 assets
-//  doesn't have a measurement in the fullTemperature table
+This query runs in about 50 seconds on a cluster of sku *dev* (i.e. the smallest / cheapest cluster).  So it is still demanding, but it does execute.
+
+We can notice the cardinality of that last table is 9 995 001.
+
+That is 5000 less than the *fullColours* table.
+
 ```sql
 fullColoursWithTemperatures
 | count
 ```
 
+This makes sense as the first record for each of the 5000 assets doesn't have a measurement in the fullTemperature table.
+
+## Missing first records
+
+As pointed out in the last section, this solution will remove the first record of each asset if there is no event in stream 2 happening before the first event in stream 1.
+
+In order to fix that, we could simply detect those and union another query fetching the record "just after".
+
+## Taking previous event
+
+We assumed that taking the previous event was a good idea.
+
+A more general solution would be to interpolate (e.g. linearly) the measurement values.  This would be useful especially if measurements in one of the stream are far in between and are not "slow moving".
+
 ## Relative time
 
+The exercise we did was to correlate events in stream 1 with events in stream 2.  It is important to notice that process isn't symetric.
+
+For instance, just looking at our earlier diagram we would see that event 'B' correlates with event '1', but taken the other way around, event '1' would correlate with event 'A', not event 'B'.
+
+For this reason, it is important not to mix the two.
+
 ## Summary
+
+We showed how to synchronize two measurement streams.  There is more than meets the eye for this apparently simple operation.  It also is quite demanding in terms of computing.
+
+The time bucket technique can be reused in a multitude of context.
