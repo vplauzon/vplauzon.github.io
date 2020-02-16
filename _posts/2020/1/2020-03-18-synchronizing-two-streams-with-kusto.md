@@ -31,5 +31,10 @@ The events from stream 1 are letters while the events from stream 2 are numbers.
 We can make a number of observations:
 
 * No event in one stream occur at the same time than an event in the other stream
+* Events aren't necessarily happening at regular pace
+* Both streams don't perfectly interlace events
 * Event A occur before any event in Stream 2 occur
-* 
+
+There are multiple things we might want to do with those streams.  For this article, we'll focus on one problem:
+
+> We want to measure 
