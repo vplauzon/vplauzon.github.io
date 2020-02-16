@@ -1,4 +1,5 @@
 ---
+
 title: Monitoring query performance in Cosmos DB
 permalink: /2020/02/19/monitoring-query-performance-in-cosmos-db
 categories:
