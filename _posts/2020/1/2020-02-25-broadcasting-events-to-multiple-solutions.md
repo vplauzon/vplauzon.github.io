@@ -1,6 +1,6 @@
 ---
 title: Broadcasting events to multiple solutions
-permalink: /2020/02/26/broadcasting-events-to-multiple-solutions
+permalink: /2020/02/25/broadcasting-events-to-multiple-solutions
 categories:
 - Solution
 tags:

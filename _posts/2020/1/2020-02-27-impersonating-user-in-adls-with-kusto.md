@@ -1,6 +1,6 @@
 ---
 title:  Impersonating user in ADLS with Kusto
-permalink: /2020/03/11/impersonating-user-in-adls-with-kusto
+permalink: /2020/02/27/impersonating-user-in-adls-with-kusto
 categories:
 - Solution
 tags:

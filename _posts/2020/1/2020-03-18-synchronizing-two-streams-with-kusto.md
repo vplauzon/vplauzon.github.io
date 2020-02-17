@@ -311,3 +311,5 @@ For this reason, it is important not to mix the two.
 We showed how to synchronize two measurement streams.  There is more than meets the eye for this apparently simple operation.  It also is quite demanding in terms of computing.
 
 The time bucket technique can be reused in a multitude of context.
+
+As this technique is quite costly in terms of compute, we recommend to do this at ingestion time so the results can be reused in subsequent queries.
