@@ -1,6 +1,6 @@
 ---
 title: Azure Data Explorer (Kusto)
-permalink: /2020/03/04/azure-data-explorer-kusto
+permalink: /2020/02/19/azure-data-explorer-kusto
 categories:
 - Solution
 tags:
