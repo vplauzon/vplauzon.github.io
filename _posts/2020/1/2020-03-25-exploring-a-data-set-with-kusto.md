@@ -23,7 +23,19 @@ As usual, [code is in GitHub](https://github.com/vplauzon/kusto/tree/master/imdb
 
 ## Download the data
 
+We'll first download some data.
+
+There are plenty of public (free) data sets on the Internet these days.  For this article, we choose, the Internet Movie Database (IMDB) data set from [IMDB Extractor](http://www.wandora.org/wandora/wiki/index.php?title=IMDB_extractor).
+
+We will only look at *movies.csv* & *ratings.csv* so no need to download all the files.
+
+We will unzip them and put them in an ADLS gen 2 storage account.
+
 ## Explore files
+
+We will reuse the user impersonation technique we've discussed in a <span style="background-color:yellow">Past article</span>.  This allows us to use the credentials of the logged in user to access the storage account.  Remember:  we need to add the [Storage Blob Data Reader](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) role for the user on the storage account.
+
+
 
 ## Ingest files
 
