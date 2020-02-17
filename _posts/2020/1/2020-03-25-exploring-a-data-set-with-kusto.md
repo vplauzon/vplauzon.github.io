@@ -68,7 +68,7 @@ We quickly notice a few things:
 
 * The general format is CSV (with actual comma)
 * The year of the movie is embedded in the title
-* The genres is an array using a pipes to delimit each entry
+* The genres are an array using a pipes to delimit each entry
 
 CSV format is supported out of the box.  To extract the year, we'll need to use a *regular expression* (regex).  Finally, to extract the genres, we'll simply need to split on pipes.  We will store the genres as an array.
 
@@ -221,6 +221,6 @@ We looked at the raw data:  the text in the CSV file.  Quickly we built a schema
 
 From there we were able to dive into the data set, asking questions and quickly getting answer.
 
-Some of the queries were actually iterations on our side.  For instance, summarizing on size when looking at the best ratings was done after we looked at the result and didn't recognize any of the movie.  Adding the size, or the number of ratings, quickly told us that there was only one rating for each and therefore that was only noise.
+Some of the queries were iterations on our side.  For instance, summarizing on size when looking at the best ratings was done after we looked at the result and didn't recognize any of the movie.  Adding the size, or the number of ratings, quickly told us that there was only one rating for each and therefore that was only noise.
 
 One of Kusto's strength lies in this ad hoc / interactive query mode.  It is very easy to iteratively improve on queries as we learn from the data.
