@@ -168,4 +168,49 @@ We can see that drama and comedy take the lion share of genres.
 
 ![Genre Distribution](/assets/posts/2020/1/exploring-a-data-set-with-kusto/genre-dist.png)
 
+We can then look at both movies and ratings to ask deeper questions.  For instance, what movies got the most ratings?
+
+```sql
+movies
+| join ratings on movieId
+| summarize size=count() by movieTitle
+| top 5 by size
+| render columnchart 
+```
+
+![Most Ratings](/assets/posts/2020/1/exploring-a-data-set-with-kusto/most-ratings.png)
+
+Or what movies got the best ratings?
+
+```sql
+movies
+| join ratings on movieId
+| summarize size=count(), rating=avg(rating) by movieTitle
+| top 5 by rating
+```
+
+The result is a bit odd:
+
+movieTitle|size|rating
+-|-|-
+Into the Middle of Nowhere| 	1|	5
+Prom Queen: The Marc Hall Story| 	1|	5
+Inquire Within| 	1|	5
+Ella Lola, a la Trilby| 	1|	5
+The Floating Castle| 	1|	5
+```
+
+It happens that those movies just received one rating that happened to be very high.  This is just noise in the data set.  Instead, let's look at the movie which sums the best rating or has the best "weight" of ratings:
+
+```sql
+movies
+| join ratings on movieId
+| summarize rating=sum(rating) by movieTitle
+| top 5 by rating
+| render columnchart 
+```
+
+![Best Ratings](/assets/posts/2020/1/exploring-a-data-set-with-kusto/best-ratings.png)
+
+
 ## Summary
