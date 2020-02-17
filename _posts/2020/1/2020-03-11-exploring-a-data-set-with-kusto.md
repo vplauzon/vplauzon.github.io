@@ -1,6 +1,6 @@
 ---
 title:  Exploring a data set with Kusto
-permalink: /2020/03/25/exploring-a-data-set-with-kusto
+permalink: /2020/03/11/exploring-a-data-set-with-kusto
 categories:
 - Solution
 tags:
