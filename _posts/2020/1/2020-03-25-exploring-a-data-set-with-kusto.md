@@ -148,4 +148,20 @@ movies
 
 ![Movie Distribution](/assets/posts/2020/1/exploring-a-data-set-with-kusto/movie-dist.png)
 
+That is a good example of quickly getting to know the data.  Kusto let us (very) quickly aggregate data and visualize it in one command.
+
+Now let's look at the movie distribution across genres.  Since the genres are stored as an array, we'll need to expand that array on multiple rows using *mv-expand*:
+
+```sql
+movies
+//  Expend the genres into multiple rows
+| mv-expand genres to typeof(string)
+| summarize size=count() by genres
+//  Sort to make the pie chart look nicer
+| sort by size
+| render piechart
+```
+
+![Genre Distribution](/assets/posts/2020/1/exploring-a-data-set-with-kusto/genre-dist.png)
+
 ## Summary
