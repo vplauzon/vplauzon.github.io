@@ -50,7 +50,7 @@ with (format='txt')
 
 We need to replace `<account name>` by the name of our  storage account.  We also need to replace `<container name>` by the name of the container where we copied the files.
 
-The output gives us a glimpse into the CSV schema of the file:
+The output gives us a glimpse into the schema of the file:
 
 ```
 movieId,title,genres
@@ -62,6 +62,31 @@ movieId,title,genres
 6,Heat (1995),Action|Crime|Thriller
 7,Sabrina (1995),Comedy|Romance
 8,Tom and Huck (1995),Adventure|Children
+```
+
+We quickly notice a few things:
+
+* The general format is CSV (with actual comma)
+* The year of the movie is embedded in the title
+* The genres is an array using a pipes to delimit each entry
+
+CSV format is supported out of the box.  To extract
+
+```sql
+.set-or-replace movies <| externaldata (
+movieId:int,
+compositeTitle:string,
+genresArray:string)
+[@"abfss://<container name>@<account name>.dfs.core.windows.net/movie-lens/movies.csv;impersonate"]
+with (format='csv', ignoreFirstRecord=true)
+//  Make the genres an array, splitting by pipes
+| extend genres = split(genresArray, '|')
+//  Extract movie title using a reg-ex
+| extend movieTitle = extract(@"(.*)\s*\((\d+)\)", 1, compositeTitle)
+//  Extract movie year using a reg-ex
+| extend year = toint(extract(@"(.*)\s*\((\d+)\)", 2, compositeTitle))
+//  Take only relevant columns
+| project movieId, movieTitle, genres, year
 ```
 
 ## Ingesting ratings
