@@ -198,7 +198,6 @@ Prom Queen: The Marc Hall Story| 	1|	5
 Inquire Within| 	1|	5
 Ella Lola, a la Trilby| 	1|	5
 The Floating Castle| 	1|	5
-```
 
 It happens that those movies just received one rating that happened to be very high.  This is just noise in the data set.  Instead, let's look at the movie which sums the best rating or has the best "weight" of ratings:
 
@@ -207,10 +206,21 @@ movies
 | join ratings on movieId
 | summarize rating=sum(rating) by movieTitle
 | top 5 by rating
-| render columnchart 
+| render columnchart
 ```
 
 ![Best Ratings](/assets/posts/2020/1/exploring-a-data-set-with-kusto/best-ratings.png)
 
+This gives us a better answer.  We can see the ratings by hovering on the columns.
 
 ## Summary
+
+We went around a quick data exploration scenario.
+
+We looked at the raw data:  the text in the CSV file.  Quickly we built a schema and ingested the files.
+
+From there we were able to dive into the data set, asking questions and quickly getting answer.
+
+Some of the queries were actually iterations on our side.  For instance, summarizing on size when looking at the best ratings was done after we looked at the result and didn't recognize any of the movie.  Adding the size, or the number of ratings, quickly told us that there was only one rating for each and therefore that was only noise.
+
+One of Kusto's strength lies in this ad hoc / interactive query mode.  It is very easy to iteratively improve on queries as we learn from the data.
