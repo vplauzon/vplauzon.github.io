@@ -70,7 +70,7 @@ We quickly notice a few things:
 * The year of the movie is embedded in the title
 * The genres is an array using a pipes to delimit each entry
 
-CSV format is supported out of the box.  To extract
+CSV format is supported out of the box.  To extract the year, we'll need to use a *regular expression* (regex).  Finally, to extract the genres, we'll simply need to split on pipes.  We will store the genres as an array.
 
 ```sql
 .set-or-replace movies <| externaldata (
@@ -89,8 +89,63 @@ with (format='csv', ignoreFirstRecord=true)
 | project movieId, movieTitle, genres, year
 ```
 
+Here we do it in one go but typically, that process is iterative which is quite natural in Kusto.
+
 ## Ingesting ratings
 
+Now that we have our movies, let's ingest the ratings.
+
+We'll first look at the file:
+
+```sql
+externaldata (text:string)
+[@"abfss://<container name>@<account name>.dfs.core.windows.net/movie-lens/ratings.csv;impersonate"]
+with (format='txt')
+| limit 20
+```
+
+Again, the schema is made obvious by looking at a few rows:
+
+```
+userId,movieId,rating,timestamp
+1,2,3.5,1112486027
+1,29,3.5,1112484676
+1,32,3.5,1112484819
+1,47,3.5,1112484727
+1,50,3.5,1112484580
+1,112,3.5,1094785740
+1,151,4.0,1094785734
+1,223,4.0,1112485573
+1,253,4.0,1112484940
+```
+
+This is more a trivial CSV so we can easily ingest it:
+
+```sql
+.set-or-replace ratings <| externaldata (
+userId:int,
+movieId:int,
+rating:real,
+timeStamp:int)
+[@"abfss://<container name>@<account name>.dfs.core.windows.net/movie-lens/ratings.csv;impersonate"]
+with (format='csv', ignoreFirstRecord=true)
+```
+
+This ingestion query takes around a minute to execute.
+
 ## Explore the data
+
+Now that we have some data cached in Kusto, let's do some exploration.
+
+Let's look at the movie distribution in time
+
+```sql
+movies
+| where isnotnull(year)
+| summarize count() by year
+| render columnchart 
+```
+
+![Movie Distribution](/assets/posts/2020/1/exploring-a-data-set-with-kusto/movie-dist.png)
 
 ## Summary
