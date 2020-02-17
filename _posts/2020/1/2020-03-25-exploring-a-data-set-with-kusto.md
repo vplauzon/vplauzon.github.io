@@ -137,7 +137,7 @@ This ingestion query takes around a minute to execute.
 
 Now that we have some data cached in Kusto, let's do some exploration.
 
-Let's look at the movie distribution in time
+Let's look at the movie distribution in time:
 
 ```sql
 movies
@@ -145,6 +145,8 @@ movies
 | summarize count() by year
 | render columnchart 
 ```
+
+This returns us the following chart:
 
 ![Movie Distribution](/assets/posts/2020/1/exploring-a-data-set-with-kusto/movie-dist.png)
 
@@ -161,6 +163,8 @@ movies
 | sort by size
 | render piechart
 ```
+
+We can see that drama and comedy take the lion share of genres.
 
 ![Genre Distribution](/assets/posts/2020/1/exploring-a-data-set-with-kusto/genre-dist.png)
 
