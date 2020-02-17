@@ -31,13 +31,40 @@ We will only look at *movies.csv* & *ratings.csv* so no need to download all the
 
 We will unzip them and put them in an ADLS gen 2 storage account.
 
-## Explore files
+## Ingesting movies
 
 We will reuse the user impersonation technique we've discussed in a <span style="background-color:yellow">Past article</span>.  This allows us to use the credentials of the logged in user to access the storage account.  Remember:  we need to add the [Storage Blob Data Reader](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) role for the user on the storage account.
 
+To perform query in Kusto, the easiest way is to go to the query pane of a Query Cluster in the Azure Portal.  A more comfortable UI can be reached from there by clicking the *Open in Web UI" link.
 
+We will also need a database to ingest data.  We recommend using a newly create database that can be destroyed when those experimentations are done.
 
-## Ingest files
+Let's start by looking at the files:
+
+```sql
+externaldata (text:string)
+[@"abfss://<container name>@<account name>.dfs.core.windows.net/movie-lens/movies.csv;impersonate"]
+with (format='txt')
+| limit 20
+```
+
+We need to replace `<account name>` by the name of our  storage account.  We also need to replace `<container name>` by the name of the container where we copied the files.
+
+The output gives us a glimpse into the CSV schema of the file:
+
+```
+movieId,title,genres
+1,Toy Story (1995),Adventure|Animation|Children|Comedy|Fantasy
+2,Jumanji (1995),Adventure|Children|Fantasy
+3,Grumpier Old Men (1995),Comedy|Romance
+4,Waiting to Exhale (1995),Comedy|Drama|Romance
+5,Father of the Bride Part II (1995),Comedy
+6,Heat (1995),Action|Crime|Thriller
+7,Sabrina (1995),Comedy|Romance
+8,Tom and Huck (1995),Adventure|Children
+```
+
+## Ingesting ratings
 
 ## Explore the data
 
