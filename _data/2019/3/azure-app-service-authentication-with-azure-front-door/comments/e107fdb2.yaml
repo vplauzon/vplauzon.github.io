@@ -1,0 +1,6 @@
+id: e107fdb2
+author:
+  name: Jack Roper
+  url: https://azurelynot.blogspot.com/2020/02/azure-front-door-fun-with-custom.html
+date: 2020-02-18T06:21:28.6626091-05:00
+content: "Hi - found this really useful...This works nicely with one web app behind the front door. \n\nWhen more than 1 web app sits behind the front door however, I was seeing the page not rendering correctly, giving different versions of the page. When using the browsers network tools, we were seeing some 302 errors returned. This is because the front door probes the web app back ends for a response, and as authentication was not turned on, these could not be reached successfully. Also when the WAF was enabled, it was blocking the attempts, showing a SQLi attack in the logs. \n\nTo solve this:\nA healthprobe.html file created in each web app.\nThe front door load balancing setting points to /healthprobe.html\nEach web app needs a configuration value of \"WEBSITE_WARMUP_PATH\" added. This is the path to a file that will not be authenticated to avoid 302 errors. The value points to /healthprobe.html.\nRestart the web apps.\nThe front door now had a working custom domain, with multiple apps behind it and the WAF working nicely! I also updated my blog with this info and linked this page. :)"
