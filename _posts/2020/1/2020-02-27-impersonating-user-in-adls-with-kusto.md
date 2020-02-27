@@ -9,7 +9,7 @@ tags:
 ---
 <img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/1/impersonating-user-in-adls-with-kusto/airplane-blur-close-up-desk-346793.jpg" />
 
-We discussed Azure Data Explorer (ADX) and its query language Kusto in a <span style="background-color:yellow">Past article</span>.
+We discussed Azure Data Explorer (ADX) and its query language Kusto in a [past article](https://vincentlauzon.com/2020/02/19/azure-data-explorer-kusto).
 
 In this article I wanted to show how to access an ADLS gen 2 using user impersonation, i.e. using the identity of the user running the queries to access the storage.
 
