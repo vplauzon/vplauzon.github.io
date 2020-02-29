@@ -5,6 +5,7 @@ categories:
 - Solution
 tags:
     - Data
+date:  2020-2-25
 ---
 <img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/1/exploring-a-data-set-with-kusto/photo-of-person-swimming-underwater-3369578.jpg" />
 
