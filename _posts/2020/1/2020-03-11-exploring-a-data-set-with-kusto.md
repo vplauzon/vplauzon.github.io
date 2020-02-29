@@ -9,7 +9,7 @@ date:  2020-2-25
 ---
 <img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/1/exploring-a-data-set-with-kusto/photo-of-person-swimming-underwater-3369578.jpg" />
 
-We discussed Azure Data Explorer (ADX) and its query language Kusto in a <span style="background-color:yellow">Past article</span>.
+We discussed Azure Data Explorer (ADX) and its query language Kusto in a [past article](https://vincentlauzon.com/2020/02/19/azure-data-explorer-kusto).
 
 In this article, I would like to look at a simple exploration scenario.
 
@@ -33,7 +33,7 @@ We will unzip them and put them in an ADLS gen 2 storage account.
 
 ## Ingesting movies
 
-We will reuse the user impersonation technique we've discussed in a <span style="background-color:yellow">Past article</span>.  This allows us to use the credentials of the logged in user to access the storage account.  Remember:  we need to add the [Storage Blob Data Reader](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) role for the user on the storage account.
+We will reuse the user impersonation technique we've discussed in a [past article](https://vincentlauzon.com/2020/02/25/broadcasting-events-to-multiple-solutions).  This allows us to use the credentials of the logged in user to access the storage account.  Remember:  we need to add the [Storage Blob Data Reader](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) role for the user on the storage account.
 
 To perform query in Kusto, the easiest way is to go to the query pane of a Query Cluster in the Azure Portal.  A more comfortable UI can be reached from there by clicking the *Open in Web UI" link.
 
