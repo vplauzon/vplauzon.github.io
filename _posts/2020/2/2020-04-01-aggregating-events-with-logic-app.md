@@ -32,6 +32,8 @@ Basically, we are going to implement the following solution:
 * *Aggregation App* will publish an Event Grid custom topic event
 * A last Logic App, *Biz Process App*, will be triggered by this event
 
+We've used Azure Event Grid Custom Topic in [past article](https://vincentlauzon.com/2020/02/25/broadcasting-events-to-multiple-solutions).  They are very easy to use and are a versatile event-delivery mechanism.
+
 This demo is meant to represent a simplified version of a real process where multiple events must occur before a given process is started.
 
 ## Kick starting the solution
@@ -233,4 +235,12 @@ It usually take a few seconds before we see a new successful run in `biz-process
 
 ## Summary
 
+We've implemented the following solution:
+
 ![data-flow](/assets/posts/2020/2/aggregating-events-with-logic-app/data-flow.png)
+
+The solution basically takes 3 independant events (in this case, the file drops), aggregate those into a new event (custom event grid topic) which is then used to trigger another process.
+
+Now instead of having files in blob storage we could have other processes that do not emit events natively.  For instance, a job in Databricks, or AKS, etc.  .
+
+Sending an event to an Event Grid is pretty simple as we've seen in a [past article](https://vincentlauzon.com/2020/02/25/broadcasting-events-to-multiple-solutions).  It is a [simple HTTPS-POST](https://docs.microsoft.com/en-us/azure/event-grid/custom-event-to-function#send-an-event-to-your-topic).  That makes it easy to integrate into a Python or bash script or a C# / Java / Go / Rust / whatever program.
