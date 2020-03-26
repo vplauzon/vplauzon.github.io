@@ -56,7 +56,7 @@ We could create the *Blob App* using the *Events* section of the storage account
 
 Let's search for "grid" and select "When a resource event occurs":
 
-![Event Grid Trigger](/assets/posts/2020/2/event-grid-trigger.png)
+![Event Grid Trigger](/assets/posts/2020/2/aggregating-events-with-logic-app/event-grid-trigger.png)
 
 This will prompt us to authenticate.  We will enter the following values for the parameters of the trigger:
 
@@ -67,15 +67,17 @@ Resource Type|Microsoft.Storage.StorageAccounts
 Resource Name|Name of the storage account
 Event Type Item-1|Microsoft.Storage.BlobCreated
 
-![Blob Trigger Configuration](/assets/posts/2020/2/blob-trigger-config.png)
+![Blob Trigger Configuration](/assets/posts/2020/2/aggregating-events-with-logic-app/blob-trigger-config.png)
 
 Let's save that Logic App and test it:  let's drop an empty file in the *drop-zone* container.  We can use the empty [a.txt](https://github.com/vplauzon/messaging/blob/master/aggregating-event-grid-logic-app/a.txt), [b.txt](https://github.com/vplauzon/messaging/blob/master/aggregating-event-grid-logic-app/b.txt) or [c.txt](https://github.com/vplauzon/messaging/blob/master/aggregating-event-grid-logic-app/c.txt) files.  Going back to the main screen for the Logic App and refreshing the history, we should see a successful run:
 
-![Blob History](/assets/posts/2020/2/blob-history.png)
+![Blob History](/assets/posts/2020/2/aggregating-events-with-logic-app/blob-history.png)
+
+This actually allows us to look at what the Event Grid event looks like by looking at the run and the body of the trigger.
 
 ```json
 {
-  "topic": "/subscriptions/a9f15356-c7b1-4864-980e-e9bca8b790dd/resourceGroups/ag-demo/providers/Microsoft.Storage/storageAccounts/storage6dtarjgsj6yvo",
+  "topic": "/subscriptions/---/resourceGroups/---/providers/Microsoft.Storage/storageAccounts/storage6dtarjgsj6yvo",
   "subject": "/blobServices/default/containers/drop-zone/blobs/a.txt",
   "eventType": "Microsoft.Storage.BlobCreated",
   "eventTime": "2020-03-26T18:03:21.7880283Z",
@@ -98,3 +100,43 @@ Let's save that Logic App and test it:  let's drop an empty file in the *drop-zo
   "metadataVersion": "1"
 }
 ```
+
+We can see the subject container the path of the blob.  We will use that to validate the blob.
+
+### Validate blob
+
+The first thing we'll want to do is to validate the blob path.  This is quite useful in Data Lake situation where a container can have many folders while we are interested only in the activity of one such folder.
+
+We'll add a *Compose* action with the following inputs:
+
+```
+split(triggerBody()?['subject'], '/')
+```
+
+We basically do a split of the *subject* trigger property.  This will return an array of path parts.
+
+We can then test the array is of size 7 (if like us, we drop the files at the root of the container) and if for some equality.  For example, if the blob name is `a.txt`.
+
+It is good practice to validate.  This avoids starting logic when irrelevant blobs are created.
+
+The Logic App would still run though until the validation code.  This will add a lot of runs in the logs and would also incure some cost.  This is why it is also great to filter *at the source*.
+
+### Filter at the source
+
+Let's go to the storage account, select the *Events* pane.  We'll notice that a subscription exist at the bottom:
+
+![Storage Subscription](/assets/posts/2020/2/aggregating-events-with-logic-app/storage-subscription.png)
+
+This is our Logic App, registered as a *Web Hook*.  This means *Event Grid* actually call an HTTPS endpoint listened to by our Logic App when an event is fired.
+
+We can customize that subscription by applying [subject filters](https://docs.microsoft.com/en-us/azure/event-grid/event-filtering#subject-filtering):
+
+![Subject Filering](/assets/posts/2020/2/aggregating-events-with-logic-app/subject-filering.png)
+
+If we test with a non `.txt` file, we'll see the Logic App doesn't get fired.
+
+This is powerful as it filters the events at the source and reduces the traffic on our Logic App.
+
+### Send message
+
+Let's 
