@@ -147,8 +147,8 @@ In *Blob App*, let's follow the [online documentation](https://docs.microsoft.co
 
 Parameter|Value
 -|-
-Batch Name|accumulatedEvents
-Message Content|The `Subject` from trigger
+Batch Name|default
+Message Content|`Subject` (from trigger)
 Trigger Name|**Do not modify**
 Workflow|**Do not modify**
 
@@ -166,3 +166,14 @@ We are using two *release criteria*:
 * When 1 minute has passed (since the first message was received)
 
 The first criterium is part of our business logic stated in the introduction of this article.  The second is there to detect error.  If only two files are inserted within a minute, the *Logic App* doesn't *hang* there infinitely, it will start the process.
+
+We can test this Logic App by dropping the [three empty text files in our GitHub repo](https://github.com/vplauzon/messaging/tree/master/aggregating-event-grid-logic-app).  We should see a successful run in the history (we might need to refresh it).
+
+### Validate batch
+
+We could validate the batch by making sure we received 3 messages, i.e. `length(triggerBody()['items']) == 3`.
+
+### Publishing event
+
+After this validation, we can publish a custom event.  We already have a custom Event Grid Topic.  Let's open it to fetch some information.
+
