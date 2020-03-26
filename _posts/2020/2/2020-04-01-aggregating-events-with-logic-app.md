@@ -9,13 +9,17 @@ tags:
 ---
 <img style="float:right;padding-left:20px;" title="From pixabay.com" src="/assets/posts/2020/2/aggregating-events-with-logic-app/merging.jpg" />
 
-Event-base processing is getting more and more popular.  It's a great way to loosely couple processes together.
+Event-based processing is getting more and more popular.  It's a great way to loosely couple processes together.
 
 An example in the data realm would be to have one ELT / ETL process finishing by publishing an event so another process (or processes) can start.
 
 Now, how would we implement a process that requires the output of 3 other processes before it can start?
 
 This is what we're going to explore in this article.
+
+As usual the [code is in GitHub](https://github.com/vplauzon/messaging/tree/master/aggregating-event-grid-logic-app).
+
+## Target solution
 
 Basically, we are going to implement the following solution:
 
@@ -32,4 +36,13 @@ Here is the basic flow:
 
 This demo is meant to represent a simplified version of a real process where multiple events must occur before a given process is started.
 
-As usual the [code is in GitHub](https://github.com/vplauzon/messaging/tree/master/aggregating-event-grid-logic-app).
+## Kick starting the solution
+
+Let's start by deploying the begining of the application:
+
+[![Deploy button](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvplauzon%2Fmessaging%2Fmaster%2Faggregating-event-grid-logic-app%2Fdeploy-start.json)
+
+This only needs a resource group and 
+
+![Start resources](/assets/posts/2020/2/aggregating-events-with-logic-app/start-resources.png)
+
