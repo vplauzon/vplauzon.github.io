@@ -185,3 +185,52 @@ Back into `aggregation-app`, let's add an action.  We search of *event grid* and
 
 ![Search Event Grid Publish](/assets/posts/2020/2/aggregating-events-with-logic-app/search-event-grid-publish.png)
 
+For parameter values we should enter the following:
+
+Parameter|Value
+-|-
+Connection Name|biz-proc-topic-connection
+Topic Endpoint|\<Value we copied\>
+Shared Access Signature|\<Value we copied\>
+
+The last two values coming from the Event Grid Custom Topic screen.
+
+We can then enter the following parameter values:
+
+Parameter|Value
+-|-
+ID-1|`guid()`
+Subject-1|biz-proc
+EventType-1|default
+Data-1|`Batched Items` (from trigger)
+
+This will pass the batched items to the event.
+
+Of course there would be more elegant ways to decouple those event than passing the blob storage event subjects.  We just "make it work" here.
+
+## Biz Process App
+
+`biz-process-app` is there to simulate a business process loosely connected to the previous apps.  It could be an Azure Data Factory pipeline, for instance.
+
+It is very easy to start other Azure services using Logic App.  Here we are just going to have a Logic App.
+
+We are going to edit the `biz-process-app` Logic App and for trigger we are going to search for `grid` and select `When a resource event occurs`.
+
+For parameter values:
+
+Parameter|Value
+-|-
+Subscription|Subscription where the storage account we just created is
+Resource Type|Microsoft.EventGrid.Topics
+Resource Name|The name of the Event Grid Custom Topic (`biz-proc-topic-6dtarjgsj6yvo-*`)
+Event Type Item-1|**Leave blank**
+
+## Test
+
+To test the entire scenario, we can delete the files we put in the storage account and re-insert the three text files.
+
+It usually take a few seconds before we see a new successful run in `biz-process-app`.
+
+## Summary
+
+![data-flow](/assets/posts/2020/2/aggregating-events-with-logic-app/data-flow.png)
