@@ -54,7 +54,47 @@ We are now going to build up the solution.  The completed solution can also be d
 
 We could create the *Blob App* using the *Events* section of the storage account.  Since the Logic App already exists, we're going to go through the Logic App designer for that app instead.
 
-Let's search of "grid" and select "When a resource event occurs":
+Let's search for "grid" and select "When a resource event occurs":
 
 ![Event Grid Trigger](/assets/posts/2020/2/event-grid-trigger.png)
 
+This will prompt us to authenticate.  We will enter the following values for the parameters of the trigger:
+
+Parameter|Value
+-|-
+Subscription|Subscription where the storage account we just created is
+Resource Type|Microsoft.Storage.StorageAccounts
+Resource Name|Name of the storage account
+Event Type Item-1|Microsoft.Storage.BlobCreated
+
+![Blob Trigger Configuration](/assets/posts/2020/2/blob-trigger-config.png)
+
+Let's save that Logic App and test it:  let's drop an empty file in the *drop-zone* container.  We can use the empty [a.txt](https://github.com/vplauzon/messaging/blob/master/aggregating-event-grid-logic-app/a.txt), [b.txt](https://github.com/vplauzon/messaging/blob/master/aggregating-event-grid-logic-app/b.txt) or [c.txt](https://github.com/vplauzon/messaging/blob/master/aggregating-event-grid-logic-app/c.txt) files.  Going back to the main screen for the Logic App and refreshing the history, we should see a successful run:
+
+![Blob History](/assets/posts/2020/2/blob-history.png)
+
+```json
+{
+  "topic": "/subscriptions/a9f15356-c7b1-4864-980e-e9bca8b790dd/resourceGroups/ag-demo/providers/Microsoft.Storage/storageAccounts/storage6dtarjgsj6yvo",
+  "subject": "/blobServices/default/containers/drop-zone/blobs/a.txt",
+  "eventType": "Microsoft.Storage.BlobCreated",
+  "eventTime": "2020-03-26T18:03:21.7880283Z",
+  "id": "b0cbb9b3-a01e-008c-1698-03c0e106fab4",
+  "data": {
+    "api": "PutBlob",
+    "clientRequestId": "213b87e0-9674-43cb-4ab7-228abd4e5b71",
+    "requestId": "b0cbb9b3-a01e-008c-1698-03c0e1000000",
+    "eTag": "0x8D7D1AFF8AE78DB",
+    "contentType": "application/octet-stream",
+    "contentLength": 0,
+    "blobType": "BlockBlob",
+    "url": "https://storage6dtarjgsj6yvo.blob.core.windows.net/drop-zone/a.txt",
+    "sequencer": "00000000000000000000000000001ABC0000000000382cee",
+    "storageDiagnostics": {
+      "batchId": "c7647f7a-d006-0086-0098-036456000000"
+    }
+  },
+  "dataVersion": "",
+  "metadataVersion": "1"
+}
+```
