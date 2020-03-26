@@ -1,0 +1,6 @@
+id: b783c9ef
+author:
+  name: Anonymous
+  url: 
+date: 2020-03-04T22:52:00.5571976-05:00
+content: Thanks, this was really helpful. Just a heads up, I think that you definition of 'Logic App Assignment Name' used in your last code snippet has an unnecessary concat function (within the guid function). It isn't concatenating anything, it only contains 'resourceGroup().id'
