@@ -21,3 +21,15 @@ Basically, we are going to implement the following solution:
 
 ![data-flow](/assets/posts/2020/2/aggregating-events-with-logic-app/data-flow.png)
 
+Here is the basic flow:
+
+* We are going to drop three (3) files in a storage account:  a.txt, b.txt & c.txt
+* Each file triggers an [Azure Event Grid](https://docs.microsoft.com/en-us/azure/event-grid/overview) event ; this is automatic (i.e. build-in Azure Infrastructure)
+* Each event will act as a trigger to different instances of *Blob App* Logic App
+* Each Logic App will send a "message" to a **single instance** of *Aggregation App* Logic App
+* *Aggregation App* will publish an Event Grid custom topic event
+* A last Logic App, *Biz Process App*, will be triggered by this event
+
+This demo is meant to represent a simplified version of a real process where multiple events must occur before a given process is started.
+
+As usual the [code is in GitHub](https://github.com/vplauzon/messaging/tree/master/aggregating-event-grid-logic-app).
