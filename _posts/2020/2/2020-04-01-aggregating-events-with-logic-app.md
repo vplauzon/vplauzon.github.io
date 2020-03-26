@@ -48,9 +48,7 @@ So we already have our 3 Logic Apps (they are all empty), a storage account with
 
 ## Blob App
 
-We are now going to build up the solution.  The completed solution can also be deployed using this:
-
-[![Deploy button](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvplauzon%2Fmessaging%2Fmaster%2Faggregating-event-grid-logic-app%2Fdeploy-final.json)
+We are now going to build up the solution.
 
 We could create the *Blob App* using the *Events* section of the storage account.  Since the Logic App already exists, we're going to go through the Logic App designer for that app instead.
 
@@ -139,4 +137,26 @@ This is powerful as it filters the events at the source and reduces the traffic 
 
 ### Send message
 
-Let's 
+Now, let's send the event somewhere where we can accumulate 3 events before firing an event.
+
+The technique we use here is based on Logic App [Batch Process](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-batch-process-send-receive-messages).
+
+This is a special trigger on a Logic App that can be fired only after a number of messages have been received or a certain duration of time have passed.  This is why we have a separate *Aggregation App* Logic App.
+
+In *Blob App*, let's follow the [online documentation](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-batch-process-send-receive-messages).  Let's add a batch action using `aggregation-app` as the target app with the following parameter values:
+
+Parameter|Value
+-|-
+Batch Name|accumulatedEvents
+Message Content|The `Subject` from trigger
+Trigger Name|Batch_messages
+Workflow|**Do not modify**
+
+The reason we could target `aggregation-app` is because the app has a batch trigger.
+
+## Aggregation App
+
+If we open `aggregation-app`, we can see the trigger and its configuration:
+
+![Batch Config](/assets/posts/2020/2/aggregating-events-with-logic-app/batch-config.png)
+
