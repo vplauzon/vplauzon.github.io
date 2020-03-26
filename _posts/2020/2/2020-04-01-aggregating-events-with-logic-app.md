@@ -1,5 +1,4 @@
 ---
-date:  2020-03-25
 title:  Aggregating events with Logic App
 permalink: /2020/04/01/aggregating-events-with-logic-app
 categories:
@@ -38,7 +37,7 @@ This demo is meant to represent a simplified version of a real process where mul
 
 ## Kick starting the solution
 
-Let's start by deploying the begining of the application:
+Let's start by deploying the beginning of the application:
 
 [![Deploy button](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvplauzon%2Fmessaging%2Fmaster%2Faggregating-event-grid-logic-app%2Fdeploy-start.json)
 
@@ -46,11 +45,11 @@ This only needs a resource group and no parameter.  It should deploy the followi
 
 ![Start resources](/assets/posts/2020/2/aggregating-events-with-logic-app/start-resources.png)
 
-So we already have our 3 Logic Apps (they are all empty), a storage account with a *drop-zone* container and a custom event-grid topic.
-
-## Blob App
+We end up with our 3 Logic Apps (they are all empty), a storage account with a *drop-zone* container and a custom event-grid topic.
 
 We are now going to build up the solution.
+
+## Blob App
 
 We could create the *Blob App* using the *Events* section of the storage account.  Since the Logic App already exists, we're going to go through the Logic App designer for that app instead.
 
@@ -73,7 +72,7 @@ Let's save that Logic App and test it:  let's drop an empty file in the *drop-zo
 
 ![Blob History](/assets/posts/2020/2/aggregating-events-with-logic-app/blob-history.png)
 
-This actually allows us to look at what the Event Grid event looks like by looking at the run and the body of the trigger.
+This allows us to look at what the Event Grid event looks like by looking at the run and the body of the trigger.
 
 ```json
 {
@@ -119,11 +118,11 @@ We can then test the array is of size 7 (if like us, we drop the files at the ro
 
 It is good practice to validate.  This avoids starting logic when irrelevant blobs are created.
 
-The Logic App would still run though until the validation code.  This will add a lot of runs in the logs and would also incure some cost.  This is why it is also great to filter *at the source*.
+The Logic App would still run though until the validation code.  This will add a lot of runs in the logs and would also incur some cost.  Therefore it is also good practice to filter *at the source*.
 
 ### Filter at the source
 
-Let's go to the storage account, select the *Events* pane.  We'll notice that a subscription exist at the bottom:
+Let's go to the storage account, select the *Events* pane.  We'll notice that a subscription exists at the bottom:
 
 ![Storage Subscription](/assets/posts/2020/2/aggregating-events-with-logic-app/storage-subscription.png)
 
@@ -143,7 +142,7 @@ Now, let's send the event somewhere where we can accumulate 3 events before firi
 
 The technique we use here is based on Logic App [Batch Process](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-batch-process-send-receive-messages).
 
-This is a special trigger on a Logic App that can be fired only after a number of messages have been received or a certain duration of time have passed.  This is why we have a separate *Aggregation App* Logic App.
+This is a special trigger on a Logic App that can be fired only after several messages have been received or a certain duration of time have passed.  Therefore we have a separate *Aggregation App* Logic App.
 
 In *Blob App*, let's follow the [online documentation](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-batch-process-send-receive-messages).  Let's add a batch action using `aggregation-app` as the target app with the following parameter values:
 
@@ -208,7 +207,7 @@ Data-1|`Batched Items` (from trigger)
 
 This will pass the batched items to the event.
 
-Of course there would be more elegant ways to decouple those event than passing the blob storage event subjects.  We just "make it work" here.
+Of course, there would be more elegant ways to decouple those event than passing the blob storage event subjects.  We just "make it work" here.
 
 ## Biz Process App
 
@@ -231,7 +230,7 @@ Event Type Item-1|**Leave blank**
 
 To test the entire scenario, we can delete the files we put in the storage account and re-insert the three text files.
 
-It usually take a few seconds before we see a new successful run in `biz-process-app`.
+It usually takes a few seconds before we see a new successful run in `biz-process-app`.
 
 ## Summary
 
@@ -239,7 +238,7 @@ We've implemented the following solution:
 
 ![data-flow](/assets/posts/2020/2/aggregating-events-with-logic-app/data-flow.png)
 
-The solution basically takes 3 independant events (in this case, the file drops), aggregate those into a new event (custom event grid topic) which is then used to trigger another process.
+The solution basically takes 3 independent events (in this case, the file drops), aggregate those into a new event (custom event grid topic) which is then used to trigger another process.
 
 Now instead of having files in blob storage we could have other processes that do not emit events natively.  For instance, a job in Databricks, or AKS, etc.  .
 
