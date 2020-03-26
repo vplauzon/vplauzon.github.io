@@ -178,3 +178,10 @@ We could validate the batch by making sure we received 3 messages, i.e. `length(
 After this validation, we can publish a custom event.  We already have a custom Event Grid Topic.  Let's open it to fetch some information.
 
 ![Event Grid Config](/assets/posts/2020/2/aggregating-events-with-logic-app/event-grid-config.png)
+
+First we copy the *Topic Endpoint* url.  Then we copy one of the two access key.
+
+Back into `aggregation-app`, let's add an action.  We search of *event grid* and select *Publish Event*:
+
+![Search Event Grid Publish](/assets/posts/2020/2/aggregating-events-with-logic-app/search-event-grid-publish.png)
+
