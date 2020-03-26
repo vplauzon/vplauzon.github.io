@@ -10,3 +10,5 @@ tags:
 <img style="float:right;padding-left:20px;" title="From pixabay.com" src="/assets/posts/2020/2/aggregating-events-with-logic-app/merging.jpg" />
 
 Bla
+
+![data-flow](/assets/posts/2020/2/aggregating-events-with-logic-app/data-flow.png)
