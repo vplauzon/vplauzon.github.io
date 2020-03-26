@@ -149,7 +149,7 @@ Parameter|Value
 -|-
 Batch Name|accumulatedEvents
 Message Content|The `Subject` from trigger
-Trigger Name|Batch_messages
+Trigger Name|**Do not modify**
 Workflow|**Do not modify**
 
 The reason we could target `aggregation-app` is because the app has a batch trigger.
@@ -160,3 +160,9 @@ If we open `aggregation-app`, we can see the trigger and its configuration:
 
 ![Batch Config](/assets/posts/2020/2/aggregating-events-with-logic-app/batch-config.png)
 
+We are using two *release criteria*:
+
+*   When three messages are received
+* When 1 minute has passed (since the first message was received)
+
+The first criterium is part of our business logic stated in the introduction of this article.  The second is there to detect error.  If only two files are inserted within a minute, the *Logic App* doesn't *hang* there infinitely, it will start the process.
