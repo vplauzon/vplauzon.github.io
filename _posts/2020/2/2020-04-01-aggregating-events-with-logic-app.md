@@ -25,8 +25,6 @@ Basically, we are going to implement the following solution:
 
 ![data-flow](/assets/posts/2020/2/aggregating-events-with-logic-app/data-flow.png)
 
-Here is the basic flow:
-
 * We are going to drop three (3) files in a storage account:  a.txt, b.txt & c.txt
 * Each file triggers an [Azure Event Grid](https://docs.microsoft.com/en-us/azure/event-grid/overview) event ; this is automatic (i.e. build-in Azure Infrastructure)
 * Each event will act as a trigger to different instances of *Blob App* Logic App
@@ -42,7 +40,21 @@ Let's start by deploying the begining of the application:
 
 [![Deploy button](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvplauzon%2Fmessaging%2Fmaster%2Faggregating-event-grid-logic-app%2Fdeploy-start.json)
 
-This only needs a resource group and 
+This only needs a resource group and no parameter.  It should deploy the following resources (names will vary):
 
 ![Start resources](/assets/posts/2020/2/aggregating-events-with-logic-app/start-resources.png)
+
+So we already have our 3 Logic Apps (they are all empty), a storage account with a *drop-zone* container and a custom event-grid topic.
+
+## Blob App
+
+We are now going to build up the solution.  The completed solution can also be deployed using this:
+
+[![Deploy button](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvplauzon%2Fmessaging%2Fmaster%2Faggregating-event-grid-logic-app%2Fdeploy-final.json)
+
+We could create the *Blob App* using the *Events* section of the storage account.  Since the Logic App already exists, we're going to go through the Logic App designer for that app instead.
+
+Let's search of "grid" and select "When a resource event occurs":
+
+![Event Grid Trigger](/assets/posts/2020/2/event-grid-trigger.png)
 
