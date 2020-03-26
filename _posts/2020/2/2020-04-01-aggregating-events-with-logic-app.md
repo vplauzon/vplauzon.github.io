@@ -177,3 +177,4 @@ We could validate the batch by making sure we received 3 messages, i.e. `length(
 
 After this validation, we can publish a custom event.  We already have a custom Event Grid Topic.  Let's open it to fetch some information.
 
+![Event Grid Config](/assets/posts/2020/2/aggregating-events-with-logic-app/event-grid-config.png)
