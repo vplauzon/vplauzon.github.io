@@ -70,4 +70,6 @@ In order to avoid that [racing condition](https://en.wikipedia.org/wiki/Race_con
 
 ## The process
 
-Here is the complete process.  We assume we are archiving Azure Monitor data 
+Here is the complete process:
+
+![](/assets/posts/2020/2/archiving-azure-monitor-data-with-kusto/archiving-process.png)
