@@ -79,3 +79,15 @@ Here is the complete process:
 In this section, we'll go through the scripts to setup the database.  We recommend using a separate database for this.  We are going to use Azure Application Insights in the scripts, but if we would like to do both App Insights & Log Analytics, we would recommend doing that on two different target databases, since we use database-wide Merge Policy and extents-rollback.
 
 The [complete script is available on GitHub](https://github.com/vplauzon/kusto/blob/master/archive-monitor/setup-db.kql).
+
+We first need to connect to the Azure Monitor cluster (in this case Azure Application Insights).  The [online documentation](https://docs.microsoft.com/en-us/azure/data-explorer/query-monitor-data#connect-to-the-proxy) describes that process well so we won't repeat it here.  We will need the URL.
+
+We will give the table names in the script, but just to show "how we did it", we simply did, within the App Insights database (through ADX proxy):
+
+```sql
+.show tables
+```
+
+```kusto
+.show tables
+```
