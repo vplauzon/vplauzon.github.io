@@ -1,5 +1,4 @@
 ---
-date: 2020-03-27
 title:  Archiving Azure Monitor Data with Kusto
 permalink: /2020/04/08/archiving-azure-monitor-data-with-kusto
 categories:
