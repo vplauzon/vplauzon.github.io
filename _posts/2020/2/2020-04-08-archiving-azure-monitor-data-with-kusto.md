@@ -140,3 +140,99 @@ Now, let's create the bookmark table:
    startIngestionTime:datetime,
    isCompleted:bool)
 ```
+
+`isCompleted` flag is to differentiate from a permanent bookmark and a temporary one.
+
+`monitorMaxIngestionTime` tracks where we are in Azure Monitor while `startIngestionTime` remembers
+when we started ingesting data in Kusto so we can rollback.
+
+Now, let's create functions used in the ingestion process:
+
+```
+// Returns the "startIngestionTime" if an incomplete bookmark exists
+.create-or-alter function incompleteStartIngestionTime() {
+   toscalar(
+      Bookmark
+      | where not(isCompleted)
+      | project startIngestionTime)
+}
+
+// Returns the "monitorMaxIngestionTime" for the incomplete bookmark
+.create-or-alter function incompleteMonitorMaxIngestionTime() {
+   toscalar(
+      Bookmark
+      | where not(isCompleted)
+      | project monitorMaxIngestionTime)
+}
+
+// Returns the last archived monitor max ingestion time, i.e. where we're starting from
+.create-or-alter function lastArchivedMonitorIngestionTime() {
+   toscalar(
+      Bookmark
+      | where isCompleted
+      | project monitorMaxIngestionTime)
+}
+
+// Returns a new temporary bookmark row
+.create-or-alter function newTemporaryBookmark() {
+   print monitorMaxIngestionTime=aiMaxIngestionTime(),
+      startIngestionTime=now(),
+      isCompleted=false
+}
+
+// Returns a new permanent bookmark row
+.create-or-alter function newPermanentBookmark() {
+   Bookmark
+   | where not(isCompleted)
+   | extend isCompleted=true
+}
+```
+
+Finally, let's create the tables mirroring the ones in Application Insights:
+
+```
+// First time around, we'll create every table with the correct schema but empty
+.set-or-replace availabilityResults with (folder=@"ai") <|
+cluster(aiCluster()).database(aiDatabase()).availabilityResults
+| limit 0
+
+.set-or-replace browserTimings with (folder=@"ai") <|
+cluster(aiCluster()).database(aiDatabase()).browserTimings
+| limit 0
+
+.set-or-replace customEvents with (folder=@"ai") <|
+cluster(aiCluster()).database(aiDatabase()).customEvents
+| limit 0
+
+.set-or-replace customMetrics with (folder=@"ai") <|
+cluster(aiCluster()).database(aiDatabase()).customMetrics
+| limit 0
+
+.set-or-replace dependencies with (folder=@"ai") <|
+cluster(aiCluster()).database(aiDatabase()).dependencies
+| limit 0
+
+.set-or-replace exceptions with (folder=@"ai") <|
+cluster(aiCluster()).database(aiDatabase()).exceptions
+| limit 0
+
+.set-or-replace pageViews with (folder=@"ai") <|
+cluster(aiCluster()).database(aiDatabase()).pageViews
+| limit 0
+
+.set-or-replace performanceCounters with (folder=@"ai") <|
+cluster(aiCluster()).database(aiDatabase()).performanceCounters
+| limit 0
+
+.set-or-replace requests with (folder=@"ai") <|
+cluster(aiCluster()).database(aiDatabase()).requests
+| limit 0
+
+.set-or-replace traces with (folder=@"ai") <|
+cluster(aiCluster()).database(aiDatabase()).traces
+| limit 0
+```
+
+## Ingestion process
+
+We are now 
