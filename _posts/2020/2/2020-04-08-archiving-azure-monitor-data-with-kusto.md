@@ -14,6 +14,12 @@ Around the turn of the year, [I moved my blog to GitHub pages](https://vincentla
 
 One of those is [Azure Application Insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview) for web analytics.  App Insights [keeps the data for 93 days](https://docs.microsoft.com/en-us/azure/azure-monitor/faq#is-there-a-maximum-amount-of-data-that-i-can-collect-in-azure-monitor).  Although it is plenty to troubleshoot problems, I am after the Data Lake scenario:  *keep all the data and one day you might find a way to exploit it better than when you collected it*.
 
+To a lesser extent, I would like to do the same thing with [Azure Log Analytics](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview), which I'm also using.
+
+I have been looking for a way to archive that data.  It is exposed by REST API, so I was first planning to write some scheduled Azure Function to pump the data out and to persist in Azure Data Lake storage in the form of parquet files.  That would have worked but would have been a bit of work.
+
+[Kusto](https://vincentlauzon.com/2020/02/19/azure-data-explorer-kusto) could then have ingested those parquet files as [external tables](https://docs.microsoft.com/en-us/azure/kusto/query/schema-entities/externaltables).
+
 https://docs.microsoft.com/en-us/azure/data-explorer/query-monitor-data
 
 https://docs.microsoft.com/en-us/azure/kusto/management/databasecursor
