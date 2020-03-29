@@ -31,7 +31,7 @@ As usual, the [code is in GitHub](https://github.com/vplauzon/kusto/tree/master/
 
 ## Requirements
 
-There is really just one requirement, i.e. tracking where we are at.  But if we think this through a little more, that requirement declines into two:
+There really is just one requirement, i.e. tracking where we are at.  But if we think this through a little more, that requirement declines into two:
 
 1.   Remember where we stopped last time
 1.   In case we failed in the middle of an archive cycle, be able to roll back the data
@@ -40,7 +40,7 @@ For the first requirement, we first think of [Kusto Database Cursor](https://doc
 
 Unfortunately, cursors are not implemented in ADX proxy.
 
-We though about looking at *timestamp* in Azure Monitor tables, but this would be a little dangerous.  Data come to Azure Monitor in an asynchronous way and it isn't impossible that earlier data comes later.  Using the timestamp we would expose ourselves to *missing data* sometimes.
+We though about looking at *timestamp* in Azure Monitor tables, but this would be a little dangerous.  Data come to Azure Monitor in an asynchronous way and it isn't impossible that earlier data comes later.  Using the timestamp, we would expose ourselves to *missing data* sometimes.
 
 We opted for the [ingestion_time](https://docs.microsoft.com/en-us/azure/kusto/query/ingestiontimefunction?pivots=azuredataexplorer) operator.  It returns, for every row, the time at which the data was ingested.  It depends on the [Ingestion Policy](https://docs.microsoft.com/en-us/azure/kusto/management/ingestiontime-policy) being active on table.  It is for Azure Monitor.
 
@@ -58,13 +58,13 @@ Data can be deleted in Kusto.  The primary ways are:
 
 We are going to use the last mechanism.
 
-Kusto stores its data in shards, or [extents](https://docs.microsoft.com/en-us/azure/kusto/management/extents-overview).  Those are readonly.  In order to "delete" a record in an extent, we need to recreate the entire extent (this is what a data purge does selectively).  But we can drop extents altogether with the [.drop extents](https://docs.microsoft.com/en-us/azure/kusto/management/extents-commands#drop-extents) command.
+Kusto stores its data in shards, or [extents](https://docs.microsoft.com/en-us/azure/kusto/management/extents-overview).  Those are read only.  In order to "delete" a record in an extent, we need to recreate the entire extent (this is what a data purge does selectively).  But we can drop extents altogether with the [.drop extents](https://docs.microsoft.com/en-us/azure/kusto/management/extents-commands#drop-extents) command.
 
-So to rollback, we could simply drop the extents we created during the last archiving cycle.  Table extents expose a [MinCreatedOn](https://docs.microsoft.com/en-us/azure/kusto/management/extents-commands#show-extents) proprerty that tracks when was the earliest record (row) ingested in it.  If we track when we started, we can simply drop the extents with a *MinCreatedOn* property being "after" the start of the archiving process.
+So to rollback, we could simply drop the extents we created during the last archiving cycle.  Table extents expose a [MinCreatedOn](https://docs.microsoft.com/en-us/azure/kusto/management/extents-commands#show-extents) property that tracks when was the earliest record (row) ingested in it.  If we track when we started, we can simply drop the extents with a *MinCreatedOn* property being "after" the start of the archiving process.
 
-The only problem with this approach is that although extents are readonly, they can get merged.  Having a lot of tiny extents isn't efficient so Kusto merges small extents into bigger ones in the background.  This is governed by the [Merge Policy](https://docs.microsoft.com/en-us/azure/kusto/management/mergepolicy).
+The only problem with this approach is that although extents are read only, they can get merged.  Having a lot of tiny extents isn't efficient so Kusto merges small extents into bigger ones in the background.  This is governed by the [Merge Policy](https://docs.microsoft.com/en-us/azure/kusto/management/mergepolicy).
 
-This means that the data from a failed archiving process could get merged with the data from past successful process.  This appends in the background and it would be a [race](https://en.wikipedia.org/wiki/Race_condition) to rollback before it happends.
+This means that the data from a failed archiving process could get merged with the data from past successful process.  This appends in the background and it would be a [race](https://en.wikipedia.org/wiki/Race_condition) to rollback before it happens.
 
 In order to avoid that [racing condition](https://en.wikipedia.org/wiki/Race_condition), we will disable the Merge Policy, at the database level, at the beginning of the archiving process and re-enable it after.
 
@@ -235,7 +235,7 @@ cluster(aiCluster()).database(aiDatabase()).traces
 
 ## Ingestion process (happy path)
 
-Let's ingest data from Application Insights.  We'll do it manually here but as mentionned in the introduction,
+Let's ingest data from Application Insights.  We'll do it manually here but as mentioned in the introduction,
 we'll automate it in a future article.  The [full script is available on GitHub](https://github.com/vplauzon/kusto/blob/master/archive-monitor/ingest-process.kql).
 
 We'll simply follow the activities in the diagram we showed above.
@@ -294,7 +294,7 @@ Here we'll show the logic only for `pageViews`, but we need to do that for each 
 We basically append the content of Azure Monitor table between two values of ingestion time:  the previous watermark and the new one.
 
 The reason we bracket "until" `latestIngestionTime` is in the unlikely case that data gets
-ingested in Azure Monitor while we copy it.  The last table would have have all the data, while
+ingested in Azure Monitor while we copy it.  The last table would have all the data, while
 we wouldn't have caught the data in the first table.  To avoid that, we fix the
 latest ingested time at the beginning and leave the rest for next time.
 
@@ -313,7 +313,7 @@ on a small table by replacing its content in one operation:
    newPermanentBookmark()
 ```
 
-To better understand what happend here:
+To better understand what happened here:
 
 * We create a new extent containing the permanent bookmark
 * We swap that extent as the only extent for the table
