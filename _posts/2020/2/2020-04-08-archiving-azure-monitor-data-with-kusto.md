@@ -84,10 +84,59 @@ We first need to connect to the Azure Monitor cluster (in this case Azure Applic
 
 We will give the table names in the script, but just to show "how we did it", we simply did, within the App Insights database (through ADX proxy):
 
-```sql
+```
 .show tables
 ```
 
-```kusto
-.show tables
+Now, let's go to our Kusto database and create those two [stored functions](https://docs.microsoft.com/en-us/azure/kusto/query/schema-entities/stored-functions):
+
+```
+// Let's store the name of the App Insight Cluster in a function
+.create-or-alter function aiCluster() {
+   // See https://docs.microsoft.com/en-us/azure/data-explorer/query-monitor-data#connect-to-the-proxy
+   // Url should start with https://ade.applicationinsights.io or https://ade.loganalytics.io/
+   h'<URL to App Insight (AI) cluster>'
+}
+
+// Let's store the name of the App Insight backup-database in a function
+.create-or-alter function aiDatabase() {
+   // Name of the Azure Monitor database:  that is the name of the Log Analytics workspace or
+   // the Application Insights service
+   h'<database name>'
+}
+```
+
+This is the Kusto way of storing a constant.  This allows no to pollute the entire script with hard coded URLs.
+
+And now, another function:
+
+```
+// Returns the App Insights maximum ingestion time
+.create-or-alter function aiMaxIngestionTime() {
+   let maxIngestionTime = (cluster(aiCluster()).database(aiDatabase()).availabilityResults | extend ingestionTime=ingestion_time())
+   | union (cluster(aiCluster()).database(aiDatabase()).browserTimings | extend ingestionTime=ingestion_time())
+   | union (cluster(aiCluster()).database(aiDatabase()).customEvents | extend ingestionTime=ingestion_time())
+   | union (cluster(aiCluster()).database(aiDatabase()).customMetrics | extend ingestionTime=ingestion_time())
+   | union (cluster(aiCluster()).database(aiDatabase()).dependencies | extend ingestionTime=ingestion_time())
+   | union (cluster(aiCluster()).database(aiDatabase()).exceptions | extend ingestionTime=ingestion_time())
+   | union (cluster(aiCluster()).database(aiDatabase()).pageViews | extend ingestionTime=ingestion_time())
+   | union (cluster(aiCluster()).database(aiDatabase()).performanceCounters | extend ingestionTime=ingestion_time())
+   | union (cluster(aiCluster()).database(aiDatabase()).requests | extend ingestionTime=ingestion_time())
+   | union (cluster(aiCluster()).database(aiDatabase()).traces | extend ingestionTime=ingestion_time())
+   | summarize maxIngestionTime=max(ingestionTime);
+   toscalar(maxIngestionTime)
+}
+```
+
+We are going to use this in the bookmark logic.
+
+Now, let's create the bookmark table:
+
+```
+// Create a bookmark table to track where we're at in Azure Monitor cluster
+// and be able to roll back in cases where the ingestion fails midway
+.create table Bookmark(
+   monitorMaxIngestionTime:datetime,
+   startIngestionTime:datetime,
+   isCompleted:bool)
 ```
