@@ -278,6 +278,82 @@ This is because we haven't completed the ingestion.
 
 ### For each table in Azure Monitor, ingest the data since last ingestion
 
+Here we'll show the logic only for `pageViews`, but we need to do that for each table:
+
+```
+.append pageViews <|
+   let lastArchivedIngestionTime = lastArchivedMonitorIngestionTime();
+   let latestIngestionTime = incompleteMonitorMaxIngestionTime();
+   cluster(aiCluster()).database(aiDatabase()).pageViews
+   | extend ingestionTime = ingestion_time()
+   | where isnull(lastArchivedIngestionTime) or ingestionTime > lastArchivedIngestionTime
+   | where ingestionTime <= latestIngestionTime
+   | project-away ingestionTime
+```
+
+We basically append the content of Azure Monitor table between two values of ingestion time:  the previous watermark and the new one.
+
+The reason we bracket "until" `latestIngestionTime` is in the unlikely case that data gets
+ingested in Azure Monitor while we copy it.  The last table would have have all the data, while
+we wouldn't have caught the data in the first table.  To avoid that, we fix the
+latest ingested time at the beginning and leave the rest for next time.
+
+We test for `NULL` to cover the case where the `Bookmark` table is empty, i.e.
+the first time we run the process.
+
+### Make the temporary bookmark permanent
+
+Here we need to "update" the bookmark to mark it as permanent.
+Although Kusto doesn't allow updates, it's easy to simulate one
+on a small table by replacing its content in one operation:
+
+```
+// Update in-place bookmark table
+.set-or-replace Bookmark <|
+   newPermanentBookmark()
+```
+
+To better understand what happend here:
+
+* We create a new extent containing the permanent bookmark
+* We swap that extent as the only extent for the table
+
+### Enable Merge Policy
+
+This will apply the *default* Merge Policy to the database.
+
+```
+// Resume merge policy in the database
+.alter database <Kusto database name> policy merge '{}'
+```
+
 ## Recovering from failures
 
-We are now 
+Now the script to recover from a failure.  Here we are in the scenario where
+
+```
+// Check if an incomplete bookmark exists
+print incompleteStartIngestionTime()
+```
+
+Does return a datetime.
+
+We will roll back everything done after this time:
+
+```
+// Let's drop everything created after the bookmark "start time"
+// This will include the actual bookmark itself
+.drop extents <|
+.show database ailogs extents
+| where MinCreatedOn>=incompleteStartIngestionTime()
+```
+
+Because of the way we create the bookmark, i.e. picking the `now`
+time before insert it in the `Bookmark` table, it means the
+`Bookmark` extent will have a `MinCreatedOn` value slightly
+higher than `incompleteStartIngestionTime()`.  It will therefore
+be deleted in the rollback, leaving the Database in the previous
+state before the failed process started.
+
+## Summary
+
