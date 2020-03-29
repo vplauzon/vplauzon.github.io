@@ -22,13 +22,22 @@ I have been looking for a way to archive that data.  It is exposed by REST API, 
 
 I since found a much simpler way.  [ADX integrates with Azure Monitor](https://docs.microsoft.com/en-us/azure/data-explorer/query-monitor-data).  It's therefore easy to load data from Azure Monitor into an ADX cluster.  When the cluster is turned off, we only pay for the data stored in Standard Azure Storage.  I could export it to files one day if I need to analyse the data outside of Kusto, but it's quite ok there for now.
 
-In this article, I'll show how to do a periodic import in a robust manner, not reading data twice and taking care of failure scenarios.
+Archiving the data periodically (more often than every 93 days), I'll be able to get a hold of all the telemetry data since I move the blog to GitHub pages.
+
+In this article, I'll show how to do a periodic import in a robust manner, not reading data twice and taking care of failure scenarios.  This will allow us to **explore a couple of Kusto concepts**.
 
 In a future article, I'll show how to automate the process.
 
 As usual, the [code is in GitHub](https://github.com/vplauzon/kusto/tree/master/archive-monitor).
 
 ## Requirements
+
+There is really just one requirement, i.e. tracking where we are at.  But if we think this through a little more, that requirement declines into two:
+
+1.   Remember where we stopped last time
+1.   In case we failed in the middle of an archive cycle, be able to roll back the data
+
+For the first requirement, the natural
 
 https://docs.microsoft.com/en-us/azure/kusto/management/databasecursor
 
