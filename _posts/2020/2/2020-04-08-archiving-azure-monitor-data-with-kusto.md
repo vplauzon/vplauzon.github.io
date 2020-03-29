@@ -8,7 +8,7 @@ tags:
 - Data
 - Operation
 ---
-<img style="float:left;padding-right:20px;" title="From pixabay.com" src="/assets/posts/2020/2/archiving-application-insights-data/archive.jpg" />
+<img style="float:left;padding-right:20px;" title="From pixabay.com" src="/assets/posts/2020/2/archiving-azure-monitor-data-with-kusto/archive.jpg" />
 
 https://docs.microsoft.com/en-us/azure/data-explorer/query-monitor-data
 
