@@ -17,7 +17,7 @@ App Insights [keeps the data for 93 days](https://docs.microsoft.com/en-us/azure
 
 To a lesser extent, I would like to do the same thing with [Azure Log Analytics](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview), which I'm also using.
 
-I have been looking for a way to archive that data.  As it is exposed by REST API, I was first planning to write some scheduled Azure Function to pump the data out and persist it in Azure Data Lake storage in the form of [Parquet files](https://en.wikipedia.org/wiki/Apache_Parquet).  [Kusto](https://vincentlauzon.com/2020/02/19/azure-data-explorer-kusto) / ADX could then have ingested those parquet files as [external tables](https://docs.microsoft.com/en-us/azure/kusto/query/schema-entities/externaltables).  That approach would have worked but was laborious.
+I have been looking for a way to archive that data.  As it is exposed by REST API, I was first planning to write some scheduled Azure Function to pump the data out and persist it in Azure Data Lake storage in the form of [Parquet files](https://en.wikipedia.org/wiki/Apache_Parquet).  [Kusto](https://vincentlauzon.com/2020/02/19/azure-data-explorer-kusto) / ADX could then have ingested those parquet files as [external tables](https://docs.microsoft.com/en-us/azure/kusto/management/data-export/export-data-to-an-external-table).  That approach would have worked but was laborious.
 
 I since found a much simpler way.  [ADX integrates with Azure Monitor](https://docs.microsoft.com/en-us/azure/data-explorer/query-monitor-data) via what is called *ADX proxy*.  It makes it easy to load data from Azure Monitor into an ADX cluster.  When the cluster is turned off, we only pay for the data stored in Standard Azure Storage.  I could export it to blobs one day if I need to analyse the data outside of Kusto.
 
@@ -50,16 +50,13 @@ For the second requirement, we have to think about it as Kusto is an append-only
 
 ### Rollbacking in Kusto
 
-We say it's 
+Data can be deleted in Kusto.  The primary ways are:
 
+*   With [retention policy](https://docs.microsoft.com/en-us/azure/kusto/management/retentionpolicy)
+*   With [Data Purge](https://docs.microsoft.com/en-us/azure/kusto/concepts/data-purge)
+*   By [dropping extents](https://docs.microsoft.com/en-us/azure/kusto/management/extents-commands#drop-extents)
 
-Get schema for one table:
+We are going to use the last mechanism.
 
-pageViews
-| getschema
-| extend param= strcat(ColumnName, ':', ColumnType)
-| summarize params = make_list(param)
-| project strcat_array(params, ', ')
+Kusto stores its data in shards, or [extents](https://docs.microsoft.com/en-us/azure/kusto/management/extents-overview).  Those are readonly.  In order to "delete" a record in an extent, we need to recreate the entire extent (this is what a data purge does selectively).  But we can drop extents altogether with the [.drop extents](https://docs.microsoft.com/en-us/azure/kusto/management/extents-commands#drop-extents) command.
 
-https://docs.microsoft.com/en-us/azure/kusto/management/externaltables
-https://docs.microsoft.com/en-us/azure/kusto/management/data-export/export-data-to-an-external-table
