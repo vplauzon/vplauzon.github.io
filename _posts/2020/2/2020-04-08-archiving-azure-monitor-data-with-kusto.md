@@ -233,6 +233,51 @@ cluster(aiCluster()).database(aiDatabase()).traces
 | limit 0
 ```
 
-## Ingestion process
+## Ingestion process (happy path)
+
+Let's ingest data from Application Insights.  We'll do it manually here but as mentionned in the introduction,
+we'll automate it in a future article.  The [full script is available on GitHub](https://github.com/vplauzon/kusto/blob/master/archive-monitor/ingest-process.kql).
+
+We'll simply follow the activities in the diagram we showed above.
+
+### Disable Merge Policy
+
+This one is quite simple:
+
+```
+// Suspend merge policy in the database
+.alter database <Kusto database name> policy merge '{"AllowRebuild":false,"AllowMerge":false}'
+```
+
+(There are two ways to merge extents, we disable both)
+
+### Incomplete previous record?
+
+Here we simply call upon a function we defined earlier:
+
+```
+// Check if an incomplete bookmark exists
+print incompleteStartIngestionTime()
+```
+
+We use store functions a lot as it makes things easier with automation where we don't want to store detailed logic in the orchestrator.
+
+In the happy path we should have a *NULL* value returned from that function which means we do not have any failed previous attempt to recover from.
+
+### Persist temporary bookmark
+
+`newTemporaryBookmark` will find the latest Azure Monitor ingestion time.
+
+```
+// Persist a temporary bookmark
+.append Bookmark <| newTemporaryBookmark()
+```
+
+If we would execute the `print incompleteStartIngestionTime()` query again, we would get a value.
+This is because we haven't completed the ingestion.
+
+### For each table in Azure Monitor, ingest the data since last ingestion
+
+## Recovering from failures
 
 We are now 
