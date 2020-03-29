@@ -18,9 +18,17 @@ To a lesser extent, I would like to do the same thing with [Azure Log Analytics]
 
 I have been looking for a way to archive that data.  It is exposed by REST API, so I was first planning to write some scheduled Azure Function to pump the data out and to persist in Azure Data Lake storage in the form of parquet files.  That would have worked but would have been a bit of work.
 
-[Kusto](https://vincentlauzon.com/2020/02/19/azure-data-explorer-kusto) could then have ingested those parquet files as [external tables](https://docs.microsoft.com/en-us/azure/kusto/query/schema-entities/externaltables).
+[Kusto](https://vincentlauzon.com/2020/02/19/azure-data-explorer-kusto) / ADX could then have ingested those parquet files as [external tables](https://docs.microsoft.com/en-us/azure/kusto/query/schema-entities/externaltables).
 
-https://docs.microsoft.com/en-us/azure/data-explorer/query-monitor-data
+I since found a much simpler way.  [ADX integrates with Azure Monitor](https://docs.microsoft.com/en-us/azure/data-explorer/query-monitor-data).  It's therefore easy to load data from Azure Monitor into an ADX cluster.  When the cluster is turned off, we only pay for the data stored in Standard Azure Storage.  I could export it to files one day if I need to analyse the data outside of Kusto, but it's quite ok there for now.
+
+In this article, I'll show how to do a periodic import in a robust manner, not reading data twice and taking care of failure scenarios.
+
+In a future article, I'll show how to automate the process.
+
+As usual, the [code is in GitHub](https://github.com/vplauzon/kusto/tree/master/archive-monitor).
+
+## Requirements
 
 https://docs.microsoft.com/en-us/azure/kusto/management/databasecursor
 
