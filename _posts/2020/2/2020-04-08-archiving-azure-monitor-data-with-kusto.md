@@ -60,3 +60,14 @@ We are going to use the last mechanism.
 
 Kusto stores its data in shards, or [extents](https://docs.microsoft.com/en-us/azure/kusto/management/extents-overview).  Those are readonly.  In order to "delete" a record in an extent, we need to recreate the entire extent (this is what a data purge does selectively).  But we can drop extents altogether with the [.drop extents](https://docs.microsoft.com/en-us/azure/kusto/management/extents-commands#drop-extents) command.
 
+So to rollback, we could simply drop the extents we created during the last archiving cycle.  Table extents expose a [MinCreatedOn](https://docs.microsoft.com/en-us/azure/kusto/management/extents-commands#show-extents) proprerty that tracks when was the earliest record (row) ingested in it.  If we track when we started, we can simply drop the extents with a *MinCreatedOn* property being "after" the start of the archiving process.
+
+The only problem with this approach is that although extents are readonly, they can get merged.  Having a lot of tiny extents isn't efficient so Kusto merges small extents into bigger ones in the background.  This is governed by the [Merge Policy](https://docs.microsoft.com/en-us/azure/kusto/management/mergepolicy).
+
+This means that the data from a failed archiving process could get merged with the data from past successful process.  This appends in the background and it would be a [race](https://en.wikipedia.org/wiki/Race_condition) to rollback before it happends.
+
+In order to avoid that [racing condition](https://en.wikipedia.org/wiki/Race_condition), we will disable the Merge Policy, at the database level, at the beginning of the archiving process and re-enable it after.
+
+## The process
+
+Here is the complete process.  We assume we are archiving Azure Monitor data 
