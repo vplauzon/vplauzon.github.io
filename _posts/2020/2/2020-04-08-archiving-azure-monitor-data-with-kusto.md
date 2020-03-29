@@ -329,7 +329,9 @@ This will apply the *default* Merge Policy to the database.
 
 ## Recovering from failures
 
-Now the script to recover from a failure.  Here we are in the scenario where
+Now the script to recover from a failure (available on
+[GitHub](https://github.com/vplauzon/kusto/blob/master/archive-monitor/failure-recovery.kql)).
+Here we are in the scenario where
 
 ```
 // Check if an incomplete bookmark exists
@@ -357,3 +359,14 @@ state before the failed process started.
 
 ## Summary
 
+We built a robust archiving mechanism from Azure Monitor to
+Kusto.
+
+On the way we learned of a couple of concepts such as:
+
+*   Extents
+*   Merge Policy
+*   Ingestion time
+*   Cursors (although we didn't use them)
+
+We used all those concepts to simulate transaction in an append-only database.
