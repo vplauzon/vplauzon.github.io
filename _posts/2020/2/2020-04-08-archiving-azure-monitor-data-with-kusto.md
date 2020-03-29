@@ -72,4 +72,10 @@ In order to avoid that [racing condition](https://en.wikipedia.org/wiki/Race_con
 
 Here is the complete process:
 
-![](/assets/posts/2020/2/archiving-azure-monitor-data-with-kusto/archiving-process.png)
+![Archiving Process](/assets/posts/2020/2/archiving-azure-monitor-data-with-kusto/archiving-process.png)
+
+## Setup a database
+
+In this section, we'll go through the scripts to setup the database.  We recommend using a separate database for this.  We are going to use Azure Application Insights in the scripts, but if we would like to do both App Insights & Log Analytics, we would recommend doing that on two different target databases, since we use database-wide Merge Policy and extents-rollback.
+
+The [complete script is available on GitHub](https://github.com/vplauzon/kusto/blob/master/archive-monitor/setup-db.kql).
