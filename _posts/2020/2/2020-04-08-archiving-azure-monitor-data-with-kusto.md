@@ -19,7 +19,7 @@ To a lesser extent, I would like to do the same thing with [Azure Log Analytics]
 
 I have been looking for a way to archive that data.  As it is exposed by REST API, I was first planning to write some scheduled Azure Function to pump the data out and persist it in Azure Data Lake storage in the form of [Parquet files](https://en.wikipedia.org/wiki/Apache_Parquet).  [Kusto](https://vincentlauzon.com/2020/02/19/azure-data-explorer-kusto) / ADX could then have ingested those parquet files as [external tables](https://docs.microsoft.com/en-us/azure/kusto/query/schema-entities/externaltables).  That approach would have worked but was laborious.
 
-I since found a much simpler way.  [ADX integrates with Azure Monitor](https://docs.microsoft.com/en-us/azure/data-explorer/query-monitor-data).  It makes it easy to load data from Azure Monitor into an ADX cluster.  When the cluster is turned off, we only pay for the data stored in Standard Azure Storage.  I could export it to blobs one day if I need to analyse the data outside of Kusto.
+I since found a much simpler way.  [ADX integrates with Azure Monitor](https://docs.microsoft.com/en-us/azure/data-explorer/query-monitor-data) via what is called *ADX proxy*.  It makes it easy to load data from Azure Monitor into an ADX cluster.  When the cluster is turned off, we only pay for the data stored in Standard Azure Storage.  I could export it to blobs one day if I need to analyse the data outside of Kusto.
 
 Archiving the data periodically (more often than every 93 days), I'll be able to get a hold of all the telemetry data since I move the blog to GitHub pages.
 
@@ -36,11 +36,22 @@ There is really just one requirement, i.e. tracking where we are at.  But if we 
 1.   Remember where we stopped last time
 1.   In case we failed in the middle of an archive cycle, be able to roll back the data
 
-For the first requirement, the natural
+For the first requirement, we first think of [Kusto Database Cursor](https://docs.microsoft.com/en-us/azure/kusto/management/databasecursor).  They allow us to query data "since last time".
 
-https://docs.microsoft.com/en-us/azure/kusto/management/databasecursor
+Unfortunately, cursors are not implemented in ADX proxy.
 
-https://docs.microsoft.com/en-us/azure/kusto/management/ingestiontime-policy
+We though about looking at *timestamp* in Azure Monitor tables, but this would be a little dangerous.  Data come to Azure Monitor in an asynchronous way and it isn't impossible that earlier data comes later.  Using the timestamp we would expose ourselves to *missing data* sometimes.
+
+We opted for the [ingestion_time](https://docs.microsoft.com/en-us/azure/kusto/query/ingestiontimefunction?pivots=azuredataexplorer) operator.  It returns, for every row, the time at which the data was ingested.  It depends on the [Ingestion Policy](https://docs.microsoft.com/en-us/azure/kusto/management/ingestiontime-policy) being active on table.  It is for Azure Monitor.
+
+We will use that time track where we left off.
+
+For the second requirement, we have to think about it as Kusto is an append-only (or mostly) database.  It doesn't implement transaction nor rollback.
+
+### Rollbacking in Kusto
+
+We say it's 
+
 
 Get schema for one table:
 
