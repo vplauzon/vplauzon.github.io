@@ -71,8 +71,14 @@ In order to give access to Logic App, we'll follow [this procedure](https://docs
 
 ## Archive app
 
-We can open the *archive app*.  We'll notice it mimics pretty closely the process we laid out:
+We can open the *archive app*.  We'll notice it mimics pretty closely the process we laid out.
+
+Part 1:
 
 ![archive app Part 1](/assets/posts/2020/2/automating-archiving-azure-monitor-data-with-kusto/archive-app-part-1.png)
 
+Part 2:
+
 ![archive app Part 2](/assets/posts/2020/2/automating-archiving-azure-monitor-data-with-kusto/archive-app-part-2.png)
+
+We list the tables in the *for-each-table* action.  This is the list 
