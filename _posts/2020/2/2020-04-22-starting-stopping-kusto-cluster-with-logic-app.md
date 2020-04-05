@@ -70,3 +70,8 @@ Moreover, when another Logic is the client, this 202 / status endpoint logic is 
 
 The *start* / *stop* REST API implements the same pattern and hence *kusto-cluster-app* is awaiting its resolution.  Therefore the Logic App runs until the cluster is stopped / started.
 
+## Summary
+
+A simple way to automate kusto cluster operations is to wrap them in a Logic App and expose them as an HTTPS endpoint.
+
+This could then be embedded in another Logic App to perform some orchestration.  For instance, we could start a cluster, archive Azure Monitor data and then stop the cluster.
