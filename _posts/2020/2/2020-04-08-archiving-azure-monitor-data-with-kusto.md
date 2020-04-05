@@ -1,4 +1,5 @@
 ---
+date: 2020-04-3
 title:  Archiving Azure Monitor Data with Kusto
 permalink: /2020/04/08/archiving-azure-monitor-data-with-kusto
 categories:
@@ -137,10 +138,10 @@ Now, let's create the bookmark table:
 .create table Bookmark(
    monitorMaxIngestionTime:datetime,
    startIngestionTime:datetime,
-   isCompleted:bool)
+   recordCount:long)
 ```
 
-`isCompleted` flag is to differentiate from a permanent bookmark and a temporary one.
+`recordCount` is used to leave a trace of how many records we ingested at one moment.  Also, it is a flag is to differentiate from a permanent bookmark and a temporary one:  when it is `null`, it is a temporary bookmark, while when it has a value, it is a permanent one.
 
 `monitorMaxIngestionTime` tracks where we are in Azure Monitor while `startIngestionTime` remembers
 when we started ingesting data in Kusto so we can rollback.
@@ -152,7 +153,7 @@ Now, let's create functions used in the ingestion process:
 .create-or-alter function incompleteStartIngestionTime() {
    toscalar(
       Bookmark
-      | where not(isCompleted)
+      | where isnull(recordCount)
       | project startIngestionTime)
 }
 
@@ -160,7 +161,7 @@ Now, let's create functions used in the ingestion process:
 .create-or-alter function incompleteMonitorMaxIngestionTime() {
    toscalar(
       Bookmark
-      | where not(isCompleted)
+      | where isnull(recordCount)
       | project monitorMaxIngestionTime)
 }
 
@@ -168,22 +169,23 @@ Now, let's create functions used in the ingestion process:
 .create-or-alter function lastArchivedMonitorIngestionTime() {
    toscalar(
       Bookmark
-      | where isCompleted
-      | project monitorMaxIngestionTime)
+      | where isnotnull(recordCount)
+      | summarize max(monitorMaxIngestionTime))
 }
 
 // Returns a new temporary bookmark row
 .create-or-alter function newTemporaryBookmark() {
    print monitorMaxIngestionTime=aiMaxIngestionTime(),
       startIngestionTime=now(),
-      isCompleted=false
+      recordCount=long(null)
 }
 
-// Returns a new permanent bookmark row
-.create-or-alter function newPermanentBookmark() {
-   Bookmark
-   | where not(isCompleted)
-   | extend isCompleted=true
+// Returns the new permanent bookmarks
+.create-or-alter function newPermanentBookmark(batchRecordCount:long) {
+    Bookmark
+    | where isnull(recordCount)
+    | extend recordCount=batchRecordCount
+    | union (Bookmark | where isnotnull(recordCount))
 }
 ```
 
