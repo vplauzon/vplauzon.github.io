@@ -81,4 +81,14 @@ Part 2:
 
 ![archive app Part 2](/assets/posts/2020/2/automating-archiving-azure-monitor-data-with-kusto/archive-app-part-2.png)
 
-We list the tables in the *for-each-table* action.  This is the list 
+We listed Application Insights tables in the *for-each-table* action.  Changing that list for Log Analytics would be the only change necessary to adapt the app for Log Analytics.
+
+## Summary
+
+We automated the process of archiving Azure Monitor data with Kusto.
+
+This could be run recurrently.  In theory it could be run every 90 days to pickup data before the retention on Azure Monitor delete data.
+
+In practice, large data fails on `.append`.  We noticed on Azure Application Insights for instance that the `PerformanceCounters` table was failing with 90 days worth of data.  We had to split the ingestion manually.
+
+The ingestion could be split in the automated process, but an easier option is to perform the ingestion more often.
