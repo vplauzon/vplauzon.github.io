@@ -1,5 +1,4 @@
 ---
-date: 2020-04-3
 title:  Archiving Azure Monitor Data with Kusto
 permalink: /2020/04/08/archiving-azure-monitor-data-with-kusto
 categories:
@@ -252,7 +251,7 @@ This one is quite simple:
 
 (There are two ways to merge extents, we disable both)
 
-### Incomplete previous record?
+### Incomplete previous process?
 
 Here we simply call upon a function we defined earlier:
 
@@ -263,7 +262,7 @@ print incompleteStartIngestionTime()
 
 We use store functions a lot as it makes things easier with automation where we don't want to store detailed logic in the orchestrator.
 
-In the happy path we should have a *NULL* value returned from that function which means we do not have any failed previous attempt to recover from.
+In the happy path we should have a `null` value returned from that function which means we do not have any failed previous attempt to recover from.
 
 ### Persist temporary bookmark
 
@@ -302,22 +301,36 @@ latest ingested time at the beginning and leave the rest for next time.
 We test for `NULL` to cover the case where the `Bookmark` table is empty, i.e.
 the first time we run the process.
 
+### Compute record count
+
+Here we compute the number of records we ingested.
+
+```
+// Compute record count
+.show database <Kusto database name> extents
+| where MinCreatedOn>=incompleteStartIngestionTime()
+// Substracting one, which is the bookmark record
+| summarize RecordCount=max(RowCount)-1
+```
+
+This returns a value we are going to use in the next step.
+
 ### Make the temporary bookmark permanent
 
-Here we need to "update" the bookmark to mark it as permanent.
+Here we need to "update" the bookmark to flag it as permanent.
 Although Kusto doesn't allow updates, it's easy to simulate one
 on a small table by replacing its content in one operation:
 
 ```
 // Update in-place bookmark table
 .set-or-replace Bookmark <|
-   newPermanentBookmark()
+   newPermanentBookmark(<recourd count value from the last query>)
 ```
 
 To better understand what happened here:
 
-* We create a new extent containing the permanent bookmark
-* We swap that extent as the only extent for the table
+* We create a new extent (or multiple extents if the `Bookmark` table gets very long) containing the permanent bookmarks
+* We swap that extent(s) as the only extent(s) for the table
 
 ### Enable Merge Policy
 
