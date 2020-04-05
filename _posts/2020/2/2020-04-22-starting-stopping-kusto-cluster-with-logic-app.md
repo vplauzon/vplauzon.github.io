@@ -43,6 +43,7 @@ There are over 10 API operations but we are using only 3:
 * [Start](https://docs.microsoft.com/en-us/rest/api/azurerekusto/clusters/start) to start the cluster
 * [Stop](https://docs.microsoft.com/en-us/rest/api/azurerekusto/clusters/stop) to stop the cluster
 
-
+Those three APIs require authentication so we are going to use [Managed Service Identity](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview) (MSI).  MSIs are really easy to use with REST APIs in Logic App.
 
 ## Access Control
+
