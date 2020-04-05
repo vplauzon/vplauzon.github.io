@@ -59,4 +59,12 @@ Actually, for most cases, only the last two actions (i.e. *execute-command* and 
 
 It is important to note this Logic App implements the [Asynchronous Request-Reply pattern](https://docs.microsoft.com/en-us/azure/architecture/patterns/async-request-reply).  That means it doesn't hang until the cluster is started / stopped, it returns a 202 (accepted) with a status endpoint.  The caller can then query that status endpoint to find out when the Logic App is done.  This is a typical pattern used to circumvent time outs on HTTP calls.
 
+In Logic Apps, this is simply implemented by enabling asynchronous response in the *settings* of the response action:
+
 ![async](/assets/posts/2020/2/starting-stopping-kusto-cluster-with-logic-app/async.png)
+
+Moreover, when another Logic is the client, this 202 / status endpoint logic is automatically implemented, as in our case with our two *test* Logic Apps.
+
+The *start* / *stop* REST API implements the same pattern and hence *kusto-cluster-app* is awaiting its resolution.  Therefore the Logic App runs until the cluster is stopped / started.
+
+![until](/assets/posts/2020/2/starting-stopping-kusto-cluster-with-logic-app/until.png)
