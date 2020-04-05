@@ -47,3 +47,5 @@ Those three APIs require authentication so we are going to use [Managed Service 
 
 ## Access Control
 
+Before running any test, we need to give the *kusto-cluster-app* Logic App the *contributor* role on the cluster Azure Resource.  This isn't a cluster permission but an Azure RBAC role assignment.
+
