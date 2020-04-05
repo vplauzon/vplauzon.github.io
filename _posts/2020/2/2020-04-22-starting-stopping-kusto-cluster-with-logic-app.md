@@ -17,7 +17,7 @@ If the sole purpose of that specific Kusto Cluster is to archive Azure Monitor D
 
 In this article, we'll see how we can easily craft a Logic app to start and stop a Kusto (ADX) cluster.
 
-The solution is quite simple so we are going to review a few Logic App techniques along the way.
+The solution is quite simple, so we are going to review a few Logic App techniques along the way.
 
 As usual, the [code is in GitHub](https://github.com/vplauzon/kusto/tree/master/start-stop-cluster).
 
@@ -39,12 +39,12 @@ The last two apps, as their *prefixes* suggest, exists only to test the first on
 
 The whole solution is based on [Azure Data Explorer (Kusto) REST API](https://docs.microsoft.com/en-us/rest/api/azurerekusto/clusters).
 
-There are over 10 API operations but we are using only 2:
+There are over 10 API operations, but we are using only 2:
 
 * [Start](https://docs.microsoft.com/en-us/rest/api/azurerekusto/clusters/start) to start the cluster
 * [Stop](https://docs.microsoft.com/en-us/rest/api/azurerekusto/clusters/stop) to stop the cluster
 
-Those two APIs require authentication so we are going to use [Managed Service Identity](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview) (MSI).  MSIs are really easy to use with REST APIs in Logic App.
+Those two APIs require authentication so we are going to use [Managed Service Identity](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview) (MSI).  MSIs are quite easy to use with REST APIs in Logic App.
 
 ## Access Control
 
@@ -56,7 +56,7 @@ The Logic App is quite straightforward:
 
 ![apps](/assets/posts/2020/2/starting-stopping-kusto-cluster-with-logic-app/process.png)
 
-Actually, for most cases, only the last two actions (i.e. *execute-command* and *response*) would be necessary.  *execute-command* executes the start or stop command while response returns.
+*execute-command* executes the start or stop command while *response* returns.
 
 ## Asynchronous Request-Reply pattern
 
@@ -68,7 +68,7 @@ In Logic Apps, this is simply implemented by enabling asynchronous response in t
 
 Moreover, when another Logic is the client, this 202 / status endpoint logic is automatically implemented, as in our case with our two *test* Logic Apps.
 
-The *start* / *stop* REST API implements the same pattern and hence *kusto-cluster-app* is awaiting its resolution.  Therefore the Logic App runs until the cluster is stopped / started.
+The *start* / *stop* REST API implements the same pattern and hence *kusto-cluster-app* is awaiting its resolution.  Therefore, the Logic App runs until the cluster is stopped / started.
 
 ## Summary
 
