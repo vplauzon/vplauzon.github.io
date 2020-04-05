@@ -137,10 +137,10 @@ Now, let's create the bookmark table:
 .create table Bookmark(
    monitorMaxIngestionTime:datetime,
    startIngestionTime:datetime,
-   isCompleted:bool)
+   recordCount:long)
 ```
 
-`isCompleted` flag is to differentiate from a permanent bookmark and a temporary one.
+`recordCount` is used to leave a trace of how many records we ingested at one moment.  Also, it is a flag is to differentiate from a permanent bookmark and a temporary one:  when it is `null`, it is a temporary bookmark, while when it has a value, it is a permanent one.
 
 `monitorMaxIngestionTime` tracks where we are in Azure Monitor while `startIngestionTime` remembers
 when we started ingesting data in Kusto so we can rollback.
@@ -152,7 +152,7 @@ Now, let's create functions used in the ingestion process:
 .create-or-alter function incompleteStartIngestionTime() {
    toscalar(
       Bookmark
-      | where not(isCompleted)
+      | where isnull(recordCount)
       | project startIngestionTime)
 }
 
@@ -160,7 +160,7 @@ Now, let's create functions used in the ingestion process:
 .create-or-alter function incompleteMonitorMaxIngestionTime() {
    toscalar(
       Bookmark
-      | where not(isCompleted)
+      | where isnull(recordCount)
       | project monitorMaxIngestionTime)
 }
 
@@ -168,22 +168,23 @@ Now, let's create functions used in the ingestion process:
 .create-or-alter function lastArchivedMonitorIngestionTime() {
    toscalar(
       Bookmark
-      | where isCompleted
-      | project monitorMaxIngestionTime)
+      | where isnotnull(recordCount)
+      | summarize max(monitorMaxIngestionTime))
 }
 
 // Returns a new temporary bookmark row
 .create-or-alter function newTemporaryBookmark() {
    print monitorMaxIngestionTime=aiMaxIngestionTime(),
       startIngestionTime=now(),
-      isCompleted=false
+      recordCount=long(null)
 }
 
-// Returns a new permanent bookmark row
-.create-or-alter function newPermanentBookmark() {
-   Bookmark
-   | where not(isCompleted)
-   | extend isCompleted=true
+// Returns the new permanent bookmarks
+.create-or-alter function newPermanentBookmark(batchRecordCount:long) {
+    Bookmark
+    | where isnull(recordCount)
+    | extend recordCount=batchRecordCount
+    | union (Bookmark | where isnotnull(recordCount))
 }
 ```
 
@@ -250,7 +251,7 @@ This one is quite simple:
 
 (There are two ways to merge extents, we disable both)
 
-### Incomplete previous record?
+### Incomplete previous process?
 
 Here we simply call upon a function we defined earlier:
 
@@ -261,7 +262,7 @@ print incompleteStartIngestionTime()
 
 We use store functions a lot as it makes things easier with automation where we don't want to store detailed logic in the orchestrator.
 
-In the happy path we should have a *NULL* value returned from that function which means we do not have any failed previous attempt to recover from.
+In the happy path we should have a `null` value returned from that function which means we do not have any failed previous attempt to recover from.
 
 ### Persist temporary bookmark
 
@@ -300,22 +301,36 @@ latest ingested time at the beginning and leave the rest for next time.
 We test for `NULL` to cover the case where the `Bookmark` table is empty, i.e.
 the first time we run the process.
 
+### Compute record count
+
+Here we compute the number of records we ingested.
+
+```
+// Compute record count
+.show database <Kusto database name> extents
+| where MinCreatedOn>=incompleteStartIngestionTime()
+// Substracting one, which is the bookmark record
+| summarize RecordCount=max(RowCount)-1
+```
+
+This returns a value we are going to use in the next step.
+
 ### Make the temporary bookmark permanent
 
-Here we need to "update" the bookmark to mark it as permanent.
+Here we need to "update" the bookmark to flag it as permanent.
 Although Kusto doesn't allow updates, it's easy to simulate one
 on a small table by replacing its content in one operation:
 
 ```
 // Update in-place bookmark table
 .set-or-replace Bookmark <|
-   newPermanentBookmark()
+   newPermanentBookmark(<recourd count value from the last query>)
 ```
 
 To better understand what happened here:
 
-* We create a new extent containing the permanent bookmark
-* We swap that extent as the only extent for the table
+* We create a new extent (or multiple extents if the `Bookmark` table gets very long) containing the permanent bookmarks
+* We swap that extent(s) as the only extent(s) for the table
 
 ### Enable Merge Policy
 
