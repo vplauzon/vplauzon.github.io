@@ -1,4 +1,5 @@
 ---
+date:  2020-4-1
 title:  Starting / Stopping Kusto cluster with Logic App
 permalink: /2020/04/22/starting-stopping-kusto-cluster-with-logic-app
 categories:
