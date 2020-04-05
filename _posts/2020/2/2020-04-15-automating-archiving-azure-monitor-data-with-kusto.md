@@ -57,7 +57,7 @@ Also we had issue with the `.alter table` statement...
 
 For all those reasons, we authored a separate Logic App doing Kusto actions (either query or command) and leveraging the [Kusto REST API](https://docs.microsoft.com/en-us/azure/kusto/api/rest/) and Logic App [Managed Service Identity](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview) (MSI).  Kusto REST API is really straight forward to use.
 
-Since we were wrapping Kusto call in a different Logic App, we took the opportunity to tidy up the output.  The REST API is quite verbose and requires at least one Logic App action to find the actual query result.  So we do that work in the *kusto-app*.  We 
+Since we were wrapping Kusto call in a different Logic App, we took the opportunity to tidy up the output.  The REST API is quite verbose and requires at least one Logic App action to find the actual query result.  So we do that work in the *kusto-app*.  We also return the original REST API response.
 
 ## Permissions
 
@@ -69,4 +69,10 @@ That identity must be given access on the Kusto database so it can perform queri
 
 In order to give access to Logic App, we'll follow [this procedure](https://docs.microsoft.com/en-us/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal) for the database we selected.  We will select *kusto-app* as the principal and give it [Database admin](https://docs.microsoft.com/en-us/azure/data-explorer/manage-database-permissions#roles-and-permissions) role.  This the highest permission we can give, but it is required since we will do `.alter database` to modify the merge policy.
 
-## 
+## Archive app
+
+We can open the *archive app*.  We'll notice it mimics pretty closely the process we laid out:
+
+![archive app Part 1](/assets/posts/2020/2/automating-archiving-azure-monitor-data-with-kusto/archive-app-part-1.png)
+
+![archive app Part 2](/assets/posts/2020/2/automating-archiving-azure-monitor-data-with-kusto/archive-app-part-2.png)
