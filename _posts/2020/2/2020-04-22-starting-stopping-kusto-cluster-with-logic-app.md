@@ -10,3 +10,4 @@ tags:
 ---
 <img style="float:right;padding-left:20px;" title="From pixabay.com" src="/assets/posts/2020/2/starting-stopping-kusto-cluster-with-logic-app/yellow-and-red-stop-button.jpg" />
 
+https://docs.microsoft.com/en-us/rest/api/azurerekusto/clusters
