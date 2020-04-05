@@ -49,3 +49,14 @@ Those three APIs require authentication so we are going to use [Managed Service 
 
 Before running any test, we need to give the *kusto-cluster-app* Logic App the *contributor* role on the cluster Azure Resource.  This isn't a cluster permission but an Azure RBAC role assignment.
 
+## Logic App
+
+The Logic App is quite straightforward:
+
+![apps](/assets/posts/2020/2/starting-stopping-kusto-cluster-with-logic-app/process.png)
+
+Actually, for most cases, only the last two actions (i.e. *execute-command* and *response*) would be necessary.  *execute-command* executes the start or stop command while response returns.
+
+It is important to note this Logic App implements the [Asynchronous Request-Reply pattern](https://docs.microsoft.com/en-us/azure/architecture/patterns/async-request-reply).  That means it doesn't hang until the cluster is started / stopped, it returns a 202 (accepted) with a status endpoint.  The caller can then query that status endpoint to find out when the Logic App is done.  This is a typical pattern used to circumvent time outs on HTTP calls.
+
+![async](/assets/posts/2020/2/starting-stopping-kusto-cluster-with-logic-app/async.png)
