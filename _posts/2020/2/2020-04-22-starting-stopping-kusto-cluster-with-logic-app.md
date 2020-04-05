@@ -31,6 +31,18 @@ The solution deploys three Logic Apps:
 
 ![apps](/assets/posts/2020/2/starting-stopping-kusto-cluster-with-logic-app/apps.png)
 
+The last two apps, as their *prefixes* suggest, exists only to test the first one, *kusto-cluster-app*.
+
 ## REST API
 
-https://docs.microsoft.com/en-us/rest/api/azurerekusto/clusters
+The whole solution is based on [Azure Data Explorer (Kusto) REST API](https://docs.microsoft.com/en-us/rest/api/azurerekusto/clusters).
+
+There are over 10 API operations but we are using only 3:
+
+* [Get](https://docs.microsoft.com/en-us/rest/api/azurerekusto/clusters/get) to determine in which [state](https://docs.microsoft.com/en-us/rest/api/azurerekusto/clusters/get#state) the cluster is
+* [Start](https://docs.microsoft.com/en-us/rest/api/azurerekusto/clusters/start) to start the cluster
+* [Stop](https://docs.microsoft.com/en-us/rest/api/azurerekusto/clusters/stop) to stop the cluster
+
+
+
+## Access Control
