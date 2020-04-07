@@ -1,0 +1,6 @@
+id: b2f57aec
+author:
+  name: Trishank k
+  url: 
+date: 2020-04-07T03:33:06.4194006-04:00
+content: Is there a way to change the parameter values token:clientSecret  without re deploying the ARM template or is there any other way to change the token:clientSecret from Azure portal for this api connection.
