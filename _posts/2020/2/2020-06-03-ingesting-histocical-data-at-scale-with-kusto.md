@@ -18,4 +18,14 @@ In this article I want to look at the specific scenario of ingestion large amoun
 
 This is an architecture discussion where I want to focus on the following aspects:
 
-* 
+* Long running ingestion
+* Resiliency
+* Caching for old data
+
+## Long running ingestion
+
+## Resiliency
+
+## Caching for old data
+
+## Summary
