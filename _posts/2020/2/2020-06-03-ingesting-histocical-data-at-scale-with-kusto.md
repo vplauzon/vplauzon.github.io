@@ -1,6 +1,6 @@
 ---
 title:  Ingesting historical data at scale with Kusto
-permalink: /2020/06/03/ingesting-histocical-data-at-scale-with-kusto.md
+permalink: /2020/06/03/ingesting-histocical-data-at-scale-with-kusto
 categories:
 - Solution
 tags:
@@ -12,7 +12,7 @@ date: 2020-05-30
 
 There are many ways to [ingest data](https://docs.microsoft.com/en-us/azure/data-explorer/ingest-data-overview) in [Kusto](/2020/02/19/azure-data-explorer-kusto).
 
-There is batching vs streaming, queued vs command, plugins, SDK, etc.  .
+There is batching vs streaming, queued vs command, plugins, SDK, etc.  .  There is also a pletora of tools / techniques to achieve this, e.g. [Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-explorer/data-factory-integration), [LightIngest](https://docs.microsoft.com/en-us/azure/data-explorer/lightingest), [.ingest into](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/data-ingestion/ingest-from-storage), etc.  .
 
 In this article I want to look at the specific scenario of ingestion large amount of historical data.  Maybe we just want to ingest historical data and analyse it or maybe we also want to stream new data in.
 
@@ -23,6 +23,8 @@ This is an architecture discussion where I want to focus on the following aspect
 * Caching for old data
 
 ## Long running ingestion
+
+Assuming we have a large body of data, let's say multiple Gbs, 
 
 ## Resiliency
 
