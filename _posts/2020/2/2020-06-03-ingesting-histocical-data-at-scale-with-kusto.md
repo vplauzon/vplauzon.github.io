@@ -47,8 +47,22 @@ This is configurable:  [Retention Policy](https://docs.microsoft.com/en-us/azure
 
 But when we ingest a lot of historical data in one go, the data would appear as if it was just ingested and would look "fresher" than data that would have been streamed the day before.
 
-This is problematic because of the two policies we discussed.  That historical data would have preseance over potentially some more recent data for caching.  It would also mean that historical data would have better retention than some other data.
+To make those consideration clear, let's consider the following timeline from a typical real time analytic project including migration:
 
 ![timeline](/assets/posts/2020/2/ingesting-histocical-data-at-scale-with-kusto/ingestion-timeline.png)
+
+The time on the time axis are as follow:
+
+Time|Description
+-|-
+t<sub>0</sub>|Time at which recording of historical data started
+t<sub>S</sub>|Time at which we started *streaming* data into Kusto
+t<sub>i</sub>|Time at which we started the ingestion of historical data
+
+Now if we simply ingest the historical data without thinking about this problem, all the historical data would be marked with an ingested time >= t<sub>i</sub>.  This means it would be kept (retention) for longer than data ingested at t<sub>S</sub> and would also be prefered for hot cache.
+
+In order to avoid that, we need to mark the data with a *fake* ingestion time.  This is possible in Kusto.  Actually it is done at the [extent (data shard)](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/extents-overview) level:
+* *LightIngest* with the [creationTimePattern](https://docs.microsoft.com/en-us/azure/data-explorer/lightingest#general-command-line-arguments) argument
+* [Ingestion from query command](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/data-ingestion/ingest-from-query) (i.e. .set, .append, .set-or-append, .set-or-replace) and [.ingest into](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/data-ingestion/ingest-from-storage) via the *creationTime* ingestion property
 
 ## Summary
