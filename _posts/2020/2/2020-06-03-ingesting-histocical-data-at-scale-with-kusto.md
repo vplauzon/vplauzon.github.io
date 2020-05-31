@@ -20,6 +20,7 @@ This is an architecture discussion where I want to focus on the following aspect
 
 * Long running & Resiliency
 * Caching of old data
+* Real time & historical ingestion alignment
 
 ## Long running & Resiliency
 
@@ -56,13 +57,37 @@ The time on the time axis are as follow:
 Time|Description
 -|-
 t<sub>0</sub>|Time at which recording of historical data started
-t<sub>S</sub>|Time at which we started *streaming* data into Kusto
+t<sub>s</sub>|Time at which we started *streaming* data into Kusto
 t<sub>i</sub>|Time at which we started the ingestion of historical data
 
-Now if we simply ingest the historical data without thinking about this problem, all the historical data would be marked with an ingested time >= t<sub>i</sub>.  This means it would be kept (retention) for longer than data ingested at t<sub>S</sub> and would also be prefered for hot cache.
+Now if we simply ingest the historical data without thinking about this problem, all the historical data would be marked with an ingested time >= t<sub>i</sub>.  This means it would be kept (retention) for longer than data ingested at t<sub>s</sub> and would also be prefered for hot cache.
 
 In order to avoid that, we need to mark the data with a *fake* ingestion time.  This is possible in Kusto.  Actually it is done at the [extent (data shard)](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/extents-overview) level:
 * *LightIngest* with the [creationTimePattern](https://docs.microsoft.com/en-us/azure/data-explorer/lightingest#general-command-line-arguments) argument
 * [Ingestion from query command](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/data-ingestion/ingest-from-query) (i.e. .set, .append, .set-or-append, .set-or-replace) and [.ingest into](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/data-ingestion/ingest-from-storage) via the *creationTime* ingestion property
 
+## Real time & historical ingestion alignment
+
+Coming back to the diagram above, let's point out that we do not want to ingest historacal data with time >= t<sub>s</sub>.
+
+The typical projects we see start by exploring some data.  This is "historical" data exported to blob and ingested ad hoc.  Once proof of value is done, we move to ingesting data in real time, i.e. streaming.  This is t<sub>s</sub>.
+
+Once this is stabilized, we want to move (or migrate) the entire historical data set in.  This is done at a later time t<sub>i</sub>.
+
+The point here is we don't want to reingest data between t<sub>s</sub> and t<sub>i</sub>.
+
+This can be hard to do if we do not control the historical data export.  For instance, if that data is exported by a legacy system into Parquet files, it will unlikely cut at t<sub>s</sub>.
+
+This is a minor point and could be addressed with a [purge of data](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/concepts/data-purge).  We find it more efficient (and elegant) to ingest the data *up to t<sub>s</sub>*.
+
+The best way we found to address that is to use an [external table](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/externaltables) as a source instead of blob directly.  This allows use to where-clause the external data table to avoid overlapping data.
+
+This discards tools such as *LightIngest* which are quite useful as they leverage queued ingestion (coming back to the reliability point at the beginning).
+
 ## Summary
+
+We have looked at different aspects of large scale historical data ingestion in Kusto.
+
+It is a balancing act and depending on the scenario we might opt for different approach / tools.
+
+In a future article, we'll detail an approach we like to use that balance those different factors.
