@@ -6,6 +6,7 @@ categories:
 tags:
 - Data
 - Operation
+date:  2020-05-30
 ---
 <img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/2/ingesting-histocical-data-at-scale-with-kusto/conifer-daylight-evergreen-forest-572937.png" />
 
@@ -20,6 +21,7 @@ This is an architecture discussion where I want to focus on the following aspect
 * Long running & Resiliency
 * Caching of old data
 * Real time & historical ingestion alignment
+* Transformation
 
 ## Long running & Resiliency
 
@@ -84,6 +86,18 @@ This is a minor point and could be addressed with a [purge of data](https://docs
 The best way we found to address that is to use an [external table](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/externaltables) as a source instead of blob directly.  This allows use to where-clause the external data table to avoid overlapping data.
 
 This discards tools such as *LightIngest*.  This is a shame as it leverages queued ingestion (coming back to the reliability point at the beginning).
+
+## Transformation
+
+Now, so far we assumed we were importing historical data *as is*.  That isn't always the case.
+
+For real time ingestion, we typically use a sequence of tables and [update policies](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/updatepolicy).  This simulates a ELT in real time.
+
+We could do that for historical data as well.  We would land the historical data in a table then using an update policy to transform that data and land it into another table.  Optionaly we could do that several times.
+
+In order to preserve the *creationTime* we talked about in the previous section, we would need to use `PropagateIngestionProperties=true` in the [update policy object](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/updatepolicy#the-update-policy-object).
+
+In some cases, the historical data doesn't have the same *shape* as the data we ingest in real time and hence would need different transformations.  That would mean a different landing table and different update policies.  It could then be interesting to transform the data before ingesting instead of using update policies.  For this, the ingestion from a query over external tables could again be interesting.
 
 ## Summary
 
