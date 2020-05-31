@@ -1,0 +1,10 @@
+id: 00853bd2
+author:
+  name: vplauzon
+  url: https://vincentlauzon.com/
+date: 2020-04-28T12:20:33.8731278-04:00
+content: >-
+  Sorry, I misread the question.
+
+
+  No, you would need to redeploy the ARM template or else interact with the connector resource through the REST API maybe.  You could separate the logic to have an ARM template deploying only your connector.
