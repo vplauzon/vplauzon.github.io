@@ -6,15 +6,14 @@ categories:
 tags:
 - Data
 - Operation
-date: 2020-05-30
 ---
 <img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/2/ingesting-histocical-data-at-scale-with-kusto/conifer-daylight-evergreen-forest-572937.png" />
 
 There are many ways to [ingest data](https://docs.microsoft.com/en-us/azure/data-explorer/ingest-data-overview) in [Kusto](/2020/02/19/azure-data-explorer-kusto).
 
-There is batching vs streaming, queued vs command, plugins, SDK, etc.  .  There is also a pletora of tools / techniques to achieve this, e.g. [Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-explorer/data-factory-integration), [LightIngest](https://docs.microsoft.com/en-us/azure/data-explorer/lightingest), [.ingest into](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/data-ingestion/ingest-from-storage), etc.  .
+There is batching vs streaming, queued vs command, plugins, SDK, etc.  .  There is also a plethora of tools / techniques to achieve this, e.g. [Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-explorer/data-factory-integration), [LightIngest](https://docs.microsoft.com/en-us/azure/data-explorer/lightingest), [.ingest into](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/data-ingestion/ingest-from-storage), etc.  .
 
-In this article I want to look at the specific scenario of ingestion large amount of historical data.  This can be done in conjonction with streaming real-time data or not.
+In this article I want to look at the specific scenario of ingestion large amount of historical data.  This can be done in conjunction with streaming real-time data or not.
 
 This is an architecture discussion where I want to focus on the following aspects:
 
@@ -34,9 +33,9 @@ Assuming we have a large body of data, let's say multiple Gbs, we can assume tha
 
 Those command can all be made *async*.  But async here is a client concept.  It simply means the command returns immediately.  It is still bound to [request execution timeout](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/concepts/querylimits#limit-on-request-execution-time-timeout).
 
-Also, a long-running command can fail because of intermitent failures (e.g. a VM failing) and won't be retryed automatically.
+Also, a long-running command can fail because of intermittent failures (e.g. a VM failing) and won't be retried automatically.
 
-Therefore this type of ingestion is innerently ill-suited to ingest large amount of data.
+Therefore, this type of ingestion is inherently ill-suited to ingest large amount of data.
 
 [Queued ingestion](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/netfx/kusto-ingest-queued-ingest-sample) is a reliable ingestion mean.  It relies on an internal Azure Queue and implements retries in case of failures.  Different tools leverage queued ingestion (e.g. [LightIngest](https://docs.microsoft.com/en-us/azure/data-explorer/lightingest)).
 
@@ -46,9 +45,9 @@ Alternatively, we can leverage the "unreliable" ingestion commands to ingest sma
 
 Kusto is designed on the assumption that we ingest data in a *temporal* fashion and that recent data is more interesting than old data.
 
-This is why there is the concept of retention and hot cache.  Old data is eliminated (retention) while young data is cached and accessed with better performance.
+Concepts of retention and hot cache come from that assumption.  Old data is eliminated (retention) while young data is cached and accessed with better performance.
 
-This is configurable:  [Retention Policy](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/retentionpolicy) and [Cache Policy](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/cachepolicy).  But beyond the retention and cache thresholds, those mechanics rely on the time the data was ingested.  This makes sense when we ingest data in a continous way, either through Event Hub, IoT Hub, Event Grid or some other periodic process.
+This is configurable:  [Retention Policy](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/retentionpolicy) and [Cache Policy](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/cachepolicy).  But beyond the retention and cache thresholds, those mechanics rely on the time the data was ingested.  This makes sense when we ingest data in a continuous way, either through Event Hub, IoT Hub, Event Grid or some other periodic process.
 
 But when we ingest a lot of historical data in one go, the data would appear as if it was just ingested and would look "fresher" than data that would have been streamed the day before in real time.
 
@@ -76,9 +75,9 @@ t<sub>0</sub>|Time at which recording of historical data started
 t<sub>s</sub>|Time at which we started *streaming* data into Kusto
 t<sub>i</sub>|Time at which we started the ingestion of historical data
 
-The point here is we don't want to reingest data between t<sub>s</sub> and t<sub>i</sub>.
+The point here is we don't want to re-ingest data between t<sub>s</sub> and t<sub>i</sub>.
 
-This can be hard to do if we do not control the historical data export.  For instance, if that data is exported by a legacy system into Parquet files, it will unlikely cut at t<sub>s</sub>.  Typially those process cut at fixed time internal and / or file size.
+This can be hard to do if we do not control the historical data export.  For instance, if that data is exported by a legacy system into Parquet files, it will unlikely cut at t<sub>s</sub>.  Typically those process cut at fixed time internal and / or file size.
 
 This is a minor point and could be addressed with a [purge of data](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/concepts/data-purge).  We find it more efficient (and elegant) to ingest the data *up to t<sub>s</sub>*.
 
@@ -88,7 +87,7 @@ This discards tools such as *LightIngest*.  This is a shame as it leverages queu
 
 ## Summary
 
-We have looked at different aspects of large scale historical data ingestion in Kusto.
+We have looked at different aspects of large-scale historical data ingestion in Kusto.
 
 It is a balancing act and depending on the scenario we might favor different approach / tools.
 
