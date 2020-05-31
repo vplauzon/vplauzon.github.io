@@ -14,7 +14,9 @@ In my [last article](/2020/06/03/ingesting-histocical-data-at-scale-with-kusto),
 
 In this article, I want to be more prescriptif and share an approach that works well for me.
 
-Is that the ultimate process?  Of course not.  It's clickbait.  It's a process that worked great for me in a given context though and it should make all this architecture discussion from the previous article more concrete.
+Is that the ultimate process?  Of course not, that is clickbait.  As we discussed at length in the previous article, different scenario will call for different choices.  But it's a process that worked great for me in a given context though and it should make all this architecture discussion from the previous article more concrete.
+
+It also contains a lot of personnal choices.  For instance, I find using external table more intuitive than ingesting blobs directly.  Logic App, one of my favorite Azure services, also make an appearance.  
 
 The scenario I was working with:
 
@@ -26,4 +28,9 @@ The scenario I was working with:
 
 Here is the approach:
 
-* Create an 
+1. Create an [external table](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/externaltables) pointing to parquet files
+1. Create an ingestion table with the same schema as the target table
+1. Author a query selecting a slice of time from the external data table just after the latest time in the ingestion table but never going further than when the data started in the target table (real time ingestion)
+1. Author a Logic App iteratively ingesting data using the query from the last point until there is no more data
+1. Validate ingestion
+1. Move the data from ingestion table to target table (along with the real time ingested data)

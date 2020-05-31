@@ -98,6 +98,8 @@ In order to preserve the *creationTime* we talked about in the previous section,
 
 In some cases, the historical data doesn't have the same *shape* as the data we ingest in real time and hence would need different transformations.  That would mean a different landing table and different update policies.  It could then be interesting to transform the data before ingesting instead of using update policies.  For this, the ingestion from a query over external tables could again be interesting.
 
+In other cases, the historical data might require more complex pre-processing that might need to be done outside of Kusto (e.g. Azure Function, Azure Batch, Spark, etc.).
+
 ## Summary
 
 We have looked at different aspects of large-scale historical data ingestion in Kusto.
