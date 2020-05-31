@@ -6,7 +6,6 @@ categories:
 tags:
 - Data
 - Operation
-date:  2020-05-30
 ---
 <img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/2/ingesting-histocical-data-at-scale-with-kusto/conifer-daylight-evergreen-forest-572937.png" />
 
@@ -89,11 +88,11 @@ This discards tools such as *LightIngest*.  This is a shame as it leverages queu
 
 ## Transformation
 
-Now, so far we assumed we were importing historical data *as is*.  That isn't always the case.
+So far, we assumed we were importing historical data *as is*.  That isn't always the case.
 
-For real time ingestion, we typically use a sequence of tables and [update policies](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/updatepolicy).  This simulates a ELT in real time.
+For real time ingestion, we typically use a sequence of tables and [update policies](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/updatepolicy).  This simulates an ELT in real time.
 
-We could do that for historical data as well.  We would land the historical data in a table then using an update policy to transform that data and land it into another table.  Optionaly we could do that several times.
+We could do that for historical data as well.  We would land the historical data in a table then using an update policy to transform that data and land it into another table.  Optionally we could do that several times.
 
 In order to preserve the *creationTime* we talked about in the previous section, we would need to use `PropagateIngestionProperties=true` in the [update policy object](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/updatepolicy#the-update-policy-object).
 
