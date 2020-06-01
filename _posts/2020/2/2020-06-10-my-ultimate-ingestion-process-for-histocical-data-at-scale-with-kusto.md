@@ -12,11 +12,11 @@ date:  2020-05-31
 
 In my [last article](/2020/06/03/ingesting-histocical-data-at-scale-with-kusto), we discussed different architecture aspects of large historical data ingestion.
 
-In this article, I want to be more prescriptif and share an approach that works well for me.
+In this article, I want to be more prescriptive and share an approach that works well for me.
 
-Is that the ultimate process?  Of course not, that is clickbait.  As we discussed at length in the previous article, different scenario will call for different choices.  But it's a process that worked great for me in a given context though and it should make all this architecture discussion from the previous article more concrete.
+Is that the ultimate process?  Of course not, that is clickbait.  As we discussed at length in the previous article, different scenario will call for different choices.  But it's a process that worked great for me in a many contexts though and it should make all this architecture discussion from the previous article more concrete.
 
-It also contains a lot of personnal choices.  For instance, I find using external table more intuitive than ingesting blobs directly.  Logic App, one of my favorite Azure services, also make an appearance.  
+It also contains a lot of personal choices.  For instance, I find using external table more intuitive than ingesting blobs directly.  Logic App, one of my favorite Azure services, also make an appearance.  
 
 The scenario I was working with:
 
@@ -46,14 +46,14 @@ We are going to base the ingestion on an [external table](https://docs.microsoft
 
 As discussed in the previous article, this has the following advantages:
 
-* We can query time windows specifically so we do not "over ingest" (i.e. ingest data we already ingested in real time)
+* We can query time windows specifically, so we do not "over ingest" (i.e. ingest data we already ingested in real time)
 * We can transform the data as we ingest it
 
 We also find it is more intuitive to deal with an external table than a stack of blobs.
 
-In our case the real time ingestion is based on the same blobs.  We are using [Event Grid](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/data-ingestion/eventgrid) to trigger ingestion every time a new blob is added to Azure Data Lake.  Since both real time and historical data are based on the same folders, we need to cutoff the historical ingestion where the real time ingestion started.
+In our case the real time ingestion is based on the same blobs.  We are using [Event Grid](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/data-ingestion/eventgrid) to trigger ingestion every time a new blob is added to Azure Data Lake.  Since both real time and historical data are based on the same folders, we need to cut-off the historical ingestion where the real time ingestion started.
 
-As for the transformation, we only had minimal needs.  As mentionned, we simply renamed a column.
+As for the transformation, we only had minimal needs.  As mentioned, we simply renamed a column.
 
 ## Create Ingestion Table (2)
 
@@ -67,7 +67,7 @@ If we ingest in the same table, we could run into historical extents being merge
 
 ## Author Kusto Stored Function (3)
 
-As with many database technology, we find it easier to manage data logic when it is closer to the data.  Hence we use Kusto stored function here.
+As with many database technologies, we find it easier to manage data logic when it is closer to the data.  Hence, we use Kusto stored function here.
 
 The function's logic is returning the "next slice" of data.  It looks at where the ingestion table is and fetches a slice after that.
 
@@ -79,7 +79,7 @@ Logic App gives us the reliability / long running capability here.
 
 Nothing fancy:  it is basically a while loop with an ingestion command in the body.
 
-In most cases we'll need to readjust the default of Logic App until-action which is 60 iterations over 60 minutes.  Most large scale ingestion are longer than that.
+In most cases we'll need to readjust the default of Logic App until-action which is 60 iterations over 60 minutes.  Most large-scale ingestion are longer than that.
 
 ## Run Logic App (5)
 
@@ -102,7 +102,7 @@ Finally we can proceed to a migration of the data from the ingestion table to th
 
 ## Summary
 
-This ingestion method isn't the only one possible but it works rather well.
+This ingestion method isn't the only one possible, but it works rather well.
 
 For simpler scenarios we could skip a few steps.  For instance, we could use the [LightIngest](https://docs.microsoft.com/en-us/azure/data-explorer/lightingest) tool if we didn't need to cut ingestion at an arbitrary time.
 
