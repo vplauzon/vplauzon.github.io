@@ -77,12 +77,33 @@ The advantage of this approach is that if an ingestion fails, the query will aut
 
 Logic App gives us the reliability / long running capability here.
 
-Nothing fancy:  it is basically a while 
+Nothing fancy:  it is basically a while loop with an ingestion command in the body.
+
+In most cases we'll need to readjust the default of Logic App until-action which is 60 iterations over 60 minutes.  Most large scale ingestion are longer than that.
 
 ## Run Logic App (5)
 
+We run the Logic App to completion.
+
 ## Validate Ingestion (6)
+
+We validate a few things:
+
+*   Is the data as expected?  A few [sample](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/sampleoperator) can be useful here
+*   Is the data complete?
+    * Do we have the oldest records?
+    * Do we have the youngest ones?
+    * Do we have any holes?  A [render](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/renderoperator?pivots=azuredataexplorer) with [bin](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/binfunction) helps to visualize that
+* Does the data set in the ingestion table dove tail the one in the target table?
 
 ## Move data (7)
 
+Finally we can proceed to a migration of the data from the ingestion table to the target table using [.move extents](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/extents-commands#move-extents).
+
 ## Summary
+
+This ingestion method isn't the only one possible but it works rather well.
+
+For simpler scenarios we could skip a few steps.  For instance, we could use the [LightIngest](https://docs.microsoft.com/en-us/azure/data-explorer/lightingest) tool if we didn't need to cut ingestion at an arbitrary time.
+
+I hope this gave a good idea of the different moving parts and what value they bring to the equation.
