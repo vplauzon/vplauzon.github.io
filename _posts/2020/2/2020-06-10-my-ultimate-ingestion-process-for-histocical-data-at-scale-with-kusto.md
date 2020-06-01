@@ -37,3 +37,21 @@ Here is the approach:
 1. Run the Logic App through the entire historical data
 1. Validate ingestion
 1. Move the data from ingestion table to target table (along with the real time ingested data)
+
+For the remainder of this article, we'll discuss and justify each step.
+
+## Create External Table (1)
+
+## Create Ingestion Table (2)
+
+## Author Kusto Stored Function (3)
+
+## Author Logic App (4)
+
+## Run Logic App (5)
+
+## Validate Ingestion (6)
+
+## Move data (7)
+
+## Summary
