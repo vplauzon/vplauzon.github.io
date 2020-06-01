@@ -67,7 +67,17 @@ If we ingest in the same table, we could run into historical extents being merge
 
 ## Author Kusto Stored Function (3)
 
+As with many database technology, we find it easier to manage data logic when it is closer to the data.  Hence we use Kusto stored function here.
+
+The function's logic is returning the "next slice" of data.  It looks at where the ingestion table is and fetches a slice after that.
+
+The advantage of this approach is that if an ingestion fails, it query will automatically 
+
 ## Author Logic App (4)
+
+Logic App gives us the reliability / long running capability here.
+
+
 
 ## Run Logic App (5)
 
