@@ -6,7 +6,6 @@ categories:
 tags:
 - Data
 - Operation
-date:  2020-05-31
 ---
 <img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/posts/2020/2/my-ultimate-ingestion-process-for-histocical-data-at-scale-with-kusto/body-of-water-between-green-leaf-trees-709552.jpg" />
 
