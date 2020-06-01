@@ -24,7 +24,7 @@ As usual, the [code is in GitHub](https://github.com/vplauzon/kusto/tree/master/
 
 The solution is quite simple and can be deployed in a click:
 
-[![Deploy button](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvplauzon%2Fdata-explorer%2Fmaster%2Farchive-monitor%2Fdeploy.json)
+[![Deploy button](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvplauzon%2Fkusto%2Fmaster%2Fstart-stop-cluster%2Fdeploy.json)
 
 The ARM template has one parameter, `clusterId`, which should be the Azure Resource Id of the ADX cluster we are going to use:  `/subscriptions/XYZ/resourceGroups/ABC/providers/Microsoft.Kusto/clusters/DEF`.
 
