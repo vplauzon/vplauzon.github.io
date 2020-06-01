@@ -28,9 +28,12 @@ The scenario I was working with:
 
 Here is the approach:
 
+![approach / process](/assets/posts/2020/2/my-ultimate-ingestion-process-for-histocical-data-at-scale-with-kusto/process.png)
+
 1. Create an [external table](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/externaltables) pointing to parquet files
 1. Create an ingestion table with the same schema as the target table
-1. Author a query selecting a slice of time from the external data table just after the latest time in the ingestion table but never going further than when the data started in the target table (real time ingestion)
-1. Author a Logic App iteratively ingesting data using the query from the last point until there is no more data
+1. Author a Kusto Stored Function selecting a slice of time from the external data table just after the latest time in the ingestion table but never going further than when the data started in the target table (real time ingestion)
+1. Author a Logic App iteratively ingesting data using the Stored Function from the last point until there is no more data
+1. Run the Logic App through the entire historical data
 1. Validate ingestion
 1. Move the data from ingestion table to target table (along with the real time ingested data)
