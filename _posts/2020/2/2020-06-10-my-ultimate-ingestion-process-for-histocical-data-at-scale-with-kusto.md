@@ -71,7 +71,7 @@ As with many database technology, we find it easier to manage data logic when it
 
 The function's logic is returning the "next slice" of data.  It looks at where the ingestion table is and fetches a slice after that.
 
-The advantage of this approach is that if an ingestion fails, it query will automatically 
+The advantage of this approach is that if an ingestion fails, the query will automatically start over since the ingestion table won't have changed.
 
 ## Author Logic App (4)
 
