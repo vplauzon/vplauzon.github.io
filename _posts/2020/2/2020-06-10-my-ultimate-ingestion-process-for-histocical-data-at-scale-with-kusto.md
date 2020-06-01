@@ -77,7 +77,7 @@ The advantage of this approach is that if an ingestion fails, the query will aut
 
 Logic App gives us the reliability / long running capability here.
 
-
+Nothing fancy:  it is basically a while 
 
 ## Run Logic App (5)
 
