@@ -42,6 +42,18 @@ For the remainder of this article, we'll discuss and justify each step.
 
 ## Create External Table (1)
 
+We are going to base the ingestion on an [external table](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/externaltables) pointing to blobs in the Azure Data Lake as opposed to ingesting from those blobs directly.
+
+As discussed in the previous article, this has the following advantages:
+
+* We can query time windows specifically so we do not "over ingest" (i.e. ingest data we already ingested in real time)
+* We can transform the data as we ingest it
+
+We also find it is more intuitive to deal with an external table than a stack of blobs.
+
+In our case the real time ingestion is based on the same blobs.  We are using [Event Grid](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/data-ingestion/eventgrid) to trigger ingestion every time a new blob is added to Azure Data Lake.  Since both real time and historical data are based on the same folders, we need to cutoff the historical ingestion where the real time ingestion started.
+
+
 ## Create Ingestion Table (2)
 
 ## Author Kusto Stored Function (3)
