@@ -53,8 +53,17 @@ We also find it is more intuitive to deal with an external table than a stack of
 
 In our case the real time ingestion is based on the same blobs.  We are using [Event Grid](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/data-ingestion/eventgrid) to trigger ingestion every time a new blob is added to Azure Data Lake.  Since both real time and historical data are based on the same folders, we need to cutoff the historical ingestion where the real time ingestion started.
 
+As for the transformation, we only had minimal needs.  As mentionned, we simply renamed a column.
 
 ## Create Ingestion Table (2)
+
+This is optional although quite convenient.
+
+Instead of ingesting the historical data in the same table where we ingest data in real time, we separate it during the ingestion.
+
+This buys us the flexibility of being much easier to delete the historical data and start over again.
+
+If we ingest in the same table, we could run into historical extents being merged with "real time" extents, which would make it much more complicated to delete historical data.  Also, if by mistake we would re-ingest the data ingested in real time, it would be hard to clean it up.
 
 ## Author Kusto Stored Function (3)
 
