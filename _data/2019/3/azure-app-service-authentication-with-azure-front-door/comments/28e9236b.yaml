@@ -1,0 +1,6 @@
+id: 28e9236b
+author:
+  name: Sean Pgh
+  url: 
+date: 2020-06-02T16:53:39.5203393-04:00
+content: Hi, thanks for the nice article. Did something change in the way Azure Front Door/App service processes these settings? I set it up as documented but whenever I blank out the "Backend host header" setting and try to access, I get the 404 error.
