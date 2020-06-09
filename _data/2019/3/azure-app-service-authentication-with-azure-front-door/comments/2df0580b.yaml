@@ -1,0 +1,6 @@
+id: 2df0580b
+author:
+  name: Sean Pgh
+  url: 
+date: 2020-06-02T21:29:41.1606374-04:00
+content: I was able to fix my issue. I had to do a reverse proxy middleware (setting context.Request.PathBase) to get past the issue. Now, I have an interesting issue. I need this for two apps. I cannot set the same custom domain name for both apps. Since domain name is used for the first app, it complains that the domain name is not available for the second app.
