@@ -1,0 +1,6 @@
+id: f61bbf9c
+author:
+  name: Andrew Moreno
+  url: 
+date: 2020-06-16T11:17:12.6682838-04:00
+content: I really enjoyed this article. I was wondering if you would be able to share a follow up or a snippet regaridng the realistic scenario you describe above about using the secret in a backend api? I imagine it would involve using a <send-request> policy to hit the get-cached-secret api, and then using the response? Not sure that there is any other way to do it without making an http request. If you just try to do a lookup for the value in the cache, it may not be there yet so I don't see anyway to do it without an http request. Am I thinking about this the wrong way?
