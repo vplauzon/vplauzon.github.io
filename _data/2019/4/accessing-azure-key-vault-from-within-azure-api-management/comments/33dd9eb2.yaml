@@ -1,0 +1,10 @@
+id: 33dd9eb2
+author:
+  name: vplauzon
+  url: https://vincentlauzon.com/
+date: 2020-06-21T11:05:24.1211758-04:00
+content: >-
+  Sure.  You would basically use the cached value of the secret to authenticate / call the backend service.
+
+
+  Basically using @((string)context.Variables["cached-secret"]) wherever you need it in your backend.
