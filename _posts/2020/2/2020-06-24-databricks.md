@@ -9,11 +9,13 @@ date: 2020-06-20
 ---
 <img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/2/azure-databricks-overview-workshop/azure-databricks.jpg" />
 
-I had the pleasure to lead an Azure Databricks workshop with a local customer recently.
+I haven't written about Databricks for quite a while ([since April 2018](/2018/04/18/python-version-in-databricks/) actually) but I had the pleasure to lead an Azure Databricks workshop with a local customer recently.
 
 For that I prepared quite a few demos now [available on GitHub](https://github.com/vplauzon/databricks/tree/master/features-tour).
 
-I covered quite a few angles so I thought it would be interesting to share the Notebooks publically.  We have:
+I covered quite a few angles so I thought it would be interesting to share the Notebooks publically.
+
+Here is a list of the Notebooks:
 
 Notebook|Description
 -|-
