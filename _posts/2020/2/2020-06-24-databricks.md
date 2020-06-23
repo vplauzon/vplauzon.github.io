@@ -24,3 +24,7 @@ Notebook|Description
 [03-transform.py](https://github.com/vplauzon/databricks/blob/master/features-tour/notebooks/03-transform.py)|We perform a typical batch transformation here.  We read from a partition of files (a month worth of files), aggregate the data and write it to another folder.
 [04-delta.py](https://github.com/vplauzon/databricks/blob/master/features-tour/notebooks/04-delta.py)|This notebook is all about the Delta Lake, both in PySpark and Spark SQL.
 [05-streaming.py](https://github.com/vplauzon/databricks/blob/master/features-tour/notebooks/05-streaming.py)|Finally some structured streaming.
+
+To me Azure Databricks strenghts are Data Transformation at scale and Machine Learning training at scale (for parallelizable ML algorithms).  Those notebooks cover the Data Transformation aspect.
+
+I hope this can be useful to see a couple of Spark techniques.
