@@ -23,6 +23,8 @@ In this article, I'll go around characteristics of the service:  what its streng
 
 I started with a huge essay trying to cover every aspects but I was bored writing it so I guess it wouldn't have been very exciting to reading material.  I went with a much lighter version. I'll explore it further in future articles.
 
+**Update 23-06-2020:  To see Kusto in action, I recommend the article [Exploring a data set with Kusto](/2020/03/11/exploring-a-data-set-with-kusto)**.
+
 ## Scale & Performance
 
 <img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/1/azure-data-explorer-kusto/photo-of-clay-jars-3692053.jpg" />
