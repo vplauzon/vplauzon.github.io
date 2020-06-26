@@ -41,7 +41,7 @@ Let's get right into it and deploy the Logic App:
 
 This ARM template doesn't take any parameter and deploys only one Logic App:
 
-![resources](/assets/posts/2020/3/kusto-ingestion-rest-api/resources.png")
+![resources](/assets/posts/2020/3/kusto-ingestion-rest-api/resources.png)
 
 The Logic App has an HTTP trigger so we can use it by doing a simple HTTP-POST (like any REST API) as we'll do when we try it.
 
@@ -49,7 +49,7 @@ The Logic App has an HTTP trigger so we can use it by doing a simple HTTP-POST (
 
 Let's look at the Logic App:
 
-![Logic App](/assets/posts/2020/3/kusto-ingestion-rest-api/orchestration.png")
+![Logic App](/assets/posts/2020/3/kusto-ingestion-rest-api/orchestration.png)
 
 The orchestration basically replicates what the [online code sample](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/netfx/kusto-ingest-client-rest) do:
 
@@ -61,7 +61,7 @@ Since there is 2 calls to do to the Data Management API, we decided to allow que
 
 The loop task loops on the blobs, construct a message and post the message:
 
-![Loop within Logic App](/assets/posts/2020/3/kusto-ingestion-rest-api/loop.png")
+![Loop within Logic App](/assets/posts/2020/3/kusto-ingestion-rest-api/loop.png)
 
 ## Giving permissions to the Logic App
 
