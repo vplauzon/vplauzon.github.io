@@ -29,3 +29,24 @@ I find it convenient to have a REST API for ingestion so I made one using a Logi
 
 As usual, [code is in GitHub](https://github.com/vplauzon/kusto/tree/master/rest-ingest-api).
 
+## Deploying the Logic App
+
+Let's get right into it and deploy the Logic App:
+
+[![Deploy button](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvplauzon%2Fdata-explorer%2Fmaster%2Frest-ingest-api%2Fdeploy.json)
+
+This ARM template doesn't take any parameter and deploys only one Logic App:
+
+![resources](/assets/posts/2020/3/kusto-ingestion-rest-api/resources.png")
+
+d
+
+## Giving permissions to the Logic App
+
+## Looking at the Logic App Inputs
+
+## Preparing Kusto for ingestion
+
+## Trying the Logic App on a sample file
+
+## Summary
