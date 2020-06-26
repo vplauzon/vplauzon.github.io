@@ -45,11 +45,19 @@ This ARM template doesn't take any parameter and deploys only one Logic App:
 
 The Logic App has an HTTP trigger so we can use it by doing a simple HTTP-POST (like any REST API) as we'll do when we try it.
 
+## Looking at the Logic App Inputs
+
+Let's look at the Logic App:
+
+![Logic App](/assets/posts/2020/3/kusto-ingestion-rest-api/orchestration.png")
+
+Loop:
+
+![Loop within Logic App](/assets/posts/2020/3/kusto-ingestion-rest-api/loop.png")
+
 ## Giving permissions to the Logic App
 
 ## Preparing Kusto for ingestion
-
-## Looking at the Logic App Inputs
 
 ## Trying the Logic App on a sample file
 
