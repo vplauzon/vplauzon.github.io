@@ -51,7 +51,15 @@ Let's look at the Logic App:
 
 ![Logic App](/assets/posts/2020/3/kusto-ingestion-rest-api/orchestration.png")
 
-Loop:
+The orchestration basically replicates what the [online code sample](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/netfx/kusto-ingest-client-rest) do:
+
+* Do a call to Data Management to get the "Ingestion Resources" (including the storage queue URI)
+* Do another call to Data Management to get a token
+* Push messages by calling the Storage Queue API
+
+Since there is 2 calls to do to the Data Management API, we decided to allow queuing more than one blob.  This way, if we queue N blobs, we will do only N+2 REST APIs call instread of 3 x N.  This makes massive ingestion much more efficient.
+
+The loop task loops on the blobs, construct a message and post the message:
 
 ![Loop within Logic App](/assets/posts/2020/3/kusto-ingestion-rest-api/loop.png")
 
@@ -60,5 +68,7 @@ Loop:
 ## Preparing Kusto for ingestion
 
 ## Trying the Logic App on a sample file
+
+https://docs.microsoft.com/en-us/azure/data-explorer/ingestion-properties
 
 ## Summary
