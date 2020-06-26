@@ -22,6 +22,8 @@ This is an architecture discussion where I want to focus on the following aspect
 * Real time & historical ingestion alignment
 * Transformation
 
+**Update 26-06-2020:  You can see a great example of ingestion in [My ultimate ingestion process for historical data at scale with Kusto](/2020/06/03/my-ultimate-ingestion-process-for-histocical-data-at-scale-with-kusto).**
+
 ## Long running & Resiliency
 
 Assuming we have a large body of data, let's say multiple Gbs, we can assume that any [ingestion from query command](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/data-ingestion/ingest-from-query) (i.e. .set, .append, .set-or-append, .set-or-replace) or [.ingest into](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/data-ingestion/ingest-from-storage) would timeout.  That is, a query such as
