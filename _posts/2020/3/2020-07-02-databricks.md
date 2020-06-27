@@ -107,8 +107,17 @@ For that, we need to go in our cluster and select the *Permissions* pane:
 
 ![Default Value](/assets/posts/2020/3/kusto-ingestion-rest-api/permission-pane.png)
 
+...
 
 ## Preparing Kusto for ingestion
+
+Finally, we need to create a table for ingestion.
+
+In the examples below we will use a very short [CSV file sample file](https://github.com/vplauzon/kusto/blob/master/rest-ingest-api/sample.csv).
+
+We suggest to create a database dedicated to trying the Logic App.  It is then easier to delete the entire database once the tests have ran instead of chasing the different artifacts.
+
+
 
 ## Trying the Logic App on a sample file
 
