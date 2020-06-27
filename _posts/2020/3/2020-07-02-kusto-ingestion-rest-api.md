@@ -226,7 +226,31 @@ We should now have our data without the headers.
 
 ### Historical data
 
-        "creationTime": "2017-02-13T11:09:36.7992775Z",
+A point we [discussed about ingestion](https://vincentlauzon.com/2020/06/03/ingesting-histocical-data-at-scale-with-kusto) was the [cache policy](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/cache-policy) previledging *new* data for caching.
 
+In order for this to work, we need the data being tagged with the time of creation of the data, not the time of ingestion when ingesting historical data.
+
+For this purpose, the ingestion property `creationTime` can be used.  For instance, we could ingest the same data with `creationTime` property setting the creation time in 2017:
+
+```JavaScript
+{
+  "blobs": [
+    {
+      "additionalProperties": {
+        "format": "csv",
+        "mappingReference": "employeeCsvMapping",
+        "ignoreFirstRecord": "true",
+        "creationTime": "2017-02-13T11:09:36.7992775Z"
+      },
+      "blobUri": "https://raw.githubusercontent.com/vplauzon/kusto/master/rest-ingest-api/sample.csv"
+    }
+  ],
+  "database": "myingest",
+  "table": "employees"
+}
+```
+
+
+### Inserting file names
 
 ## Summary
