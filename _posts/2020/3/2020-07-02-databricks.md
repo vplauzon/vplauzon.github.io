@@ -30,7 +30,7 @@ The key word here is **queued**.  Most ingestion methods in Kusto unqueued (e.g.
 Queued ingestion is different.  Queued blob will eventually be processed and retried a few times before Kusto give up on them.  It has many advantages:
 
 * Reliability
-* Managing load:  We can queued petabytes of blob without overloading our cluster
+* Managing load:  we can queue petabytes of blobs without overloading our cluster
 * Maximize cluster usage:  the ingestion (once queued) is managed by Kusto as opposed to an external agent, hence it can maximize resource usage
 
 ## Deploying the Logic App
@@ -45,7 +45,7 @@ This ARM template doesn't take any parameter and deploys only one Logic App:
 
 The Logic App has an HTTP trigger so we can use it by doing a simple HTTP-POST (like any REST API) as we'll do when we try it.
 
-## Looking at the Logic App Inputs
+## Looking at the Logic App
 
 Let's look at the Logic App:
 
@@ -62,6 +62,37 @@ Since there is 2 calls to do to the Data Management API, we decided to allow que
 The loop task loops on the blobs, construct a message and post the message:
 
 ![Loop within Logic App](/assets/posts/2020/3/kusto-ingestion-rest-api/loop.png)
+
+## Looking at the Logic App API Signature
+
+A quick look at the HTTP trigger request body JSON schema reveals the expected inputs.  Most are lifted directly from the expected queue message already [documented online](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/netfx/kusto-ingest-client-rest#ingestion-messages---json-document-formats), others are specific to the Logic App API.
+
+Parameter|Type|Mandatory|Description
+-|-|-|-
+dataManagementUri|string|No|Data Management URI of the cluster where to ingest the data
+database|string|Yes|Name of the database where to ingest the data
+table|string|Yes|Name of the table where to ingest the data
+flushImmediately|boolean|No|See [ingestion message internal structure](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/netfx/kusto-ingest-client-rest#ingestion-messages---json-document-formats)
+blobs|array|yes|List of blobs to ingest (described below)
+
+In turns the blobs array is expected to be:
+
+Parameter|Type|Mandatory|Description
+-|-|-|-
+blobUri|string|Yes|URI pointing to the blob to ingest ; this requires to be a public URI (e.g. a blob + SAS token) or to contain the access key of the storage account (less secure approach)
+rawDataSize|integer|No|See [ingestion message internal structure](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/netfx/kusto-ingest-client-rest#ingestion-messages---json-document-formats)
+additionalProperties|object|No|Any [ingestion properties](https://docs.microsoft.com/en-us/azure/data-explorer/ingestion-properties)
+
+We chose the path of not enforcing a schema for the additional properties.
+
+## Default Data Management URI
+
+As we've just seen, we can pass the data management URI of the cluster in parameter.  The parameter is optional because we can set a default in the Logic App.
+
+In order to set a default, we need to open the Logic App's designer
+
+![Parameters in Logic App](/assets/posts/2020/3/kusto-ingestion-rest-api/logic-app-parameters-menu.png)
+
 
 ## Giving permissions to the Logic App
 
