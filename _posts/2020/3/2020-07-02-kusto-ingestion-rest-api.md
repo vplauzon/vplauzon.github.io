@@ -121,10 +121,14 @@ In the examples below we will use a very short [CSV file sample file](https://gi
 
 We suggest to create a database dedicated to trying the Logic App.  It is then easier to delete the entire database once the tests have ran instead of chasing the different artifacts.
 
+First we need to create a table to ingest data into:
+
 ```kusto
 //  Create a table matching the schema of the CSV file
 .create table employees(name: string, age: int) 
 ```
+
+We then create a mapping:
 
 ```kusto
 //  Create an ingestion mapping to map CSV columns to table's column
@@ -135,11 +139,14 @@ We suggest to create a database dedicated to trying the Logic App.  It is then e
 ']'
 ```
 
+Finally, we change the [ingestion batching policy](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/batchingpolicy) of the table so that data gets ingested quickly after being queued:
+
 ```kusto
 //  Alter ingestion policy to ingest often in 'demo mode' (i.e. get results quickly at expanse of the cluster working harder)
 .alter table employees policy ingestionbatching "{'MaximumBatchingTimeSpan': '0:0:10', 'MaximumNumberOfItems': 10000}"
 ```
 
+We're now ready to run some tests.
 
 ## Trying the Logic App on a sample file
 
