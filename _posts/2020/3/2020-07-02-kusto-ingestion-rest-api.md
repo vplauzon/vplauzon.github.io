@@ -113,8 +113,6 @@ We then need to add a role assignment.  The role should be *AllDatabasesAdmin* (
 
 This will give our Logic App's Identity access to the ingestion APIs.
 
-...
-
 ## Preparing Kusto for ingestion
 
 Finally, we need to create a table for ingestion.
