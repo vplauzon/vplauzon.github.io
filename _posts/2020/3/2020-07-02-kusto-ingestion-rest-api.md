@@ -123,6 +123,19 @@ In the examples below we will use a very short [CSV file sample file](https://gi
 
 We suggest to create a database dedicated to trying the Logic App.  It is then easier to delete the entire database once the tests have ran instead of chasing the different artifacts.
 
+//  Create a table matching the schema of the CSV file
+.create table employees(name: string, age: int) 
+
+//  Create an ingestion mapping to map CSV columns to table's column
+.create table employees ingestion csv mapping 'employeeCsvMapping'
+'['
+    '{"Name":"name","DataType":"string","Ordinal":"0","ConstValue":null},'
+    '{"Name":"age","DataType":"int","Ordinal":"1","ConstValue":null}'
+']'
+
+//  Alter ingestion policy to ingest often in 'demo mode' (i.e. get results quickly at expanse of the cluster working harder)
+.alter table employees policy ingestionbatching "{'MaximumBatchingTimeSpan': '0:0:10', 'MaximumNumberOfItems': 10000}"
+
 
 
 ## Trying the Logic App on a sample file
