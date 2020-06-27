@@ -9,13 +9,13 @@ date: 2020-06-25
 ---
 <img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/posts/2020/3/kusto-ingestion-rest-api/kitty.jpg" />
 
-Yes this week we have Kusto & a Kitty.  Can't get better than that ;)
+Yes, this week we have Kusto & a Kitty.  Can't get better than that ;)
 
-We discussed ingestion in Azure Data Explorer / Kusto at length in [past articles](/2020/06/03/ingesting-histocical-data-at-scale-with-kusto).  We mentionned *queued ingestion* along the ride without diving much into it.  Let's do that now.
+We discussed ingestion in Azure Data Explorer / Kusto at length in [past articles](/2020/06/03/ingesting-histocical-data-at-scale-with-kusto).  We mentioned *queued ingestion* along the ride without diving much into it.  Let's do that now.
 
 Queued ingestion is available [in the SDK](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/netfx/kusto-ingest-queued-ingest-sample) and can be [performed using REST API](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/netfx/kusto-ingest-queued-ingest-sample).  The problem is that **it isn't one REST API**.  It is an orchestration of several (three to be exact) REST APIs that are encapsulated in the SDK.
 
-I find it convenient to have a REST API for ingestion so I made one using a Logic App.  This article explains how it is build and how to use it.
+I find it convenient to have a REST API for ingestion, so I made one using a Logic App.  This article explains how it is built and how to use it.
 
 As usual, [code is in GitHub](https://github.com/vplauzon/kusto/tree/master/rest-ingest-api).
 
@@ -57,9 +57,9 @@ The orchestration basically replicates what the [online code sample](https://doc
 * Do another call to Data Management to get a token
 * Push messages by calling the Storage Queue API
 
-Since there is 2 calls to do to the Data Management API, we decided to allow queuing more than one blob.  This way, if we queue N blobs, we will do only N+2 REST APIs call instread of 3 x N.  This makes massive ingestion much more efficient.
+Since there are 2 calls to do to the Data Management API, we decided to allow queuing more than one blob.  This way, if we queue N blobs, we will do only N+2 REST APIs call instead of 3 x N.  This makes massive ingestion much more efficient.
 
-The loop task loops on the blobs, construct a message and post the message:
+The loop task loops on the blobs, construct a message and then post the message:
 
 ![Loop within Logic App](/assets/posts/2020/3/kusto-ingestion-rest-api/loop.png)
 
@@ -89,7 +89,7 @@ We chose the path of not enforcing a schema for the additional properties.
 
 As we've just seen, we can pass the data management URI of the cluster in parameter.  The parameter is optional because we can set a default in the Logic App.
 
-In order to set a default, we need to open the Logic App's designer:
+To set a default, we need to open the Logic App's designer:
 
 ![Parameters in Logic App](/assets/posts/2020/3/kusto-ingestion-rest-api/logic-app-parameters-menu.png)
 
@@ -119,9 +119,9 @@ Finally, we need to create a table for ingestion.
 
 In the examples below we will use a very short [CSV file sample file](https://github.com/vplauzon/kusto/blob/master/rest-ingest-api/sample.csv).
 
-We suggest to create a database dedicated to trying the Logic App.  It is then easier to delete the entire database once the tests have ran instead of chasing the different artifacts.
+We suggest creating a database dedicated to trying the Logic App.  It is then easier to delete the entire database once the tests have ran instead of chasing the different artifacts.
 
-First we need to create a table to ingest data into:
+First, we need to create a table to ingest data into:
 
 ```sql
 //  Create a table matching the schema of the CSV file
@@ -150,13 +150,13 @@ We're now ready to run some tests.
 
 ## Trying the Logic App on a sample file
 
-In order to run the rests, we need to do an HTTP-post to the Logic App.  We are using the [Postman tool](https://www.postman.com/) but we could have used [curl](https://www.maketecheasier.com/use-curl-commands-linux/) or any other tools.
+To run the rests, we need to do an HTTP-post to the Logic App.  We are using the [Postman tool](https://www.postman.com/) but we could have used [curl](https://www.maketecheasier.com/use-curl-commands-linux/) or any other tools.
 
 To find the URL to post to, we can simply open the Logic App designer, then open the HTTP trigger (the first box at the top) and copy it from there:
 
 ![Post URL](/assets/posts/2020/3/kusto-ingestion-rest-api/post-url.png)
 
-For each HTTP-request we do, it is import to set two headers:
+For each HTTP-request we do, it is important to set two headers:
 
 Header|Value
 -|-
@@ -185,7 +185,7 @@ First let's try a straightforward ingest with the follow HTTP body:
 
 We only ingest a public blob, reference the database & table but also specify it is a CSV and the mapping to use at ingestion.
 
-We notice the return payload from the HTTP post is a lengthy JSON document.  This is because this Logic App is asynchronous and hence returns immediatly with a call-back url we can find in the `location` header of the response.
+We notice the return payload from the HTTP post is a lengthy JSON document.  This is because this Logic App is asynchronous and hence returns immediately with a call-back URL we can find in the `location` header of the response.
 
 We need to wait a few seconds before we'll see data in the `employees` table:
 
@@ -193,7 +193,7 @@ We need to wait a few seconds before we'll see data in the `employees` table:
 
 We notice we ingested the data but also ingested the headers with the first row having "name" in the name column.
 
-### Removing headers
+### Removing CSV headers
 
 First, let's clean our table:
 
@@ -201,9 +201,9 @@ First, let's clean our table:
 .drop extents <| .show table employees extents 
 ```
 
-In order to remove the CSV headers, we'll need to turn to [ingestion properties](https://docs.microsoft.com/en-us/azure/data-explorer/ingestion-properties).  One of them is named `ignoreFirstRecord` which seems convenient.
+To remove the CSV headers, we'll need to turn to [ingestion properties](https://docs.microsoft.com/en-us/azure/data-explorer/ingestion-properties).  One of them is named `ignoreFirstRecord` which seems convenient.
 
-So if we try again with a slightly modified payload:
+So, if we try again with a slightly modified payload:
 
 ```javascript
 {
@@ -226,9 +226,9 @@ We should now have our data without the headers.
 
 ### Historical data
 
-A point we [discussed about ingestion](https://vincentlauzon.com/2020/06/03/ingesting-histocical-data-at-scale-with-kusto) was the [cache policy](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/cache-policy) previledging *new* data for caching.
+A point we [discussed about ingestion](https://vincentlauzon.com/2020/06/03/ingesting-histocical-data-at-scale-with-kusto) was the [cache policy](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/cache-policy) privileging *new* data for caching.
 
-In order for this to work, we need the data being tagged with the time of creation of the data, not the time of ingestion when ingesting historical data.
+For this to work, we need the data being tagged with the time of creation of the data, not the time of ingestion when ingesting historical data.
 
 For this purpose, the ingestion property `creationTime` can be used.  For instance, we could ingest the same data with `creationTime` property setting the creation time in 2017:
 
@@ -264,7 +264,7 @@ We'll see something interesting:
 
 The first extent is dated with the current date while the second one was dated with the 2017 date.
 
-This will enable the cache policy to evict the 2017 data first if it came to it.
+This would enable the cache policy to evict the 2017 data first if it came to it.
 
 ### Other usage
 
@@ -274,7 +274,7 @@ We could insert [constant columns in the mapping](https://docs.microsoft.com/en-
 
 We can add tags.
 
-We can conditionally ingest data if some tags do not exist in the data (see [ingestIfNotExists](https://docs.microsoft.com/en-us/azure/data-explorer/ingestion-properties)).  This gives us a safe guard against re-ingesting the same data.
+We can conditionally ingest data if some tags do not exist in the data (see [ingestIfNotExists](https://docs.microsoft.com/en-us/azure/data-explorer/ingestion-properties)).  This gives us a safeguard against re-ingesting the same data.
 
 ## Summary
 
