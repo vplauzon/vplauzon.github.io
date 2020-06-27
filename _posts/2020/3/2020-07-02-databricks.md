@@ -107,9 +107,11 @@ For that, we need to go in our cluster and select the *Permissions* pane:
 
 ![Permission pane](/assets/posts/2020/3/kusto-ingestion-rest-api/permission-pane.png)
 
-We then need to add a role assignment.  The role should be *AllDatabasesAdmin* (the default)
+We then need to add a role assignment.  The role should be *AllDatabasesAdmin* (the default).  We then need to find our Logic App.  Its name should start with `ingest-blobs-`:
 
 ![New Principals](/assets/posts/2020/3/kusto-ingestion-rest-api/new-principals.png)
+
+This will give our Logic App's Identity access to the ingestion APIs.
 
 ...
 
