@@ -173,7 +173,7 @@ First let's try a straightforward ingest with the follow HTTP body:
     {
       "additionalProperties": {
         "format": "csv",
-        "mappingReference": "employeeCsvMapping"
+        "ingestionMappingReference": "employeeCsvMapping"
       },
       "blobUri": "https://raw.githubusercontent.com/vplauzon/kusto/master/rest-ingest-api/sample.csv"
     }
@@ -205,13 +205,13 @@ In order to remove the CSV headers, we'll need to turn to [ingestion properties]
 
 So if we try again with a slightly modified payload:
 
-```JavaScript
+```javascript
 {
   "blobs": [
     {
       "additionalProperties": {
         "format": "csv",
-        "mappingReference": "employeeCsvMapping",
+        "ingestionMappingReference": "employeeCsvMapping",
         "ignoreFirstRecord": "true"
       },
       "blobUri": "https://raw.githubusercontent.com/vplauzon/kusto/master/rest-ingest-api/sample.csv"
@@ -232,13 +232,13 @@ In order for this to work, we need the data being tagged with the time of creati
 
 For this purpose, the ingestion property `creationTime` can be used.  For instance, we could ingest the same data with `creationTime` property setting the creation time in 2017:
 
-```JavaScript
+```javascript
 {
   "blobs": [
     {
       "additionalProperties": {
         "format": "csv",
-        "mappingReference": "employeeCsvMapping",
+        "ingestionMappingReference": "employeeCsvMapping",
         "ignoreFirstRecord": "true",
         "creationTime": "2017-02-13T11:09:36.7992775Z"
       },
@@ -266,6 +266,18 @@ The first extent is dated with the current date while the second one was dated w
 
 This will enable the cache policy to evict the 2017 data first if it came to it.
 
-### Inserting file names
+### Other usage
+
+There are many other ways to use that REST API.
+
+We could insert [constant columns in the mapping](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/create-ingestion-mapping-command).  This is often used to insert the name of the file as a column.  To do that, instead of using `ingestionMappingReference`, we would use `ingestionMapping` and pass the actual mapping in with whatever constant we want to pass for a specific blob.
+
+We can add tags.
+
+We can conditionally ingest data if some tags do not exist in the data (see [ingestIfNotExists](https://docs.microsoft.com/en-us/azure/data-explorer/ingestion-properties)).  This gives us a safe guard against re-ingesting the same data.
 
 ## Summary
+
+Now we have a REST API for queued ingestion.  We can use it to easily orchestrate ingestion of multiple files.
+
+Queued ingestion is a powerful tool in Kusto as it allows to ingest data at scale and have Kusto worry about it.
