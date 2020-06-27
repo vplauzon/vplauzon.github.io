@@ -250,6 +250,21 @@ For this purpose, the ingestion property `creationTime` can be used.  For instan
 }
 ```
 
+Now if we look at the table, we'll just see twice the same data:  the one we ingested in the previous sub section and the one we just ingested.
+
+But if we look at the extents:
+
+```sql
+.show table employees extents
+```
+
+We'll see something interesting:
+
+![Extents date](/assets/posts/2020/3/kusto-ingestion-rest-api/extents-date.png)
+
+The first extent is dated with the current date while the second one was dated with the 2017 date.
+
+This will enable the cache policy to evict the 2017 data first if it came to it.
 
 ### Inserting file names
 
