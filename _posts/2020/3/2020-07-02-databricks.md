@@ -105,7 +105,11 @@ The next thing we need to do is to give Logic App access to our cluster.  The Lo
 
 For that, we need to go in our cluster and select the *Permissions* pane:
 
-![Default Value](/assets/posts/2020/3/kusto-ingestion-rest-api/permission-pane.png)
+![Permission pane](/assets/posts/2020/3/kusto-ingestion-rest-api/permission-pane.png)
+
+We then need to add a role assignment.  The role should be *AllDatabasesAdmin* (the default)
+
+![New Principals](/assets/posts/2020/3/kusto-ingestion-rest-api/new-principals.png)
 
 ...
 
