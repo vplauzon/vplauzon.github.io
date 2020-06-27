@@ -183,6 +183,13 @@ First let's try a straightforward ingest with the follow HTTP body:
 }
 ```
 
+We only ingest a public blob, reference the database & table but also specify it is a CSV and the mapping to use at ingestion.
+
+We need to wait a few seconds before we'll see data in the `employees` table:
+
+![Data](/assets/posts/2020/3/kusto-ingestion-rest-api/test1.png)
+
+
         "creationTime": "2017-02-13T11:09:36.7992775Z",
         "ignoreFirstRecord": "true"
 
