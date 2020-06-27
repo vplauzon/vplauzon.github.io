@@ -150,6 +150,17 @@ We're now ready to run some tests.
 
 ## Trying the Logic App on a sample file
 
-https://docs.microsoft.com/en-us/azure/data-explorer/ingestion-properties
+In order to run the rests, we need to do an HTTP-post to the Logic App.  We are using the [Postman tool](https://www.postman.com/) but we could have used [curl](https://www.maketecheasier.com/use-curl-commands-linux/) or any other tools.
+
+To find the URL to post to, we can simply open the Logic App designer, then open the HTTP trigger (the first box at the top) and copy it from there:
+
+![Post URL](/assets/posts/2020/3/kusto-ingestion-rest-api/post-url.png)
+
+
+First let's try a straightforward ingest.
+
+        "creationTime": "2017-02-13T11:09:36.7992775Z",
+        "ignoreFirstRecord": "true"
+
 
 ## Summary
