@@ -97,8 +97,16 @@ And then replace the default value of the `defaultDataManagementUri` (and only) 
 
 ![Default Value](/assets/posts/2020/3/kusto-ingestion-rest-api/default-value.png)
 
+When the parameter is specified in the API payload, it overrides this default value.
 
 ## Giving permissions to the Logic App
+
+The next thing we need to do is to give Logic App access to our cluster.  The Logic App has a [Managed Service Identity](https://vincentlauzon.com/2019/11/19/accessing-azure-key-vault-from-within-azure-api-management/) which we leverage when we do REST calls to Kusto.
+
+For that, we need to go in our cluster and select the *Permissions* pane:
+
+![Default Value](/assets/posts/2020/3/kusto-ingestion-rest-api/permission-pane.png)
+
 
 ## Preparing Kusto for ingestion
 
