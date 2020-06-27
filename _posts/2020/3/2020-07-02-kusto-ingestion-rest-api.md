@@ -185,13 +185,48 @@ First let's try a straightforward ingest with the follow HTTP body:
 
 We only ingest a public blob, reference the database & table but also specify it is a CSV and the mapping to use at ingestion.
 
+We notice the return payload from the HTTP post is a lengthy JSON document.  This is because this Logic App is asynchronous and hence returns immediatly with a call-back url we can find in the `location` header of the response.
+
 We need to wait a few seconds before we'll see data in the `employees` table:
 
 ![Data](/assets/posts/2020/3/kusto-ingestion-rest-api/test1.png)
 
+We notice we ingested the data but also ingested the headers with the first row having "name" in the name column.
+
+### Removing headers
+
+First, let's clean our table:
+
+```sql
+.drop extents <| .show table employees extents 
+```
+
+In order to remove the CSV headers, we'll need to turn to [ingestion properties](https://docs.microsoft.com/en-us/azure/data-explorer/ingestion-properties).  One of them is named `ignoreFirstRecord` which seems convenient.
+
+So if we try again with a slightly modified payload:
+
+```JavaScript
+{
+  "blobs": [
+    {
+      "additionalProperties": {
+        "format": "csv",
+        "mappingReference": "employeeCsvMapping",
+        "ignoreFirstRecord": "true"
+      },
+      "blobUri": "https://raw.githubusercontent.com/vplauzon/kusto/master/rest-ingest-api/sample.csv"
+    }
+  ],
+  "database": "myingest",
+  "table": "employees"
+}
+```
+
+We should now have our data without the headers.
+
+### Historical data
 
         "creationTime": "2017-02-13T11:09:36.7992775Z",
-        "ignoreFirstRecord": "true"
 
 
 ## Summary
