@@ -156,8 +156,32 @@ To find the URL to post to, we can simply open the Logic App designer, then open
 
 ![Post URL](/assets/posts/2020/3/kusto-ingestion-rest-api/post-url.png)
 
+For each HTTP-request we do, it is import to set two headers:
 
-First let's try a straightforward ingest.
+Header|Value
+-|-
+Content-Type|application/json
+Accept|application/json
+
+### First test
+
+First let's try a straightforward ingest with the follow HTTP body:
+
+```javascript
+{
+  "blobs": [
+    {
+      "additionalProperties": {
+        "format": "csv",
+        "mappingReference": "employeeCsvMapping"
+      },
+      "blobUri": "https://raw.githubusercontent.com/vplauzon/kusto/master/rest-ingest-api/sample.csv"
+    }
+  ],
+  "database": "myingest",
+  "table": "employees"
+}
+```
 
         "creationTime": "2017-02-13T11:09:36.7992775Z",
         "ignoreFirstRecord": "true"
