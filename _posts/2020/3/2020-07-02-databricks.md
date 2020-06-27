@@ -89,9 +89,13 @@ We chose the path of not enforcing a schema for the additional properties.
 
 As we've just seen, we can pass the data management URI of the cluster in parameter.  The parameter is optional because we can set a default in the Logic App.
 
-In order to set a default, we need to open the Logic App's designer
+In order to set a default, we need to open the Logic App's designer:
 
 ![Parameters in Logic App](/assets/posts/2020/3/kusto-ingestion-rest-api/logic-app-parameters-menu.png)
+
+And then replace the default value of the `defaultDataManagementUri` (and only) parameter:
+
+![Default Value](/assets/posts/2020/3/kusto-ingestion-rest-api/default-value.png)
 
 
 ## Giving permissions to the Logic App
