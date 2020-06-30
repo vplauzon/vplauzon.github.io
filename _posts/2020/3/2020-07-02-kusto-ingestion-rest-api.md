@@ -280,4 +280,6 @@ We can conditionally ingest data if some tags do not exist in the data (see [ing
 
 Now we have a REST API for queued ingestion.  We can use it to easily orchestrate ingestion of multiple files.
 
+**A little word about security**.  We built a REST API but didn't secure it.  It is secured by SAS token, i.e. complicated URL.  There is no authentication on that API.  So, we basically have an unsecure REST API giving access to a secure Kusto Cluster.  This is for Proof of Concept (POC) purposes.  In production, we recommend to secure the REST API, for instance, by using [Active Directory OAuth](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-securing-a-logic-app#enable-azure-active-directory-oauth).
+
 Queued ingestion is a powerful tool in Kusto as it allows to ingest data at scale and have Kusto worry about it.
