@@ -56,9 +56,7 @@ That makes Data Reader (and Owner and Writer and the likes) a bit of a blunt int
 
 Enters Access Control Lists (ACLs).  With ACLs we can give access at the blob level if we want to.
 
-![acl](/assets/posts/2020/3/access-control-in-azure-data-lake-storage/acl.png)
-
-As with any file system, it is way more manageable to give permissions at folder level and typically with the folders closer to the root.  This makes the security model simpler to manage but also simpler to understand.
+![acl](/assets/posts/2020/3/access-control-in-azure-data-lake-storage/acl.png) As with any file system, it is way more manageable to give permissions at folder level and typically with the folders closer to the root.  This makes the security model simpler to manage but also simpler to understand.
 
 Now does ACL superseeds roles such as Data Reader or is it the other way around?
 
@@ -79,9 +77,7 @@ What happened then?
 
 Quite simply:  **ACLs aren't inherited in a container's hierarchy**.
 
-![Inheritance](/assets/posts/2020/3/access-control-in-azure-data-lake-storage/parent.png)
-
-Since we copied the blobs first, those blobs were created with the default permission set.  We added the ACL at the root *afterwards*.  So we can access the root.  We just can't access any of the blobs / folders underneath.
+![Inheritance](/assets/posts/2020/3/access-control-in-azure-data-lake-storage/parent.png) Since we copied the blobs first, those blobs were created with the default permission set.  We added the ACL at the root *afterwards*.  So we can access the root.  We just can't access any of the blobs / folders underneath.
 
 Currently (early July 2020), there are no mechanisms to inherit ACLs.  They need to be push down manually or (more likely) via scripts.
 
