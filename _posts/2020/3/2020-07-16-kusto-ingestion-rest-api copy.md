@@ -81,6 +81,7 @@ Currently (early July 2020), there are no mechanisms to inherit ACLs.  They need
 
 ## What is "default"?
 
+![default](/assets/posts/2020/3/access-control-in-azure-data-lake-storage/default.png)
 
 
 ## What is "execute"?
