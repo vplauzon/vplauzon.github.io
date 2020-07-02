@@ -6,7 +6,6 @@ categories:
 tags:
 - Data
 - Security
-date:  2020-07-02
 ---
 <img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/3/access-control-in-azure-data-lake-storage/fence.jpg" />
 
