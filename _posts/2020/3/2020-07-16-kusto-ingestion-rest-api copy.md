@@ -79,11 +79,22 @@ Since we copied the blobs first, those blobs were created with the default permi
 
 Currently (early July 2020), there are no mechanisms to inherit ACLs.  They need to be push down manually or (more likely) via scripts.
 
+Another mechanism is to use *default*, which we'll cover now.
+
 ## What is "default"?
 
 Opening "Manage Access" in Azure Storage Explorer, we are greated with a couple of alien concepts.  One of them is *default*:
 
 ![default](/assets/posts/2020/3/access-control-in-azure-data-lake-storage/default.png)
+
+This is the next best thing since we do not have inheritance:  we can set a default set of permissions to a folder that will be applied to new blobs / folders underneath it.
+
+We could fix the sequence of events from the last section this way:
+
+* We create an ADLS account
+* We add a **default ACL** at the root of the container with the data with Read / Write / Execute for ourselves
+* We copy some data into it using Azure Storage Explorer
+* When using other tools or the REST API directly, we should see the blobs we copied since they were given the default permissions
 
 ## What is "execute"?
 
