@@ -22,6 +22,8 @@ I often use it with little security on.  Maybe you do too.  Hence I had to learn
 
 I thought I would do an article to list those gotcha.  Hopefully that will speed up anyone doing some security modelling on ADLS for the first time or first time in a while.  Here it is.
 
+The [online documentation](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control) contains most of that information but doesn't emphasises on our cognitive biases as I do here ;)
+
 ## Admins can't read it
 
 This one we usually hit even in a low-security context.
@@ -32,13 +34,39 @@ We actually spent quite a bit of time explaining it in [this article](/2020/02/2
 
 In summary:  being owner or contributor sounds like we have all the rights in a subscription.  The thing is that is for the control plane.  This doesn't give us permissions on the data plane.  That being said, as contributor, we can give ourselves data plane roles.  It's just that we don't have them by default.
 
+How come we can still read and write when using [Azure Storage Explorer tool](https://azure.microsoft.com/en-us/features/storage-explorer/) then?  That is because that tool uses our Control Plane access to get the Storage Account *Access Keys* and then use those to access the data.  This makes it more surprising when we try another tool (e.g. impersonnation with Azure Data Explorer, Azure Synapse Spark or Azure Databricks) and fail to access the data.
+
 ## Data Reader is a blunt instrument
 
-One of the pre-defined roles in the Data Plane is [Storage Blob Data Reader](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) (along )
+One of the pre-defined roles in the Data Plane is [Storage Blob Data Reader](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#storage-blob-data-reader).
+
+As an Azure Role, it can be applied to any resource or resource group with a principal (user or service principal).  So we can apply it to an entire ADLS account or to a container.
+
+A container is the "smallest grain" at which we can apply it.  Folders aren't Azure Resources.
+
+Those roles make sense for some scenarios.  For instance POCs & dev environments.  But also for scenarios where a container is pretty homogeneous.  Logs for instance.
+
+For a big Data Lake with multiple lines of business data though, giving access to an entire container is a little coarse.
+
+That makes Data Reader (and Owner and Writer and the likes) a bit of a blunt intrument in many cases.
 
 ## ACL vs Data Reader
 
+Enters Access Control Lists (ACLs).  With ACLs we can give access at the blob level if we want to.
+
+As with any file system, it is way more manageable to give permissions at folder level and typically with the folders closer to the root.  This makes the security model simpler to manage but also simpler to understand.
+
+Now does ACL superseeds roles such as Data Reader or is it the other way around?
+
+It is the other way around.  If a user is Data Reader on a container, he/she doesn't need ACLs with reading permission:  he/she will be able to read the entire container.
+
+Therefore, if we want to rely on ACLs, we shouldn't give any roles to users on containers / ADLS accounts.
+
 ## ACL and inheritance
+
+Now here's an error occuring a lot:
+
+* We create an ADLS account
 
 ## What is "execute"?
 
