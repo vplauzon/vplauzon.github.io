@@ -64,14 +64,29 @@ Therefore, if we want to rely on ACLs, we shouldn't give any roles to users on c
 
 ## ACL and inheritance
 
-Now here's an error occuring a lot:
+Now here's a sequence of events that often leave users puzzled:
 
 * We create an ADLS account
+* We copy some data into it using Azure Storage Explorer
+* We add ACL at the root of the container with the data with Read / Write / Execute for ourselves
+* When using other tools or the REST API directly, we can't see any blobs / folders in the container
 
-## What is "execute"?
+What happened then?
+
+Quite simply:  **ACLs aren't inherited in a container's hierarchy**.
+
+Since we copied the blobs first, those blobs were created with the default permission set.  We added the ACL at the root *afterwards*.  So we can access the root.  We just can't access any of the blobs / folders underneath.
+
+Currently (early July 2020), there are no mechanisms to inherit ACLs.  They need to be push down manually or (more likely) via scripts.
 
 ## What is "default"?
 
-## ACL and "others"
+
+
+## What is "execute"?
+
+## What is "Other"?
+
+## What is "Mask"?
 
 ## Summary
