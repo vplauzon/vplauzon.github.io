@@ -81,13 +81,20 @@ Currently (early July 2020), there are no mechanisms to inherit ACLs.  They need
 
 ## What is "default"?
 
-![default](/assets/posts/2020/3/access-control-in-azure-data-lake-storage/default.png)
+Opening "Manage Access" in Azure Storage Explorer, we are greated with a couple of alien concepts.  One of them is *default*:
 
+![default](/assets/posts/2020/3/access-control-in-azure-data-lake-storage/default.png)
 
 ## What is "execute"?
 
+![default](/assets/posts/2020/3/access-control-in-azure-data-lake-storage/execute.png)
+
 ## What is "Other"?
 
+![default](/assets/posts/2020/3/access-control-in-azure-data-lake-storage/other.png)
+
 ## What is "Mask"?
+
+![default](/assets/posts/2020/3/access-control-in-azure-data-lake-storage/mask.png)
 
 ## Summary
