@@ -98,14 +98,24 @@ We could fix the sequence of events from the last section this way:
 
 ## What is "execute"?
 
+Next is execute.
+
 ![default](/assets/posts/2020/3/access-control-in-azure-data-lake-storage/execute.png)
+
+This is quite well explained in the [online documentation](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control#levels-of-permission).
+
+Basically, it's a permission that make sense only for folders.  It gives a group / user the permission to *traverse* a folder.
 
 ## What is "Other"?
 
+Next is other.
+
 ![default](/assets/posts/2020/3/access-control-in-azure-data-lake-storage/other.png)
 
-## What is "Mask"?
+We can see the ACLs as a bunch of rules.  When a principal is trying to perform a data action (read / write / traverse), the rules are passed one by one.  The *Other* rule basically applies after all those rules.
 
-![default](/assets/posts/2020/3/access-control-in-azure-data-lake-storage/mask.png)
+A typical use is to give read / execute on other but write on specific group / user.
+
+This often is a source of confusion when two Data Lake containers are configured exactly the same way except for  different "other" rule.  They then behave differently in seemingly unexplainable way.
 
 ## Summary
