@@ -16,7 +16,24 @@ ADLS gen 2 unlocked a bunch of scenarios.  It is present in every region, it ena
 
 In my experience, it is becoming the de facto standard for data lake raw storage in Azure.
 
-I often use it with little security on.  Hence I had to learn again some quirks about the security model this week.  Some of the quirks are due to misplaced expectation & comparing it to an on-prem / single server technology (which it definitely isn't).  Some quirks are there because it's an evolution of Azure Storage which wasn't built with folders in mind.
+A key feature it added was Access Control List (ACL) at the folder / file level.  That gives us a better granularity for access control which is quite necessary in something as vast as a Data Lake.
 
-I thought I would do an article to list those gotcha.  Here it is.
+I often use it with little security on.  Maybe you do too.  Hence I had to learn again some quirks about the security model this week.  Some of the quirks are due to misplaced expectation & comparing it to an on-prem / single server technology (which it definitely isn't).  Some quirks are there because it's an evolution of Azure Storage which wasn't built with folders in mind.
 
+I thought I would do an article to list those gotcha.  Hopefully that will speed up anyone doing some security modelling on ADLS for the first time or first time in a while.  Here it is.
+
+## Admins can't read it
+
+## Data Reader is a blunt instrument
+
+## ACL vs Data Reader
+
+## ACL and inheritance
+
+## What is "execute"?
+
+## What is "default"?
+
+## ACL and "others"
+
+## Summary
