@@ -30,6 +30,8 @@ This one we usually hit even in a low-security context.
 
 We just provisionned an ADLS account.  We are admin of the subscription.  And...  we can't write or even read the data lake.  What's going on?
 
+![admin](/assets/posts/2020/3/access-control-in-azure-data-lake-storage/admin.png)
+
 We actually spent quite a bit of time explaining it in [this article](/2020/02/27/impersonating-user-in-adls-with-kusto) under the section *Why didn’t it work?*.  We recommend reading that section to get a deeper understanding.
 
 In summary:  being owner or contributor sounds like we have all the rights in a subscription.  The thing is that is for the control plane.  This doesn't give us permissions on the data plane.  That being said, as contributor, we can give ourselves data plane roles.  It's just that we don't have them by default.
@@ -40,7 +42,7 @@ How come we can still read and write when using [Azure Storage Explorer tool](ht
 
 One of the pre-defined roles in the Data Plane is [Storage Blob Data Reader](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#storage-blob-data-reader).
 
-As an Azure Role, it can be applied to any resource or resource group with a principal (user or service principal).  So we can apply it to an entire ADLS account or to a container.
+<img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/posts/2020/3/access-control-in-azure-data-lake-storage/reader.jpg" />  As an Azure Role, it can be applied to any resource or resource group with a principal (user or service principal).  So we can apply it to an entire ADLS account or to a container.
 
 A container is the "smallest grain" at which we can apply it.  Folders aren't Azure Resources.
 
@@ -53,6 +55,8 @@ That makes Data Reader (and Owner and Writer and the likes) a bit of a blunt int
 ## ACL vs Data Reader
 
 Enters Access Control Lists (ACLs).  With ACLs we can give access at the blob level if we want to.
+
+![acl](/assets/posts/2020/3/access-control-in-azure-data-lake-storage/acl.png)
 
 As with any file system, it is way more manageable to give permissions at folder level and typically with the folders closer to the root.  This makes the security model simpler to manage but also simpler to understand.
 
@@ -74,6 +78,8 @@ Now here's a sequence of events that often leave users puzzled:
 What happened then?
 
 Quite simply:  **ACLs aren't inherited in a container's hierarchy**.
+
+![Inheritance](/assets/posts/2020/3/access-control-in-azure-data-lake-storage/parent.png)
 
 Since we copied the blobs first, those blobs were created with the default permission set.  We added the ACL at the root *afterwards*.  So we can access the root.  We just can't access any of the blobs / folders underneath.
 
