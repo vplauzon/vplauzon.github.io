@@ -24,7 +24,17 @@ I thought I would do an article to list those gotcha.  Hopefully that will speed
 
 ## Admins can't read it
 
+This one we usually hit even in a low-security context.
+
+We just provisionned an ADLS account.  We are admin of the subscription.  And...  we can't write or even read the data lake.  What's going on?
+
+We actually spent quite a bit of time explaining it in [this article](/2020/02/27/impersonating-user-in-adls-with-kusto) under the section *Why didn’t it work?*.  We recommend reading that section to get a deeper understanding.
+
+In summary:  being owner or contributor sounds like we have all the rights in a subscription.  The thing is that is for the control plane.  This doesn't give us permissions on the data plane.  That being said, as contributor, we can give ourselves data plane roles.  It's just that we don't have them by default.
+
 ## Data Reader is a blunt instrument
+
+One of the pre-defined roles in the Data Plane is [Storage Blob Data Reader](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) (along )
 
 ## ACL vs Data Reader
 
