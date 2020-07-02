@@ -116,6 +116,12 @@ We can see the ACLs as a bunch of rules.  When a principal is trying to perform 
 
 A typical use is to give read / execute on other but write on specific group / user.
 
-This often is a source of confusion when two Data Lake containers are configured exactly the same way except for  different "other" rule.  They then behave differently in seemingly unexplainable way.
+This often is a source of confusion when two Data Lake containers are configured exactly the same way except for different "other" rule.  They then behave differently in seemingly unexplainable way.
 
 ## Summary
+
+This was a quick tour of what we often see people stumbling across.
+
+This was by no mean a comprehensive overview of the ADLS security feature.  The [online documentation](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control) is comprehensive and should be used for that.
+
+Hopefully this article can be used to quickly ramp up on ADLS security model and avoid common misconceptions.
