@@ -94,7 +94,7 @@ We can then test listing all the blobs in a given container by posting the follo
 }
 ```
 
-This should return the list of blobs our identity has access to.
+This should return the list of blobs our identity has access to.  This is unedited what the REST API returns.
 
 We can also get the directories by changing the body slightly:
 
@@ -103,5 +103,15 @@ We can also get the directories by changing the body slightly:
   "storageAccount": "myaccount",
   "container": "mycontainer",
   "doListDirectories" : true
+}
+```
+
+We can also retrieve only the parquet files for instance:
+
+```javascript
+{
+  "storageAccount": "myaccount",
+  "container": "mycontainer",
+  "suffix" : ".parquet"
 }
 ```
