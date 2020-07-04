@@ -32,3 +32,11 @@ Let's start by deploying the Logic App:
 The ARM template doesn't take any parameter and deploys two resources:
 
 ![resources](/assets/posts/2020/3/adls-logic-app-with-managed-identities/resources.png)
+
+We have a *Managed Identity* and a *Logic App*.  The *Managed Identity* is the *User Assigned Managed Identity* we discussed in the previous section.  It is bound to an Azure AD Service Principal and used by the Logic App.
+
+## Logic App
+
+Let's open the Logic App.
+
+![Logic App](/assets/posts/2020/3/adls-logic-app-with-managed-identities/logic-app.png)
