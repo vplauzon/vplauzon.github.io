@@ -31,3 +31,4 @@ Let's start by deploying the Logic App:
 
 The ARM template doesn't take any parameter and deploys two resources:
 
+![resources](/assets/posts/2020/3/adls-logic-app-with-managed-identities/resources.png)
