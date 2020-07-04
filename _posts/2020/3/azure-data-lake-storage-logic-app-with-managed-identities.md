@@ -7,7 +7,7 @@ tags:
 - Data
 - Identity
 - Security
-date: 2020-07-04
+date: 2020-07-03
 ---
 <img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/posts/2020/3/adls-logic-app-with-managed-identities/lake.jpg" />
 
@@ -21,4 +21,13 @@ So today, I'm going to show you how to do that using the ADLS REST API within Lo
 
 To change things a bit we're going to use a [*user assigned* instead of a *system assigned* identity](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types).  I find user assigned useful Logic Apps since multiple apps can share the same identity if they require the same type of access control.  In this case we are deploying a list-blob app, but a read-blob app could share the same identity.
 
-As usual, [code is in GitHub]().
+As usual, [code is in GitHub](https://github.com/vplauzon/storage/tree/master/adls-list-blobs-api).
+
+## Deploy the App
+
+Let's start by deploying the Logic App:
+
+[![Deploy button](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvplauzon%2Fstorage%2Fmaster%2Fadls-list-blobs-api%2Fdeploy.json)
+
+The ARM template doesn't take any parameter and deploys two resources:
+
