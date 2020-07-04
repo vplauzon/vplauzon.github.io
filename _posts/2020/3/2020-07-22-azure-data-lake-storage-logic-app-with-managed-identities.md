@@ -41,3 +41,14 @@ We have a *Managed Identity* and a *Logic App*.  The *Managed Identity* is the *
 Let's open the Logic App.
 
 ![Logic App](/assets/posts/2020/3/adls-logic-app-with-managed-identities/logic-app.png)
+
+This app is calling the [ADLS path list REST API](https://docs.microsoft.com/en-us/rest/api/storageservices/datalakestoragegen2/path/list).  It has the following parameters:
+
+Parameter|Type|Mandatory|Description
+-|-|-|-
+storageAccount|string|Yes|Name of the storage account we want to list blobs from
+container|string|Yes|Name of the container, within the storage account, we want to list blobs from
+directory|string|No|Directory we want to look into.  By default, it goes to the root of the container
+suffix|string|No|The suffix of the blobs we're interested in.  This would filter out the output.
+doListDirectories|boolean|No|Do we want to have the list of traversed directories as well as the blobs?  Default is `true`
+
