@@ -54,6 +54,16 @@ doListDirectories|boolean|No|Do we want to have the list of traversed directorie
 
 Beside processing the parameters, the only "complexity" of the app is to handle potential continuation over the REST API.  That is, if there are a lot of blobs returned, the app needs to call the API multiple times.
 
-If we open the `until-continuation` shape, 
+If we open the `until-continuation` shape, we can find the `data-lake-list` inside it.  This is the shape actually calling the REST API:
 
 ![Authentication](/assets/posts/2020/3/adls-logic-app-with-managed-identities/auth.png)
+
+We can see the authentication section uses *Managed Identity* and more specifically, it uses the *user defined managed identity* accompanying the app.
+
+## Authorizing the identity
+
+Before using the app, we need to authorize it to read a data lake storage.
+
+The easiest way is to give it *Storage Blob Data Reader* role:
+
+![RBAC](/assets/posts/2020/3/adls-logic-app-with-managed-identities/rbac.png)
