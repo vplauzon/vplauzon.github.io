@@ -87,7 +87,7 @@ Accept|application/json
 
 We can then test listing all the blobs in a given container by posting the following body to the Logic App URL:
 
-```JavaScript
+```javascript
 {
   "storageAccount": "myaccount",
   "container": "mycontainer"
@@ -98,7 +98,7 @@ This should return the list of blobs our identity has access to.  This is unedit
 
 We can also get the directories by changing the body slightly:
 
-```JavaScript
+```javascript
 {
   "storageAccount": "myaccount",
   "container": "mycontainer",
