@@ -50,7 +50,7 @@ storageAccount|string|Yes|Name of the storage account we want to list blobs from
 container|string|Yes|Name of the container, within the storage account, we want to list blobs from
 directory|string|No|Directory we want to look into.  By default, it goes to the root of the container
 suffix|string|No|The suffix of the blobs we're interested in.  This would filter out the output.
-doListDirectories|boolean|No|Do we want to have the list of traversed directories as well as the blobs?  Default is `true`
+doListDirectories|boolean|No|Do we want to have the list of traversed directories as well as the blobs?  Default is `false`
 
 Beside processing the parameters, the only "complexity" of the app is to handle potential continuation over the REST API.  That is, if there are a lot of blobs returned, the app needs to call the API multiple times.
 
@@ -67,3 +67,41 @@ Before using the app, we need to authorize it to read a data lake storage.
 The easiest way is to give it *Storage Blob Data Reader* role:
 
 ![RBAC](/assets/posts/2020/3/adls-logic-app-with-managed-identities/rbac.png)
+
+We reviewed [last time the different intricacies of access control](/2020/07/16/access-control-in-azure-data-lake-storage).
+
+## Testing the API
+
+We are going to fetch the URL from the Logic App:
+
+![URL](/assets/posts/2020/3/adls-logic-app-with-managed-identities/url.png)
+
+We are going to use [Postman](https://www.postman.com/) but as usual, any HTTP-posting capable tool will do.
+
+As usual with Logic App, it is important to add the following two headers:
+
+Header|Value
+-|-
+Content-Type|application/json
+Accept|application/json
+
+We can then test listing all the blobs in a given container by posting the following body to the Logic App URL:
+
+```JavaScript
+{
+  "storageAccount": "myaccount",
+  "container": "mycontainer"
+}
+```
+
+This should return the list of blobs our identity has access to.
+
+We can also get the directories by changing the body slightly:
+
+```JavaScript
+{
+  "storageAccount": "myaccount",
+  "container": "mycontainer",
+  "doListDirectories" : true
+}
+```
