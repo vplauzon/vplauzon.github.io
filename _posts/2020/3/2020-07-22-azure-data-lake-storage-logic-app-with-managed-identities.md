@@ -106,7 +106,7 @@ We can also get the directories by changing the body slightly:
 }
 ```
 
-We can also retrieve only the parquet files for instance:
+Finally, we can also retrieve only, for instance, the parquet files:
 
 ```javascript
 {
