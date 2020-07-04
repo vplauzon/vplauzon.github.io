@@ -52,3 +52,8 @@ directory|string|No|Directory we want to look into.  By default, it goes to the 
 suffix|string|No|The suffix of the blobs we're interested in.  This would filter out the output.
 doListDirectories|boolean|No|Do we want to have the list of traversed directories as well as the blobs?  Default is `true`
 
+Beside processing the parameters, the only "complexity" of the app is to handle potential continuation over the REST API.  That is, if there are a lot of blobs returned, the app needs to call the API multiple times.
+
+If we open the `until-continuation` shape, 
+
+![Authentication](/assets/posts/2020/3/adls-logic-app-with-managed-identities/auth.png)
