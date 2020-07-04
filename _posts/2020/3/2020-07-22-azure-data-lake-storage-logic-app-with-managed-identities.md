@@ -1,6 +1,7 @@
 ---
 title:  Azure Data Lake Storage Logic App with Managed Identities
 permalink: /2020/07/22/azure-data-lake-storage-logic-app-with-managed-identities
+image:  /assets/posts/2020/3/adls-logic-app-with-managed-identities/lake.jpg
 categories:
 - Solution
 tags:
