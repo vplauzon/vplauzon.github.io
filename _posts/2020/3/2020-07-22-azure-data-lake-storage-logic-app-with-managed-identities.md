@@ -115,3 +115,9 @@ Finally, we can also retrieve only, for instance, the parquet files:
   "suffix" : ".parquet"
 }
 ```
+
+## Summary
+
+We've implemented a simple reusable Logic App encapsulating the [ADLS path list REST API](https://docs.microsoft.com/en-us/rest/api/storageservices/datalakestoragegen2/path/list).
+
+The key part is that it uses an Azure AD Managed Identity to invoke the API as opposed to the Access Keys.
