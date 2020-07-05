@@ -1,6 +1,7 @@
 ---
 title:  My ultimate ingestion process for historical data at scale with Kusto
 permalink: /2020/06/03/my-ultimate-ingestion-process-for-histocical-data-at-scale-with-kusto
+image:  /assets/posts/2020/2/my-ultimate-ingestion-process-for-histocical-data-at-scale-with-kusto/body-of-water-between-green-leaf-trees-709552.jpg
 categories:
 - Solution
 tags:

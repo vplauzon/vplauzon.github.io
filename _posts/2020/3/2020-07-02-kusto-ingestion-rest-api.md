@@ -1,6 +1,7 @@
 ---
 title:  Kusto Ingestion REST API
 permalink: /2020/07/02/kusto-ingestion-rest-api
+image:  /assets/posts/2020/3/kusto-ingestion-rest-api/kitty.jpg
 categories:
 - Solution
 tags:

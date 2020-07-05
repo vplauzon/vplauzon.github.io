@@ -1,6 +1,7 @@
 ---
 title:  Azure Databricks Overview workshop
 permalink: /2020/06/24/azure-databricks-overview-workshop
+image:  /assets/posts/2020/2/azure-databricks-overview-workshop/azure-databricks.jpg
 categories:
 - Solution
 tags:

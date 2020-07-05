@@ -1,6 +1,7 @@
 ---
 title:  Access Control in Azure Data Lake Storage
 permalink: /2020/07/16/access-control-in-azure-data-lake-storage
+image:  /assets/posts/2020/3/access-control-in-azure-data-lake-storage/fence.jpg
 categories:
 - Solution
 tags:
