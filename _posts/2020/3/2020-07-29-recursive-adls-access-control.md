@@ -8,7 +8,6 @@ tags:
 - Data
 - Identity
 - Security
-date: 2020-07-19
 ---
 <img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/3/recursive-adls-access-control/door.jpg" />
 
