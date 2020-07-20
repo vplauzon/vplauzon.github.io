@@ -35,7 +35,15 @@ The `set ACL API` also reuse the `list blobs` we developped [in a past article](
 
 ## Deploying the Logic Apps
 
+To deploy the solution, we can start here:
+
 [![Deploy button](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvplauzon%2Fstorage%2Fmaster%2Fadls-acl-api%2Fdeploy-acl.json)
+
+The [ARM Template](https://github.com/vplauzon/storage/blob/master/adls-acl-api/deploy-acl.json) doesn't have parameters.
+
+The deployment should result in 4 resources:
+
+![resources](/assets/posts/2020/3/recursive-adls-access-control/resources.png)
 
 ## Setting permissions
 
