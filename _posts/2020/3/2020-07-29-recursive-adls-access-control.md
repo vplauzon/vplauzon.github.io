@@ -105,7 +105,7 @@ We then need to set the body.  Here is a body sample:
 }
 ```
 
-Here are the parameter for the payload:
+Here are the parameters for the payload:
 
 Parameter|Type|Mandatory|Description
 -|-|-|-
@@ -188,6 +188,8 @@ It is quite close to what the storage API returns.  We simply expend the *raw st
 
 Using the `patch-acl` Logic App requires the same routine, i.e. capturing its URL and setting the *Content-Type* of the request.
 
+Here is a sample of the payload we can send to the API:
+
 ```javascript
 {
     "storageAccount":"vpldemo",
@@ -195,7 +197,7 @@ Using the `patch-acl` Logic App requires the same routine, i.e. capturing its UR
     "path":"",
     "isRecursive":true,
     "upn":true,
-    "isDefault2":true,
+    "isDefault":true,
     "ace":{
         "type":"user",
         "id":"jane@contoso.com",
@@ -204,6 +206,25 @@ Using the `patch-acl` Logic App requires the same routine, i.e. capturing its UR
     }
 }
 ```
+
+Here are the parameters for the payload:
+
+Parameter|Type|Mandatory|Description
+-|-|-|-
+storageAccount|string|Yes|Name of the storage account
+container|string|Yes|Name of the container within the storage account
+path|string|Yes (can be empty)|Object (blob or folder) path (an empty string means the root of the container)
+upn|boolean|No|Should the API return *User Principal Name* (UPN) ; default is no, in which case the API **deals with** object IDs (GUIDs)
+isDefault|boolean|No|The ACE's scope is `default` or not (default of *isDefault* is `false`)
+ace|object|No|Access Control Entry to add to the ACLs of the objects (blobs and / or folders)
+
+[There are two kinds of access control entry](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control#types-of-access-control-lists):  *default* & *access*.
+
+The *default* corresponds to the default part of the [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) UI:
+
+![Default](/assets/posts/2020/3/recursive-adls-access-control/default.png)
+
+
 
 ## Flusing ACLs
 
