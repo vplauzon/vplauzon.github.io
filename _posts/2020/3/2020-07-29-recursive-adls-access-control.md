@@ -16,11 +16,7 @@ date: 2020-07-19
 
 In the past, [we discussed access control in Azure Data Lake Storage (ADLS)](/2020/07/16/access-control-in-azure-data-lake-storage).  Those intricacies are useful when accessing ADLS using Azure AD authentication.
 
-This time I wanted to combine both concepts together by showing how to get & set access control lists using Logic App.
-
-One of the annoyance of Access Control Lists (ACLs) in ADLS [we discussed](/2020/07/16/access-control-in-azure-data-lake-storage) is the lack of inheritance of ACLs.  Intuitively, we tend to assume that ACLs set at a root folder would be applied to blobs and folders underneath, but they don't.
-
-The API we're going to show here allows us to do that:  push ACLs recursively down.  This is quite useful when dealing with ADLS.
+This time I wanted to combine both concepts together by showing how to get & set access control lists using Logic App.  By combining a list-blob, we are able to set Access Control Lists (ACLs) recursively.  Because this is in a Logic App using an MSI, it could be called in automation or CI/CD.
 
 Also, the native storage APIs from ADLS offer a somewhat crud interface, dealing with a single semi-colon & comma delimited string to represent an ACL.  Our API offers a richer JSON signature which makes it easier to do changes.
 
@@ -46,6 +42,11 @@ The `set ACL API` also reuse the `list blobs` we developped [in a past article](
 ## Using get-acl
 
 ## Using set-acl
+
+One of the annoyance of Access Control Lists (ACLs) in ADLS [we discussed](/2020/07/16/access-control-in-azure-data-lake-storage) is the lack of inheritance of ACLs.  Intuitively, we tend to assume that ACLs set at a root folder would be applied to blobs and folders underneath, but they don't.
+
+The API we're going to show here allows us to do that:  push ACLs recursively down.  This is quite useful when dealing with ADLS.
+
 
 ## Flusing ACLs
 
