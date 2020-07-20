@@ -1,7 +1,7 @@
 ---
-title:  Setting ADLS Access Control with Logic App
-permalink: /2020/07/29/setting-adls-access-control-with-logic-app
-image:  /assets/posts/2020/3/setting-adls-access-control-with-logic-app/door.jpg
+title:  Recursive ADLS Access Control
+permalink: /2020/07/29/recursive-adls-access-control
+image:  /assets/posts/2020/3/recursive-adls-access-control/door.jpg
 categories:
 - Solution
 tags:
@@ -10,7 +10,7 @@ tags:
 - Security
 date: 2020-07-19
 ---
-<img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/3/setting-adls-access-control-with-logic-app/door.jpg" />
+<img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/3/recursive-adls-access-control/door.jpg" />
 
 In the past, [we discussed access control in Azure Data Lake Storage (ADLS)](/2020/07/16/access-control-in-azure-data-lake-storage).  Those intricacies are useful when accessing ADLS using Azure AD authentication.
 
