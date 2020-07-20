@@ -29,9 +29,9 @@ As usual, [code is in GitHub](https://github.com/vplauzon/storage/tree/master/ad
 Basically, we are wrapping two APIS from ADLS:
 
 * Our `get ACL API` is based on ADLS [get properties / HEAD](https://docs.microsoft.com/en-us/rest/api/storageservices/datalakestoragegen2/path/getproperties)
-* Our `set ACL API` is based on ADLS [set properties / PATCH](https://docs.microsoft.com/en-us/rest/api/storageservices/datalakestoragegen2/path/update)
+* Our `patch ACL API` is based on ADLS [set properties / PATCH](https://docs.microsoft.com/en-us/rest/api/storageservices/datalakestoragegen2/path/update)
 
-The `set ACL API` also reuse the `list blobs` we developped [in a past article](/2020/07/22/azure-data-lake-storage-logic-app-with-managed-identities).
+The `patch ACL API` also reuse the `list blobs` we developped [in a past article](/2020/07/22/azure-data-lake-storage-logic-app-with-managed-identities).
 
 ## Deploying the Logic Apps
 
@@ -45,11 +45,13 @@ The deployment should result in 4 resources:
 
 ![resources](/assets/posts/2020/3/recursive-adls-access-control/resources.png)
 
+This is one Managed Identity used by 3 Logic Apps.  Sharing 
+
 ## Setting permissions
 
 ## Using get-acl
 
-## Using set-acl
+## Using patch-acl
 
 One of the annoyance of Access Control Lists (ACLs) in ADLS [we discussed](/2020/07/16/access-control-in-azure-data-lake-storage) is the lack of inheritance of ACLs.  Intuitively, we tend to assume that ACLs set at a root folder would be applied to blobs and folders underneath, but they don't.
 
