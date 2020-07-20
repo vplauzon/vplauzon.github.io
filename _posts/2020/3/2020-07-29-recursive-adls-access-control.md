@@ -88,6 +88,98 @@ For the request to be successful, we need to set the HTTP header `Content-Type` 
 
 ![Content Type](/assets/posts/2020/3/recursive-adls-access-control/content-type.png)
 
+This tells Logic App to interpret the body as a JSON payload.  Logic App doesn't do this by default.
+
+We then need to set the body.  Here is a body sample:
+
+```javascript
+{
+    "storageAccount" : "vpldemo",
+    "container" : "lake",
+    "path" : "",
+    "upn" : true
+}
+```
+
+Here are the parameter for the payload:
+
+Parameter|Type|Mandatory|Description
+-|-|-|-
+storageAccount|string|Yes|Name of the storage account
+container|string|Yes|Name of the container within the storage account
+path|string|Yes (can be empty)|Object (blob or folder) path (an empty string means the root of the container)
+upn|boolean|No|Should the API return *User Principal Name* (UPN) ; default is no, in which case the API returns object IDs (GUIDs)
+
+The first three parameters allow us to zero in on a specific object (blob or folder).  When we send the request we receive something like:
+
+```javascript
+{
+    "group": "$superuser",
+    "owner": "$superuser",
+    "permissions": "rwxrwx---+",
+    "acl": {
+        "raw": "user::rwx,user:bob@contoso.com:rwx,group::r-x,mask::rwx,other::---,default:user::rwx,default:group::r-x,default:mask::r-x,default:other::---",
+        "structured": {
+            "access": [
+                {
+                    "permissions": "rwx",
+                    "id": "",
+                    "type": "user"
+                },
+                {
+                    "permissions": "rwx",
+                    "id": "bob@contoso.com",
+                    "type": "user"
+                },
+                {
+                    "permissions": "r-x",
+                    "id": "",
+                    "type": "group"
+                },
+                {
+                    "permissions": "rwx",
+                    "id": "",
+                    "type": "mask"
+                },
+                {
+                    "permissions": "---",
+                    "id": "",
+                    "type": "other"
+                }
+            ],
+            "default": [
+                {
+                    "permissions": "rwx",
+                    "id": "",
+                    "type": "user"
+                },
+                {
+                    "permissions": "r-x",
+                    "id": "",
+                    "type": "group"
+                },
+                {
+                    "permissions": "r-x",
+                    "id": "",
+                    "type": "mask"
+                },
+                {
+                    "permissions": "---",
+                    "id": "",
+                    "type": "other"
+                }
+            ]
+        }
+    }
+}
+```
+
+This is essentially what we see in [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/):
+
+![Get ACL](/assets/posts/2020/3/recursive-adls-access-control/get-acl.png)
+
+It is quite close to what the storage API returns.  We simply expend the *raw string* to make it easier to manipulate down the line.
+
 ## Using patch-acl
 
 One of the annoyance of Access Control Lists (ACLs) in ADLS [we discussed](/2020/07/16/access-control-in-azure-data-lake-storage) is the lack of inheritance of ACLs.  Intuitively, we tend to assume that ACLs set at a root folder would be applied to blobs and folders underneath, but they don't.
