@@ -74,9 +74,19 @@ From there we need to create a role assignment:
 
 ![role assignment](/assets/posts/2020/3/recursive-adls-access-control/role-assignment.png)
 
-
-
 ## Using get-acl
+
+The assignment takes several minutes (usually between 5 and 10) to be effective.  We therefore need to wait a little bit before doing the first test.
+
+First, we'll look at the get-acl Logic App and copy its http-trigger URL.  We find this by opening the logic app designer and opening the *trigger box*:
+
+![get acl url](/assets/posts/2020/3/recursive-adls-access-control/get-acl-url.png)
+
+We can then use that URL in any tool allowing us to do HTTPS-POST requests.  We are going to use [Postman](https://www.postman.com/).
+
+For the request to be successful, we need to set the HTTP header `Content-Type` to `application/json`:
+
+![Content Type](/assets/posts/2020/3/recursive-adls-access-control/content-type.png)
 
 ## Using patch-acl
 
