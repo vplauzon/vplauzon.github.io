@@ -16,15 +16,15 @@ date: 2020-07-19
 
 In the past, [we discussed access control in Azure Data Lake Storage (ADLS)](/2020/07/16/access-control-in-azure-data-lake-storage).  Those intricacies are useful when accessing ADLS using Azure AD authentication.
 
-This time I wanted to combine both concepts together by showing how to get & set access control lists using Logic App.  By combining a list-blob, we are able to set Access Control Lists (ACLs) recursively.  Because this is in a Logic App using an MSI, it could be called in automation or CI/CD.
+This time I wanted to combine both concepts together by showing how to get & set access control lists using Logic App.  By combining a list-blob, we are able to set Access Control Lists (ACLs) recursively.  Because this is in a Logic App using an MSI, it can be invoked in automation or CI/CD.
 
 Also, the native storage APIs from ADLS offer a somewhat crud interface, dealing with a single semi-colon & comma delimited string to represent an ACL.  Our API offers a richer JSON signature which makes it easier to do changes.
+
+The underlying storage API isn't widely advertised and I would like to give a shout out to [Moim Hossain](https://moimhossain.com/) for [his article on ACL management](https://moimhossain.com/2019/09/20/access-control-management-via-rest-api-azure-data-lake-gen-2/).  That pointed me in the right direction.
 
 As usual, [code is in GitHub](https://github.com/vplauzon/storage/tree/master/adls-acl-api).
 
 ## ADLS API
-
-The underlying storage API isn't widely advertised and I would like to give a shout out to [Moim Hossain's article](https://moimhossain.com/2019/09/20/access-control-management-via-rest-api-azure-data-lake-gen-2/) that pointed me in the right direction.
 
 Basically, we are wrapping two APIS from ADLS:
 
