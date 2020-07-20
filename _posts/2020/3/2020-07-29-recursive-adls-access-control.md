@@ -33,6 +33,10 @@ Basically, we are wrapping two APIS from ADLS:
 
 The `patch ACL API` also reuse the `list blobs` we developped [in a past article](/2020/07/22/azure-data-lake-storage-logic-app-with-managed-identities).
 
+One of the annoyance of Access Control Lists (ACLs) in ADLS [we discussed](/2020/07/16/access-control-in-azure-data-lake-storage) is the lack of inheritance of ACLs.  Intuitively, we tend to assume that ACLs set at a root folder would be applied to blobs and folders underneath, but they don't.
+
+The API we're going to show here allows us to do that:  push ACLs recursively down.  This is quite useful when dealing with ADLS.
+
 ## Deploying the Logic Apps
 
 To deploy the solution, we can start here:
@@ -182,15 +186,7 @@ It is quite close to what the storage API returns.  We simply expend the *raw st
 
 ## Using patch-acl
 
-One of the annoyance of Access Control Lists (ACLs) in ADLS [we discussed](/2020/07/16/access-control-in-azure-data-lake-storage) is the lack of inheritance of ACLs.  Intuitively, we tend to assume that ACLs set at a root folder would be applied to blobs and folders underneath, but they don't.
-
-The API we're going to show here allows us to do that:  push ACLs recursively down.  This is quite useful when dealing with ADLS.
-
-
-
-## Flusing ACLs
-
-## How does it work?
+Using the `patch-acl` Logic App requires the same routine, i.e. capturing its URL and setting the *Content-Type* of the request.
 
 ```javascript
 {
@@ -202,9 +198,14 @@ The API we're going to show here allows us to do that:  push ACLs recursively do
     "isDefault2":true,
     "ace":{
         "type":"user",
-        "id":"vilauzon@microsoft.com",
+        "id":"jane@contoso.com",
         "blobPermissions":"r--",
         "directoryPermissions":"r-x"
     }
 }
 ```
+
+## Flusing ACLs
+
+## How does it work?
+
