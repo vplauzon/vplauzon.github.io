@@ -45,9 +45,21 @@ The deployment should result in 4 resources:
 
 ![resources](/assets/posts/2020/3/recursive-adls-access-control/resources.png)
 
-This is one Managed Identity used by 3 Logic Apps.  Sharing 
+This is one Managed Identity used by 3 Logic Apps.  Sharing the same identity with the three apps allows us to set permission for that identity only once.
+
+The three APIs are:
+
+Logic App Name|Description
+-|-
+list-blobs-api-*|List blobs recursively from a given folder ; this is the exact same one [we developped in a past article](/2020/07/22/azure-data-lake-storage-logic-app-with-managed-identities)
+get-acl-api-*|Returns the ACLs for a given blob or folder
+patch-acl-api-*|Assign Access Control Entry (ACE) to a blob or folder (or recursively from a folder) ; also allows to flush the ACLs from a folder hierarchy
 
 ## Setting permissions
+
+
+
+Why do we need to 
 
 ## Using get-acl
 
@@ -56,6 +68,7 @@ This is one Managed Identity used by 3 Logic Apps.  Sharing
 One of the annoyance of Access Control Lists (ACLs) in ADLS [we discussed](/2020/07/16/access-control-in-azure-data-lake-storage) is the lack of inheritance of ACLs.  Intuitively, we tend to assume that ACLs set at a root folder would be applied to blobs and folders underneath, but they don't.
 
 The API we're going to show here allows us to do that:  push ACLs recursively down.  This is quite useful when dealing with ADLS.
+
 
 
 ## Flusing ACLs
