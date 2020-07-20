@@ -31,7 +31,7 @@ Basically, we are wrapping two APIS from ADLS:
 * Our `get ACL API` is based on ADLS [get properties / HEAD](https://docs.microsoft.com/en-us/rest/api/storageservices/datalakestoragegen2/path/getproperties)
 * Our `patch ACL API` is based on ADLS [set properties / PATCH](https://docs.microsoft.com/en-us/rest/api/storageservices/datalakestoragegen2/path/update)
 
-The `patch ACL API` also reuse the `list blobs` we developped [in a past article](/2020/07/22/azure-data-lake-storage-logic-app-with-managed-identities).
+The `patch ACL API` also reuse the `list blobs` we developed [in a past article](/2020/07/22/azure-data-lake-storage-logic-app-with-managed-identities).
 
 One of the annoyance of Access Control Lists (ACLs) in ADLS [we discussed](/2020/07/16/access-control-in-azure-data-lake-storage) is the lack of inheritance of ACLs.  Intuitively, we tend to assume that ACLs set at a root folder would be applied to blobs and folders underneath, but they don't.
 
@@ -55,7 +55,7 @@ The three APIs are:
 
 Logic App Name|Description
 -|-
-list-blobs-api-\*|List blobs recursively from a given folder ; this is the exact same one [we developped in a past article](/2020/07/22/azure-data-lake-storage-logic-app-with-managed-identities)
+list-blobs-api-\*|List blobs recursively from a given folder ; this is the exact same one [we developed in a past article](/2020/07/22/azure-data-lake-storage-logic-app-with-managed-identities)
 get-acl-api-\*|Returns the ACLs for a given blob or folder
 patch-acl-api-\*|Assign Access Control Entry (ACE) to a blob or folder (or recursively from a folder) ; also allows to flush the ACLs from a folder hierarchy
 
@@ -65,7 +65,7 @@ Why do we need to set the permissions for an API used to set permissions?  Becau
 
 The managed identity we just deployed, *data-lake-identity-\**, is the principal that will authenticate to the storage API.
 
-So the first thing to do is to link two things:
+So, the first thing to do is to link two things:
 
 1. The storage account we want to test the API on (or a least the storage container)
 1. The managed identity we just deployed, *data-lake-identity-\**
@@ -114,7 +114,7 @@ container|string|Yes|Name of the container within the storage account
 path|string|Yes (can be empty)|Object (blob or folder) path (an empty string means the root of the container)
 upn|boolean|No|Should the API return *User Principal Name* (UPN) ; default is no, in which case the API returns object IDs (GUIDs)
 
-The first three parameters allow us to zero in on a specific object (blob or folder).  When we send the request we receive something like:
+The first three parameters allow us to zero in on a specific object (blob or folder).  When we send the request, we receive something like:
 
 ```javascript
 {
@@ -252,7 +252,7 @@ The duration of the API call is therefore unbound.  For that reason, we made the
 
 A typical scenario we might want to do is to flush all the user & group permissions on a hierarchy to start afresh.
 
-This is when we would omit the *ace* object altogether.  This is interpretted as a flush call.
+This is when we would omit the *ace* object altogether.  This is interpreted as a flush call.
 
 ## How does it work?
 
@@ -262,4 +262,4 @@ This is already quite a long article so we will not go into the details of the L
 
 We develop those two APIs (`get-acl` & `patch-acl`) to facilitate automation around ACLs in Azure Data Lake Storage (ADLS).
 
-A specific value `patch-acl` adds is the ability to perform ACE-adds on an entire hierarchy which is often useful in real-life project.
+A specific value `patch-acl` adds is the ability to perform ACE-adds on an entire hierarchy which is often useful in real-life projects.
