@@ -214,6 +214,8 @@ Parameter|Type|Mandatory|Description
 storageAccount|string|Yes|Name of the storage account
 container|string|Yes|Name of the container within the storage account
 path|string|Yes (can be empty)|Object (blob or folder) path (an empty string means the root of the container)
+suffix|string|No|Suffix of the blob to impact (default is *none*)
+isRecursive|boolean|No|Going recursively through the directory structure ; meaningful only if `path` points to a directory (not a blob) ; default is `false`
 upn|boolean|No|Should the API return *User Principal Name* (UPN) ; default is no, in which case the API **deals with** object IDs (GUIDs)
 isDefault|boolean|No|The ACE's scope is `default` or not (default of *isDefault* is `false`)
 ace|object|No|Access Control Entry to add to the ACLs of the objects (blobs and / or folders)
@@ -224,9 +226,40 @@ The *default* corresponds to the default part of the [Azure Storage Explorer](ht
 
 ![Default](/assets/posts/2020/3/recursive-adls-access-control/default.png)
 
+The ace object has the following parameters:
 
+Parameter|Type|Mandatory|Description
+-|-|-|-
+type|string|Yes|One of the four types of ACE:  *user*, *group*, *mask* or *other* (see `x-ms-acl` header [documentation online](https://docs.microsoft.com/en-us/rest/api/storageservices/datalakestoragegen2/path/update#request-headers) for details)
+id|string|Yes|Id of the *user* or *group*.  Empty for *mask* or *other*.
+blobPermissions|string|No|String of three characters:  `r` (read), `w` (write) & `x` (traverse, meaningful only for directories) ; `-` means none ; for instance, `r-x` means read / can't write / can traverse
+directoryPermissions|string|No|Same for directories
 
-## Flusing ACLs
+We can omit *blobPermissions* or *directoryPermissions* (we can also omit both in which case the API call doesn't do anything).  *blobPermissions* is used on blobs while *directoryPermissions* is used on directories.  This is useful to implement the typical pattern of given read-access to directories but write-access to blobs (as done in the sample above).
+
+### Asynchronous call
+
+The `patch-acl` API can potentially call quite a few storage API.
+
+For instance, if we go recursive on a huge hierarchy, there is going to be:
+
+* A call to the `list-blob` API (Logic App)
+* For each blob and directory, a call to `get-acl` then a call to `patch-acl`
+
+The duration of the API call is therefore unbound.  For that reason, we made the API asynchronous, following the [Logic App asynchronous request-reply pattern](https://docs.microsoft.com/en-us/azure/architecture/patterns/async-request-reply).
+
+### Flushing ACLs
+
+A typical scenario we might want to do is to flush all the user & group permissions on a hierarchy to start afresh.
+
+This is when we would omit the *ace* object altogether.  This is interpretted as a flush call.
 
 ## How does it work?
 
+This is already quite a long article so we will not go into the details of the Logic App implementation.  We are happy to answer questions in the comment section.
+
+## Summary
+
+We develop those two APIs (`get-acl` & `patch-acl`) to facilitate automation around ACLs in Azure Data Lake Storage (ADLS).
+
+A specific value `patch-acl` adds is the ability to perform ACE-adds on an entire hierarchy which is often useful in real-life project.
