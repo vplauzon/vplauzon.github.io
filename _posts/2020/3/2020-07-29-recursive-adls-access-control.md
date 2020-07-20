@@ -51,15 +51,30 @@ The three APIs are:
 
 Logic App Name|Description
 -|-
-list-blobs-api-*|List blobs recursively from a given folder ; this is the exact same one [we developped in a past article](/2020/07/22/azure-data-lake-storage-logic-app-with-managed-identities)
-get-acl-api-*|Returns the ACLs for a given blob or folder
-patch-acl-api-*|Assign Access Control Entry (ACE) to a blob or folder (or recursively from a folder) ; also allows to flush the ACLs from a folder hierarchy
+list-blobs-api-\*|List blobs recursively from a given folder ; this is the exact same one [we developped in a past article](/2020/07/22/azure-data-lake-storage-logic-app-with-managed-identities)
+get-acl-api-\*|Returns the ACLs for a given blob or folder
+patch-acl-api-\*|Assign Access Control Entry (ACE) to a blob or folder (or recursively from a folder) ; also allows to flush the ACLs from a folder hierarchy
 
 ## Setting permissions
 
+Why do we need to set the permissions for an API used to set permissions?  Because a principal (either a user or a service principal) must be [Storage Blob Data Owner](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) to be able to alter the ACLs of an object (blob or folder).
+
+The managed identity we just deployed, *data-lake-identity-\**, is the principal that will authenticate to the storage API.
+
+So the first thing to do is to link two things:
+
+1. The storage account we want to test the API on (or a least the storage container)
+1. The managed identity we just deployed, *data-lake-identity-\**
+
+We do this by going to the *Access Control (IAM)* section of the Storage Account:
+
+![iam](/assets/posts/2020/3/recursive-adls-access-control/iam.png)
+
+From there we need to create a role assignment:
+
+![role assignment](/assets/posts/2020/3/recursive-adls-access-control/role-assignment.png)
 
 
-Why do we need to 
 
 ## Using get-acl
 
