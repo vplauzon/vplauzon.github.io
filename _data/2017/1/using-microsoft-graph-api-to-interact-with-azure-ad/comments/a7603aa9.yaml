@@ -1,0 +1,13 @@
+id: a7603aa9
+author:
+  name: Vincent-Philippe Lauzon
+  url: https://vincentlauzon.com/
+date: 2020-08-10T10:00:54.5021451-04:00
+content: >-
+  Hi Nitin,
+
+
+  I'm really no expert in O365 but what I've seen customer doing in that type of scenario is to use a separate user account to interact with O365.  O365 doesn't support service principals (to my knowledge), so it needs to be a "real user" account.  Typically customers create a dummy user account using some field / nomenclature to specify it isn't bound to a real person.
+
+
+  So you have your MVC app that has its own authentication scheme going on and then it uses that user to interact with O365.  Quite a bit like a web app using a service principal / SQL user to interact with a SQL DB.
