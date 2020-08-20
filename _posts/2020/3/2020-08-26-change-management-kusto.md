@@ -7,6 +7,7 @@ categories:
 tags:
 - Data
 - Operation
+date:  2020-08-25
 ---
 <img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2020/3/change-management-kusto/moving-boxes.jpg" />
 
