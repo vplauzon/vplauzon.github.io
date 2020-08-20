@@ -474,3 +474,12 @@ That would require us to also remove duplicates.
 
 ## Summary
 
+We explored a couple of scenarios for change management.
+
+The point of this article wasn't to be thorought as an encyclopedy of methods.  It was to show an approach.
+
+A few patterns emerged:
+
+* Using a view to reconciliate data before and after a transformation
+* Using the transactionality of update policies to our advantage when ingestion failure is inevitable
+* Always try on test data first!
