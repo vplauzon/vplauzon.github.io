@@ -64,11 +64,18 @@ Using the function return schema, we can easily define the target table where th
     | limit 0
 ```
 
-//  Let's create an update policy to transform the data from invoices to transformedInvoices
+Now, let's create the update policy itself:
+
+```sql
 .alter table prettyInvoices policy update
 @'[{"IsEnabled": true, "Source": "invoices", "Query": "transformInvoices", "IsTransactional": true, "PropagateIngestionProperties": true}]'
+```
 
-//  Let's insert some data to see all this mechanic working
+We note that the update policy is transactional.  This means that if the policy fails while transfering data from `invoices` to `prettyInvoices`, the data will not land in `invoices`:  it lands in both tables or in none.
+
+Let's insert some data to see all this mechanic working:
+
+```sql
 .set-or-append invoices <|
     datatable(EMPLOYEE_NAME:string, AMOUNT:long, DEPARTMENT_ID:int)
     [
@@ -76,12 +83,292 @@ Using the function return schema, we can easily define the target table where th
         "Carol", 20, 2,
         "Alice", 10, 3
     ]
+```
 
-//  We can validate the data landed in invoices:
+We can validate the data landed in invoices:
+
+```sql
 invoices
+```
 
-//  We validate the update policy transformed the data:
+which returns:
+
+EMPLOYEE_NAME|AMOUNT|DEPARTMENT_ID
+-|-|-
+Bob|5|2
+Carol|20|2
+Alice|10|3
+
+Similarly,
+
+```sql
+prettyInvoices
+```
+
+returns:
+
+EMPLOYEE_NAME|AMOUNT|department
+-|-|-
+Carol|20|HR
+Bob|5|HR
+Alice|10|Engineering
+
+So we have our baseline ready.
+
+Let's explore different change management scenarios.
+
+##  Scenario 1:  adding column
+
+//  We want to add a column to our table since we have more properties
+//  coming up from upstream
+//  Let's first clone our invoices table to try the changes there
+.set-or-replace invoicesClone <|
+    invoices
+    | limit 10
+
+//  Let's alter that clone
+.alter-merge table invoicesClone(approvalDuration:timespan)
+
+//  The new column is there, at the end
+//  The new column is empty (NULL)
+invoicesClone
+| limit 5
+
+//  Maybe we don't like to have the new column at the end
+//  We can alter the table again to fix that
+//  Let's first get its "declared schema"
+.show table invoicesClone cslschema
+
+//  We can then easily flip things around
+.alter table invoicesClone(EMPLOYEE_NAME:string, AMOUNT:long, approvalDuration:timespan, DEPARTMENT_ID:int)
+
+//  The new column isn't at the end anymore
+invoicesClone
+| limit 5
+
+//  We're pretty confident about the procedure
+//  So, let's do it on the real table
+.alter table invoices(EMPLOYEE_NAME:string, AMOUNT:long, approvalDuration:timespan, DEPARTMENT_ID:int)
+
+//  The table schema is as expected
+invoices
+| limit 10
+
+//  Let's check it didn't break the update policies by ingesting more data
+//  Here we simulate that the new column isn't mapped in the upstream process (e.g. event hub ingestion),
+//  hence it is still null
+//  ADX-QUESTION:  Is that true?  If a column isn't mapped, does it simply take NULL or does it fail the ingestion?
+.set-or-append invoices <|
+    datatable(EMPLOYEE_NAME:string, AMOUNT:long, approvalDuration:timespan, DEPARTMENT_ID:int)
+    [
+        "Dany", 15, timespan(null), 4,
+        "Ethan", 21, timespan(null), 3
+    ]
+
+//  The table content is as expected
+invoices
+| limit 10
+
+//  So is the content of the transformed data
+prettyInvoices
+| limit 10
+
+//  Let's cleanup
+.drop table invoicesClone
+
+//  Now, let's similarly change the schema of the transformed data
+.alter table prettyInvoices(EMPLOYEE_NAME:string, AMOUNT:long, approvalDuration:timespan, department:string)
+
+//  Assuming ingestion is continuing in real time
+.set-or-append invoices <|
+    datatable(EMPLOYEE_NAME:string, AMOUNT:long, approvalDuration:timespan, DEPARTMENT_ID:int)
+    [
+        "Francine", 11, timespan(null), 5
+    ]
+//  We can see that no extents are returned:  something is wrong
+
+//  Let's find out if there was ingestion failures
+.show ingestion failures
+| where Table == "invoices" or Table == "prettyInvoices"
+//  The issue is the update policy returns a result set not containing the new column
+//  Because the update policy was "transactional=true", both ingestion failed
+
+//  If instead of what we did here, i.e. a .set-or-append, we used any type of
+//  queued ingestion (i.e. Event Hub, Event Grid, IoT Hub or any integration using
+//  queued ingestion), retries would occur.  Those retries are attempted a couple
+//  of times at exponential backoff period.  So we have time to do the change we
+//  need to do.
+//  Here we change the update policy function to include the duration column
+.create-or-alter function transformInvoices(){
+    invoices
+    | join kind=inner departments on $left.DEPARTMENT_ID==$right.id
+    | project EMPLOYEE_NAME, AMOUNT, approvalDuration, department
+}
+
+//  We simulate a retry by trying to reingest the record
+.set-or-append invoices <|
+    datatable(EMPLOYEE_NAME:string, AMOUNT:long, approvalDuration:timespan, DEPARTMENT_ID:int)
+    [
+        "Francine", 11, timespan(null), 5
+    ]
+//  It now returns us two extents, one for each table
+
+//  A completely new ingestion should also pass
+.set-or-append invoices <|
+    datatable(EMPLOYEE_NAME:string, AMOUNT:long, approvalDuration:timespan, DEPARTMENT_ID:int)
+    [
+        "Gaston", 8, timespan(null), 1
+    ]
+
+//  We get the expected content
+prettyInvoices
+| limit 10
+
+//  We can now change the upstream mapping to map the duration column
+//  This should send data with approval duration that we simulate here
+.set-or-append invoices <|
+    datatable(EMPLOYEE_NAME:string, AMOUNT:long, approvalDuration:timespan, DEPARTMENT_ID:int)
+    [
+        "Hadleigh", 8, 4h, 1
+    ]
+
+//  The duration data now flows through
+prettyInvoices
+| limit 10
+
+
+##  Scenario 2:  renaming column
+
+//  Now the team decides that having all-caps for column names is a little too 90's and
+//  want to rename EMPLOYEE_NAME and AMOUNT in prettyInvoices table
+//  Since that table already contains data, we have to be mindful of that
+
+//  The easiest way to "rename" a column is not to do it but have a view that does
+.create-or-alter function prettyInvoices(){
+    prettyInvoices
+    | project employeeName=EMPLOYEE_NAME, amount=AMOUNT, approvalDuration, department
+}
+
+//  In Kusto, function have precedance over tables.  Also a parameterless function can
+//  omit parenthesis, so this actually is equivalent to prettyInvoices()
+prettyInvoices
+| limit 15
+//  Although that is only cosmetic, since it doesn't break anything, it often is a
+//  good enough solution
+
+//  If need be, we can change the actual schema
+//  This needs to be done one column at the time
+.rename column prettyInvoices.EMPLOYEE_NAME to employeeName
+
+//  Here is the second column
+.rename column prettyInvoices.AMOUNT to amount
+
+//  If we execute this, it will fail
+prettyInvoices
+//   This is because it is using the view (function) we just define, which in turn is using the old column names
+
+//  We can force the query to tap into the table and not the view (function)
+table("prettyInvoices")
+//  We see that data was preserved
+
+//  We can drop the view (function)
+.drop function prettyInvoices
+
+//  This call becomes valid:
 prettyInvoices
 
-//  We have our baseline ready
-//  Let's explore different change management scenarios
+//  Now, let's see how ingestion react:
+.set-or-append invoices <|
+    datatable(EMPLOYEE_NAME:string, AMOUNT:long, approvalDuration:timespan, DEPARTMENT_ID:int)
+    [
+        "Isabel", 12, 5h, 6
+    ]
+//  Surprinsingly, it works, despite the update policy still referring to the old column names!
+
+//  And we can see the data actually landed
+prettyInvoices
+| limit 15
+
+//  This is because the data insertion is done in terms of "position" of parameters, not their names
+//  Since column are still in the same order, nothing breaks
+//  For consistency though, we'll update the function to refer to new column names:
+.create-or-alter function transformInvoices(){
+    invoices
+    | join kind=inner departments on $left.DEPARTMENT_ID==$right.id
+    | project employeeName=EMPLOYEE_NAME, amount=AMOUNT, approvalDuration, department
+}
+
+
+##  Scenario 3:  changing column type
+
+//  We need to change the amount type from long to real
+//  Let's change the type of the column
+.alter-merge table invoices(AMOUNT:real)
+//  That isn't supported
+
+//  We will need to add a new column for the real type
+.alter table invoices(EMPLOYEE_NAME:string, AMOUNT:long, AMOUNT_REAL:real, approvalDuration:timespan, DEPARTMENT_ID:int)
+
+//  If we look at the table now
+invoices
+| limit 15
+//  We see the column AMOUNT_REAL as empty
+
+//  We can still ingest data with the old schema
+.set-or-append invoices <|
+    datatable(EMPLOYEE_NAME:string, AMOUNT:long, AMOUNT_REAL:real, approvalDuration:timespan, DEPARTMENT_ID:int)
+    [
+        "Jake", 23, real(null), 3h, 3
+    ]
+
+//  Let's do the changes in prettyInvoices so we can propagate
+.alter table prettyInvoices(employeeName:string, amount:long, amountReal:real, approvalDuration:timespan, department:string)
+
+//  If we ingest now, it will fail because of update policy
+.set-or-append invoices <|
+    datatable(EMPLOYEE_NAME:string, AMOUNT:long, AMOUNT_REAL:real, approvalDuration:timespan, DEPARTMENT_ID:int)
+    [
+        "Kamari", 13, real(null), 6h, 4
+    ]
+
+//  Let's fix the update policy
+.create-or-alter function transformInvoices(){
+    invoices
+    | join kind=inner departments on $left.DEPARTMENT_ID==$right.id
+    | project employeeName=EMPLOYEE_NAME, amount=AMOUNT, amountReal=AMOUNT_REAL, approvalDuration, department
+}
+
+//  As we've seen in the adding column scenario, any queued ingestion would retry the failed ingestion
+//  a few times
+.set-or-append invoices <|
+    datatable(EMPLOYEE_NAME:string, AMOUNT:long, AMOUNT_REAL:real, approvalDuration:timespan, DEPARTMENT_ID:int)
+    [
+        "Kamari", 13, real(null), 6h, 4
+    ]
+//  This time it works
+
+//  We can even change the mapping upstream to send us the data with real amounts
+.set-or-append invoices <|
+    datatable(EMPLOYEE_NAME:string, AMOUNT:long, AMOUNT_REAL:real, approvalDuration:timespan, DEPARTMENT_ID:int)
+    [
+        "Larry", long(null), 43.23, 1h, 5
+    ]
+//  This time it works
+
+//  We can see the data landed
+prettyInvoices
+| limit 20
+
+//  As long as we have data in both columns, we could unify it in a view:
+.create-or-alter function prettyInvoices(){
+    prettyInvoices
+    | extend mergedAmount = iif(isnull(amount), amountReal, toreal(amount))
+    | project employeeName, amount=mergedAmount, approvalDuration, department
+}
+
+//  This gives us a unified view
+prettyInvoices
+| limit 20
+//  If need be we could migrate the data by re-ingesting it into a temp table
+//  Then drop the original column and move the extents
+//  That would require us to also remove duplicates
