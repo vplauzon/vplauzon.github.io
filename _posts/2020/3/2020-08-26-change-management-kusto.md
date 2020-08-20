@@ -24,7 +24,7 @@ As usual, [code is in GitHub](https://github.com/vplauzon/kusto/tree/master/chan
 
 ## Setup of a demo solution
 
-Here we're going to setup a simple solution in a database.  In order to run the scripts, we recommend to create a separate database and run them in the context of that database.  This way, it is easy to delete the database altogether to cleanup.
+Here we're going to setup a simple solution in a database.  To run the scripts, we recommend creating a separate database and run them in the context of that database.  This way, it is easy to delete the database altogether to cleanup.
 
 First, let's create a landing table.  We suppose that table has data ingested into it in new real time, i.e. new data shows up every minute or less.
 
@@ -71,7 +71,7 @@ Now, let's create the update policy itself:
 @'[{"IsEnabled": true, "Source": "invoices", "Query": "transformInvoices", "IsTransactional": true, "PropagateIngestionProperties": true}]'
 ```
 
-We note that the update policy is transactional.  This means that if the policy fails while transfering data from `invoices` to `prettyInvoices`, the data will not land in `invoices`:  it lands in both tables or in none.
+We note that the update policy is transactional.  This means that if the policy fails while transferring data from `invoices` to `prettyInvoices`, the data will not land in `invoices`:  it lands in both tables or in none.
 
 Let's insert some data to see all this mechanic working:
 
@@ -117,7 +117,7 @@ So we have our baseline ready.
 
 Let's explore different change management scenarios.
 
-##  Scenario 1:  adding column
+##  Scenario 1:  adding a column
 
 We want to add a column to our table since we have more properties coming up from upstream.
 
@@ -200,18 +200,18 @@ Again, assuming ingestion is continuing in real time:
 
 Now, no extents are returned:  something is wrong.
 
-Let's find out if there was ingestion failures:
+Let's find out if there were ingestion failures:
 
 ```sql
 .show ingestion failures
 | where Table == "invoices" or Table == "prettyInvoices"
 ```
 
-The issue is the update policy returns a result set not containing the new column:  `Query schema does not match table schema`.  Because the update policy was "transactional=true", both ingestion failed.
+The issue is the update policy returns a result set not containing the new column:  `Query schema does not match table schema`.  Because the update policy was "transactional=true", both ingestions failed.
 
-We can also see the `FailureKind` is `Transient`.  Since we did a `.set-or-append`, that doesn't change anything but in a real-life scenario, we would use some kind of queued ingestion (i.e. Event Hub, Event Grid, IoT Hub or any integration basedon queued ingestion).  Queued ingestion retries when transient error occur.  Those retries are attempted [a couple of times at exponential backoff period](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/updatepolicy#transactional-policy).
+We can also see the `FailureKind` is `Transient`.  Since we did a `.set-or-append`, that doesn't change anything but in a real-life scenario, we would use some kind of queued ingestion (i.e. Event Hub, Event Grid, IoT Hub or any integration based on queued ingestion).  Queued ingestion retries when transient error occurs.  Those retries are attempted [a couple of times at exponential back off period](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/updatepolicy#transactional-policy).
 
-So we have time to do the change we need to do.  For a production scenario, those scripts should be run back-to-back and in the worse case an ingestion failure would occur and succeed on retry.
+So, we have time to do the change we need to do.  For a production scenario, those scripts should be run back-to-back and in the worse case an ingestion failure would occur and succeed on retry.
 
 So, let's change the update policy function to include the duration column:
 
@@ -223,7 +223,7 @@ So, let's change the update policy function to include the duration column:
 }
 ```
 
-Let's simulate a retry by trying to reingest the record:
+Let's simulate a retry by trying to re-ingest the record:
 
 ```sql
 .set-or-append invoices <|
@@ -291,7 +291,7 @@ The easiest way to "rename" a column is not to do it but have a view that does:
 }
 ```
 
-In Kusto, functions have precedance over tables.  Also a parameterless function can omit parenthesis, so this actually is equivalent to `prettyInvoices()`:
+In Kusto, functions have precedence over tables.  Also a parameter-less function can omit parenthesis, so this actually is equivalent to `prettyInvoices()`:
 
 ```sql
 prettyInvoices
@@ -340,9 +340,9 @@ Now, let's see how ingestion react:
     ]
 ```
 
-Surprinsingly, it works, despite the update policy still referring to the old column names!
+Surprisingly, it works, despite the update policy still referring to the old column names!
 
-And we can see the data actually landed:
+And we can see the data landed:
 
 ```sql
 prettyInvoices
@@ -367,7 +367,7 @@ For consistency though, we'll update the function to refer to new column names:
 
 We need to change the `amount` type from `long` to `real`.
 
-Let's change the type of the column
+Let's try to change the type of the column:
 
 ```sql
 .alter-merge table invoices(AMOUNT:real)
@@ -468,7 +468,7 @@ returns:
 
 ![Unified view](/assets/posts/2020/3/change-management-kusto/unified-view.png)
 
-If need be we could migrate the data by re-ingesting it into a temp table.  We would then drop the original column and move the extents.
+If need be, we could migrate the data by re-ingesting it into a temp table.  We would then drop the original column and move the extents.
 
 That would require us to also remove duplicates.
 
@@ -476,10 +476,10 @@ That would require us to also remove duplicates.
 
 We explored a couple of scenarios for change management.
 
-The point of this article wasn't to be thorought as an encyclopedy of methods.  It was to show an approach.
+The point of this article wasn't to be thorough as an encyclopedia of methods.  It was to show an approach.
 
 A few patterns emerged:
 
 * Using a view to reconciliate data before and after a transformation
-* Using the transactionality of update policies to our advantage when ingestion failure is inevitable
+* Using transactional update policies to our advantage when ingestion failure is inevitable
 * Always try on test data first!
