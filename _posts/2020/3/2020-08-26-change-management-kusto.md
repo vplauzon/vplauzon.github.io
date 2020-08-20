@@ -365,74 +365,112 @@ For consistency though, we'll update the function to refer to new column names:
 
 ##  Scenario 3:  changing column type
 
-//  We need to change the amount type from long to real
-//  Let's change the type of the column
+We need to change the `amount` type from `long` to `real`.
+
+Let's change the type of the column
+
+```sql
 .alter-merge table invoices(AMOUNT:real)
-//  That isn't supported
+```
 
-//  We will need to add a new column for the real type
+This should lead to an error message like this one:
+
+![Error Change Type](/assets/posts/2020/3/change-management-kusto/error-change-type.png)
+
+Changing the type of a column isn't supported.  We'll have to work harder.
+
+Let's add a new column for the real type:
+
+```sql
 .alter table invoices(EMPLOYEE_NAME:string, AMOUNT:long, AMOUNT_REAL:real, approvalDuration:timespan, DEPARTMENT_ID:int)
+```
 
-//  If we look at the table now
-invoices
-| limit 15
-//  We see the column AMOUNT_REAL as empty
+If we look at the table now, we should see the column AMOUNT_REAL as empty.
 
-//  We can still ingest data with the old schema
+We can still ingest data with the old schema:
+
+```sql
 .set-or-append invoices <|
     datatable(EMPLOYEE_NAME:string, AMOUNT:long, AMOUNT_REAL:real, approvalDuration:timespan, DEPARTMENT_ID:int)
     [
         "Jake", 23, real(null), 3h, 3
     ]
+```
 
-//  Let's do the changes in prettyInvoices so we can propagate
+Let's do the changes in prettyInvoices so we can propagate:
+
+```sql
 .alter table prettyInvoices(employeeName:string, amount:long, amountReal:real, approvalDuration:timespan, department:string)
+```
 
-//  If we ingest now, it will fail because of update policy
+If we ingest now, it will fail because of update policy:
+
+```sql
 .set-or-append invoices <|
     datatable(EMPLOYEE_NAME:string, AMOUNT:long, AMOUNT_REAL:real, approvalDuration:timespan, DEPARTMENT_ID:int)
     [
         "Kamari", 13, real(null), 6h, 4
     ]
+```
 
-//  Let's fix the update policy
+Let's fix the update policy:
+
+```sql
 .create-or-alter function transformInvoices(){
     invoices
     | join kind=inner departments on $left.DEPARTMENT_ID==$right.id
     | project employeeName=EMPLOYEE_NAME, amount=AMOUNT, amountReal=AMOUNT_REAL, approvalDuration, department
 }
+```
 
-//  As we've seen in the adding column scenario, any queued ingestion would retry the failed ingestion
-//  a few times
+As we've seen in the adding column scenario, any queued ingestion would retry the failed ingestion a few times.  Let's simulate a retry here:
+
+```sql
 .set-or-append invoices <|
     datatable(EMPLOYEE_NAME:string, AMOUNT:long, AMOUNT_REAL:real, approvalDuration:timespan, DEPARTMENT_ID:int)
     [
         "Kamari", 13, real(null), 6h, 4
     ]
-//  This time it works
+```
 
-//  We can even change the mapping upstream to send us the data with real amounts
+This time it works.
+
+We can even change the mapping upstream to send us the data with real amounts:
+
+```sql
 .set-or-append invoices <|
     datatable(EMPLOYEE_NAME:string, AMOUNT:long, AMOUNT_REAL:real, approvalDuration:timespan, DEPARTMENT_ID:int)
     [
         "Larry", long(null), 43.23, 1h, 5
     ]
-//  This time it works
+```
 
-//  We can see the data landed
-prettyInvoices
-| limit 20
+We can see the data landed in `prettyInvoices`.
 
-//  As long as we have data in both columns, we could unify it in a view:
+As long as we have data in both columns, we could unify it in a view:
+
+```sql
 .create-or-alter function prettyInvoices(){
     prettyInvoices
     | extend mergedAmount = iif(isnull(amount), amountReal, toreal(amount))
     | project employeeName, amount=mergedAmount, approvalDuration, department
 }
+```
 
-//  This gives us a unified view
+This gives us a unified view:
+
+```sql
 prettyInvoices
 | limit 20
-//  If need be we could migrate the data by re-ingesting it into a temp table
-//  Then drop the original column and move the extents
-//  That would require us to also remove duplicates
+```
+
+returns:
+
+![Unified view](/assets/posts/2020/3/change-management-kusto/unified-view.png)
+
+If need be we could migrate the data by re-ingesting it into a temp table.  We would then drop the original column and move the extents.
+
+That would require us to also remove duplicates.
+
+## Summary
+
