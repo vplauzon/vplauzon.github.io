@@ -188,124 +188,180 @@ Now, let's similarly change the schema of `prettyInvoices`:
 .alter table prettyInvoices(EMPLOYEE_NAME:string, AMOUNT:long, approvalDuration:timespan, department:string)
 ```
 
-//  Assuming ingestion is continuing in real time
+Again, assuming ingestion is continuing in real time:
+
+```sql
 .set-or-append invoices <|
     datatable(EMPLOYEE_NAME:string, AMOUNT:long, approvalDuration:timespan, DEPARTMENT_ID:int)
     [
         "Francine", 11, timespan(null), 5
     ]
-//  We can see that no extents are returned:  something is wrong
+```
 
-//  Let's find out if there was ingestion failures
+Now, no extents are returned:  something is wrong.
+
+Let's find out if there was ingestion failures:
+
+```sql
 .show ingestion failures
 | where Table == "invoices" or Table == "prettyInvoices"
-//  The issue is the update policy returns a result set not containing the new column
-//  Because the update policy was "transactional=true", both ingestion failed
+```
 
-//  If instead of what we did here, i.e. a .set-or-append, we used any type of
-//  queued ingestion (i.e. Event Hub, Event Grid, IoT Hub or any integration using
-//  queued ingestion), retries would occur.  Those retries are attempted a couple
-//  of times at exponential backoff period.  So we have time to do the change we
-//  need to do.
-//  Here we change the update policy function to include the duration column
+The issue is the update policy returns a result set not containing the new column:  `Query schema does not match table schema`.  Because the update policy was "transactional=true", both ingestion failed.
+
+We can also see the `FailureKind` is `Transient`.  Since we did a `.set-or-append`, that doesn't change anything but in a real-life scenario, we would use some kind of queued ingestion (i.e. Event Hub, Event Grid, IoT Hub or any integration basedon queued ingestion).  Queued ingestion retries when transient error occur.  Those retries are attempted [a couple of times at exponential backoff period](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/updatepolicy#transactional-policy).
+
+So we have time to do the change we need to do.  For a production scenario, those scripts should be run back-to-back and in the worse case an ingestion failure would occur and succeed on retry.
+
+So, let's change the update policy function to include the duration column:
+
+```sql
 .create-or-alter function transformInvoices(){
     invoices
     | join kind=inner departments on $left.DEPARTMENT_ID==$right.id
     | project EMPLOYEE_NAME, AMOUNT, approvalDuration, department
 }
+```
 
-//  We simulate a retry by trying to reingest the record
+Let's simulate a retry by trying to reingest the record:
+
+```sql
 .set-or-append invoices <|
     datatable(EMPLOYEE_NAME:string, AMOUNT:long, approvalDuration:timespan, DEPARTMENT_ID:int)
     [
         "Francine", 11, timespan(null), 5
     ]
-//  It now returns us two extents, one for each table
+```
 
-//  A completely new ingestion should also pass
+It now returns us two extents, one for each table.
+
+A completely new ingestion should also pass:
+
+```sql
 .set-or-append invoices <|
     datatable(EMPLOYEE_NAME:string, AMOUNT:long, approvalDuration:timespan, DEPARTMENT_ID:int)
     [
         "Gaston", 8, timespan(null), 1
     ]
+```
 
-//  We get the expected content
+We get the expected content:
+
+```sql
 prettyInvoices
 | limit 10
+```
 
-//  We can now change the upstream mapping to map the duration column
-//  This should send data with approval duration that we simulate here
+returns:
+
+EMPLOYEE_NAME|AMOUNT|approvalDuration|department
+-|-|-|-
+Carol|20||HR
+Bob|5||HR
+Alice|10||Engineering
+Ethan|21||Engineering
+Dany|15||Sales
+Gaston|8||Corp
+Francine|11||Finance
+
+We can now change the upstream mapping to map the duration column.  This should send data with approval duration that we simulate here:
+
+```sql
 .set-or-append invoices <|
     datatable(EMPLOYEE_NAME:string, AMOUNT:long, approvalDuration:timespan, DEPARTMENT_ID:int)
     [
         "Hadleigh", 8, 4h, 1
     ]
+```
 
-//  The duration data now flows through
-prettyInvoices
-| limit 10
+And the `4h` (4 hours) flows to `prettyInvoices`.
 
+The key in this scenario is to try those operations in advance and have the scripts ready.  Unfortunately, there is a little bit of timing required, although by default we have around 30 minutes which should be plenty to run a script.
 
 ##  Scenario 2:  renaming column
 
-//  Now the team decides that having all-caps for column names is a little too 90's and
-//  want to rename EMPLOYEE_NAME and AMOUNT in prettyInvoices table
-//  Since that table already contains data, we have to be mindful of that
+The team decides that having all-caps for column names is a little too 90's and want to rename EMPLOYEE_NAME and AMOUNT in prettyInvoices table.
 
-//  The easiest way to "rename" a column is not to do it but have a view that does
+The easiest way to "rename" a column is not to do it but have a view that does:
+
+```sql
 .create-or-alter function prettyInvoices(){
     prettyInvoices
     | project employeeName=EMPLOYEE_NAME, amount=AMOUNT, approvalDuration, department
 }
+```
 
-//  In Kusto, function have precedance over tables.  Also a parameterless function can
-//  omit parenthesis, so this actually is equivalent to prettyInvoices()
+In Kusto, functions have precedance over tables.  Also a parameterless function can omit parenthesis, so this actually is equivalent to `prettyInvoices()`:
+
+```sql
 prettyInvoices
 | limit 15
-//  Although that is only cosmetic, since it doesn't break anything, it often is a
-//  good enough solution
+```
 
-//  If need be, we can change the actual schema
-//  This needs to be done one column at the time
+Although that is only cosmetic, since it doesn't break anything, it often is a good enough solution.
+
+If need be, we can change the actual schema.  This needs to be done one column at the time:
+
+```sql
 .rename column prettyInvoices.EMPLOYEE_NAME to employeeName
 
-//  Here is the second column
 .rename column prettyInvoices.AMOUNT to amount
+```
 
-//  If we execute this, it will fail
+If we execute the following, it will fail:
+
+```sql
 prettyInvoices
-//   This is because it is using the view (function) we just define, which in turn is using the old column names
+```
 
-//  We can force the query to tap into the table and not the view (function)
+This is because it is using the view (function) we just defined, which in turn is using the old column names.
+
+We can force the query to tap into the table and not the view (function):
+
+```sql
 table("prettyInvoices")
-//  We see that data was preserved
+```
 
-//  We can drop the view (function)
+And we see that data was preserved with the column renamed.
+
+We can drop the view (function):
+
+```sql
 .drop function prettyInvoices
+```
 
-//  This call becomes valid:
-prettyInvoices
+Now, let's see how ingestion react:
 
-//  Now, let's see how ingestion react:
+```sql
 .set-or-append invoices <|
     datatable(EMPLOYEE_NAME:string, AMOUNT:long, approvalDuration:timespan, DEPARTMENT_ID:int)
     [
         "Isabel", 12, 5h, 6
     ]
-//  Surprinsingly, it works, despite the update policy still referring to the old column names!
+```
 
-//  And we can see the data actually landed
+Surprinsingly, it works, despite the update policy still referring to the old column names!
+
+And we can see the data actually landed:
+
+```sql
 prettyInvoices
 | limit 15
+```
 
-//  This is because the data insertion is done in terms of "position" of parameters, not their names
-//  Since column are still in the same order, nothing breaks
-//  For consistency though, we'll update the function to refer to new column names:
+Why is that?
+
+This is because the data insertion is done in terms of "position" of parameters, not their names.  Since columns are still in the same order, nothing breaks.
+
+For consistency though, we'll update the function to refer to new column names:
+
+```sql
 .create-or-alter function transformInvoices(){
     invoices
     | join kind=inner departments on $left.DEPARTMENT_ID==$right.id
     | project employeeName=EMPLOYEE_NAME, amount=AMOUNT, approvalDuration, department
 }
+```
 
 ##  Scenario 3:  changing column type
 
