@@ -119,65 +119,74 @@ Let's explore different change management scenarios.
 
 ##  Scenario 1:  adding column
 
-//  We want to add a column to our table since we have more properties
-//  coming up from upstream
-//  Let's first clone our invoices table to try the changes there
+We want to add a column to our table since we have more properties coming up from upstream.
+
+Let's first clone our `invoices` table to try the changes with a safety net.
+
+```sql
 .set-or-replace invoicesClone <|
     invoices
     | limit 10
+```
 
-//  Let's alter that clone
+Let's alter that clone by adding a column.
+
+```sql
 .alter-merge table invoicesClone(approvalDuration:timespan)
+```
 
-//  The new column is there, at the end
-//  The new column is empty (NULL)
-invoicesClone
-| limit 5
+That adds the column at the end of the table.  We can change that by reordering the columns using `.alter table`.
 
-//  Maybe we don't like to have the new column at the end
-//  We can alter the table again to fix that
-//  Let's first get its "declared schema"
+For that we need the entire schema.  A quick way to get that is the following:
+
+```sql
 .show table invoicesClone cslschema
+```
 
-//  We can then easily flip things around
+which returns the schema
+
+```
+EMPLOYEE_NAME:string,AMOUNT:long,DEPARTMENT_ID:int,approvalDuration:timespan,
+```
+
+It is then quite easy to reorder the columns:
+
+```sql
 .alter table invoicesClone(EMPLOYEE_NAME:string, AMOUNT:long, approvalDuration:timespan, DEPARTMENT_ID:int)
+```
 
-//  The new column isn't at the end anymore
-invoicesClone
-| limit 5
+We're pretty confident about the procedure, so, let's do it on the real table:
 
-//  We're pretty confident about the procedure
-//  So, let's do it on the real table
+```sql
 .alter table invoices(EMPLOYEE_NAME:string, AMOUNT:long, approvalDuration:timespan, DEPARTMENT_ID:int)
+```
 
-//  The table schema is as expected
-invoices
-| limit 10
+While we are doing that, let's simulate the continuous ingestion continuing happening:
 
-//  Let's check it didn't break the update policies by ingesting more data
-//  Here we simulate that the new column isn't mapped in the upstream process (e.g. event hub ingestion),
-//  hence it is still null
-//  ADX-QUESTION:  Is that true?  If a column isn't mapped, does it simply take NULL or does it fail the ingestion?
+```sql
 .set-or-append invoices <|
     datatable(EMPLOYEE_NAME:string, AMOUNT:long, approvalDuration:timespan, DEPARTMENT_ID:int)
     [
         "Dany", 15, timespan(null), 4,
         "Ethan", 21, timespan(null), 3
     ]
+```
 
-//  The table content is as expected
-invoices
-| limit 10
+If we look at the `invoices` table, we should have:
 
-//  So is the content of the transformed data
-prettyInvoices
-| limit 10
+EMPLOYEE_NAME|AMOUNT|approvalDuration|DEPARTMENT_ID
+-|-|-|-
+Bob|5||2
+Carol|20||2
+Alice|10||3
+Dany|15||4
+Ethan|21||3
 
-//  Let's cleanup
-.drop table invoicesClone
+Now, let's similarly change the schema of `prettyInvoices`:
 
-//  Now, let's similarly change the schema of the transformed data
+```sql
 .alter table prettyInvoices(EMPLOYEE_NAME:string, AMOUNT:long, approvalDuration:timespan, department:string)
+```
 
 //  Assuming ingestion is continuing in real time
 .set-or-append invoices <|
@@ -297,7 +306,6 @@ prettyInvoices
     | join kind=inner departments on $left.DEPARTMENT_ID==$right.id
     | project employeeName=EMPLOYEE_NAME, amount=AMOUNT, approvalDuration, department
 }
-
 
 ##  Scenario 3:  changing column type
 
