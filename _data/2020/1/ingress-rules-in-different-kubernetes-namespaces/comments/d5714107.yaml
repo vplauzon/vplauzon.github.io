@@ -1,0 +1,6 @@
+id: d5714107
+author:
+  name: Kenneth
+  url: 
+date: 2020-08-26T05:56:17.8080328-04:00
+content: "you have 2 different ingress in 2 different namespaces :-) \n\n2 different rules of the same ingress must be in the same namespace."
