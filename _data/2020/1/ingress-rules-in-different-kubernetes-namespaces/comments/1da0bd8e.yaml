@@ -1,0 +1,13 @@
+id: 1da0bd8e
+author:
+  name: Vincent-Philippe Lauzon
+  url: https://vincentlauzon.com/
+date: 2020-08-28T12:27:44.6944047-04:00
+content: >-
+  True but that's not a huge constraint.
+
+
+  The point of the article was to show we could have different ingress in different namespace managed in a non-central fashion (i.e. each in their own namespace).
+
+
+  Did I use ingress controller / ingress / ingress rule interchangeably?
