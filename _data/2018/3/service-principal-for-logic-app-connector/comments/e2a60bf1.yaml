@@ -1,0 +1,12 @@
+id: e2a60bf1
+author:
+  name: Vincent-Philippe Lauzon
+  url: https://vincentlauzon.com/
+date: 2020-09-09T17:34:19.4684429-04:00
+content: >-
+  Hi Andrew.  As I mentioned in the article, a past article discusses a sure way to find those:
+
+  https://vincentlauzon.com/2017/10/28/how-to-create-a-logic-app-connector-in-an-arm-template/
+
+
+  But I believe that nowadays, you can simply export the template of an existing connector in the Portal.
