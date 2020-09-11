@@ -1,0 +1,6 @@
+id: a43516d6
+author:
+  name: Karthikeyan Vijayakumar
+  url: 
+date: 2020-09-11T04:15:40.8500763-04:00
+content: "Thank you for the great article, I understood something new today.\n\nAs Azure Monitor gathers the container basic logs from , i.e. stdout / stderr. Why do we need to have sidecar? What do you mean by \n\n\"This doesn’t help us directly with custom files.\""
