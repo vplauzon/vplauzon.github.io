@@ -1,0 +1,10 @@
+id: 454eeb5e
+author:
+  name: Vincent-Philippe Lauzon
+  url: https://vincentlauzon.com/
+date: 2020-09-11T16:23:32.2888863-04:00
+content: >-
+  So Azure Monitor deploys a daemon (i.e. a pod per node) that will collect stdout stderr.  It *does not* collect any custom files.
+
+
+  The sidecar approach suggested by K8s doc have a sidecar continuously reading custom files (in a shared folder) and outputting it in its own stdout.  This way, Azure Monitor can then catch those stdout.
