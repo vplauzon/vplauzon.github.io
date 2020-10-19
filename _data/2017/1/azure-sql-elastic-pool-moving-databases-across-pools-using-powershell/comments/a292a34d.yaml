@@ -1,0 +1,20 @@
+id: a292a34d
+author:
+  name: SarathKumar
+  url: 
+date: 2020-10-10T02:46:40.4765989-04:00
+content: >2-
+
+
+
+
+
+  #Very impressive document.
+
+
+  $dbs | foreach {Set-AzureRmSqlDatabase -ResourceGroupName DBs -ServerName pooldemoserver -DatabaseName $_.DatabaseName -ElasticPoolName $new.ElasticPoolName}
+
+
+  Question below:
+
+  "I have the need to move multiple databases in to a pool once the databases are ready. But in the above script , can you elaborate how to set the variable for the database names.
