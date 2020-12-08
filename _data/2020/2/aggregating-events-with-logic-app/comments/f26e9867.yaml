@@ -1,0 +1,6 @@
+id: f26e9867
+author:
+  name: Vincent-Philippe Lauzon
+  url: https://vincentlauzon.com/
+date: 2020-12-08T13:56:53.9432435-05:00
+content: "Hi Anil, \n\nHave a look at the code in https://github.com/vplauzon/messaging/tree/master/aggregating-event-grid-logic-app.\n\nIt includes the ARM template to deploy the solution discussed in this article."
