@@ -1,0 +1,6 @@
+id: 0a37bf69
+author:
+  name: Max Ivanov
+  url: https://azure.microsoft.com/en-us/updates/api-management-s-named-values-integration-with-azure-key-vault/
+date: 2020-12-18T19:45:48.3087040-05:00
+content: APIM Named Values can now be managed with Key Vault (it's in preview). Cheers!
