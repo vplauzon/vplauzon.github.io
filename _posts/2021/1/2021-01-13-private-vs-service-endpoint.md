@@ -6,7 +6,6 @@ categories:
 tags:
     - Networking
     - Security
-date:  2021-01-01
 ---
 <img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2021/1/2021-01-13-private-vs-service-endpoint/networking.jpg" />
 
