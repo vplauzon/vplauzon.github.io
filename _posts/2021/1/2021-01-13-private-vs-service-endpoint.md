@@ -17,8 +17,8 @@ When should we use one versus the other?
 
 For this article, I've done something a different.  I've created a video on YouTube.
 
-I wanted to try a different medium to communicate.  During the Covid-19 pandemic, we all had to do a lot of video conferencing.  I personnally find it hard to absorb information by video conference.  On the other hand, I've spent countless hours watching YouTube video about other topics than IT.  So I forced to conclude that the way we present in video must be wrong.
+I wanted to try a different medium to communicate.  During the Covid-19 pandemic, we all had to do a lot of video conferencing.  I personally find it hard to absorb information by video conference.  On the other hand, I've spent countless hours watching YouTube video about other topics than IT.  I'm therefore forced to conclude that the way we present in video must be wrong.
 
-So I gave myself the challenge to improve my presentation style.  I'm obviously open to feedback.  Let me know what you think!
+I gave myself the challenge to improve my presentation style.  I'm obviously open to feedback.  Let me know what you think!
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wmVK-pc28Ck" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
