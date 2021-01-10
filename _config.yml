@@ -25,6 +25,7 @@ exclude:
 # 2. Installed Gems
 plugins:
 - kramdown-parser-gfm # This one came from an error compiling after a few months of innactivity
+- github-pages
 - jekyll-sitemap
 - jekyll-mentions
 - jekyll-paginate
