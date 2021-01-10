@@ -34,6 +34,7 @@ plugins:
 - jekyll-commonmark
 - jekyll-include-cache
 - jemoji
+- kramdown-parser-gfm # This one came from an error compiling after a few months of innactivity
 
 # 3. Gem settings
 # Pagination:  https://jekyllrb.com/docs/pagination/
