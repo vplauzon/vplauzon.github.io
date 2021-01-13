@@ -1,6 +1,7 @@
 ---
 title:  Service Endpoint vs Private Endpoint in Azure
 permalink: /2021/01/13/private-vs-service-endpoint
+image:  /assets/posts/2021/1/2021-01-13-private-vs-service-endpoint/networking.jpg
 categories:
 - Solution
 tags:
