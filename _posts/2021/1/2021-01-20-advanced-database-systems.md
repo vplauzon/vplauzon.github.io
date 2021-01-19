@@ -7,14 +7,12 @@ categories:
 tags:
     - Networking
     - Security
-doNotList:  true
-date:  2021-01-18
 ---
 <img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/posts/2021/1/2021-01-20-advanced-database-systems/advanced-database-systems.png" />
 
-This is a short post to recommend some courses available online.
+This is a short post to recommend a course available online.
 
-Instead of an highly technical course, this is a class at [Carnegie Mellon University](https://www.cmu.edu/):  [Advanced Database Systems](https://15721.courses.cs.cmu.edu/spring2020/schedule.html).
+Rather than a technical course, this is a class at [Carnegie Mellon University](https://www.cmu.edu/):  [Advanced Database Systems](https://15721.courses.cs.cmu.edu/spring2020/schedule.html).
 
 The class is given by [Andy Pavlo](https://www.cs.cmu.edu/~pavlo/) and covers all the internal of advance database systems, focussing on in-memory.
 
