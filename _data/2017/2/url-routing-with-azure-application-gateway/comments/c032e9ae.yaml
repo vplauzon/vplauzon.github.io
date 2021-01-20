@@ -1,0 +1,6 @@
+id: c032e9ae
+author:
+  name: Nitish
+  url: 
+date: 2021-01-20T07:34:30.0069937-05:00
+content: I have setup a app gateway to access 2  applications deployed on diff appservices using /. I access http://myurl.com/app1/ It is successful , but after that I click any link in app it redirects to default route. I need it to be http://myurl.com/app1/link1. But it redirects to http://myurl.com/link1. Any help would be great.
