@@ -7,8 +7,6 @@ categories:
 tags:
     - Identity
     - Security
-doNotList:  true
-date:  2021-01-13
 ---
 What is MSI?  What is it for?  System assigned vs User assigned?
 
