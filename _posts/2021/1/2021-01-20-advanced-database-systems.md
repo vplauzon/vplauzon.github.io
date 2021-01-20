@@ -5,8 +5,7 @@ image:  /assets/posts/2021/1/2021-01-20-advanced-database-systems/advanced-datab
 categories:
 - Solution
 tags:
-    - Networking
-    - Security
+    - Data
 ---
 <img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/posts/2021/1/2021-01-20-advanced-database-systems/advanced-database-systems.png" />
 
