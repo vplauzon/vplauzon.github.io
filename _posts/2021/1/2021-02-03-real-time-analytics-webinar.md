@@ -6,8 +6,6 @@ categories:
 - Solution
 tags:
     - Data
-date: 2021-01-03
-doNotList:  true
 ---
 I did a webinar titled [Real Time Analytics: Identify patterns and rapidly investigate root cause in your operational data](https://www.youtube.com/watch?v=DHOXw-k3raw) on January 13th, 2021.
 
