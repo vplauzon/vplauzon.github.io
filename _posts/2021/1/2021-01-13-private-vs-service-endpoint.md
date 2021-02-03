@@ -7,6 +7,7 @@ categories:
 tags:
     - Networking
     - Security
+excerpt_separator: <!--more-->
 ---
 <img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2021/1/2021-01-13-private-vs-service-endpoint/networking.jpg" />
 
@@ -17,6 +18,8 @@ What are the advantage of one versus the other?
 When should we use one versus the other?
 
 For this article, I've done something a different.  I've created a video on YouTube.
+
+<!--more-->
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wmVK-pc28Ck" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 

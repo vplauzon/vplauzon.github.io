@@ -7,10 +7,13 @@ categories:
 tags:
     - Identity
     - Security
+excerpt_separator: <!--more-->
 ---
 What is MSI?  What is it for?  System assigned vs User assigned?
 
 In this video, we'll see why MSI is simpler and more secure for your solutions.
+
+<!--more-->
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TK8jdVpWsNY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
