@@ -66,6 +66,10 @@ $$
 P(\text{service is up}) = availability = \dfrac {\text{total time service is up} }{\text{total time measured} }
 $$
 
+$$
+K(a,b) = \int \mathcal{D}x(t) \exp(2\pi i S[x]/\hbar)
+$$
+
 Indeed, if a service has availability of %99.9, it means the probability of it being up at any time is %99.9.  It also mean that during 30 days, the service should be down around 43 minutes.
 
 We want to compute the probability of both services (Web App + SQL DB) be up at the same time.
