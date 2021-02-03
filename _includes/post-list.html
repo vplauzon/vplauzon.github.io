@@ -1,4 +1,6 @@
+post-list:begin
 {% if paginator.posts %}
+if-post-list:begin
   <section class="section  typeset">
     <ul class="list  list--posts">
       {% for page in paginator.posts %}
@@ -17,7 +19,9 @@
     </ul>
     {% include post-pagination.html %}
   </section>
+if-post-list:end
 {% else %}
+if-not-post-list:begin
   <section class="section  typeset">
     <ul class="list  list--posts">
       {% for page in site.posts %}
@@ -33,4 +37,6 @@
       {% endfor %}
     </ul>
   </section>
+if-not-post-list:end
 {% endif %}
+post-list:end
