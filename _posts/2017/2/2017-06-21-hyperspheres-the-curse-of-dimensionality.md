@@ -2,6 +2,7 @@
 title: Hyperspheres & the curse of dimensionality
 date: 2017-06-21 18:23:18 -07:00
 permalink: /2017/06/21/hyperspheres-the-curse-of-dimensionality/
+use_math: true
 categories:
 - Solution
 tags:
@@ -46,11 +47,11 @@ Yoshua Bengio has a nice discussion about <a href="https://www.quora.com/What-is
 <img style="float:left;display:inline;" src="https://images.pexels.com/photos/164957/pexels-photo-164957.jpeg?w=940&amp;h=650&amp;auto=compress&amp;cs=tinysrgb" alt="Tapemeasure on 20" width="240" height="160" align="left" />Beyond sampling problems, metrics &amp; <a href="https://en.wikipedia.org/wiki/Measure_(mathematics)" target="_blank" rel="noopener">measures</a> change behaviour at high dimensions.  Intuitively it makes sense since a measure takes a vector (vectors) and squeeze it (them) into a numerical value ; the higher the dimension, the more data we squeeze into one number &amp; hence we should lose information.
 
 We use metrics &amp; measures heavily in Machine Learning.  For instance, a lot of cost (or loss) functions are based on Euclidean’s distance:
-<p align="center">$latex dist(x,y) = \displaystyle\sum_{i=1}^N (x_i-y_i)^2 $</p>
+<p align="center">$ dist(x,y) = \displaystyle\sum_{i=1}^N (x_i-y_i)^2 $</p>
 Now if x and / or y are random variables (e.g. samples), the <a href="https://en.wikipedia.org/wiki/Law_of_large_numbers">law of large numbers</a> applies when N becomes <em>large</em>.  This implies the sum will trend to the expected value with a narrower standard deviation as <em>N</em> increases.  In turns, this means there is less and less information in the distance as the number of dimensions increases.
 
 This brings us to the hypersphere.  An hypersphere’s equation is
-<p align="center">$latex \displaystyle\sum_{i=1}^N x_i^2 = R^2 $</p>
+<p align="center">$ \displaystyle\sum_{i=1}^N x_i^2 = R^2 $</p>
 where <em>x</em> is a point of dimension <em>N</em> and <em>R</em> is the radius of the hypersphere.
 
 An hypersphere of dimension 1 is a line, an hypersphere of dimension 2 is a circle, dimension 3 is a sphere, dimension 4 is an…  expending universe?  and so on.
@@ -191,12 +192,12 @@ We see the hyper volume increases in the first couple of dimensions.  A circle 
 It is unintuitive because in 2 and 3 dimensions (the only dimensions in which we can visualize an hypersphere), the hypersphere pretty much fills its embedding cube.  A way to “visualize” what’s happening in higher dimension is to consider a “diagonal” into an hypersphere.
 
 For a circle, the diagonal (i.e. 45’) intersects with the unit circle at
-<p align="center">$latex (\frac {1} {\sqrt {2}}, \frac {1} {\sqrt {2}})$ since $latex (\frac {1} {\sqrt {2}})^2 + (\frac {1} {\sqrt {2}})^2 = 1^2$</p>
+<p align="center">$ (\frac {1} {\sqrt {2}}, \frac {1} {\sqrt {2}})$ since $ (\frac {1} {\sqrt {2}})^2 + (\frac {1} {\sqrt {2}})^2 = 1^2$</p>
 In general, at dimension N, the diagonal intersects at
-<p align="center">$latex x_i = \frac {1} {\sqrt {N}}$</p>
+<p align="center">$ x_i = \frac {1} {\sqrt {N}}$</p>
 So, despite the hypersphere of radius 1 touches the cube of side 2 centered at the origin on each of its walls, the surface of the hypersphere, in general, gets further and further away from the cube surface as the dimension increases.
 <h2>Consequences of the hypersphere volume</h2>
-A straightforward consequence of the hypersphere volume is sampling.  Randomly sampling a square of side 2 centered at the origin will land points within the unit circle with probability $latex \frac{\pi}{4} = \%79$.  The same process with an hypersphere of dimension 8 would hit the inside of the hypersphere with a probability of %1.6.
+A straightforward consequence of the hypersphere volume is sampling.  Randomly sampling a square of side 2 centered at the origin will land points within the unit circle with probability $ \frac{\pi}{4} = \%79$.  The same process with an hypersphere of dimension 8 would hit the inside of the hypersphere with a probability of %1.6.
 
 A corollary to the hypersphere volume is that at higher dimension, the bulk of the volume of the hypersphere is concentrated in a thin annulus below its surface.  An obvious consequence of that is that optimizing a metric (i.e. a distance) in high dimension is difficult.
 <h2>What should we do about it?</h2>
