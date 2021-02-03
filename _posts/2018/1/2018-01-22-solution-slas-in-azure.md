@@ -62,20 +62,14 @@ To answer that question, we’ll need a probability 101.  It will be light, it 
 
 We can interpret an SLA as a probability.  Let’s observe the following:  measured availability (over a long period of time) equals the probability of being up (at any given time).
 
-$$
-P(\text{service is up}) = availability = \dfrac {\text{total time service is up} }{\text{total time measured} }
-$$
-
-$$
-K(a,b) = \int \mathcal{D}x(t) \exp(2\pi i S[x]/\hbar)
-$$
+$P(\text{service is up}) = availability = \dfrac {\text{total time service is up} }{\text{total time measured} }$
 
 Indeed, if a service has availability of %99.9, it means the probability of it being up at any time is %99.9.  It also mean that during 30 days, the service should be down around 43 minutes.
 
 We want to compute the probability of both services (Web App + SQL DB) be up at the same time.
 
 Let’s consider the multiplication law of probability.  That is, if A &amp; B are independent then:
-<p align="center">$latex P(\text{A and B}) = P(A) \cdot P(B)$</p>
+<p align="center">$ P(\text{A and B}) = P(A) \cdot P(B)$</p>
 <p align="left">In our case:</p>
 <p align="center">$latex \begin{array}{lcl} P(\text{Web App and SQL DB are up}) &amp;=&amp; P(\text{Web App is up}) \cdot P(\text{SQL DB is up})\\ &amp;=&amp; \%99.95 \cdot \%99.99\\ &amp;=&amp; \%99.94 \end{array}$</p>
 <p align="left">This is often is a surprising result for customers we speak to.</p>
