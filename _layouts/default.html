@@ -11,8 +11,9 @@
       <meta name="robots" content="noindex">
     {% endif %}
     
+    <!--  Include Mathjax for LaTex support  -->
     {% if page.use_math %}
-      {% include mathjax_support.html %}
+      {% include _mathjax_support.html %}
     {% endif %}
 
     {% if page.collectionpage %}
