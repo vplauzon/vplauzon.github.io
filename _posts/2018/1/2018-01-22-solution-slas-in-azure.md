@@ -6,6 +6,7 @@ categories:
 - Solution
 tags:
 - Mathematics
+use_math: true
 ---
 <a href="/assets/posts/2018/1/solution-slas-in-azure/pexels-photo-327533.jpg"><img style="border:0 currentcolor;float:right;display:inline;background-image:none;" title="pexels-photo-327533" src="/assets/posts/2018/1/solution-slas-in-azure/pexels-photo-327533_thumb.jpg" alt="pexels-photo-327533" width="320" height="200" align="right" border="0" /></a>Let’s talk about Service Level Agreement (SLA) of your solution in Azure.
 
@@ -60,7 +61,11 @@ Let’s start with a simple example:  a Web App (<a href="https://azure.microso
 To answer that question, we’ll need a probability 101.  It will be light, it will be fast, but we need it.
 
 We can interpret an SLA as a probability.  Let’s observe the following:  measured availability (over a long period of time) equals the probability of being up (at any given time).
-<p align="center">$latex P(\text{service is up}) = availability = \dfrac {\text{total time service is up} }{\text{total time measured} }$</p>
+
+$$
+P(\text{service is up}) = availability = \dfrac {\text{total time service is up} }{\text{total time measured} }
+$$
+
 Indeed, if a service has availability of %99.9, it means the probability of it being up at any time is %99.9.  It also mean that during 30 days, the service should be down around 43 minutes.
 
 We want to compute the probability of both services (Web App + SQL DB) be up at the same time.
