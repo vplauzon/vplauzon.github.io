@@ -71,7 +71,7 @@ We want to compute the probability of both services (Web App + SQL DB) be up at 
 Let’s consider the multiplication law of probability.  That is, if A &amp; B are independent then:
 <p align="center">$ P(\text{A and B}) = P(A) \cdot P(B)$</p>
 <p align="left">In our case:</p>
-<p align="center">$latex \begin{array}{lcl} P(\text{Web App and SQL DB are up}) &amp;=&amp; P(\text{Web App is up}) \cdot P(\text{SQL DB is up})\\ &amp;=&amp; \%99.95 \cdot \%99.99\\ &amp;=&amp; \%99.94 \end{array}$</p>
+<p align="center">$ \begin{array}{lcl} P(\text{Web App and SQL DB are up}) &amp;=&amp; P(\text{Web App is up}) \cdot P(\text{SQL DB is up})\\ &amp;=&amp; \%99.95 \cdot \%99.99\\ &amp;=&amp; \%99.94 \end{array}$</p>
 <p align="left">This is often is a surprising result for customers we speak to.</p>
 <p align="center"><a href="/assets/posts/2018/1/solution-slas-in-azure/image23.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/posts/2018/1/solution-slas-in-azure/image_thumb23.png" alt="image" border="0" /></a></p>
 <p align="left">But if we think about it, the fact the compound SLA is lower than each individual SLA does make sense.  Each component can fail independently.  So the more components, the more failures can occur.</p>
@@ -97,11 +97,11 @@ and we want to know what is the SLA of that solution.  Here the problem is diff
 What we want to know is what is the probability that <em>at least one</em> of the services is up.  One of them being up is enough.
 
 For that, we need to consider some probability laws again.  The negation of a probability is easy to compute:
-<p align="center">$latex P(down) = 1 - P(up)$</p>
+<p align="center">$ P(down) = 1 - P(up)$</p>
 Using simple mathematical manipulations, we can find the probability we are looking for:
-<p align="center">$latex \begin{array}{lcl}P(\text{A or B is up}) &amp;=&amp; 1 - P(\text{A and B are down})\\ &amp;=&amp; 1 - P(\text{A is down}) \cdot P(\text{B is down}) \\&amp;=&amp; 1 - (1 - P(\text{A is up})) \cdot (1 - P(\text{B is up}))\end{array}$</p>
+<p align="center">$ \begin{array}{lcl}P(\text{A or B is up}) &amp;=&amp; 1 - P(\text{A and B are down})\\ &amp;=&amp; 1 - P(\text{A is down}) \cdot P(\text{B is down}) \\&amp;=&amp; 1 - (1 - P(\text{A is up})) \cdot (1 - P(\text{B is up}))\end{array}$</p>
 Now let’s consider RA-GRS:
-<p align="center">$latex \begin{array}{lcl}P(\text{Primary or Secondary is up}) &amp;=&amp; 1 - (1 - P(\text{Primary is up})) \cdot (1 - P(\text{Secondary is up}))\\&amp;=&amp; 1 - (1 - \%99.9) \cdot (1 - \%99.9)\\&amp;=&amp; 1 - \%0.1 \cdot \%0.1\\&amp;=&amp; 1 - \%0.0001\\&amp;=&amp;\%99.9999\end{array}$</p>
+<p align="center">$ \begin{array}{lcl}P(\text{Primary or Secondary is up}) &amp;=&amp; 1 - (1 - P(\text{Primary is up})) \cdot (1 - P(\text{Secondary is up}))\\&amp;=&amp; 1 - (1 - \%99.9) \cdot (1 - \%99.9)\\&amp;=&amp; 1 - \%0.1 \cdot \%0.1\\&amp;=&amp; 1 - \%0.0001\\&amp;=&amp;\%99.9999\end{array}$</p>
 Boom.  We can imagine that this is the computation behind the SLA of RA-GRS.
 
 <a href="/assets/posts/2018/1/solution-slas-in-azure/image25.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/posts/2018/1/solution-slas-in-azure/image_thumb25.png" alt="image" border="0" /></a>
@@ -111,7 +111,7 @@ Let’s notice a caveat though.  This is the SLA that at least one region’s s
 Let’s consider our solution with a Web App and a SQL DB.  For simplification, let’s assume the SQL DB is either static or read only on the secondary site.
 
 <a href="/assets/posts/2018/1/solution-slas-in-azure/image26.png"><img style="border:0 currentcolor;margin-right:auto;margin-left:auto;float:none;display:block;background-image:none;" title="image" src="/assets/posts/2018/1/solution-slas-in-azure/image_thumb26.png" alt="image" border="0" /></a>
-<p align="center">$latex \begin{array}{lcl}P(\text{Primary or Secondary is up}) &amp;=&amp; 1 - (1 - P(\text{Primary is up})) \cdot (1 - P(\text{Secondary is up}))\\&amp;=&amp; 1 - (1 - \%99.94) \cdot (1 - \%99.94)\\&amp;=&amp; 1 - \%0.06 \cdot \%0.06\\&amp;=&amp; 1 - \%0.000036\\&amp;=&amp;\%99.9964\end{array}$</p>
+<p align="center">$ \begin{array}{lcl}P(\text{Primary or Secondary is up}) &amp;=&amp; 1 - (1 - P(\text{Primary is up})) \cdot (1 - P(\text{Secondary is up}))\\&amp;=&amp; 1 - (1 - \%99.94) \cdot (1 - \%99.94)\\&amp;=&amp; 1 - \%0.06 \cdot \%0.06\\&amp;=&amp; 1 - \%0.000036\\&amp;=&amp;\%99.9964\end{array}$</p>
 <a href="/assets/posts/2018/1/solution-slas-in-azure/image27.png"><img style="border:0 currentcolor;display:inline;background-image:none;" title="image" src="/assets/posts/2018/1/solution-slas-in-azure/image_thumb27.png" alt="image" border="0" /></a>
 
 This is a nice SLA.  But as we noticed in the RA-GRS example, the client needs to be the one implementing the failover.  This isn’t acceptable in a web scenario.  Let’s implement the failover on the service side by using Azure Traffic Manager (<a href="https://azure.microsoft.com/en-us/support/legal/sla/traffic-manager/v1_0/">SLA %99.99</a>).
@@ -123,7 +123,7 @@ How do we compute the SLA of that solution?
 <strong>UPDATE (22-01-2018):  There was an error in the original publication.  Thanks <a href="https://twitter.com/d_chapdelaine">@d_chapdelaine</a> for pointing it out!</strong>
 
 We need to chain the Traffic Manager with the fail-over solution (i.e. %99.9964).
-<p align="center">$latex \begin{array}{lcl} P(\text{TM and fail over is up}) &amp;=&amp; P(\text{TM is up}) \cdot P(\text{Either Primary or Secondary is up})\\ &amp;=&amp; \%99.99 \cdot \%99.9964\\ &amp;=&amp; \%99.9864 \end{array}$</p>
+<p align="center">$ \begin{array}{lcl} P(\text{TM and fail over is up}) &amp;=&amp; P(\text{TM is up}) \cdot P(\text{Either Primary or Secondary is up})\\ &amp;=&amp; \%99.99 \cdot \%99.9964\\ &amp;=&amp; \%99.9864 \end{array}$</p>
 Yes, by adding Traffic Manager in front of our web solution, we weaken it.  Doing it on the client side was %99.9964 while on the service side it is %99.9864.  But we are still higher than the %99.94 of a single region, but inching to something higher.
 
 <a href="/assets/posts/2018/1/solution-slas-in-azure/sla2.png"><img class="size-full wp-image-4433 aligncenter" src="/assets/posts/2018/1/solution-slas-in-azure/sla2.png" alt="" /></a>
