@@ -193,6 +193,8 @@ public void Configure(
 
 ```
 
+**UPDATE 08-20-2021:  `TelemetryConfiguration.Active` has [actually been deprecated](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1152).  The new mechanism is to use `services.AddSingleton<ITelemetryInitializer>(new RoleNameInitializer("my-service-name"))`.  Thank you [Joan](https://github.com/JoanComasFdz) for bringing that to our attention!**
+
 <h2>Summary</h2>
 
 Changing the cloud role name isn't rocket science but it can be repetitive.
