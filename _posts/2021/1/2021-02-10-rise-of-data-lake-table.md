@@ -55,7 +55,7 @@ Enters the data lake model.  Here we land all data in a common storage layer, th
 
 (This diagram is the "Pick the right tool for the right job" slide I stole from a colleague)
 
-Now the data is *liberated*.  It isn't trapped in one engine.
+Now the data is freed from database engines (*liberated* if we want to be dramatic).
 
 A lot of the engines will actually need to *load* the data to be efficient with it.  But an unprocessed version of the data is available in the lake for other engines.
 
