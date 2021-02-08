@@ -31,6 +31,8 @@ One that most people are familiar with is the database model:
 
 A client (could be an actual end user, could be an application, could be a service) accesses data through a database API (e.g. ODBC).  Behind the scene, the database engine stores the data to files somewhere:  traditionnaly on local hard drives ; in modern systems in cloud storage.  But at the end of the day the data is **stored in binary files in a propriatary format**.
 
+From that perspective, a data warehouse system or any analytical database (e.g. [Azure Data Explorer](https://vincentlauzon.com/2020/02/19/azure-data-explorer-kusto)) is similar to a database.
+
 This model has been around forever for good reasons.  It has lots of advantages, including:
 
 * DB exposes functionalities (e.g. queries) independant of file formats allowing DB software implementation to
@@ -51,7 +53,7 @@ Similarly, in the cloud we do "rent compute".  Therefore if we have an engine th
 
 Enters the data lake model.  Here we land all data in a common storage layer, the data lake.  We will then have different engines use that data.
 
-![Pick the right tool for the right job](/assets/posts/2021/1/2021-02-10-rise-of-data-lake-tables/data-lake.png)
+![Pick the right tool for the right job](/assets/posts/2021/1/2021-02-10-rise-of-data-lake-tables/right-tool.png)
 
 (This diagram is the "Pick the right tool for the right job" slide I stole from a colleague)
 
@@ -59,13 +61,25 @@ Now the data is freed from database engines (*liberated* if we want to be dramat
 
 A lot of the engines will actually need to *load* the data to be efficient with it.  But an unprocessed version of the data is available in the lake for other engines.
 
-![Data Lake Model](/assets/posts/2021/1/2021-02-10-rise-of-data-lake-tables/data-lake2.png)
+![Data Lake Model](/assets/posts/2021/1/2021-02-10-rise-of-data-lake-tables/data-lake.png)
 
-We could look at that situation and observed that we replaced one silo by many.  But actually we can consider the lake as the source of truth and all copies (inside the engines)
+We could look at that situation and observed that we replaced one silo by many.  But actually we can consider the lake as the source of truth and all copies (inside the engines) as "engine cache".
+
+An interesting aspect of that model is that some engine can access the data directly in the lake.  For instance, [Apache Spark](http://spark.apache.org/) (in Azure:  [Azure Databricks](https://docs.microsoft.com/en-us/azure/databricks/scenarios/what-is-azure-databricks), [Apache Spark in Azure Synapse Analytics](https://docs.microsoft.com/en-us/azure/synapse-analytics/spark/apache-spark-overview) or [Azure HDInsight](https://docs.microsoft.com/en-us/azure/hdinsight/)), [Trino](https://trino.io/), [Dremio](https://www.dremio.com/), [Azure Synapse Serverless](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql/on-demand-workspace-overview), [Azure Data Explorer External Tables](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/externaltables), etc.  .  This, in turn, opens the door to serverless computing, but we'll cover that later.
+
+The major strenght of this model is also its major weakness.  Because the data is layed out in an open format (Parquet, Avro, CSV, etc.), it can be read by any compute and queryed on directly.  But because it is the lowest common denominator (compared to a database internal files), it is also very unefficient to query.  Querying a lake means opening every file, parsing it and looking for the data pertaining to the query.  It's basically a table scan.  Data might sometimes be partitionned by date and we're lucky by another column (e.g. customer #), but that's about it.  Performance is therefore usually a drag.
+
+Looking away from querying capacity, ingestion is also an issue.  Doing massive ingestion means copying a lot of big files.  Transforming that data midflight can be complex if we consider failure scenario since file copying isn't transactional.  Also, if files are deleted or corrupted, there is no way to go back (unless the underlying storage platform allows it).
 
 ### Data Lake tables
 
-From that perspective, a data warehouse system or any analytical database (e.g. [Azure Data Explorer](https://vincentlauzon.com/2020/02/19/azure-data-explorer-kusto)) is similar to a database.
+Enters Data Lake tables.
+
+Data lake gives us cheap storage & compute independance.  Tables gives us more features:  atomic changes, schema changes and more efficient queries.
+
+![Data Lake Table Model](/assets/posts/2021/1/2021-02-10-rise-of-data-lake-tables/data-lake-table.png)
+
+Until standard arises and is well establishes, you loose independance of engine.
 
 https://www.jamesserra.com/archive/2017/12/is-the-traditional-data-warehouse-dead/
 
@@ -76,8 +90,6 @@ False economies / The dream solution
 Trading lot of compute for crappy storage isn't a rational decision
 
 There comes data lake tables
-
-Data lake gives you cheap storage, independance of engine.  Tables give you more features (e.g. atomic changes) and more efficient queries.  Until standard arises and is well establishes, you loose independance of engine.
 
 Cross-engine with nessy?
 
