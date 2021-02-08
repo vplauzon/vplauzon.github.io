@@ -6,13 +6,28 @@ categories:
 - Solution
 tags:
 - Data
-- Operation
 hidden:  true
 date: 2021-01-01
 ---
 <img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2021/1/2021-02-10-rise-of-data-lake-tables/pexels-caio-3322008.jpg" />
 
-There is a motion and it's going to land somewhere.  But there is a lot of noise.
+Two weeks ago I attended the [Subsurface Live Winter 2021](https://subsurfaceconf.com/winter2021), *the cloud data lake conference*, presented by [Dremio](https://www.dremio.com/).
+
+One of the star of the show was [Apache Iceberg](https://iceberg.apache.org/), *an open table format for huge analytic datasets* (cf web site).  There were other stars, such as [Project Nessie](https://projectnessie.org/), *a Git-Like Experience for your Data Lake* (cf web site).  But Iceberg talks are the ones that had the most impact for me.  I since watched other talks on YouTube and read some articles about it.
+
+I always found those Open Source conferences interesting.  They make me breath fresh air outside the Microsoft world.
+
+In this article I want to reflect on the significance of Data Lake table formats and what it means.  I'm not dupe, I know there is a lot of power play going on, companies behind Open Source projects trying to position themselves, other companies trying to displace dominant analytic players and the like.  That's the noise.  But I think there is a real motion in the field motivated by new cloud capabilities.  I don't think that motion will land as far as a lot of players make it sound ([over hyped much](https://en.wikipedia.org/wiki/Hype_cycle?) but it will land at a different place than we are today.
+
+## Data lake vs Data Warehouse / Database
+
+Let's look at some data storage & processing model.
+
+One that most people are familiar with is the database model:
+
+![Database model](/assets/posts/2021/1/2021-02-10-rise-of-data-lake-tables/db.png)
+
+https://www.jamesserra.com/archive/2017/12/is-the-traditional-data-warehouse-dead/
 
 DBs defy some rules of the cloud.  They aren't serverless.  They are stateful.  Statefulness is complicated.
 
