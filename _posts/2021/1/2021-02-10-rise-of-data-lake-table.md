@@ -91,6 +91,8 @@ So we are all caught up.  Let's discuss!
 
 ## The Hype
 
+<img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/posts/2021/1/2021-02-10-rise-of-data-lake-tables/pexels-cottonbro-6116860.jpg" />
+
 First let's address what we think is flimsy about the picture above before we look at what we think is truely valuable and disruptive.
 
 [James Serra](https://www.jamesserra.com) does a great job articulating the [value of data warehouses in a data estate](https://www.jamesserra.com/archive/2017/12/is-the-traditional-data-warehouse-dead/) and is worth a read.
@@ -109,9 +111,42 @@ That will likely change over time and is a typical barrier of entry for many tec
 
 The total super set of features we can pack in a table format is inferior to the super set of features of analytical databases.
 
-### Limits of one landing area
+A big advantage of database APIs we mentionned is being a choke point for access control.  How do we implement data masking within a data lake?  Once a principal has access to a blob, how can we apply finer grain access?
+
+This is typically implemented at the query engine level (Apache Ranger plug-ins).  That approach is a little ackward with modern approach where passthrough authentication to the lake is used.
+
+Forcing the access to be done through a Spark Connector to enforce control point also breaks the idea that the lake can be accessed by any client and isn't subjected to the tyrany of a data engine.
+
+Basically, for some feature, we need some common compute in front of the data.
+
 ### Concurrency
-### Security & Governance (including many playing in files)
+
+The idea of a "storage only" data lake brings the idea of decentralized computing, i.e. we do not need to go through one database engine to get to the data.
+
+How does this address concurrency?
+
+Could we have heterogeneous computes ingest data in data lake tables at the same time?
+
+We lack deep knowledge in the Data Lake Table format to answer that question but are skeptical about the capacity as this is general challenge for databases.
+
+Again a centralized compute layer emmerges as we get deeper into requirements.
+
+### Software evolution
+
+Assuming decentralized compute, how do we address software evolution?
+
+With databases the compute engine is versionned in one block.
+
+What if we have three computes, let's say a Spark engine, a custom Java Service and Trino.  Let's assume an hypothetical scenario where we upgrade our Spark runtime to Apache Iceberg 2.0 which has efficient indexing (this is made up and part of hypothetical scenario).  How does the Java Service and Trino runtime react to suddently having Iceberg 2.0 artefacts in the Data Lake?  Or the other way around?
+
+This is basically a challenge with decentralized servers.
+
+Again, we see the need for a centralized compute layer emmerging.
+
+### Limits of one landing area
+
+Can one table format rule them all?  Can we address near real time ingestion / time series with the same technology as 
+
 ### Performance of serverless
 
 Until standard arises and is well establishes, you loose independance of engine.
@@ -129,3 +164,5 @@ Cross-engine with nessy?
 How far can that go?  Governance, security access, concurrency, trust everyone to play with your blobs?
 
 Which scenarios does it address well?  Big data volume with low query volume isn't a
+
+Features at the storage layer
