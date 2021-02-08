@@ -49,10 +49,19 @@ Similarly, in the cloud we do "rent compute".  Therefore if we have an engine th
 
 ### Data Lake Model
 
-Enters the data lake model.  Here we land all data in a common storage layer, the data lake, 
+Enters the data lake model.  Here we land all data in a common storage layer, the data lake.  We will then have different engines use that data.
 
-![Data Lake Model](/assets/posts/2021/1/2021-02-10-rise-of-data-lake-tables/data-lake.png)
+![Pick the right tool for the right job](/assets/posts/2021/1/2021-02-10-rise-of-data-lake-tables/data-lake.png)
 
+(This diagram is the "Pick the right tool for the right job" slide I stole from a colleague)
+
+Now the data is *liberated*.  It isn't trapped in one engine.
+
+A lot of the engines will actually need to *load* the data to be efficient with it.  But an unprocessed version of the data is available in the lake for other engines.
+
+![Data Lake Model](/assets/posts/2021/1/2021-02-10-rise-of-data-lake-tables/data-lake2.png)
+
+We could look at that situation and observed that we replaced one silo by many.  But actually we can consider the lake as the source of truth and all copies (inside the engines)
 
 ### Data Lake tables
 
