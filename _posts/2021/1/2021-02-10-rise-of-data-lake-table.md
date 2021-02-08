@@ -15,17 +15,31 @@ Two weeks ago I attended the [Subsurface Live Winter 2021](https://subsurfacecon
 
 One of the star of the show was [Apache Iceberg](https://iceberg.apache.org/), *an open table format for huge analytic datasets* (cf web site).  There were other stars, such as [Project Nessie](https://projectnessie.org/), *a Git-Like Experience for your Data Lake* (cf web site).  But Iceberg talks are the ones that had the most impact for me.  I since watched other talks on YouTube and read some articles about it.
 
-I always found those Open Source conferences interesting.  They make me breath fresh air outside the Microsoft world.
+In this article I want to reflect on the significance of Data Lake table formats and what it means for the future of data analytics in the Cloud.
 
-In this article I want to reflect on the significance of Data Lake table formats and what it means.  I'm not dupe, I know there is a lot of power play going on, companies behind Open Source projects trying to position themselves, other companies trying to displace dominant analytic players and the like.  That's the noise.  But I think there is a real motion in the field motivated by new cloud capabilities.  I don't think that motion will land as far as a lot of players make it sound ([over hyped much](https://en.wikipedia.org/wiki/Hype_cycle?) but it will land at a different place than we are today.
+I know there is a lot of power play going on, companies behind Open Source projects trying to position themselves, other companies trying to displace dominant analytic players and the like.  That's the noise.  To me the signal is a real motion in the field motivated by new cloud capabilities.  I don't think that motion will land as far as a lot of players make it sound ([over hyped much](https://en.wikipedia.org/wiki/Hype_cycle?) but it will land at a different place than we are today.
 
 ## Data lake vs Data Warehouse / Database
 
-Let's look at some data storage & processing model.
+Before discussing Data Lake Table Formats, let's level-set on a few concepts.  Let's look at some data storage & processing model.
 
 One that most people are familiar with is the database model:
 
 ![Database model](/assets/posts/2021/1/2021-02-10-rise-of-data-lake-tables/db.png)
+
+A client (could be an actual end user, could be an application, could be a service) accesses data through a database API (e.g. ODBC).  Behind the scene, the database engine stores the data to files somewhere:  traditionnaly on local hard drives ; in modern systems in cloud storage.  But at the end of the day the data is **stored in binary files in a propriatary format**.
+
+This model has been around forever for good reasons.  It has lots of advantages, including:
+
+* DB exposes functionalities (e.g. queries) independant of file formats allowing DB software implementation to
+    * Evolve independantly of the API
+    * Leverage plenty of storage implementations, e.g. atomic flush
+    * Have complex storage layout (e.g. mixing column store and row store, indexes, etc.)
+* DB becomes a fine-grain access point where we can apply policies:  e.g. data masking, row-level security, encryption, etc.
+
+
+
+From that perspective, a data warehouse system or any analytical database (e.g. [Azure Data Explorer](https://vincentlauzon.com/2020/02/19/azure-data-explorer-kusto)) is similar to a database.
 
 https://www.jamesserra.com/archive/2017/12/is-the-traditional-data-warehouse-dead/
 
