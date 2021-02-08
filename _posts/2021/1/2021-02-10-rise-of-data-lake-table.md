@@ -19,7 +19,7 @@ In this article I want to reflect on the significance of Data Lake table formats
 
 I know there is a lot of power play going on, companies behind Open Source projects trying to position themselves, other companies trying to displace dominant analytic players and the like.  That's the noise.  To me the signal is a real motion in the field motivated by new cloud capabilities.  I don't think that motion will land as far as a lot of players make it sound ([over hyped much](https://en.wikipedia.org/wiki/Hype_cycle?) but it will land at a different place than we are today.
 
-## Data lake vs Data Warehouse / Database
+## Data storage models
 
 Before discussing Data Lake Table Formats, let's level-set on a few concepts.  Let's look at some data storage & processing model.
 
@@ -75,13 +75,46 @@ Looking away from querying capacity, ingestion is also an issue.  Doing massive 
 
 Enters Data Lake tables.
 
-Data lake gives us cheap storage & compute independance.  Tables gives us more features:  atomic changes, schema changes and more efficient queries.
+Data lake gives us cheap storage & compute independance.  Tables gives us more features:  atomic changes, schema changes and more efficient queries.  They borrow ideas from database internal format, implement it at a data lake scale, for massive tables and persist it into an open format.
+
+[Apache Iceberg](https://iceberg.apache.org/) is such a format, speerheaded by Netflix.  [Delta Lake](https://delta.io/) from Databricks is another one.  [Apache Hudi](https://hudi.apache.org/) is another one.  [Microsoft Hyperspace](https://microsoft.github.io/hyperspace/) is an *early-phase indexing subsystem for Apache Spark*.  So there are a few *standards*.
+
+We can look at [Apache Hive](https://hive.apache.org/) as a common ancestor and those format as an evolution adding features.
+
+The model we are often pitched with Data Lake tables is:
 
 ![Data Lake Table Model](/assets/posts/2021/1/2021-02-10-rise-of-data-lake-tables/data-lake-table.png)
 
-Until standard arises and is well establishes, you loose independance of engine.
+Basically, we can forego databases and use open source compute engine to query the lake directly.  In the diagram we've put Apache Delta Lake as table format because it seems to be the one leading on the market and Spark for similar reason.  But the idea can generalized:  any compute with some open table format.
 
-https://www.jamesserra.com/archive/2017/12/is-the-traditional-data-warehouse-dead/
+So we are all caught up.  Let's discuss!
+
+## The Hype
+
+First let's address what we think is flimsy about the picture above before we look at what we think is truely valuable and disruptive.
+
+[James Serra](https://www.jamesserra.com) does a great job articulating the [value of data warehouses in a data estate](https://www.jamesserra.com/archive/2017/12/is-the-traditional-data-warehouse-dead/) and is worth a read.
+
+### Standards
+
+The first limitation is temporary in nature rather than technological.
+
+The fact is that Parquet or CSV are just more widespread than Delta Table or Apache Iceberg.
+
+So by storing our data in a Data Lake table means that we automatically have less clients to consume it.
+
+That will likely change over time and is a typical barrier of entry for many technology (chicken and the egg problem).  CSV is still very common for that very reason despite its (many) shortcomings.
+
+### Limits of open table format
+
+The total super set of features we can pack in a table format is inferior to the super set of features of analytical databases.
+
+### Limits of one landing area
+### Concurrency
+### Security & Governance (including many playing in files)
+### Performance of serverless
+
+Until standard arises and is well establishes, you loose independance of engine.
 
 DBs defy some rules of the cloud.  They aren't serverless.  They are stateful.  Statefulness is complicated.
 
