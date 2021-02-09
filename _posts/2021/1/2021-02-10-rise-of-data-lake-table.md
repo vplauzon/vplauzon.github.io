@@ -228,14 +228,14 @@ It would then make sense to have fine grain security (e.g. column security, data
 
 ## Summary
 
-In this article we wanted to do two things:
+In this article I wanted to do two things:
 
 1.   Debunk some ideas about Data Lake and decentralized compute
-1.   See how disruptive a standard data lake table format could be
+1.   Show how disruptive a standard data lake table format could be
 
-We too often see data lake misused.  Puting Apache Spark on top of raw files is often very unefficient.
+Too often I see data lakes being misused.  Putting Apache Spark on top of raw files is often very unefficient.
 
-Remember that cloud providers sells three types of resources:
+Remember that cloud providers (e.g. Azure) sells three types of resources:
 
 1. Compute
 1. Storage
@@ -243,8 +243,12 @@ Remember that cloud providers sells three types of resources:
 
 Those are in order of magnitude of cost which means that compute is an order of magnitude more expensive than storage.
 
-So storing our Data Warehouse in cheap storage to then query it with tons of compute (to compensate) doesn't make economical sense.  That is why we believe specialized data engines (e.g. Data Warehouse, Real Time Analytics, etc.) are not a dying breed.
+Storing a Data Warehouse worth of data in cheap un-indexed storage to then query it with tons of compute (to compensate) doesn't make economical sense.
+
+That is why we believe specialized data engines (e.g. Data Warehouse, Real Time Analytics, etc.) are not a dying breed.
 
 On the other hand, the need for specialized engines could drop substancially with the adoption of a data lake table format and an homogeneous compute on top of it.
 
 We are still skeptical that Apache Delta Lake (or Apache Iceberg) is the former and that Apache Spark is the latter.  A new generation of technology might need to come to life for those ideas to bare fruits.
+
+What do you think?  Leave your comments down below.
