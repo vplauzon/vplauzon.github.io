@@ -152,6 +152,16 @@ Can one table format rule them all?  There is a reason why there are multiple da
 
 We can easily imagine that would be the same thing for open table format.
 
+### Caching
+
+A big component for database engines is caching.  Recently, in-memory database systems are quite a thing.
+
+Having decentralized compute torpedoes the possibility of cache.  Having decentralized caching systems with cache invalidation is a *difficult* problem.
+
+Without caching, query performance, especially concurrent queries on fast moving data, is poor.
+
+This is why running reports on top of serverless compute on top of a data lake is slow and a bad idea in general.
+
 ### Trusting the different computes
 
 Looking at a landscape where we have multiple kind of compute accessing a data lake, can we trust them all?
@@ -172,32 +182,69 @@ So that paradigm basically becomes Apache Spark in front of Apache Delta Lake.
 
 Aren't we back to the database model?
 
-Not quite but in truth we are much closer.
+Not quite but in truth we are much closer than all the noise surounding Open Data Lake table formats would have us believe.
+
+What remains and is it disruptive?  In short we believe it is.
+
+### Open platform
+
+First obvious advantage of that architecture is that it is open.
+
+If somebody come up with a better algorithm for pruning search branches, they can theoritically submit it to the Apache Spark code base.
+
+If someone could figure out a funky engine that could, for example, look at tables, ignore everything that isn't time & geospatial and come up with super-optimized geospatial time series, they could do it without re-ingesting the data.
+
+### Basis for specialization
+
+We don't believe that one platform / implementation will rule them all.  If database history has shown one thing is that there is no tradeoff that satisfy all scenarios.
+
+What we could end up with is a bases for future, more specialized, implementation.  [Apache Arrow](https://arrow.apache.org/) has become a basis for in-memory columnar format.  The same way an evolution of Apache Delta Lake could become the basis for data at rest table representation.
+
+Standards are good.  Reinventing the wheel doesn't always bring value.
+
+Having standard at the table storage layer could bring deeper integration between heterogeneous query engines.
+
+For instance, we could have a database system that is built on data lake tables.  It could, for instance, add indexes on top of Apache Delta Lake.  This wouldn't require re-ingesting the data, simply indexing it.  Other databases could add other meta data on their own.
 
 ### Serverless
 
-Finally, let's talk about the serverless scenario.
+Data Lake tables kind of facilitate or encourage serverless.
 
-Data Lake tables kind of facilitate or encourage 
+Databases have long defied the rules of cloud computing.  A database isn't serverless by nature.  It is stateful.  Stateful is difficult.  We can't simply load balance a stateful workload as we load balance a compute workload.
 
-Until standard arises and is well establishes, you loose independance of engine.
+For that reason databases typically are provisionned once and run 24/7.  Some databases such as Azure Cosmos DB allow for efficient auto scale or every serverless, but most do not.
 
-DBs defy some rules of the cloud.  They aren't serverless.  They are stateful.  Statefulness is complicated.
+An analytical scenario that makes perfect sense for serverless is a moderately large amount of data that is accessed seldomly.  It makes sense to provision compute per query then.  The query will be slow to start and slow to execute but with modern compute, results can be achieved in seconds on GB of data.
 
-False economies / The dream solution
+Especially if we standardize on Azure Spark, then it becomes viable for a cloud provider to share compute to provide serverless computing.
 
-Trading lot of compute for crappy storage isn't a rational decision
+### Features at the storage layer
 
-There comes data lake tables
+Cloud storage isn't our old dumb storage.  We aren't querying a SCSI endpoint in the cloud.  Cloud storage are multi-layered scalable systems.
 
-Cross-engine with nessy?
+If a standard table format emerge, features could be moved at the storage layer.
 
-How far can that go?  Governance, security access, concurrency, trust everyone to play with your blobs?
-
-Which scenarios does it address well?  Big data volume with low query volume isn't a
-
-Features at the storage layer
+It would then make sense to have fine grain security (e.g. column security, data masking, etc.), indexing and maybe even caching implemented at the storage layer.
 
 ## Summary
 
-Debunk
+In this article we wanted to do two things:
+
+1.   Debunk some ideas about Data Lake and decentralized compute
+1.   See how disruptive a standard data lake table format could be
+
+We too often see data lake misused.  Puting Apache Spark on top of raw files is often very unefficient.
+
+Remember that cloud providers sells three types of resources:
+
+1. Compute
+1. Storage
+1. Networking
+
+Those are in order of magnitude of cost which means that compute is an order of magnitude more expensive than storage.
+
+So storing our Data Warehouse in cheap storage to then query it with tons of compute (to compensate) doesn't make economical sense.  That is why we believe specialized data engines (e.g. Data Warehouse, Real Time Analytics, etc.) are not a dying breed.
+
+On the other hand, the need for specialized engines could drop substancially with the adoption of a data lake table format and an homogeneous compute on top of it.
+
+We are still skeptical that Apache Delta Lake (or Apache Iceberg) is the former and that Apache Spark is the latter.  A new generation of technology might need to come to life for those ideas to bare fruits.
