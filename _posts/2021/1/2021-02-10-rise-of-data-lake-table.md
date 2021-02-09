@@ -245,10 +245,10 @@ Those are in order of magnitude of cost which means that compute is an order of 
 
 Storing a Data Warehouse worth of data in cheap un-indexed storage to then query it with tons of compute (to compensate) doesn't make economical sense.
 
-That is why we believe specialized data engines (e.g. Data Warehouse, Real Time Analytics, etc.) are not a dying breed.
+That is why I believe specialized data engines (e.g. Data Warehouse, Real Time Analytics, etc.) are not a dying breed.
 
 On the other hand, the need for specialized engines could drop substancially with the adoption of a data lake table format and an homogeneous compute on top of it.
 
-We are still skeptical that Apache Delta Lake (or Apache Iceberg) is the former and that Apache Spark is the latter.  A new generation of technology might need to come to life for those ideas to bare fruits.
+I am still skeptical that Apache Delta Lake (or Apache Iceberg) is the former and that Apache Spark is the latter.  A new generation of technology might need to come to life for those ideas to bare fruits.
 
 What do you think?  Leave your comments down below.
