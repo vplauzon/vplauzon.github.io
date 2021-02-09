@@ -77,7 +77,7 @@ Enters Data Lake tables.
 
 Data Lake gives us cheap storage & compute independance.  Tables gives us more features:  atomic changes, schema changes and more efficient queries.  They borrow ideas from database internal format, implement it at a Data Lake scale, for massive tables and persist it into an open format.
 
-[Apache Iceberg](https://iceberg.apache.org/) is such a format, speerheaded by Netflix.  [Delta Lake](https://delta.io/) from Databricks is another one.  [Apache Hudi](https://hudi.apache.org/) is another one.  [Microsoft Hyperspace](https://microsoft.github.io/hyperspace/) is an *early-phase indexing subsystem for Apache Spark*.  So there are a few *standards*.
+[Apache Iceberg](https://iceberg.apache.org/) is such a format, speerheaded by Netflix.  [Delta Lake](https://delta.io/) from Databricks is another one.  [Apache Hudi](https://hudi.apache.org/) is another one.  [Microsoft Hyperspace](https://microsoft.github.io/hyperspace/) is an *early-phase indexing subsystem for Apache Spark*.  So there are a few options.
 
 We can look at [Apache Hive](https://hive.apache.org/) as a common ancestor and those format as an evolution adding features.
 
@@ -99,50 +99,45 @@ First let's address what we think is flimsy about the picture above before we lo
 
 The first limitation is temporary in nature rather than technological.
 
-The fact is that Parquet or CSV are just more widespread than Delta Table or Apache Iceberg.
+The fact is that Parquet or CSV are just more widespread than Apache Delta Lake or Apache Iceberg.
 
-So by storing our data in a Data Lake table means that we automatically have less clients to consume it.
+Storing our data in a Data Lake table means we automatically have less clients to consume it *today*.
 
 That will likely change over time and is a typical barrier of entry for many technology (chicken and the egg problem).  CSV is still very common for that very reason despite its (many) shortcomings.
 
+But the lack of a clear unique standard is a limitation and we don't believe it will go away in a snap.  The reason is that different format offers different features and so innovation will drive changes in format or introduction of new formats.  On the other way around the amount of work to accomplish to migrate to a new format will slow down adoption of new features.  This is exactly what having an API isolate us from!
 
-### Limits of open table format
+### Software evolution
 
-In one sentence:  *the total super set of features we can pack in a table format is inferior to the super set of features of analytical databases*.
+Assuming a single standard (e.g. Apache Delta Lake), how do we address software evolution?
 
-A big advantage of database APIs we mentionned is being a choke point for access control.  How do we implement data masking within a Data Lake?  Once a principal has access to a blob, how can we apply finer grain access?
+What if we have three computes, let's say a Spark engine, a custom Java Service and Trino.  Let's assume an hypothetical scenario where we upgrade our Spark runtime to Apache Delta Lake 2.0 which is more efficient for some reason (this is made up and part of hypothetical scenario).  How does the Java Service and Trino runtime react to suddently having Delta Lake 2.0 artefacts in the Data Lake?  Or the other way around?
 
-This is typically implemented at the query engine level (Apache Ranger plug-ins).  That approach is a little ackward with modern approach where passthrough authentication to the lake is used.
+This is basically a challenge with decentralized servers.
 
-Forcing the access to be done through a Spark Connector to enforce control point also breaks the idea that the lake can be accessed by any client and isn't subjected to the tyrany of a data engine.
+### Limits of open table formats
 
-Basically, for some features, we need some common compute in front of the data.
+In one sentence:  *the super set of features we can pack in a table format is inferior to the super set of features of analytical databases*.
+
+How do we implement data masking within a Data Lake?  Once a principal has access to a blob, how can we apply finer grain access?
+
+This is typically implemented at the query engine level (e.g. [Apache Ranger](http://ranger.apache.org/) plugins).  That approach is a little ackward with modern approach where passthrough authentication to the lake is used.
+
+Forcing the access to be done through a Spark Connector to enforce control points also breaks the idea that the lake can be accessed by any client and isn't subjected to the tyrany of a data engine.
+
+Basically, for some features, we need some known common compute in front of the data.
 
 ### Concurrency
 
 The idea of a "storage only" Data Lake brings the idea of decentralized computing, i.e. we do not need to go through one database engine to get to the data.
 
-How does this address concurrency?
+How does this deals with concurrency?
 
 Could we have heterogeneous computes ingest data in Data Lake tables at the same time?
 
-We lack deep knowledge in the Data Lake Table Format to answer that question but are skeptical about the capacity as this is general challenge for databases.
+Different table formats address this differently.  Some use a form of coarse lock (e.g. a lock blob), others optimistic locking (check at the end).  Etc.  .  Those work ok at low volume but if multiple runtimes would ingest at the same time, it would quickly break.
 
-Some form of coarse lock (e.g. a lock blob) might be possible but would be a crude solution.
-
-Again a centralized compute layer emmerges as we get deeper into requirements.
-
-### Software evolution
-
-Assuming decentralized compute, how do we address software evolution?
-
-With databases the compute engine is versionned in one block.
-
-What if we have three computes, let's say a Spark engine, a custom Java Service and Trino.  Let's assume an hypothetical scenario where we upgrade our Spark runtime to Apache Iceberg 2.0 which has efficient indexing (this is made up and part of hypothetical scenario).  How does the Java Service and Trino runtime react to suddently having Iceberg 2.0 artefacts in the Data Lake?  Or the other way around?
-
-This is basically a challenge with decentralized servers.
-
-Again, we see the need for a centralized compute layer emmerging.
+A centralized compute layer emmerges again as we get deeper into requirements.
 
 ### Limits of one landing area
 
