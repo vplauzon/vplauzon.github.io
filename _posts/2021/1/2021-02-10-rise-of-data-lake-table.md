@@ -11,11 +11,11 @@ date: 2021-01-01
 ---
 <img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2021/1/2021-02-10-rise-of-data-lake-tables/pexels-caio-3322008.jpg" />
 
-Two weeks ago I attended the [Subsurface Live Winter 2021](https://subsurfaceconf.com/winter2021), *the cloud data lake conference*, presented by [Dremio](https://www.dremio.com/).
+Two weeks ago I attended the [Subsurface Live Winter 2021](https://subsurfaceconf.com/winter2021), *the cloud Data Lake conference*, presented by [Dremio](https://www.dremio.com/).
 
 One of the star of the show was [Apache Iceberg](https://iceberg.apache.org/), *an open table format for huge analytic datasets* (cf web site).  There were other stars, such as [Project Nessie](https://projectnessie.org/), *a Git-Like Experience for your Data Lake* (cf web site).  But Iceberg talks are the ones that had the most impact for me.  I since watched other talks on YouTube and read some articles about it.
 
-In this article I want to reflect on the significance of Data Lake table formats and what it means for the future of data analytics in the Cloud.
+In this article I want to reflect on the significance of Data Lake Table Formats and what it means for the future of data analytics in the Cloud.
 
 I know there is a lot of power play going on, companies behind Open Source projects trying to position themselves, other companies trying to displace dominant analytic players and the like.  That's the noise.  To me the signal is a real motion in the field motivated by new cloud capabilities.  I don't think that motion will land as far as a lot of players make it sound ([over hyped much](https://en.wikipedia.org/wiki/Hype_cycle?) but it will land at a different place than we are today.
 
@@ -51,7 +51,7 @@ Similarly, in the cloud we do "rent compute".  Therefore if we have an engine th
 
 ### Data Lake Model
 
-Enters the data lake model.  Here we land all data in a common storage layer, the data lake.  We will then have different engines use that data.
+Enters the Data Lake model.  Here we land all data in a common storage layer, the Data Lake.  We will then have different engines use that data.
 
 ![Pick the right tool for the right job](/assets/posts/2021/1/2021-02-10-rise-of-data-lake-tables/right-tool.png)
 
@@ -75,7 +75,7 @@ Looking away from querying capacity, ingestion is also an issue.  Doing massive 
 
 Enters Data Lake tables.
 
-Data lake gives us cheap storage & compute independance.  Tables gives us more features:  atomic changes, schema changes and more efficient queries.  They borrow ideas from database internal format, implement it at a data lake scale, for massive tables and persist it into an open format.
+Data Lake gives us cheap storage & compute independance.  Tables gives us more features:  atomic changes, schema changes and more efficient queries.  They borrow ideas from database internal format, implement it at a Data Lake scale, for massive tables and persist it into an open format.
 
 [Apache Iceberg](https://iceberg.apache.org/) is such a format, speerheaded by Netflix.  [Delta Lake](https://delta.io/) from Databricks is another one.  [Apache Hudi](https://hudi.apache.org/) is another one.  [Microsoft Hyperspace](https://microsoft.github.io/hyperspace/) is an *early-phase indexing subsystem for Apache Spark*.  So there are a few *standards*.
 
@@ -112,7 +112,7 @@ That will likely change over time and is a typical barrier of entry for many tec
 
 In one sentence:  *the total super set of features we can pack in a table format is inferior to the super set of features of analytical databases*.
 
-A big advantage of database APIs we mentionned is being a choke point for access control.  How do we implement data masking within a data lake?  Once a principal has access to a blob, how can we apply finer grain access?
+A big advantage of database APIs we mentionned is being a choke point for access control.  How do we implement data masking within a Data Lake?  Once a principal has access to a blob, how can we apply finer grain access?
 
 This is typically implemented at the query engine level (Apache Ranger plug-ins).  That approach is a little ackward with modern approach where passthrough authentication to the lake is used.
 
@@ -122,13 +122,13 @@ Basically, for some features, we need some common compute in front of the data.
 
 ### Concurrency
 
-The idea of a "storage only" data lake brings the idea of decentralized computing, i.e. we do not need to go through one database engine to get to the data.
+The idea of a "storage only" Data Lake brings the idea of decentralized computing, i.e. we do not need to go through one database engine to get to the data.
 
 How does this address concurrency?
 
-Could we have heterogeneous computes ingest data in data lake tables at the same time?
+Could we have heterogeneous computes ingest data in Data Lake tables at the same time?
 
-We lack deep knowledge in the Data Lake Table format to answer that question but are skeptical about the capacity as this is general challenge for databases.
+We lack deep knowledge in the Data Lake Table Format to answer that question but are skeptical about the capacity as this is general challenge for databases.
 
 Some form of coarse lock (e.g. a lock blob) might be possible but would be a crude solution.
 
@@ -160,11 +160,11 @@ Having decentralized compute torpedoes the possibility of cache.  Having decentr
 
 Without caching, query performance, especially concurrent queries on fast moving data, is poor.
 
-This is why running reports on top of serverless compute on top of a data lake is slow and a bad idea in general.
+This is why running reports on top of serverless compute on top of a Data Lake is slow and a bad idea in general.
 
 ### Trusting the different computes
 
-Looking at a landscape where we have multiple kind of compute accessing a data lake, can we trust them all?
+Looking at a landscape where we have multiple kind of compute accessing a Data Lake, can we trust them all?
 
 Especially if we consider the preceeding point where we would like the table format to allow for concurrency, software evolution, indexing, etc.  .  Do we trust that the Python library we just downloaded handle those without any bugs?
 
@@ -172,7 +172,7 @@ Here again we face the challenges of distributed compute.  Would we be comfortab
 
 ## So where is the disruption?
 
-In the previous section we addressed a few shortcomings of the Data Lake Table paradigm.  Or more specifically, the paradigm that is not often stated explicitly but assumed, i.e. that by having a standard table format for data lakes, we could have **multiple**, **heterogeneous** compute **concurrency** accessing & ingesting data.
+In the previous section we addressed a few shortcomings of the Data Lake Table paradigm.  Or more specifically, the paradigm that is not often stated explicitly but assumed, i.e. that by having a standard table format for Data Lakes, we could have **multiple**, **heterogeneous** compute **concurrency** accessing & ingesting data.
 
 We saw that if we push that reasoning a little we face a lot of shortcomings where having a single compute layer or at least an homogeneous compute layer would be either required or more efficient.
 
@@ -182,7 +182,7 @@ So that paradigm basically becomes Apache Spark in front of Apache Delta Lake.
 
 Aren't we back to the database model?
 
-Not quite but in truth we are much closer than all the noise surounding Open Data Lake table formats would have us believe.
+Not quite but in truth we are much closer than all the noise surounding Open Data Lake Table Formats would have us believe.
 
 What remains and is it disruptive?  In short we believe it is.
 
@@ -204,7 +204,7 @@ Standards are good.  Reinventing the wheel doesn't always bring value.
 
 Having standard at the table storage layer could bring deeper integration between heterogeneous query engines.
 
-For instance, we could have a database system that is built on data lake tables.  It could, for instance, add indexes on top of Apache Delta Lake.  This wouldn't require re-ingesting the data, simply indexing it.  Other databases could add other meta data on their own.
+For instance, we could have a database system that is built on Data Lake tables.  It could, for instance, add indexes on top of Apache Delta Lake.  This wouldn't require re-ingesting the data, simply indexing it.  Other databases could add other meta data on their own.
 
 ### Serverless
 
@@ -231,9 +231,9 @@ It would then make sense to have fine grain security (e.g. column security, data
 In this article I wanted to do two things:
 
 1.   Debunk some ideas about Data Lake and decentralized compute
-1.   Show how disruptive a standard data lake table format could be
+1.   Show how disruptive a standard Data Lake Table Format could be
 
-Too often I see data lakes being misused.  Putting Apache Spark on top of raw files is often very unefficient.
+Too often I see Data Lakes being misused.  Putting Apache Spark on top of raw files is often very unefficient.
 
 Remember that cloud providers (e.g. Azure) sells three types of resources:
 
@@ -247,7 +247,7 @@ Storing a Data Warehouse worth of data in cheap un-indexed storage to then query
 
 That is why I believe specialized data engines (e.g. Data Warehouse, Real Time Analytics, etc.) are not a dying breed.
 
-On the other hand, the need for specialized engines could drop substancially with the adoption of a data lake table format and an homogeneous compute on top of it.
+On the other hand, the need for specialized engines could drop substancially with the adoption of a Data Lake Table Format and an homogeneous compute on top of it.
 
 I am still skeptical that Apache Delta Lake (or Apache Iceberg) is the former and that Apache Spark is the latter.  A new generation of technology might need to come to life for those ideas to bare fruits.
 
