@@ -59,17 +59,17 @@ Enters the Data Lake model.  Here we land all data in a common storage layer, th
 
 Now the data is freed from database engines (*liberated* if we want to be dramatic).
 
-A lot of the engines will actually need to *load* the data to be efficient with it.  But an unprocessed version of the data is available in the lake for other engines.
+A lot of the engines will actually need to *load* the data and store it in proprietary formats to be efficient with it.  But an unprocessed version of the data is available in the lake for other engines.
 
 ![Data Lake Model](/assets/posts/2021/1/2021-02-10-rise-of-data-lake-tables/data-lake.png)
 
-We could look at that situation and observed that we replaced one silo by many.  But actually we can consider the lake as the source of truth and all copies (inside the engines) as "data cache".
+We could look at that situation and observed that we replaced one silo by many.  But we can consider the lake as the source of truth and all copies (inside the engines) as "data cache".
 
-An interesting aspect of that model is that some engines can access the data directly in the lake.  For instance, [Apache Spark](http://spark.apache.org/) (in Azure:  [Azure Databricks](https://docs.microsoft.com/en-us/azure/databricks/scenarios/what-is-azure-databricks), [Apache Spark in Azure Synapse Analytics](https://docs.microsoft.com/en-us/azure/synapse-analytics/spark/apache-spark-overview) or [Azure HDInsight](https://docs.microsoft.com/en-us/azure/hdinsight/)), [Trino](https://trino.io/), [Dremio](https://www.dremio.com/), [Azure Synapse Serverless](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql/on-demand-workspace-overview), [Azure Data Explorer External Tables](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/externaltables), etc.  .  This, in turn, opens the door to serverless computing, but we'll cover that later.
+An interesting aspect of that model is that some engines can access the data directly in the lake.  For instance, [Apache Spark](http://spark.apache.org/) (in Azure:  [Azure Databricks](https://docs.microsoft.com/en-us/azure/databricks/scenarios/what-is-azure-databricks), [Apache Spark in Azure Synapse Analytics](https://docs.microsoft.com/en-us/azure/synapse-analytics/spark/apache-spark-overview) or [Azure HDInsight](https://docs.microsoft.com/en-us/azure/hdinsight/)), [Trino](https://trino.io/), [Dremio](https://www.dremio.com/), [Azure Synapse Serverless](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql/on-demand-workspace-overview), [Azure Data Explorer External Tables](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/externaltables), etc.  .
 
 The major strenght of this model is also its major weakness.  Because the data is layed out in an open format (Parquet, Avro, CSV, etc.), it can be read by many compute and queryed on directly.  But because it is the lowest common denominator (compared to a database internal files), it is also very unefficient to query.  Querying a lake means opening every file, parsing it and looking for the data pertaining to the query.  It's basically a table scan.  Data might sometimes be partitionned by date and we're lucky by another column (e.g. customer #), but that's about it.  Performance is therefore usually a drag.
 
-Looking away from querying capacity, ingestion is also an issue.  Doing massive ingestion means copying a lot of big files.  Transforming that data midflight can be complex if we consider failure scenario since file copying isn't transactional.  Also, if files are deleted or corrupted, there is no way to go back (unless the underlying storage platform allows it).
+Looking away from querying capacity, ingestion is also an issue.  Doing massive ingestion means copying a lot of big files.  Transforming that data midflight can be complex if we consider failure scenarios since file copying isn't transactional.  Also, if files are deleted or corrupted, there is no way to go back (unless the underlying storage platform allows it).
 
 ### Data Lake tables
 
@@ -94,8 +94,6 @@ So we are all caught up.  Let's discuss!
 <img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/posts/2021/1/2021-02-10-rise-of-data-lake-tables/pexels-cottonbro-6116860.jpg" />
 
 First let's address what we think is flimsy about the picture above before we look at what we think is truely valuable and disruptive.
-
-[James Serra](https://www.jamesserra.com) does a great job articulating the [value of data warehouses in a data estate](https://www.jamesserra.com/archive/2017/12/is-the-traditional-data-warehouse-dead/) and is worth a read.
 
 ### Standards
 
@@ -252,3 +250,5 @@ On the other hand, the need for specialized engines could drop substancially wit
 I am still skeptical that Apache Delta Lake (or Apache Iceberg) is the former and that Apache Spark is the latter.  It might require a few attempts to find the right balance between feature-richness and openness for extension.  A new generation of technology might need to come to life for those ideas to bare fruits.
 
 What do you think?  Leave your comments down below.
+
+[James Serra](https://www.jamesserra.com) does a great job articulating the [value of data warehouses in a data estate](https://www.jamesserra.com/archive/2017/12/is-the-traditional-data-warehouse-dead/) and is worth a read.
