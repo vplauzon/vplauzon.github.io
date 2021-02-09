@@ -107,9 +107,10 @@ So by storing our data in a Data Lake table means that we automatically have les
 
 That will likely change over time and is a typical barrier of entry for many technology (chicken and the egg problem).  CSV is still very common for that very reason despite its (many) shortcomings.
 
+
 ### Limits of open table format
 
-The total super set of features we can pack in a table format is inferior to the super set of features of analytical databases.
+In one sentence:  *the total super set of features we can pack in a table format is inferior to the super set of features of analytical databases*.
 
 A big advantage of database APIs we mentionned is being a choke point for access control.  How do we implement data masking within a data lake?  Once a principal has access to a blob, how can we apply finer grain access?
 
@@ -117,7 +118,7 @@ This is typically implemented at the query engine level (Apache Ranger plug-ins)
 
 Forcing the access to be done through a Spark Connector to enforce control point also breaks the idea that the lake can be accessed by any client and isn't subjected to the tyrany of a data engine.
 
-Basically, for some feature, we need some common compute in front of the data.
+Basically, for some features, we need some common compute in front of the data.
 
 ### Concurrency
 
@@ -128,6 +129,8 @@ How does this address concurrency?
 Could we have heterogeneous computes ingest data in data lake tables at the same time?
 
 We lack deep knowledge in the Data Lake Table format to answer that question but are skeptical about the capacity as this is general challenge for databases.
+
+Some form of coarse lock (e.g. a lock blob) might be possible but would be a crude solution.
 
 Again a centralized compute layer emmerges as we get deeper into requirements.
 
@@ -145,9 +148,37 @@ Again, we see the need for a centralized compute layer emmerging.
 
 ### Limits of one landing area
 
-Can one table format rule them all?  Can we address near real time ingestion / time series with the same technology as 
+Can one table format rule them all?  There is a reason why there are multiple database engines around.  They each made different design trade offs:  they are better at some things, worse at others.
 
-### Performance of serverless
+We can easily imagine that would be the same thing for open table format.
+
+### Trusting the different computes
+
+Looking at a landscape where we have multiple kind of compute accessing a data lake, can we trust them all?
+
+Especially if we consider the preceeding point where we would like the table format to allow for concurrency, software evolution, indexing, etc.  .  Do we trust that the Python library we just downloaded handle those without any bugs?
+
+Here again we face the challenges of distributed compute.  Would we be comfortable to let multiple services access and update internal Postgres files?
+
+## So where is the disruption?
+
+In the previous section we addressed a few shortcomings of the Data Lake Table paradigm.  Or more specifically, the paradigm that is not often stated explicitly but assumed, i.e. that by having a standard table format for data lakes, we could have **multiple**, **heterogeneous** compute **concurrency** accessing & ingesting data.
+
+We saw that if we push that reasoning a little we face a lot of shortcomings where having a single compute layer or at least an homogeneous compute layer would be either required or more efficient.
+
+So that paradigm basically becomes Apache Spark in front of Apache Delta Lake.
+
+![Delta Lake](/assets/posts/2021/1/2021-02-10-rise-of-data-lake-tables/delta-lake.png)
+
+Aren't we back to the database model?
+
+Not quite but in truth we are much closer.
+
+### Serverless
+
+Finally, let's talk about the serverless scenario.
+
+Data Lake tables kind of facilitate or encourage 
 
 Until standard arises and is well establishes, you loose independance of engine.
 
@@ -166,3 +197,7 @@ How far can that go?  Governance, security access, concurrency, trust everyone t
 Which scenarios does it address well?  Big data volume with low query volume isn't a
 
 Features at the storage layer
+
+## Summary
+
+Debunk
