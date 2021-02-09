@@ -31,21 +31,21 @@ One that most people are familiar with is the database model:
 
 A client (could be an actual end user, could be an application, could be a service) accesses data through a database API (e.g. ODBC).  Behind the scene, the database engine stores the data to files somewhere:  traditionnaly on local hard drives ; in modern systems in cloud storage.  But at the end of the day the data is **stored in a propriatary binary file format**.
 
-From that perspective, a data warehouse system or any analytical database (e.g. [Azure Data Explorer](https://vincentlauzon.com/2020/02/19/azure-data-explorer-kusto)) is similar to a database.
+From that perspective (and that perspective only), a data warehouse system or other analytical database (e.g. [Azure Data Explorer](https://vincentlauzon.com/2020/02/19/azure-data-explorer-kusto)) is similar to a database.
 
 This model has been around forever for good reasons.  It has lots of advantages, including:
 
 * DB exposes functionalities (e.g. queries) independant of file formats allowing DB software implementation to
     * Evolve independantly of the API
-    * Leverage plenty of storage implementations, e.g. atomic flush
-    * Have complex storage layout (e.g. mixing column store and row store, indexes, etc.)
+    * Leverage plenty of storage implementations at OS and hardware level, e.g. atomic flush
+    * Have complex storage layout (e.g. mixing column store and row store, indexes, etc.) hidden from client
 * DB becomes a fine-grain access point where we can apply policies:  e.g. data masking, row-level security, encryption, etc.
 
-The major drawback of that model is that *the database owns the data*.  If we want to use another engine to process data we need to first load the data from the database.  That takes up resources from the database and can be quite innefficient.
+The major drawback of that model is that *the database engine owns the data*.  If we want to use another engine to process data we first need to load the data from the database.  That takes up resources from the database engine and can be quite innefficient.
 
-On premise, that situation wasn't so much of an issue.  Typically we would run databases on dedicated hardware (sometimes appliances), pay for a licence, so we would want to use the database engine to do everything, to justify the expense.
+On premise, that situation wasn't so much of an issue.  Typically we would run databases on dedicated hardware (sometimes appliances) and pay for a licence so we would want to use the database engine as much as possible to justify the expense.
 
-The situation is similar to owning a car:  when we need to move a dishwasher, we're going to use our car.  But if we would rent our car by the hour, we might very well decide to rent a truck to move a dishwasher around instead of squeezing it inside a car.
+The situation is similar to owning a car:  when we need to move a dishwasher, we're going to use our car.  But if we would rent a car by the hour, we might very well drop the car for a few hours, rent a truck to more quickly move the dishwasher around instead of breaking our back squeezing it inside a car.
 
 Similarly, in the cloud we do "rent compute".  Therefore if we have an engine that is better at dealing with geo-spacial data for a specific data-job, we would like to use it instead of forcing every processing to happen on one engine.
 
