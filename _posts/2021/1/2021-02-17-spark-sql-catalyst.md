@@ -6,8 +6,6 @@ categories:
 - Solution
 tags:
 - Data
-hidden:  true
-date: 2021-1-1
 ---
 <img style="float:left;padding-right:20px;" title="From pexels.com" src="/assets/posts/2021/1/2021-02-17-spark-sql-catalyst/quarantine-talks.png" />
 
