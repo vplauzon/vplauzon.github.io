@@ -7,7 +7,7 @@ categories:
 tags:
     - Containers
 hidden:  true
-date:  2021-24-02
+date:  2021-02-24
 excerpt_separator: <!--more-->
 ---
 In this video, we'll see how Azure Web App (i.e. [Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/overview)) can be used as a simple way to managed containerized web applications.

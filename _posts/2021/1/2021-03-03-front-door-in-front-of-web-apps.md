@@ -8,7 +8,7 @@ tags:
     - Networking
     - Security
 hidden:  true
-date:  2021-24-02
+date:  2021-02-24
 excerpt_separator: <!--more-->
 ---
 In this video, we'll see how to leverage [Azure Front Door](https://docs.microsoft.com/en-us/azure/frontdoor/front-door-overview) to front 3 web apps, use the rule engine and let it handle certificates.
