@@ -7,15 +7,13 @@ categories:
 tags:
     - Networking
     - Security
-hidden:  true
-date:  2021-02-24
 excerpt_separator: <!--more-->
 ---
 In this video, we'll see how to leverage [Azure Front Door](https://docs.microsoft.com/en-us/azure/frontdoor/front-door-overview) to front 3 web apps, use the rule engine and let it handle certificates.
 
 I was packaging a solution lately and found a couple of elements in there that were worth sharing.
 
-I'm therefore starting a series of three articles:
+I therefore started a series of three articles:
 
 1. [GitHub actions](/2021/02/24/github-actions-on-a-real-application)
 1. Azure Front Door (this one)

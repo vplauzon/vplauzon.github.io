@@ -6,15 +6,13 @@ categories:
 - Solution
 tags:
     - Containers
-hidden:  true
-date:  2021-02-24
 excerpt_separator: <!--more-->
 ---
 In this video, we'll see how Azure Web App (i.e. [Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/overview)) can be used as a simple way to managed containerized web applications.
 
 I was packaging a solution lately and found a couple of elements in there that were worth sharing.
 
-I'm therefore starting a series of three articles:
+I therefore started a series of three articles, completing this week:
 
 1. [GitHub actions](/2021/02/24/github-actions-on-a-real-application)
 1. [Azure Front Door](/2021/03/03/front-door-in-front-of-web-apps)
