@@ -6,8 +6,6 @@ categories:
 - Solution
 tags:
 - Data
-date:  2021-03-12
-hidden:  true
 ---
 <img style="float:right;padding-left:20px;" title="From pexels.com" src="/assets/posts/2021/1/2021-03-17-skeptics-guide-to-graph-databases/graph.png" />
 
