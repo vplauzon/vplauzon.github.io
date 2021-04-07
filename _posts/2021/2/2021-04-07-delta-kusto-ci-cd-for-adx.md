@@ -8,7 +8,6 @@ tags:
 - Automation
 - Data
 - DevOps
-hidden:  true
 ---
 <img style="float:left;padding-right:20px;" title="Delta Kusto" src="/assets/posts/2021/2/2021-04-07-delta-kusto-ci-cd-for-adx/delta-kusto-overview-thumbnail.png" />
 
@@ -64,3 +63,8 @@ This approach might seem overkilled when considering functions for instance wher
 1. Detects drops (e.g. table columns) and can treat them as such
 1. Can do *offline delta*, i.e. compare two scripts without any Kusto runtime involved.
 
+## Summary
+
+If you think Delta Kusto could help your Dev Ops process with Azure Data Explorer, head to the [Delta Kusto Overview Tutorial](https://github.com/microsoft/delta-kusto/blob/main/documentation/tutorials/overview-tutorial/README.md) (or its [YouTube video little brother](https://www.youtube.com/watch?v=2neGBKlcoOA)).
+
+Please provide feedback either on this blog post or (preferably) on the [GitHub site](https://github.com/microsoft/delta-kusto).
