@@ -1,0 +1,6 @@
+id: edc61090
+author:
+  name: sai krishna
+  url: 
+date: 2021-04-15T23:24:46.4309343-04:00
+content: "When we use two ingress one in each namespace with specifying annotation as alb what happens? \nCan we use one load balancer with two ingress ? each in different namespace"
