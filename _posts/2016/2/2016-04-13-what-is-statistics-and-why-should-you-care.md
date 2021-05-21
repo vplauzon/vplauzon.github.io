@@ -70,7 +70,7 @@ A special category of event is of great interest:  <a href="https://en.wikipedi
 For those, we have a direct link with combinatorics:
 <p align="center">$ P(event) = \frac{1}{\#events}&amp;s=4$</p>
 The probability of an event is one over the number of possible events.  Let’s come back to my die example:
-<p align="center">$latex P(1) =\frac{1}{\#D}=\frac{1}{6}&amp;s=4$</p>
+<p align="center">$ P(1) =\frac{1}{\#D}=\frac{1}{6}&amp;s=4$</p>
 The probability to get a 1 is 1/6 since #D, the cardinality of D (the number of elements in D), is 6.  Same for all the other events, i.e. 2, 3, 4, 5, 6.
 
 So you see the link with combinatorics?  You always compare things that you’ve counted.
@@ -97,7 +97,7 @@ Statistics allow you to quantify that.
 
 When you hear about confidence interval around a survey, that’s exactly what that is about.
 
-If I take my sequence of ‘2’ in my die throwing experiment, we can quantify it this way.  Throwing a ‘2’ has a probability of 1/6, which is the same probability for any result.  Now having the same result <em>n</em> times has a probability $latex P_{same} = (\frac{1}{6})^{n-1}$ while having a sequence of non-repeating results has probability of $latex P_{different} = (\frac{5}{6})^{n-1}$.  So as <em>n</em> increases, it gets less and less likely to have a sequence of the same result.  You can set a threshold and take a decision if you believe the underlying model or not ; in this case, if my die is or not a fair one.
+If I take my sequence of ‘2’ in my die throwing experiment, we can quantify it this way.  Throwing a ‘2’ has a probability of 1/6, which is the same probability for any result.  Now having the same result <em>n</em> times has a probability $ P_{same} = (\frac{1}{6})^{n-1}$ while having a sequence of non-repeating results has probability of $ P_{different} = (\frac{5}{6})^{n-1}$.  So as <em>n</em> increases, it gets less and less likely to have a sequence of the same result.  You can set a threshold and take a decision if you believe the underlying model or not ; in this case, if my die is or not a fair one.
 <h2>Why should you care?</h2>
 <img style="background-image:none;float:left;padding-top:0;padding-left:0;margin:0 11px 0 0;display:inline;padding-right:0;border-width:0;" src="https://static.pexels.com/photos/6069/grass-lawn-green-wooden-6069.jpg" alt="" width="640" height="427" align="left" border="0" />Statistics is at the core of many empirical sciences.  We use statistics to test theories, to test models.
 
