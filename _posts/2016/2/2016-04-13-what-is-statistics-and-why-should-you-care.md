@@ -8,6 +8,7 @@ tags:
 - Data
 - Machine Learning
 - Mathematics
+use_math: true
 ---
 <img style="background-image:none;float:left;padding-top:0;padding-left:0;margin:0 14px 0 0;display:inline;padding-right:0;border-width:0;" src="http://icons.iconarchive.com/icons/visualpharm/finance/128/line-chart-icon.png" alt="" align="left" border="0" />Unless you graduated in art, chances are you did a course in Statistics.
 
@@ -67,7 +68,7 @@ What is an event?  An event is an element of the set of all possible event.  A
 A special category of event is of great interest:  <a href="https://en.wikipedia.org/wiki/Equiprobability" target="_blank">equipossible events</a>.  Those are events which all have the same chance of occurence.  My coin tossing is like that.  So is my 6-faced die…  if it hasn’t been tempered with.
 
 For those, we have a direct link with combinatorics:
-<p align="center">$latex P(event) = \frac{1}{\#events}&amp;s=4$</p>
+<p align="center">$ P(event) = \frac{1}{\#events}&amp;s=4$</p>
 The probability of an event is one over the number of possible events.  Let’s come back to my die example:
 <p align="center">$latex P(1) =\frac{1}{\#D}=\frac{1}{6}&amp;s=4$</p>
 The probability to get a 1 is 1/6 since #D, the cardinality of D (the number of elements in D), is 6.  Same for all the other events, i.e. 2, 3, 4, 5, 6.
