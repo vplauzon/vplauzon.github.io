@@ -1,7 +1,7 @@
 ---
 title:  Delta Kusto in Azure DevOps
-permalink: /2021/04/07/delta-kusto-in-azure-dev-ops
-image:  /assets/posts/2021/2/2021-04-07-delta-kusto-ci-cd-for-adx/delta-kusto-overview-thumbnail.png
+permalink: /2021/06/02/delta-kusto-in-azure-dev-ops
+image:  /assets/posts/2021/2/2021-06-02-delta-kusto-in-azure-dev-ops/thumbnail-devops.png
 categories:
 - Solution
 tags:
@@ -11,7 +11,7 @@ tags:
 - date: 2021-06-01
 - hidden:  true
 ---
-<img style="float:right;padding-left:20px;" title="Delta Kusto" src="/assets/posts/2021/2/2021-04-07-delta-kusto-ci-cd-for-adx/delta-kusto-overview-thumbnail.png" />
+<img style="float:right;padding-left:20px;" title="Delta Kusto" src="/assets/posts/2021/2/2021-06-02-delta-kusto-in-azure-dev-ops/thumbnail-devops.png" />
 
 [Last time](https://vincentlauzon.com/2021/04/07/delta-kusto-ci-cd-for-adx) we talked about [Delta Kusto](https://github.com/microsoft/delta-kusto) (CI/CD for Azure Data Explorer (ADX)).
 
