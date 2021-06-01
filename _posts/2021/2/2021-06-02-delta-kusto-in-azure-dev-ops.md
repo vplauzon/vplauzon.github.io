@@ -8,8 +8,8 @@ tags:
 - Automation
 - Data
 - DevOps
-- date: 2021-04-01
-- hidden:  true
+date: 2021-04-01
+hidden:  true
 ---
 <img style="float:right;padding-left:20px;" title="Delta Kusto in Azure DevOps" src="/assets/posts/2021/2/2021-06-02-delta-kusto-in-azure-dev-ops/thumbnail-devops.png" />
 
