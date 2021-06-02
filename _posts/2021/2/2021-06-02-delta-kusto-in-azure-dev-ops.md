@@ -22,3 +22,5 @@ This week we release another tutorial:  [Using Delta Kusto in Azure DevOps](http
 This tutorial goes through how to leverage Delta Kusto inside Azure DevOps.
 
 A video is also available.  We hope that helps kickstart your journey!
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zL792Xm7VM8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
