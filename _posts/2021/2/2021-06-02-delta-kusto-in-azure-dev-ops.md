@@ -8,8 +8,6 @@ tags:
 - Automation
 - Data
 - DevOps
-date: 2021-04-01
-hidden:  true
 ---
 <img style="float:right;padding-left:20px;" title="Delta Kusto in Azure DevOps" src="/assets/posts/2021/2/2021-06-02-delta-kusto-in-azure-dev-ops/thumbnail-devops.png" />
 
@@ -21,6 +19,6 @@ This week we release another tutorial:  [Using Delta Kusto in Azure DevOps](http
 
 This tutorial goes through how to leverage Delta Kusto inside Azure DevOps.
 
-A video is also available.  We hope that helps kickstart your journey!
+This tutorial is also [available as a YouTube video](https://www.youtube.com/watch?v=zL792Xm7VM8).
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/zL792Xm7VM8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+We hope that helps kickstart your journey!
