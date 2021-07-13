@@ -1,0 +1,6 @@
+id: b3156c32
+author:
+  name: Anonymous
+  url: 
+date: 2021-07-13T18:31:20.4309936-04:00
+content: "Hi Vincent,\nIs it feasible create a SQL connector authenticating with service principal,\ni tried using arm template but receiving error \"Input parameters are invalid. Parameter  'token:clientId' \nis not allowed on the connection since it was not defined as a connection parameter when the API was registered\"\n\nI am able to create a connection through the portal"
