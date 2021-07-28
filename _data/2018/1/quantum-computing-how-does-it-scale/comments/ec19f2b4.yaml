@@ -1,0 +1,6 @@
+id: ec19f2b4
+author:
+  name: Adrien
+  url: 
+date: 2021-07-28T14:34:47.6791342-04:00
+content: "You made a bit of a mistake in your math at the end! 10^284 years isn't 28 times longer than the current universe at 1.3x10^10. Each exponent is 10x the years. So 10^(284-10) is the actually number of universe ages it would take to process 1000 qubits classically. So it would take 10^274 universe ages to process that same info. Not 28. "
