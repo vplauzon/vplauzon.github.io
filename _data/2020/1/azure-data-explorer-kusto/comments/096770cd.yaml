@@ -1,0 +1,6 @@
+id: 096770cd
+author:
+  name: Nidhi
+  url: 
+date: 2021-08-09T03:01:26.5316738-04:00
+content: We can use azure data explorer for near real time calculations for telemetry data. Azure Databricks also can natively stream data from IoT Hubs directly into a Delta table on ADLS and display the input vs. processing rates of the data.I wanted to know what is the use case when ADX is significantly better than Databricks streaming ingestion( workload and cost wise)?. Currently we are using ADX but want to move to databricks for machine sensors data. How can we convince to client which is better and why
