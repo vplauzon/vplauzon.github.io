@@ -1,0 +1,28 @@
+id: 2a34630e
+author:
+  name: Vincent-Philippe Lauzon
+  url: https://vincentlauzon.com/
+date: 2021-08-12T17:59:06.5923003-04:00
+content: >-
+  Hi Nidhi.
+
+
+  The "when to use which Azure Data Service" is common but somehow we fail to give a simple answer apparently.  The topic doesn't lay itself to a two sentences answer as there are many scenarios / tasks one could consider in the world of data.
+
+
+  But since you narrow down the question to structured streaming in Spark vs real time ingestion in ADX, let's try to answer that one.
+
+
+  The way I like to address it is that is first observe that, when you think about it, they aren't the same scenario.  Spark enables us to pre-define aggregates (e.g. count by categories) and monitor those aggregates in near real-time.  It does that very well and on a well-tuned cluster, can be very efficient.  ADX ingests the data and allows us to query it ad hoc.  So with ADX you have the freedom to query your data in any ways (ad hoc), i.e. you do not need to pre-define any aggregates.  You can also look at any window of time:  the last 30 seconds, the last hour, the last year, etc.  .  You can perform any type of analytics, for instance, you could run a regression on all your data, including the one from the last couple of seconds...
+
+
+  You could also define a pre-aggregate in ADX in the form of materialized view.  Again it serves a different purpose as it's not limited in some time window.  Of course that freedom comes at the cost of performance:  ADX is  actually ingesting the data, i.e. commiting it to disk in a compressed and indexed format.
+
+
+  So I would say look at the exact scenario.
+
+
+  You can have a look at a presentation I did about a year ago:  https://iterationinsights.com/article/azure-data-explorer-3-scenarios/.  More specifically, you can look at the last slide giving a "best of bread" for different scenarios here:  https://iterationinsights.com/wp-content/uploads/2020/10/Calgary-Azure-Analytics-ADX-VPL.pdf.
+
+
+  Hope that was helpful.
