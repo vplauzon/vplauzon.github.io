@@ -9,9 +9,9 @@ feature_image: /assets/about/saguenay-lake.png
 
 <img style="float:right;padding-left:15px;" title="Ah...  vacations..." src="/assets/about/vp-bridge.png" />
 
-I am Vincent-Philippe Lauzon.  I am based in Montreal with my lovely familly.  In my free time I do calisthenics & jogging.
+My name is Vincent-Philippe Lauzon.  I am based in Montreal with my lovely familly.  In my free time I do calisthenics & jogging.
 
-I help customers accelerate their journey to Azure and decrease risks on their projects as one of Microsoft Canada's *Cloud Solution Architect*.
+I am a Microsoft Program Manager on the Azure Data Explorer team.
 
 I studied in Mathematics-Physics before writing a master thesis in Machine Learning.  I spent most of my career consulting as a Solution Architect for more than 20 years.
 
