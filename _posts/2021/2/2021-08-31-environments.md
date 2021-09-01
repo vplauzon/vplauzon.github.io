@@ -40,15 +40,16 @@ TODO (Reference a GitHub repo with a Terraform configuration?)
 
 # Imperative deployment
 
-ARM & Terraform are the two main declarative ways to create Azure Data Explorer infrastructure.
+ARM & Terraform are the two main declarative ways to deploy Azure Data Explorer infrastructure (cluster, databases, etc.).
 
 Infrastructure can also be created imperatively using different platforms:
 
 * [Azure CLI](https://docs.microsoft.com/en-us/azure/data-explorer/create-cluster-database-cli)
 * [PowerShell](https://docs.microsoft.com/en-us/azure/data-explorer/create-cluster-database-powershell)
-* [C# SDK](https://docs.microsoft.com/en-us/azure/data-explorer/create-cluster-database-csharp)
-* [Python SDK](https://docs.microsoft.com/en-us/azure/data-explorer/create-cluster-database-python)
-* [Go SDK](https://docs.microsoft.com/en-us/azure/data-explorer/create-cluster-database-go)
+* SDKs
+  * [C# SDK](https://docs.microsoft.com/en-us/azure/data-explorer/create-cluster-database-csharp)
+  * [Python SDK](https://docs.microsoft.com/en-us/azure/data-explorer/create-cluster-database-python)
+  * [Go SDK](https://docs.microsoft.com/en-us/azure/data-explorer/create-cluster-database-go)
 
 # Kusto Schema Entities
 
@@ -58,20 +59,31 @@ There are many ways to automate this:
 
 TODO:  Need to validate the 'scripts' resource approach
 
-*   Using ARM Microsoft.Kusto clusters/databases/scripts resource
+* Using ARM Microsoft.Kusto clusters/databases/scripts resource
   * [ARM JSON](https://docs.microsoft.com/en-us/azure/templates/microsoft.kusto/clusters/databases/scripts?tabs=json)
   * [ARM Bicep](https://docs.microsoft.com/en-us/azure/templates/microsoft.kusto/clusters/databases/scripts?tabs=bicep)
   * Terraform (TODO)
 * [Kusto CLI](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/tools/kusto-cli) in *script mode*
-* SDK
+* SDKs
     * [C# SDK](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/netfx/about-kusto-data)
     * [Python SDK](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/python/kusto-python-client-library)
     * [Java SDK](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/java/kusto-java-client-library)
     * [Node SDK](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/node/kusto-node-client-library)
     * [Go SDK](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/golang/kusto-golang-client-library)
+* Tools
+  * [Sync Kusto](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/tools/synckusto)
+  * [Delta Kusto](https://github.com/microsoft/delta-kusto)
+
+[Sync Kusto](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/tools/synckusto) is an interactive developer tool.  In the context of automated deployment, it can extract the schema / control commands script of an ADX Database (this step is manual).  That script could then be deployed automatically.
+
+[Delta Kusto](https://github.com/microsoft/delta-kusto) is a Command Line Interface (CLI) tool designed to be invoked in a CI/CD pipeline.  It can compare two sources (a control commands script or an ADX database) and compute a *delta* script, i.e. a script of control commands that would bring one source structurally identical to the other.  It can also push that script to an ADX database.
 
 # Data Connections
 
-...
+TODO...  Discuss the chicken & egg issue with data connections
 
 # Data
+
+After deploying ADX instructure & its schema entities, we often want to deploy data on it (e.g. to run tests or recreate an environment).
+
+There are a few ways to deploy data on Azure Data Explorer.  We recommend scheduling a [Copy activity in Azure Data Factory / Azure Synapse](https://docs.microsoft.com/en-us/azure/data-explorer/data-factory-load-data#load-data-into-azure-data-explorer) or the equivalent in.
