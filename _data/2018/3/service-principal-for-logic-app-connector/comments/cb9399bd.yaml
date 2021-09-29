@@ -1,0 +1,44 @@
+id: cb9399bd
+author:
+  name: JFRB
+  url: 
+date: 2021-09-29T13:52:52.9825220-04:00
+content: >-
+  Hello anonymous,  had the same issue it is not documented how to create a SQL connector using ARM for Service Principals. However looking at the request the designer makes to create this type of connections I was able to extract the definition of the resource. Hope it helps.
+
+
+  {
+              "type": "microsoft.web/connections",
+              "apiVersion": "2018-07-01-preview",
+              "name": "[parameters('sql_connection_name')]",
+              "location": "[resourceGroup().location]",
+              "dependsOn": [],
+              "kind": "V1",
+              "properties": {
+                  "api": {
+                      "id": "[concat(subscription().id, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/sql')]",
+                      "type": "Microsoft.Web/locations/managedApis"
+                  },
+                  "displayName": "[parameters('sql_connection_name')]",
+                  "parameterValueSet": {
+                      "name": "oauthSP",
+                      "values": {
+                          "token:TenantId": {
+                              "value": "[parameters('sp_tenant')]"
+                          },
+                          "token:clientId": {
+                              "value": "[parameters('sp_app_id')]"
+                          },
+                          "token:clientSecret": {
+                              "value": "[parameters('sp_secret')]"
+                          }
+                      }
+                  },
+                  "testLinks": [
+                      {
+                          "requestUri": "[concat('https://management.azure.com:443/subscriptions/', subscription().id,'/resourceGroups/', resourceGroup().location,'/providers/Microsoft.Web/connections/', parameters('sql_connection_name'), '/extensions/proxy/testconnection?api-version=2016-06-01')]",
+                          "method": "get"
+                      }
+                  ]
+              }
+          }
