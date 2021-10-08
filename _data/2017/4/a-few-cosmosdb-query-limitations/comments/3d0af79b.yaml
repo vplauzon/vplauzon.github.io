@@ -1,0 +1,9 @@
+id: 3d0af79b
+author:
+  name: 'Daniel F '
+  url: 
+date: 2021-10-05T15:05:30.8211498-04:00
+content: >-
+  Just a point about min/max aggregations in same query: it only works if your database isn't partitioned. Otherwise you will get the following error:
+
+  "Cross partition query only supports 'VALUE <AggregateFunc>' for aggregates".
