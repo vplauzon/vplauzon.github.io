@@ -1,0 +1,6 @@
+id: 124a1890
+author:
+  name: 'Negah '
+  url: 
+date: 2021-10-28T14:14:08.8592484-04:00
+content: "Hello, \nIn ADX, I Have an external table which is pointing to json files in a blob storage and, I would like to us it as a data ingestion source and, land data in to a table in ADX. In my current solution I am using Logic App but, I would like to know is there any way that I could injest data directly from an External Table to a table ? "
