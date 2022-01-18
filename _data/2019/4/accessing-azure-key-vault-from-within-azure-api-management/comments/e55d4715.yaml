@@ -1,0 +1,6 @@
+id: e55d4715
+author:
+  name: sri
+  url: 
+date: 2022-01-18T18:34:27.7249216-05:00
+content: We can now use named values of type 'Key vault' this removed the need to use 'send-request ' and 'cache'
