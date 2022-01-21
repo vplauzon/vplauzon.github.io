@@ -1,0 +1,6 @@
+id: beb25c8a
+author:
+  name: Craig
+  url: 
+date: 2022-01-20T15:29:50.4573704-05:00
+content: 'Reuben, I was confused by this at first too. The qubits allow each of those 16 states to be stored simultaneously due to superposition (they only assume a discrete state when observed). Classical bits can indeed represent 2^n states with n bits but they can only represent one of those states at any moment. It would take 4 bits x 16 combinations to hold all 16 values in memory but it would only require 4 qubits to represent all 16 values. '
